@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RMC.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace RMC
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            AdminDashboard frm = new AdminDashboard();
+            frm.Show();
+            this.Hide();
         }
     }
 }
