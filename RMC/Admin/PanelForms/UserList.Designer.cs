@@ -105,7 +105,7 @@
             this.btnRemoveUser.IconChar = FontAwesome.Sharp.IconChar.UserMinus;
             this.btnRemoveUser.IconColor = System.Drawing.Color.White;
             this.btnRemoveUser.IconSize = 25;
-            this.btnRemoveUser.Location = new System.Drawing.Point(564, 474);
+            this.btnRemoveUser.Location = new System.Drawing.Point(562, 474);
             this.btnRemoveUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRemoveUser.Name = "btnRemoveUser";
             this.btnRemoveUser.Rotation = 0D;
@@ -128,7 +128,7 @@
             this.ResetPassword.IconChar = FontAwesome.Sharp.IconChar.Recycle;
             this.ResetPassword.IconColor = System.Drawing.Color.White;
             this.ResetPassword.IconSize = 25;
-            this.ResetPassword.Location = new System.Drawing.Point(413, 474);
+            this.ResetPassword.Location = new System.Drawing.Point(407, 474);
             this.ResetPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ResetPassword.Name = "ResetPassword";
             this.ResetPassword.Rotation = 0D;
@@ -151,7 +151,7 @@
             this.editUser.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
             this.editUser.IconColor = System.Drawing.Color.White;
             this.editUser.IconSize = 25;
-            this.editUser.Location = new System.Drawing.Point(290, 474);
+            this.editUser.Location = new System.Drawing.Point(281, 474);
             this.editUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.editUser.Name = "editUser";
             this.editUser.Rotation = 0D;

@@ -59,8 +59,15 @@ namespace RMC.Admin
         {
             if (panelSubUserMenu.Visible == true)
                 panelSubUserMenu.Visible = false;
-         /*   if (panelTryMenu.Visible == true)
-                panelTryMenu.Visible = false;*/
+            if (panelSubMenuLab.Visible == true)
+                panelSubMenuLab.Visible = false;
+            if (panelSubPharma.Visible == true)
+                panelSubPharma.Visible = false;
+            if (panelSubReports.Visible == true)
+                panelSubReports.Visible = false;
+            if (panelSubUtilities.Visible == true)
+                panelSubUtilities.Visible = false;
+
 
         }
 
@@ -129,7 +136,12 @@ namespace RMC.Admin
         private void initMainNavButtons()
         {
             MainNav[userNavMenuBtn.Text] = userNavMenuBtn.Location.Y;
-           // MainNav[iconButton6.Text] = iconButton6.Location.Y;
+            MainNav[btnLabratoryMenu.Text] = btnLabratoryMenu.Location.Y;
+            MainNav[btnMngPharma.Text] = btnMngPharma.Location.Y;
+            MainNav[btnReports.Text] = btnReports.Location.Y;
+            MainNav[btnManagePromos.Text] = btnManagePromos.Location.Y;
+            MainNav[btnUtilities.Text] = btnUtilities.Location.Y;
+            // MainNav[iconButton6.Text] = iconButton6.Location.Y;
         }
 
 
@@ -137,7 +149,11 @@ namespace RMC.Admin
         {
 
             panelSubUserMenu.Visible = false;
-          //  panelTryMenu.Visible = false;
+            panelSubMenuLab.Visible = false;
+            panelSubPharma.Visible = false;
+            panelSubReports.Visible = false;
+            panelSubUtilities.Visible = false;
+           
 
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 45);
@@ -225,6 +241,31 @@ namespace RMC.Admin
         {
             openChildForm(new UserList());
             //hideSubMenu();
+        }
+       
+
+        private void btnLabratoryMenu_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, Color.Maroon);
+            showSubMenu(panelSubMenuLab);
+        }
+
+        private void btnMngPharma_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, Color.Maroon);
+            showSubMenu(panelSubPharma);
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, Color.Maroon);
+            showSubMenu(panelSubReports);
+        }
+
+        private void btnUtilities_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, Color.Maroon);
+            showSubMenu(panelSubUtilities);
         }
         #endregion
     }
