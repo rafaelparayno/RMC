@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.panelSubUtilities = new System.Windows.Forms.Panel();
+            this.btnNetworkSettings = new FontAwesome.Sharp.IconButton();
+            this.btnAuditTrail = new FontAwesome.Sharp.IconButton();
+            this.btnArchive = new FontAwesome.Sharp.IconButton();
+            this.btnBackupRestore = new FontAwesome.Sharp.IconButton();
+            this.btnUtilities = new FontAwesome.Sharp.IconButton();
             this.panelSubReports = new System.Windows.Forms.Panel();
             this.btnLabReports = new FontAwesome.Sharp.IconButton();
             this.btnPharmaReports = new FontAwesome.Sharp.IconButton();
@@ -58,20 +64,19 @@
             this.btnMinimize = new FontAwesome.Sharp.IconButton();
             this.btnMaximize = new FontAwesome.Sharp.IconButton();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.datelabel = new System.Windows.Forms.Label();
             this.timelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnUtilities = new FontAwesome.Sharp.IconButton();
-            this.panelSubUtilities = new System.Windows.Forms.Panel();
-            this.btnArchive = new FontAwesome.Sharp.IconButton();
-            this.btnBackupRestore = new FontAwesome.Sharp.IconButton();
-            this.btnAuditTrail = new FontAwesome.Sharp.IconButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
+            this.labelSubMenu = new System.Windows.Forms.Label();
+            this.iconSubMenu = new FontAwesome.Sharp.IconPictureBox();
             this.panelSideMenu.SuspendLayout();
+            this.panelSubUtilities.SuspendLayout();
             this.panelSubReports.SuspendLayout();
             this.panelSubPharma.SuspendLayout();
             this.panelSubMenuLab.SuspendLayout();
@@ -79,10 +84,10 @@
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
             this.panelChildForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelSubUtilities.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconSubMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSideMenu
@@ -108,6 +113,132 @@
             this.panelSideMenu.Size = new System.Drawing.Size(250, 600);
             this.panelSideMenu.TabIndex = 1;
             // 
+            // panelSubUtilities
+            // 
+            this.panelSubUtilities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
+            this.panelSubUtilities.Controls.Add(this.btnNetworkSettings);
+            this.panelSubUtilities.Controls.Add(this.btnAuditTrail);
+            this.panelSubUtilities.Controls.Add(this.btnArchive);
+            this.panelSubUtilities.Controls.Add(this.btnBackupRestore);
+            this.panelSubUtilities.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSubUtilities.Location = new System.Drawing.Point(0, 832);
+            this.panelSubUtilities.Name = "panelSubUtilities";
+            this.panelSubUtilities.Size = new System.Drawing.Size(233, 190);
+            this.panelSubUtilities.TabIndex = 18;
+            // 
+            // btnNetworkSettings
+            // 
+            this.btnNetworkSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNetworkSettings.FlatAppearance.BorderSize = 0;
+            this.btnNetworkSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNetworkSettings.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnNetworkSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnNetworkSettings.IconChar = FontAwesome.Sharp.IconChar.Server;
+            this.btnNetworkSettings.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnNetworkSettings.IconSize = 25;
+            this.btnNetworkSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNetworkSettings.Location = new System.Drawing.Point(0, 135);
+            this.btnNetworkSettings.Name = "btnNetworkSettings";
+            this.btnNetworkSettings.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
+            this.btnNetworkSettings.Rotation = 0D;
+            this.btnNetworkSettings.Size = new System.Drawing.Size(233, 45);
+            this.btnNetworkSettings.TabIndex = 10;
+            this.btnNetworkSettings.Text = "Network Settings";
+            this.btnNetworkSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNetworkSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNetworkSettings.UseVisualStyleBackColor = true;
+            // 
+            // btnAuditTrail
+            // 
+            this.btnAuditTrail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAuditTrail.FlatAppearance.BorderSize = 0;
+            this.btnAuditTrail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAuditTrail.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAuditTrail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnAuditTrail.IconChar = FontAwesome.Sharp.IconChar.ListUl;
+            this.btnAuditTrail.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnAuditTrail.IconSize = 25;
+            this.btnAuditTrail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAuditTrail.Location = new System.Drawing.Point(0, 90);
+            this.btnAuditTrail.Name = "btnAuditTrail";
+            this.btnAuditTrail.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
+            this.btnAuditTrail.Rotation = 0D;
+            this.btnAuditTrail.Size = new System.Drawing.Size(233, 45);
+            this.btnAuditTrail.TabIndex = 9;
+            this.btnAuditTrail.Text = "Audit Trail";
+            this.btnAuditTrail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAuditTrail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAuditTrail.UseVisualStyleBackColor = true;
+            // 
+            // btnArchive
+            // 
+            this.btnArchive.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnArchive.FlatAppearance.BorderSize = 0;
+            this.btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArchive.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnArchive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnArchive.IconChar = FontAwesome.Sharp.IconChar.Archive;
+            this.btnArchive.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnArchive.IconSize = 25;
+            this.btnArchive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnArchive.Location = new System.Drawing.Point(0, 45);
+            this.btnArchive.Name = "btnArchive";
+            this.btnArchive.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
+            this.btnArchive.Rotation = 0D;
+            this.btnArchive.Size = new System.Drawing.Size(233, 45);
+            this.btnArchive.TabIndex = 8;
+            this.btnArchive.Text = "Archive";
+            this.btnArchive.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnArchive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnArchive.UseVisualStyleBackColor = true;
+            // 
+            // btnBackupRestore
+            // 
+            this.btnBackupRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
+            this.btnBackupRestore.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBackupRestore.FlatAppearance.BorderSize = 0;
+            this.btnBackupRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackupRestore.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnBackupRestore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnBackupRestore.IconChar = FontAwesome.Sharp.IconChar.TrashRestoreAlt;
+            this.btnBackupRestore.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnBackupRestore.IconSize = 25;
+            this.btnBackupRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBackupRestore.Location = new System.Drawing.Point(0, 0);
+            this.btnBackupRestore.Name = "btnBackupRestore";
+            this.btnBackupRestore.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
+            this.btnBackupRestore.Rotation = 0D;
+            this.btnBackupRestore.Size = new System.Drawing.Size(233, 45);
+            this.btnBackupRestore.TabIndex = 7;
+            this.btnBackupRestore.Text = "Backup And Restore";
+            this.btnBackupRestore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBackupRestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBackupRestore.UseVisualStyleBackColor = false;
+            // 
+            // btnUtilities
+            // 
+            this.btnUtilities.BackColor = System.Drawing.Color.Salmon;
+            this.btnUtilities.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUtilities.FlatAppearance.BorderSize = 0;
+            this.btnUtilities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUtilities.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnUtilities.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnUtilities.IconChar = FontAwesome.Sharp.IconChar.Cogs;
+            this.btnUtilities.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnUtilities.IconSize = 35;
+            this.btnUtilities.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUtilities.Location = new System.Drawing.Point(0, 787);
+            this.btnUtilities.Name = "btnUtilities";
+            this.btnUtilities.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnUtilities.Rotation = 0D;
+            this.btnUtilities.Size = new System.Drawing.Size(233, 45);
+            this.btnUtilities.TabIndex = 17;
+            this.btnUtilities.Text = "Utilities";
+            this.btnUtilities.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUtilities.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUtilities.UseVisualStyleBackColor = false;
+            this.btnUtilities.Click += new System.EventHandler(this.btnUtilities_Click);
+            // 
             // panelSubReports
             // 
             this.panelSubReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
@@ -126,7 +257,7 @@
             this.btnLabReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLabReports.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnLabReports.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnLabReports.IconChar = FontAwesome.Sharp.IconChar.UserLock;
+            this.btnLabReports.IconChar = FontAwesome.Sharp.IconChar.ChartBar;
             this.btnLabReports.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnLabReports.IconSize = 25;
             this.btnLabReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -149,7 +280,7 @@
             this.btnPharmaReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPharmaReports.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnPharmaReports.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnPharmaReports.IconChar = FontAwesome.Sharp.IconChar.Users;
+            this.btnPharmaReports.IconChar = FontAwesome.Sharp.IconChar.ChartPie;
             this.btnPharmaReports.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnPharmaReports.IconSize = 25;
             this.btnPharmaReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -172,7 +303,7 @@
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReports.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnReports.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnReports.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
+            this.btnReports.IconChar = FontAwesome.Sharp.IconChar.ChartLine;
             this.btnReports.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnReports.IconSize = 35;
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -230,7 +361,7 @@
             this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuppliers.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnSuppliers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnSuppliers.IconChar = FontAwesome.Sharp.IconChar.UserCog;
+            this.btnSuppliers.IconChar = FontAwesome.Sharp.IconChar.Truck;
             this.btnSuppliers.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnSuppliers.IconSize = 25;
             this.btnSuppliers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -252,7 +383,7 @@
             this.btnItemCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnItemCategories.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnItemCategories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnItemCategories.IconChar = FontAwesome.Sharp.IconChar.UserLock;
+            this.btnItemCategories.IconChar = FontAwesome.Sharp.IconChar.ThList;
             this.btnItemCategories.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnItemCategories.IconSize = 25;
             this.btnItemCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -275,7 +406,7 @@
             this.btnItemList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnItemList.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnItemList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnItemList.IconChar = FontAwesome.Sharp.IconChar.Users;
+            this.btnItemList.IconChar = FontAwesome.Sharp.IconChar.ClipboardList;
             this.btnItemList.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnItemList.IconSize = 25;
             this.btnItemList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -298,7 +429,7 @@
             this.btnMngPharma.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMngPharma.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnMngPharma.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnMngPharma.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
+            this.btnMngPharma.IconChar = FontAwesome.Sharp.IconChar.Prescription;
             this.btnMngPharma.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnMngPharma.IconSize = 35;
             this.btnMngPharma.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -332,7 +463,7 @@
             this.labratorSettingsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labratorSettingsBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.labratorSettingsBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.labratorSettingsBtn.IconChar = FontAwesome.Sharp.IconChar.UserLock;
+            this.labratorSettingsBtn.IconChar = FontAwesome.Sharp.IconChar.Flask;
             this.labratorSettingsBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.labratorSettingsBtn.IconSize = 25;
             this.labratorSettingsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -355,7 +486,7 @@
             this.btnLabratoryList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLabratoryList.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnLabratoryList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnLabratoryList.IconChar = FontAwesome.Sharp.IconChar.Users;
+            this.btnLabratoryList.IconChar = FontAwesome.Sharp.IconChar.Fill;
             this.btnLabratoryList.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnLabratoryList.IconSize = 25;
             this.btnLabratoryList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -378,7 +509,7 @@
             this.btnLabratoryMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLabratoryMenu.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnLabratoryMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnLabratoryMenu.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
+            this.btnLabratoryMenu.IconChar = FontAwesome.Sharp.IconChar.Vial;
             this.btnLabratoryMenu.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnLabratoryMenu.IconSize = 35;
             this.btnLabratoryMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -406,7 +537,7 @@
             this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton4.IconSize = 35;
             this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 975);
+            this.iconButton4.Location = new System.Drawing.Point(0, 1022);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton4.Rotation = 0D;
@@ -548,17 +679,20 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Salmon;
+            this.panel1.Controls.Add(this.labelSubMenu);
+            this.panel1.Controls.Add(this.iconSubMenu);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.iconCurrentChildForm);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.btnMinimize);
             this.panel1.Controls.Add(this.btnMaximize);
             this.panel1.Controls.Add(this.btnCloseApp);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.iconCurrentChildForm);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.Color.FloralWhite;
             this.panel1.Location = new System.Drawing.Point(250, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 75);
+            this.panel1.Size = new System.Drawing.Size(700, 38);
             this.panel1.TabIndex = 3;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
@@ -568,7 +702,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 75);
+            this.panel2.Size = new System.Drawing.Size(10, 38);
             this.panel2.TabIndex = 219;
             // 
             // btnMinimize
@@ -625,32 +759,6 @@
             this.btnCloseApp.UseVisualStyleBackColor = false;
             this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label1.Location = new System.Drawing.Point(46, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Home";
-            // 
-            // iconCurrentChildForm
-            // 
-            this.iconCurrentChildForm.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.iconCurrentChildForm.BackColor = System.Drawing.Color.Salmon;
-            this.iconCurrentChildForm.ForeColor = System.Drawing.Color.Maroon;
-            this.iconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.iconCurrentChildForm.IconColor = System.Drawing.Color.Maroon;
-            this.iconCurrentChildForm.IconSize = 27;
-            this.iconCurrentChildForm.Location = new System.Drawing.Point(20, 25);
-            this.iconCurrentChildForm.Name = "iconCurrentChildForm";
-            this.iconCurrentChildForm.Size = new System.Drawing.Size(32, 27);
-            this.iconCurrentChildForm.TabIndex = 0;
-            this.iconCurrentChildForm.TabStop = false;
-            // 
             // panelChildForm
             // 
             this.panelChildForm.BackColor = System.Drawing.Color.FloralWhite;
@@ -660,9 +768,9 @@
             this.panelChildForm.Controls.Add(this.pictureBox1);
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.ForeColor = System.Drawing.Color.Black;
-            this.panelChildForm.Location = new System.Drawing.Point(250, 75);
+            this.panelChildForm.Location = new System.Drawing.Point(250, 38);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(700, 525);
+            this.panelChildForm.Size = new System.Drawing.Size(700, 562);
             this.panelChildForm.TabIndex = 4;
             // 
             // panel3
@@ -671,7 +779,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 525);
+            this.panel3.Size = new System.Drawing.Size(10, 562);
             this.panel3.TabIndex = 220;
             // 
             // datelabel
@@ -681,7 +789,7 @@
             this.datelabel.BackColor = System.Drawing.Color.Transparent;
             this.datelabel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datelabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
-            this.datelabel.Location = new System.Drawing.Point(257, 371);
+            this.datelabel.Location = new System.Drawing.Point(257, 390);
             this.datelabel.Name = "datelabel";
             this.datelabel.Size = new System.Drawing.Size(82, 18);
             this.datelabel.TabIndex = 218;
@@ -695,7 +803,7 @@
             this.timelabel.BackColor = System.Drawing.Color.Transparent;
             this.timelabel.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timelabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
-            this.timelabel.Location = new System.Drawing.Point(267, 342);
+            this.timelabel.Location = new System.Drawing.Point(267, 361);
             this.timelabel.Name = "timelabel";
             this.timelabel.Size = new System.Drawing.Size(142, 29);
             this.timelabel.TabIndex = 217;
@@ -707,7 +815,7 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::RMC.Properties.Resources.full_copy;
-            this.pictureBox1.Location = new System.Drawing.Point(36, 47);
+            this.pictureBox1.Location = new System.Drawing.Point(36, 66);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(631, 428);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -718,108 +826,69 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnUtilities
+            // label2
             // 
-            this.btnUtilities.BackColor = System.Drawing.Color.Salmon;
-            this.btnUtilities.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUtilities.FlatAppearance.BorderSize = 0;
-            this.btnUtilities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUtilities.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnUtilities.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnUtilities.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
-            this.btnUtilities.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnUtilities.IconSize = 35;
-            this.btnUtilities.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUtilities.Location = new System.Drawing.Point(0, 787);
-            this.btnUtilities.Name = "btnUtilities";
-            this.btnUtilities.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnUtilities.Rotation = 0D;
-            this.btnUtilities.Size = new System.Drawing.Size(233, 45);
-            this.btnUtilities.TabIndex = 17;
-            this.btnUtilities.Text = "Utilities";
-            this.btnUtilities.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUtilities.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUtilities.UseVisualStyleBackColor = false;
-            this.btnUtilities.Click += new System.EventHandler(this.btnUtilities_Click);
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FloralWhite;
+            this.label2.Location = new System.Drawing.Point(91, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(18, 16);
+            this.label2.TabIndex = 227;
+            this.label2.Text = "--";
             // 
-            // panelSubUtilities
+            // label1
             // 
-            this.panelSubUtilities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
-            this.panelSubUtilities.Controls.Add(this.btnAuditTrail);
-            this.panelSubUtilities.Controls.Add(this.btnArchive);
-            this.panelSubUtilities.Controls.Add(this.btnBackupRestore);
-            this.panelSubUtilities.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubUtilities.Location = new System.Drawing.Point(0, 832);
-            this.panelSubUtilities.Name = "panelSubUtilities";
-            this.panelSubUtilities.Size = new System.Drawing.Size(233, 143);
-            this.panelSubUtilities.TabIndex = 18;
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FloralWhite;
+            this.label1.Location = new System.Drawing.Point(42, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 16);
+            this.label1.TabIndex = 224;
+            this.label1.Text = "Home";
             // 
-            // btnArchive
+            // iconCurrentChildForm
             // 
-            this.btnArchive.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnArchive.FlatAppearance.BorderSize = 0;
-            this.btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArchive.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnArchive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnArchive.IconChar = FontAwesome.Sharp.IconChar.UserLock;
-            this.btnArchive.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnArchive.IconSize = 25;
-            this.btnArchive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnArchive.Location = new System.Drawing.Point(0, 45);
-            this.btnArchive.Name = "btnArchive";
-            this.btnArchive.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
-            this.btnArchive.Rotation = 0D;
-            this.btnArchive.Size = new System.Drawing.Size(233, 45);
-            this.btnArchive.TabIndex = 8;
-            this.btnArchive.Text = "Labratory Reports";
-            this.btnArchive.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnArchive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnArchive.UseVisualStyleBackColor = true;
+            this.iconCurrentChildForm.BackColor = System.Drawing.Color.Salmon;
+            this.iconCurrentChildForm.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconCurrentChildForm.ForeColor = System.Drawing.Color.Maroon;
+            this.iconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.iconCurrentChildForm.IconColor = System.Drawing.Color.Maroon;
+            this.iconCurrentChildForm.Location = new System.Drawing.Point(10, 0);
+            this.iconCurrentChildForm.Name = "iconCurrentChildForm";
+            this.iconCurrentChildForm.Size = new System.Drawing.Size(32, 38);
+            this.iconCurrentChildForm.TabIndex = 223;
+            this.iconCurrentChildForm.TabStop = false;
             // 
-            // btnBackupRestore
+            // labelSubMenu
             // 
-            this.btnBackupRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
-            this.btnBackupRestore.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBackupRestore.FlatAppearance.BorderSize = 0;
-            this.btnBackupRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackupRestore.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnBackupRestore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnBackupRestore.IconChar = FontAwesome.Sharp.IconChar.Users;
-            this.btnBackupRestore.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnBackupRestore.IconSize = 25;
-            this.btnBackupRestore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBackupRestore.Location = new System.Drawing.Point(0, 0);
-            this.btnBackupRestore.Name = "btnBackupRestore";
-            this.btnBackupRestore.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
-            this.btnBackupRestore.Rotation = 0D;
-            this.btnBackupRestore.Size = new System.Drawing.Size(233, 45);
-            this.btnBackupRestore.TabIndex = 7;
-            this.btnBackupRestore.Text = "Backup And Restore";
-            this.btnBackupRestore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBackupRestore.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBackupRestore.UseVisualStyleBackColor = false;
+            this.labelSubMenu.AutoSize = true;
+            this.labelSubMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelSubMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSubMenu.ForeColor = System.Drawing.Color.FloralWhite;
+            this.labelSubMenu.Location = new System.Drawing.Point(141, 0);
+            this.labelSubMenu.Name = "labelSubMenu";
+            this.labelSubMenu.Size = new System.Drawing.Size(49, 16);
+            this.labelSubMenu.TabIndex = 229;
+            this.labelSubMenu.Text = "Home";
+            this.labelSubMenu.Visible = false;
             // 
-            // btnAuditTrail
+            // iconSubMenu
             // 
-            this.btnAuditTrail.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAuditTrail.FlatAppearance.BorderSize = 0;
-            this.btnAuditTrail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAuditTrail.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnAuditTrail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnAuditTrail.IconChar = FontAwesome.Sharp.IconChar.UserLock;
-            this.btnAuditTrail.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnAuditTrail.IconSize = 25;
-            this.btnAuditTrail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAuditTrail.Location = new System.Drawing.Point(0, 90);
-            this.btnAuditTrail.Name = "btnAuditTrail";
-            this.btnAuditTrail.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
-            this.btnAuditTrail.Rotation = 0D;
-            this.btnAuditTrail.Size = new System.Drawing.Size(233, 45);
-            this.btnAuditTrail.TabIndex = 9;
-            this.btnAuditTrail.Text = "Labratory Reports";
-            this.btnAuditTrail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAuditTrail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAuditTrail.UseVisualStyleBackColor = true;
+            this.iconSubMenu.BackColor = System.Drawing.Color.Salmon;
+            this.iconSubMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconSubMenu.ForeColor = System.Drawing.Color.Maroon;
+            this.iconSubMenu.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.iconSubMenu.IconColor = System.Drawing.Color.Maroon;
+            this.iconSubMenu.Location = new System.Drawing.Point(109, 0);
+            this.iconSubMenu.Name = "iconSubMenu";
+            this.iconSubMenu.Size = new System.Drawing.Size(32, 38);
+            this.iconSubMenu.TabIndex = 228;
+            this.iconSubMenu.TabStop = false;
+            this.iconSubMenu.Visible = false;
             // 
             // AdminDashboard
             // 
@@ -838,6 +907,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminDashboard";
             this.panelSideMenu.ResumeLayout(false);
+            this.panelSubUtilities.ResumeLayout(false);
             this.panelSubReports.ResumeLayout(false);
             this.panelSubPharma.ResumeLayout(false);
             this.panelSubMenuLab.ResumeLayout(false);
@@ -846,11 +916,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
             this.panelChildForm.ResumeLayout(false);
             this.panelChildForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelSubUtilities.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconSubMenu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -869,8 +939,6 @@
         private FontAwesome.Sharp.IconButton btnMinimize;
         private FontAwesome.Sharp.IconButton btnMaximize;
         private FontAwesome.Sharp.IconButton btnCloseApp;
-        private System.Windows.Forms.Label label1;
-        private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
         private System.Windows.Forms.Panel panelChildForm;
         private System.Windows.Forms.Label datelabel;
         private System.Windows.Forms.Label timelabel;
@@ -898,5 +966,11 @@
         private FontAwesome.Sharp.IconButton btnArchive;
         private FontAwesome.Sharp.IconButton btnBackupRestore;
         private FontAwesome.Sharp.IconButton btnUtilities;
+        private FontAwesome.Sharp.IconButton btnNetworkSettings;
+        private System.Windows.Forms.Label labelSubMenu;
+        private FontAwesome.Sharp.IconPictureBox iconSubMenu;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
     }
 }

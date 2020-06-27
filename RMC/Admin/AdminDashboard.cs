@@ -17,6 +17,7 @@ namespace RMC.Admin
     public partial class AdminDashboard : Form
     {
         private IconButton currentBtn;
+        private IconButton currentSubBtn;
         private Panel leftBorderBtn;
         private Form activeForm = null;
         //For Dragging
@@ -125,9 +126,40 @@ namespace RMC.Admin
                 currentBtn.IconColor = Color.FromArgb(237, 242, 244);
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
+                if (activeForm != null)
+                    activeForm.Close();
+                label1.Text = "Home";
+                iconCurrentChildForm.IconChar = IconChar.Home;
+
             }
         }
 
+        #endregion
+
+        #region ActivateSubMenu
+        private void showSubMenuTitle(Object senderBtn)
+        {
+            if (senderBtn != null)
+            {
+                DisableSubTitle();
+                currentSubBtn = (IconButton)senderBtn;
+
+                iconSubMenu.IconChar = currentSubBtn.IconChar;
+                labelSubMenu.Text = currentSubBtn.Text;
+                labelSubMenu.Visible = true;
+                iconSubMenu.Visible = true;
+              
+            }
+        }
+
+        private void DisableSubTitle()
+        {
+            
+                iconSubMenu.Visible = false;
+                labelSubMenu.Visible = false;
+            
+        }
+            
         #endregion
 
         #region Init
@@ -193,12 +225,17 @@ namespace RMC.Admin
         private void iconButton1_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.Maroon);
+            if (activeForm != null)
+                DisableSubTitle();
             showSubMenu(panelSubUserMenu);
+          
+                
         }
 
         private void Reset()
         {
             DisableButton();
+            DisableSubTitle();
             leftBorderBtn.Visible = false;
             iconCurrentChildForm.IconChar = IconChar.Home;
             if (activeForm != null)
@@ -240,6 +277,7 @@ namespace RMC.Admin
         private void iconButton2_Click(object sender, EventArgs e)
         {
             openChildForm(new UserList());
+            showSubMenuTitle(sender);
             //hideSubMenu();
         }
        
@@ -247,24 +285,32 @@ namespace RMC.Admin
         private void btnLabratoryMenu_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.Maroon);
+            if (activeForm != null)
+                DisableSubTitle();
             showSubMenu(panelSubMenuLab);
         }
 
         private void btnMngPharma_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.Maroon);
+            if (activeForm != null)
+                DisableSubTitle();
             showSubMenu(panelSubPharma);
         }
 
         private void btnReports_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.Maroon);
+            if (activeForm != null)
+                DisableSubTitle();
             showSubMenu(panelSubReports);
         }
 
         private void btnUtilities_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, Color.Maroon);
+            if (activeForm != null)
+                DisableSubTitle();
             showSubMenu(panelSubUtilities);
         }
         #endregion

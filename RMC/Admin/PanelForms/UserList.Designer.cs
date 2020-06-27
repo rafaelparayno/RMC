@@ -39,7 +39,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.CloseChild = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUserAccounts)).BeginInit();
             this.SuspendLayout();
@@ -243,28 +242,12 @@
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
             // 
-            // CloseChild
-            // 
-            this.CloseChild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseChild.AutoSize = true;
-            this.CloseChild.BackColor = System.Drawing.Color.Transparent;
-            this.CloseChild.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CloseChild.ForeColor = System.Drawing.Color.Maroon;
-            this.CloseChild.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CloseChild.Location = new System.Drawing.Point(656, 27);
-            this.CloseChild.Name = "CloseChild";
-            this.CloseChild.Size = new System.Drawing.Size(25, 24);
-            this.CloseChild.TabIndex = 220;
-            this.CloseChild.Text = "X";
-            this.CloseChild.Click += new System.EventHandler(this.CloseChild_Click);
-            // 
             // UserList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(700, 525);
-            this.Controls.Add(this.CloseChild);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
@@ -298,6 +281,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.Label CloseChild;
     }
 }
