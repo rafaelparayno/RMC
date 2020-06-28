@@ -11,6 +11,11 @@ using System.Windows.Forms;
 using FontAwesome.Sharp;
 using RMC.Animation;
 using RMC.Admin.PanelForms;
+using RMC.Admin.PanelUserForms;
+using RMC.Admin.PanelLabForms;
+using RMC.Admin.PanelPharForms;
+using RMC.Admin.PanelReportsForms;
+using RMC.Admin.PanelUtilitiesForms;
 
 namespace RMC.Admin
 {
@@ -26,8 +31,9 @@ namespace RMC.Admin
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wparam, int lPartam);
         //For Dragging
-
         IDictionary<string, int> MainNav = new Dictionary<string, int>();
+
+
         public AdminDashboard()
         {
             InitializeComponent();
@@ -220,7 +226,7 @@ namespace RMC.Admin
 
         }
 
-        #region Actions
+        #region ActionsForSideMenus
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
@@ -312,6 +318,108 @@ namespace RMC.Admin
             if (activeForm != null)
                 DisableSubTitle();
             showSubMenu(panelSubUtilities);
+        }
+       
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            openChildForm(new UserRoles());
+            showSubMenuTitle(sender);
+        }
+
+        private void iconButton1_Click_1(object sender, EventArgs e)
+        {
+              openChildForm(new RoleSettings());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnLabReports_Click(object sender, EventArgs e)
+        {
+            openChildForm(new LabReports());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnLabratoryList_Click(object sender, EventArgs e)
+        {
+            openChildForm(new LabratoryList());
+            showSubMenuTitle(sender);
+        }
+
+        private void labratorSettingsBtn_Click(object sender, EventArgs e)
+        {
+            openChildForm(new LaboratorySettings());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnItemList_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ItemList());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnItemCategories_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ItemCategories());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnSuppliers_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Suppliers());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnManagePromos_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, Color.Maroon);
+            hideSubMenu();
+            if (activeForm != null)
+                DisableSubTitle();
+            openChildForm(new Promos());
+
+        }
+
+        private void btnServices_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Services());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnConsumables_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Consumables());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnPharmaReports_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PharmaReports());
+            showSubMenuTitle(sender);
+        }
+     
+
+        private void btnBackupRestore_Click(object sender, EventArgs e)
+        {
+            openChildForm(new BackupandRestore());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnArchive_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Archive());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnAuditTrail_Click(object sender, EventArgs e)
+        {
+            openChildForm(new AuditTrail());
+            showSubMenuTitle(sender);
+        }
+
+        private void btnNetworkSettings_Click(object sender, EventArgs e)
+        {
+            openChildForm(new NetworkSettings());
+            showSubMenuTitle(sender);
         }
         #endregion
     }

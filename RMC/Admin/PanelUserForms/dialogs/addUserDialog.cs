@@ -23,6 +23,7 @@ namespace RMC.Admin.PanelForms.dialogs
         public addUserDialog()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
 
         public addUserDialog(string[] data )

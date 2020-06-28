@@ -105,17 +105,113 @@
     <Compile Include="Admin\AdminDashboard.Designer.cs">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\PanelForms\dialogs\addUserDialog.cs">
+    <Compile Include="Admin\PanelLabForms\Consumables.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\PanelForms\dialogs\addUserDialog.Designer.cs">
+    <Compile Include="Admin\PanelLabForms\Consumables.Designer.cs">
+      <DependentUpon>Consumables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\LaboratorySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\LaboratorySettings.Designer.cs">
+      <DependentUpon>LaboratorySettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\LabratoryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\LabratoryList.Designer.cs">
+      <DependentUpon>LabratoryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\Services.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\Services.Designer.cs">
+      <DependentUpon>Services.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\ItemCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\ItemCategories.Designer.cs">
+      <DependentUpon>ItemCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\ItemList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\ItemList.Designer.cs">
+      <DependentUpon>ItemList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\Suppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\Suppliers.Designer.cs">
+      <DependentUpon>Suppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\LabReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\LabReports.Designer.cs">
+      <DependentUpon>LabReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\PharmaReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\PharmaReports.Designer.cs">
+      <DependentUpon>PharmaReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelUserForms\dialogs\addUserDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelUserForms\dialogs\addUserDialog.Designer.cs">
       <DependentUpon>addUserDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\PanelForms\UserList.cs">
+    <Compile Include="Admin\PanelUserForms\RoleSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\PanelForms\UserList.Designer.cs">
+    <Compile Include="Admin\PanelUserForms\RoleSettings.Designer.cs">
+      <DependentUpon>RoleSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelUserForms\UserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelUserForms\UserList.Designer.cs">
       <DependentUpon>UserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelUserForms\UserRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelUserForms\UserRoles.Designer.cs">
+      <DependentUpon>UserRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelUtilitiesForms\Archive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelUtilitiesForms\Archive.Designer.cs">
+      <DependentUpon>Archive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelUtilitiesForms\AuditTrail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelUtilitiesForms\AuditTrail.Designer.cs">
+      <DependentUpon>AuditTrail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelUtilitiesForms\BackupandRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelUtilitiesForms\BackupandRestore.Designer.cs">
+      <DependentUpon>BackupandRestore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelUtilitiesForms\NetworkSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelUtilitiesForms\NetworkSettings.Designer.cs">
+      <DependentUpon>NetworkSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Promos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Promos.Designer.cs">
+      <DependentUpon>Promos.cs</DependentUpon>
     </Compile>
     <Compile Include="Animation\Animate_utils.cs" />
     <Compile Include="Animation\HideImageByOpaque.cs" />
@@ -130,11 +226,17 @@
     <EmbeddedResource Include="Admin\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\PanelForms\dialogs\addUserDialog.resx">
+    <EmbeddedResource Include="Admin\PanelUserForms\dialogs\addUserDialog.resx">
       <DependentUpon>addUserDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\PanelForms\UserList.resx">
+    <EmbeddedResource Include="Admin\PanelUserForms\RoleSettings.resx">
+      <DependentUpon>RoleSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelUserForms\UserList.resx">
       <DependentUpon>UserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelUserForms\UserRoles.resx">
+      <DependentUpon>UserRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -177,6 +279,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rmc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Admin\PanelLabForms\Dialogs\" />
+    <Folder Include="Admin\PanelPharForms\Dialogs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
