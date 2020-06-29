@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RMC.Components;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace RMC.Admin.PanelUtilitiesForms
         public NetworkSettings()
         {
             InitializeComponent();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            IPConfigForms frm = new IPConfigForms();
+            frm.ShowDialog();
         }
     }
 }

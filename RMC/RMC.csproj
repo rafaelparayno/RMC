@@ -215,6 +215,16 @@
     </Compile>
     <Compile Include="Animation\Animate_utils.cs" />
     <Compile Include="Animation\HideImageByOpaque.cs" />
+    <Compile Include="Components\IPConfigForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\IPConfigForms.Designer.cs">
+      <DependentUpon>IPConfigForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Database\BackupandRestore\csBackupAndRestore.cs" />
+    <Compile Include="Database\dbcrud.cs" />
+    <Compile Include="Database\DbSettings\dbConfigFile.cs" />
+    <Compile Include="Database\DbSettings\dbConnection.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +247,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelUserForms\UserRoles.resx">
       <DependentUpon>UserRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelUtilitiesForms\NetworkSettings.resx">
+      <DependentUpon>NetworkSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\IPConfigForms.resx">
+      <DependentUpon>IPConfigForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
