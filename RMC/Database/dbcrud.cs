@@ -2,8 +2,12 @@
 using System.Windows.Forms;
 using System.Data;
 using MySql.Data.MySqlClient;
-using RMC.Database.DbSettings;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data.Common;
+using RMC.Database.DbSettings;
+
 
 namespace RMC.Database
 {
@@ -24,17 +28,19 @@ namespace RMC.Database
             cnString = String.Format("SERVER={0};Database={1};Uid={2};Pwd={3}", SERVER, DATABASE, USERNAME, PASSWORD);
             cn = new MySqlConnection(cnString);
         }
-        public Task<DataSet> GetDataSetAsync(string sSQL)
+        public Task<DataSet> GetDataSetAsync(string sSQL, List<MySqlParameter> parameters)
         {
             return Task.Run(() =>
             {
                 try
                 {
                     cn.Open();
+
                     cmd = new MySqlCommand(sSQL, cn);
+                    if (parameters != null) cmd.Parameters.AddRange(parameters.ToArray<MySqlParameter>());
                     adptr = new MySqlDataAdapter(cmd);
                     ds = new DataSet();
-                    adptr.Fill(ds);
+                    adptr.FillAsync(ds);
                     cn.Close();
                     return ds;
                 }
@@ -48,29 +54,15 @@ namespace RMC.Database
             });
         }
 
-
-        public async void ExecuteQuery(string sql)
-        {
-            try
-            {
-                cn.Open();
-                cmd = new MySqlCommand(sql, cn);
-                await cmd.ExecuteNonQueryAsync().ConfigureAwait(false);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("" + e.Message);
-            }
-            cn.Close();
-        }
-
-        public async Task<int> ExecuteAsync(string sql)
+        public async Task<int> ExecuteAsync(string sql, List<MySqlParameter> parameters)
         {
             try
             {
                 await cn.OpenAsync().ConfigureAwait(false);
+
                 cmd = new MySqlCommand(sql, cn);
-                //  cn.Close();
+                if (parameters != null) cmd.Parameters.AddRange(parameters.ToArray<MySqlParameter>());
+
                 return await cmd.ExecuteNonQueryAsync().ConfigureAwait(false);
 
             }
@@ -85,26 +77,28 @@ namespace RMC.Database
             {
                 cn.Close();
             }
-
-
         }
 
-
-        public MySqlDataReader RetrieveRecords(string sql, ref MySqlDataReader reader)
+        public async Task<DbDataReader> RetrieveRecordsAsync(string sql, List<MySqlParameter> parameters)
         {
             try
             {
-                cn.Open();
+                await cn.OpenAsync().ConfigureAwait(false);
                 cmd = new MySqlCommand(sql, cn);
-                reader = cmd.ExecuteReader();
-                return reader;
+                if (parameters != null) cmd.Parameters.AddRange(parameters.ToArray<MySqlParameter>());
+
+                return await cmd.ExecuteReaderAsync();
+
+
             }
             catch (Exception e)
             {
+
                 MessageBox.Show("" + e.Message);
                 return null;
             }
         }
+     
 
         public void CloseConnection()
         {
