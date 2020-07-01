@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
+using RMC.Database.Controllers;
+using RMC.Database.Models;
 
 namespace RMC.Admin.PanelForms.dialogs
 {
@@ -17,21 +19,33 @@ namespace RMC.Admin.PanelForms.dialogs
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wparam, int lPartam);
         bool isEdit = false;
+        private int id = 0;
+        private int uid = 0;
+
+        UserracountsController useraccounts = new UserracountsController();
 
         public addUserDialog()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+            getLastId();
         }
 
-        public addUserDialog(string[] data )
+        public addUserDialog(params string[] data )
         {
             InitializeComponent();
             isEdit = true;
             iconCurrentChildForm.IconChar = IconChar.UserEdit;
             label1.Text = "Edit User";
+            label5.Visible = false;
+            txtUsername.Visible = false;
+            uid = int.Parse(data[0]);
+            txtFirstName.Text = data[1];
+            txtMn.Text = data[2];
+            txtLn.Text = data[3];
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)
@@ -47,7 +61,126 @@ namespace RMC.Admin.PanelForms.dialogs
 
         private void btnSaveUser_Click(object sender, EventArgs e)
         {
+            if (!isValid())
+            {
+                MessageBox.Show("Please Fill Firstname and Lastname", "err", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            if (isEdit)
+            {
+                updateDate();
+                
+            }
+            else
+            {
+                saveData();    
+            }
+            MessageBox.Show("Success Save Data");
+            this.Close();
+        }
+
+        private void saveData()
+        {
+            string[] datas = new string[7];
+            datas[0] = ToUpper(txtFirstName.Text.Trim());
+            datas[1] = txtMn.Text.Trim() == "" ? "" : ToUpper(txtMn.Text.Trim());
+            datas[2] = ToUpper(txtLn.Text.Trim());
+           
+            datas[3] = txtUsername.Text.Trim();
+            datas[4] = GeneratePassword(8);
+            datas[5] = 0 + "";
+            datas[6] = 0 + "";
+            useraccounts.save(datas);
+        }
+
+        private void updateDate()
+        {
+            useraccounts.updateUserAccounts(ToUpper(txtFirstName.Text.Trim()), ToUpper(txtLn.Text.Trim()), txtMn.Text.Trim(), uid);
+        }
+
+        private bool isValid()
+        {
+            bool isValid = true;
+            //   isValid = (te)
+            isValid = !(txtFirstName.Text.Trim() == "") && isValid;
+            isValid = !(txtLn.Text.Trim() == "") && isValid;
+         
+            return isValid;
+        }
+
+        private void addUserDialog_Load(object sender, EventArgs e)
+        {
+            
+           
+        }
+
+
+        private void getLastId()
+        {
+          
+            id = useraccounts.getRecentStudentId();
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+            if (txtLn.Text.Length > 0)
+            {
+                txtUsername.Text = txtLn.Text[0] + "-" + txtFirstName.Text + "-" + fixID(id);
+            }
+            else
+            {
+                txtUsername.Text = "";
+            }
+        }
+
+        private void txtLn_TextChanged(object sender, EventArgs e)
+        {
+            if (txtLn.Text.Length > 0)
+            {
+                txtUsername.Text = txtLn.Text[0] + "-" + txtFirstName.Text+"-"+fixID(id);
+            }
+            else
+            {
+                txtUsername.Text = "";
+            }
+        }
+
+        private string fixID(int lastid)
+        {
+            string id = "";
+            if (lastid < 10)
+            {
+                id = "000" + lastid;
+            }
+            else if (lastid >= 10 && lastid < 100)
+            {
+                id = "00" + lastid;
+            }
+            else if (lastid > 100 && lastid < 1000)
+            {
+                id = "0" + lastid;
+            }
+            else if (lastid > 999)
+            {
+                id = lastid + "";
+            }
+            return id;
+        }
+
+        private string GeneratePassword(int length)
+        {
+            Random random = new Random();
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+
+        }
+
+
+        private string ToUpper(string name)
+        {
+            return char.ToUpper(name[0]) + name.Substring(1);
         }
     }
 }

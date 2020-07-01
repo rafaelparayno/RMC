@@ -98,7 +98,23 @@ namespace RMC.Database
                 return null;
             }
         }
-     
+
+        public MySqlDataReader RetrieveRecords(string sql, ref MySqlDataReader reader)
+        {
+            try
+            {
+                cn.Open();
+                cmd = new MySqlCommand(sql, cn);
+                reader = cmd.ExecuteReader();
+                return reader;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("" + e.Message);
+                return null;
+            }
+        }
+
 
         public void CloseConnection()
         {

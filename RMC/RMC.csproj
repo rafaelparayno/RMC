@@ -222,9 +222,11 @@
       <DependentUpon>IPConfigForms.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\BackupandRestore\csBackupAndRestore.cs" />
+    <Compile Include="Database\Controllers\UserracountsController.cs" />
     <Compile Include="Database\dbcrud.cs" />
     <Compile Include="Database\DbSettings\dbConfigFile.cs" />
     <Compile Include="Database\DbSettings\dbConnection.cs" />
+    <Compile Include="Database\Models\useraccount.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

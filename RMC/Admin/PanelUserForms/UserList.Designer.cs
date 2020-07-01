@@ -65,11 +65,14 @@
             // 
             this.dgUserAccounts.AllowUserToAddRows = false;
             this.dgUserAccounts.AllowUserToDeleteRows = false;
+            this.dgUserAccounts.AllowUserToResizeColumns = false;
+            this.dgUserAccounts.AllowUserToResizeRows = false;
             this.dgUserAccounts.BackgroundColor = System.Drawing.Color.FloralWhite;
             this.dgUserAccounts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgUserAccounts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgUserAccounts.Location = new System.Drawing.Point(3, 19);
             this.dgUserAccounts.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgUserAccounts.MultiSelect = false;
             this.dgUserAccounts.Name = "dgUserAccounts";
             this.dgUserAccounts.ReadOnly = true;
             this.dgUserAccounts.RowHeadersVisible = false;
@@ -241,6 +244,7 @@
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // UserList
             // 
@@ -261,6 +265,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UserList";
             this.Text = "UserList";
+            this.Load += new System.EventHandler(this.UserList_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgUserAccounts)).EndInit();
             this.ResumeLayout(false);
