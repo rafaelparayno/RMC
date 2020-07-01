@@ -67,6 +67,7 @@
             this.dgUserAccounts.AllowUserToDeleteRows = false;
             this.dgUserAccounts.AllowUserToResizeColumns = false;
             this.dgUserAccounts.AllowUserToResizeRows = false;
+            this.dgUserAccounts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgUserAccounts.BackgroundColor = System.Drawing.Color.FloralWhite;
             this.dgUserAccounts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgUserAccounts.Dock = System.Windows.Forms.DockStyle.Fill;

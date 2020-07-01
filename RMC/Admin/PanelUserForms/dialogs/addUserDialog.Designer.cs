@@ -41,6 +41,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.btnSaveUser = new FontAwesome.Sharp.IconButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
             this.SuspendLayout();
@@ -203,9 +205,9 @@
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label5.Location = new System.Drawing.Point(12, 258);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 17);
+            this.label5.Size = new System.Drawing.Size(63, 17);
             this.label5.TabIndex = 169;
-            this.label5.Text = "Username: ";
+            this.label5.Text = "Position";
             // 
             // txtUsername
             // 
@@ -217,7 +219,7 @@
             this.txtUsername.Enabled = false;
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.ForeColor = System.Drawing.Color.Black;
-            this.txtUsername.Location = new System.Drawing.Point(147, 249);
+            this.txtUsername.Location = new System.Drawing.Point(147, 306);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(262, 26);
             this.txtUsername.TabIndex = 168;
@@ -234,7 +236,7 @@
             this.btnSaveUser.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
             this.btnSaveUser.IconColor = System.Drawing.Color.White;
             this.btnSaveUser.IconSize = 25;
-            this.btnSaveUser.Location = new System.Drawing.Point(0, 317);
+            this.btnSaveUser.Location = new System.Drawing.Point(0, 388);
             this.btnSaveUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSaveUser.Name = "btnSaveUser";
             this.btnSaveUser.Rotation = 0D;
@@ -246,12 +248,43 @@
             this.btnSaveUser.UseVisualStyleBackColor = false;
             this.btnSaveUser.Click += new System.EventHandler(this.btnSaveUser_Click);
             // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label6.Location = new System.Drawing.Point(12, 311);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 17);
+            this.label6.TabIndex = 208;
+            this.label6.Text = "Username";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.BackColor = System.Drawing.Color.FloralWhite;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(147, 255);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(262, 24);
+            this.comboBox1.TabIndex = 238;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // addUserDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(421, 368);
+            this.ClientSize = new System.Drawing.Size(421, 439);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSaveUser);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtUsername);
@@ -292,5 +325,7 @@
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox txtUsername;
         private FontAwesome.Sharp.IconButton btnSaveUser;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

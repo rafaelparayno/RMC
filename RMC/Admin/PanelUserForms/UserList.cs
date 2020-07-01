@@ -45,7 +45,8 @@ namespace RMC.Admin.PanelForms
                 addUserDialog frm = new addUserDialog(dgUserAccounts.SelectedRows[0].Cells[0].Value.ToString(),
                                                         dgUserAccounts.SelectedRows[0].Cells[1].Value.ToString(),
                                                          dgUserAccounts.SelectedRows[0].Cells[2].Value.ToString(),
-                                                         dgUserAccounts.SelectedRows[0].Cells[3].Value.ToString());
+                                                         dgUserAccounts.SelectedRows[0].Cells[3].Value.ToString(),
+                                                         dgUserAccounts.SelectedRows[0].Cells[6].Value.ToString());
                 frm.ShowDialog();
                 loadGrid();
             }

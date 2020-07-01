@@ -99,12 +99,13 @@ namespace RMC.Database
             }
         }
 
-        public MySqlDataReader RetrieveRecords(string sql, ref MySqlDataReader reader)
+        public MySqlDataReader RetrieveRecords(string sql, ref MySqlDataReader reader, List<MySqlParameter> parameters)
         {
             try
             {
                 cn.Open();
                 cmd = new MySqlCommand(sql, cn);
+                if (parameters != null) cmd.Parameters.AddRange(parameters.ToArray<MySqlParameter>());
                 reader = cmd.ExecuteReader();
                 return reader;
             }

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using FontAwesome.Sharp;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Components;
 
 namespace RMC.Admin.PanelForms.dialogs
 {
@@ -24,28 +25,39 @@ namespace RMC.Admin.PanelForms.dialogs
         bool isEdit = false;
         private int id = 0;
         private int uid = 0;
-
+        private int roleid = 0;
+        private string pos = "";
         UserracountsController useraccounts = new UserracountsController();
+        RolesController roles = new RolesController();
 
         public addUserDialog()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
             getLastId();
+            loadCombo();
+
+        }
+        private void loadCombo()
+        {
+            roles.SetCombo(ref comboBox1);
         }
 
         public addUserDialog(params string[] data )
         {
             InitializeComponent();
             isEdit = true;
+            loadCombo();
             iconCurrentChildForm.IconChar = IconChar.UserEdit;
             label1.Text = "Edit User";
-            label5.Visible = false;
+            label6.Visible = false;
             txtUsername.Visible = false;
             uid = int.Parse(data[0]);
             txtFirstName.Text = data[1];
             txtMn.Text = data[2];
             txtLn.Text = data[3];
+            pos = data[4];
+            comboBox1.Text = data[4];
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)
@@ -75,6 +87,7 @@ namespace RMC.Admin.PanelForms.dialogs
             else
             {
                 saveData();    
+               // MessageBox.Show(roleid + "");
             }
             MessageBox.Show("Success Save Data");
             this.Close();
@@ -90,13 +103,13 @@ namespace RMC.Admin.PanelForms.dialogs
             datas[3] = txtUsername.Text.Trim();
             datas[4] = GeneratePassword(8);
             datas[5] = 0 + "";
-            datas[6] = 0 + "";
-            useraccounts.save(datas);
+            datas[6] = roleid + "";
+            useraccounts.saveUserAccount(datas);
         }
 
         private void updateDate()
         {
-            useraccounts.updateUserAccounts(ToUpper(txtFirstName.Text.Trim()), ToUpper(txtLn.Text.Trim()), txtMn.Text.Trim(), uid);
+            useraccounts.updateUserAccounts(ToUpper(txtFirstName.Text.Trim()), ToUpper(txtLn.Text.Trim()), txtMn.Text.Trim(), roleid,uid);
         }
 
         private bool isValid()
@@ -105,13 +118,14 @@ namespace RMC.Admin.PanelForms.dialogs
             //   isValid = (te)
             isValid = !(txtFirstName.Text.Trim() == "") && isValid;
             isValid = !(txtLn.Text.Trim() == "") && isValid;
+            isValid = (comboBox1.SelectedIndex > -1) && isValid;
          
             return isValid;
         }
 
         private void addUserDialog_Load(object sender, EventArgs e)
         {
-            
+            comboBox1.SelectedItem = pos;
            
         }
 
@@ -181,6 +195,11 @@ namespace RMC.Admin.PanelForms.dialogs
         private string ToUpper(string name)
         {
             return char.ToUpper(name[0]) + name.Substring(1);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            roleid = int.Parse((comboBox1.SelectedItem as ComboBoxItem).Value.ToString());
         }
     }
 }
