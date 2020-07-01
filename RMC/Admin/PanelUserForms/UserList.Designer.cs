@@ -30,7 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgUserAccounts = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
             this.btnRemoveUser = new FontAwesome.Sharp.IconButton();
             this.ResetPassword = new FontAwesome.Sharp.IconButton();
             this.editUser = new FontAwesome.Sharp.IconButton();
@@ -50,7 +49,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.dgUserAccounts);
-            this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(14, 64);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -81,21 +79,6 @@
             this.dgUserAccounts.Size = new System.Drawing.Size(661, 366);
             this.dgUserAccounts.StandardTab = true;
             this.dgUserAccounts.TabIndex = 113;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(83, 242);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(99, 64);
-            this.button5.TabIndex = 206;
-            this.button5.Text = "Clear ";
-            this.button5.UseVisualStyleBackColor = false;
             // 
             // btnRemoveUser
             // 
@@ -278,7 +261,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.DataGridView dgUserAccounts;
-        private System.Windows.Forms.Button button5;
         private FontAwesome.Sharp.IconButton btnRemoveUser;
         private FontAwesome.Sharp.IconButton ResetPassword;
         private FontAwesome.Sharp.IconButton editUser;

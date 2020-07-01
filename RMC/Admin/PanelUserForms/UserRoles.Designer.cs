@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgRoles = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -81,13 +80,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.dgRoles);
-            this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(17, 68);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(667, 389);
+            this.groupBox1.Size = new System.Drawing.Size(667, 401);
             this.groupBox1.TabIndex = 224;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List of Roles";
@@ -109,24 +107,9 @@
             this.dgRoles.ReadOnly = true;
             this.dgRoles.RowHeadersVisible = false;
             this.dgRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgRoles.Size = new System.Drawing.Size(661, 366);
+            this.dgRoles.Size = new System.Drawing.Size(661, 378);
             this.dgRoles.StandardTab = true;
             this.dgRoles.TabIndex = 113;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(83, 242);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(99, 64);
-            this.button5.TabIndex = 206;
-            this.button5.Text = "Clear ";
-            this.button5.UseVisualStyleBackColor = false;
             // 
             // btnSave
             // 
@@ -227,7 +210,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.DataGridView dgRoles;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
