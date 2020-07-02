@@ -35,11 +35,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.adminAccessCb = new System.Windows.Forms.CheckBox();
+            this.cbLab = new System.Windows.Forms.CheckBox();
+            this.cbPharma = new System.Windows.Forms.CheckBox();
+            this.cbReception = new System.Windows.Forms.CheckBox();
+            this.cbDoctor = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRoles)).BeginInit();
@@ -153,70 +153,77 @@
             this.label1.TabIndex = 229;
             this.label1.Text = "Search:";
             // 
-            // checkBox1
+            // adminAccessCb
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox1.Location = new System.Drawing.Point(3, 19);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(63, 45);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Admin";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.adminAccessCb.AutoSize = true;
+            this.adminAccessCb.Dock = System.Windows.Forms.DockStyle.Left;
+            this.adminAccessCb.Location = new System.Drawing.Point(3, 19);
+            this.adminAccessCb.Name = "adminAccessCb";
+            this.adminAccessCb.Size = new System.Drawing.Size(63, 45);
+            this.adminAccessCb.TabIndex = 0;
+            this.adminAccessCb.Text = "Admin";
+            this.adminAccessCb.UseVisualStyleBackColor = true;
+            this.adminAccessCb.CheckedChanged += new System.EventHandler(this.adminAccessCb_CheckedChanged);
+            this.adminAccessCb.Click += new System.EventHandler(this.adminAccessCb_Click);
             // 
-            // checkBox2
+            // cbLab
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox2.Location = new System.Drawing.Point(66, 19);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(47, 45);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Lab";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cbLab.AutoSize = true;
+            this.cbLab.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbLab.Location = new System.Drawing.Point(66, 19);
+            this.cbLab.Name = "cbLab";
+            this.cbLab.Size = new System.Drawing.Size(47, 45);
+            this.cbLab.TabIndex = 1;
+            this.cbLab.Text = "Lab";
+            this.cbLab.UseVisualStyleBackColor = true;
+            this.cbLab.Click += new System.EventHandler(this.cbLab_Click);
             // 
-            // checkBox3
+            // cbPharma
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox3.Location = new System.Drawing.Point(113, 19);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(83, 45);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Pharmacy";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.cbPharma.AutoSize = true;
+            this.cbPharma.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbPharma.Location = new System.Drawing.Point(113, 19);
+            this.cbPharma.Name = "cbPharma";
+            this.cbPharma.Size = new System.Drawing.Size(83, 45);
+            this.cbPharma.TabIndex = 2;
+            this.cbPharma.Text = "Pharmacy";
+            this.cbPharma.UseVisualStyleBackColor = true;
+            this.cbPharma.Click += new System.EventHandler(this.cbPharma_Click);
             // 
-            // checkBox4
+            // cbReception
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox4.Location = new System.Drawing.Point(196, 19);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(83, 45);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "Reception";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.cbReception.AutoSize = true;
+            this.cbReception.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbReception.Location = new System.Drawing.Point(196, 19);
+            this.cbReception.Name = "cbReception";
+            this.cbReception.Size = new System.Drawing.Size(83, 45);
+            this.cbReception.TabIndex = 3;
+            this.cbReception.Text = "Reception";
+            this.cbReception.UseVisualStyleBackColor = true;
+            this.cbReception.Click += new System.EventHandler(this.cbReception_Click);
             // 
-            // checkBox5
+            // cbDoctor
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.checkBox5.Location = new System.Drawing.Point(279, 19);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(64, 45);
-            this.checkBox5.TabIndex = 4;
-            this.checkBox5.Text = "Doctor";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.cbDoctor.AutoSize = true;
+            this.cbDoctor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbDoctor.Location = new System.Drawing.Point(279, 19);
+            this.cbDoctor.Name = "cbDoctor";
+            this.cbDoctor.Size = new System.Drawing.Size(64, 45);
+            this.cbDoctor.TabIndex = 4;
+            this.cbDoctor.Text = "Doctor";
+            this.cbDoctor.UseVisualStyleBackColor = true;
+            this.cbDoctor.CheckedChanged += new System.EventHandler(this.cbDoctor_CheckedChanged);
+            this.cbDoctor.Click += new System.EventHandler(this.cbDoctor_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.checkBox5);
-            this.groupBox2.Controls.Add(this.checkBox4);
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.cbDoctor);
+            this.groupBox2.Controls.Add(this.cbReception);
+            this.groupBox2.Controls.Add(this.cbPharma);
+            this.groupBox2.Controls.Add(this.cbLab);
+            this.groupBox2.Controls.Add(this.adminAccessCb);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(20, 379);
             this.groupBox2.Name = "groupBox2";
@@ -258,11 +265,11 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox adminAccessCb;
+        private System.Windows.Forms.CheckBox cbLab;
+        private System.Windows.Forms.CheckBox cbPharma;
+        private System.Windows.Forms.CheckBox cbReception;
+        private System.Windows.Forms.CheckBox cbDoctor;
         private System.Windows.Forms.GroupBox groupBox2;
     }
 }

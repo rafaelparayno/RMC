@@ -229,11 +229,13 @@
       <DependentUpon>IPConfigForms.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\BackupandRestore\csBackupAndRestore.cs" />
+    <Compile Include="Database\Controllers\AccessController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
     <Compile Include="Database\Controllers\UserracountsController.cs" />
     <Compile Include="Database\dbcrud.cs" />
     <Compile Include="Database\DbSettings\dbConfigFile.cs" />
     <Compile Include="Database\DbSettings\dbConnection.cs" />
+    <Compile Include="Database\Models\access.cs" />
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\useraccount.cs" />
     <Compile Include="Login.cs">
