@@ -135,6 +135,12 @@
     <Compile Include="Admin\PanelPharForms\Dialogs\AddEditSuppliers.Designer.cs">
       <DependentUpon>AddEditSuppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelPharForms\Dialogs\addEditUnits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\Dialogs\addEditUnits.Designer.cs">
+      <DependentUpon>addEditUnits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelPharForms\ItemCategories.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,7 @@
     <Compile Include="Database\Controllers\AccessController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
     <Compile Include="Database\Controllers\SupplierController.cs" />
+    <Compile Include="Database\Controllers\UnitsController.cs" />
     <Compile Include="Database\Controllers\UserracountsController.cs" />
     <Compile Include="Database\dbcrud.cs" />
     <Compile Include="Database\DbSettings\dbConfigFile.cs" />
@@ -282,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\AddEditSuppliers.resx">
       <DependentUpon>AddEditSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\addEditUnits.resx">
+      <DependentUpon>addEditUnits.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\ItemCategories.resx">
       <DependentUpon>ItemCategories.cs</DependentUpon>

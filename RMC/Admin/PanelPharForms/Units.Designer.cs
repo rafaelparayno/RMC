@@ -32,9 +32,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgUserAccounts = new System.Windows.Forms.DataGridView();
+            this.dgUnits = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgUserAccounts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgUnits)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -51,6 +51,7 @@
             this.button2.TabIndex = 237;
             this.button2.Text = "Add Measurement";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -66,6 +67,7 @@
             this.button1.TabIndex = 236;
             this.button1.Text = "Edit";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSave
             // 
@@ -81,6 +83,7 @@
             this.btnSave.TabIndex = 235;
             this.btnSave.Text = "Delete";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBox1
             // 
@@ -88,7 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.dgUserAccounts);
+            this.groupBox1.Controls.Add(this.dgUnits);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(10, 6);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -99,26 +102,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List Of Unit of Measurement";
             // 
-            // dgUserAccounts
+            // dgUnits
             // 
-            this.dgUserAccounts.AllowUserToAddRows = false;
-            this.dgUserAccounts.AllowUserToDeleteRows = false;
-            this.dgUserAccounts.AllowUserToResizeColumns = false;
-            this.dgUserAccounts.AllowUserToResizeRows = false;
-            this.dgUserAccounts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgUserAccounts.BackgroundColor = System.Drawing.Color.FloralWhite;
-            this.dgUserAccounts.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgUserAccounts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgUserAccounts.Location = new System.Drawing.Point(3, 19);
-            this.dgUserAccounts.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgUserAccounts.MultiSelect = false;
-            this.dgUserAccounts.Name = "dgUserAccounts";
-            this.dgUserAccounts.ReadOnly = true;
-            this.dgUserAccounts.RowHeadersVisible = false;
-            this.dgUserAccounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgUserAccounts.Size = new System.Drawing.Size(758, 182);
-            this.dgUserAccounts.StandardTab = true;
-            this.dgUserAccounts.TabIndex = 113;
+            this.dgUnits.AllowUserToAddRows = false;
+            this.dgUnits.AllowUserToDeleteRows = false;
+            this.dgUnits.AllowUserToResizeColumns = false;
+            this.dgUnits.AllowUserToResizeRows = false;
+            this.dgUnits.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgUnits.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dgUnits.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgUnits.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgUnits.Location = new System.Drawing.Point(3, 19);
+            this.dgUnits.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgUnits.MultiSelect = false;
+            this.dgUnits.Name = "dgUnits";
+            this.dgUnits.ReadOnly = true;
+            this.dgUnits.RowHeadersVisible = false;
+            this.dgUnits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgUnits.Size = new System.Drawing.Size(758, 182);
+            this.dgUnits.StandardTab = true;
+            this.dgUnits.TabIndex = 113;
             // 
             // Units
             // 
@@ -134,8 +137,9 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Units";
             this.Text = "Units";
+            this.Load += new System.EventHandler(this.Units_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgUserAccounts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgUnits)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -146,6 +150,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.DataGridView dgUserAccounts;
+        public System.Windows.Forms.DataGridView dgUnits;
     }
 }
