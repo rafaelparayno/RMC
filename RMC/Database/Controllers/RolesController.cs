@@ -22,6 +22,16 @@ namespace RMC.Database.Controllers
             return dgRoles = await crud.GetDataSetAsync(sql, null);
         }
 
+
+        public async Task<DataSet> findRole(string rolename)
+        {
+            string sql = String.Format("SELECT Position FROM {0} WHERE Position LIKE @position", role.tableName);
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@position", rolename));
+            DataSet dgRoles = new DataSet();
+            return dgRoles = await crud.GetDataSetAsync(sql, list);
+        }
+
         public async void saveRoles(string rolename)
         {
             string tablename = role.tableName;

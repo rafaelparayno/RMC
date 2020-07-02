@@ -80,5 +80,24 @@ namespace RMC.Admin.PanelUserForms
             AssignRole frm = new AssignRole();
             frm.ShowDialog();*/
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if(textBox1.Text.Trim() == "")
+            {
+                loadGrid();
+            }
+            else
+            {
+                searchGrid("%" + textBox1.Text.Trim() + "%");
+            }
+            
+        }
+
+        private async void searchGrid(string rolename)
+        {
+            DataSet ds = await roles.findRole(rolename);
+            RefreshGrid(ds);
+        }
     }
 }

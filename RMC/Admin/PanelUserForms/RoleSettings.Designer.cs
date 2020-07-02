@@ -33,8 +33,6 @@
             this.dgRoles = new System.Windows.Forms.DataGridView();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.adminAccessCb = new System.Windows.Forms.CheckBox();
             this.cbLab = new System.Windows.Forms.CheckBox();
             this.cbPharma = new System.Windows.Forms.CheckBox();
@@ -120,38 +118,16 @@
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(310, 27);
+            this.textBox1.Location = new System.Drawing.Point(23, 27);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 23);
+            this.textBox1.Size = new System.Drawing.Size(459, 23);
             this.textBox1.TabIndex = 231;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(100, 25);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(202, 21);
-            this.comboBox1.TabIndex = 230;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(22, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 16);
-            this.label1.TabIndex = 229;
-            this.label1.Text = "Search:";
             // 
             // adminAccessCb
             // 
@@ -243,8 +219,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
             this.Name = "RoleSettings";
             this.Text = "RoleSettings";
             this.groupBox1.ResumeLayout(false);
@@ -263,8 +237,6 @@
         public System.Windows.Forms.DataGridView dgRoles;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox adminAccessCb;
         private System.Windows.Forms.CheckBox cbLab;
         private System.Windows.Forms.CheckBox cbPharma;
