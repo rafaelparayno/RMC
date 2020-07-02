@@ -141,6 +141,24 @@
     <Compile Include="Admin\PanelPharForms\ItemList.Designer.cs">
       <DependentUpon>ItemList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelPharForms\ItemType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\ItemType.Designer.cs">
+      <DependentUpon>ItemType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\panelListItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\panelListItems.Designer.cs">
+      <DependentUpon>panelListItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\Parameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\Parameters.Designer.cs">
+      <DependentUpon>Parameters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelPharForms\Suppliers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +266,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Admin\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\ItemCategories.resx">
+      <DependentUpon>ItemCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\ItemList.resx">
+      <DependentUpon>ItemList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\ItemType.resx">
+      <DependentUpon>ItemType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\panelListItems.resx">
+      <DependentUpon>panelListItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\Parameters.resx">
+      <DependentUpon>Parameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\Suppliers.resx">
+      <DependentUpon>Suppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelUserForms\dialogs\AddRole.resx">
       <DependentUpon>AddRole.cs</DependentUpon>

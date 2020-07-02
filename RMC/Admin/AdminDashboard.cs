@@ -359,7 +359,7 @@ namespace RMC.Admin
 
         private void btnItemCategories_Click(object sender, EventArgs e)
         {
-            openChildForm(new ItemCategories());
+            openChildForm(new Parameters());
             showSubMenuTitle(sender);
         }
 
