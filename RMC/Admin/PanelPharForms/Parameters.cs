@@ -54,5 +54,10 @@ namespace RMC.Admin.PanelPharForms
         {
             openChildForm(new ItemCategories());
         }
+
+        private void btnMeasurements_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Units());
+        }
     }
 }

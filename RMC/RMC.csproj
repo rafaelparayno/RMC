@@ -129,6 +129,12 @@
     <Compile Include="Admin\PanelLabForms\Services.Designer.cs">
       <DependentUpon>Services.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelPharForms\Dialogs\AddEditSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\Dialogs\AddEditSuppliers.Designer.cs">
+      <DependentUpon>AddEditSuppliers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelPharForms\ItemCategories.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,12 @@
     </Compile>
     <Compile Include="Admin\PanelPharForms\Suppliers.Designer.cs">
       <DependentUpon>Suppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\Units.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\Units.Designer.cs">
+      <DependentUpon>Units.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\PanelReportsForms\LabReports.cs">
       <SubType>Form</SubType>
@@ -249,6 +261,7 @@
     <Compile Include="Database\BackupandRestore\csBackupAndRestore.cs" />
     <Compile Include="Database\Controllers\AccessController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
+    <Compile Include="Database\Controllers\SupplierController.cs" />
     <Compile Include="Database\Controllers\UserracountsController.cs" />
     <Compile Include="Database\dbcrud.cs" />
     <Compile Include="Database\DbSettings\dbConfigFile.cs" />
@@ -267,6 +280,9 @@
     <EmbeddedResource Include="Admin\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\AddEditSuppliers.resx">
+      <DependentUpon>AddEditSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\ItemCategories.resx">
       <DependentUpon>ItemCategories.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Suppliers.resx">
       <DependentUpon>Suppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\Units.resx">
+      <DependentUpon>Units.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelUserForms\dialogs\AddRole.resx">
       <DependentUpon>AddRole.cs</DependentUpon>
@@ -350,7 +369,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\PanelLabForms\Dialogs\" />
-    <Folder Include="Admin\PanelPharForms\Dialogs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

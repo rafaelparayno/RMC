@@ -31,6 +31,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelChild = new System.Windows.Forms.Panel();
             this.panelNavParam = new System.Windows.Forms.Panel();
+            this.btnMeasurements = new FontAwesome.Sharp.IconButton();
             this.btnCategories = new FontAwesome.Sharp.IconButton();
             this.btnItemTypes = new FontAwesome.Sharp.IconButton();
             this.btnSuppliers = new FontAwesome.Sharp.IconButton();
@@ -56,6 +57,7 @@
             // 
             // panelNavParam
             // 
+            this.panelNavParam.Controls.Add(this.btnMeasurements);
             this.panelNavParam.Controls.Add(this.btnCategories);
             this.panelNavParam.Controls.Add(this.btnItemTypes);
             this.panelNavParam.Controls.Add(this.btnSuppliers);
@@ -64,6 +66,28 @@
             this.panelNavParam.Name = "panelNavParam";
             this.panelNavParam.Size = new System.Drawing.Size(800, 44);
             this.panelNavParam.TabIndex = 11;
+            // 
+            // btnMeasurements
+            // 
+            this.btnMeasurements.BackColor = System.Drawing.Color.Maroon;
+            this.btnMeasurements.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnMeasurements.FlatAppearance.BorderSize = 0;
+            this.btnMeasurements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMeasurements.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnMeasurements.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnMeasurements.IconChar = FontAwesome.Sharp.IconChar.BalanceScale;
+            this.btnMeasurements.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnMeasurements.IconSize = 25;
+            this.btnMeasurements.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMeasurements.Location = new System.Drawing.Point(342, 0);
+            this.btnMeasurements.Name = "btnMeasurements";
+            this.btnMeasurements.Rotation = 0D;
+            this.btnMeasurements.Size = new System.Drawing.Size(114, 44);
+            this.btnMeasurements.TabIndex = 13;
+            this.btnMeasurements.Text = "&Measurements";
+            this.btnMeasurements.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnMeasurements.UseVisualStyleBackColor = false;
+            this.btnMeasurements.Click += new System.EventHandler(this.btnMeasurements_Click);
             // 
             // btnCategories
             // 
@@ -82,7 +106,7 @@
             this.btnCategories.Rotation = 0D;
             this.btnCategories.Size = new System.Drawing.Size(114, 44);
             this.btnCategories.TabIndex = 12;
-            this.btnCategories.Text = "Categories";
+            this.btnCategories.Text = "&Categories";
             this.btnCategories.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCategories.UseVisualStyleBackColor = false;
             this.btnCategories.Click += new System.EventHandler(this.btnCategories_Click);
@@ -104,7 +128,7 @@
             this.btnItemTypes.Rotation = 0D;
             this.btnItemTypes.Size = new System.Drawing.Size(114, 44);
             this.btnItemTypes.TabIndex = 11;
-            this.btnItemTypes.Text = "Item Types";
+            this.btnItemTypes.Text = "&Item Types";
             this.btnItemTypes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnItemTypes.UseVisualStyleBackColor = false;
             this.btnItemTypes.Click += new System.EventHandler(this.btnItemTypes_Click);
@@ -126,7 +150,7 @@
             this.btnSuppliers.Rotation = 0D;
             this.btnSuppliers.Size = new System.Drawing.Size(114, 44);
             this.btnSuppliers.TabIndex = 10;
-            this.btnSuppliers.Text = "Suppliers";
+            this.btnSuppliers.Text = "&Suppliers";
             this.btnSuppliers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSuppliers.UseVisualStyleBackColor = false;
             this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
@@ -155,5 +179,6 @@
         private FontAwesome.Sharp.IconButton btnItemTypes;
         private FontAwesome.Sharp.IconButton btnCategories;
         private System.Windows.Forms.Panel panelNavParam;
+        private FontAwesome.Sharp.IconButton btnMeasurements;
     }
 }
