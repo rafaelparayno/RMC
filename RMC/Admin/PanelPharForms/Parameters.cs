@@ -10,30 +10,19 @@ using System.Windows.Forms;
 
 namespace RMC.Admin.PanelPharForms
 {
-    public partial class ItemList : Form
+    public partial class Parameters : Form
     {
         private Form activeForm = null;
-        public ItemList()
+        public Parameters()
         {
             InitializeComponent();
-            openChildForm(new panelListItems());
+          
         }
 
-        private void ItemList_Load(object sender, EventArgs e)
+        private void btnSuppliers_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new Suppliers());
         }
-
-        private void btnAddItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnViewItem_Click(object sender, EventArgs e)
-        {
-            openChildForm(new panelListItems());
-        }
-
         private void openChildForm(Form childForm)
         {
             if (activeForm != null)
@@ -47,8 +36,23 @@ namespace RMC.Admin.PanelPharForms
             panelChild.Tag = childForm;
             childForm.BringToFront();
 
-            
+         
             childForm.Show();
+        }
+
+        private void btnItemTypes_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ItemType());
+        }
+
+        private void Parameters_Load(object sender, EventArgs e)
+        {
+            openChildForm(new Suppliers());
+        }
+
+        private void btnCategories_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ItemCategories());
         }
     }
 }
