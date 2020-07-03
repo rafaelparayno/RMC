@@ -69,6 +69,7 @@
             this.btnAddItem.Text = "Add Item";
             this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAddItem.UseVisualStyleBackColor = false;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click_1);
             // 
             // btnEditItem
             // 

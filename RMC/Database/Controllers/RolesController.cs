@@ -86,20 +86,22 @@ namespace RMC.Database.Controllers
             return hasName;
         }
 
-        public void SetCombo(ref ComboBox cb)
+        public async Task<List<ComboBoxItem>> getComboDatas()
         {
             string sql = String.Format(@"SELECT * FROM {0} ", role.tableName);
             MySqlDataReader reader = null;
             crud.RetrieveRecords(sql, ref reader,null);
 
             List<ComboBoxItem> cbItems = new List<ComboBoxItem>();
-            while (reader.Read())
+            while (await reader.ReadAsync())
             {
                 cbItems.Add(new ComboBoxItem(reader["Position"].ToString(), int.Parse(reader["role_id"].ToString())));
                 
             }
-            cb.Items.AddRange(cbItems.ToArray());
+         /*   cb.Items.AddRange(cbItems.ToArray());*/
+
             crud.CloseConnection();
+            return cbItems;
         }
 
 

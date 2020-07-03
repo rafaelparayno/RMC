@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RMC.Admin.PanelPharForms.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,6 +50,13 @@ namespace RMC.Admin.PanelPharForms
 
             
             childForm.Show();
+        }
+
+        private void btnAddItem_Click_1(object sender, EventArgs e)
+        {
+            addEditItems frm = new addEditItems();
+            frm.ShowDialog();
+
         }
     }
 }

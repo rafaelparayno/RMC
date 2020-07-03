@@ -38,9 +38,11 @@ namespace RMC.Admin.PanelForms.dialogs
             loadCombo();
 
         }
-        private void loadCombo()
+        private async void loadCombo()
         {
-            roles.SetCombo(ref comboBox1);
+            List<ComboBoxItem> cb = new List<ComboBoxItem>();
+            cb = await roles.getComboDatas();
+            comboBox1.Items.AddRange(cb.ToArray());
         }
 
         public addUserDialog(params string[] data )

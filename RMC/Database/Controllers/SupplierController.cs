@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
+using RMC.Components;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,6 +60,24 @@ namespace RMC.Database.Controllers
 
 
             await crud.ExecuteAsync(sql, list);
+        }
+
+        public async Task<List<ComboBoxItem>> getComboDatas()
+        {
+            List<ComboBoxItem> cbItems = new List<ComboBoxItem>();
+            string sql = String.Format(@"SELECT * FROM suppliers 
+                                       WHERE is_active = @isactive");
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@isactive", 1));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, list);
+            while(await reader.ReadAsync())
+            {
+                cbItems.Add(new ComboBoxItem(reader["supplier_name"].ToString(), 
+                    int.Parse(reader["supplier_id"].ToString())));
+            }
+            crud.CloseConnection();
+            return cbItems;
         }
     }
 }

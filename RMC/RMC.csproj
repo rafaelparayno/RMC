@@ -135,6 +135,12 @@
     <Compile Include="Admin\PanelPharForms\Dialogs\addEditCategory.Designer.cs">
       <DependentUpon>addEditCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelPharForms\Dialogs\addEditItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\Dialogs\addEditItems.Designer.cs">
+      <DependentUpon>addEditItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelPharForms\Dialogs\AddEditSuppliers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\addEditCategory.resx">
       <DependentUpon>addEditCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\addEditItems.resx">
+      <DependentUpon>addEditItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\AddEditSuppliers.resx">
       <DependentUpon>AddEditSuppliers.cs</DependentUpon>
