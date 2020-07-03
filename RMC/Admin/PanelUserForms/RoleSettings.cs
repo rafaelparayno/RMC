@@ -16,6 +16,7 @@ namespace RMC.Admin.PanelUserForms
     {
         RolesController roles = new RolesController();
         AccessController access = new AccessController();
+      
         List<int> currentAccess = new List<int>();
         List<int> newAccess = new List<int>();
         int roleid = 0;

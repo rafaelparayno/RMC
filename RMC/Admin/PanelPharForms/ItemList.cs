@@ -1,4 +1,5 @@
 ﻿using RMC.Admin.PanelPharForms.Dialogs;
+using RMC.Database.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +14,17 @@ namespace RMC.Admin.PanelPharForms
 {
     public partial class ItemList : Form
     {
-        private Form activeForm = null;
+     
+        ItemController itemz = new ItemController();
         public ItemList()
         {
             InitializeComponent();
-            openChildForm(new panelListItems());
+            
         }
 
         private void ItemList_Load(object sender, EventArgs e)
         {
-
+            //loadGrid();
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -30,32 +32,27 @@ namespace RMC.Admin.PanelPharForms
             
         }
 
-        private void btnViewItem_Click(object sender, EventArgs e)
-        {
-            openChildForm(new panelListItems());
-        }
-
-        private void openChildForm(Form childForm)
-        {
-            if (activeForm != null)
-                activeForm.Close();
-
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            panelChild.Controls.Add(childForm);
-            panelChild.Tag = childForm;
-            childForm.BringToFront();
-
-            
-            childForm.Show();
-        }
 
         private void btnAddItem_Click_1(object sender, EventArgs e)
         {
             addEditItems frm = new addEditItems();
             frm.ShowDialog();
+            loadGrid();
+        }
+
+
+        private async void loadGrid()
+        {
+            DataSet ds = await itemz.getDsActive();
+            RefreshGrid(ds);
+        }
+
+        private void RefreshGrid(DataSet ds)
+        {
+            dgItemList.DataSource = "";
+            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.AutoResizeColumns();
+
 
         }
     }

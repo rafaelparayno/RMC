@@ -19,8 +19,7 @@ namespace RMC.Database.Controllers
         {
             string sql = @"SELECT category_id AS 'id' ,category_name AS 'Category',item_type 
                FROM category WHERE is_active = 1";
-            /*   string sql = @"SELECT category_id AS 'id' ,category_name AS 'Category',item_type 
-               FROM category";*/
+          
 
             return await crud.GetDataSetAsync(sql, null);
         }

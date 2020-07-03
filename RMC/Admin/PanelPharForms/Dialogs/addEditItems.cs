@@ -174,7 +174,8 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         {
             if (!isValid())
             {
-                MessageBox.Show("Please Complete Required Field"); 
+                MessageBox.Show("Please Complete Required Field");
+                return;
             }
 
             if (isEdit)
@@ -183,8 +184,14 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             }
             else
             {
-
+                items.Save(txtName.Text.Trim(), txtUnitPrice.Text.Trim(),
+                           txtMarkup.Text.Trim(), txtSellingPrice.Text.Trim(),
+                           dateExpiration.Value.ToString(), DateTime.Today.ToString(),
+                           txtSku.Text.Trim(),txtDesc.Text.Trim(), isBranded.ToString(),
+                           Catid.ToString(),unitID.ToString());
+                
             }
+            this.Close();
         }
 
         #endregion
