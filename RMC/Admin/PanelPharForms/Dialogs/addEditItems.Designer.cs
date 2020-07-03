@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.txtSuppliers = new System.Windows.Forms.ListBox();
+            this.listBoxSuppliers = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnRemoveSupplier = new FontAwesome.Sharp.IconButton();
             this.btnAddSupplier = new FontAwesome.Sharp.IconButton();
@@ -108,7 +108,7 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.txtSuppliers);
+            this.groupBox8.Controls.Add(this.listBoxSuppliers);
             this.groupBox8.Controls.Add(this.label9);
             this.groupBox8.Controls.Add(this.btnRemoveSupplier);
             this.groupBox8.Controls.Add(this.btnAddSupplier);
@@ -122,14 +122,14 @@
             this.groupBox8.TabIndex = 16;
             this.groupBox8.TabStop = false;
             // 
-            // txtSuppliers
+            // listBoxSuppliers
             // 
-            this.txtSuppliers.FormattingEnabled = true;
-            this.txtSuppliers.ItemHeight = 16;
-            this.txtSuppliers.Location = new System.Drawing.Point(16, 69);
-            this.txtSuppliers.Name = "txtSuppliers";
-            this.txtSuppliers.Size = new System.Drawing.Size(675, 68);
-            this.txtSuppliers.TabIndex = 250;
+            this.listBoxSuppliers.FormattingEnabled = true;
+            this.listBoxSuppliers.ItemHeight = 16;
+            this.listBoxSuppliers.Location = new System.Drawing.Point(16, 69);
+            this.listBoxSuppliers.Name = "listBoxSuppliers";
+            this.listBoxSuppliers.Size = new System.Drawing.Size(675, 68);
+            this.listBoxSuppliers.TabIndex = 250;
             // 
             // label9
             // 
@@ -165,6 +165,7 @@
             this.btnRemoveSupplier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemoveSupplier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemoveSupplier.UseVisualStyleBackColor = false;
+            this.btnRemoveSupplier.Click += new System.EventHandler(this.btnRemoveSupplier_Click);
             // 
             // btnAddSupplier
             // 
@@ -188,6 +189,7 @@
             this.btnAddSupplier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddSupplier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddSupplier.UseVisualStyleBackColor = false;
+            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
             // 
             // cbSuppliers
             // 
@@ -274,6 +276,7 @@
             this.txtSellingPrice.Enabled = false;
             this.txtSellingPrice.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSellingPrice.Location = new System.Drawing.Point(33, 19);
+            this.txtSellingPrice.MaxLength = 40;
             this.txtSellingPrice.Name = "txtSellingPrice";
             this.txtSellingPrice.Size = new System.Drawing.Size(634, 23);
             this.txtSellingPrice.TabIndex = 5;
@@ -308,10 +311,12 @@
             this.txtMarkup.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtMarkup.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMarkup.Location = new System.Drawing.Point(33, 19);
+            this.txtMarkup.MaxLength = 20;
             this.txtMarkup.Name = "txtMarkup";
             this.txtMarkup.Size = new System.Drawing.Size(303, 23);
             this.txtMarkup.TabIndex = 5;
             this.txtMarkup.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMarkup.TextChanged += new System.EventHandler(this.txtMarkup_TextChanged);
             this.txtMarkup.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMarkup_KeyPress);
             // 
             // label3
@@ -342,10 +347,12 @@
             this.txtUnitPrice.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtUnitPrice.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUnitPrice.Location = new System.Drawing.Point(33, 19);
+            this.txtUnitPrice.MaxLength = 20;
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.Size = new System.Drawing.Size(273, 23);
             this.txtUnitPrice.TabIndex = 5;
             this.txtUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtUnitPrice.TextChanged += new System.EventHandler(this.txtUnitPrice_TextChanged);
             this.txtUnitPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnitPrice_KeyPress);
             // 
             // label5
@@ -770,7 +777,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ListBox txtSuppliers;
+        private System.Windows.Forms.ListBox listBoxSuppliers;
         private System.Windows.Forms.Label label9;
         private FontAwesome.Sharp.IconButton btnRemoveSupplier;
         private FontAwesome.Sharp.IconButton btnAddSupplier;

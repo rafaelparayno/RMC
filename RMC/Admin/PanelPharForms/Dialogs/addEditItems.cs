@@ -18,7 +18,8 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         UnitsController unitsC = new UnitsController();
         CategoryController category = new CategoryController();
         private int isBranded = 0;
-
+        private bool isExpiration = false;
+        private Dictionary<string, int> suppliersDic = new Dictionary<string, int>();
         public addEditItems()
         {
             InitializeComponent();
@@ -121,6 +122,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             {
                 label15.Visible = true;
                 dateExpiration.Visible = true;
+                isExpiration = true;
             }
         }
 
@@ -130,22 +132,91 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             {
                 label15.Visible = false;
                 dateExpiration.Visible = false;
+                isExpiration = false;
             }
         }
 
         private void txtUnitPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void txtMarkup_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void txtSellingPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+        }
+
+        private void CalculateTxtSellingPrice(string unitPrice,string markup)
+        {
+            bool isUnitValid = float.TryParse(unitPrice, out _);
+            bool isMarkupvalid = float.TryParse(markup, out _);
+
+            if(isUnitValid && isMarkupvalid)
+            {
+                float unitP = float.Parse(unitPrice);
+                float markupP = float.Parse(markup);
+
+                double sellingPrice = unitP + markupP;
+
+                txtSellingPrice.Text = Math.Round(sellingPrice, 2).ToString();
+            }
+            else
+            {
+                txtSellingPrice.Text = "";
+            }
+        }
+
+        private void txtUnitPrice_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTxtSellingPrice(txtUnitPrice.Text.Trim(), txtMarkup.Text.Trim());
+        }
+
+        private void txtMarkup_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTxtSellingPrice(txtUnitPrice.Text.Trim(), txtMarkup.Text.Trim());
+        }
+
+        private void btnAddSupplier_Click(object sender, EventArgs e)
+        {
+            if (cbSuppliers.SelectedIndex == -1)
+                return;
+
+            addListSupplier(cbSuppliers.Text, int.Parse((cbSuppliers.SelectedItem as ComboBoxItem).Value.ToString()));
+        }
+
+        private void btnRemoveSupplier_Click(object sender, EventArgs e)
+        {
+            if (listBoxSuppliers.Items.Count == 0)
+                return;
+
+            suppliersDic.Remove(listBoxSuppliers.SelectedItem.ToString());
+            listBoxSuppliers.Items.RemoveAt(listBoxSuppliers.SelectedIndex);
+        }
+
+        private void addListSupplier(string supplierName,int supplierId)
+        {
+            if(suppliersDic.ContainsKey(supplierName))
+            {
+                MessageBox.Show("The List has already an Supplier With Same name");
+                return;
+            }
+
+            suppliersDic.Add(supplierName, supplierId);
+
+            listBoxSuppliers.Items.Add(supplierName);
         }
     }
 }
