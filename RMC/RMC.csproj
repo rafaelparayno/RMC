@@ -273,6 +273,7 @@
     <Compile Include="Database\BackupandRestore\csBackupAndRestore.cs" />
     <Compile Include="Database\Controllers\AccessController.cs" />
     <Compile Include="Database\Controllers\CategoryController.cs" />
+    <Compile Include="Database\Controllers\ItemController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
     <Compile Include="Database\Controllers\SupplierController.cs" />
     <Compile Include="Database\Controllers\UnitsController.cs" />

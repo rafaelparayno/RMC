@@ -118,7 +118,7 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, list);
         }
 
-        public int getRecentStudentId()
+        public int getRecentUserID()
         {
             string sql = String.Format(@"SELECT AUTO_INCREMENT As 'Last_id'
                                         FROM information_schema.tables 

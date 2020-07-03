@@ -135,7 +135,7 @@ namespace RMC.Admin.PanelForms.dialogs
         private void getLastId()
         {
           
-            id = useraccounts.getRecentStudentId();
+            id = useraccounts.getRecentUserID();
         }
 
         private void txtFirstName_TextChanged(object sender, EventArgs e)

@@ -75,8 +75,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnSave = new FontAwesome.Sharp.IconButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -89,6 +90,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -155,11 +157,11 @@
             this.btnRemoveSupplier.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
             this.btnRemoveSupplier.IconColor = System.Drawing.Color.White;
             this.btnRemoveSupplier.IconSize = 18;
-            this.btnRemoveSupplier.Location = new System.Drawing.Point(382, 142);
+            this.btnRemoveSupplier.Location = new System.Drawing.Point(367, 142);
             this.btnRemoveSupplier.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRemoveSupplier.Name = "btnRemoveSupplier";
             this.btnRemoveSupplier.Rotation = 0D;
-            this.btnRemoveSupplier.Size = new System.Drawing.Size(309, 31);
+            this.btnRemoveSupplier.Size = new System.Drawing.Size(324, 31);
             this.btnRemoveSupplier.TabIndex = 245;
             this.btnRemoveSupplier.Text = "Remove Supplier";
             this.btnRemoveSupplier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -183,7 +185,7 @@
             this.btnAddSupplier.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddSupplier.Name = "btnAddSupplier";
             this.btnAddSupplier.Rotation = 0D;
-            this.btnAddSupplier.Size = new System.Drawing.Size(305, 31);
+            this.btnAddSupplier.Size = new System.Drawing.Size(322, 31);
             this.btnAddSupplier.TabIndex = 243;
             this.btnAddSupplier.Text = "Add Supplier";
             this.btnAddSupplier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -278,10 +280,9 @@
             this.txtSellingPrice.Location = new System.Drawing.Point(33, 19);
             this.txtSellingPrice.MaxLength = 40;
             this.txtSellingPrice.Name = "txtSellingPrice";
-            this.txtSellingPrice.Size = new System.Drawing.Size(634, 23);
+            this.txtSellingPrice.Size = new System.Drawing.Size(615, 23);
             this.txtSellingPrice.TabIndex = 5;
             this.txtSellingPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtSellingPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSellingPrice_KeyPress);
             // 
             // label6
             // 
@@ -481,9 +482,10 @@
             // txtSku
             // 
             this.txtSku.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSku.Enabled = false;
             this.txtSku.Location = new System.Drawing.Point(16, 220);
             this.txtSku.Name = "txtSku";
-            this.txtSku.Size = new System.Drawing.Size(675, 23);
+            this.txtSku.Size = new System.Drawing.Size(658, 23);
             this.txtSku.TabIndex = 250;
             // 
             // label13
@@ -506,8 +508,9 @@
             this.cbUnits.FormattingEnabled = true;
             this.cbUnits.Location = new System.Drawing.Point(16, 158);
             this.cbUnits.Name = "cbUnits";
-            this.cbUnits.Size = new System.Drawing.Size(675, 24);
+            this.cbUnits.Size = new System.Drawing.Size(658, 24);
             this.cbUnits.TabIndex = 246;
+            this.cbUnits.SelectedIndexChanged += new System.EventHandler(this.cbUnits_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -532,8 +535,9 @@
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(16, 98);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(675, 24);
+            this.cbCategory.Size = new System.Drawing.Size(658, 24);
             this.cbCategory.TabIndex = 244;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -569,7 +573,7 @@
             this.cbItemType.FormattingEnabled = true;
             this.cbItemType.Location = new System.Drawing.Point(16, 40);
             this.cbItemType.Name = "cbItemType";
-            this.cbItemType.Size = new System.Drawing.Size(675, 24);
+            this.cbItemType.Size = new System.Drawing.Size(658, 24);
             this.cbItemType.TabIndex = 241;
             this.cbItemType.SelectedIndexChanged += new System.EventHandler(this.cbItemType_SelectedIndexChanged);
             // 
@@ -592,7 +596,7 @@
             this.txtDesc.Location = new System.Drawing.Point(17, 35);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(674, 60);
+            this.txtDesc.Size = new System.Drawing.Size(657, 60);
             this.txtDesc.TabIndex = 2;
             // 
             // label10
@@ -623,7 +627,7 @@
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Location = new System.Drawing.Point(18, 42);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(673, 23);
+            this.txtName.Size = new System.Drawing.Size(656, 23);
             this.txtName.TabIndex = 1;
             // 
             // label1
@@ -669,7 +673,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Salmon;
-            this.panel2.Controls.Add(this.iconButton1);
+            this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnCloseApp);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -679,24 +683,28 @@
             this.panel2.Size = new System.Drawing.Size(727, 35);
             this.panel2.TabIndex = 7;
             // 
-            // iconButton1
+            // btnSave
             // 
-            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconSize = 16;
-            this.iconButton1.Location = new System.Drawing.Point(449, 4);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(236, 27);
-            this.iconButton1.TabIndex = 3;
-            this.iconButton1.Text = "Save Item";
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.Color.Maroon;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnSave.IconColor = System.Drawing.Color.Black;
+            this.btnSave.IconSize = 16;
+            this.btnSave.Location = new System.Drawing.Point(449, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Rotation = 0D;
+            this.btnSave.Size = new System.Drawing.Size(236, 27);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Save Item";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // addEditItems
             // 
@@ -736,6 +744,7 @@
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -782,12 +791,13 @@
         private FontAwesome.Sharp.IconButton btnRemoveSupplier;
         private FontAwesome.Sharp.IconButton btnAddSupplier;
         private System.Windows.Forms.ComboBox cbSuppliers;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnSave;
         private System.Windows.Forms.DateTimePicker dateExpiration;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox gbBrands;
         private System.Windows.Forms.RadioButton rbGeneric;
         private System.Windows.Forms.RadioButton rbBrand;
         private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
