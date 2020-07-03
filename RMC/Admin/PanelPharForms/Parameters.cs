@@ -40,10 +40,7 @@ namespace RMC.Admin.PanelPharForms
             childForm.Show();
         }
 
-        private void btnItemTypes_Click(object sender, EventArgs e)
-        {
-            openChildForm(new ItemType());
-        }
+      
 
         private void Parameters_Load(object sender, EventArgs e)
         {

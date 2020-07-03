@@ -33,7 +33,6 @@
             this.panelNavParam = new System.Windows.Forms.Panel();
             this.btnMeasurements = new FontAwesome.Sharp.IconButton();
             this.btnCategories = new FontAwesome.Sharp.IconButton();
-            this.btnItemTypes = new FontAwesome.Sharp.IconButton();
             this.btnSuppliers = new FontAwesome.Sharp.IconButton();
             this.panelNavParam.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +58,6 @@
             // 
             this.panelNavParam.Controls.Add(this.btnMeasurements);
             this.panelNavParam.Controls.Add(this.btnCategories);
-            this.panelNavParam.Controls.Add(this.btnItemTypes);
             this.panelNavParam.Controls.Add(this.btnSuppliers);
             this.panelNavParam.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelNavParam.Location = new System.Drawing.Point(0, 0);
@@ -79,7 +77,7 @@
             this.btnMeasurements.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnMeasurements.IconSize = 25;
             this.btnMeasurements.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMeasurements.Location = new System.Drawing.Point(342, 0);
+            this.btnMeasurements.Location = new System.Drawing.Point(228, 0);
             this.btnMeasurements.Name = "btnMeasurements";
             this.btnMeasurements.Rotation = 0D;
             this.btnMeasurements.Size = new System.Drawing.Size(114, 44);
@@ -101,7 +99,7 @@
             this.btnCategories.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnCategories.IconSize = 25;
             this.btnCategories.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCategories.Location = new System.Drawing.Point(228, 0);
+            this.btnCategories.Location = new System.Drawing.Point(114, 0);
             this.btnCategories.Name = "btnCategories";
             this.btnCategories.Rotation = 0D;
             this.btnCategories.Size = new System.Drawing.Size(114, 44);
@@ -110,28 +108,6 @@
             this.btnCategories.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCategories.UseVisualStyleBackColor = false;
             this.btnCategories.Click += new System.EventHandler(this.btnCategories_Click);
-            // 
-            // btnItemTypes
-            // 
-            this.btnItemTypes.BackColor = System.Drawing.Color.Maroon;
-            this.btnItemTypes.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnItemTypes.FlatAppearance.BorderSize = 0;
-            this.btnItemTypes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnItemTypes.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnItemTypes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnItemTypes.IconChar = FontAwesome.Sharp.IconChar.Toolbox;
-            this.btnItemTypes.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnItemTypes.IconSize = 25;
-            this.btnItemTypes.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnItemTypes.Location = new System.Drawing.Point(114, 0);
-            this.btnItemTypes.Name = "btnItemTypes";
-            this.btnItemTypes.Rotation = 0D;
-            this.btnItemTypes.Size = new System.Drawing.Size(114, 44);
-            this.btnItemTypes.TabIndex = 11;
-            this.btnItemTypes.Text = "&Item Types";
-            this.btnItemTypes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnItemTypes.UseVisualStyleBackColor = false;
-            this.btnItemTypes.Click += new System.EventHandler(this.btnItemTypes_Click);
             // 
             // btnSuppliers
             // 
@@ -176,7 +152,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelChild;
         private FontAwesome.Sharp.IconButton btnSuppliers;
-        private FontAwesome.Sharp.IconButton btnItemTypes;
         private FontAwesome.Sharp.IconButton btnCategories;
         private System.Windows.Forms.Panel panelNavParam;
         private FontAwesome.Sharp.IconButton btnMeasurements;
