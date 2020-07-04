@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,13 +12,36 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
+        public async Task<Dictionary<string,int>> suppliersInItem(int itemid)
+        {
+            Dictionary<string, int> supDic = new Dictionary<string, int>();
+            
+            string sql = String.Format(@"SELECT supplier_item_id, supplier_name,supplier_items.`supplier_id` FROM `supplier_items` 
+                                    LEFT JOIn suppliers ON suppliers.supplier_id = supplier_items.supplier_id 
+                                    WHERE item_id = @id");
+            List<MySqlParameter> listParam = new List<MySqlParameter>();
+            listParam.Add(new MySqlParameter("@id", itemid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParam);
+
+            while (await reader.ReadAsync())
+            {
+                supDic.Add(reader["supplier_name"].ToString(), int.Parse(reader["supplier_id"].ToString()));
+            }
+
+            crud.CloseConnection();
+            return supDic;
+
+        }
+
+
         public async void Save(int item_id,List<int> suppliers_id)
         {
             string sql = String.Format(@"INSERT INTO supplier_items (item_id,supplier_id) VALUES (@itemid,@supid)");
 
             foreach( int supid in suppliers_id)
             {
-                if (hasAlreadyAnAccess(item_id, supid))
+                if (hasAlreadyTheSupplier(item_id, supid))
                     continue;
 
                 List<MySqlParameter> list = new List<MySqlParameter>();
@@ -27,8 +51,22 @@ namespace RMC.Database.Controllers
             }
         }
 
+        public async void Delete(int itemid, List<int> suppliersId)
+        {
+            string sql = String.Format(@"DELETE FROM supplier_items WHERE item_id = @itemid 
+                                        AND  supplier_id = @supplierid");
 
-        private bool hasAlreadyAnAccess(int itemid, int supid)
+            foreach (int supid in suppliersId)
+            {
+                List<MySqlParameter> list = new List<MySqlParameter>();
+                list.Add(new MySqlParameter("@itemid", itemid));
+                list.Add(new MySqlParameter("@supplierid", supid));
+                await crud.ExecuteAsync(sql, list);
+            }
+        }
+
+
+        private bool hasAlreadyTheSupplier(int itemid, int supid)
         {
       
             bool alreadAccess = false;

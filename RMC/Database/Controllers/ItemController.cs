@@ -90,6 +90,44 @@ namespace RMC.Database.Controllers
 
         }
 
+        public async void Edit(params string[] datas)
+        {
+            string sql = @"UPDATE itemlist SET item_name = @name, UnitPrice = @unitp, MarkupPrice = @markup,
+                            SellingPrice = @selllprice, ExpirationDate = @exp, SKU = @sku, 
+                            Description = @desc, isBranded = @isBranded, category_id = @catid, unit_id = @unitid 
+                            WHERE item_id = @id";
+            int ID = int.Parse(datas[0]);
+            float unitPrice = float.Parse(datas[2]);
+            float markupPrice = float.Parse(datas[3]);
+            float sellingPrice = float.Parse(datas[4]);
+            DateTime expDate = DateTime.Parse(datas[5]);
+            int isbrand = int.Parse(datas[8]);
+            int catid = int.Parse(datas[9]);
+            int unitid = int.Parse(datas[10]);
+
+            List<MySqlParameter> listParam = new List<MySqlParameter>();
+            listParam.Add(new MySqlParameter("@name", datas[1]));
+            listParam.Add(new MySqlParameter("@unitp", unitPrice));
+            listParam.Add(new MySqlParameter("@markup", markupPrice));
+            listParam.Add(new MySqlParameter("@selllprice", sellingPrice));
+            if (int.Parse(datas[11]) == 1)
+            {
+                listParam.Add(new MySqlParameter("@exp", expDate));
+            }
+            else
+            {
+                listParam.Add(new MySqlParameter("@exp", null));
+            }
+            listParam.Add(new MySqlParameter("@sku", datas[6]));
+            listParam.Add(new MySqlParameter("@desc", datas[7]));
+            listParam.Add(new MySqlParameter("@isBranded", isbrand));
+            listParam.Add(new MySqlParameter("@catid", catid));
+            listParam.Add(new MySqlParameter("@unitid", unitid));
+            listParam.Add(new MySqlParameter("@id", ID));
+
+            await crud.ExecuteAsync(sql, listParam);
+        }
+
 
         public int recentAddID()
         {

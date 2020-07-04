@@ -183,7 +183,13 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 
             if (isEdit)
             {
-
+                supplierItems.Delete(ITEM_ID, getSuppliersid());
+                items.Edit(ITEM_ID.ToString(), txtName.Text.Trim(), txtUnitPrice.Text.Trim(),
+                           txtMarkup.Text.Trim(), txtSellingPrice.Text.Trim(),
+                           dateExpiration.Value.ToString(), txtSku.Text.Trim(), 
+                           txtDesc.Text.Trim(), isBranded.ToString(),
+                           Catid.ToString(), unitID.ToString(), isExpiration.ToString());
+                supplierItems.Save(ITEM_ID, getSuppliersid());
             }
             else
             {
@@ -192,9 +198,11 @@ namespace RMC.Admin.PanelPharForms.Dialogs
                            dateExpiration.Value.ToString(), DateTime.Today.ToString(),
                            txtSku.Text.Trim(),txtDesc.Text.Trim(), isBranded.ToString(),
                            Catid.ToString(),unitID.ToString(), isExpiration.ToString());
+                supplierItems.Save(items.recentAddID(), getSuppliersid());
 
-                supplierItems.Save(items.recentAddID(), getSuppliersid());                
             }
+
+      
             MessageBox.Show("Succesfully Save Data");
             this.Close();
         }
@@ -204,7 +212,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 
         #region MyHandlers
 
-        private void setForEditState(string [] datas)
+        private  void setForEditState(string [] datas)
         {
             recentId = items.getRecentItemID();
             isEdit = true;
@@ -229,15 +237,23 @@ namespace RMC.Admin.PanelPharForms.Dialogs
                 isBranded = 0;
                 gbBrands.Visible = false;
             }
-            int catid = items.getCategory(int.Parse(datas[0]));
+            int catid = items.getCategory(ITEM_ID);
             int type = category.getItemType(catid);
 
             setCbTypeForEdit(type);
 
             cbCategory.Text = datas[8];
             cbUnits.Text = datas[9];
+
+            setListboxSuppliers(ITEM_ID);
         }
      
+
+        private async void setListboxSuppliers(int itemid)
+        {
+            suppliersDic = await supplierItems.suppliersInItem(itemid);
+            listBoxSuppliers.Items.AddRange(suppliersDic.Keys.ToArray());
+        }
 
         private void addListSupplier(string supplierName, int supplierId)
         {
