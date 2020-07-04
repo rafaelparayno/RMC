@@ -54,14 +54,11 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             this.Close();
         }
 
-        private void addEditItems_Load(object sender, EventArgs e)
+
+        private void label13_MouseHover(object sender, EventArgs e)
         {
-          
+            toolTip1.SetToolTip(label13, "SKU is a Stock Keeping Unit. It is used for the small Retailer for their barcode and to identify the products");
         }
-
-
-
-     
 
         private void cbItemType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -244,6 +241,23 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 
             cbCategory.Text = datas[8];
             cbUnits.Text = datas[9];
+
+            if (datas[10] == null || datas[10] == "")
+            {
+                rbNone.Checked = true;
+                isExpiration = 0;
+                label15.Visible = false;
+                dateExpiration.Visible = false;
+            }
+            else
+            {
+                rbExpiration.Checked = true;
+                isExpiration = 1;
+
+                DateTime dateExp = DateTime.Parse(datas[10]);
+                dateExpiration.Value = dateExp;
+                
+            }
 
             setListboxSuppliers(ITEM_ID);
         }
@@ -464,8 +478,9 @@ namespace RMC.Admin.PanelPharForms.Dialogs
                 cbItemType.SelectedIndex = 2;
             }
         }
+
         #endregion
 
-
+     
     }
 }

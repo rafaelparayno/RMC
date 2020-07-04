@@ -48,6 +48,13 @@ namespace RMC.Admin.PanelPharForms
             RefreshGrid(ds);
         }
 
+        private async void SearchGrid(string searchkey,int cbSelect)
+        {
+
+            DataSet ds = await itemz.getDsSearchActive(cbSelect,searchkey);
+            RefreshGrid(ds);
+        }
+
         private void RefreshGrid(DataSet ds)
         {
             dgItemList.DataSource = "";
@@ -121,6 +128,20 @@ namespace RMC.Admin.PanelPharForms
                                                dgItemList.SelectedRows[0].Cells[10].Value.ToString());
             frm.ShowDialog();
             loadGrid();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            int selectedCombobx = comboBox1.SelectedIndex;
+           if(selectedCombobx == -1)
+            {
+                loadGrid();
+
+            }
+            else
+            {
+                SearchGrid(txtName.Text.Trim(), selectedCombobx);
+            }
         }
     }
 }

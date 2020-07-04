@@ -497,6 +497,7 @@
             this.label13.Size = new System.Drawing.Size(37, 17);
             this.label13.TabIndex = 249;
             this.label13.Text = "SKU";
+            this.label13.MouseHover += new System.EventHandler(this.label13_MouseHover);
             // 
             // cbUnits
             // 
@@ -720,7 +721,7 @@
             this.Name = "addEditItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addEditItems";
-            this.Load += new System.EventHandler(this.addEditItems_Load);
+         
             this.panel1.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
