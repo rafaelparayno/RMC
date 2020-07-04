@@ -28,10 +28,6 @@ namespace RMC.Admin.PanelPharForms
             loadGrid();
         }
 
-        private void btnAddItem_Click(object sender, EventArgs e)
-        {
-            
-        }
 
 
         private void btnAddItem_Click_1(object sender, EventArgs e)
@@ -66,7 +62,22 @@ namespace RMC.Admin.PanelPharForms
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-          //  MessageBox.Show(dgItemList.Rows.Count.ToString());
+            if (dgItemList.Rows.Count == 0)
+                return;
+
+
+            int id = int.Parse(dgItemList.SelectedRows[0].Cells[0].Value.ToString());
+
+            DialogResult diag = MessageBox.Show("Do you want to Remove this item",
+                        "Exit", MessageBoxButtons.YesNo);
+
+            if (diag == DialogResult.Yes)
+            {
+                itemz.Deactivate(id);
+                MessageBox.Show("Succesfully Remove an item");
+                loadGrid();
+
+            }
         }
 
         private DataSet FormatDg(DataSet ds)

@@ -165,6 +165,18 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listParam);
         }
 
+        public async void Deactivate(int id)
+        {
+            string sql = @"UPDATE itemlist SET is_active = @isactive
+                            WHERE item_id = @id";
+
+            List<MySqlParameter> listParam = new List<MySqlParameter>();
+            listParam.Add(new MySqlParameter("@isactive", 0));
+            listParam.Add(new MySqlParameter("@id", id));
+
+            await crud.ExecuteAsync(sql, listParam);
+           
+        }
 
         public int recentAddID()
         {
