@@ -19,7 +19,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         UnitsController unitsC = new UnitsController();
         CategoryController category = new CategoryController();
         private int isBranded = 0;
-        private int isExpiration = 0;
+        private int isExpiration = 1;
         private int recentId = 0;
         private int Catid = 0;
         private int cbItem = 0;
@@ -275,6 +275,11 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             if (itemType == 1)
             {
                 gbBrands.Visible = true;
+                if (rbBrand.Checked)
+                    isBranded = 1;
+
+                if (rbGeneric.Checked)
+                    isBranded = 2;
              
             }
             else

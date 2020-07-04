@@ -77,24 +77,25 @@ namespace RMC.Admin.PanelPharForms
             dt.Columns.Add("Generic Or Branded");
             dt.Columns.Add("Category Name");
             dt.Columns.Add("Unit Name");
-           /* dt.Columns.Add("Expiration");
+            dt.Columns.Add("Expiration Date");
+            /* dt.Columns.Add("Expiration");
 
-            dt.Columns["Expiration"].DefaultValue = false;*/
+             dt.Columns["Expiration"].DefaultValue = false;*/
 
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 //your code here
                 if (int.Parse(dr["isBranded"].ToString()) == 1)
                 {
-                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "Branded", dr[8],dr[9]);
+                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "Branded", dr[8],dr[9],dr[10]);
                 }
                 else if (int.Parse(dr["isBranded"].ToString()) == 2)
                 {
-                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "Generic", dr[8], dr[9]);
+                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "Generic", dr[8], dr[9], dr[10]);
                 }
                 else
                 {
-                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "N/A", dr[8], dr[9]);
+                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "N/A", dr[8], dr[9], dr[10]);
                 }
 
             }

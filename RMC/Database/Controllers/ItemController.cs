@@ -69,7 +69,7 @@ namespace RMC.Database.Controllers
             }
             else
             {
-                list.Add(new MySqlParameter("@exp", datas[4]));
+                list.Add(new MySqlParameter("@exp", null));
             }
             DateTime now = DateTime.Today;
             list.Add(new MySqlParameter("@DateAdd", now));
