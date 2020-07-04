@@ -165,12 +165,6 @@
     <Compile Include="Admin\PanelPharForms\ItemList.Designer.cs">
       <DependentUpon>ItemList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\PanelPharForms\panelListItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin\PanelPharForms\panelListItems.Designer.cs">
-      <DependentUpon>panelListItems.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin\PanelPharForms\Parameters.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +270,7 @@
     <Compile Include="Database\Controllers\ItemController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
     <Compile Include="Database\Controllers\SupplierController.cs" />
+    <Compile Include="Database\Controllers\SupplierItemsController.cs" />
     <Compile Include="Database\Controllers\UnitsController.cs" />
     <Compile Include="Database\Controllers\UserracountsController.cs" />
     <Compile Include="Database\dbcrud.cs" />
@@ -313,9 +308,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\ItemList.resx">
       <DependentUpon>ItemList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Admin\PanelPharForms\panelListItems.resx">
-      <DependentUpon>panelListItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Parameters.resx">
       <DependentUpon>Parameters.cs</DependentUpon>

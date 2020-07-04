@@ -104,6 +104,23 @@ namespace RMC.Admin.PanelPharForms
             return newDataset;
 
         }
-        
+
+        private void btnEditItem_Click(object sender, EventArgs e)
+        {
+
+            addEditItems frm = new addEditItems(dgItemList.SelectedRows[0].Cells[0].Value.ToString(),
+                                               dgItemList.SelectedRows[0].Cells[1].Value.ToString(),
+                                               dgItemList.SelectedRows[0].Cells[2].Value.ToString(),
+                                               dgItemList.SelectedRows[0].Cells[3].Value.ToString(),
+                                               dgItemList.SelectedRows[0].Cells[4].Value.ToString(),
+                                               dgItemList.SelectedRows[0].Cells[5].Value.ToString(),
+                                               dgItemList.SelectedRows[0].Cells[6].Value.ToString(),
+                                               dgItemList.SelectedRows[0].Cells[7].Value.ToString(),
+                                               dgItemList.SelectedRows[0].Cells[8].Value.ToString(),
+                                               dgItemList.SelectedRows[0].Cells[9].Value.ToString(),
+                                               dgItemList.SelectedRows[0].Cells[10].Value.ToString());
+            frm.ShowDialog();
+            loadGrid();
+        }
     }
 }

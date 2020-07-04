@@ -18,6 +18,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         SupplierController supplier = new SupplierController();
         UnitsController unitsC = new UnitsController();
         CategoryController category = new CategoryController();
+        SupplierItemsController supplierItems = new SupplierItemsController();
         private int isBranded = 0;
         private int isExpiration = 1;
         private int recentId = 0;
@@ -189,8 +190,10 @@ namespace RMC.Admin.PanelPharForms.Dialogs
                            dateExpiration.Value.ToString(), DateTime.Today.ToString(),
                            txtSku.Text.Trim(),txtDesc.Text.Trim(), isBranded.ToString(),
                            Catid.ToString(),unitID.ToString(), isExpiration.ToString());
-                
+
+                supplierItems.Save(items.recentAddID(), getSuppliersid());                
             }
+            MessageBox.Show("Succesfully Save Data");
             this.Close();
         }
 
@@ -198,6 +201,9 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 
 
         #region MyHandlers
+
+     
+
         private void addListSupplier(string supplierName, int supplierId)
         {
             if (suppliersDic.ContainsKey(supplierName))
@@ -381,6 +387,16 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             }
         }
 
+        private List<int> getSuppliersid()
+        {
+            List<int> sListId = new List<int>();
+         
+
+            sListId.AddRange(suppliersDic.Values);
+
+
+            return sListId;
+        }
         #endregion
 
 

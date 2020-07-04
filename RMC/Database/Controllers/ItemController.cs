@@ -3,6 +3,7 @@ using Org.BouncyCastle.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,6 +87,26 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, list);
 
+
+        }
+
+
+        public int recentAddID()
+        {
+           
+            string sql = "SELECT * FROM `itemlist` ORDER BY `itemlist`.`item_id` DESC";
+            
+            MySqlDataReader reader = null;
+            crud.RetrieveRecords(sql, ref reader, null);
+            int newid = 0;
+            if ( reader.Read())
+            {
+                newid = int.Parse(reader["item_id"].ToString());
+            }
+            crud.CloseConnection();
+           
+
+            return newid;
 
         }
     }
