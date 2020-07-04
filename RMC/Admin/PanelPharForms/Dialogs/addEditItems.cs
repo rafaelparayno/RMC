@@ -19,7 +19,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         UnitsController unitsC = new UnitsController();
         CategoryController category = new CategoryController();
         private int isBranded = 0;
-        private bool isExpiration = false;
+        private int isExpiration = 0;
         private int recentId = 0;
         private int Catid = 0;
         private int cbItem = 0;
@@ -98,7 +98,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             {
                 label15.Visible = true;
                 dateExpiration.Visible = true;
-                isExpiration = true;
+                isExpiration = 1;
             }
         }
 
@@ -108,7 +108,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             {
                 label15.Visible = false;
                 dateExpiration.Visible = false;
-                isExpiration = false;
+                isExpiration = 0;
             }
         }
 
@@ -188,7 +188,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
                            txtMarkup.Text.Trim(), txtSellingPrice.Text.Trim(),
                            dateExpiration.Value.ToString(), DateTime.Today.ToString(),
                            txtSku.Text.Trim(),txtDesc.Text.Trim(), isBranded.ToString(),
-                           Catid.ToString(),unitID.ToString());
+                           Catid.ToString(),unitID.ToString(), isExpiration.ToString());
                 
             }
             this.Close();
@@ -275,11 +275,12 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             if (itemType == 1)
             {
                 gbBrands.Visible = true;
-                isBranded = 0;
+             
             }
             else
             {
                 gbBrands.Visible = false;
+                isBranded = 0;
             }
         }
 

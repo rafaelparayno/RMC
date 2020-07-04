@@ -34,18 +34,18 @@
             this.btnRemove = new FontAwesome.Sharp.IconButton();
             this.panelChild = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgItemList = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgItemList = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panelMenus.SuspendLayout();
             this.panelChild.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenus
@@ -125,6 +125,7 @@
             this.btnRemove.Text = "Remove Item";
             this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // panelChild
             // 
@@ -144,42 +145,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 5);
             this.panel1.TabIndex = 2;
-            // 
-            // dgItemList
-            // 
-            this.dgItemList.AllowUserToAddRows = false;
-            this.dgItemList.AllowUserToDeleteRows = false;
-            this.dgItemList.AllowUserToResizeColumns = false;
-            this.dgItemList.AllowUserToResizeRows = false;
-            this.dgItemList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgItemList.BackgroundColor = System.Drawing.Color.FloralWhite;
-            this.dgItemList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgItemList.Location = new System.Drawing.Point(3, 19);
-            this.dgItemList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgItemList.MultiSelect = false;
-            this.dgItemList.Name = "dgItemList";
-            this.dgItemList.ReadOnly = true;
-            this.dgItemList.RowHeadersVisible = false;
-            this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemList.Size = new System.Drawing.Size(794, 289);
-            this.dgItemList.StandardTab = true;
-            this.dgItemList.TabIndex = 113;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.dgItemList);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 72);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(800, 312);
-            this.groupBox2.TabIndex = 208;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "List of Items";
             // 
             // label1
             // 
@@ -250,6 +215,42 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
+            // dgItemList
+            // 
+            this.dgItemList.AllowUserToAddRows = false;
+            this.dgItemList.AllowUserToDeleteRows = false;
+            this.dgItemList.AllowUserToResizeColumns = false;
+            this.dgItemList.AllowUserToResizeRows = false;
+            this.dgItemList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgItemList.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dgItemList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgItemList.Location = new System.Drawing.Point(3, 19);
+            this.dgItemList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgItemList.MultiSelect = false;
+            this.dgItemList.Name = "dgItemList";
+            this.dgItemList.ReadOnly = true;
+            this.dgItemList.RowHeadersVisible = false;
+            this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgItemList.Size = new System.Drawing.Size(794, 289);
+            this.dgItemList.StandardTab = true;
+            this.dgItemList.TabIndex = 113;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.dgItemList);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(0, 72);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(800, 312);
+            this.groupBox2.TabIndex = 208;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "List of Items";
+            // 
             // ItemList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,10 +265,10 @@
             this.Load += new System.EventHandler(this.ItemList_Load);
             this.panelMenus.ResumeLayout(false);
             this.panelChild.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -15,7 +15,7 @@ namespace RMC.Admin.PanelPharForms
     public partial class Suppliers : Form
     {
         SupplierController suppliers = new SupplierController();
-        ItemController itemz = new ItemController();
+  
         public Suppliers()
         {
             InitializeComponent();
@@ -65,7 +65,7 @@ namespace RMC.Admin.PanelPharForms
 
         private async void loadGrid()
         {
-            DataSet ds = await itemz.getDsActive();
+            DataSet ds = await suppliers.getdataSetActive();
             RefreshGrid(ds);
         }
 

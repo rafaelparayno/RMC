@@ -50,7 +50,7 @@ namespace RMC.Admin.PanelPharForms
 
         private DataSet FormatDg(DataSet ds)
         {
-          
+
             DataSet newDataset = new DataSet();
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
@@ -71,7 +71,7 @@ namespace RMC.Admin.PanelPharForms
                 {
                     dt.Rows.Add(dr[0], dr[1], "Equipment");
                 }
-            
+
             }
 
             newDataset.Tables.Add(dt);
