@@ -83,6 +83,25 @@ namespace RMC.Database.Controllers
             return cbItems;
         }
 
+        public int getItemType(int catid)
+        {
+            int type = 0;
+            string sql = String.Format(@"SELECT * FROM category WHERE category_id = @id");
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@id", catid));
+            MySqlDataReader reader = null;
+            crud.RetrieveRecords(sql, ref reader, list);
+
+            if (reader.Read())
+            {
+                type = int.Parse(reader["item_type"].ToString());
+            }
+            crud.CloseConnection();
+
+
+            return type;
+        }
+
 
     }
 }

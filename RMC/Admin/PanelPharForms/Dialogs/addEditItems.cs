@@ -1,4 +1,5 @@
-﻿using RMC.Components;
+﻿using Org.BouncyCastle.Utilities;
+using RMC.Components;
 using RMC.Database.Controllers;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+            loadAllCb();
             recentId = items.getRecentItemID();
         
         }
@@ -40,9 +42,8 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         {
             InitializeComponent();
             this.DoubleBuffered = true;
-            recentId = items.getRecentItemID();
-            isEdit = true;
-            ITEM_ID = int.Parse(datas[0]);
+            loadAllCb();
+            setForEditState(datas);
         }
 
 
@@ -55,7 +56,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 
         private void addEditItems_Load(object sender, EventArgs e)
         {
-            loadAllCb();
+          
         }
 
 
@@ -70,7 +71,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 
             disableBrands(cbItem);
 
-
+            if(!isEdit)
             setUpSKU(cbItem, Catid);
 
             
@@ -167,7 +168,8 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             Catid = int.Parse((cbCategory.SelectedItem as ComboBoxItem).Value.ToString());
-            setUpSKU(cbItem, Catid);
+            if (!isEdit)
+                setUpSKU(cbItem, Catid);
         }
 
 
@@ -202,6 +204,39 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 
         #region MyHandlers
 
+        private void setForEditState(string [] datas)
+        {
+            recentId = items.getRecentItemID();
+            isEdit = true;
+            ITEM_ID = int.Parse(datas[0]);
+            txtName.Text = datas[1];
+            txtUnitPrice.Text = datas[2];
+            txtMarkup.Text = datas[3];
+            txtSku.Text = datas[5];
+            txtDesc.Text = datas[6];
+            if (datas[7] == "Generic")
+            {
+                isBranded = 2;
+                rbGeneric.Checked = true;
+            }
+            else if (datas[7] == "Branded")
+            {
+                isBranded = 1;
+                rbBrand.Checked = true;
+            }
+            else
+            {
+                isBranded = 0;
+                gbBrands.Visible = false;
+            }
+            int catid = items.getCategory(int.Parse(datas[0]));
+            int type = category.getItemType(catid);
+
+            setCbTypeForEdit(type);
+
+            cbCategory.Text = datas[8];
+            cbUnits.Text = datas[9];
+        }
      
 
         private void addListSupplier(string supplierName, int supplierId)
@@ -396,6 +431,22 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 
 
             return sListId;
+        }
+
+        private void setCbTypeForEdit(int type)
+        {
+            if(type == 1)
+            {
+                cbItemType.SelectedIndex = 0;
+            }
+            else if(type == 2)
+            {
+                cbItemType.SelectedIndex = 1;
+            }
+            else
+            {
+                cbItemType.SelectedIndex = 2;
+            }
         }
         #endregion
 

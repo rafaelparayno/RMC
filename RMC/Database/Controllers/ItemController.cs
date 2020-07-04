@@ -109,5 +109,25 @@ namespace RMC.Database.Controllers
             return newid;
 
         }
+
+
+        public int getCategory(int itemid)
+        {
+            int catid = 0;
+            string sql = String.Format(@"SELECT * FROM itemlist WHERE item_id = @id");
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@id", itemid));
+            MySqlDataReader reader = null;
+            crud.RetrieveRecords(sql, ref reader, list);
+
+            if (reader.Read())
+            {
+                catid = int.Parse(reader["category_id"].ToString());
+            }
+            crud.CloseConnection();
+
+
+            return catid;
+        }
     }
 }
