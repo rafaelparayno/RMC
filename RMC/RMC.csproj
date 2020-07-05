@@ -268,6 +268,7 @@
     <Compile Include="Database\Controllers\AccessController.cs" />
     <Compile Include="Database\Controllers\CategoryController.cs" />
     <Compile Include="Database\Controllers\ItemController.cs" />
+    <Compile Include="Database\Controllers\LoginController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
     <Compile Include="Database\Controllers\SupplierController.cs" />
     <Compile Include="Database\Controllers\SupplierItemsController.cs" />
@@ -279,6 +280,7 @@
     <Compile Include="Database\Models\access.cs" />
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\useraccount.cs" />
+    <Compile Include="Database\Models\UserLog.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +290,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticData.cs" />
+    <Compile Include="UserDash\UserDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserDash\UserDashboard.Designer.cs">
+      <DependentUpon>UserDashboard.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Admin\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -352,6 +360,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserDash\UserDashboard.resx">
+      <DependentUpon>UserDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

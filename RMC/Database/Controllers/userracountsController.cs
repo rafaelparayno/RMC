@@ -14,7 +14,8 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDs()
         {
-            string sql = String.Format("SELECT u_id,firstname,middlename,lastname,username,password,Position,is_change FROM `{0}` LEFT JOIN  roles ON roles.role_id = useraccounts.role_id", useraccount.tableName);
+            string sql = String.Format(@"SELECT u_id,firstname,middlename,lastname,username,password,Position,is_change FROM `{0}` 
+                                            LEFT JOIN  roles ON roles.role_id = useraccounts.role_id WHERE Position != 'SuperAdmin'", useraccount.tableName);
             DataSet dsUserAccounts = new DataSet();
             return  dsUserAccounts = await crud.GetDataSetAsync(sql, null);
         }

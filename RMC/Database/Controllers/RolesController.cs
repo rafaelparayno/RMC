@@ -17,7 +17,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDs()
         {
-            string sql = String.Format("SELECT Position FROM {0}", role.tableName);
+            string sql = String.Format("SELECT Position FROM {0} WHERE Position != 'SuperAdmin' ", role.tableName);
             DataSet dgRoles = new DataSet();
             return dgRoles = await crud.GetDataSetAsync(sql, null);
         }
