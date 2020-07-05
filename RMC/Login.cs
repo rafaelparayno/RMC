@@ -48,7 +48,7 @@ namespace RMC
 
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
-            this.Close();
+            System.Windows.Forms.Application.Exit();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -83,7 +83,8 @@ namespace RMC
                     return;
             }else if(roleid == 13)
             {
-               
+                AdminDashboard adminDashboard = new AdminDashboard();
+                adminDashboard.Show();
                 this.Hide();
             }
             else

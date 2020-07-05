@@ -264,7 +264,7 @@ namespace RMC.Admin
 
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
-            this.Close();
+            System.Windows.Forms.Application.Exit();
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
@@ -422,5 +422,12 @@ namespace RMC.Admin
             showSubMenuTitle(sender);
         }
         #endregion
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            Login log = new Login();
+            log.Show();
+            this.Hide();
+        }
     }
 }
