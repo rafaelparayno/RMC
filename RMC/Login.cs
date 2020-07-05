@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using RMC.Database.Controllers;
 using RMC.UserDash;
+using RMC.Database.Models;
 
 namespace RMC
 {
@@ -82,17 +83,27 @@ namespace RMC
                     return;
             }else if(roleid == 13)
             {
-                MessageBox.Show("Login Success");
-                AdminDashboard admin = new AdminDashboard();
-                admin.Show();
+               
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("Login Success");
-                UserDashboard frm = new UserDashboard();
-                frm.Show();
-                this.Hide();
+
+                if (UserLog.getIsPasswordChanged() == 1)
+                {
+                    MessageBox.Show("Login Success");
+                    UserDashboard frm = new UserDashboard();
+                    frm.Show();
+                    this.Hide();
+
+                }
+                else
+                {
+                    ChangePassword changePass = new ChangePassword();
+                    changePass.Show();
+                    this.Hide();
+                }
+            
             }
         }
 

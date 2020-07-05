@@ -25,7 +25,7 @@ namespace RMC.Database.Controllers
             string[] datas = new string[8];
             string sql = String.Format("SELECT * FROM {0} WHERE username = @username", useraccount.tableName);
             List<MySqlParameter> list = new List<MySqlParameter>();
-            //   list.Add("@username", username);
+       
             list.Add(new MySqlParameter("@username", username));
             MySqlDataReader reader = null;
             crud.RetrieveRecords(sql, ref reader, list);
@@ -112,6 +112,19 @@ namespace RMC.Database.Controllers
             string tablename = useraccount.tableName;
             string newPassword = GeneratePassword(8);
             string sql = String.Format(@"UPDATE {0} SET password = @password, is_change = 0 WHERE u_id = @uid", tablename);
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@uid", uid));
+            list.Add(new MySqlParameter("@password", newPassword));
+
+            await crud.ExecuteAsync(sql, list);
+        }
+
+
+        public async void changePassword(int uid,string newPass)
+        {
+            string tablename = useraccount.tableName;
+            string newPassword = newPass;
+            string sql = String.Format(@"UPDATE {0} SET password = @password, is_change = 1 WHERE u_id = @uid", tablename);
             List<MySqlParameter> list = new List<MySqlParameter>();
             list.Add(new MySqlParameter("@uid", uid));
             list.Add(new MySqlParameter("@password", newPassword));
