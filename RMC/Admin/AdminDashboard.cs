@@ -42,6 +42,17 @@ namespace RMC.Admin
             timer1.Start();
         }
 
+        public AdminDashboard(string from)
+        {
+            InitializeComponent();
+            customizeDesign();
+            initMainNavButtons();
+            timer1.Start();
+            panel1.Visible = false;
+
+            iconButton4.Visible = false;
+        }
+
 
         private void openChildForm(Form childForm)
         {
