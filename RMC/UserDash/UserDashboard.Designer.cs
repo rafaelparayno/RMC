@@ -40,11 +40,14 @@
             this.btnMaximize = new FontAwesome.Sharp.IconButton();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.datelabel = new System.Windows.Forms.Label();
             this.timelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LabelForms = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panelChildForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -166,6 +169,7 @@
             this.LabBtn.Text = "Lab";
             this.LabBtn.UseVisualStyleBackColor = false;
             this.LabBtn.Visible = false;
+            this.LabBtn.Click += new System.EventHandler(this.LabBtn_Click);
             // 
             // AdminBtn
             // 
@@ -245,6 +249,16 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Maroon;
+            this.panel2.Controls.Add(this.LabelForms);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 72);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(945, 36);
+            this.panel2.TabIndex = 5;
+            // 
             // panelChildForm
             // 
             this.panelChildForm.AutoScroll = true;
@@ -255,10 +269,10 @@
             this.panelChildForm.Controls.Add(this.pictureBox1);
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.ForeColor = System.Drawing.Color.Black;
-            this.panelChildForm.Location = new System.Drawing.Point(0, 72);
+            this.panelChildForm.Location = new System.Drawing.Point(0, 108);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(945, 627);
-            this.panelChildForm.TabIndex = 5;
+            this.panelChildForm.Size = new System.Drawing.Size(945, 591);
+            this.panelChildForm.TabIndex = 7;
             // 
             // datelabel
             // 
@@ -267,7 +281,7 @@
             this.datelabel.BackColor = System.Drawing.Color.Transparent;
             this.datelabel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datelabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
-            this.datelabel.Location = new System.Drawing.Point(391, 421);
+            this.datelabel.Location = new System.Drawing.Point(391, 403);
             this.datelabel.Name = "datelabel";
             this.datelabel.Size = new System.Drawing.Size(82, 18);
             this.datelabel.TabIndex = 218;
@@ -281,7 +295,7 @@
             this.timelabel.BackColor = System.Drawing.Color.Transparent;
             this.timelabel.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timelabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
-            this.timelabel.Location = new System.Drawing.Point(397, 392);
+            this.timelabel.Location = new System.Drawing.Point(397, 374);
             this.timelabel.Name = "timelabel";
             this.timelabel.Size = new System.Drawing.Size(142, 29);
             this.timelabel.TabIndex = 217;
@@ -293,12 +307,24 @@
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::RMC.Properties.Resources.full_copy;
-            this.pictureBox1.Location = new System.Drawing.Point(149, 34);
+            this.pictureBox1.Location = new System.Drawing.Point(149, 16);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(631, 428);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // LabelForms
+            // 
+            this.LabelForms.AutoSize = true;
+            this.LabelForms.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelForms.ForeColor = System.Drawing.Color.White;
+            this.LabelForms.Location = new System.Drawing.Point(16, 7);
+            this.LabelForms.Name = "LabelForms";
+            this.LabelForms.Size = new System.Drawing.Size(34, 23);
+            this.LabelForms.TabIndex = 0;
+            this.LabelForms.Text = "Lbl";
+            this.LabelForms.Visible = false;
             // 
             // UserDashboard
             // 
@@ -306,12 +332,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(945, 699);
             this.Controls.Add(this.panelChildForm);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UserDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserDash";
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panelChildForm.ResumeLayout(false);
             this.panelChildForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -330,10 +359,12 @@
         private FontAwesome.Sharp.IconButton LabBtn;
         private FontAwesome.Sharp.IconButton AdminBtn;
         private System.Windows.Forms.Timer timer1;
+        private FontAwesome.Sharp.IconButton iconButton4;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelChildForm;
         private System.Windows.Forms.Label datelabel;
         private System.Windows.Forms.Label timelabel;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private FontAwesome.Sharp.IconButton iconButton4;
+        private System.Windows.Forms.Label LabelForms;
     }
 }

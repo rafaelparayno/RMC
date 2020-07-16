@@ -48,6 +48,12 @@ namespace RMC.UserDash
         }
 
 
+        private void changingLabel(string lblName)
+        {
+            LabelForms.Text = lblName;
+            LabelForms.Visible = true;
+        }
+
         private void openChildForm(Form childForm)
         {
             if (activeForm != null)
@@ -112,6 +118,7 @@ namespace RMC.UserDash
         private void AdminBtn_Click(object sender, EventArgs e)
         {
             openChildForm(new AdminDashboard(""));
+            changingLabel("Admin");
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
@@ -143,6 +150,12 @@ namespace RMC.UserDash
         private void PharmaBtn_Click(object sender, EventArgs e)
         {
             openChildForm(new PharmaDash());
+            changingLabel("Pharmacy Inventory");
+        }
+
+        private void LabBtn_Click(object sender, EventArgs e)
+        {
+            changingLabel("Laboratory");
         }
     }
 }
