@@ -1,7 +1,7 @@
 ﻿using RMC.Admin;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
-
+using RMC.InventoryPharma;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -138,6 +138,11 @@ namespace RMC.UserDash
             log.Show();
             this.Hide();
 
+        }
+
+        private void PharmaBtn_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PharmaDash());
         }
     }
 }
