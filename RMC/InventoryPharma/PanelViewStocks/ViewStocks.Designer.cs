@@ -31,7 +31,7 @@
             this.panelMenus = new System.Windows.Forms.Panel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnAdjust = new FontAwesome.Sharp.IconButton();
-            this.btnEditItem = new FontAwesome.Sharp.IconButton();
+            this.btnTransfer = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -49,7 +49,7 @@
             // 
             this.panelMenus.Controls.Add(this.iconButton1);
             this.panelMenus.Controls.Add(this.btnAdjust);
-            this.panelMenus.Controls.Add(this.btnEditItem);
+            this.panelMenus.Controls.Add(this.btnTransfer);
             this.panelMenus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelMenus.Location = new System.Drawing.Point(0, 475);
             this.panelMenus.Name = "panelMenus";
@@ -88,7 +88,7 @@
             this.btnAdjust.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnAdjust.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjust.ForeColor = System.Drawing.Color.White;
-            this.btnAdjust.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnAdjust.IconChar = FontAwesome.Sharp.IconChar.Buromobelexperte;
             this.btnAdjust.IconColor = System.Drawing.Color.White;
             this.btnAdjust.IconSize = 28;
             this.btnAdjust.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -102,27 +102,28 @@
             this.btnAdjust.UseVisualStyleBackColor = false;
             this.btnAdjust.Click += new System.EventHandler(this.btnAdjust_Click);
             // 
-            // btnEditItem
+            // btnTransfer
             // 
-            this.btnEditItem.BackColor = System.Drawing.Color.Maroon;
-            this.btnEditItem.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnEditItem.FlatAppearance.BorderSize = 0;
-            this.btnEditItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditItem.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnEditItem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditItem.ForeColor = System.Drawing.Color.White;
-            this.btnEditItem.IconChar = FontAwesome.Sharp.IconChar.Edit;
-            this.btnEditItem.IconColor = System.Drawing.Color.White;
-            this.btnEditItem.IconSize = 28;
-            this.btnEditItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditItem.Location = new System.Drawing.Point(609, 0);
-            this.btnEditItem.Name = "btnEditItem";
-            this.btnEditItem.Rotation = 0D;
-            this.btnEditItem.Size = new System.Drawing.Size(75, 86);
-            this.btnEditItem.TabIndex = 8;
-            this.btnEditItem.Text = "Transfer";
-            this.btnEditItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEditItem.UseVisualStyleBackColor = false;
+            this.btnTransfer.BackColor = System.Drawing.Color.Maroon;
+            this.btnTransfer.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnTransfer.FlatAppearance.BorderSize = 0;
+            this.btnTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransfer.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnTransfer.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransfer.ForeColor = System.Drawing.Color.White;
+            this.btnTransfer.IconChar = FontAwesome.Sharp.IconChar.Dolly;
+            this.btnTransfer.IconColor = System.Drawing.Color.White;
+            this.btnTransfer.IconSize = 28;
+            this.btnTransfer.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTransfer.Location = new System.Drawing.Point(609, 0);
+            this.btnTransfer.Name = "btnTransfer";
+            this.btnTransfer.Rotation = 0D;
+            this.btnTransfer.Size = new System.Drawing.Size(75, 86);
+            this.btnTransfer.TabIndex = 8;
+            this.btnTransfer.Text = "Transfer";
+            this.btnTransfer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTransfer.UseVisualStyleBackColor = false;
+            this.btnTransfer.Click += new System.EventHandler(this.btnEditItem_Click);
             // 
             // groupBox1
             // 
@@ -254,7 +255,7 @@
 
         private System.Windows.Forms.Panel panelMenus;
         private FontAwesome.Sharp.IconButton btnAdjust;
-        private FontAwesome.Sharp.IconButton btnEditItem;
+        private FontAwesome.Sharp.IconButton btnTransfer;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.GroupBox groupBox1;
         private FontAwesome.Sharp.IconButton iconButton2;

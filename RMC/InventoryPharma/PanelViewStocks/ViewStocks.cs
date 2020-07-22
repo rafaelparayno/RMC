@@ -158,5 +158,17 @@ namespace RMC.InventoryPharma.PanelViewStocks
                 loadGridPharma();
             }
         }
+
+        private void btnEditItem_Click(object sender, EventArgs e)
+        {
+            if (dgItemList.Rows.Count == 0)
+                return;
+
+
+            int id = int.Parse(dgItemList.SelectedRows[0].Cells[0].Value.ToString());
+            string name = dgItemList.SelectedRows[0].Cells[1].Value.ToString();
+            Transfer frm = new Transfer(id,name,isPharmaList);
+            frm.ShowDialog();
+        }
     }
 }
