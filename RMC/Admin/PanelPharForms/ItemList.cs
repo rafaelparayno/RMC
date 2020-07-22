@@ -16,7 +16,7 @@ namespace RMC.Admin.PanelPharForms
     {
      
         ItemController itemz = new ItemController();
-        SupplierController sup = new SupplierController();
+   
         public ItemList()
         {
             InitializeComponent();
@@ -80,7 +80,7 @@ namespace RMC.Admin.PanelPharForms
             }
         }
 
-        private DataSet FormatDg(DataSet ds)
+        private  DataSet FormatDg(DataSet ds)
         {
 
             DataSet newDataset = new DataSet();
@@ -96,11 +96,8 @@ namespace RMC.Admin.PanelPharForms
             dt.Columns.Add("Category Name");
             dt.Columns.Add("Unit Name");
             dt.Columns.Add("Expiration Date");
-            /* dt.Columns.Add("Expiration");
-
-             dt.Columns["Expiration"].DefaultValue = false;*/
-
-            foreach (DataRow dr in ds.Tables[0].Rows)
+          
+             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 //your code here
                 if (int.Parse(dr["isBranded"].ToString()) == 1)
@@ -119,7 +116,7 @@ namespace RMC.Admin.PanelPharForms
             }
 
             newDataset.Tables.Add(dt);
-            return newDataset;
+            return  newDataset;
 
         }
 

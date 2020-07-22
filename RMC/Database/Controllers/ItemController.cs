@@ -27,6 +27,28 @@ namespace RMC.Database.Controllers
             return dgSuppliers = await crud.GetDataSetAsync(sql, null);
         }
 
+        public async Task<DataSet> getDataSetWithStockPharma()
+        {
+            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id 
+                            WHERE itemlist.is_active = 1";
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
+
+        public async Task<DataSet> getDataSetWithStockClinic()
+        {
+            string sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id 
+                            WHERE itemlist.is_active = 1";
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
+
         public async Task<DataSet> getDsSearchActive(int searchType,string keySearch)
         {
             string sql = "";

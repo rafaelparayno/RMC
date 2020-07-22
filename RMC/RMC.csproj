@@ -287,6 +287,12 @@
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\useraccount.cs" />
     <Compile Include="Database\Models\UserLog.cs" />
+    <Compile Include="InventoryPharma\PanelViewStocks\Dialog\AdjustStocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelViewStocks\Dialog\AdjustStocks.Designer.cs">
+      <DependentUpon>AdjustStocks.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelViewStocks\ViewStocks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -367,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\IPConfigForms.resx">
       <DependentUpon>IPConfigForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelViewStocks\Dialog\AdjustStocks.resx">
+      <DependentUpon>AdjustStocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelViewStocks\ViewStocks.resx">
       <DependentUpon>ViewStocks.cs</DependentUpon>
