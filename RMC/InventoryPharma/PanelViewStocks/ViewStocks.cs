@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
 using RMC.Database.Controllers;
+using RMC.InventoryPharma.PanelViewStocks.Dialog;
 
 namespace RMC.InventoryPharma.PanelViewStocks
 {
@@ -136,7 +137,26 @@ namespace RMC.InventoryPharma.PanelViewStocks
             return cat;
         }
 
+        private void btnAdjust_Click(object sender, EventArgs e)
+        {
+            if (dgItemList.Rows.Count == 0)
+                return;
+
+            int id = int.Parse(dgItemList.SelectedRows[0].Cells[0].Value.ToString());
+            string name = dgItemList.SelectedRows[0].Cells[1].Value.ToString();
+
+            AdjustStocks frm = new AdjustStocks(id,name,isPharmaList);
+            frm.ShowDialog();
 
 
+            if (!isPharmaList)
+            {                
+                loadGridClinic();              
+             }
+            else
+            {             
+                loadGridPharma();
+            }
+        }
     }
 }

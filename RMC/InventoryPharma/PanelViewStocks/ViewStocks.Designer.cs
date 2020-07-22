@@ -30,7 +30,7 @@
         {
             this.panelMenus = new System.Windows.Forms.Panel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.btnAddItem = new FontAwesome.Sharp.IconButton();
+            this.btnAdjust = new FontAwesome.Sharp.IconButton();
             this.btnEditItem = new FontAwesome.Sharp.IconButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgItemList = new System.Windows.Forms.DataGridView();
@@ -42,7 +42,7 @@
             // panelMenus
             // 
             this.panelMenus.Controls.Add(this.iconButton1);
-            this.panelMenus.Controls.Add(this.btnAddItem);
+            this.panelMenus.Controls.Add(this.btnAdjust);
             this.panelMenus.Controls.Add(this.btnEditItem);
             this.panelMenus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelMenus.Location = new System.Drawing.Point(0, 475);
@@ -73,27 +73,28 @@
             this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // btnAddItem
+            // btnAdjust
             // 
-            this.btnAddItem.BackColor = System.Drawing.Color.Maroon;
-            this.btnAddItem.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAddItem.FlatAppearance.BorderSize = 0;
-            this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddItem.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnAddItem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddItem.ForeColor = System.Drawing.Color.White;
-            this.btnAddItem.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnAddItem.IconColor = System.Drawing.Color.White;
-            this.btnAddItem.IconSize = 28;
-            this.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddItem.Location = new System.Drawing.Point(534, 0);
-            this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Rotation = 0D;
-            this.btnAddItem.Size = new System.Drawing.Size(75, 86);
-            this.btnAddItem.TabIndex = 9;
-            this.btnAddItem.Text = "Adjust Stocks";
-            this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAddItem.UseVisualStyleBackColor = false;
+            this.btnAdjust.BackColor = System.Drawing.Color.Maroon;
+            this.btnAdjust.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAdjust.FlatAppearance.BorderSize = 0;
+            this.btnAdjust.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdjust.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAdjust.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjust.ForeColor = System.Drawing.Color.White;
+            this.btnAdjust.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnAdjust.IconColor = System.Drawing.Color.White;
+            this.btnAdjust.IconSize = 28;
+            this.btnAdjust.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdjust.Location = new System.Drawing.Point(534, 0);
+            this.btnAdjust.Name = "btnAdjust";
+            this.btnAdjust.Rotation = 0D;
+            this.btnAdjust.Size = new System.Drawing.Size(75, 86);
+            this.btnAdjust.TabIndex = 9;
+            this.btnAdjust.Text = "Adjust Stocks";
+            this.btnAdjust.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdjust.UseVisualStyleBackColor = false;
+            this.btnAdjust.Click += new System.EventHandler(this.btnAdjust_Click);
             // 
             // btnEditItem
             // 
@@ -175,7 +176,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panelMenus;
-        private FontAwesome.Sharp.IconButton btnAddItem;
+        private FontAwesome.Sharp.IconButton btnAdjust;
         private FontAwesome.Sharp.IconButton btnEditItem;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.DataGridView dgItemList;
