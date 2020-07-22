@@ -17,6 +17,7 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
         private int quantityStocks = 0;
         private bool isPhar = false;
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
+        ClinicStocksController clinicStocksController = new ClinicStocksController();
 
         public AdjustStocks(int id,string name,bool isPharma)
         {
@@ -33,12 +34,13 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
             if (isPharma)
             {
                 quantityStocks = await pharmaStocksController.getStocks(id);
-                numericUpDown1.Value = quantityStocks;
+                
             }
             else
             {
-
+                quantityStocks = await clinicStocksController.getStocks(id);
             }
+            numericUpDown1.Value = quantityStocks;
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)
@@ -55,7 +57,7 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
             }
             else
             {
-
+                clinicStocksController.Save(id, int.Parse(numericUpDown1.Value.ToString()));
             }
             this.Close();
         }
