@@ -1,4 +1,5 @@
 ﻿using RMC.Database.Controllers;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
         private bool isPhar = false;
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
         ClinicStocksController clinicStocksController = new ClinicStocksController();
+        StocksHistoryController stocksHistoryController = new StocksHistoryController();
 
         public AdjustStocks(int id,string name,bool isPharma)
         {
@@ -50,16 +52,104 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+          
             if (isPhar)
             {
+            
                 pharmaStocksController.Save(id, int.Parse(numericUpDown1.Value.ToString()));
-               
             }
             else
             {
                 clinicStocksController.Save(id, int.Parse(numericUpDown1.Value.ToString()));
             }
+
+            stocksHistoryController.Save(action(),qty(), UserLog.getUserId(), id);
+            MessageBox.Show("Succesfully Adjust Stock");
             this.Close();
         }
+
+        private int isAdd()
+        {
+            int CurrentQty = int.Parse(numericUpDown1.Value.ToString());
+            int isadd;
+
+            if(CurrentQty > quantityStocks)
+            {
+                isadd = 1;
+            }
+            else if(CurrentQty < quantityStocks)
+            {
+                isadd = 2;
+            }
+            else
+            {
+                isadd = 0;
+            }
+
+            return isadd;
+        }
+
+        private string action()
+        {
+            string action;
+            if (isAdd() == 1)
+            {
+                action = "Adjust the Stocks by Increasing";
+                if (isPhar)
+                {
+
+                    action += " in Pharmacy";
+                }
+                else
+                {
+                    action += " in Clinic";
+                }
+
+            }
+            else if(isAdd() == 2)
+            {
+                action = "Adjust the Stocks by Decreasing";
+
+                if (isPhar)
+                {
+
+                    action += " in Pharmacy";
+                }
+                else
+                {
+                    action += " in Clinic";
+                }
+            }
+            else
+            {
+                action = "";
+            }
+
+            return action;
+        }
+
+        private int qty()
+        {
+            int qty = 0;
+            int CurrentQty = int.Parse(numericUpDown1.Value.ToString());
+
+            if (isAdd() == 1)
+            {
+                qty = CurrentQty - quantityStocks;
+
+            }
+            else if (isAdd() == 2)
+            {
+                qty = quantityStocks - CurrentQty;
+            }
+            else
+            {
+                qty = 0;
+            }
+
+            return qty;
+        }
+
+
     }
 }
