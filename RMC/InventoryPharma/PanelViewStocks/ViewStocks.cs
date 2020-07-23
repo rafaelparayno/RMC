@@ -56,6 +56,20 @@ namespace RMC.InventoryPharma.PanelViewStocks
             RefreshGrid(ds);
         }
 
+        private async void SearchGrid(string searchkey, int cbSelect)
+        {
+            if (isPharmaList)
+            {
+                DataSet ds = await itemz.getDsSearchActivePharma(cbSelect, searchkey);
+                RefreshGrid(ds);
+            }
+            else
+            {
+                DataSet ds = await itemz.getDsSearchActiveClinic(cbSelect, searchkey);
+                RefreshGrid(ds);
+            }         
+        }
+
         private void RefreshGrid(DataSet ds)
         {
             dgItemList.DataSource = "";
@@ -180,6 +194,27 @@ namespace RMC.InventoryPharma.PanelViewStocks
                 loadGridPharma();
             }
 
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            int selectedCombobx = comboBox1.SelectedIndex;
+            if (selectedCombobx == -1)
+            {
+                if (!isPharmaList)
+                {
+                    loadGridClinic();
+                }
+                else
+                {
+                    loadGridPharma();
+                }
+
+            }
+            else
+            {
+                SearchGrid(txtName.Text.Trim(), selectedCombobx);
+            }
         }
     }
 }
