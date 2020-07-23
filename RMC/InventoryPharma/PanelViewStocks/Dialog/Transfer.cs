@@ -81,6 +81,19 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
         private void btnSave_Click(object sender, EventArgs e)
         {
 
+            int addStocks = int.Parse(numericUpDown2.Value.ToString());
+            if (isPharma)
+            {
+                pharmaStocksController.Save(id, int.Parse(textBox1.Text));
+                clinicStocksController.addStocks(id, addStocks);
+            }
+            else
+            {
+                clinicStocksController.Save(id, int.Parse(textBox1.Text));
+                pharmaStocksController.addStocks(id, addStocks);
+            }
+
+            this.Close();
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)

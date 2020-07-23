@@ -51,6 +51,27 @@ namespace RMC.Database.Controllers
             return stocks;
         }
 
+        public async void addStocks(int id,int qty)
+        {
+            string sql;
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            if (check(id))
+            {
+                //update
+                sql = @"UPDATE pharmastocks SET pharma_stocks = pharma_stocks + @qty WHERE item_id = @id";
+                list.Add(new MySqlParameter("@qty", qty));
+                list.Add(new MySqlParameter("@id", id));
+            }
+            else
+            {
+                sql = @"INSERT INTO pharmastocks (item_id,pharma_stocks) VALUES (@id,@qty)";
+
+                list.Add(new MySqlParameter("@id", id));
+                list.Add(new MySqlParameter("@qty", qty));
+            }
+            await crud.ExecuteAsync(sql, list);
+        }
+
 
         public async void Save(int id,int qty)
         {

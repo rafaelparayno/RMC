@@ -169,6 +169,17 @@ namespace RMC.InventoryPharma.PanelViewStocks
             string name = dgItemList.SelectedRows[0].Cells[1].Value.ToString();
             Transfer frm = new Transfer(id,name,isPharmaList);
             frm.ShowDialog();
+
+
+            if (!isPharmaList)
+            {
+                loadGridClinic();
+            }
+            else
+            {
+                loadGridPharma();
+            }
+
         }
     }
 }
