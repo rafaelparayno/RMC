@@ -41,5 +41,10 @@ namespace RMC.InventoryPharma
         {
             openChildForm(new ViewStocks());
         }
+
+        private void btnPos_Click(object sender, EventArgs e)
+        {
+            openChildForm(new POS());
+        }
     }
 }
