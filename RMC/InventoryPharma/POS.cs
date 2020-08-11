@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.InventoryPharma.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +16,19 @@ namespace RMC.InventoryPharma
     public partial class POS : Form
     {
         ItemController itemz = new ItemController();
+        PharmaStocksController pharmaStocksController = new PharmaStocksController();
         ItemList items;
+        DataTable dt = new DataTable();
+        float totalAmount = 0;
+        float change = 0;
+
         public POS()
         {
             InitializeComponent();
+            dt.Columns.Add("SKU", typeof(string));
+            dt.Columns.Add("Product Name", typeof(string));
+            dt.Columns.Add("Quantity", typeof(int));
+            dt.Columns.Add("Price", typeof(decimal));
         }
 
         private void txtCode_TextChanged(object sender, EventArgs e)
@@ -33,9 +43,11 @@ namespace RMC.InventoryPharma
             }
             searchPharmItem(txtCode.Text.Trim());
             txtName.Text = items == null ? "" : items.name;
-            txtStock.Text = items == null ? "" : items.stocks + "";
+            txtStock.Text = items == null ? "" :   dataGridView1.Rows.Count > 0 ? 
+                checkstocks(items.sku,items.stocks) + ""  : items.stocks + "";
             txtrue.Text = String.Format("PHP {0:0.##}", items == null ? 0 : items.sellingPrice);
-            numericUpDown1.Maximum = items == null ? 0:  items.stocks;
+            numericUpDown1.Maximum = items == null ? 0: dataGridView1.Rows.Count > 0 ?
+                checkstocks(items.sku, items.stocks) : items.stocks;
         }
 
         private void searchPharmItem(string searchKey)
@@ -48,10 +60,158 @@ namespace RMC.InventoryPharma
         {
             if (items == null)
                 return;
+            if (numericUpDown1.Value == 0)
+                return;
+
             if(items.sku == txtCode.Text.Trim())
             {
-                MessageBox.Show("wew");
+                
+                dt.Rows.Add(txtCode.Text, txtName.Text,numericUpDown1.Value, float.Parse(txtrue.Text.Split(' ')[1]));
+                dataGridView1.DataSource = dt;
+                clearItems();
+                CalculateTotal();
             }
+        }
+
+        private void clearItems()
+        {
+            txtCode.Clear();
+            txtName.Clear();
+            txtStock.Clear();
+            txtrue.Text = "";
+        }
+
+        private int checkstocks(string sku,int stocks)
+        {
+            int currentStocks = stocks;
+            if (dataGridView1.Rows.Count == 0)
+                return 0;
+
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                if (dr.Cells["SKU"].Value.ToString() == sku)
+                {
+                     currentStocks -= int.Parse(dr.Cells["Quantity"].Value.ToString());
+                }
+            }
+
+            return currentStocks;
+        }
+
+        private void CalculateTotal()
+        {
+            totalAmount = 0;
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                totalAmount += float.Parse(dr.Cells["Price"].Value.ToString());
+            }
+
+            textBox3.Text = "PHP " + String.Format("{0:0.##}", totalAmount);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+                return;
+
+            DialogResult diag = MessageBox.Show("Remove Selected Item in The List",
+                      "Void Item", MessageBoxButtons.YesNo);
+
+            if (diag == DialogResult.Yes)
+            {
+                dt.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
+                dataGridView1.DataSource = dt;
+                CalculateTotal();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+                return;
+
+            DialogResult diag = MessageBox.Show("Remove All Item in The List",
+                      "Void All Item", MessageBoxButtons.YesNo);
+
+            if (diag == DialogResult.Yes)
+            {
+                dt.Rows.Clear();
+                dataGridView1.DataSource = dt;
+                CalculateTotal();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int _;
+            float payment = 0;
+            if (textBox2.Text == "")
+                return;
+            if (dataGridView1.Rows.Count == 0)
+                return;
+
+            if (!(int.TryParse(textBox2.Text.Trim(), out _)))
+                return;
+
+            payment = float.Parse(textBox2.Text.Trim());
+
+            if (totalAmount > payment)
+            {
+                MessageBox.Show("Payment is Not enough", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            processTransaction();
+            finishTransaction(payment);
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void processTransaction()
+        {
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                 pharmaStocksController.SaveSKU(dr.Cells["SKU"].Value.ToString(),
+                                                     int.Parse(dr.Cells["Quantity"].Value.ToString()));
+            }
+        }
+
+        private void finishTransaction(float payment)
+        {
+            dt.Rows.Clear();
+            dataGridView1.DataSource = dt;
+            clearItems();
+            change = payment - totalAmount;
+            textBox4.Text = "PHP " + String.Format("{0:0.##}", change);
+            btnUpdate.Enabled = false;
+            button3.Enabled = false;
+            txtCode.Enabled = false;
+            CalculateTotal();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            button3.Enabled = true;
+            btnUpdate.Enabled = true;
+            txtCode.Enabled = true;
+            dt.Rows.Clear();
+            dataGridView1.DataSource = dt;
+            clearItems();
+            CalculateTotal();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            seniorDiag form = new seniorDiag();
+            form.ShowDialog();
         }
     }
 }

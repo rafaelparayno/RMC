@@ -93,5 +93,20 @@ namespace RMC.Database.Controllers
             }
             await crud.ExecuteAsync(sql, list);
         }
+
+        public async void SaveSKU(string sku, int qty)
+        {
+            string sql;
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            
+                //update
+            sql = @"UPDATE pharmastocks SET pharma_stocks = `pharma_stocks` - @qty 
+                    WHERE pharmastocks.item_id 
+                    IN(SELECT item_id FROM itemlist WHERE SKU = @sku )";
+            list.Add(new MySqlParameter("@qty", qty));
+            list.Add(new MySqlParameter("@sku", sku));
+          
+            await crud.ExecuteAsync(sql, list);
+        }
     }
 }
