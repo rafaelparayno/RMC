@@ -34,7 +34,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtrue = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -52,8 +51,10 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -90,7 +91,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(20, 24);
+            this.label1.Location = new System.Drawing.Point(20, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 248;
@@ -102,7 +103,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(51, 51);
+            this.label3.Location = new System.Drawing.Point(51, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 17);
             this.label3.TabIndex = 249;
@@ -132,19 +133,12 @@
             this.label4.TabIndex = 251;
             this.label4.Text = "Price";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(105, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(44, 24);
-            this.textBox1.TabIndex = 254;
-            // 
             // txtName
             // 
             this.txtName.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtName.Enabled = false;
             this.txtName.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(105, 78);
+            this.txtName.Location = new System.Drawing.Point(105, 82);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(219, 25);
             this.txtName.TabIndex = 253;
@@ -153,11 +147,12 @@
             // 
             this.txtCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtCode.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCode.Location = new System.Drawing.Point(105, 47);
+            this.txtCode.Location = new System.Drawing.Point(105, 18);
             this.txtCode.MaxLength = 13;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(219, 25);
             this.txtCode.TabIndex = 252;
+            this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             // 
             // btnUpdate
             // 
@@ -213,6 +208,7 @@
             this.button3.TabIndex = 267;
             this.button3.Text = "Add to Cart";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -234,7 +230,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label13.Location = new System.Drawing.Point(155, 17);
+            this.label13.Location = new System.Drawing.Point(155, 49);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(128, 22);
             this.label13.TabIndex = 269;
@@ -245,7 +241,7 @@
             this.txtStock.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtStock.Enabled = false;
             this.txtStock.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStock.Location = new System.Drawing.Point(289, 16);
+            this.txtStock.Location = new System.Drawing.Point(289, 49);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(35, 25);
             this.txtStock.TabIndex = 270;
@@ -363,12 +359,21 @@
             this.button5.Text = "Senior Discount";
             this.button5.UseVisualStyleBackColor = false;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(105, 50);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(44, 27);
+            this.numericUpDown1.TabIndex = 273;
+            // 
             // POS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(684, 526);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtStock);
@@ -378,7 +383,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label4);
@@ -394,6 +398,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,7 +412,6 @@
         private System.Windows.Forms.Label label3;
         internal System.Windows.Forms.Label txtrue;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
         internal System.Windows.Forms.TextBox txtName;
         internal System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Button btnUpdate;
@@ -425,5 +429,6 @@
         internal System.Windows.Forms.TextBox textBox3;
         internal System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

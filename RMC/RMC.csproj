@@ -287,6 +287,7 @@
     <Compile Include="Database\DbSettings\dbConfigFile.cs" />
     <Compile Include="Database\DbSettings\dbConnection.cs" />
     <Compile Include="Database\Models\access.cs" />
+    <Compile Include="Database\Models\ItemList.cs" />
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\useraccount.cs" />
     <Compile Include="Database\Models\UserLog.cs" />

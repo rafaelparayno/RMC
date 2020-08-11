@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Utilities;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -307,6 +308,35 @@ namespace RMC.Database.Controllers
 
 
             return catid;
+        }
+
+        public List<ItemList> Details(string keySearch)
+        {
+            List<ItemList> items = new List<ItemList>();
+            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks, SKU, Description,
+                            isBranded,item_type,category_name,unit_name,UnitPrice,MarkupPrice,SellingPrice
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                            WHERE itemlist.is_active = @isactive AND SKU LIKE @key";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@isactive", 1));
+            string searches = "%" + keySearch + "%";
+            listparams.Add(new MySqlParameter("@key", searches));
+            MySqlDataReader reader = null;
+            crud.RetrieveRecords(sql, ref reader, listparams);
+            if (reader.Read())
+            {
+                items.Add(new ItemList(reader["item_id"].ToString(), reader["item_name"].ToString(),
+                    reader["pharma_stocks"].ToString() == null ? "": reader["pharma_stocks"].ToString()
+                    , reader["item_type"].ToString(),
+                    reader["category_name"].ToString(), reader["isBranded"].ToString(),
+                    reader["unit_name"].ToString(), reader["UnitPrice"].ToString(),
+                    reader["MarkupPrice"].ToString(), reader["SellingPrice"].ToString(),
+                    reader["SKU"].ToString(), reader["Description"].ToString()));
+            }
+            crud.CloseConnection();
+            return items;
         }
     }
 }
