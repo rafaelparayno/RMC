@@ -141,9 +141,10 @@ namespace RMC.UserDash
 
         private void iconButton4_Click_1(object sender, EventArgs e)
         {
-            Login log = new Login();
+           /* Login log = new Login();
             log.Show();
-            this.Hide();
+            this.Hide();*/
+            contextMenuStrip1.Show(iconButton4, new Point(iconButton4.Width - contextMenuStrip1.Width, iconButton4.Height));
 
         }
 
@@ -156,6 +157,20 @@ namespace RMC.UserDash
         private void LabBtn_Click(object sender, EventArgs e)
         {
             changingLabel("Laboratory");
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            DialogResult diag = MessageBox.Show("Do you want to Logout",
+                        "Logout", MessageBoxButtons.YesNo);
+
+            if (diag == DialogResult.Yes)
+            {
+                Login log = new Login();
+                log.Show();
+                this.Hide();
+            }
         }
     }
 }

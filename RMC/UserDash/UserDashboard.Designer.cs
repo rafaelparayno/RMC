@@ -41,15 +41,20 @@
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.LabelForms = new System.Windows.Forms.Label();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.datelabel = new System.Windows.Forms.Label();
             this.timelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.LabelForms = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.notificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelChildForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,21 +80,18 @@
             // 
             this.iconButton4.BackColor = System.Drawing.Color.Salmon;
             this.iconButton4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton4.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
             this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.AngleDown;
             this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton4.IconSize = 35;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton4.IconSize = 40;
             this.iconButton4.Location = new System.Drawing.Point(375, 0);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Rotation = 0D;
-            this.iconButton4.Size = new System.Drawing.Size(66, 72);
+            this.iconButton4.Size = new System.Drawing.Size(64, 72);
             this.iconButton4.TabIndex = 227;
-            this.iconButton4.Text = "Logout";
             this.iconButton4.UseVisualStyleBackColor = false;
             this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click_1);
             // 
@@ -259,6 +261,18 @@
             this.panel2.Size = new System.Drawing.Size(945, 36);
             this.panel2.TabIndex = 5;
             // 
+            // LabelForms
+            // 
+            this.LabelForms.AutoSize = true;
+            this.LabelForms.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelForms.ForeColor = System.Drawing.Color.White;
+            this.LabelForms.Location = new System.Drawing.Point(16, 7);
+            this.LabelForms.Name = "LabelForms";
+            this.LabelForms.Size = new System.Drawing.Size(34, 23);
+            this.LabelForms.TabIndex = 0;
+            this.LabelForms.Text = "Lbl";
+            this.LabelForms.Visible = false;
+            // 
             // panelChildForm
             // 
             this.panelChildForm.AutoScroll = true;
@@ -314,17 +328,32 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // LabelForms
+            // contextMenuStrip1
             // 
-            this.LabelForms.AutoSize = true;
-            this.LabelForms.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelForms.ForeColor = System.Drawing.Color.White;
-            this.LabelForms.Location = new System.Drawing.Point(16, 7);
-            this.LabelForms.Name = "LabelForms";
-            this.LabelForms.Size = new System.Drawing.Size(34, 23);
-            this.LabelForms.TabIndex = 0;
-            this.LabelForms.Text = "Lbl";
-            this.LabelForms.Visible = false;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.notificationsToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 76);
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(139, 6);
+            // 
+            // notificationsToolStripMenuItem
+            // 
+            this.notificationsToolStripMenuItem.Name = "notificationsToolStripMenuItem";
+            this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.notificationsToolStripMenuItem.Text = "Notifications";
             // 
             // UserDashboard
             // 
@@ -344,6 +373,7 @@
             this.panelChildForm.ResumeLayout(false);
             this.panelChildForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -366,5 +396,9 @@
         private System.Windows.Forms.Label timelabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label LabelForms;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem notificationsToolStripMenuItem;
     }
 }
