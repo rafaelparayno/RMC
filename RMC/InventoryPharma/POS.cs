@@ -21,6 +21,7 @@ namespace RMC.InventoryPharma
         DataTable dt = new DataTable();
         float totalAmount = 0;
         float change = 0;
+        string seniorId = "";
 
         public POS()
         {
@@ -56,6 +57,7 @@ namespace RMC.InventoryPharma
             items = itemz.Details(searchKey).Count > 0 ? itemz.Details(searchKey)[0] : null ;
         }
 
+        //Button Add to Cart
         private void button3_Click(object sender, EventArgs e)
         {
             if (items == null)
@@ -101,9 +103,18 @@ namespace RMC.InventoryPharma
         private void CalculateTotal()
         {
             totalAmount = 0;
+            double removeVat = 0;
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
                 totalAmount += float.Parse(dr.Cells["Price"].Value.ToString());
+            }
+
+            if(seniorId != null || seniorId != "")
+            {
+                removeVat = Math.Round(totalAmount / 1.12,2);
+                totalAmount = float.Parse(removeVat + "");
+                float discount = totalAmount * .20f;
+                totalAmount -= discount;
             }
 
             textBox3.Text = "PHP " + String.Format("{0:0.##}", totalAmount);
@@ -194,24 +205,33 @@ namespace RMC.InventoryPharma
             btnUpdate.Enabled = false;
             button3.Enabled = false;
             txtCode.Enabled = false;
+            seniorId = "";
             CalculateTotal();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            //new Transaction
             button3.Enabled = true;
             btnUpdate.Enabled = true;
             txtCode.Enabled = true;
+            seniorId = "";
             dt.Rows.Clear();
             dataGridView1.DataSource = dt;
             clearItems();
             CalculateTotal();
+
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //Senior Discount
             seniorDiag form = new seniorDiag();
             form.ShowDialog();
+
+            seniorId = form.seniorId;
+
+            CalculateTotal();
         }
     }
 }

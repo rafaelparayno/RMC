@@ -12,6 +12,7 @@ namespace RMC.InventoryPharma.Dialogs
 {
     public partial class seniorDiag : Form
     {
+        public string seniorId = "";
         public seniorDiag()
         {
             InitializeComponent();
@@ -24,10 +25,11 @@ namespace RMC.InventoryPharma.Dialogs
 
         private void btnSaveUser_Click(object sender, EventArgs e)
         {
-            if(txtRole.Text == "")
-            {
+            if (txtRole.Text.Trim() == "")
+                return;
 
-            }
+            seniorId = txtRole.Text.Trim();
+            this.Close();
         }
     }
 }
