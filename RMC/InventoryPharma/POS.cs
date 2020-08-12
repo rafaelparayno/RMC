@@ -17,6 +17,8 @@ namespace RMC.InventoryPharma
     {
         ItemController itemz = new ItemController();
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
+        SalesPharmaController salesPharmaController = new SalesPharmaController();
+        InvoiceController invoiceController = new InvoiceController();
         ItemList items;
         DataTable dt = new DataTable();
         float totalAmount = 0;
@@ -67,8 +69,8 @@ namespace RMC.InventoryPharma
 
             if(items.sku == txtCode.Text.Trim())
             {
-                
-                dt.Rows.Add(txtCode.Text, txtName.Text,numericUpDown1.Value, float.Parse(txtrue.Text.Split(' ')[1]));
+                float itemTotalPrice = float.Parse(numericUpDown1.Value.ToString()) * float.Parse(txtrue.Text.Trim().Split(' ')[1]);
+                dt.Rows.Add(txtCode.Text, txtName.Text,numericUpDown1.Value, itemTotalPrice);
                 dataGridView1.DataSource = dt;
                 clearItems();
                 CalculateTotal();
@@ -109,7 +111,7 @@ namespace RMC.InventoryPharma
                 totalAmount += float.Parse(dr.Cells["Price"].Value.ToString());
             }
 
-            if(seniorId != null || seniorId != "")
+            if( seniorId != "")
             {
                 removeVat = Math.Round(totalAmount / 1.12,2);
                 totalAmount = float.Parse(removeVat + "");
@@ -188,11 +190,17 @@ namespace RMC.InventoryPharma
 
         private void processTransaction()
         {
+            invoiceController.Save(totalAmount);
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
                  pharmaStocksController.SaveSKU(dr.Cells["SKU"].Value.ToString(),
                                                      int.Parse(dr.Cells["Quantity"].Value.ToString()));
+                salesPharmaController.Save(dr.Cells["SKU"].Value.ToString(),
+                                    int.Parse(dr.Cells["Quantity"].Value.ToString()));
             }
+
+
+
         }
 
         private void finishTransaction(float payment)
@@ -220,6 +228,8 @@ namespace RMC.InventoryPharma
             dataGridView1.DataSource = dt;
             clearItems();
             CalculateTotal();
+            textBox4.Text = "0.00";
+            textBox2.Text = "0.00";
 
         }
 

@@ -274,10 +274,12 @@
     <Compile Include="Database\Controllers\AccessController.cs" />
     <Compile Include="Database\Controllers\CategoryController.cs" />
     <Compile Include="Database\Controllers\ClinicStocksController.cs" />
+    <Compile Include="Database\Controllers\InvoiceController.cs" />
     <Compile Include="Database\Controllers\ItemController.cs" />
     <Compile Include="Database\Controllers\LoginController.cs" />
     <Compile Include="Database\Controllers\PharmaStocksController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
+    <Compile Include="Database\Controllers\SalesPharmaController.cs" />
     <Compile Include="Database\Controllers\StocksHistoryController.cs" />
     <Compile Include="Database\Controllers\SupplierController.cs" />
     <Compile Include="Database\Controllers\SupplierItemsController.cs" />
