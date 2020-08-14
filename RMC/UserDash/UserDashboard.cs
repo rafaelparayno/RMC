@@ -103,15 +103,7 @@ namespace RMC.UserDash
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {/*
-            DateTime my = DateTimeOffset.Now.DateTime.ToLocalTime().ToUniversalTime();
-
-
-            DateTime mys = DateTimeOffset.Now.UtcDateTime.ToLocalTime();*/
-
-
-            /*timelabel.Text = my.ToString("hh:mm:ss tt");
-            datelabel.Text = my.ToString("dddd, MMMM d, yyyy");*/
+        {
             timer1.Enabled = true;
         }
 

@@ -299,6 +299,12 @@
     <Compile Include="InventoryPharma\Dialogs\seniorDiag.Designer.cs">
       <DependentUpon>seniorDiag.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelPo\PanelPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelPo\PanelPurchase.Designer.cs">
+      <DependentUpon>PanelPurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelViewStocks\Dialog\AdjustStocks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -338,6 +344,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticData.cs" />
+    <Compile Include="SystemSettings\PoSettings.cs" />
     <Compile Include="UserDash\UserDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\Dialogs\seniorDiag.resx">
       <DependentUpon>seniorDiag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelPo\PanelPurchase.resx">
+      <DependentUpon>PanelPurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelViewStocks\Dialog\AdjustStocks.resx">
       <DependentUpon>AdjustStocks.cs</DependentUpon>

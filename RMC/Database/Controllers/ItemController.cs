@@ -28,6 +28,26 @@ namespace RMC.Database.Controllers
             return dgSuppliers = await crud.GetDataSetAsync(sql, null);
         }
 
+
+        public async Task<DataSet> getDataWithSupplierIdTotalStocks(int id)
+        {
+            string sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
+                            SKU, Description,isBranded,item_type,category_name,unit_name 
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                            WHERE itemlist.item_id in (SELECT item_id 
+                                                FROM supplier_items 
+                                                WHERE supplier_id in (SELECT supplier_id 
+                                                                      FROM suppliers 
+                                                                      WHERE supplier_id = @id)) AND itemlist.is_active = 1";
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+            listParams.Add(new MySqlParameter("@id", id));
+
+            return await crud.GetDataSetAsync(sql, listParams);
+        }
+
         public async Task<DataSet> getDsSearchActive(int searchType,string keySearch)
         {
             string sql = "";

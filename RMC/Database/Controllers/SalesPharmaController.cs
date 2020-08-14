@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,28 @@ namespace RMC.Database.Controllers
             list.Add(new MySqlParameter("@sku", sku));
             list.Add(new MySqlParameter("@qty", qty));
             await crud.ExecuteAsync(sql, list);
+        }
+
+        public async Task<int> getSalesInDaysItemId(int days,int id)
+        {
+            int sum = 0;
+            string sql = @"SELECT SUM(sales_qty) As 'AverageSales' FROM salespharma 
+                        INNER JOIN invoice ON salespharma.`invoice_id` = invoice.`invoice_id` 
+                        WHERE invoice.`date_invoice` BETWEEN DATE_SUB(NOW() , INTERVAL @day DAY) and NOW() AND 
+                        salespharma.`item_id` = @itemid";
+
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@day", days));
+            list.Add(new MySqlParameter("@itemid", id));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, list);
+
+            while (await reader.ReadAsync())
+            {
+                sum = int.Parse(reader["AverageSales"].ToString());
+            }
+            crud.CloseConnection();
+          
+            return sum;
         }
     }
 }

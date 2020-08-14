@@ -1,4 +1,5 @@
-﻿using RMC.InventoryPharma.PanelViewStocks;
+﻿using RMC.InventoryPharma.PanelPo;
+using RMC.InventoryPharma.PanelViewStocks;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,6 +46,11 @@ namespace RMC.InventoryPharma
         private void btnPos_Click(object sender, EventArgs e)
         {
             openChildForm(new POS());
+        }
+
+        private void btnPo_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelPurchase());
         }
     }
 }
