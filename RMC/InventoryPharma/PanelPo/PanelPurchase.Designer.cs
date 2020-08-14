@@ -41,8 +41,11 @@
             this.btnRemove = new FontAwesome.Sharp.IconButton();
             this.panelMain = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lvItemsSuppliers = new System.Windows.Forms.ListView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgItemList = new System.Windows.Forms.DataGridView();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panelOptions = new System.Windows.Forms.Panel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,13 +57,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.lvItemsSuppliers = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
             this.panelMenus.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.panelOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -192,6 +195,7 @@
             this.btnAddItem.Text = "Add Order";
             this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAddItem.UseVisualStyleBackColor = false;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // btnRemoveOrder
             // 
@@ -214,6 +218,7 @@
             this.btnRemoveOrder.Text = "Remove Order";
             this.btnRemoveOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRemoveOrder.UseVisualStyleBackColor = false;
+            this.btnRemoveOrder.Click += new System.EventHandler(this.btnRemoveOrder_Click);
             // 
             // btnRemove
             // 
@@ -233,7 +238,7 @@
             this.btnRemove.Rotation = 0D;
             this.btnRemove.Size = new System.Drawing.Size(75, 59);
             this.btnRemove.TabIndex = 7;
-            this.btnRemove.Text = "Purchae Order";
+            this.btnRemove.Text = "Purchase Order";
             this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRemove.UseVisualStyleBackColor = false;
             // 
@@ -258,25 +263,39 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(493, 184);
+            this.groupBox3.Size = new System.Drawing.Size(493, 128);
             this.groupBox3.TabIndex = 210;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Items By Suppliers";
+            // 
+            // lvItemsSuppliers
+            // 
+            this.lvItemsSuppliers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvItemsSuppliers.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvItemsSuppliers.FullRowSelect = true;
+            this.lvItemsSuppliers.GridLines = true;
+            this.lvItemsSuppliers.HideSelection = false;
+            this.lvItemsSuppliers.Location = new System.Drawing.Point(3, 19);
+            this.lvItemsSuppliers.Name = "lvItemsSuppliers";
+            this.lvItemsSuppliers.Size = new System.Drawing.Size(487, 105);
+            this.lvItemsSuppliers.TabIndex = 0;
+            this.lvItemsSuppliers.UseCompatibleStateImageBehavior = false;
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.dgItemList);
+            this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(191, 184);
+            this.groupBox2.Location = new System.Drawing.Point(191, 128);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(493, 143);
+            this.groupBox2.Size = new System.Drawing.Size(493, 199);
             this.groupBox2.TabIndex = 209;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Purcher Order #";
+            this.groupBox2.Text = "Purchase Order #";
             // 
             // dgItemList
             // 
@@ -295,9 +314,33 @@
             this.dgItemList.ReadOnly = true;
             this.dgItemList.RowHeadersVisible = false;
             this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemList.Size = new System.Drawing.Size(487, 120);
+            this.dgItemList.Size = new System.Drawing.Size(487, 103);
             this.dgItemList.StandardTab = true;
-            this.dgItemList.TabIndex = 113;
+            this.dgItemList.TabIndex = 231;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox5.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.groupBox5.Location = new System.Drawing.Point(3, 122);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.groupBox5.Size = new System.Drawing.Size(487, 73);
+            this.groupBox5.TabIndex = 230;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Total Cost";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(403, 33);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 19);
+            this.label7.TabIndex = 227;
+            this.label7.Text = "PHP 0.00";
             // 
             // panelOptions
             // 
@@ -443,19 +486,6 @@
             this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // lvItemsSuppliers
-            // 
-            this.lvItemsSuppliers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvItemsSuppliers.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvItemsSuppliers.FullRowSelect = true;
-            this.lvItemsSuppliers.GridLines = true;
-            this.lvItemsSuppliers.HideSelection = false;
-            this.lvItemsSuppliers.Location = new System.Drawing.Point(3, 19);
-            this.lvItemsSuppliers.Name = "lvItemsSuppliers";
-            this.lvItemsSuppliers.Size = new System.Drawing.Size(487, 161);
-            this.lvItemsSuppliers.TabIndex = 0;
-            this.lvItemsSuppliers.UseCompatibleStateImageBehavior = false;
-            // 
             // PanelPurchase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -476,6 +506,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.panelOptions.ResumeLayout(false);
             this.panelOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -502,7 +534,6 @@
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelOptions;
         private System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.DataGridView dgItemList;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -515,5 +546,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListView lvItemsSuppliers;
+        public System.Windows.Forms.DataGridView dgItemList;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label7;
     }
 }

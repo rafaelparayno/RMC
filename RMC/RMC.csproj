@@ -299,6 +299,12 @@
     <Compile Include="InventoryPharma\Dialogs\seniorDiag.Designer.cs">
       <DependentUpon>seniorDiag.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelPo\Dialogs\QtyDiag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelPo\Dialogs\QtyDiag.Designer.cs">
+      <DependentUpon>QtyDiag.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelPo\PanelPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -407,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\Dialogs\seniorDiag.resx">
       <DependentUpon>seniorDiag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelPo\Dialogs\QtyDiag.resx">
+      <DependentUpon>QtyDiag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelPo\PanelPurchase.resx">
       <DependentUpon>PanelPurchase.cs</DependentUpon>

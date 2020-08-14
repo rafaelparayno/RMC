@@ -46,7 +46,7 @@ namespace RMC.Database.Controllers
 
             while (await reader.ReadAsync())
             {
-                sum = int.Parse(reader["AverageSales"].ToString());
+                sum =  reader["AverageSales"].ToString() == "" ? 0 : int.Parse(reader["AverageSales"].ToString());
             }
             crud.CloseConnection();
           

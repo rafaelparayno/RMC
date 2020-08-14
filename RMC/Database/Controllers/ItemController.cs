@@ -32,7 +32,7 @@ namespace RMC.Database.Controllers
         public async Task<DataSet> getDataWithSupplierIdTotalStocks(int id)
         {
             string sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
-                            SKU, Description,isBranded,item_type,category_name,unit_name 
+                            UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id
