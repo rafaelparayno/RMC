@@ -1,16 +1,11 @@
-﻿using MySqlX.XDevAPI.Relational;
-using RMC.Components;
+﻿using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.InventoryPharma.PanelPo.Dialogs;
 using RMC.SystemSettings;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,11 +15,14 @@ namespace RMC.InventoryPharma.PanelPo
     {
         SupplierController supplierController = new SupplierController();
         SalesPharmaController salesPharmaController = new SalesPharmaController();
+        PoController poController = new PoController();
         ItemController itemz = new ItemController();
         bool isShowEoq = false;
         int days = 0;
         float PercentStocks = 0;
         decimal totalCost = 0;
+        int cbSupValue = 0;
+        int PONO = 0;
         DataTable dt = new DataTable();
         public PanelPurchase()
         {
@@ -32,13 +30,14 @@ namespace RMC.InventoryPharma.PanelPo
             loadFromDbtoCb();
             initSettings();
             initDg();
+            initPO();
         }
 
         private void initDg()
         {
             dt.Columns.Add("Itemid", typeof(int));
-            dt.Columns.Add("Product Name", typeof(string));
-            dt.Columns.Add("Unit Price", typeof(decimal));
+            dt.Columns.Add("ProductName", typeof(string));
+            dt.Columns.Add("UnitPrice", typeof(decimal));
             dt.Columns.Add("Quantity", typeof(int));
             dt.Columns.Add("SubTotal", typeof(decimal));
         }
@@ -56,11 +55,10 @@ namespace RMC.InventoryPharma.PanelPo
 
         private void cbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int cbSupValue = int.Parse((cbSuppliers.SelectedItem as ComboBoxItem).Value.ToString());
+            cbSupValue = int.Parse((cbSuppliers.SelectedItem as ComboBoxItem).Value.ToString());
           
             loadGrid(cbSupValue);
-            dt.Rows.Clear();
-            label7.Text = "PHP 0.00";
+            ResetData();
         }
 
         private async void loadGrid(int id)
@@ -77,6 +75,7 @@ namespace RMC.InventoryPharma.PanelPo
             lvItemsSuppliers.View = View.Details;
             lvItemsSuppliers.Columns.Add("ID", 80, HorizontalAlignment.Left);
             lvItemsSuppliers.Columns.Add("Item Name", 150, HorizontalAlignment.Left);
+            lvItemsSuppliers.Columns.Add("SKU", 80, HorizontalAlignment.Left);
             lvItemsSuppliers.Columns.Add("Current Stocks", 150, HorizontalAlignment.Left);
             lvItemsSuppliers.Columns.Add("Unit Cost", 80, HorizontalAlignment.Left);
             lvItemsSuppliers.Columns.Add("Avg Sales", 80, HorizontalAlignment.Left);
@@ -92,6 +91,7 @@ namespace RMC.InventoryPharma.PanelPo
                 ListViewItem items = new ListViewItem();
                 items.Text = dr[0].ToString();
                 items.SubItems.Add(dr[1].ToString());
+                items.SubItems.Add(dr[4].ToString());
                 string currentStocks = dr[2].ToString() == "" ? "0" : dr[2].ToString();
                 items.SubItems.Add(currentStocks);
                
@@ -119,6 +119,8 @@ namespace RMC.InventoryPharma.PanelPo
             System.IO.StreamWriter file = new System.IO.StreamWriter(Directory.GetCurrentDirectory() + @"\poSettings.txt");
             file.WriteLine(lines);
             file.Close();
+
+            loadGrid(cbSupValue);
         }
 
         private void rbEoqShow_CheckedChanged(object sender, EventArgs e)
@@ -184,7 +186,7 @@ namespace RMC.InventoryPharma.PanelPo
                 return;
 
             int itemIdSelected = int.Parse(lvItemsSuppliers.SelectedItems[0].SubItems[0].Text);
-            decimal unitCosts = decimal.Parse(lvItemsSuppliers.SelectedItems[0].SubItems[3].Text);
+            decimal unitCosts = decimal.Parse(lvItemsSuppliers.SelectedItems[0].SubItems[4].Text);
             string name = lvItemsSuppliers.SelectedItems[0].SubItems[1].Text;
             QtyDiag form = new QtyDiag();
             form.ShowDialog();
@@ -266,6 +268,56 @@ namespace RMC.InventoryPharma.PanelPo
             dgItemList.DataSource = dt;
 
             ComputeTotalCost();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dgItemList.Rows.Count == 0)
+                return;
+
+            foreach (DataGridViewRow dr in dgItemList.Rows)
+            {
+                poController.save(int.Parse(dr.Cells["SubTotal"].Value.ToString()),
+                                  cbSupValue, int.Parse(dr.Cells["Quantity"].Value.ToString()), PONO);
+            }
+
+            MessageBox.Show("Succesfully Added A Purchase Order");
+            initPO();
+            ResetData();
+
+        }
+
+        private void initPO()
+        {
+            PONO = poController.getLastPoNo() + 1;
+            groupBox2.Text = "Purchase Order # " + PONO;
+        }
+
+        private void ResetData()
+        {
+            dt.Rows.Clear();
+            label7.Text = "PHP 0.00";
+        }
+
+        private async void SearchGrid(string searchkey, int cbSelect)
+        {
+            DataSet ds = await itemz.getDataWithSupplierIdTotalStocksWithSearch(cbSupValue,cbSelect, searchkey);
+            RefreshGrid(ds);
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            int selectedCombobx = comboBox1.SelectedIndex;
+            if (selectedCombobx == -1)
+            {
+                loadGrid(cbSupValue);
+
+            }
+            else
+            {
+                SearchGrid(txtName.Text.Trim(), selectedCombobx);
+            }
+           
         }
     }
 }

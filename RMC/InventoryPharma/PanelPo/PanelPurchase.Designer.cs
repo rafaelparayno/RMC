@@ -129,6 +129,7 @@
             this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // comboBox1
             // 
@@ -136,8 +137,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Name",
-            "SKU",
-            "Description"});
+            "SKU"});
             this.comboBox1.Location = new System.Drawing.Point(16, 91);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
@@ -241,6 +241,7 @@
             this.btnRemove.Text = "Purchase Order";
             this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // panelMain
             // 
