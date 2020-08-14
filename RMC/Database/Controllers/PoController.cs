@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,22 @@ namespace RMC.Database.Controllers
             crud.CloseConnection();
 
             return lastPo;
+        }
+
+        public async Task<List<string>> getPoActive()
+        {
+            List<string> poActive = new List<string>();
+            string sql = @"SELECT DISTINCT(po_no) FROM purchase_order WHERE quantity_order > 0";
+
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while (await reader.ReadAsync())
+            {
+                poActive.Add("PO# " +reader["po_no"].ToString());
+            }
+            crud.CloseConnection();
+            return poActive;
         }
     }
 }

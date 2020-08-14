@@ -277,7 +277,7 @@ namespace RMC.InventoryPharma.PanelPo
 
             foreach (DataGridViewRow dr in dgItemList.Rows)
             {
-                poController.save(int.Parse(dr.Cells["SubTotal"].Value.ToString()),
+                poController.save(int.Parse(dr.Cells["Itemid"].Value.ToString()),
                                   cbSupValue, int.Parse(dr.Cells["Quantity"].Value.ToString()), PONO);
             }
 

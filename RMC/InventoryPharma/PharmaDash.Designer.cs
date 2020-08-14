@@ -137,6 +137,7 @@
             this.btnRec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRec.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRec.UseVisualStyleBackColor = false;
+            this.btnRec.Click += new System.EventHandler(this.btnRec_Click);
             // 
             // btnPos
             // 

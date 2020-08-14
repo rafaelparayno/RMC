@@ -312,6 +312,12 @@
     <Compile Include="InventoryPharma\PanelPo\PanelPurchase.Designer.cs">
       <DependentUpon>PanelPurchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelRo\PanelRecPo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelRo\PanelRecPo.Designer.cs">
+      <DependentUpon>PanelRecPo.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelViewStocks\Dialog\AdjustStocks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -420,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelPo\PanelPurchase.resx">
       <DependentUpon>PanelPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelRo\PanelRecPo.resx">
+      <DependentUpon>PanelRecPo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelViewStocks\Dialog\AdjustStocks.resx">
       <DependentUpon>AdjustStocks.cs</DependentUpon>
