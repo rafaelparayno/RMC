@@ -56,8 +56,8 @@ namespace RMC.Database.Controllers
         {
             List<MySqlParameter> list = new List<MySqlParameter>();
 
-            string sql = @"INSERT INTO `purchase_order` (supplier_id,u_id) 
-                            VALUES (@sid,@uid)";
+            string sql = @"INSERT INTO `purchase_order` (supplier_id,u_id,is_receive) 
+                            VALUES (@sid,@uid,0)";
 
             
             list.Add(new MySqlParameter("@sid", supplierid));
@@ -84,12 +84,21 @@ namespace RMC.Database.Controllers
             return last_id;
         }
 
+        public async void receiveUpdate(int poid)
+        {
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            string sql = @"UPDATE purchase_order SET is_receive = 1 WHERE po_id = @poid";
+            listparams.Add(new MySqlParameter("@poid", poid));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+
         public async Task<List<string>> getPoActive()
         {
             List<string> poActive = new List<string>();
             string sql = @"SELECT DISTINCT(purchase_order.po_id) FROM `purchase_order` 
                             LEFT JOIN purchase_order_items ON purchase_order.po_id =  purchase_order_items.po_id
-                            WHERE quantity_order > 0";
+                            WHERE is_receive = 0";
 
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);

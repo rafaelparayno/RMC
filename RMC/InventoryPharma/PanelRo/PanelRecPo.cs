@@ -13,9 +13,14 @@ namespace RMC.InventoryPharma.PanelRo
     {
         PoController poController = new PoController();
         PoItemController poItemController = new PoItemController();
+        PharmaStocksController pharmaStocksController = new PharmaStocksController();
+        ClinicStocksController clinicStocksController = new ClinicStocksController();
+        ReceiveControllers receiveControllers = new ReceiveControllers();
+        BackOrderController backOrderController = new BackOrderController();
         List<string> Po = new List<string>();
         DataTable tableClinic = new DataTable();
         DataTable tablePharma = new DataTable();
+        int po_no = 0;
         public PanelRecPo()
         {
             InitializeComponent();
@@ -54,16 +59,27 @@ namespace RMC.InventoryPharma.PanelRo
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int _;
+           
+            
             if (listBox1.Items.Count == 0)
                 return;
 
-            int po_no = int.Parse(listBox1.SelectedItem.ToString().Split(' ')[1]);
+            if (listBox1.SelectedItem == null)
+                return;
+
+            if (!(int.TryParse(listBox1.SelectedItem.ToString().Split(' ')[1], out _)))
+                return;
+
+            po_no = int.Parse(listBox1.SelectedItem.ToString().Split(' ')[1]);
             loadPoItems(po_no);
+            refreshDgs();
         }
 
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+
             if (cbType.SelectedIndex == 0)
             {
                 loadPO();
@@ -72,6 +88,7 @@ namespace RMC.InventoryPharma.PanelRo
             {
 
             }
+         
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -91,7 +108,20 @@ namespace RMC.InventoryPharma.PanelRo
             int itemId = int.Parse(dgInPo.SelectedRows[0].Cells[0].Value.ToString());
             string name = dgInPo.SelectedRows[0].Cells[1].Value.ToString();
 
-            tablePharma.Rows.Add(itemId, name, qtyRec);
+            if (isFoundInDgPharma(itemId))
+            {
+                DataRow[] rows = tablePharma.Select(String.Format(@"itemId = {0}", itemId));
+                int index = tablePharma.Rows.IndexOf(rows[0]);
+                int currentqty = CurrentQtyInPharmaTable(itemId);
+                tablePharma.Rows[index].SetField("QuantityReceive", currentqty + form.qty);
+               
+            }
+            else
+            {
+                tablePharma.Rows.Add(itemId, name, qtyRec);
+            }
+
+          
             dataGridView1.DataSource = tablePharma;
             dataGridView1.AutoResizeColumns();
             substractQtyInDgPo(qtyRec);
@@ -113,7 +143,20 @@ namespace RMC.InventoryPharma.PanelRo
             int itemId = int.Parse(dgInPo.SelectedRows[0].Cells[0].Value.ToString());
             string name = dgInPo.SelectedRows[0].Cells[1].Value.ToString();
 
-            tableClinic.Rows.Add(itemId, name, qtyRec);
+            if (isFoundInDgClinic(itemId))
+            {
+
+                DataRow[] rows = tableClinic.Select(String.Format(@"itemId = {0}", itemId));
+                int index = tableClinic.Rows.IndexOf(rows[0]);
+                int currentqty = CurrentQtyInClinicTable(itemId);
+                tableClinic.Rows[index].SetField("QuantityReceive", currentqty + form.qty);
+            }
+            else
+            {
+                tableClinic.Rows.Add(itemId, name, qtyRec);
+            }
+
+           
             dataGridView2.DataSource = tableClinic;
             dataGridView2.AutoResizeColumns();
             substractQtyInDgPo(qtyRec);
@@ -171,6 +214,155 @@ namespace RMC.InventoryPharma.PanelRo
                     return;
                 }
             }
+        }
+
+        private bool isFoundInDgPharma(int id)
+        {
+
+            foreach (DataRow dr in tablePharma.Rows)
+            {
+                if (id == int.Parse(dr[0].ToString()))
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+        private bool isFoundInDgClinic(int id)
+        {
+
+            foreach (DataRow dr in tableClinic.Rows)
+            {
+                if (id == int.Parse(dr[0].ToString()))
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+        private int CurrentQtyInPharmaTable(int id)
+        {
+
+            foreach (DataRow dr in tablePharma.Rows)
+            {
+                if (id == int.Parse(dr[0].ToString()))
+                {
+                    return int.Parse(dr[2].ToString());
+                }
+
+            }
+
+            return 0;
+        }
+
+        private int CurrentQtyInClinicTable(int id)
+        {
+
+            foreach (DataRow dr in tableClinic.Rows)
+            {
+                if (id == int.Parse(dr[0].ToString()))
+                {
+                    return int.Parse(dr[2].ToString());
+                }
+
+            }
+
+            return 0;
+        }
+
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0 && dataGridView2.Rows.Count == 0)
+                return;
+
+            save();
+
+            listBox1.Items.Clear();
+            dgInPo.DataSource = "";
+            refreshDgs();
+            if (cbType.SelectedIndex == 0)
+            {
+                loadPO();
+            }
+            else
+            {
+
+            }
+
+          
+        }
+
+        private void refreshDgs()
+        {
+            tablePharma.Rows.Clear();
+            tableClinic.Rows.Clear();
+
+            dataGridView1.DataSource = tablePharma;
+            dataGridView2.DataSource = tableClinic;
+        }
+
+        private  void save()
+        {
+            Dictionary<int, int> itemsRec = new Dictionary<int, int>();
+
+            poController.receiveUpdate(po_no);
+            foreach (DataGridViewRow row in dgInPo.Rows)
+            {
+                poItemController.updateOrderQty(int.Parse(row.Cells[0].Value.ToString()),
+                                                po_no,
+                                                int.Parse(row.Cells["quantity_order"].Value.ToString()));             
+            }
+
+            foreach (DataGridViewRow row in dgInPo.Rows)
+            {
+                if (int.Parse(row.Cells["quantity_order"].Value.ToString()) > 0)
+                {
+                    backOrderController.save(po_no);
+                    break;
+                }
+            }
+
+            foreach (DataRow dr in tablePharma.Rows)
+            {
+                pharmaStocksController.addStocks(int.Parse(dr[0].ToString()),
+                                                 int.Parse(dr[2].ToString()));
+
+                itemsRec.Add(int.Parse(dr[0].ToString()), int.Parse(dr[2].ToString()));
+
+            }
+
+             foreach(DataRow dr in tableClinic.Rows)
+            {
+                clinicStocksController.addStocks(int.Parse(dr[0].ToString()),
+                                                 int.Parse(dr[2].ToString()));
+                if(!(itemsRec.ContainsKey(int.Parse(dr[0].ToString()))))
+                    itemsRec.Add(int.Parse(dr[0].ToString()), 0);
+                itemsRec = updateTotal(itemsRec, int.Parse(dr[0].ToString()), int.Parse(dr[2].ToString()));
+            }
+
+            
+             foreach(KeyValuePair<int,int> receive in itemsRec)
+            {
+                receiveControllers.save(receive.Key, receive.Value, po_no);
+            }
+
+
+            MessageBox.Show("Succesfully Receive Items");
+
+            
+        }
+
+
+        private Dictionary<int,int> updateTotal(Dictionary<int, int> dic,int itemid,int qty)
+        {
+            dic[itemid] = dic[itemid] + qty;
+            return dic;
         }
     }
 }

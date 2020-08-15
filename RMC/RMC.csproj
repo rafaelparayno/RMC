@@ -272,6 +272,7 @@
     </Compile>
     <Compile Include="Database\BackupandRestore\csBackupAndRestore.cs" />
     <Compile Include="Database\Controllers\AccessController.cs" />
+    <Compile Include="Database\Controllers\BackOrderController.cs" />
     <Compile Include="Database\Controllers\CategoryController.cs" />
     <Compile Include="Database\Controllers\ClinicStocksController.cs" />
     <Compile Include="Database\Controllers\InvoiceController.cs" />
@@ -280,6 +281,7 @@
     <Compile Include="Database\Controllers\PharmaStocksController.cs" />
     <Compile Include="Database\Controllers\PoController.cs" />
     <Compile Include="Database\Controllers\PoItemController.cs" />
+    <Compile Include="Database\Controllers\ReceiveControllers.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
     <Compile Include="Database\Controllers\SalesPharmaController.cs" />
     <Compile Include="Database\Controllers\StocksHistoryController.cs" />

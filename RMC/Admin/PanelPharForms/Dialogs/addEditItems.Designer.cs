@@ -132,6 +132,7 @@
             this.listBoxSuppliers.Name = "listBoxSuppliers";
             this.listBoxSuppliers.Size = new System.Drawing.Size(675, 68);
             this.listBoxSuppliers.TabIndex = 250;
+       
             // 
             // label9
             // 
@@ -721,7 +722,6 @@
             this.Name = "addEditItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addEditItems";
-         
             this.panel1.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();

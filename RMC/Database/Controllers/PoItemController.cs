@@ -33,7 +33,7 @@ namespace RMC.Database.Controllers
                           FROM `purchase_order_items` LEFT JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id 
                           LEFT JOIN purchase_order ON purchase_order_items.po_id = purchase_order.po_id
                           LEFT JOIN suppliers ON purchase_order.supplier_id = suppliers.supplier_id 
-                          WHERE purchase_order_items.po_id = @po_id";
+                          WHERE purchase_order_items.po_id = @po_id ";
 
             List<MySqlParameter> listParams = new List<MySqlParameter>();
             listParams.Add(new MySqlParameter("@po_id", po_no));
@@ -50,6 +50,17 @@ namespace RMC.Database.Controllers
 
             crud.CloseConnection();
             return purchaseOrder;
+        }
+
+        public async void updateOrderQty(int itemid,int poid,int qty)
+        {
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            string sql = @"UPDATE purchase_order_items SET quantity_order = @qty WHERE item_id = @itemid AND po_id = @poid";
+            listparams.Add(new MySqlParameter("@itemid", itemid));
+            listparams.Add(new MySqlParameter("@qty", qty));
+            listparams.Add(new MySqlParameter("@poid", poid));
+
+            await crud.ExecuteAsync(sql, listparams);
         }
     }
 }
