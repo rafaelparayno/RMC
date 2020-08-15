@@ -46,6 +46,12 @@ namespace RMC.InventoryPharma.PanelRo
             listBox1.Items.AddRange(Po.ToArray());
         }
 
+        private async void loadBo()
+        {
+            Po = await backOrderController.getBoActive();
+            listBox1.Items.AddRange(Po.ToArray());
+        }
+
   
 
         private async void loadPoItems(int pono)
@@ -79,14 +85,15 @@ namespace RMC.InventoryPharma.PanelRo
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-
+            dgInPo.DataSource = "";
+            refreshDgs();
             if (cbType.SelectedIndex == 0)
             {
                 loadPO();
             }
             else
             {
-
+                loadBo();
             }
          
         }
@@ -292,7 +299,7 @@ namespace RMC.InventoryPharma.PanelRo
             }
             else
             {
-
+                loadBo();
             }
 
           
@@ -319,14 +326,18 @@ namespace RMC.InventoryPharma.PanelRo
                                                 int.Parse(row.Cells["quantity_order"].Value.ToString()));             
             }
 
-            foreach (DataGridViewRow row in dgInPo.Rows)
+            if(cbType.SelectedIndex == 0)
             {
-                if (int.Parse(row.Cells["quantity_order"].Value.ToString()) > 0)
+                foreach (DataGridViewRow row in dgInPo.Rows)
                 {
-                    backOrderController.save(po_no);
-                    break;
+                    if (int.Parse(row.Cells["quantity_order"].Value.ToString()) > 0)
+                    {
+                        backOrderController.save(po_no);
+                        break;
+                    }
                 }
             }
+           
 
             foreach (DataRow dr in tablePharma.Rows)
             {
