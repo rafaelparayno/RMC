@@ -44,19 +44,19 @@ namespace RMC.InventoryPharma
             openChildForm(new ViewStocks());
         }
 
-        private void btnPos_Click(object sender, EventArgs e)
+        private void btnRec_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelRecPo());
+        }
+
+        private void btnPos_Click_1(object sender, EventArgs e)
         {
             openChildForm(new POS());
         }
 
-        private void btnPo_Click(object sender, EventArgs e)
+        private void btnPo_Click_1(object sender, EventArgs e)
         {
             openChildForm(new PanelPurchase());
-        }
-
-        private void btnRec_Click(object sender, EventArgs e)
-        {
-            openChildForm(new PanelRecPo());
         }
     }
 }

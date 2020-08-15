@@ -100,7 +100,7 @@ namespace RMC.InventoryPharma.PanelPo
                 items.SubItems.Add(dr[3].ToString());
                 int sum = days == 0 ? 0 :  await getSum(days, int.Parse(dr[0].ToString()));
                 Decimal avg = Decimal.Divide(sum, days);
-                items.SubItems.Add(Math.Round(avg,0) + "");
+                items.SubItems.Add(Math.Round(avg,2) + "");
                 items.SubItems.Add("NONE");
                 items.SubItems.Add("NONE");
                 items.SubItems.Add("NONE");  
@@ -122,6 +122,7 @@ namespace RMC.InventoryPharma.PanelPo
             file.WriteLine(lines);
             file.Close();
 
+            initSettings();
             loadGrid(cbSupValue);
         }
 
