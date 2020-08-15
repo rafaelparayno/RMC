@@ -1,5 +1,6 @@
 ﻿using RMC.Components;
 using RMC.Database.Controllers;
+using RMC.Database.Models;
 using RMC.InventoryPharma.PanelPo.Dialogs;
 using RMC.SystemSettings;
 using System;
@@ -17,6 +18,7 @@ namespace RMC.InventoryPharma.PanelPo
         SalesPharmaController salesPharmaController = new SalesPharmaController();
         PoController poController = new PoController();
         ItemController itemz = new ItemController();
+        PoItemController poItemController = new PoItemController();
         bool isShowEoq = false;
         int days = 0;
         float PercentStocks = 0;
@@ -275,10 +277,12 @@ namespace RMC.InventoryPharma.PanelPo
             if (dgItemList.Rows.Count == 0)
                 return;
 
+            poController.save(cbSupValue, UserLog.getUserId());
             foreach (DataGridViewRow dr in dgItemList.Rows)
             {
-                poController.save(int.Parse(dr.Cells["Itemid"].Value.ToString()),
-                                  cbSupValue, int.Parse(dr.Cells["Quantity"].Value.ToString()), PONO);
+                poItemController.Save(int.Parse(dr.Cells["Itemid"].Value.ToString()),
+                                    int.Parse(dr.Cells["Quantity"].Value.ToString()));
+             //   poController.save( cbSupValue, int.Parse(dr.Cells["Quantity"].Value.ToString()), PONO);
             }
 
             MessageBox.Show("Succesfully Added A Purchase Order");
@@ -289,7 +293,7 @@ namespace RMC.InventoryPharma.PanelPo
 
         private void initPO()
         {
-            PONO = poController.getLastPoNo() + 1;
+            PONO = poController.getLastPoNo();
             groupBox2.Text = "Purchase Order # " + PONO;
         }
 

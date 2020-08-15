@@ -33,7 +33,6 @@
             this.btnViewStocks = new FontAwesome.Sharp.IconButton();
             this.btnReturn = new FontAwesome.Sharp.IconButton();
             this.btnRec = new FontAwesome.Sharp.IconButton();
-            this.btnPos = new FontAwesome.Sharp.IconButton();
             this.btnPo = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -42,6 +41,7 @@
             this.datelabel = new System.Windows.Forms.Label();
             this.timelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnPos = new FontAwesome.Sharp.IconButton();
             this.panelSideMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -53,10 +53,10 @@
             // 
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.Salmon;
+            this.panelSideMenu.Controls.Add(this.btnPos);
             this.panelSideMenu.Controls.Add(this.btnViewStocks);
             this.panelSideMenu.Controls.Add(this.btnReturn);
             this.panelSideMenu.Controls.Add(this.btnRec);
-            this.panelSideMenu.Controls.Add(this.btnPos);
             this.panelSideMenu.Controls.Add(this.btnPo);
             this.panelSideMenu.Controls.Add(this.panelLogo);
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -78,7 +78,7 @@
             this.btnViewStocks.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnViewStocks.IconSize = 35;
             this.btnViewStocks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnViewStocks.Location = new System.Drawing.Point(0, 255);
+            this.btnViewStocks.Location = new System.Drawing.Point(0, 210);
             this.btnViewStocks.Name = "btnViewStocks";
             this.btnViewStocks.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnViewStocks.Rotation = 0D;
@@ -103,7 +103,7 @@
             this.btnReturn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnReturn.IconSize = 35;
             this.btnReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReturn.Location = new System.Drawing.Point(0, 210);
+            this.btnReturn.Location = new System.Drawing.Point(0, 165);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnReturn.Rotation = 0D;
@@ -127,7 +127,7 @@
             this.btnRec.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnRec.IconSize = 35;
             this.btnRec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRec.Location = new System.Drawing.Point(0, 165);
+            this.btnRec.Location = new System.Drawing.Point(0, 120);
             this.btnRec.Name = "btnRec";
             this.btnRec.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnRec.Rotation = 0D;
@@ -138,31 +138,6 @@
             this.btnRec.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRec.UseVisualStyleBackColor = false;
             this.btnRec.Click += new System.EventHandler(this.btnRec_Click);
-            // 
-            // btnPos
-            // 
-            this.btnPos.BackColor = System.Drawing.Color.Salmon;
-            this.btnPos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPos.FlatAppearance.BorderSize = 0;
-            this.btnPos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPos.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnPos.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnPos.IconChar = FontAwesome.Sharp.IconChar.Barcode;
-            this.btnPos.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnPos.IconSize = 35;
-            this.btnPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPos.Location = new System.Drawing.Point(0, 120);
-            this.btnPos.Name = "btnPos";
-            this.btnPos.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnPos.Rotation = 0D;
-            this.btnPos.Size = new System.Drawing.Size(250, 45);
-            this.btnPos.TabIndex = 15;
-            this.btnPos.Text = "Point of Sales";
-            this.btnPos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPos.UseVisualStyleBackColor = false;
-            this.btnPos.Click += new System.EventHandler(this.btnPos_Click);
             // 
             // btnPo
             // 
@@ -275,6 +250,30 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnPos
+            // 
+            this.btnPos.BackColor = System.Drawing.Color.Salmon;
+            this.btnPos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPos.FlatAppearance.BorderSize = 0;
+            this.btnPos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPos.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnPos.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnPos.IconChar = FontAwesome.Sharp.IconChar.Barcode;
+            this.btnPos.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnPos.IconSize = 35;
+            this.btnPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPos.Location = new System.Drawing.Point(0, 255);
+            this.btnPos.Name = "btnPos";
+            this.btnPos.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnPos.Rotation = 0D;
+            this.btnPos.Size = new System.Drawing.Size(250, 45);
+            this.btnPos.TabIndex = 19;
+            this.btnPos.Text = "Point of Sales";
+            this.btnPos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPos.UseVisualStyleBackColor = false;
+            // 
             // PharmaDash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,7 +297,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panelSideMenu;
-        private FontAwesome.Sharp.IconButton btnPos;
         private FontAwesome.Sharp.IconButton btnPo;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -310,5 +308,6 @@
         private FontAwesome.Sharp.IconButton btnViewStocks;
         private FontAwesome.Sharp.IconButton btnReturn;
         private FontAwesome.Sharp.IconButton btnRec;
+        private FontAwesome.Sharp.IconButton btnPos;
     }
 }

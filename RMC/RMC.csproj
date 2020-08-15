@@ -279,6 +279,7 @@
     <Compile Include="Database\Controllers\LoginController.cs" />
     <Compile Include="Database\Controllers\PharmaStocksController.cs" />
     <Compile Include="Database\Controllers\PoController.cs" />
+    <Compile Include="Database\Controllers\PoItemController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
     <Compile Include="Database\Controllers\SalesPharmaController.cs" />
     <Compile Include="Database\Controllers\StocksHistoryController.cs" />
@@ -291,6 +292,7 @@
     <Compile Include="Database\DbSettings\dbConnection.cs" />
     <Compile Include="Database\Models\access.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
+    <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\useraccount.cs" />
     <Compile Include="Database\Models\UserLog.cs" />
@@ -311,6 +313,12 @@
     </Compile>
     <Compile Include="InventoryPharma\PanelPo\PanelPurchase.Designer.cs">
       <DependentUpon>PanelPurchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelRo\Dialogs\AddQtyRo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelRo\Dialogs\AddQtyRo.Designer.cs">
+      <DependentUpon>AddQtyRo.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryPharma\PanelRo\PanelRecPo.cs">
       <SubType>Form</SubType>
@@ -426,6 +434,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelPo\PanelPurchase.resx">
       <DependentUpon>PanelPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelRo\Dialogs\AddQtyRo.resx">
+      <DependentUpon>AddQtyRo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\PanelRecPo.resx">
       <DependentUpon>PanelRecPo.cs</DependentUpon>

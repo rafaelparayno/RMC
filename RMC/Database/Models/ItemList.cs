@@ -22,21 +22,7 @@ namespace RMC.Database.Models
         public  float sellingPrice;
         public  string sku;
         public  string description;
-        /*
-                long id;
-                string name;
-                int stocks;
-                int subCategory;
-                string Category;
-                int isBrand;
-                string UnitName;
-                string ExpirationDate;
-                string DateAdded;
-                float unitPrice;
-                float markupPrice;
-                float sellingPrice;
-                string sku;
-                string description;*/
+     
 
         public ItemList(params string[] item)
         {
