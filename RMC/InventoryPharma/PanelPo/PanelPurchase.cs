@@ -111,11 +111,11 @@ namespace RMC.InventoryPharma.PanelPo
                 string currentStocks = dr[2].ToString() == "" ? "0" : dr[2].ToString();
                 items.SubItems.Add(currentStocks);       
                 items.SubItems.Add(dr[3].ToString());
-                items.SubItems.Add(avg + "");
-                items.SubItems.Add(avgLeadInt + "");
-                items.SubItems.Add(safetyStock + "");
-                items.SubItems.Add(ROP + "");
-                items.SubItems.Add(percentsOptimal+"");  
+                items.SubItems.Add(avg == 0 ? "no data" : avg + "");
+                items.SubItems.Add(avgLeadInt == 0 ? "no data" : avgLeadInt + "");
+                items.SubItems.Add(safetyStock == 0 ? "no data" :  safetyStock + "");
+                items.SubItems.Add(ROP == 0 ? "no data" : ROP + "");
+                items.SubItems.Add(percentsOptimal == 0 ? "no data" : percentsOptimal+"");  
                 if (rbEoqShow.Checked) items.SubItems.Add("NONE");
 
                 lvItemsSuppliers.Items.Add(items);
