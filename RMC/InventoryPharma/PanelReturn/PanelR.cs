@@ -14,11 +14,20 @@ namespace RMC.InventoryPharma.PanelReturn
 {
     public partial class PanelR : Form
     {
+
+        #region Variables
         SupplierController supplierController = new SupplierController();
         ItemController itemz = new ItemController();
+        ReturnItemsController ReturnItemsController = new ReturnItemsController();
+        PharmaStocksController pharmaStocksController = new PharmaStocksController();
+        ClinicStocksController clinicStocksController = new ClinicStocksController();
+
+
         int cbSupValue = 0;
         List<int> itemsIdList = new List<int>();
         DataTable dt = new DataTable();
+        #endregion
+
         public PanelR()
         {
             InitializeComponent();
@@ -26,6 +35,7 @@ namespace RMC.InventoryPharma.PanelReturn
             initDg();
         }
 
+        #region OwnFunctions
         private async void loadFromDbtoCb()
         {
             Task<List<ComboBoxItem>> task1 = supplierController.getComboDatas();
@@ -35,14 +45,6 @@ namespace RMC.InventoryPharma.PanelReturn
 
 
             cbSuppliers.Items.AddRange(task1.Result.ToArray());
-        }
-
-        private void cbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbSupValue = int.Parse((cbSuppliers.SelectedItem as ComboBoxItem).Value.ToString());
-
-            loadGrid(cbSupValue);
-            //ResetData();
         }
 
         private async void loadGrid(int id)
@@ -59,7 +61,6 @@ namespace RMC.InventoryPharma.PanelReturn
 
             RefreshGrid(ds);
         }
-
 
         private void initColumns()
         {
@@ -102,6 +103,55 @@ namespace RMC.InventoryPharma.PanelReturn
 
         }
 
+        private bool isFoundInDg(int id)
+        {
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (id == int.Parse(dr[0].ToString()))
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+        private int CurrentQty(int id)
+        {
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (id == int.Parse(dr[0].ToString()))
+                {
+                    return int.Parse(dr[3].ToString());
+                }
+
+            }
+
+            return 0;
+        }
+
+        private void updateStocksInLv(int qty)
+        {
+            int currentQty = int.Parse(lvItemsSuppliers.SelectedItems[0].SubItems[3].Text);
+            int updateQty = currentQty - qty;
+
+            lvItemsSuppliers.SelectedItems[0].SubItems[3].Text = updateQty + "";
+        }
+
+        private void updateRemoveStocksInLv(int selectedIndex, int currentQty, int qty)
+        {
+
+            int updateQty = currentQty + qty;
+
+            lvItemsSuppliers.Items[selectedIndex].SubItems[3].Text = updateQty + "";
+        }
+
+        #endregion
+
+        #region Handler
         private void iconButton1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == "")
@@ -150,53 +200,6 @@ namespace RMC.InventoryPharma.PanelReturn
             textBox1.Text = "";
             numericUpDown1.Value = 0;
             dgItemList.DataSource = dt;
-        }
-
-        private bool isFoundInDg(int id)
-        {
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                if (id == int.Parse(dr[0].ToString()))
-                {
-                    return true;
-                }
-
-            }
-
-            return false;
-        }
-
-
-        private int CurrentQty(int id)
-        {
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                if (id == int.Parse(dr[0].ToString()))
-                {
-                    return int.Parse(dr[3].ToString());
-                }
-
-            }
-
-            return 0;
-        }
-
-        private void updateStocksInLv(int qty)
-        {
-            int currentQty = int.Parse(lvItemsSuppliers.SelectedItems[0].SubItems[3].Text);
-            int updateQty = currentQty - qty;
-
-            lvItemsSuppliers.SelectedItems[0].SubItems[3].Text = updateQty + "";
-        }
-
-        private void updateRemoveStocksInLv(int selectedIndex, int currentQty, int qty)
-        {
-
-            int updateQty = currentQty + qty;
-
-            lvItemsSuppliers.Items[selectedIndex].SubItems[3].Text = updateQty + "";
         }
 
         private void rbPharma_Click(object sender, EventArgs e)
@@ -263,21 +266,72 @@ namespace RMC.InventoryPharma.PanelReturn
 
         }
 
-        private void iconButton5_Click(object sender, EventArgs e)
+        private void cbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dgItemList.Rows.Count == 0)
-                return;
-            //Saving....
+            cbSupValue = int.Parse((cbSuppliers.SelectedItem as ComboBoxItem).Value.ToString());
+
+            loadGrid(cbSupValue);
+            //ResetData();
         }
 
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            //savingBtn
+
+            if (dgItemList.Rows.Count == 0)
+                return;
+
+            savingOfReturn();
+            updatingOfstocks();
+
+
+            dt.Rows.Clear();
+            dgItemList.DataSource = dt;
+            MessageBox.Show("Successfully Return items");
+
+            
+        }
+
+        #endregion
+
+        #region Saving
         private void savingOfReturn()
         {
             foreach (DataGridViewRow dr in dgItemList.Rows)
             {
-
+                int qty = int.Parse(dr.Cells["Quantity"].Value.ToString());
+                int itemId = int.Parse(dr.Cells["Itemid"].Value.ToString());
+                string reason = dr.Cells["Reason"].Value.ToString();
+                ReturnItemsController.save(qty, reason, itemId, cbSupValue);
             }
         }
 
+        private void updatingOfstocks()
+        {
+            if (rbPharma.Checked)
+            {
+                foreach(int id in itemsIdList)
+                {
+                    ListViewItem item = lvItemsSuppliers.FindItemWithText(id + "");
+                    int indexLv = lvItemsSuppliers.Items.IndexOf(item);
+                    int currentQty = int.Parse(lvItemsSuppliers.Items[indexLv].SubItems[3].Text);
+
+                    pharmaStocksController.Save(id, currentQty);    
+                }
+            }
+            else
+            {
+                foreach (int id in itemsIdList)
+                {
+                    ListViewItem item = lvItemsSuppliers.FindItemWithText(id + "");
+                    int indexLv = lvItemsSuppliers.Items.IndexOf(item);
+                    int currentQty = int.Parse(lvItemsSuppliers.Items[indexLv].SubItems[3].Text);
+
+                    clinicStocksController.Save(id, currentQty);
+                }
+            }
+        }
+        #endregion
 
     }
 }
