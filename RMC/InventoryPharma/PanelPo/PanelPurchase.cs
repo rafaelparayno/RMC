@@ -19,6 +19,8 @@ namespace RMC.InventoryPharma.PanelPo
         PoController poController = new PoController();
         ItemController itemz = new ItemController();
         PoItemController poItemController = new PoItemController();
+        ReceiveControllers receiveControllers = new ReceiveControllers();
+
         bool isShowEoq = false;
         int days = 0;
         float PercentStocks = 0;
@@ -81,8 +83,9 @@ namespace RMC.InventoryPharma.PanelPo
             lvItemsSuppliers.Columns.Add("Current Stocks", 150, HorizontalAlignment.Left);
             lvItemsSuppliers.Columns.Add("Unit Cost", 80, HorizontalAlignment.Left);
             lvItemsSuppliers.Columns.Add("Avg Sales", 80, HorizontalAlignment.Left);
-            lvItemsSuppliers.Columns.Add("ROP", 80, HorizontalAlignment.Left);
+            lvItemsSuppliers.Columns.Add("Lead Time", 120, HorizontalAlignment.Left);
             lvItemsSuppliers.Columns.Add("Safety Stocks", 100, HorizontalAlignment.Left);
+            lvItemsSuppliers.Columns.Add("ROP", 80, HorizontalAlignment.Left);
             lvItemsSuppliers.Columns.Add("Optimal Order", 80, HorizontalAlignment.Left);
             if (rbEoqShow.Checked) lvItemsSuppliers.Columns.Add("EOQ", 80, HorizontalAlignment.Left);
 
@@ -90,19 +93,25 @@ namespace RMC.InventoryPharma.PanelPo
             lvItemsSuppliers.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
+                int itemId = int.Parse(dr[0].ToString());
+
+                int sum = days == 0 ? 0 : await getSum(days, itemId);
+                double avgLeadInt = days == 0 ? 0 : Math.Round(await getLeadSum(itemId, days),MidpointRounding.AwayFromZero);
+                decimal avg = Math.Round(Decimal.Divide(sum, days),MidpointRounding.AwayFromZero);
+                decimal safetyStock = Math.Round(days * avg, MidpointRounding.AwayFromZero);
+                decimal ROP = computeRop(avg, avgLeadInt, safetyStock);
+
                 ListViewItem items = new ListViewItem();
                 items.Text = dr[0].ToString();
                 items.SubItems.Add(dr[1].ToString());
                 items.SubItems.Add(dr[4].ToString());
                 string currentStocks = dr[2].ToString() == "" ? "0" : dr[2].ToString();
-                items.SubItems.Add(currentStocks);
-               
+                items.SubItems.Add(currentStocks);       
                 items.SubItems.Add(dr[3].ToString());
-                int sum = days == 0 ? 0 :  await getSum(days, int.Parse(dr[0].ToString()));
-                Decimal avg = Decimal.Divide(sum, days);
-                items.SubItems.Add(Math.Round(avg,2) + "");
-                items.SubItems.Add("NONE");
-                items.SubItems.Add("NONE");
+                items.SubItems.Add(avg + "");
+                items.SubItems.Add(avgLeadInt + "");
+                items.SubItems.Add(safetyStock + "");
+                items.SubItems.Add(ROP + "");
                 items.SubItems.Add("NONE");  
                 if (rbEoqShow.Checked) items.SubItems.Add("NONE");
                 lvItemsSuppliers.Items.Add(items);
@@ -158,6 +167,16 @@ namespace RMC.InventoryPharma.PanelPo
                 isShowEoq = false;
             }
 
+        }
+
+        private decimal computeRop(decimal averageSales,double leadtime,decimal safetyStock)
+        {
+            return Decimal.Multiply(averageSales , decimal.Parse("" + leadtime)) + safetyStock;
+        }
+
+        private async Task<float> getLeadSum(int itemid,int days)
+        {
+            return await receiveControllers.getSumLead(itemid,days);
         }
 
         private async Task<int> getSum(int days, int id)

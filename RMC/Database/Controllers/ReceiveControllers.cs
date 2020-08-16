@@ -2,6 +2,7 @@
 using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,5 +26,31 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, listparams);
         }
+
+        public async Task<float> getSumLead(int item_id,int days)
+        {
+            float leadTime = 0;
+            string sql = @"SELECT (SUM(date_ro - date_order)/ COUNT(ro_id)) AS 'AvgLead' FROM `receive_orders` 
+                         INNER JOIN purchase_order_items ON receive_orders.po_item_id = purchase_order_items.po_item_id 
+                         INNER JOIN purchase_order ON purchase_order_items.po_id = purchase_order.po_id 
+                         WHERE receive_orders.po_item_id in 
+                                (SELECT po_item_id FROM purchase_order_items 
+                                WHERE purchase_order_items.item_id = @item_id)
+                         AND date_ro BETWEEN DATE_SUB(NOW() , INTERVAL @days DAY) and NOW()";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@item_id", item_id));
+            listparams.Add(new MySqlParameter("@days", days));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+            
+            if(await reader.ReadAsync())
+            {
+                leadTime = reader["AvgLead"].ToString() == "" ? 0 : float.Parse(reader["AvgLead"].ToString());
+            }
+            crud.CloseConnection(); 
+
+            return leadTime;
+        }
+
+     
     }
 }
