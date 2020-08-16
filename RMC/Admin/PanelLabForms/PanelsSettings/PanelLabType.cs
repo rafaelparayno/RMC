@@ -1,5 +1,4 @@
-﻿using RMC.Admin.PanelLabForms.PanelsSettings;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,20 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RMC.Admin.PanelLabForms
+namespace RMC.Admin.PanelLabForms.PanelsSettings
 {
-  
-    public partial class LabratoryList : Form
+    public partial class PanelLabType : Form
     {
-     
-        public LabratoryList()
+        public PanelLabType()
         {
             InitializeComponent();
         }
-
-      
-
-       
-
     }
 }

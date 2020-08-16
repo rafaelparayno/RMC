@@ -6,12 +6,9 @@ using RMC.Pharma;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using FontAwesome.Sharp;
 
 namespace RMC.UserDash
 {
@@ -179,6 +176,16 @@ namespace RMC.UserDash
         private void iconButton4_Click_2(object sender, EventArgs e)
         {
             contextMenuStrip1.Show(iconButton4, new Point(iconButton4.Width - contextMenuStrip1.Width, iconButton4.Height));
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            iconButton4.IconChar = IconChar.AngleUp;
+        }
+
+        private void contextMenuStrip1_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        {
+            iconButton4.IconChar = IconChar.AngleDown;
         }
     }
 }

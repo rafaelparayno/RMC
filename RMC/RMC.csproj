@@ -123,6 +123,12 @@
     <Compile Include="Admin\PanelLabForms\LabratoryList.Designer.cs">
       <DependentUpon>LabratoryList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.Designer.cs">
+      <DependentUpon>PanelLabType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelLabForms\Services.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -389,6 +395,15 @@
     </Compile>
     <EmbeddedResource Include="Admin\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\LaboratorySettings.resx">
+      <DependentUpon>LaboratorySettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\LabratoryList.resx">
+      <DependentUpon>LabratoryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.resx">
+      <DependentUpon>PanelLabType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\addEditCategory.resx">
       <DependentUpon>addEditCategory.cs</DependentUpon>
