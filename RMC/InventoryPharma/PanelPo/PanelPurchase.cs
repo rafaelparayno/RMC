@@ -285,7 +285,7 @@ namespace RMC.InventoryPharma.PanelPo
 
         private void btnRemoveOrder_Click(object sender, EventArgs e)
         {
-            if (dgItemList.Rows.Count == 0)
+            if (dgItemList.SelectedRows.Count == 0)
                 return;
 
             int index = dgItemList.SelectedRows[0].Index;

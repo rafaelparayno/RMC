@@ -101,11 +101,12 @@
             // cbSuppliers
             // 
             this.cbSuppliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSuppliers.Font = new System.Drawing.Font("Tahoma", 12F);
             this.cbSuppliers.FormattingEnabled = true;
             this.cbSuppliers.Location = new System.Drawing.Point(16, 42);
             this.cbSuppliers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbSuppliers.Name = "cbSuppliers";
-            this.cbSuppliers.Size = new System.Drawing.Size(201, 24);
+            this.cbSuppliers.Size = new System.Drawing.Size(201, 27);
             this.cbSuppliers.TabIndex = 223;
             this.cbSuppliers.SelectedIndexChanged += new System.EventHandler(this.cbSuppliers_SelectedIndexChanged);
             // 
@@ -134,6 +135,7 @@
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Tahoma", 12F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Name",
@@ -141,7 +143,7 @@
             this.comboBox1.Location = new System.Drawing.Point(16, 91);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(202, 24);
+            this.comboBox1.Size = new System.Drawing.Size(202, 27);
             this.comboBox1.TabIndex = 221;
             // 
             // txtName
