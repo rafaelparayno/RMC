@@ -71,10 +71,9 @@ namespace RMC.InventoryPharma.PanelPo
             RefreshGrid(ds);
         }
 
-        private async void RefreshGrid(DataSet ds)
+
+        private void initColumns()
         {
-
-
             lvItemsSuppliers.Columns.Clear();
             lvItemsSuppliers.View = View.Details;
             lvItemsSuppliers.Columns.Add("ID", 80, HorizontalAlignment.Left);
@@ -88,19 +87,23 @@ namespace RMC.InventoryPharma.PanelPo
             lvItemsSuppliers.Columns.Add("ROP", 80, HorizontalAlignment.Left);
             lvItemsSuppliers.Columns.Add("Optimal Order", 80, HorizontalAlignment.Left);
             if (rbEoqShow.Checked) lvItemsSuppliers.Columns.Add("EOQ", 80, HorizontalAlignment.Left);
+        }
 
+        private async void RefreshGrid(DataSet ds)
+        {
+            initColumns();
 
             lvItemsSuppliers.Items.Clear();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 int itemId = int.Parse(dr[0].ToString());
-
+                
                 int sum = days == 0 ? 0 : await getSum(days, itemId);
                 double avgLeadInt = days == 0 ? 0 : Math.Round(await getLeadSum(itemId, days),MidpointRounding.AwayFromZero);
                 decimal avg = Math.Round(Decimal.Divide(sum, days),MidpointRounding.AwayFromZero);
                 decimal safetyStock = Math.Round(days * avg, MidpointRounding.AwayFromZero);
                 decimal ROP = computeRop(avg, avgLeadInt, safetyStock);
-
+                decimal percentsOptimal =  safetyStock * decimal.Parse((PercentStocks  + 1) + "");
                 ListViewItem items = new ListViewItem();
                 items.Text = dr[0].ToString();
                 items.SubItems.Add(dr[1].ToString());
@@ -112,8 +115,9 @@ namespace RMC.InventoryPharma.PanelPo
                 items.SubItems.Add(avgLeadInt + "");
                 items.SubItems.Add(safetyStock + "");
                 items.SubItems.Add(ROP + "");
-                items.SubItems.Add("NONE");  
+                items.SubItems.Add(percentsOptimal+"");  
                 if (rbEoqShow.Checked) items.SubItems.Add("NONE");
+
                 lvItemsSuppliers.Items.Add(items);
             }
            
