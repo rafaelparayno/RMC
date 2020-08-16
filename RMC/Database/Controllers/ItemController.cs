@@ -28,7 +28,6 @@ namespace RMC.Database.Controllers
             return dgSuppliers = await crud.GetDataSetAsync(sql, null);
         }
 
-
         public async Task<DataSet> getDataWithSupplierIdTotalStocks(int id)
         {
             string sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
@@ -87,88 +86,6 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, listParams);
         }
 
-
-        public async Task<DataSet> getDataWithSupplierIdTotalStocksWithSearch(int id,int searchType, string keySearch)
-        {
-            string sql = "";
-            List<MySqlParameter> listparams = new List<MySqlParameter>();
-            switch (searchType)
-            {
-                case 0:
-                    sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
-                            UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
-                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
-                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
-                            LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id
-                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
-                            WHERE itemlist.item_id in (SELECT item_id 
-                                                FROM supplier_items 
-                                                WHERE supplier_id in (SELECT supplier_id 
-                                                                      FROM suppliers 
-                                                                      WHERE supplier_id = @id)) 
-                            AND itemlist.is_active = 1 AND item_name LIKE @key";
-                    break;
-                case 1:
-                    sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
-                            UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
-                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
-                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
-                            LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id
-                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
-                            WHERE itemlist.item_id in (SELECT item_id 
-                                                FROM supplier_items 
-                                                WHERE supplier_id in (SELECT supplier_id 
-                                                                      FROM suppliers 
-                                                                      WHERE supplier_id = @id)) 
-                            AND itemlist.is_active = 1 AND SKU LIKE @key";
-                    break;
-               
-            }
-            listparams.Add(new MySqlParameter("@id", id));
-            string searches = "%" + keySearch + "%";
-            listparams.Add(new MySqlParameter("@key", searches));
-            return await crud.GetDataSetAsync(sql, listparams);
-        }
-
-        public async Task<DataSet> getDsSearchActive(int searchType,string keySearch)
-        {
-            string sql = "";
-            List<MySqlParameter> listparams = new List<MySqlParameter>();
-            switch (searchType)
-            {
-                case 0:
-                    sql = @"SELECT item_id,item_name ,UnitPrice , MarkupPrice ,
-                                SellingPrice, SKU, Description,isBranded,category_name,unit_name,
-                                Convert(ExpirationDate,varchar(50)),DateAdded FROM itemlist 
-                                LEFT JOIN category ON `category`.category_id  = `itemlist`.category_id 
-                                LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
-                                WHERE itemlist.is_active = @isactive AND item_name LIKE @key";                  
-                    break;
-                case 1:
-                    sql = @"SELECT item_id,item_name ,UnitPrice , MarkupPrice ,
-                                SellingPrice, SKU, Description,isBranded,category_name,unit_name,
-                                Convert(ExpirationDate,varchar(50)),DateAdded FROM itemlist 
-                                LEFT JOIN category ON `category`.category_id  = `itemlist`.category_id 
-                                LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
-                                WHERE itemlist.is_active = @isactive AND SKU LIKE @key";
-                    break;
-                case 2:
-                    sql = @"SELECT item_id,item_name ,UnitPrice , MarkupPrice ,
-                                SellingPrice, SKU, Description,isBranded,category_name,unit_name,
-                                Convert(ExpirationDate,varchar(50)),DateAdded FROM itemlist 
-                                LEFT JOIN category ON `category`.category_id  = `itemlist`.category_id 
-                                LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
-                                WHERE itemlist.is_active = @isactive AND Description LIKE @key";
-                    break;
-            }
-            listparams.Add(new MySqlParameter("@isactive", 1));
-            string searches = "%" + keySearch + "%";
-            listparams.Add(new MySqlParameter("@key", searches));
-            return await crud.GetDataSetAsync(sql, listparams);
-        }
-
-
-
         public async Task<DataSet> getDataSetWithStockPharma()
         {
             string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
@@ -225,6 +142,127 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, listparams);
         }
 
+        public async Task<DataSet> getDataSearchInReturnPharma(int id, int searchType, string keySearch)
+        {
+            string sql = "";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            switch (searchType)
+            {
+                case 0:
+                    sql = @"SELECT itemlist.item_id,item_name, pharmastocks.`pharma_stocks` , 
+                            UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id  
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                            WHERE itemlist.item_id in (SELECT item_id 
+                                                FROM supplier_items 
+                                                WHERE supplier_id in (SELECT supplier_id 
+                                                                      FROM suppliers 
+                                                                      WHERE supplier_id = @id)) 
+                            AND itemlist.is_active = 1 AND item_name LIKE @key";
+                    break;
+                case 1:
+                    sql = @"SELECT itemlist.item_id,item_name, pharmastocks.`pharma_stocks` , 
+                            UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id  
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                            WHERE itemlist.item_id in (SELECT item_id 
+                                                FROM supplier_items 
+                                                WHERE supplier_id in (SELECT supplier_id 
+                                                                      FROM suppliers 
+                                                                      WHERE supplier_id = @id))  
+                            AND itemlist.is_active = 1 AND SKU LIKE @key";
+                    break;
+
+            }
+            listparams.Add(new MySqlParameter("@id", id));
+            string searches = "%" + keySearch + "%";
+            listparams.Add(new MySqlParameter("@key", searches));
+            return await crud.GetDataSetAsync(sql, listparams);
+        }
+
+        public async Task<DataSet> getDataSearchInReturnClinic(int id, int searchType, string keySearch)
+        {
+            string sql = "";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            switch (searchType)
+            {
+                case 0:
+                    sql = @"SELECT itemlist.item_id,item_name, labitemstocks.`clinic_stocks` , 
+                            UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id
+                            WHERE itemlist.item_id in (SELECT item_id 
+                                                FROM supplier_items 
+                                                WHERE supplier_id in (SELECT supplier_id 
+                                                                      FROM suppliers 
+                                                                      WHERE supplier_id = @id)) 
+                            AND itemlist.is_active = 1 AND item_name LIKE @key";
+                    break;
+                case 1:
+                    sql = @"SELECT itemlist.item_id,item_name, labitemstocks.`clinic_stocks` , 
+                            UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id
+                            WHERE itemlist.item_id in (SELECT item_id 
+                                                FROM supplier_items 
+                                                WHERE supplier_id in (SELECT supplier_id 
+                                                                      FROM suppliers 
+                                                                      WHERE supplier_id = @id)) 
+                            AND itemlist.is_active = 1 AND SKU LIKE @key";
+                    break;
+
+            }
+            listparams.Add(new MySqlParameter("@id", id));
+            string searches = "%" + keySearch + "%";
+            listparams.Add(new MySqlParameter("@key", searches));
+            return await crud.GetDataSetAsync(sql, listparams);
+        }
+
+        public async Task<DataSet> getDataWithSupplierIdTotalStocksWithSearch(int id, int searchType, string keySearch)
+        {
+            string sql = "";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            switch (searchType)
+            {
+                case 0:
+                    sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
+                            UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                            WHERE itemlist.item_id in (SELECT item_id 
+                                                FROM supplier_items 
+                                                WHERE supplier_id in (SELECT supplier_id 
+                                                                      FROM suppliers 
+                                                                      WHERE supplier_id = @id)) 
+                            AND itemlist.is_active = 1 AND item_name LIKE @key";
+                    break;
+                case 1:
+                    sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
+                            UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                            WHERE itemlist.item_id in (SELECT item_id 
+                                                FROM supplier_items 
+                                                WHERE supplier_id in (SELECT supplier_id 
+                                                                      FROM suppliers 
+                                                                      WHERE supplier_id = @id)) 
+                            AND itemlist.is_active = 1 AND SKU LIKE @key";
+                    break;
+
+            }
+            listparams.Add(new MySqlParameter("@id", id));
+            string searches = "%" + keySearch + "%";
+            listparams.Add(new MySqlParameter("@key", searches));
+            return await crud.GetDataSetAsync(sql, listparams);
+        }
 
         public async Task<DataSet> getDsSearchActiveClinic(int searchType, string keySearch)
         {
@@ -260,6 +298,42 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, listparams);
         }
 
+        public async Task<DataSet> getDsSearchActive(int searchType, string keySearch)
+        {
+            string sql = "";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            switch (searchType)
+            {
+                case 0:
+                    sql = @"SELECT item_id,item_name ,UnitPrice , MarkupPrice ,
+                                SellingPrice, SKU, Description,isBranded,category_name,unit_name,
+                                Convert(ExpirationDate,varchar(50)),DateAdded FROM itemlist 
+                                LEFT JOIN category ON `category`.category_id  = `itemlist`.category_id 
+                                LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                                WHERE itemlist.is_active = @isactive AND item_name LIKE @key";
+                    break;
+                case 1:
+                    sql = @"SELECT item_id,item_name ,UnitPrice , MarkupPrice ,
+                                SellingPrice, SKU, Description,isBranded,category_name,unit_name,
+                                Convert(ExpirationDate,varchar(50)),DateAdded FROM itemlist 
+                                LEFT JOIN category ON `category`.category_id  = `itemlist`.category_id 
+                                LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                                WHERE itemlist.is_active = @isactive AND SKU LIKE @key";
+                    break;
+                case 2:
+                    sql = @"SELECT item_id,item_name ,UnitPrice , MarkupPrice ,
+                                SellingPrice, SKU, Description,isBranded,category_name,unit_name,
+                                Convert(ExpirationDate,varchar(50)),DateAdded FROM itemlist 
+                                LEFT JOIN category ON `category`.category_id  = `itemlist`.category_id 
+                                LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                                WHERE itemlist.is_active = @isactive AND Description LIKE @key";
+                    break;
+            }
+            listparams.Add(new MySqlParameter("@isactive", 1));
+            string searches = "%" + keySearch + "%";
+            listparams.Add(new MySqlParameter("@key", searches));
+            return await crud.GetDataSetAsync(sql, listparams);
+        }
 
         public int getRecentItemID()
         {

@@ -149,6 +149,20 @@ namespace RMC.InventoryPharma.PanelReturn
             lvItemsSuppliers.Items[selectedIndex].SubItems[3].Text = updateQty + "";
         }
 
+        private async void SearchGrid(string searchkey, int cbSelect)
+        {
+            DataSet ds;
+            if (rbPharma.Checked)
+            {
+                ds = await itemz.getDataSearchInReturnPharma(cbSupValue, cbSelect, searchkey);
+            }
+            else
+            {
+                ds = await itemz.getDataSearchInReturnClinic(cbSupValue, cbSelect, searchkey);
+            }
+            RefreshGrid(ds);
+        }
+
         #endregion
 
         #region Handler
@@ -292,6 +306,22 @@ namespace RMC.InventoryPharma.PanelReturn
             
         }
 
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            //Search
+            int selectedCombobx = comboBox1.SelectedIndex;
+            if (selectedCombobx == -1)
+            {
+                loadGrid(cbSupValue);
+
+            }
+            else
+            {
+                SearchGrid(txtName.Text.Trim(), selectedCombobx);
+            }
+
+        }
+
         #endregion
 
         #region Saving
@@ -333,5 +363,6 @@ namespace RMC.InventoryPharma.PanelReturn
         }
         #endregion
 
+      
     }
 }
