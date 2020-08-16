@@ -352,10 +352,10 @@
     <Compile Include="InventoryPharma\PharmaDash.Designer.cs">
       <DependentUpon>PharmaDash.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryPharma\POS.cs">
+    <Compile Include="Pharma\POS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InventoryPharma\POS.Designer.cs">
+    <Compile Include="Pharma\POS.Designer.cs">
       <DependentUpon>POS.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
@@ -363,6 +363,12 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pharma\Pdash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pharma\Pdash.Designer.cs">
+      <DependentUpon>Pdash.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -455,11 +461,14 @@
     <EmbeddedResource Include="InventoryPharma\PharmaDash.resx">
       <DependentUpon>PharmaDash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryPharma\POS.resx">
+    <EmbeddedResource Include="Pharma\POS.resx">
       <DependentUpon>POS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pharma\Pdash.resx">
+      <DependentUpon>Pdash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

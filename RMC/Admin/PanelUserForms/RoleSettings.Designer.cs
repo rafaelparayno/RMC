@@ -39,6 +39,7 @@
             this.cbReception = new System.Windows.Forms.CheckBox();
             this.cbDoctor = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbInventory = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRoles)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -188,13 +189,13 @@
             this.cbDoctor.TabIndex = 4;
             this.cbDoctor.Text = "Doctor";
             this.cbDoctor.UseVisualStyleBackColor = true;
-            this.cbDoctor.CheckedChanged += new System.EventHandler(this.cbDoctor_CheckedChanged);
             this.cbDoctor.Click += new System.EventHandler(this.cbDoctor_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.cbInventory);
             this.groupBox2.Controls.Add(this.cbDoctor);
             this.groupBox2.Controls.Add(this.cbReception);
             this.groupBox2.Controls.Add(this.cbPharma);
@@ -207,6 +208,18 @@
             this.groupBox2.TabIndex = 235;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Access";
+            // 
+            // cbInventory
+            // 
+            this.cbInventory.AutoSize = true;
+            this.cbInventory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbInventory.Location = new System.Drawing.Point(343, 19);
+            this.cbInventory.Name = "cbInventory";
+            this.cbInventory.Size = new System.Drawing.Size(80, 45);
+            this.cbInventory.TabIndex = 5;
+            this.cbInventory.Text = "Inventory";
+            this.cbInventory.UseVisualStyleBackColor = true;
+            this.cbInventory.Click += new System.EventHandler(this.cbInventory_Click);
             // 
             // RoleSettings
             // 
@@ -243,5 +256,6 @@
         private System.Windows.Forms.CheckBox cbReception;
         private System.Windows.Forms.CheckBox cbDoctor;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox cbInventory;
     }
 }

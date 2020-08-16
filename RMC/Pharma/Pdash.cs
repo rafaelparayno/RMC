@@ -1,6 +1,4 @@
-﻿using RMC.InventoryPharma.PanelPo;
-using RMC.InventoryPharma.PanelRo;
-using RMC.InventoryPharma.PanelViewStocks;
+﻿using RMC.InventoryPharma;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,16 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RMC.InventoryPharma
+namespace RMC.Pharma
 {
-    public partial class PharmaDash : Form
+    public partial class Pdash : Form
     {
         private Form activeForm = null;
-        public PharmaDash()
+
+        public Pdash()
         {
             InitializeComponent();
         }
-
 
         private void openChildForm(Form childForm)
         {
@@ -39,24 +37,14 @@ namespace RMC.InventoryPharma
             childForm.Show();
         }
 
-        private void btnViewStocks_Click(object sender, EventArgs e)
+        private void btnPos_Click(object sender, EventArgs e)
         {
-            openChildForm(new ViewStocks());
+            openChildForm(new POS());
         }
 
-        private void btnRec_Click(object sender, EventArgs e)
+        private void btnViewPrescription_Click(object sender, EventArgs e)
         {
-            openChildForm(new PanelRecPo());
-        }
-
-        private void btnPos_Click_1(object sender, EventArgs e)
-        {
-            /*openChildForm(new POS());*/
-        }
-
-        private void btnPo_Click_1(object sender, EventArgs e)
-        {
-            openChildForm(new PanelPurchase());
+            //Viewing prescription
         }
     }
 }

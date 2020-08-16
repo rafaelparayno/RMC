@@ -2,6 +2,7 @@
 using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.InventoryPharma;
+using RMC.Pharma;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -83,7 +84,7 @@ namespace RMC.UserDash
             }
             if (useraccess.Contains(3))
             {
-                PharmaBtn.Visible = true;
+                Pharmabtn.Visible = true;
             }
             if (useraccess.Contains(4))
             {
@@ -92,6 +93,10 @@ namespace RMC.UserDash
             if (useraccess.Contains(5))
             {
                 DocBtn.Visible = true;
+            }
+            if (useraccess.Contains(6))
+            {
+                InventoryBtn.Visible = true;
             }
         }
 
@@ -136,14 +141,14 @@ namespace RMC.UserDash
            /* Login log = new Login();
             log.Show();
             this.Hide();*/
-            contextMenuStrip1.Show(iconButton4, new Point(iconButton4.Width - contextMenuStrip1.Width, iconButton4.Height));
+          
 
         }
 
         private void PharmaBtn_Click(object sender, EventArgs e)
         {
             openChildForm(new PharmaDash());
-            changingLabel("Pharmacy Inventory");
+            changingLabel("Inventory");
         }
 
         private void LabBtn_Click(object sender, EventArgs e)
@@ -163,6 +168,17 @@ namespace RMC.UserDash
                 log.Show();
                 this.Hide();
             }
+        }
+
+        private void Pharmabtn_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new Pdash());
+            changingLabel("Pharmacy");
+        }
+
+        private void iconButton4_Click_2(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(iconButton4, new Point(iconButton4.Width - contextMenuStrip1.Width, iconButton4.Height));
         }
     }
 }

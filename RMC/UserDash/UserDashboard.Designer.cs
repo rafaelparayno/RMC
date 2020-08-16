@@ -30,10 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.DocBtn = new FontAwesome.Sharp.IconButton();
             this.ReceptionBtn = new FontAwesome.Sharp.IconButton();
-            this.PharmaBtn = new FontAwesome.Sharp.IconButton();
+            this.InventoryBtn = new FontAwesome.Sharp.IconButton();
             this.LabBtn = new FontAwesome.Sharp.IconButton();
             this.AdminBtn = new FontAwesome.Sharp.IconButton();
             this.btnMinimize = new FontAwesome.Sharp.IconButton();
@@ -50,6 +49,8 @@
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.notificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Pharmabtn = new FontAwesome.Sharp.IconButton();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelChildForm.SuspendLayout();
@@ -61,9 +62,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Salmon;
             this.panel1.Controls.Add(this.iconButton4);
+            this.panel1.Controls.Add(this.Pharmabtn);
             this.panel1.Controls.Add(this.DocBtn);
             this.panel1.Controls.Add(this.ReceptionBtn);
-            this.panel1.Controls.Add(this.PharmaBtn);
+            this.panel1.Controls.Add(this.InventoryBtn);
             this.panel1.Controls.Add(this.LabBtn);
             this.panel1.Controls.Add(this.AdminBtn);
             this.panel1.Controls.Add(this.btnMinimize);
@@ -75,25 +77,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(945, 72);
             this.panel1.TabIndex = 4;
-            // 
-            // iconButton4
-            // 
-            this.iconButton4.BackColor = System.Drawing.Color.Salmon;
-            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton4.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.AngleDown;
-            this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton4.IconSize = 40;
-            this.iconButton4.Location = new System.Drawing.Point(375, 0);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Rotation = 0D;
-            this.iconButton4.Size = new System.Drawing.Size(64, 72);
-            this.iconButton4.TabIndex = 227;
-            this.iconButton4.UseVisualStyleBackColor = false;
-            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click_1);
             // 
             // DocBtn
             // 
@@ -133,25 +116,25 @@
             this.ReceptionBtn.UseVisualStyleBackColor = false;
             this.ReceptionBtn.Visible = false;
             // 
-            // PharmaBtn
+            // InventoryBtn
             // 
-            this.PharmaBtn.BackColor = System.Drawing.Color.Maroon;
-            this.PharmaBtn.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PharmaBtn.FlatAppearance.BorderSize = 0;
-            this.PharmaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PharmaBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.PharmaBtn.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.PharmaBtn.IconColor = System.Drawing.Color.Black;
-            this.PharmaBtn.IconSize = 16;
-            this.PharmaBtn.Location = new System.Drawing.Point(150, 0);
-            this.PharmaBtn.Name = "PharmaBtn";
-            this.PharmaBtn.Rotation = 0D;
-            this.PharmaBtn.Size = new System.Drawing.Size(75, 72);
-            this.PharmaBtn.TabIndex = 222;
-            this.PharmaBtn.Text = "Pharmacy";
-            this.PharmaBtn.UseVisualStyleBackColor = false;
-            this.PharmaBtn.Visible = false;
-            this.PharmaBtn.Click += new System.EventHandler(this.PharmaBtn_Click);
+            this.InventoryBtn.BackColor = System.Drawing.Color.Maroon;
+            this.InventoryBtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.InventoryBtn.FlatAppearance.BorderSize = 0;
+            this.InventoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InventoryBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.InventoryBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.InventoryBtn.IconColor = System.Drawing.Color.Black;
+            this.InventoryBtn.IconSize = 16;
+            this.InventoryBtn.Location = new System.Drawing.Point(150, 0);
+            this.InventoryBtn.Name = "InventoryBtn";
+            this.InventoryBtn.Rotation = 0D;
+            this.InventoryBtn.Size = new System.Drawing.Size(75, 72);
+            this.InventoryBtn.TabIndex = 222;
+            this.InventoryBtn.Text = "Inventory";
+            this.InventoryBtn.UseVisualStyleBackColor = false;
+            this.InventoryBtn.Visible = false;
+            this.InventoryBtn.Click += new System.EventHandler(this.PharmaBtn_Click);
             // 
             // LabBtn
             // 
@@ -335,12 +318,12 @@
             this.toolStripSeparator1,
             this.notificationsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 54);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -354,6 +337,45 @@
             this.notificationsToolStripMenuItem.Name = "notificationsToolStripMenuItem";
             this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.notificationsToolStripMenuItem.Text = "Notifications";
+            // 
+            // Pharmabtn
+            // 
+            this.Pharmabtn.BackColor = System.Drawing.Color.Maroon;
+            this.Pharmabtn.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Pharmabtn.FlatAppearance.BorderSize = 0;
+            this.Pharmabtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Pharmabtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.Pharmabtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.Pharmabtn.IconColor = System.Drawing.Color.Black;
+            this.Pharmabtn.IconSize = 16;
+            this.Pharmabtn.Location = new System.Drawing.Point(375, 0);
+            this.Pharmabtn.Name = "Pharmabtn";
+            this.Pharmabtn.Rotation = 0D;
+            this.Pharmabtn.Size = new System.Drawing.Size(75, 72);
+            this.Pharmabtn.TabIndex = 228;
+            this.Pharmabtn.Text = "Pharmacy";
+            this.Pharmabtn.UseVisualStyleBackColor = false;
+            this.Pharmabtn.Visible = false;
+            this.Pharmabtn.Click += new System.EventHandler(this.Pharmabtn_Click_1);
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.BackColor = System.Drawing.Color.Salmon;
+            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton4.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.AngleDown;
+            this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton4.IconSize = 40;
+            this.iconButton4.Location = new System.Drawing.Point(450, 0);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Rotation = 0D;
+            this.iconButton4.Size = new System.Drawing.Size(64, 72);
+            this.iconButton4.TabIndex = 229;
+            this.iconButton4.UseVisualStyleBackColor = false;
+            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click_2);
             // 
             // UserDashboard
             // 
@@ -385,11 +407,10 @@
         private FontAwesome.Sharp.IconButton btnCloseApp;
         private FontAwesome.Sharp.IconButton DocBtn;
         private FontAwesome.Sharp.IconButton ReceptionBtn;
-        private FontAwesome.Sharp.IconButton PharmaBtn;
+        private FontAwesome.Sharp.IconButton InventoryBtn;
         private FontAwesome.Sharp.IconButton LabBtn;
         private FontAwesome.Sharp.IconButton AdminBtn;
         private System.Windows.Forms.Timer timer1;
-        private FontAwesome.Sharp.IconButton iconButton4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelChildForm;
         private System.Windows.Forms.Label datelabel;
@@ -400,5 +421,7 @@
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem notificationsToolStripMenuItem;
+        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton Pharmabtn;
     }
 }

@@ -26,6 +26,7 @@ namespace RMC.Admin.PanelUserForms
         private int pharmaAccess = 3;
         private int receptionAcess = 4;
         private int doctorAccess = 5;
+        private int inventoryAccess = 6;
 
         public RoleSettings()
         {
@@ -39,8 +40,6 @@ namespace RMC.Admin.PanelUserForms
             currentAccess = access.accesses(roleid);
             newAccess = access.accesses(roleid);
             checkAccess(currentAccess);
-
-
 
         }
 
@@ -128,7 +127,16 @@ namespace RMC.Admin.PanelUserForms
                 cbPharma.Checked = false;
             }
             //Pharma
-           
+
+            if (access.Contains(inventoryAccess))
+            {
+                cbInventory.Checked = true;
+            }
+            else
+            {
+                cbInventory.Checked = false;
+            }
+
         }
 
         private void adminAccessCb_CheckedChanged(object sender, EventArgs e)
@@ -201,10 +209,6 @@ namespace RMC.Admin.PanelUserForms
             }
         }
 
-        private void cbDoctor_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void cbDoctor_Click(object sender, EventArgs e)
         {
@@ -221,6 +225,23 @@ namespace RMC.Admin.PanelUserForms
                     newAccess.RemoveAt(index);
             }
         }
+
+        private void cbInventory_Click(object sender, EventArgs e)
+        {
+            if (cbInventory.Checked == true)
+            {
+                newAccess.Add(inventoryAccess);
+            }
+            else
+            {
+
+                int index = newAccess.FindIndex(t => inventoryAccess == t);
+
+                if (index > -1)
+                    newAccess.RemoveAt(index);
+            }
+        }
+
         #endregion
 
         private List<int> findNoAccesses(List<int> access)
@@ -241,7 +262,10 @@ namespace RMC.Admin.PanelUserForms
             
             if (!access.Contains(receptionAcess))
                 noAccess.Add(receptionAcess);
-            
+
+            if (!access.Contains(inventoryAccess))
+                noAccess.Add(inventoryAccess);
+
 
             return noAccess;
         }
@@ -263,5 +287,7 @@ namespace RMC.Admin.PanelUserForms
             DataSet ds = await roles.findRole(rolename);
             RefreshGrid(ds);
         }
+
+      
     }
 }
