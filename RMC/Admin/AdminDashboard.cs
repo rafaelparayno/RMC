@@ -16,6 +16,7 @@ using RMC.Admin.PanelLabForms;
 using RMC.Admin.PanelPharForms;
 using RMC.Admin.PanelReportsForms;
 using RMC.Admin.PanelUtilitiesForms;
+using RMC.Admin.PanelLabForms.PanelsSettings;
 
 namespace RMC.Admin
 {
@@ -432,6 +433,12 @@ namespace RMC.Admin
             openChildForm(new NetworkSettings());
             showSubMenuTitle(sender);
         }
+
+        private void btnAutomated_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelAutomated());
+            showSubMenuTitle(sender);
+        }
         #endregion
 
         private void iconButton4_Click(object sender, EventArgs e)
@@ -440,5 +447,7 @@ namespace RMC.Admin
             log.Show();
             this.Hide();
         }
+
+      
     }
 }

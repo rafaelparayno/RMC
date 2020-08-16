@@ -28,7 +28,7 @@ namespace RMC.Database.Controllers
                 return 0;
             }
 
-            string sql = String.Format(@"SELECT * FROM useraccounts  WHERE  Binary Username= @user and Password = @pass", username, pass);
+            string sql = String.Format(@"SELECT * FROM useraccounts  WHERE  Binary Username= @user and Binary Password = @pass", username, pass);
             List<MySqlParameter> listparam = new List<MySqlParameter>();
             listparam.Add(new MySqlParameter("@user", username));
             listparam.Add(new MySqlParameter("@pass", pass));

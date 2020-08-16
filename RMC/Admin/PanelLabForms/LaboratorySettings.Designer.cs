@@ -30,17 +30,17 @@
         {
             this.panelNavParam = new System.Windows.Forms.Panel();
             this.btnMeasurements = new FontAwesome.Sharp.IconButton();
-            this.btnCategories = new FontAwesome.Sharp.IconButton();
             this.btnSuppliers = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelChild = new System.Windows.Forms.Panel();
+            this.btnAutomated = new FontAwesome.Sharp.IconButton();
             this.panelNavParam.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelNavParam
             // 
             this.panelNavParam.Controls.Add(this.btnMeasurements);
-            this.panelNavParam.Controls.Add(this.btnCategories);
+            this.panelNavParam.Controls.Add(this.btnAutomated);
             this.panelNavParam.Controls.Add(this.btnSuppliers);
             this.panelNavParam.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelNavParam.Location = new System.Drawing.Point(0, 0);
@@ -69,28 +69,6 @@
             this.btnMeasurements.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMeasurements.UseVisualStyleBackColor = false;
             this.btnMeasurements.Visible = false;
-            // 
-            // btnCategories
-            // 
-            this.btnCategories.BackColor = System.Drawing.Color.Maroon;
-            this.btnCategories.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCategories.FlatAppearance.BorderSize = 0;
-            this.btnCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategories.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnCategories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnCategories.IconChar = FontAwesome.Sharp.IconChar.Tag;
-            this.btnCategories.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnCategories.IconSize = 25;
-            this.btnCategories.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCategories.Location = new System.Drawing.Point(114, 0);
-            this.btnCategories.Name = "btnCategories";
-            this.btnCategories.Rotation = 0D;
-            this.btnCategories.Size = new System.Drawing.Size(114, 44);
-            this.btnCategories.TabIndex = 12;
-            this.btnCategories.Text = "&Categories";
-            this.btnCategories.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCategories.UseVisualStyleBackColor = false;
-            this.btnCategories.Visible = false;
             // 
             // btnSuppliers
             // 
@@ -131,6 +109,27 @@
             this.panelChild.Size = new System.Drawing.Size(800, 401);
             this.panelChild.TabIndex = 19;
             // 
+            // btnAutomated
+            // 
+            this.btnAutomated.BackColor = System.Drawing.Color.Maroon;
+            this.btnAutomated.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAutomated.FlatAppearance.BorderSize = 0;
+            this.btnAutomated.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutomated.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAutomated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnAutomated.IconChar = FontAwesome.Sharp.IconChar.File;
+            this.btnAutomated.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnAutomated.IconSize = 25;
+            this.btnAutomated.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAutomated.Location = new System.Drawing.Point(114, 0);
+            this.btnAutomated.Name = "btnAutomated";
+            this.btnAutomated.Rotation = 0D;
+            this.btnAutomated.Size = new System.Drawing.Size(114, 44);
+            this.btnAutomated.TabIndex = 12;
+            this.btnAutomated.Text = "&Automated";
+            this.btnAutomated.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAutomated.UseVisualStyleBackColor = false;
+            // 
             // LaboratorySettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,9 +150,9 @@
 
         private System.Windows.Forms.Panel panelNavParam;
         private FontAwesome.Sharp.IconButton btnMeasurements;
-        private FontAwesome.Sharp.IconButton btnCategories;
         private FontAwesome.Sharp.IconButton btnSuppliers;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelChild;
+        private FontAwesome.Sharp.IconButton btnAutomated;
     }
 }

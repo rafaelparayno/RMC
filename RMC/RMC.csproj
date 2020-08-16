@@ -111,6 +111,18 @@
     <Compile Include="Admin\PanelLabForms\Consumables.Designer.cs">
       <DependentUpon>Consumables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelLabForms\Dialogs\AddEditLabType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\Dialogs\AddEditLabType.Designer.cs">
+      <DependentUpon>AddEditLabType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\Dialogs\nameAutomated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\Dialogs\nameAutomated.Designer.cs">
+      <DependentUpon>nameAutomated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelLabForms\LaboratorySettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +134,12 @@
     </Compile>
     <Compile Include="Admin\PanelLabForms\LabratoryList.Designer.cs">
       <DependentUpon>LabratoryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelAutomated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelAutomated.Designer.cs">
+      <DependentUpon>PanelAutomated.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.cs">
       <SubType>Form</SubType>
@@ -270,6 +288,7 @@
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\ComboBoxItem.cs" />
+    <Compile Include="Components\CoordinatesList.cs" />
     <Compile Include="Components\IPConfigForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +302,7 @@
     <Compile Include="Database\Controllers\ClinicStocksController.cs" />
     <Compile Include="Database\Controllers\InvoiceController.cs" />
     <Compile Include="Database\Controllers\ItemController.cs" />
+    <Compile Include="Database\Controllers\LabTypeController.cs" />
     <Compile Include="Database\Controllers\LoginController.cs" />
     <Compile Include="Database\Controllers\PharmaStocksController.cs" />
     <Compile Include="Database\Controllers\PoController.cs" />
@@ -396,11 +416,23 @@
     <EmbeddedResource Include="Admin\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\Consumables.resx">
+      <DependentUpon>Consumables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\Dialogs\AddEditLabType.resx">
+      <DependentUpon>AddEditLabType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\Dialogs\nameAutomated.resx">
+      <DependentUpon>nameAutomated.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\LaboratorySettings.resx">
       <DependentUpon>LaboratorySettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\LabratoryList.resx">
       <DependentUpon>LabratoryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\PanelsSettings\PanelAutomated.resx">
+      <DependentUpon>PanelAutomated.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.resx">
       <DependentUpon>PanelLabType.cs</DependentUpon>
@@ -537,8 +569,6 @@
   <ItemGroup>
     <None Include="Resources\rmc.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Admin\PanelLabForms\Dialogs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
