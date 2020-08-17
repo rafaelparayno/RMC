@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Utilities;
+using RMC.Components;
 using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
@@ -513,6 +514,24 @@ namespace RMC.Database.Controllers
             }
             crud.CloseConnection();
             return items;
+        }
+
+        public async Task<List<ComboBoxItem>> getComboDatas()
+        {
+            List<ComboBoxItem> cbItems = new List<ComboBoxItem>();
+            string sql = String.Format(@"SELECT * FROM itemlist 
+                                       WHERE is_active = @isactive");
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@isactive", 1));
+            
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, list);
+            while (await reader.ReadAsync())
+            {
+                cbItems.Add(new ComboBoxItem(reader["item_name"].ToString(),
+                    int.Parse(reader["item_id"].ToString())));
+            }
+            crud.CloseConnection();
+            return cbItems;
         }
     }
 }
