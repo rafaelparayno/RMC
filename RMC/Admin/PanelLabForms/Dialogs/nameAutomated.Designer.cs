@@ -122,12 +122,13 @@
             this.label1.ForeColor = System.Drawing.Color.FloralWhite;
             this.label1.Location = new System.Drawing.Point(3, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 16);
+            this.label1.Size = new System.Drawing.Size(120, 16);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Add Lab Type";
+            this.label1.Text = "Add Parameters";
             // 
             // nameAutomated
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(380, 167);

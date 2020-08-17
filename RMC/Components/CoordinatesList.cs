@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace RMC.Components
 {
-     class CoordinatesList
+    public class CoordinatesList
     {
+   /*     public int index { get; set; }*/
         public string nameVar { get; set; }
 
         public float xCoor { get; set; }

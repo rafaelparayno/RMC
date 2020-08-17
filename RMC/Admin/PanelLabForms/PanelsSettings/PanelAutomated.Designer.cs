@@ -34,13 +34,20 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pbEdited = new System.Windows.Forms.PictureBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pbEdited = new System.Windows.Forms.PictureBox();
+            this.lbParams = new System.Windows.Forms.ListBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.panelControls.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEdited)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControls
@@ -130,8 +137,52 @@
             this.panel2.Size = new System.Drawing.Size(684, 5);
             this.panel2.TabIndex = 19;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.trackBar1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(177, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(507, 51);
+            this.panel1.TabIndex = 222;
+            // 
+            // panel4
+            // 
+            this.panel4.AutoScroll = true;
+            this.panel4.Controls.Add(this.pbEdited);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(177, 51);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(507, 291);
+            this.panel4.TabIndex = 224;
+            // 
+            // pbEdited
+            // 
+            this.pbEdited.Location = new System.Drawing.Point(3, 3);
+            this.pbEdited.Name = "pbEdited";
+            this.pbEdited.Size = new System.Drawing.Size(100, 50);
+            this.pbEdited.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbEdited.TabIndex = 0;
+            this.pbEdited.TabStop = false;
+            this.pbEdited.Click += new System.EventHandler(this.pbEdited_Click);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBar1.LargeChange = 1;
+            this.trackBar1.Location = new System.Drawing.Point(0, 0);
+            this.trackBar1.Maximum = 6;
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(507, 51);
+            this.trackBar1.TabIndex = 0;
+            this.trackBar1.Value = 1;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Controls.Add(this.lbParams);
+            this.flowLayoutPanel1.Controls.Add(this.button4);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -147,25 +198,29 @@
             this.panel3.Size = new System.Drawing.Size(10, 342);
             this.panel3.TabIndex = 221;
             // 
-            // panel1
+            // lbParams
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.pbEdited);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(177, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 342);
-            this.panel1.TabIndex = 222;
+            this.lbParams.FormattingEnabled = true;
+            this.lbParams.ItemHeight = 16;
+            this.lbParams.Location = new System.Drawing.Point(3, 3);
+            this.lbParams.Name = "lbParams";
+            this.lbParams.Size = new System.Drawing.Size(158, 276);
+            this.lbParams.TabIndex = 0;
             // 
-            // pbEdited
+            // button4
             // 
-            this.pbEdited.Location = new System.Drawing.Point(3, 3);
-            this.pbEdited.Name = "pbEdited";
-            this.pbEdited.Size = new System.Drawing.Size(100, 50);
-            this.pbEdited.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbEdited.TabIndex = 0;
-            this.pbEdited.TabStop = false;
-            this.pbEdited.Click += new System.EventHandler(this.pbEdited_Click);
+            this.button4.BackColor = System.Drawing.Color.Maroon;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(3, 285);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(158, 33);
+            this.button4.TabIndex = 243;
+            this.button4.Text = "Remove Param";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // PanelAutomated
             // 
@@ -173,6 +228,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(684, 398);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -185,7 +241,11 @@
             this.panelControls.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEdited)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -197,10 +257,14 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pbEdited;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ListBox lbParams;
+        private System.Windows.Forms.Button button4;
     }
 }
