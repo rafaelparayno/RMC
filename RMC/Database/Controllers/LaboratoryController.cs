@@ -12,7 +12,9 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataSet()
         {
-            string sql = @"SELECT * FROM `laboratorylist` 
+            string sql = @"SELECT laboratorylist.`laboratory_id` AS 'ID',
+                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS'
+                        FROM `laboratorylist` 
                         INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
                         LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id";
 

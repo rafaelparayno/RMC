@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMenus = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgLabList = new System.Windows.Forms.DataGridView();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEditItem = new FontAwesome.Sharp.IconButton();
             this.btnRemove = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgLabList = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.panelMenus.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -59,6 +59,27 @@
             this.groupBox1.Size = new System.Drawing.Size(800, 72);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconSize = 18;
+            this.iconButton1.Location = new System.Drawing.Point(701, 39);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(38, 23);
+            this.iconButton1.TabIndex = 222;
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
             // 
             // comboBox1
             // 
@@ -102,42 +123,6 @@
             this.panelMenus.Name = "panelMenus";
             this.panelMenus.Size = new System.Drawing.Size(800, 61);
             this.panelMenus.TabIndex = 3;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.dgLabList);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 72);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(800, 317);
-            this.groupBox2.TabIndex = 209;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "List of Lab";
-            // 
-            // dgLabList
-            // 
-            this.dgLabList.AllowUserToAddRows = false;
-            this.dgLabList.AllowUserToDeleteRows = false;
-            this.dgLabList.AllowUserToResizeColumns = false;
-            this.dgLabList.AllowUserToResizeRows = false;
-            this.dgLabList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgLabList.BackgroundColor = System.Drawing.Color.FloralWhite;
-            this.dgLabList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgLabList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgLabList.Location = new System.Drawing.Point(3, 19);
-            this.dgLabList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgLabList.MultiSelect = false;
-            this.dgLabList.Name = "dgLabList";
-            this.dgLabList.ReadOnly = true;
-            this.dgLabList.RowHeadersVisible = false;
-            this.dgLabList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgLabList.Size = new System.Drawing.Size(794, 294);
-            this.dgLabList.StandardTab = true;
-            this.dgLabList.TabIndex = 113;
             // 
             // btnAddItem
             // 
@@ -183,6 +168,7 @@
             this.btnEditItem.Text = "Edit Lab";
             this.btnEditItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEditItem.UseVisualStyleBackColor = false;
+            this.btnEditItem.Click += new System.EventHandler(this.btnEditItem_Click);
             // 
             // btnRemove
             // 
@@ -206,26 +192,41 @@
             this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRemove.UseVisualStyleBackColor = false;
             // 
-            // iconButton1
+            // groupBox2
             // 
-            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconSize = 18;
-            this.iconButton1.Location = new System.Drawing.Point(701, 39);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(38, 23);
-            this.iconButton1.TabIndex = 222;
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.dgLabList);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(0, 72);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(800, 317);
+            this.groupBox2.TabIndex = 209;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "List of Lab";
+            // 
+            // dgLabList
+            // 
+            this.dgLabList.AllowUserToAddRows = false;
+            this.dgLabList.AllowUserToDeleteRows = false;
+            this.dgLabList.AllowUserToResizeColumns = false;
+            this.dgLabList.AllowUserToResizeRows = false;
+            this.dgLabList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgLabList.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dgLabList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgLabList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgLabList.Location = new System.Drawing.Point(3, 19);
+            this.dgLabList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgLabList.MultiSelect = false;
+            this.dgLabList.Name = "dgLabList";
+            this.dgLabList.ReadOnly = true;
+            this.dgLabList.RowHeadersVisible = false;
+            this.dgLabList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgLabList.Size = new System.Drawing.Size(794, 294);
+            this.dgLabList.StandardTab = true;
+            this.dgLabList.TabIndex = 113;
             // 
             // LabratoryList
             // 

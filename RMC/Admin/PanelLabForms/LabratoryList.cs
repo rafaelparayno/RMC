@@ -27,6 +27,7 @@ namespace RMC.Admin.PanelLabForms
         {
             AddEditLab form = new AddEditLab();
             form.ShowDialog();
+            loadGrid();
         }
 
         private async void loadGrid()
@@ -40,6 +41,21 @@ namespace RMC.Admin.PanelLabForms
             dgLabList.DataSource = "";
             dgLabList.DataSource = ds.Tables[0];
             dgLabList.AutoResizeColumns();
+        }
+
+        private void btnEditItem_Click(object sender, EventArgs e)
+        {
+            if (dgLabList.SelectedRows.Count == 0)
+                return;
+
+            int id = int.Parse(dgLabList.SelectedRows[0].Cells[0].Value.ToString());
+            AddEditLab form = new AddEditLab(id+"",
+                                            dgLabList.SelectedRows[0].Cells[1].Value.ToString(),
+                                            dgLabList.SelectedRows[0].Cells[2].Value.ToString(),
+                                            dgLabList.SelectedRows[0].Cells[3].Value.ToString(),
+                                            dgLabList.SelectedRows[0].Cells[4].Value.ToString(),
+                                            dgLabList.SelectedRows[0].Cells[5].Value.ToString());
+            form.ShowDialog();
         }
     }
 }
