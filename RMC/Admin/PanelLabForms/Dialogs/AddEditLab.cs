@@ -17,6 +17,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         ItemController itemz = new ItemController();
         AutoDocsController autoDocsController = new AutoDocsController();
         bool isAuto = true;
+        int cbAutoValue = 0;
 
         int cbConValue = 0;
         
@@ -145,6 +146,23 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
             int index = lvConsumables.SelectedItems[0].Index;
             lvConsumables.Items.RemoveAt(index);
+        }
+
+        private void cbAutomated_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbAutoValue = int.Parse((cbAutomated.SelectedItem as ComboBoxItem).Value.ToString());
+
+            getImgPath();
+        }
+
+        private async void getImgPath()
+        {
+            string fullPath = await autoDocsController.getFullPath(cbAutoValue);
+            if(fullPath != "")
+            {
+                pbAutomated.Image = Image.FromFile(fullPath);
+            }
+         
         }
     }
 }

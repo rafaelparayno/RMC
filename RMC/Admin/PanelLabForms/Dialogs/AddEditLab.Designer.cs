@@ -53,7 +53,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lvConsumables = new System.Windows.Forms.ListView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbAutomated = new System.Windows.Forms.PictureBox();
             this.btnRemoveConsum = new FontAwesome.Sharp.IconButton();
             this.btnAddConsum = new FontAwesome.Sharp.IconButton();
             this.btnSave = new FontAwesome.Sharp.IconButton();
@@ -68,7 +68,7 @@
             this.groupBox8.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -116,7 +116,7 @@
             // panelForImg
             // 
             this.panelForImg.AutoScroll = true;
-            this.panelForImg.Controls.Add(this.pictureBox1);
+            this.panelForImg.Controls.Add(this.pbAutomated);
             this.panelForImg.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelForImg.Location = new System.Drawing.Point(0, 636);
             this.panelForImg.Name = "panelForImg";
@@ -197,6 +197,7 @@
             this.cbAutomated.Name = "cbAutomated";
             this.cbAutomated.Size = new System.Drawing.Size(596, 21);
             this.cbAutomated.TabIndex = 241;
+            this.cbAutomated.SelectedIndexChanged += new System.EventHandler(this.cbAutomated_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -374,14 +375,14 @@
             this.lvConsumables.TabIndex = 250;
             this.lvConsumables.UseCompatibleStateImageBehavior = false;
             // 
-            // pictureBox1
+            // pbAutomated
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(240, 135);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pbAutomated.Location = new System.Drawing.Point(16, 3);
+            this.pbAutomated.Name = "pbAutomated";
+            this.pbAutomated.Size = new System.Drawing.Size(240, 135);
+            this.pbAutomated.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbAutomated.TabIndex = 0;
+            this.pbAutomated.TabStop = false;
             // 
             // btnRemoveConsum
             // 
@@ -497,7 +498,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -532,7 +533,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbAutomated;
         private System.Windows.Forms.Panel panelForImg;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbAutomated;
         private System.Windows.Forms.ListView lvConsumables;
     }
 }

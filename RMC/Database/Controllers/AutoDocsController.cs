@@ -23,6 +23,24 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
+        public async Task<string> getFullPath(int id)
+        {
+            string Path = "";
+            string sql = @"SELECT CONCAT(`path` ,`filename`) as 'FullPath' FROM auto_docs WHERE auto_docs_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", id));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+            if (await reader.ReadAsync())
+            {
+                Path = reader["FullPath"].ToString();
+            }
+            crud.CloseConnection();
+
+            return Path;
+
+        }
+
         public async Task<List<ComboBoxItem>> getComboDatas()
         {
             List<ComboBoxItem> cbItems = new List<ComboBoxItem>();
