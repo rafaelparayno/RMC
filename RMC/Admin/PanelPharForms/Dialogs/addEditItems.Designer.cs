@@ -132,7 +132,6 @@
             this.listBoxSuppliers.Name = "listBoxSuppliers";
             this.listBoxSuppliers.Size = new System.Drawing.Size(675, 68);
             this.listBoxSuppliers.TabIndex = 250;
-       
             // 
             // label9
             // 

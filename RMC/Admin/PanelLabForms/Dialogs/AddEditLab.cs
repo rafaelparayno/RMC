@@ -16,6 +16,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
     {
         ItemController itemz = new ItemController();
         AutoDocsController autoDocsController = new AutoDocsController();
+        LabTypeController labTypeController = new LabTypeController();
         bool isAuto = true;
         int cbAutoValue = 0;
 
@@ -37,12 +38,14 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         {
             Task<List<ComboBoxItem>> task1 = itemz.getComboDatas();
             Task<List<ComboBoxItem>> task2 = autoDocsController.getComboDatas();
-            Task<List<ComboBoxItem>>[] Cbs = new Task<List<ComboBoxItem>>[] { task1, task2 };
+            Task<List<ComboBoxItem>> task3 = labTypeController.getComboDatas();
+            Task<List<ComboBoxItem>>[] Cbs = new Task<List<ComboBoxItem>>[] { task1, task2,task3 };
 
             await Task.WhenAll(Cbs);
 
             cbConsumables.Items.AddRange(task1.Result.ToArray());
             cbAutomated.Items.AddRange(task2.Result.ToArray());
+            cbLabType.Items.AddRange(task3.Result.ToArray());
           
         }
 
@@ -148,13 +151,6 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             lvConsumables.Items.RemoveAt(index);
         }
 
-        private void cbAutomated_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbAutoValue = int.Parse((cbAutomated.SelectedItem as ComboBoxItem).Value.ToString());
-
-            getImgPath();
-        }
-
         private async void getImgPath()
         {
             string fullPath = await autoDocsController.getFullPath(cbAutoValue);
@@ -163,6 +159,68 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 pbAutomated.Image = Image.FromFile(fullPath);
             }
          
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!isValid())
+            {
+                MessageBox.Show("Please Complete The Required Field","Validation" ,MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private bool isValid()
+        {
+            errorProvider1.Clear();
+            bool isValid = true;
+
+            float _;
+
+            isValid = (txtName.Text.Trim() != "" && txtName.Text != null) && isValid;
+            errorHandlingIsEmpty(ref txtName, "Please Enter name");
+
+            isValid = (float.TryParse(txtSellingPrice.Text.Trim(), out _)) && isValid;
+            numberFormatIsCorret(isValid, ref txtSellingPrice, "Number Format is Incorrect");
+
+            isValid = (txtSellingPrice.Text != "") && isValid;
+            errorHandlingIsEmpty(ref txtSellingPrice, "Please Enter Price");
+
+
+            return isValid;
+        }
+
+        private void errorHandlingIsEmpty(ref TextBox tb,string ergMsg)
+        {
+            if (tb.Text.Trim() == string.Empty)
+            {
+                errorProvider1.SetError(tb, ergMsg);
+            }
+        }
+
+        private void numberFormatIsCorret(bool isTrue,ref TextBox tb, string errMsg)
+        {
+            if (!isTrue)
+            {
+                errorProvider1.SetError(tb, errMsg);
+            }
+        }
+
+        private void txtSellingPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void cbAutomated_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+            cbAutoValue = int.Parse((cbAutomated.SelectedItem as ComboBoxItem).Value.ToString());
+
+            getImgPath();
         }
     }
 }

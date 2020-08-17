@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -36,8 +37,6 @@
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.rbNone = new System.Windows.Forms.RadioButton();
             this.rbWithAuto = new System.Windows.Forms.RadioButton();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbAutomated = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -58,6 +57,11 @@
             this.btnAddConsum = new FontAwesome.Sharp.IconButton();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbLabType = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbAutomated = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelForImg.SuspendLayout();
@@ -69,6 +73,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -118,7 +123,7 @@
             this.panelForImg.AutoScroll = true;
             this.panelForImg.Controls.Add(this.pbAutomated);
             this.panelForImg.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelForImg.Location = new System.Drawing.Point(0, 636);
+            this.panelForImg.Location = new System.Drawing.Point(0, 657);
             this.panelForImg.Name = "panelForImg";
             this.panelForImg.Size = new System.Drawing.Size(639, 197);
             this.panelForImg.TabIndex = 24;
@@ -129,11 +134,11 @@
             this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Controls.Add(this.cbAutomated);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox6.Location = new System.Drawing.Point(0, 468);
+            this.groupBox6.Location = new System.Drawing.Point(0, 528);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox6.Size = new System.Drawing.Size(639, 168);
+            this.groupBox6.Size = new System.Drawing.Size(639, 129);
             this.groupBox6.TabIndex = 23;
             this.groupBox6.TabStop = false;
             // 
@@ -141,7 +146,7 @@
             // 
             this.groupBox9.Controls.Add(this.rbNone);
             this.groupBox9.Controls.Add(this.rbWithAuto);
-            this.groupBox9.Location = new System.Drawing.Point(18, 20);
+            this.groupBox9.Location = new System.Drawing.Point(18, 15);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(602, 50);
             this.groupBox9.TabIndex = 252;
@@ -173,38 +178,12 @@
             this.rbWithAuto.UseVisualStyleBackColor = true;
             this.rbWithAuto.CheckedChanged += new System.EventHandler(this.rbWithAuto_CheckedChanged);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(20, 95);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(123, 17);
-            this.label11.TabIndex = 242;
-            this.label11.Text = "Automated Docs";
-            // 
-            // cbAutomated
-            // 
-            this.cbAutomated.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbAutomated.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbAutomated.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAutomated.FormattingEnabled = true;
-            this.cbAutomated.Location = new System.Drawing.Point(18, 130);
-            this.cbAutomated.Name = "cbAutomated";
-            this.cbAutomated.Size = new System.Drawing.Size(596, 21);
-            this.cbAutomated.TabIndex = 241;
-            this.cbAutomated.SelectedIndexChanged += new System.EventHandler(this.cbAutomated_SelectedIndexChanged);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.groupBox7);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 358);
+            this.groupBox2.Location = new System.Drawing.Point(0, 418);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -231,7 +210,7 @@
             this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox7.Location = new System.Drawing.Point(18, 37);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(611, 52);
+            this.groupBox7.Size = new System.Drawing.Size(602, 52);
             this.groupBox7.TabIndex = 6;
             this.groupBox7.TabStop = false;
             // 
@@ -247,6 +226,7 @@
             this.txtSellingPrice.Size = new System.Drawing.Size(562, 23);
             this.txtSellingPrice.TabIndex = 5;
             this.txtSellingPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSellingPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSellingPrice_KeyPress);
             // 
             // label6
             // 
@@ -266,7 +246,7 @@
             this.groupBox8.Controls.Add(this.btnAddConsum);
             this.groupBox8.Controls.Add(this.cbConsumables);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox8.Location = new System.Drawing.Point(0, 174);
+            this.groupBox8.Location = new System.Drawing.Point(0, 234);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -302,6 +282,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.cbLabType);
             this.groupBox3.Controls.Add(this.txtDesc);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -309,14 +291,14 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(639, 102);
+            this.groupBox3.Size = new System.Drawing.Size(639, 162);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             // 
             // txtDesc
             // 
             this.txtDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDesc.Location = new System.Drawing.Point(17, 35);
+            this.txtDesc.Location = new System.Drawing.Point(15, 85);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(603, 60);
@@ -326,7 +308,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(14, 15);
+            this.label10.Location = new System.Drawing.Point(15, 65);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(85, 17);
             this.label10.TabIndex = 1;
@@ -357,7 +339,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 20);
+            this.label1.Location = new System.Drawing.Point(15, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 17);
             this.label1.TabIndex = 0;
@@ -449,6 +431,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save laboratory";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCloseApp
             // 
@@ -467,6 +450,61 @@
             this.btnCloseApp.TabIndex = 2;
             this.btnCloseApp.UseVisualStyleBackColor = false;
             this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label2.Location = new System.Drawing.Point(15, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 17);
+            this.label2.TabIndex = 254;
+            this.label2.Text = "Laboratory type";
+            // 
+            // cbLabType
+            // 
+            this.cbLabType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbLabType.BackColor = System.Drawing.Color.FloralWhite;
+            this.cbLabType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLabType.FormattingEnabled = true;
+            this.cbLabType.Location = new System.Drawing.Point(18, 30);
+            this.cbLabType.Name = "cbLabType";
+            this.cbLabType.Size = new System.Drawing.Size(602, 21);
+            this.cbLabType.TabIndex = 253;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label11.Location = new System.Drawing.Point(12, 78);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(123, 17);
+            this.label11.TabIndex = 244;
+            this.label11.Text = "Automated Docs";
+            // 
+            // cbAutomated
+            // 
+            this.cbAutomated.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbAutomated.BackColor = System.Drawing.Color.FloralWhite;
+            this.cbAutomated.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAutomated.FormattingEnabled = true;
+            this.cbAutomated.Location = new System.Drawing.Point(16, 98);
+            this.cbAutomated.Name = "cbAutomated";
+            this.cbAutomated.Size = new System.Drawing.Size(602, 21);
+            this.cbAutomated.TabIndex = 243;
+            this.cbAutomated.SelectedIndexChanged += new System.EventHandler(this.cbAutomated_SelectedIndexChanged_1);
             // 
             // AddEditLab
             // 
@@ -499,6 +537,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -530,10 +569,13 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.RadioButton rbNone;
         private System.Windows.Forms.RadioButton rbWithAuto;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cbAutomated;
         private System.Windows.Forms.Panel panelForImg;
         private System.Windows.Forms.PictureBox pbAutomated;
         private System.Windows.Forms.ListView lvConsumables;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbLabType;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbAutomated;
     }
 }
