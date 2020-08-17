@@ -17,9 +17,11 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         ItemController itemz = new ItemController();
         AutoDocsController autoDocsController = new AutoDocsController();
         LabTypeController labTypeController = new LabTypeController();
+        LaboratoryController laboratoryController = new LaboratoryController();
         bool isAuto = true;
+        bool isEdit = false;
         int cbAutoValue = 0;
-
+        int cbLabTypeValue = 0;
         int cbConValue = 0;
         
         public AddEditLab()
@@ -27,6 +29,16 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             InitializeComponent();
             loadFromDbtoCb();
             initColLv();
+            this.DoubleBuffered = true;
+        }
+
+
+        public AddEditLab(params string[] datas)
+        {
+            InitializeComponent();
+            loadFromDbtoCb();
+            initColLv();
+            this.DoubleBuffered = true;
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)
@@ -168,6 +180,18 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 MessageBox.Show("Please Complete The Required Field","Validation" ,MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            if (isEdit)
+            {
+
+            }
+            else
+            {
+                laboratoryController.save(txtName.Text.Trim(), txtDesc.Text.Trim(), 
+                    cbLabTypeValue.ToString(), cbAutoValue.ToString(), isAuto.ToString(),txtSellingPrice.Text.Trim());
+            }
+            MessageBox.Show("Succesfully Save Laboratory");
+            this.Close();
         }
 
         private bool isValid()
@@ -186,8 +210,18 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             isValid = (txtSellingPrice.Text != "") && isValid;
             errorHandlingIsEmpty(ref txtSellingPrice, "Please Enter Price");
 
+            isValid = (cbLabTypeValue != 0) &&  isValid;
+            errrorCbLabType(isValid, ref cbLabType, "Please Choose a Lab Type");
 
             return isValid;
+        }
+
+        private void errrorCbLabType(bool valid,ref ComboBox cb,string erMsg)
+        {
+            if (!valid)
+            {
+                errorProvider1.SetError(cb, erMsg);
+            }
         }
 
         private void errorHandlingIsEmpty(ref TextBox tb,string ergMsg)
@@ -221,6 +255,11 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             cbAutoValue = int.Parse((cbAutomated.SelectedItem as ComboBoxItem).Value.ToString());
 
             getImgPath();
+        }
+
+        private void cbLabType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbLabTypeValue = int.Parse((cbLabType.SelectedItem as ComboBoxItem).Value.ToString());
         }
     }
 }

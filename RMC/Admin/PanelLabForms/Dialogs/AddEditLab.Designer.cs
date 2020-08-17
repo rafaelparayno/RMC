@@ -479,6 +479,7 @@
             this.cbLabType.Name = "cbLabType";
             this.cbLabType.Size = new System.Drawing.Size(602, 21);
             this.cbLabType.TabIndex = 253;
+            this.cbLabType.SelectedIndexChanged += new System.EventHandler(this.cbLabType_SelectedIndexChanged);
             // 
             // label11
             // 

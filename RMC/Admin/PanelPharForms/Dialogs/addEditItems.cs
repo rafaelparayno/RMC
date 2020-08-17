@@ -15,6 +15,8 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 {
     public partial class addEditItems : Form
     {
+
+        #region Variables
         ItemController items = new ItemController();
         SupplierController supplier = new SupplierController();
         UnitsController unitsC = new UnitsController();
@@ -29,6 +31,9 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         private bool isEdit = false;
         private int ITEM_ID = 0;
         private Dictionary<string, int> suppliersDic = new Dictionary<string, int>();
+
+        #endregion
+        
         public addEditItems()
         {
             InitializeComponent();
