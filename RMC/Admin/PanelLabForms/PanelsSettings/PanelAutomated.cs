@@ -1,5 +1,7 @@
 ﻿using RMC.Admin.PanelLabForms.Dialogs;
 using RMC.Components;
+using RMC.Database.Controllers;
+using RMC.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +16,7 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
 {
     public partial class PanelAutomated : Form
     {
+        AutoDocsController autoDocsController = new AutoDocsController();
         List<CoordinatesList> coordinatesAutomated = new List<CoordinatesList>();
         private bool isAddingParameters = false;
         private string filePath = "";
@@ -89,6 +92,22 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             if (coordinatesAutomated.Count == 0)
                 return;
 
+            string newFilePath = CreateDirectory.CreateDir("AutomatedDocs");
+            SaveAutomated form = new SaveAutomated(newFilePath);
+
+            form.ShowDialog();
+
+            if (form.FileName == "")
+                return;
+
+            saveImginPath(newFilePath,form.FileName);
+            save(newFilePath,form.FileName);
+        }
+
+        private  void saveImginPath(string path,string fileName)
+        {
+            Image newImg = resize(org.Image, pbEdited.ClientSize);
+            newImg.Save(path + fileName + ".jpg");
         }
 
         private Image resize(Image imgToResize, Size size)
@@ -123,31 +142,14 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             Update();
         }
 
-        private void save()
+        private void save(string pathImg,string filename)
         {
-            /*Color cp = Color.LightSteelBlue;
-            Color cb = Color.LightGray;
 
-            Brush brush = new SolidBrush(cb);
-            Font font = new Font(new FontFamily("Times New Roman"), 20);
-
-            Image newImg = resize(img, pbEdited.ClientSize);
-            Graphics graphicsImg = Graphics.FromImage(newImg);
-            foreach (CoordinatesList wew in coordinatesAutomated)
+            autoDocsController.save(pathImg, filename+".jpg");
+            foreach(CoordinatesList listCor in coordinatesAutomated)
             {
-                Pen p = new Pen(cp, 2);
-                graphicsImg.DrawRectangle(p, wew.xCoor, wew.yCoor, 100, 40);
-                // graphicsImg.DrawLine(p, wew.xCoor, wew.yCoor, wew.xCoor + 100, wew.yCoor);
-                //graphicsImg.DrawString(wew.nameVar, font, brush, wew.xCoor, wew.yCoor);
+
             }
-
-
-            pbEdited.Image = newImg;
-            //newImg.Save("new.jpg");
-            graphicsImg.Dispose();
-            pbEdited.Invalidate();
-            Update();*/
-
         }
 
         private void pbEdited_Click(object sender, EventArgs e)

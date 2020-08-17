@@ -123,6 +123,12 @@
     <Compile Include="Admin\PanelLabForms\Dialogs\nameAutomated.Designer.cs">
       <DependentUpon>nameAutomated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelLabForms\Dialogs\SaveAutomated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\Dialogs\SaveAutomated.Designer.cs">
+      <DependentUpon>SaveAutomated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelLabForms\LaboratorySettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +303,7 @@
     </Compile>
     <Compile Include="Database\BackupandRestore\csBackupAndRestore.cs" />
     <Compile Include="Database\Controllers\AccessController.cs" />
+    <Compile Include="Database\Controllers\AutoDocsController.cs" />
     <Compile Include="Database\Controllers\BackOrderController.cs" />
     <Compile Include="Database\Controllers\CategoryController.cs" />
     <Compile Include="Database\Controllers\ClinicStocksController.cs" />
@@ -413,6 +420,7 @@
     <Compile Include="UserDash\UserDashboard.Designer.cs">
       <DependentUpon>UserDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\CreateDirectory.cs" />
     <EmbeddedResource Include="Admin\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -424,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\Dialogs\nameAutomated.resx">
       <DependentUpon>nameAutomated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\Dialogs\SaveAutomated.resx">
+      <DependentUpon>SaveAutomated.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\LaboratorySettings.resx">
       <DependentUpon>LaboratorySettings.cs</DependentUpon>
