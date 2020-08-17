@@ -17,10 +17,11 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
     public partial class PanelAutomated : Form
     {
         AutoDocsController autoDocsController = new AutoDocsController();
+        AutoParamController autoParamController = new AutoParamController();
         List<CoordinatesList> coordinatesAutomated = new List<CoordinatesList>();
         private bool isAddingParameters = false;
         private string filePath = "";
-       // int counter = 0;
+  
         Graphics graphicsImg = null;
         Image img;
         PictureBox org;
@@ -102,6 +103,8 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
 
             saveImginPath(newFilePath,form.FileName);
             save(newFilePath,form.FileName);
+            clearDatas();
+            MessageBox.Show("Succesfully Added A new Automation");
         }
 
         private  void saveImginPath(string path,string fileName)
@@ -148,8 +151,9 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             autoDocsController.save(pathImg, filename+".jpg");
             foreach(CoordinatesList listCor in coordinatesAutomated)
             {
-
+                autoParamController.save(listCor.nameVar, listCor.xCoor, listCor.yCoor);
             }
+
         }
 
         private void pbEdited_Click(object sender, EventArgs e)
@@ -220,6 +224,13 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             int index = coordinatesAutomated.FindIndex(a => a.nameVar == selectText);
             coordinatesAutomated.RemoveAt(index);       
              Draw();
+        }
+
+        private void clearDatas()
+        {
+            pbEdited.Image = null;
+            coordinatesAutomated.Clear();
+            lbParams.Items.Clear();
         }
     }
 }

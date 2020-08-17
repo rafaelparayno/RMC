@@ -304,6 +304,7 @@
     <Compile Include="Database\BackupandRestore\csBackupAndRestore.cs" />
     <Compile Include="Database\Controllers\AccessController.cs" />
     <Compile Include="Database\Controllers\AutoDocsController.cs" />
+    <Compile Include="Database\Controllers\AutoParamController.cs" />
     <Compile Include="Database\Controllers\BackOrderController.cs" />
     <Compile Include="Database\Controllers\CategoryController.cs" />
     <Compile Include="Database\Controllers\ClinicStocksController.cs" />
