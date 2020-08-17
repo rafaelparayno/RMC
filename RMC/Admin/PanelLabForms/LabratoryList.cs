@@ -1,4 +1,5 @@
-﻿using RMC.Admin.PanelLabForms.PanelsSettings;
+﻿using RMC.Admin.PanelLabForms.Dialogs;
+using RMC.Admin.PanelLabForms.PanelsSettings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,9 +21,10 @@ namespace RMC.Admin.PanelLabForms
             InitializeComponent();
         }
 
-      
-
-       
-
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            AddEditLab form = new AddEditLab();
+            form.ShowDialog();
+        }
     }
 }

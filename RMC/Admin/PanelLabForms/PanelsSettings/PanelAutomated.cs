@@ -148,7 +148,7 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
         private void save(string pathImg,string filename)
         {
 
-            autoDocsController.save(pathImg, filename+".jpg");
+            autoDocsController.save(filename + ".jpg", pathImg );
             foreach(CoordinatesList listCor in coordinatesAutomated)
             {
                 autoParamController.save(listCor.nameVar, listCor.xCoor, listCor.yCoor);
