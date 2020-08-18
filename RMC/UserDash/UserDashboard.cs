@@ -187,5 +187,11 @@ namespace RMC.UserDash
         {
             iconButton4.IconChar = IconChar.AngleDown;
         }
+
+        private void ReceptionBtn_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ReceptionDash());
+            changingLabel("Reception");
+        }
     }
 }

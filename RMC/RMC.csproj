@@ -328,6 +328,7 @@
     <Compile Include="Database\Controllers\ClinicStocksController.cs" />
     <Compile Include="Database\Controllers\ConsumablesController.cs" />
     <Compile Include="Database\Controllers\ConsumablesServController.cs" />
+    <Compile Include="Database\Controllers\CustomerDetailsController.cs" />
     <Compile Include="Database\Controllers\InvoiceController.cs" />
     <Compile Include="Database\Controllers\ItemController.cs" />
     <Compile Include="Database\Controllers\LaboratoryController.cs" />
@@ -352,6 +353,7 @@
     <Compile Include="Database\Models\access.cs" />
     <Compile Include="Database\Models\consumablesMod.cs" />
     <Compile Include="Database\Models\consumablesServMod.cs" />
+    <Compile Include="Database\Models\customerDetailsMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\role.cs" />
@@ -437,6 +439,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reception\PanelRequestForm\Dialogs\AddEditRequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception\PanelRequestForm\Dialogs\AddEditRequestForm.Designer.cs">
+      <DependentUpon>AddEditRequestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reception\PanelRequestForm\PanelRequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception\PanelRequestForm\PanelRequestForm.Designer.cs">
+      <DependentUpon>PanelRequestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reception\ReceptionDash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception\ReceptionDash.Designer.cs">
+      <DependentUpon>ReceptionDash.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaticData.cs" />
     <Compile Include="SystemSettings\PoSettings.cs" />
     <Compile Include="UserDash\UserDashboard.cs">
@@ -585,6 +605,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reception\PanelRequestForm\Dialogs\AddEditRequestForm.resx">
+      <DependentUpon>AddEditRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reception\PanelRequestForm\PanelRequestForm.resx">
+      <DependentUpon>PanelRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reception\ReceptionDash.resx">
+      <DependentUpon>ReceptionDash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserDash\UserDashboard.resx">
       <DependentUpon>UserDashboard.cs</DependentUpon>
     </EmbeddedResource>

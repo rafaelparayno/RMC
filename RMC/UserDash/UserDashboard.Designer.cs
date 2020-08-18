@@ -154,6 +154,7 @@
             this.ReceptionBtn.Text = "Reception";
             this.ReceptionBtn.UseVisualStyleBackColor = false;
             this.ReceptionBtn.Visible = false;
+            this.ReceptionBtn.Click += new System.EventHandler(this.ReceptionBtn_Click);
             // 
             // InventoryBtn
             // 
@@ -357,26 +358,26 @@
             this.toolStripSeparator1,
             this.notificationsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 54);
             this.contextMenuStrip1.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.contextMenuStrip1_Closed);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(139, 6);
             // 
             // notificationsToolStripMenuItem
             // 
             this.notificationsToolStripMenuItem.Name = "notificationsToolStripMenuItem";
-            this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.notificationsToolStripMenuItem.Text = "Notifications";
             // 
             // UserDashboard
