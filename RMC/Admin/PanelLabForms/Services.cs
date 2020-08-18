@@ -54,5 +54,41 @@ namespace RMC.Admin.PanelLabForms
             form.ShowDialog();
             loadGrid();
         }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dbServiceList.SelectedRows.Count == 0)
+                return;
+
+            DialogResult diag = MessageBox.Show("Are you sure to delete this selected Data ", "Deleting",
+                                                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            
+            if(diag == DialogResult.OK)
+            {
+                int id = int.Parse(dbServiceList.SelectedRows[0].Cells[0].Value.ToString());
+                serviceController.remove(id);
+                MessageBox.Show("Succesfully Deleted a Data");
+            }
+
+            loadGrid();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if(txtName.Text.Trim() == "")
+            {
+                loadGrid();
+            }
+            else
+            {
+                searchGrid(txtName.Text.Trim());
+            }
+        }
+
+        private async void searchGrid(string searchKey)
+        {
+            DataSet ds = await serviceController.getDataSetSearch(searchKey);
+            refreshGrid(ds);
+        }
     }
 }
