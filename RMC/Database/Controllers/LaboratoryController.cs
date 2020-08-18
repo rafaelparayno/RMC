@@ -45,6 +45,16 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, listparam);
         }
+
+        public async void remove(int id)
+        {
+            string sql = @"DELETE FROM laboratorylist WHERE laboratory_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@id", id));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
         
     }
 }

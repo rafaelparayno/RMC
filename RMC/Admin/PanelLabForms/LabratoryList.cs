@@ -58,5 +58,23 @@ namespace RMC.Admin.PanelLabForms
             form.ShowDialog();
             loadGrid();
         }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dgLabList.SelectedRows.Count == 0)
+                return;
+
+            int id = int.Parse(dgLabList.SelectedRows[0].Cells[0].Value.ToString());
+
+            DialogResult diag = MessageBox.Show("Are you sure to delete the selected data?", "Deleting", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if(diag== DialogResult.OK)
+            {
+                laboratoryController.remove(id);
+                MessageBox.Show("Succesfully Remove Data");
+            }
+            loadGrid();
+
+        }
     }
 }
