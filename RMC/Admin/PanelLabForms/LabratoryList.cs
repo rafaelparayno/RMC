@@ -56,6 +56,7 @@ namespace RMC.Admin.PanelLabForms
                                             dgLabList.SelectedRows[0].Cells[4].Value.ToString(),
                                             dgLabList.SelectedRows[0].Cells[5].Value.ToString());
             form.ShowDialog();
+            loadGrid();
         }
     }
 }

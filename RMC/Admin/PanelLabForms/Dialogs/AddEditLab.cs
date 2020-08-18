@@ -14,6 +14,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 {
     public partial class AddEditLab : Form
     {
+
+        #region Vars
         ItemController itemz = new ItemController();
         AutoDocsController autoDocsController = new AutoDocsController();
         LabTypeController labTypeController = new LabTypeController();
@@ -24,7 +26,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         int cbLabTypeValue = 0;
         int cbConValue = 0;
         int id = 0;
-        
+        #endregion 
+
         public AddEditLab()
         {
             InitializeComponent();
@@ -40,8 +43,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             loadFromDbtoCb();
             initColLv();
             this.DoubleBuffered = true;
-            label8.Text = "Edit Laboratory";
-            id = int.Parse(datas[0]);
+            setEditState(datas);
         }
 
 
@@ -156,8 +158,31 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             }
         }
 
+        private void setEditState(string [] datas)
+        {
+            label8.Text = "Edit Laboratory";
+            isEdit = true;
+            id = int.Parse(datas[0]);
+            txtName.Text = datas[1];
+            txtDesc.Text = datas[2];
+            txtSellingPrice.Text = datas[3];
+            cbLabType.Text = datas[4];
+            if (datas[5] == "")
+            {
+                rbNone.Checked = true;
+
+            }
+            else
+            {
+                rbWithAuto.Checked = true;
+                cbAutomated.Text = datas[5];
+            }
+        
+        }
+
         #endregion
 
+        #region HandlerEvents
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -235,7 +260,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
             if (isEdit)
             {
-
+                laboratoryController.save(txtName.Text.Trim(), txtDesc.Text.Trim(),
+                  cbLabTypeValue.ToString(), cbAutoValue.ToString(), isAuto.ToString(), txtSellingPrice.Text.Trim(),id.ToString());
             }
             else
             {
@@ -268,5 +294,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         {
             cbLabTypeValue = int.Parse((cbLabType.SelectedItem as ComboBoxItem).Value.ToString());
         }
+        #endregion
+
     }
 }
