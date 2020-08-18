@@ -445,6 +445,12 @@
     <Compile Include="Reception\PanelRequestForm\Dialogs\AddEditRequestForm.Designer.cs">
       <DependentUpon>AddEditRequestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reception\PanelRequestForm\Dialogs\ShowQueue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception\PanelRequestForm\Dialogs\ShowQueue.Designer.cs">
+      <DependentUpon>ShowQueue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reception\PanelRequestForm\PanelRequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -607,6 +613,9 @@
     </Compile>
     <EmbeddedResource Include="Reception\PanelRequestForm\Dialogs\AddEditRequestForm.resx">
       <DependentUpon>AddEditRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reception\PanelRequestForm\Dialogs\ShowQueue.resx">
+      <DependentUpon>ShowQueue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reception\PanelRequestForm\PanelRequestForm.resx">
       <DependentUpon>PanelRequestForm.cs</DependentUpon>

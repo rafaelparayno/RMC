@@ -81,7 +81,8 @@ namespace RMC.Database.Controllers
         public async Task<int> getCurrentCustomer()
         {
             int currentReq = 0;
-            string sql = @"SELECT * FROM customer_request_details WHERE req_done = 0 ORDER BY customer_id DESC LIMIT 1";
+            string sql = @"SELECT * FROM customer_request_details  WHERE customer_id = (SELECT MIN(customer_id) 
+                        FROM customer_request_details WHERE req_done = 0)";
          
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
@@ -95,6 +96,27 @@ namespace RMC.Database.Controllers
 
             return currentReq;
         }
+
+        public async Task<int> nextCurrentCustomer()
+        {
+            int nextReq = 0;
+            string sql = @"SELECT * FROM customer_request_details  WHERE customer_id = ((SELECT MIN(customer_id) 
+                        FROM customer_request_details WHERE req_done = 0) + 1)";
+
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            if (await reader.ReadAsync())
+            {
+                nextReq = int.Parse(reader["customer_id"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return nextReq;
+        }
+
+
 
         public async void nextQueue()
         {
