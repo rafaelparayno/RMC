@@ -320,6 +320,7 @@
     <Compile Include="Database\Controllers\BackOrderController.cs" />
     <Compile Include="Database\Controllers\CategoryController.cs" />
     <Compile Include="Database\Controllers\ClinicStocksController.cs" />
+    <Compile Include="Database\Controllers\ConsumablesController.cs" />
     <Compile Include="Database\Controllers\InvoiceController.cs" />
     <Compile Include="Database\Controllers\ItemController.cs" />
     <Compile Include="Database\Controllers\LaboratoryController.cs" />
@@ -341,6 +342,7 @@
     <Compile Include="Database\DbSettings\dbConfigFile.cs" />
     <Compile Include="Database\DbSettings\dbConnection.cs" />
     <Compile Include="Database\Models\access.cs" />
+    <Compile Include="Database\Models\consumablesMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\role.cs" />

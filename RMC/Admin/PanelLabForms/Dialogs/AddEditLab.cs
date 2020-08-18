@@ -1,5 +1,6 @@
 ﻿using RMC.Components;
 using RMC.Database.Controllers;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +21,15 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         AutoDocsController autoDocsController = new AutoDocsController();
         LabTypeController labTypeController = new LabTypeController();
         LaboratoryController laboratoryController = new LaboratoryController();
+        ConsumablesController consumablesController = new ConsumablesController();
         bool isAuto = true;
         bool isEdit = false;
         int cbAutoValue = 0;
         int cbLabTypeValue = 0;
         int cbConValue = 0;
         int id = 0;
+        List<int> idstobeRemove = new List<int>();
+        List<consumablesMod> consumablesModsEdit;
         #endregion 
 
         public AddEditLab()
@@ -158,7 +162,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             }
         }
 
-        private void setEditState(string [] datas)
+        private async void setEditState(string [] datas)
         {
             label8.Text = "Edit Laboratory";
             isEdit = true;
@@ -167,6 +171,9 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             txtDesc.Text = datas[2];
             txtSellingPrice.Text = datas[3];
             cbLabType.Text = datas[4];
+            consumablesModsEdit = new List<consumablesMod>();
+            consumablesModsEdit = await consumablesController.getEditedConsumables(id);
+           
             if (datas[5] == "")
             {
                 rbNone.Checked = true;
@@ -177,7 +184,65 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 rbWithAuto.Checked = true;
                 cbAutomated.Text = datas[5];
             }
-        
+            setLvEdited();
+
+        }
+
+        private void setLvEdited()
+        {
+            foreach(consumablesMod con in consumablesModsEdit)
+            {
+                ListViewItem lvItem = new ListViewItem();
+                lvItem.Text = con.itemid.ToString();
+                lvItem.SubItems.Add(con.itemname);
+                lvItem.SubItems.Add(con.qty.ToString());
+                lvConsumables.Items.Add(lvItem);
+            }
+        }
+
+
+        private List<int> getRemoveId()
+        {
+            List<int> idRemove = new List<int>();
+
+            foreach(consumablesMod mod in consumablesModsEdit)
+            {
+                if (!isFoundItem(mod.itemid))
+                {
+                    idRemove.Add(mod.itemid);
+                }
+            }
+
+            return idRemove;
+        }
+
+        private void saveConsumables()
+        {
+            foreach(ListViewItem lvitems in lvConsumables.Items)
+            {
+                int itemid = int.Parse(lvitems.SubItems[0].Text);
+                int qty = int.Parse(lvitems.SubItems[2].Text);
+
+                consumablesController.save(itemid, qty);
+            }
+        }
+
+        private void removeConsumables(List<int> ids)
+        {
+            foreach(int itemId in ids)
+            {
+                consumablesController.remove(itemId, id);
+            }
+        }
+
+        private void updateConsumables()
+        {
+            foreach(ListViewItem items in lvConsumables.Items)
+            {
+                int itemid = int.Parse(items.SubItems[0].Text);
+                int qty = int.Parse(items.SubItems[2].Text);
+                consumablesController.update(id, itemid, qty);
+            }
         }
 
         #endregion
@@ -260,6 +325,9 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
             if (isEdit)
             {
+                idstobeRemove = getRemoveId();
+                removeConsumables(idstobeRemove);
+                updateConsumables();
                 laboratoryController.save(txtName.Text.Trim(), txtDesc.Text.Trim(),
                   cbLabTypeValue.ToString(), cbAutoValue.ToString(), isAuto.ToString(), txtSellingPrice.Text.Trim(),id.ToString());
             }
@@ -267,7 +335,10 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             {
                 laboratoryController.save(txtName.Text.Trim(), txtDesc.Text.Trim(), 
                     cbLabTypeValue.ToString(), cbAutoValue.ToString(), isAuto.ToString(),txtSellingPrice.Text.Trim());
+                saveConsumables();
             }
+
+         
             MessageBox.Show("Succesfully Save Laboratory");
             this.Close();
         }
