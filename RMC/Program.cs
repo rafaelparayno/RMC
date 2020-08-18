@@ -1,6 +1,7 @@
 ﻿using RMC.Admin;
 using RMC.Admin.PanelLabForms;
 using RMC.Components;
+using RMC.InventoryPharma.PanelRo;
 using RMC.Reception.PanelRequestForm;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new ReceptionDash());
         }
     }
 }

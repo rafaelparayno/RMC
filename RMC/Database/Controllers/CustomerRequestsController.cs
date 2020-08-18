@@ -1,0 +1,57 @@
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RMC.Database.Controllers
+{
+    class CustomerRequestsController
+    {
+        dbcrud crud = new dbcrud();
+        
+        public async Task<List<int>> getListTypeReq(int customerId)
+        {
+            List<int> types = new List<int>();
+            string sql = @"SELECT * FROM customer_requests WHERE customer_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", customerId));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while(await reader.ReadAsync())
+            {
+                int type = int.Parse(reader["request_type"].ToString());
+
+                types.Add(type);
+            }
+
+
+            crud.CloseConnection();
+            return types;
+        }
+
+        public async void newReq(int type)
+        {
+            string sql = @"INSERT INTO customer_requests (request_type,customer_id)
+                          VALUES (@type,(SELECT customer_id FROM customer_request_details ORDER BY customer_id DESC LIMIT 1))";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@type",type));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+
+        public async void remove(int type,int customer_id)
+        {
+            string sql = @"DELETE FROM customer_requests WHERE customer_id = @id AND request_type = @type";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", customer_id));
+            listparams.Add(new MySqlParameter("@type", type));
+
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+    }
+}

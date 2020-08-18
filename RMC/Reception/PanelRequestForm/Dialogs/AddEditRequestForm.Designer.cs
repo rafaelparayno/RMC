@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
@@ -62,6 +63,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -73,6 +75,7 @@
             this.groupBox9.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -190,6 +193,7 @@
             this.checkOthers.TabIndex = 6;
             this.checkOthers.Text = "OTHERS";
             this.checkOthers.UseVisualStyleBackColor = true;
+            this.checkOthers.Click += new System.EventHandler(this.checkOthers_Click);
             // 
             // checkMeds
             // 
@@ -200,6 +204,7 @@
             this.checkMeds.TabIndex = 5;
             this.checkMeds.Text = "MEDS";
             this.checkMeds.UseVisualStyleBackColor = true;
+            this.checkMeds.Click += new System.EventHandler(this.checkMeds_Click);
             // 
             // checkPackage
             // 
@@ -210,6 +215,7 @@
             this.checkPackage.TabIndex = 4;
             this.checkPackage.Text = "PACKAGE";
             this.checkPackage.UseVisualStyleBackColor = true;
+            this.checkPackage.Click += new System.EventHandler(this.checkPackage_Click);
             // 
             // checkXray
             // 
@@ -220,6 +226,7 @@
             this.checkXray.TabIndex = 3;
             this.checkXray.Text = "XRAY";
             this.checkXray.UseVisualStyleBackColor = true;
+            this.checkXray.Click += new System.EventHandler(this.checkXray_Click);
             // 
             // checkLab
             // 
@@ -230,6 +237,7 @@
             this.checkLab.TabIndex = 2;
             this.checkLab.Text = "LABORATORY";
             this.checkLab.UseVisualStyleBackColor = true;
+            this.checkLab.Click += new System.EventHandler(this.checkLab_Click);
             // 
             // Medcert
             // 
@@ -240,6 +248,7 @@
             this.Medcert.TabIndex = 1;
             this.Medcert.Text = "MEDCERT";
             this.Medcert.UseVisualStyleBackColor = true;
+            this.Medcert.Click += new System.EventHandler(this.Medcert_Click);
             // 
             // checkConsult
             // 
@@ -250,6 +259,7 @@
             this.checkConsult.TabIndex = 0;
             this.checkConsult.Text = "CONSULT";
             this.checkConsult.UseVisualStyleBackColor = true;
+            this.checkConsult.Click += new System.EventHandler(this.checkConsult_Click);
             // 
             // label3
             // 
@@ -468,6 +478,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // AddEditRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -502,6 +516,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -542,5 +557,6 @@
         private System.Windows.Forms.CheckBox checkLab;
         private System.Windows.Forms.CheckBox Medcert;
         private System.Windows.Forms.CheckBox checkConsult;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
