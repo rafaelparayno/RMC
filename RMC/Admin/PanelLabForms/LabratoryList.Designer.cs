@@ -80,14 +80,15 @@
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Name",
-            "SKU",
+            "Laboratory Name",
+            "Lab Type",
             "Description"});
             this.comboBox1.Location = new System.Drawing.Point(18, 41);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

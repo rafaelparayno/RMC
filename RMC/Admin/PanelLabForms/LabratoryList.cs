@@ -23,16 +23,17 @@ namespace RMC.Admin.PanelLabForms
             loadGrid();
         }
 
-        private void btnAddItem_Click(object sender, EventArgs e)
-        {
-            AddEditLab form = new AddEditLab();
-            form.ShowDialog();
-            loadGrid();
-        }
-
+        #region OwnFunctions
         private async void loadGrid()
         {
             DataSet ds = await laboratoryController.getDataSet();
+            refreshGrid(ds);
+        }
+
+        private async void SearchGrid(string searchkey, int cbSelect)
+        {
+
+            DataSet ds = await laboratoryController.getDataSearch(cbSelect, searchkey);
             refreshGrid(ds);
         }
 
@@ -42,6 +43,18 @@ namespace RMC.Admin.PanelLabForms
             dgLabList.DataSource = ds.Tables[0];
             dgLabList.AutoResizeColumns();
         }
+
+        #endregion
+
+
+        #region Event Handler
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            AddEditLab form = new AddEditLab();
+            form.ShowDialog();
+            loadGrid();
+        }
+
 
         private void btnEditItem_Click(object sender, EventArgs e)
         {
@@ -76,5 +89,19 @@ namespace RMC.Admin.PanelLabForms
             loadGrid();
 
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedIndex == -1)
+            {
+                loadGrid();
+            }
+            else
+            {
+                SearchGrid(txtName.Text.Trim(), comboBox1.SelectedIndex);
+            }
+        }
+        #endregion
+
     }
 }

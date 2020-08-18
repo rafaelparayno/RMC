@@ -21,6 +21,49 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
         }
 
+        public async Task<DataSet> getDataSearch(int searchType,string searchkey)
+        {
+            string sql = "";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            switch (searchType)
+            {
+                case 0:
+                    sql = @"SELECT laboratorylist.`laboratory_id` AS 'ID',
+                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS'
+                        FROM `laboratorylist` 
+                        INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
+                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id
+                        WHERE labname LIKE @key";
+                    break;
+
+                case 1:
+                    sql = @"SELECT laboratorylist.`laboratory_id` AS 'ID',
+                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS'
+                        FROM `laboratorylist` 
+                        INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
+                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id
+                        WHERE labtype_name LIKE @key";
+                    
+                    break;
+
+                case 2:
+                    sql = @"SELECT laboratorylist.`laboratory_id` AS 'ID',
+                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS'
+                        FROM `laboratorylist` 
+                        INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
+                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id
+                        WHERE description LIKE @key";
+
+                    break;
+
+            }
+
+            string searches = "%" + searchkey + "%";
+            listparams.Add(new MySqlParameter("@key", searches));
+            return await crud.GetDataSetAsync(sql, listparams);
+        }
+
         public async void save(params string[] datas)
         {
             List<MySqlParameter> listparam = new List<MySqlParameter>();
