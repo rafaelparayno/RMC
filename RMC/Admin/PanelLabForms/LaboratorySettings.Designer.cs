@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.panelNavParam = new System.Windows.Forms.Panel();
-            this.btnMeasurements = new FontAwesome.Sharp.IconButton();
+            this.btnAutomated = new FontAwesome.Sharp.IconButton();
             this.btnSuppliers = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelChild = new System.Windows.Forms.Panel();
-            this.btnAutomated = new FontAwesome.Sharp.IconButton();
+            this.btnConsumables = new FontAwesome.Sharp.IconButton();
             this.panelNavParam.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelNavParam
             // 
-            this.panelNavParam.Controls.Add(this.btnMeasurements);
+            this.panelNavParam.Controls.Add(this.btnConsumables);
             this.panelNavParam.Controls.Add(this.btnAutomated);
             this.panelNavParam.Controls.Add(this.btnSuppliers);
             this.panelNavParam.Dock = System.Windows.Forms.DockStyle.Top;
@@ -48,27 +48,26 @@
             this.panelNavParam.Size = new System.Drawing.Size(800, 44);
             this.panelNavParam.TabIndex = 17;
             // 
-            // btnMeasurements
+            // btnAutomated
             // 
-            this.btnMeasurements.BackColor = System.Drawing.Color.Maroon;
-            this.btnMeasurements.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnMeasurements.FlatAppearance.BorderSize = 0;
-            this.btnMeasurements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMeasurements.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnMeasurements.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnMeasurements.IconChar = FontAwesome.Sharp.IconChar.BalanceScale;
-            this.btnMeasurements.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnMeasurements.IconSize = 25;
-            this.btnMeasurements.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMeasurements.Location = new System.Drawing.Point(228, 0);
-            this.btnMeasurements.Name = "btnMeasurements";
-            this.btnMeasurements.Rotation = 0D;
-            this.btnMeasurements.Size = new System.Drawing.Size(114, 44);
-            this.btnMeasurements.TabIndex = 13;
-            this.btnMeasurements.Text = "&Measurements";
-            this.btnMeasurements.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnMeasurements.UseVisualStyleBackColor = false;
-            this.btnMeasurements.Visible = false;
+            this.btnAutomated.BackColor = System.Drawing.Color.Maroon;
+            this.btnAutomated.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAutomated.FlatAppearance.BorderSize = 0;
+            this.btnAutomated.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutomated.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAutomated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnAutomated.IconChar = FontAwesome.Sharp.IconChar.File;
+            this.btnAutomated.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnAutomated.IconSize = 25;
+            this.btnAutomated.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAutomated.Location = new System.Drawing.Point(114, 0);
+            this.btnAutomated.Name = "btnAutomated";
+            this.btnAutomated.Rotation = 0D;
+            this.btnAutomated.Size = new System.Drawing.Size(114, 44);
+            this.btnAutomated.TabIndex = 12;
+            this.btnAutomated.Text = "&Automated";
+            this.btnAutomated.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAutomated.UseVisualStyleBackColor = false;
             // 
             // btnSuppliers
             // 
@@ -109,26 +108,28 @@
             this.panelChild.Size = new System.Drawing.Size(800, 401);
             this.panelChild.TabIndex = 19;
             // 
-            // btnAutomated
+            // btnConsumables
             // 
-            this.btnAutomated.BackColor = System.Drawing.Color.Maroon;
-            this.btnAutomated.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAutomated.FlatAppearance.BorderSize = 0;
-            this.btnAutomated.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutomated.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnAutomated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnAutomated.IconChar = FontAwesome.Sharp.IconChar.File;
-            this.btnAutomated.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnAutomated.IconSize = 25;
-            this.btnAutomated.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAutomated.Location = new System.Drawing.Point(114, 0);
-            this.btnAutomated.Name = "btnAutomated";
-            this.btnAutomated.Rotation = 0D;
-            this.btnAutomated.Size = new System.Drawing.Size(114, 44);
-            this.btnAutomated.TabIndex = 12;
-            this.btnAutomated.Text = "&Automated";
-            this.btnAutomated.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAutomated.UseVisualStyleBackColor = false;
+            this.btnConsumables.BackColor = System.Drawing.Color.Maroon;
+            this.btnConsumables.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnConsumables.FlatAppearance.BorderSize = 0;
+            this.btnConsumables.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsumables.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnConsumables.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnConsumables.IconChar = FontAwesome.Sharp.IconChar.Dolly;
+            this.btnConsumables.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnConsumables.IconSize = 25;
+            this.btnConsumables.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConsumables.Location = new System.Drawing.Point(228, 0);
+            this.btnConsumables.Name = "btnConsumables";
+            this.btnConsumables.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
+            this.btnConsumables.Rotation = 0D;
+            this.btnConsumables.Size = new System.Drawing.Size(176, 44);
+            this.btnConsumables.TabIndex = 14;
+            this.btnConsumables.Text = "Laboratory Consumables";
+            this.btnConsumables.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConsumables.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConsumables.UseVisualStyleBackColor = false;
             // 
             // LaboratorySettings
             // 
@@ -149,10 +150,10 @@
         #endregion
 
         private System.Windows.Forms.Panel panelNavParam;
-        private FontAwesome.Sharp.IconButton btnMeasurements;
         private FontAwesome.Sharp.IconButton btnSuppliers;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelChild;
         private FontAwesome.Sharp.IconButton btnAutomated;
+        private FontAwesome.Sharp.IconButton btnConsumables;
     }
 }

@@ -123,6 +123,12 @@
     <Compile Include="Admin\PanelLabForms\Dialogs\AddEditLabType.Designer.cs">
       <DependentUpon>AddEditLabType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelLabForms\Dialogs\AddEditService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\Dialogs\AddEditService.Designer.cs">
+      <DependentUpon>AddEditService.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelLabForms\Dialogs\AddQtyConsumables.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -321,6 +327,7 @@
     <Compile Include="Database\Controllers\CategoryController.cs" />
     <Compile Include="Database\Controllers\ClinicStocksController.cs" />
     <Compile Include="Database\Controllers\ConsumablesController.cs" />
+    <Compile Include="Database\Controllers\ConsumablesServController.cs" />
     <Compile Include="Database\Controllers\InvoiceController.cs" />
     <Compile Include="Database\Controllers\ItemController.cs" />
     <Compile Include="Database\Controllers\LaboratoryController.cs" />
@@ -333,6 +340,7 @@
     <Compile Include="Database\Controllers\ReturnItemsController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
     <Compile Include="Database\Controllers\SalesPharmaController.cs" />
+    <Compile Include="Database\Controllers\ServiceController.cs" />
     <Compile Include="Database\Controllers\StocksHistoryController.cs" />
     <Compile Include="Database\Controllers\SupplierController.cs" />
     <Compile Include="Database\Controllers\SupplierItemsController.cs" />
@@ -343,6 +351,7 @@
     <Compile Include="Database\DbSettings\dbConnection.cs" />
     <Compile Include="Database\Models\access.cs" />
     <Compile Include="Database\Models\consumablesMod.cs" />
+    <Compile Include="Database\Models\consumablesServMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\role.cs" />
@@ -449,6 +458,9 @@
     <EmbeddedResource Include="Admin\PanelLabForms\Dialogs\AddEditLabType.resx">
       <DependentUpon>AddEditLabType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\Dialogs\AddEditService.resx">
+      <DependentUpon>AddEditService.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\Dialogs\AddQtyConsumables.resx">
       <DependentUpon>AddQtyConsumables.cs</DependentUpon>
     </EmbeddedResource>
@@ -469,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.resx">
       <DependentUpon>PanelLabType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\Services.resx">
+      <DependentUpon>Services.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\addEditCategory.resx">
       <DependentUpon>addEditCategory.cs</DependentUpon>
