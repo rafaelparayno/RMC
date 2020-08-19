@@ -46,6 +46,14 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
         }
 
+        private void updateRequets()
+        {
+            foreach (int type in currentS)
+            {
+                customerRequestsController.updateReq(reqid,type);
+            }
+        }
+
         private void removeRequestCostumer()
         {
 
@@ -203,6 +211,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 customerDetailsController.update(txtName.Text.Trim(), txtAge.Text.Trim(),
                                            gender, txtcs.Text.Trim(), txtCpno.Text.Trim(),
                                            txtAddress.Text.Trim(),reqid.ToString());
+                updateRequets();
 
             }
             else
@@ -210,11 +219,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 customerDetailsController.save(txtName.Text.Trim(), txtAge.Text.Trim(),
                                            gender, txtcs.Text.Trim(), txtCpno.Text.Trim(),
                                            txtAddress.Text.Trim());
-               
+                saveRequests();
             }
 
 
-            saveRequests();
+      
             MessageBox.Show("SuccessFuly Added Request");
             this.Close();
 

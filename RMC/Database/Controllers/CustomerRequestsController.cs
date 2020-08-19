@@ -34,11 +34,26 @@ namespace RMC.Database.Controllers
 
         public async void newReq(int type)
         {
-            string sql = @"INSERT INTO customer_requests (request_type,customer_id)
+                string sql = @"INSERT INTO customer_requests (request_type,customer_id)
                           VALUES (@type,(SELECT customer_id FROM customer_request_details ORDER BY customer_id DESC LIMIT 1))";
 
+                List<MySqlParameter> listparams = new List<MySqlParameter>();
+                listparams.Add(new MySqlParameter("@type", type));
+
+                await crud.ExecuteAsync(sql, listparams);
+        }
+
+        public async void updateReq(int customer_id, int type)
+        {
+            if (await isFound(customer_id, type))
+                return;
+
+            string sql = @"INSERT INTO customer_requests (request_type,customer_id)
+                          VALUES (@type,@cid)";
+
             List<MySqlParameter> listparams = new List<MySqlParameter>();
-            listparams.Add(new MySqlParameter("@type",type));
+            listparams.Add(new MySqlParameter("@type", type));
+            listparams.Add(new MySqlParameter("@cid", customer_id));
 
             await crud.ExecuteAsync(sql, listparams);
         }
@@ -52,6 +67,26 @@ namespace RMC.Database.Controllers
 
 
             await crud.ExecuteAsync(sql, listparams);
+        }
+
+        private async Task<bool> isFound(int customerid,int typeid)
+        {
+            bool isFound = false;
+            string sql = @"SELECT * FROM customer_requests WHERE customer_id = @id AND request_type = @type";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", customerid));
+            listparams.Add(new MySqlParameter("@type", typeid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if(await reader.ReadAsync())
+            {
+                isFound = true;
+            }
+
+            crud.CloseConnection();
+
+            return isFound;
         }
     }
 }
