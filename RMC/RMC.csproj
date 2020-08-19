@@ -352,6 +352,7 @@
     <Compile Include="Database\Controllers\ClinicStocksController.cs" />
     <Compile Include="Database\Controllers\ConsumablesController.cs" />
     <Compile Include="Database\Controllers\ConsumablesServController.cs" />
+    <Compile Include="Database\Controllers\ConsumablesXrayControllers.cs" />
     <Compile Include="Database\Controllers\CustomerDetailsController.cs" />
     <Compile Include="Database\Controllers\CustomerRequestsController.cs" />
     <Compile Include="Database\Controllers\InvoiceController.cs" />
@@ -372,6 +373,7 @@
     <Compile Include="Database\Controllers\SupplierItemsController.cs" />
     <Compile Include="Database\Controllers\UnitsController.cs" />
     <Compile Include="Database\Controllers\UserracountsController.cs" />
+    <Compile Include="Database\Controllers\XrayControllers.cs" />
     <Compile Include="Database\dbcrud.cs" />
     <Compile Include="Database\DbSettings\dbConfigFile.cs" />
     <Compile Include="Database\DbSettings\dbConnection.cs" />

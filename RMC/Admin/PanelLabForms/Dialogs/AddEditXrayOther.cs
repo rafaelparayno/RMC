@@ -17,6 +17,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
     {
 
         ItemController itemz = new ItemController();
+        XrayControllers xrayControllers = new XrayControllers();
+        ConsumablesXrayControllers consumablesXrayController = new ConsumablesXrayControllers();
         int cbTypeValue = 0;
         int cbConValue = 0;
         bool isEdit = false;
@@ -29,6 +31,54 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             InitializeComponent();
             initColLv();
             loadAllCb();
+        }
+
+        public AddEditXrayOther(params string[] data)
+        {
+            InitializeComponent();
+            initColLv();
+            loadAllCb();
+            setEditState(data);
+        }
+
+        private async void setEditState(string [] data)
+        {
+            isEdit = true;
+            xrayId = int.Parse(data[0]);
+            txtName.Text = data[1];
+            txtDesc.Text = data[3];
+            txtSellingPrice.Text = data[4];
+            cbType.Text = data[2];
+
+            consumablesModsEdit = new List<consumablesMod>();
+            consumablesModsEdit = await consumablesXrayController.getEditedConsumables(xrayId);
+
+            setLvEdited();
+        }
+
+        private void setLvEdited()
+        {
+            foreach (consumablesMod con in consumablesModsEdit)
+            {
+                ListViewItem lvItem = new ListViewItem();
+                lvItem.Text = con.itemid.ToString();
+                lvItem.SubItems.Add(con.itemname);
+                lvItem.SubItems.Add(con.qty.ToString());
+                lvConsumables.Items.Add(lvItem);
+            }
+        }
+
+
+
+        private void saveConsumables()
+        {
+            foreach (ListViewItem lvitems in lvConsumables.Items)
+            {
+                int itemid = int.Parse(lvitems.SubItems[0].Text);
+                int qty = int.Parse(lvitems.SubItems[2].Text);
+
+                  consumablesXrayController.save(itemid, qty);
+            }
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)
@@ -65,14 +115,14 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         private List<int> getRemoveId()
         {
             List<int> idRemove = new List<int>();
-/*
-            foreach (consumablesServMod mod in consumablesModsEdit)
+
+            foreach (consumablesMod mod in consumablesModsEdit)
             {
                 if (!isFoundItem(mod.itemid))
                 {
                     idRemove.Add(mod.itemid);
                 }
-            }*/
+            }
 
             return idRemove;
         }
@@ -81,7 +131,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         {
             foreach (int itemId in ids)
             {
-            //    consumablesServController.remove(itemId, idService);
+                consumablesXrayController.remove(itemId, xrayId);
             }
         }
 
@@ -91,7 +141,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             {
                 int itemid = int.Parse(items.SubItems[0].Text);
                 int qty = int.Parse(items.SubItems[2].Text);
-            //    consumablesServController.update(idService, itemid, qty);
+                consumablesXrayController.update(xrayId, itemid, qty);
             }
         }
 
@@ -222,7 +272,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbTypeValue = int.Parse((cbConsumables.SelectedItem as ComboBoxItem).Value.ToString());
+            cbTypeValue = int.Parse((cbType.SelectedItem as ComboBoxItem).Value.ToString());
         }
 
         private void txtSellingPrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -242,6 +292,21 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 return;
             }
 
+            if (isEdit)
+            {
+                idstobeRemove = getRemoveId();
+                removeConsumables(idstobeRemove);
+                updateConsumables();
+                xrayControllers.update(xrayId, txtName.Text.Trim(), txtDesc.Text.Trim(), cbTypeValue, float.Parse(txtSellingPrice.Text.Trim()));
+               
+            }
+            else
+            {
+                xrayControllers.save(txtName.Text.Trim(), txtDesc.Text.Trim(), cbTypeValue, float.Parse(txtSellingPrice.Text.Trim()));
+                saveConsumables();
+            }
+            MessageBox.Show("Succesfully Save Data");
+            this.Close();
         }
     }
 }
