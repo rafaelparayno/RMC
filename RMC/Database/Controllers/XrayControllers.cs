@@ -72,6 +72,26 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task<float> getPrice(int id)
+        {
+            float price = 0;
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            string sql = @"SELECT * FROM xraylist WHERE xray_id = @id";
+            listparams.Add(new MySqlParameter("@id", id));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                price = float.Parse(reader["xray_price"].ToString());
+
+            }
+            crud.CloseConnection();
+
+            return price;
+
+        }
+
         public async Task<List<ComboBoxItem>> getComboDatas()
         {
             List<ComboBoxItem> cbItems = new List<ComboBoxItem>();

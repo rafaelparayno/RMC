@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
@@ -66,6 +67,7 @@
             this.btnRemoveOther = new FontAwesome.Sharp.IconButton();
             this.btnAddOther = new FontAwesome.Sharp.IconButton();
             this.cbOther = new System.Windows.Forms.ComboBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -76,6 +78,7 @@
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -109,6 +112,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save Packages";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCloseApp
             // 
@@ -126,6 +130,7 @@
             this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
             this.btnCloseApp.TabIndex = 2;
             this.btnCloseApp.UseVisualStyleBackColor = false;
+            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
             // 
             // label8
             // 
@@ -387,6 +392,7 @@
             this.btnRemoveLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemoveLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemoveLab.UseVisualStyleBackColor = false;
+            this.btnRemoveLab.Click += new System.EventHandler(this.btnRemoveLab_Click);
             // 
             // btnAddLab
             // 
@@ -410,6 +416,7 @@
             this.btnAddLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddLab.UseVisualStyleBackColor = false;
+            this.btnAddLab.Click += new System.EventHandler(this.btnAddLab_Click);
             // 
             // cbLab
             // 
@@ -423,6 +430,7 @@
             this.cbLab.Name = "cbLab";
             this.cbLab.Size = new System.Drawing.Size(598, 24);
             this.cbLab.TabIndex = 242;
+            this.cbLab.SelectedIndexChanged += new System.EventHandler(this.cbLab_SelectedIndexChanged);
             // 
             // groupBox5
             // 
@@ -486,6 +494,7 @@
             this.btnRemoveXray.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemoveXray.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemoveXray.UseVisualStyleBackColor = false;
+            this.btnRemoveXray.Click += new System.EventHandler(this.btnRemoveXray_Click);
             // 
             // btnAddXray
             // 
@@ -509,6 +518,7 @@
             this.btnAddXray.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddXray.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddXray.UseVisualStyleBackColor = false;
+            this.btnAddXray.Click += new System.EventHandler(this.btnAddXray_Click);
             // 
             // cbXray
             // 
@@ -522,6 +532,7 @@
             this.cbXray.Name = "cbXray";
             this.cbXray.Size = new System.Drawing.Size(598, 24);
             this.cbXray.TabIndex = 242;
+            this.cbXray.SelectedIndexChanged += new System.EventHandler(this.cbXray_SelectedIndexChanged);
             // 
             // groupBox6
             // 
@@ -585,6 +596,7 @@
             this.btnRemoveOther.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemoveOther.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemoveOther.UseVisualStyleBackColor = false;
+            this.btnRemoveOther.Click += new System.EventHandler(this.btnRemoveOther_Click);
             // 
             // btnAddOther
             // 
@@ -608,6 +620,7 @@
             this.btnAddOther.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddOther.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddOther.UseVisualStyleBackColor = false;
+            this.btnAddOther.Click += new System.EventHandler(this.btnAddOther_Click);
             // 
             // cbOther
             // 
@@ -621,6 +634,11 @@
             this.cbOther.Name = "cbOther";
             this.cbOther.Size = new System.Drawing.Size(598, 24);
             this.cbOther.TabIndex = 242;
+            this.cbOther.SelectedIndexChanged += new System.EventHandler(this.cbOther_SelectedIndexChanged);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddEditPackage
             // 
@@ -655,6 +673,7 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -699,5 +718,6 @@
         private FontAwesome.Sharp.IconButton btnRemoveLab;
         private FontAwesome.Sharp.IconButton btnAddLab;
         private System.Windows.Forms.ComboBox cbLab;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
