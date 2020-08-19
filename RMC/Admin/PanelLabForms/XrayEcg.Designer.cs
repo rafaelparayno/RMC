@@ -30,7 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMenus = new System.Windows.Forms.Panel();
@@ -48,7 +47,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.iconButton1);
-            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -80,27 +78,14 @@
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Laboratory Name",
-            "Lab Type",
-            "Description"});
-            this.comboBox1.Location = new System.Drawing.Point(18, 41);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(202, 24);
-            this.comboBox1.TabIndex = 221;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(224, 42);
+            this.txtName.Location = new System.Drawing.Point(18, 42);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(471, 24);
+            this.txtName.Size = new System.Drawing.Size(677, 24);
             this.txtName.TabIndex = 1;
             // 
             // label1
@@ -191,6 +176,7 @@
             this.btnRemove.Text = "Remove ";
             this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // groupBox2
             // 
@@ -255,7 +241,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelMenus;

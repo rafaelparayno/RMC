@@ -34,6 +34,12 @@ namespace RMC.Admin.PanelLabForms
             refreshGrid(ds);
         }
 
+        private async void searchGrid(string searchkey)
+        {
+            DataSet ds = await xrayControllers.getSearchDataset(searchkey);
+            refreshGrid(ds);
+        }
+
         private void refreshGrid(DataSet ds)
         {
             dgLabList.DataSource = "";
@@ -87,6 +93,37 @@ namespace RMC.Admin.PanelLabForms
                                                          dgLabList.SelectedRows[0].Cells[3].Value.ToString(),
                                                          dgLabList.SelectedRows[0].Cells[4].Value.ToString());
             form.ShowDialog();
+            loadGrid();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if(txtName.Text.Trim() == "")
+            {
+                loadGrid();
+            }
+            else
+            {
+                searchGrid(txtName.Text.Trim());
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+
+            if (dgLabList.SelectedRows.Count == 0)
+                return;
+
+            DialogResult diag = MessageBox.Show("Do you want to Delete the Data? Deleting will be permanently lost", 
+                                                "Deleting", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            int id = int.Parse(dgLabList.SelectedRows[0].Cells[0].Value.ToString());
+            if(diag == DialogResult.OK)
+            {
+                xrayControllers.remove(id);
+
+                MessageBox.Show("Succesfully Deleted Data");
+            }
             loadGrid();
         }
     }

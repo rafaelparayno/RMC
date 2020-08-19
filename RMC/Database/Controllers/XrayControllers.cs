@@ -19,6 +19,17 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
         }
 
+        public async Task<DataSet> getSearchDataset(string searchkey)
+        {
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            
+            string sql = @"SELECT * FROM `xraylist` WHERE xray_name LIKE @key";
+            string key = "%" + searchkey + "%";
+            listparams.Add(new MySqlParameter("@key", key));
+
+           return  await crud.GetDataSetAsync(sql, listparams);
+        }
+
         public async void save(string name,string desc,int type,float price)
         {
             string sql = @"INSERT INTO xraylist (xray_name,xray_type,description,xray_price)
@@ -46,6 +57,16 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@id", id));
 
             await crud.ExecuteAsync(sql, listparams);
+        }
+
+        public async void remove(int id)
+        {
+            string sql = @"DELETE FROM xraylist WHERE xray_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", id));
+
+            await crud.ExecuteAsync(sql, listparams);
+
         }
     }
 }
