@@ -307,6 +307,7 @@
             this.txtPriceSave.Size = new System.Drawing.Size(562, 23);
             this.txtPriceSave.TabIndex = 5;
             this.txtPriceSave.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPriceSave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPriceSave_KeyPress);
             // 
             // label2
             // 

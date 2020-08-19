@@ -282,14 +282,26 @@ namespace RMC.Admin.PackageDialog
             errorProvider1.Clear();
             bool isValid = true;
 
+            float _;
+
             isValid = (txtName.Text.Trim() != "") && isValid;
-            isTextNull(ref txtName, "Please Fill the Field")
-;
+            isTextNull(ref txtName, "Please Fill the Field");
             isValid = (txtPriceSave.Text.Trim() != "") && isValid;
-            isTextNull(ref txtPriceSave, "Please Fill the Field")
-;
+            isTextNull(ref txtPriceSave, "Please Fill the Field");
+
+            isValid = (float.TryParse(txtPriceSave.Text.Trim(), out _)) && isValid;
+            isFormatPriceCorrect(isValid, ref txtPriceSave, "Inccorect Number Format");
+
 
             return isValid;
+        }
+
+        private void isFormatPriceCorrect(bool isvalid,ref TextBox tb,string msg)
+        {
+            if (isvalid)
+            {
+                errorProvider1.SetError(tb, msg);
+            }
         }
 
         private void isTextNull(ref TextBox tb,string msg)
@@ -300,6 +312,13 @@ namespace RMC.Admin.PackageDialog
             }
         }
 
-
+        private void txtPriceSave_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
