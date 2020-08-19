@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
+using RMC.Components;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Threading.Tasks;
 
 namespace RMC.Database.Controllers
@@ -98,6 +100,25 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, listparams);
         }
-        
+
+
+        public async Task<List<ComboBoxItem>> getComboDatas()
+        {
+            List<ComboBoxItem> cbItems = new List<ComboBoxItem>();
+            string sql = String.Format(@"SELECT laboratorylist.`laboratory_id`,
+                        labname,description,price_lab,labtype_name
+                        FROM `laboratorylist` 
+                        INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id ");
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+            while (await reader.ReadAsync())
+            {
+                cbItems.Add(new ComboBoxItem(reader["labname"].ToString(),
+                    int.Parse(reader["laboratory_id"].ToString())));
+            }
+            crud.CloseConnection();
+            return cbItems;
+        }
+
     }
 }
