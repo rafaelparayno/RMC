@@ -183,12 +183,6 @@
     <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.Designer.cs">
       <DependentUpon>PanelLabType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelMedCertSet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelMedCertSet.Designer.cs">
-      <DependentUpon>PanelMedCertSet.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin\PanelLabForms\Services.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -363,6 +357,7 @@
     <Compile Include="Database\Controllers\PharmaStocksController.cs" />
     <Compile Include="Database\Controllers\PoController.cs" />
     <Compile Include="Database\Controllers\PoItemController.cs" />
+    <Compile Include="Database\Controllers\PricesServiceController.cs" />
     <Compile Include="Database\Controllers\ReceiveControllers.cs" />
     <Compile Include="Database\Controllers\ReturnItemsController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
@@ -540,9 +535,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.resx">
       <DependentUpon>PanelLabType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Admin\PanelLabForms\PanelsSettings\PanelMedCertSet.resx">
-      <DependentUpon>PanelMedCertSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\Services.resx">
       <DependentUpon>Services.cs</DependentUpon>

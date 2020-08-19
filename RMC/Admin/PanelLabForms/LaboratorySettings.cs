@@ -41,11 +41,6 @@ namespace RMC.Admin.PanelLabForms
         }
 
 
-        private void iconButton2_Click(object sender, EventArgs e)
-        {
-            openChildForm(new PanelMedCertSet());
-        }
-
         private void iconButton3_Click(object sender, EventArgs e)
         {
             openChildForm(new PanelConsultSettings());

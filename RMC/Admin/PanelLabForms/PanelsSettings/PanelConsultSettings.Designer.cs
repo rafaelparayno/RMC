@@ -28,7 +28,174 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtSellingPrice = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnAddItem = new FontAwesome.Sharp.IconButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnAddItem);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 215);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(784, 46);
+            this.panel1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.groupBox1);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.groupBox7);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(784, 215);
+            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label7.Location = new System.Drawing.Point(15, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(154, 17);
+            this.label7.TabIndex = 248;
+            this.label7.Text = "Set Consulation Price";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.txtSellingPrice);
+            this.groupBox7.Controls.Add(this.label6);
+            this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox7.Location = new System.Drawing.Point(18, 54);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(760, 52);
+            this.groupBox7.TabIndex = 6;
+            this.groupBox7.TabStop = false;
+            // 
+            // txtSellingPrice
+            // 
+            this.txtSellingPrice.BackColor = System.Drawing.Color.FloralWhite;
+            this.txtSellingPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSellingPrice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSellingPrice.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSellingPrice.Location = new System.Drawing.Point(36, 20);
+            this.txtSellingPrice.MaxLength = 40;
+            this.txtSellingPrice.Name = "txtSellingPrice";
+            this.txtSellingPrice.Size = new System.Drawing.Size(721, 23);
+            this.txtSellingPrice.TabIndex = 5;
+            this.txtSellingPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSellingPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSellingPrice_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label6.Location = new System.Drawing.Point(3, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 17);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "PHP";
+            // 
+            // btnAddItem
+            // 
+            this.btnAddItem.BackColor = System.Drawing.Color.Maroon;
+            this.btnAddItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddItem.FlatAppearance.BorderSize = 0;
+            this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddItem.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAddItem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddItem.ForeColor = System.Drawing.Color.White;
+            this.btnAddItem.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnAddItem.IconColor = System.Drawing.Color.White;
+            this.btnAddItem.IconSize = 28;
+            this.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAddItem.Location = new System.Drawing.Point(0, 0);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Rotation = 0D;
+            this.btnAddItem.Size = new System.Drawing.Size(784, 46);
+            this.btnAddItem.TabIndex = 10;
+            this.btnAddItem.Text = "Save";
+            this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddItem.UseVisualStyleBackColor = false;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(15, 119);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 17);
+            this.label1.TabIndex = 249;
+            this.label1.Text = "Set Med Cert Price";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Location = new System.Drawing.Point(18, 139);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(760, 52);
+            this.groupBox1.TabIndex = 250;
+            this.groupBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FloralWhite;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(36, 20);
+            this.textBox1.MaxLength = 40;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(721, 23);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.Location = new System.Drawing.Point(3, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "PHP";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // PanelConsultSettings
             // 
@@ -36,14 +203,37 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(784, 261);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PanelConsultSettings";
             this.Text = "PanelConsultSettings";
+            this.panel1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox txtSellingPrice;
+        private System.Windows.Forms.Label label6;
+        private FontAwesome.Sharp.IconButton btnAddItem;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

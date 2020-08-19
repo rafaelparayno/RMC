@@ -30,7 +30,6 @@
         {
             this.panelNavParam = new System.Windows.Forms.Panel();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.btnConsumables = new FontAwesome.Sharp.IconButton();
             this.btnAutomated = new FontAwesome.Sharp.IconButton();
             this.btnSuppliers = new FontAwesome.Sharp.IconButton();
@@ -43,7 +42,6 @@
             // 
             this.panelNavParam.AutoScroll = true;
             this.panelNavParam.Controls.Add(this.iconButton3);
-            this.panelNavParam.Controls.Add(this.iconButton2);
             this.panelNavParam.Controls.Add(this.btnConsumables);
             this.panelNavParam.Controls.Add(this.btnAutomated);
             this.panelNavParam.Controls.Add(this.btnSuppliers);
@@ -65,39 +63,16 @@
             this.iconButton3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton3.IconSize = 25;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton3.Location = new System.Drawing.Point(518, 0);
+            this.iconButton3.Location = new System.Drawing.Point(404, 0);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Rotation = 0D;
             this.iconButton3.Size = new System.Drawing.Size(114, 60);
             this.iconButton3.TabIndex = 17;
-            this.iconButton3.Text = "Consult Settings";
+            this.iconButton3.Text = "Price Service";
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton3.UseMnemonic = false;
             this.iconButton3.UseVisualStyleBackColor = false;
             this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.CalendarPlus;
-            this.iconButton2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton2.IconSize = 25;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton2.Location = new System.Drawing.Point(404, 0);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Rotation = 0D;
-            this.iconButton2.Size = new System.Drawing.Size(114, 60);
-            this.iconButton2.TabIndex = 16;
-            this.iconButton2.Text = "MedCert";
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton2.UseMnemonic = false;
-            this.iconButton2.UseVisualStyleBackColor = false;
-            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // btnConsumables
             // 
@@ -207,6 +182,5 @@
         private FontAwesome.Sharp.IconButton btnAutomated;
         private FontAwesome.Sharp.IconButton btnConsumables;
         private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton2;
     }
 }
