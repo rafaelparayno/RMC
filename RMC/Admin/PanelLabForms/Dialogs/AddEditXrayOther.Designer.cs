@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
@@ -52,6 +53,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -59,6 +61,7 @@
             this.groupBox8.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -92,6 +95,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCloseApp
             // 
@@ -183,6 +187,7 @@
             this.txtSellingPrice.Size = new System.Drawing.Size(562, 23);
             this.txtSellingPrice.TabIndex = 5;
             this.txtSellingPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSellingPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSellingPrice_KeyPress);
             // 
             // label6
             // 
@@ -256,6 +261,7 @@
             this.btnRemoveConsum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemoveConsum.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemoveConsum.UseVisualStyleBackColor = false;
+            this.btnRemoveConsum.Click += new System.EventHandler(this.btnRemoveConsum_Click);
             // 
             // btnAddConsum
             // 
@@ -279,6 +285,7 @@
             this.btnAddConsum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddConsum.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddConsum.UseVisualStyleBackColor = false;
+            this.btnAddConsum.Click += new System.EventHandler(this.btnAddConsum_Click);
             // 
             // cbConsumables
             // 
@@ -292,6 +299,7 @@
             this.cbConsumables.Name = "cbConsumables";
             this.cbConsumables.Size = new System.Drawing.Size(602, 24);
             this.cbConsumables.TabIndex = 242;
+            this.cbConsumables.SelectedIndexChanged += new System.EventHandler(this.cbConsumables_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -332,6 +340,7 @@
             this.cbType.Name = "cbType";
             this.cbType.Size = new System.Drawing.Size(600, 24);
             this.cbType.TabIndex = 253;
+            this.cbType.SelectedIndexChanged += new System.EventHandler(this.cbType_SelectedIndexChanged);
             // 
             // txtDesc
             // 
@@ -383,6 +392,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // AddEditXrayOther
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -410,6 +423,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -440,5 +454,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

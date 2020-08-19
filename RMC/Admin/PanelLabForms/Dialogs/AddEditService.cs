@@ -188,11 +188,6 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
             return isValid;
         }
-
-        #endregion
-
-
-        #region Handler Events
         private void errorHandlingIsEmpty(ref TextBox tb, string ergMsg)
         {
             if (tb.Text.Trim() == string.Empty)
@@ -208,6 +203,12 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 errorProvider1.SetError(tb, errMsg);
             }
         }
+
+        #endregion
+
+
+        #region Handler Events
+
 
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
