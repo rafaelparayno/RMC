@@ -47,7 +47,6 @@
             this.btnItemList = new FontAwesome.Sharp.IconButton();
             this.btnMngPharma = new FontAwesome.Sharp.IconButton();
             this.panelSubMenuLab = new System.Windows.Forms.Panel();
-            this.btnAutomated = new FontAwesome.Sharp.IconButton();
             this.btnServices = new FontAwesome.Sharp.IconButton();
             this.labratorSettingsBtn = new FontAwesome.Sharp.IconButton();
             this.btnLabratoryList = new FontAwesome.Sharp.IconButton();
@@ -76,6 +75,8 @@
             this.timelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnEcgXray = new FontAwesome.Sharp.IconButton();
+            this.btnAutomated = new FontAwesome.Sharp.IconButton();
             this.panelSideMenu.SuspendLayout();
             this.panelSubUtilities.SuspendLayout();
             this.panelSubReports.SuspendLayout();
@@ -122,7 +123,7 @@
             this.panelSubUtilities.Controls.Add(this.btnArchive);
             this.panelSubUtilities.Controls.Add(this.btnBackupRestore);
             this.panelSubUtilities.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubUtilities.Location = new System.Drawing.Point(0, 873);
+            this.panelSubUtilities.Location = new System.Drawing.Point(0, 931);
             this.panelSubUtilities.Name = "panelSubUtilities";
             this.panelSubUtilities.Size = new System.Drawing.Size(233, 190);
             this.panelSubUtilities.TabIndex = 18;
@@ -232,7 +233,7 @@
             this.btnUtilities.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnUtilities.IconSize = 35;
             this.btnUtilities.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUtilities.Location = new System.Drawing.Point(0, 828);
+            this.btnUtilities.Location = new System.Drawing.Point(0, 886);
             this.btnUtilities.Name = "btnUtilities";
             this.btnUtilities.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnUtilities.Rotation = 0D;
@@ -250,7 +251,7 @@
             this.panelSubReports.Controls.Add(this.btnLabReports);
             this.panelSubReports.Controls.Add(this.btnPharmaReports);
             this.panelSubReports.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubReports.Location = new System.Drawing.Point(0, 727);
+            this.panelSubReports.Location = new System.Drawing.Point(0, 785);
             this.panelSubReports.Name = "panelSubReports";
             this.panelSubReports.Size = new System.Drawing.Size(233, 101);
             this.panelSubReports.TabIndex = 16;
@@ -314,7 +315,7 @@
             this.btnReports.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnReports.IconSize = 35;
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(0, 682);
+            this.btnReports.Location = new System.Drawing.Point(0, 740);
             this.btnReports.Name = "btnReports";
             this.btnReports.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnReports.Rotation = 0D;
@@ -338,7 +339,7 @@
             this.btnManagePromos.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnManagePromos.IconSize = 35;
             this.btnManagePromos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManagePromos.Location = new System.Drawing.Point(0, 637);
+            this.btnManagePromos.Location = new System.Drawing.Point(0, 695);
             this.btnManagePromos.Name = "btnManagePromos";
             this.btnManagePromos.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnManagePromos.Rotation = 0D;
@@ -356,7 +357,7 @@
             this.panelSubPharma.Controls.Add(this.btnItemCategories);
             this.panelSubPharma.Controls.Add(this.btnItemList);
             this.panelSubPharma.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSubPharma.Location = new System.Drawing.Point(0, 536);
+            this.panelSubPharma.Location = new System.Drawing.Point(0, 594);
             this.panelSubPharma.Name = "panelSubPharma";
             this.panelSubPharma.Size = new System.Drawing.Size(233, 101);
             this.panelSubPharma.TabIndex = 13;
@@ -420,7 +421,7 @@
             this.btnMngPharma.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnMngPharma.IconSize = 35;
             this.btnMngPharma.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMngPharma.Location = new System.Drawing.Point(0, 491);
+            this.btnMngPharma.Location = new System.Drawing.Point(0, 549);
             this.btnMngPharma.Name = "btnMngPharma";
             this.btnMngPharma.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnMngPharma.Rotation = 0D;
@@ -436,37 +437,15 @@
             // 
             this.panelSubMenuLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
             this.panelSubMenuLab.Controls.Add(this.btnAutomated);
+            this.panelSubMenuLab.Controls.Add(this.btnEcgXray);
             this.panelSubMenuLab.Controls.Add(this.btnServices);
             this.panelSubMenuLab.Controls.Add(this.labratorSettingsBtn);
             this.panelSubMenuLab.Controls.Add(this.btnLabratoryList);
             this.panelSubMenuLab.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubMenuLab.Location = new System.Drawing.Point(0, 311);
             this.panelSubMenuLab.Name = "panelSubMenuLab";
-            this.panelSubMenuLab.Size = new System.Drawing.Size(233, 180);
+            this.panelSubMenuLab.Size = new System.Drawing.Size(233, 238);
             this.panelSubMenuLab.TabIndex = 11;
-            // 
-            // btnAutomated
-            // 
-            this.btnAutomated.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAutomated.FlatAppearance.BorderSize = 0;
-            this.btnAutomated.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutomated.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnAutomated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnAutomated.IconChar = FontAwesome.Sharp.IconChar.File;
-            this.btnAutomated.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnAutomated.IconSize = 25;
-            this.btnAutomated.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAutomated.Location = new System.Drawing.Point(0, 135);
-            this.btnAutomated.Name = "btnAutomated";
-            this.btnAutomated.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
-            this.btnAutomated.Rotation = 0D;
-            this.btnAutomated.Size = new System.Drawing.Size(233, 45);
-            this.btnAutomated.TabIndex = 11;
-            this.btnAutomated.Text = "Create Automated";
-            this.btnAutomated.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAutomated.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAutomated.UseVisualStyleBackColor = true;
-            this.btnAutomated.Click += new System.EventHandler(this.btnAutomated_Click);
             // 
             // btnServices
             // 
@@ -485,7 +464,7 @@
             this.btnServices.Rotation = 0D;
             this.btnServices.Size = new System.Drawing.Size(233, 45);
             this.btnServices.TabIndex = 9;
-            this.btnServices.Text = "Services";
+            this.btnServices.Text = "Other Services";
             this.btnServices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnServices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnServices.UseVisualStyleBackColor = true;
@@ -508,7 +487,7 @@
             this.labratorSettingsBtn.Rotation = 0D;
             this.labratorSettingsBtn.Size = new System.Drawing.Size(233, 45);
             this.labratorSettingsBtn.TabIndex = 8;
-            this.labratorSettingsBtn.Text = "Laboratory Settings";
+            this.labratorSettingsBtn.Text = "Clinic Settings";
             this.labratorSettingsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labratorSettingsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.labratorSettingsBtn.UseVisualStyleBackColor = true;
@@ -574,7 +553,7 @@
             this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton4.IconSize = 35;
             this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 1063);
+            this.iconButton4.Location = new System.Drawing.Point(0, 1121);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton4.Rotation = 0D;
@@ -930,6 +909,52 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnEcgXray
+            // 
+            this.btnEcgXray.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEcgXray.FlatAppearance.BorderSize = 0;
+            this.btnEcgXray.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEcgXray.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnEcgXray.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnEcgXray.IconChar = FontAwesome.Sharp.IconChar.FileMedicalAlt;
+            this.btnEcgXray.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnEcgXray.IconSize = 25;
+            this.btnEcgXray.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEcgXray.Location = new System.Drawing.Point(0, 135);
+            this.btnEcgXray.Name = "btnEcgXray";
+            this.btnEcgXray.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
+            this.btnEcgXray.Rotation = 0D;
+            this.btnEcgXray.Size = new System.Drawing.Size(233, 48);
+            this.btnEcgXray.TabIndex = 12;
+            this.btnEcgXray.Text = "Xray,Ecg And UltraSound";
+            this.btnEcgXray.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEcgXray.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEcgXray.UseVisualStyleBackColor = true;
+            this.btnEcgXray.Click += new System.EventHandler(this.btnEcgXray_Click);
+            // 
+            // btnAutomated
+            // 
+            this.btnAutomated.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAutomated.FlatAppearance.BorderSize = 0;
+            this.btnAutomated.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutomated.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAutomated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnAutomated.IconChar = FontAwesome.Sharp.IconChar.File;
+            this.btnAutomated.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnAutomated.IconSize = 25;
+            this.btnAutomated.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAutomated.Location = new System.Drawing.Point(0, 183);
+            this.btnAutomated.Name = "btnAutomated";
+            this.btnAutomated.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
+            this.btnAutomated.Rotation = 0D;
+            this.btnAutomated.Size = new System.Drawing.Size(233, 39);
+            this.btnAutomated.TabIndex = 13;
+            this.btnAutomated.Text = "Create Automated";
+            this.btnAutomated.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAutomated.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAutomated.UseVisualStyleBackColor = true;
+            this.btnAutomated.Click += new System.EventHandler(this.btnAutomated_Click_1);
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1012,6 +1037,7 @@
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
         private FontAwesome.Sharp.IconButton btnServices;
+        private FontAwesome.Sharp.IconButton btnEcgXray;
         private FontAwesome.Sharp.IconButton btnAutomated;
     }
 }

@@ -434,12 +434,6 @@ namespace RMC.Admin
             showSubMenuTitle(sender);
         }
 
-        private void btnAutomated_Click(object sender, EventArgs e)
-        {
-            openChildForm(new PanelAutomated());
-            showSubMenuTitle(sender);
-        }
-        #endregion
 
         private void iconButton4_Click(object sender, EventArgs e)
         {
@@ -448,6 +442,18 @@ namespace RMC.Admin
             this.Hide();
         }
 
-      
+        private void btnAutomated_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new PanelAutomated());
+            showSubMenuTitle(sender);
+        }
+
+        #endregion
+
+        private void btnEcgXray_Click(object sender, EventArgs e)
+        {
+            openChildForm(new XrayEcg());
+            showSubMenuTitle(sender);
+        }
     }
 }

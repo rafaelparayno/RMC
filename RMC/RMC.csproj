@@ -129,6 +129,12 @@
     <Compile Include="Admin\PanelLabForms\Dialogs\AddEditService.Designer.cs">
       <DependentUpon>AddEditService.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelLabForms\Dialogs\AddEditXrayOther.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\Dialogs\AddEditXrayOther.Designer.cs">
+      <DependentUpon>AddEditXrayOther.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelLabForms\Dialogs\AddQtyConsumables.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,17 +171,35 @@
     <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelAutomated.Designer.cs">
       <DependentUpon>PanelAutomated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelConsultSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelConsultSettings.Designer.cs">
+      <DependentUpon>PanelConsultSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.Designer.cs">
       <DependentUpon>PanelLabType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelMedCertSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\PanelsSettings\PanelMedCertSet.Designer.cs">
+      <DependentUpon>PanelMedCertSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelLabForms\Services.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Admin\PanelLabForms\Services.Designer.cs">
       <DependentUpon>Services.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\XrayEcg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelLabForms\XrayEcg.Designer.cs">
+      <DependentUpon>XrayEcg.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\PanelPharForms\Dialogs\addEditCategory.cs">
       <SubType>Form</SubType>
@@ -488,6 +512,9 @@
     <EmbeddedResource Include="Admin\PanelLabForms\Dialogs\AddEditService.resx">
       <DependentUpon>AddEditService.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\Dialogs\AddEditXrayOther.resx">
+      <DependentUpon>AddEditXrayOther.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\Dialogs\AddQtyConsumables.resx">
       <DependentUpon>AddQtyConsumables.cs</DependentUpon>
     </EmbeddedResource>
@@ -506,11 +533,20 @@
     <EmbeddedResource Include="Admin\PanelLabForms\PanelsSettings\PanelAutomated.resx">
       <DependentUpon>PanelAutomated.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\PanelsSettings\PanelConsultSettings.resx">
+      <DependentUpon>PanelConsultSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\PanelsSettings\PanelLabType.resx">
       <DependentUpon>PanelLabType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\PanelsSettings\PanelMedCertSet.resx">
+      <DependentUpon>PanelMedCertSet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelLabForms\Services.resx">
       <DependentUpon>Services.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelLabForms\XrayEcg.resx">
+      <DependentUpon>XrayEcg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\addEditCategory.resx">
       <DependentUpon>addEditCategory.cs</DependentUpon>

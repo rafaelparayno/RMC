@@ -21,7 +21,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ReceptionDash());
+            Application.Run(new XrayEcg());
         }
     }
 }
