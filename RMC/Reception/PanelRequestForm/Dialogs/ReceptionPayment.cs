@@ -45,12 +45,18 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         public ReceptionPayment()
         {
             InitializeComponent();
+            initColDg();
             setInitPrice();
             setCustomerId();
             InitRequests();
             initGroupBoxState();
             loadFromDbtoCb();
             setTotalPrice();
+           
+        }
+
+        private void initColDg()
+        {
             dt.Columns.Add("id", typeof(int));
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Type", typeof(string));
@@ -81,14 +87,14 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             if (requests.Contains(consultS))
             {
                 gpConsulation.Visible = true;
-            
+                dt.Rows.Add(1, "Consultation", "Service", priceConsult);
             }
           
 
             if (requests.Contains(medCert))
             {
                 gbMedCert.Visible = true;
-         
+                dt.Rows.Add(2, "MedCert", "Service", priceMedCert);
             }
            
 
@@ -113,6 +119,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             {
                 gbServices.Visible = true;
             }
+
+            dataGridView1.DataSource = dt;
           
         }
 
@@ -127,23 +135,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 totalPrice += price;
             }
 
-            if (requests.Contains(consultS))
-            {
-                totalPrice += priceConsult;
-                if (cbFree.Checked)
-                {
-                    totalPrice -= priceConsult;
-                }
-            }
-
-            if (requests.Contains(medCert))
-            {
-                totalPrice += priceMedCert;
-
-            }
-
-           
-
             if (seniorId != "")
             {
                 removeVat = Math.Round(totalPrice / 1.12, 2);
@@ -151,6 +142,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 float discount = totalPrice * .20f;
                 totalPrice -= discount;
             }
+
 
             textBox3.Text = String.Format("PHP {0:0.##}", totalPrice);
         }
@@ -178,6 +170,17 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             cbXray.Items.AddRange(task2.Result.ToArray());
             cbOther.Items.AddRange(task3.Result.ToArray());
             cbPackages.Items.AddRange(task4.Result.ToArray());
+        }
+
+        private void finishTransaction(float payment)
+        {
+            dt.Rows.Clear();
+            dataGridView1.DataSource = dt;
+
+            float change = payment - totalPrice;
+            textBox4.Text = "PHP " + String.Format("{0:0.##}", change);
+            button2.Enabled = false;
+            btnUpdate.Enabled = false;
         }
 
         private bool isFoundGrid(string type, int idInSelect)
@@ -215,16 +218,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             cbValuePackages = int.Parse((cbPackages.SelectedItem as ComboBoxItem).Value.ToString());
         }
 
-        private void finishTransaction(float payment)
-        {
-            dt.Rows.Clear();
-            dataGridView1.DataSource = dt;
-            
-            float change = payment - totalPrice;
-            textBox4.Text = "PHP " + String.Format("{0:0.##}", change);
-            button2.Enabled = false;
-            btnUpdate.Enabled = false;
-        }
+       
 
         private async void btnLabAdd_Click(object sender, EventArgs e)
         {
