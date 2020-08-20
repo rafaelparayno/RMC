@@ -16,6 +16,7 @@ namespace RMC.InventoryPharma.Dialogs
         public seniorDiag()
         {
             InitializeComponent();
+            seniorId = "";
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)

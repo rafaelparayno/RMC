@@ -72,7 +72,10 @@ namespace RMC.Reception.PanelRequestForm
 
         private void btnNextReq_Click(object sender, EventArgs e)
         {
-            customerDetailsController.nextQueue();
+            ReceptionPayment form = new ReceptionPayment();
+            form.ShowDialog();
+
+            /*customerDetailsController.nextQueue();*/
             getData();
         }
 

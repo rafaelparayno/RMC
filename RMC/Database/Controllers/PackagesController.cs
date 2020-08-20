@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using RMC.Components;
 using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
@@ -66,5 +67,42 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
 
         }
+
+
+        public async Task<float> getPrice(int id)
+        {
+            float price = 0;
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            string sql = @"SELECT * FROM packages WHERE package_id = @id";
+            listparams.Add(new MySqlParameter("@id", id));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                price = float.Parse(reader["package_price"].ToString());
+
+            }
+            crud.CloseConnection();
+
+            return price;
+
+        }
+        public async Task<List<ComboBoxItem>> getComboDatas()
+        {
+            List<ComboBoxItem> cbItems = new List<ComboBoxItem>();
+            string sql = @"SELECT * FROM `packages`";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+            while (await reader.ReadAsync())
+            {
+                cbItems.Add(new ComboBoxItem(reader["package_name"].ToString(),
+                    int.Parse(reader["package_id"].ToString())));
+            }
+            crud.CloseConnection();
+            return cbItems;
+        }
+
+
     }
 }

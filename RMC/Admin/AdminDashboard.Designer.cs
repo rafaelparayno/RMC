@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboard));
             this.panelSideMenu = new System.Windows.Forms.Panel();
             this.panelSubUtilities = new System.Windows.Forms.Panel();
+            this.btnChangePass = new FontAwesome.Sharp.IconButton();
             this.btnNetworkSettings = new FontAwesome.Sharp.IconButton();
             this.btnAuditTrail = new FontAwesome.Sharp.IconButton();
             this.btnArchive = new FontAwesome.Sharp.IconButton();
@@ -77,7 +78,6 @@
             this.timelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnChangePass = new FontAwesome.Sharp.IconButton();
             this.panelSideMenu.SuspendLayout();
             this.panelSubUtilities.SuspendLayout();
             this.panelSubReports.SuspendLayout();
@@ -129,6 +129,29 @@
             this.panelSubUtilities.Name = "panelSubUtilities";
             this.panelSubUtilities.Size = new System.Drawing.Size(233, 232);
             this.panelSubUtilities.TabIndex = 18;
+            // 
+            // btnChangePass
+            // 
+            this.btnChangePass.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChangePass.FlatAppearance.BorderSize = 0;
+            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangePass.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnChangePass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnChangePass.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            this.btnChangePass.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnChangePass.IconSize = 25;
+            this.btnChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChangePass.Location = new System.Drawing.Point(0, 180);
+            this.btnChangePass.Name = "btnChangePass";
+            this.btnChangePass.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
+            this.btnChangePass.Rotation = 0D;
+            this.btnChangePass.Size = new System.Drawing.Size(233, 45);
+            this.btnChangePass.TabIndex = 11;
+            this.btnChangePass.Text = "Change Password";
+            this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnChangePass.UseVisualStyleBackColor = true;
+            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
             // 
             // btnNetworkSettings
             // 
@@ -956,29 +979,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // btnChangePass
-            // 
-            this.btnChangePass.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnChangePass.FlatAppearance.BorderSize = 0;
-            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChangePass.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnChangePass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnChangePass.IconChar = FontAwesome.Sharp.IconChar.Lock;
-            this.btnChangePass.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnChangePass.IconSize = 25;
-            this.btnChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChangePass.Location = new System.Drawing.Point(0, 180);
-            this.btnChangePass.Name = "btnChangePass";
-            this.btnChangePass.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
-            this.btnChangePass.Rotation = 0D;
-            this.btnChangePass.Size = new System.Drawing.Size(233, 45);
-            this.btnChangePass.TabIndex = 11;
-            this.btnChangePass.Text = "Change Password";
-            this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnChangePass.UseVisualStyleBackColor = true;
-            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
             // 
             // AdminDashboard
             // 

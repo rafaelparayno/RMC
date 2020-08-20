@@ -3,6 +3,7 @@ using RMC.Admin.PanelLabForms;
 using RMC.Components;
 using RMC.InventoryPharma.PanelRo;
 using RMC.Reception.PanelRequestForm;
+using RMC.Reception.PanelRequestForm.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new ReceptionDash());
         }
     }
 }
