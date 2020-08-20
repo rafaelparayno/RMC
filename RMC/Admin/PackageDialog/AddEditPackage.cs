@@ -14,6 +14,8 @@ namespace RMC.Admin.PackageDialog
 {
     public partial class AddEditPackage : Form
     {
+
+        PackagesController packagesController = new PackagesController();
         LaboratoryController laboratoryController = new LaboratoryController();
         ServiceController serviceController = new ServiceController();
         XrayControllers xrayControllers = new XrayControllers();
@@ -21,6 +23,8 @@ namespace RMC.Admin.PackageDialog
         int cbValueService = 0;
         int cbValueXray = 0;
         int total = 0;
+        int idPack = 0;
+        bool isEdit = false;
       
         public AddEditPackage()
         {
@@ -275,6 +279,18 @@ namespace RMC.Admin.PackageDialog
                 MessageBox.Show("Please Complete the required field");
                 return;
             }
+
+            if (isEdit)
+            {
+
+            }
+            else
+            {
+                packagesController.save(txtName.Text.Trim(), float.Parse(txtPriceSave.Text.Trim()), txtDesc.Text.Trim());
+            }
+            MessageBox.Show("Succesfully Save Data");
+            this.Close();
+
         }
 
         private bool isValid()
@@ -298,7 +314,7 @@ namespace RMC.Admin.PackageDialog
 
         private void isFormatPriceCorrect(bool isvalid,ref TextBox tb,string msg)
         {
-            if (isvalid)
+            if (!isvalid)
             {
                 errorProvider1.SetError(tb, msg);
             }
