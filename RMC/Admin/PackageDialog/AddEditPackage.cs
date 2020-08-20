@@ -16,12 +16,15 @@ namespace RMC.Admin.PackageDialog
     public partial class AddEditPackage : Form
     {
 
+
+        #region Variables
         PackagesController packagesController = new PackagesController();
         LaboratoryController laboratoryController = new LaboratoryController();
         ServiceController serviceController = new ServiceController();
         XrayControllers xrayControllers = new XrayControllers();
         PackageLabController packageLabController = new PackageLabController();
         PackageXray packageXray = new PackageXray();
+        PackageOthers packageOthers = new PackageOthers();
 
 
         List<int> idsRemoveInLabpack = new List<int>();
@@ -38,7 +41,9 @@ namespace RMC.Admin.PackageDialog
         int cbValueXray = 0;
         int idPack = 0;
         bool isEdit = false;
-      
+
+        #endregion
+
         public AddEditPackage()
         {
             InitializeComponent();
@@ -56,15 +61,19 @@ namespace RMC.Admin.PackageDialog
             initEditState(data);
         }
 
+
+        #region OwnFunctions
         private async void getLvlabData(int id)
         {
             Task<List<PackagesNames>> task1 = packageLabController.getPackagesLab(id);
             Task<List<PackagesNames>> task2 = packageXray.getPackagesNames(id);
-            Task<List<PackagesNames>>[] lvsItems = new Task<List<PackagesNames>>[] { task1,task2 };
+            Task<List<PackagesNames>> task3 = packageOthers.getPackagesNames(id);
+            Task<List<PackagesNames>>[] lvsItems = new Task<List<PackagesNames>>[] { task1,task2, task3 };
             await Task.WhenAll(lvsItems);
 
             packagesNamesLab = task1.Result;
             packagesNamesXray = task2.Result;
+            packagesNamesOther = task3.Result;
         }
 
         private void getInitStateLvs()
@@ -187,6 +196,12 @@ namespace RMC.Admin.PackageDialog
                 int id = int.Parse(lvitems.SubItems[0].Text);
                 packageXray.save(id);
             }
+
+            foreach (ListViewItem lvitems in lvXray.Items)
+            {
+                int id = int.Parse(lvitems.SubItems[0].Text);
+                packageOthers.save(id);
+            }
         }
 
         private void saveLv(int packid)
@@ -197,11 +212,16 @@ namespace RMC.Admin.PackageDialog
                 packageLabController.save(id,packid);
             }
 
-
             foreach (ListViewItem lvitems in lvXray.Items)
             {
                 int id = int.Parse(lvitems.SubItems[0].Text);
                 packageXray.save(id,packid );
+            }
+
+            foreach (ListViewItem lvitems in lvService.Items)
+            {
+                int id = int.Parse(lvitems.SubItems[0].Text);
+                packageOthers.save(id, packid);
             }
         }
 
@@ -244,6 +264,12 @@ namespace RMC.Admin.PackageDialog
             foreach (int id in idsRemoveInXraypack)
             {
                 packageXray.remove(idPack, id);
+            }
+
+
+            foreach (int id in idsRemoveInOtherspack)
+            {
+                packageOthers.remove(idPack, id);
             }
         }
 
@@ -305,6 +331,26 @@ namespace RMC.Admin.PackageDialog
             return isValid;
         }
 
+        #endregion
+
+
+        #region Handlers
+        private void isFormatPriceCorrect(bool isvalid, ref TextBox tb, string msg)
+        {
+            if (!isvalid)
+            {
+                errorProvider1.SetError(tb, msg);
+            }
+        }
+
+        private void isTextNull(ref TextBox tb, string msg)
+        {
+            if (tb.Text == "")
+            {
+                errorProvider1.SetError(tb, msg);
+            }
+        }
+
         private void cbLab_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbValueLab = int.Parse((cbLab.SelectedItem as ComboBoxItem).Value.ToString());
@@ -324,8 +370,6 @@ namespace RMC.Admin.PackageDialog
         {
             this.Close();
         }
-
-      
 
         private async void btnAddLab_Click(object sender, EventArgs e)
         {
@@ -402,8 +446,6 @@ namespace RMC.Admin.PackageDialog
             }
         }
 
-    
-
         private void btnRemoveLab_Click(object sender, EventArgs e)
         {
             if (lvLab.Items.Count == 0)
@@ -477,24 +519,6 @@ namespace RMC.Admin.PackageDialog
 
         }
 
-    
-
-        private void isFormatPriceCorrect(bool isvalid,ref TextBox tb,string msg)
-        {
-            if (!isvalid)
-            {
-                errorProvider1.SetError(tb, msg);
-            }
-        }
-
-        private void isTextNull(ref TextBox tb,string msg)
-        {
-            if(tb.Text == "")
-            {
-                errorProvider1.SetError(tb, msg);
-            }
-        }
-
         private void txtPriceSave_KeyPress(object sender, KeyPressEventArgs e)
         {
             string validKeys = "0123456789.";
@@ -503,5 +527,8 @@ namespace RMC.Admin.PackageDialog
                 e.Handled = true;
             }
         }
+
+        #endregion
+
     }
 }
