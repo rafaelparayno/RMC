@@ -21,12 +21,21 @@ namespace RMC.Admin.PackageDialog
         ServiceController serviceController = new ServiceController();
         XrayControllers xrayControllers = new XrayControllers();
         PackageLabController packageLabController = new PackageLabController();
+        PackageXray packageXray = new PackageXray();
+
+
         List<int> idsRemoveInLabpack = new List<int>();
+        List<int> idsRemoveInXraypack = new List<int>();
+        List<int> idsRemoveInOtherspack = new List<int>();
+
         List<PackagesNames> packagesNamesLab = new List<PackagesNames>();
+        List<PackagesNames> packagesNamesXray = new List<PackagesNames>();
+        List<PackagesNames> packagesNamesOther = new List<PackagesNames>();
+
+
         int cbValueLab = 0;
         int cbValueService = 0;
         int cbValueXray = 0;
-        int total = 0;
         int idPack = 0;
         bool isEdit = false;
       
@@ -49,11 +58,16 @@ namespace RMC.Admin.PackageDialog
 
         private async void getLvlabData(int id)
         {
-            packagesNamesLab = await packageLabController.getPackagesLab(id);
-            
+            Task<List<PackagesNames>> task1 = packageLabController.getPackagesLab(id);
+            Task<List<PackagesNames>> task2 = packageXray.getPackagesNames(id);
+            Task<List<PackagesNames>>[] lvsItems = new Task<List<PackagesNames>>[] { task1,task2 };
+            await Task.WhenAll(lvsItems);
+
+            packagesNamesLab = task1.Result;
+            packagesNamesXray = task2.Result;
         }
 
-        private void getInitStateLvLab()
+        private void getInitStateLvs()
         {
             foreach(PackagesNames n in packagesNamesLab)
             {
@@ -64,6 +78,29 @@ namespace RMC.Admin.PackageDialog
 
                 lvLab.Items.Add(lvItem);
             }
+
+            foreach (PackagesNames n in packagesNamesXray)
+            {
+                ListViewItem lvItem = new ListViewItem();
+                lvItem.Text = n.id.ToString();
+                lvItem.SubItems.Add(n.name);
+                lvItem.SubItems.Add(n.price.ToString());
+
+                lvXray.Items.Add(lvItem);
+            }
+
+            foreach (PackagesNames n in packagesNamesOther)
+            {
+                ListViewItem lvItem = new ListViewItem();
+                lvItem.Text = n.id.ToString();
+                lvItem.SubItems.Add(n.name);
+                lvItem.SubItems.Add(n.price.ToString());
+
+                lvService.Items.Add(lvItem);
+            }
+
+            AddSuggestedPrice();
+
         }
 
         private void initEditState(string [] data)
@@ -76,7 +113,7 @@ namespace RMC.Admin.PackageDialog
 
             getLvlabData(idPack);
 
-            getInitStateLvLab();
+            getInitStateLvs();
         }
 
         private void initColLv()
@@ -137,25 +174,38 @@ namespace RMC.Admin.PackageDialog
         }
 
 
-        private void saveLvLab()
+        private void saveLv()
         {
             foreach(ListViewItem lvitems in lvLab.Items)
             {
                 int id = int.Parse(lvitems.SubItems[0].Text);
                 packageLabController.save(id);
             }
+
+            foreach (ListViewItem lvitems in lvXray.Items)
+            {
+                int id = int.Parse(lvitems.SubItems[0].Text);
+                packageXray.save(id);
+            }
         }
 
-        private void saveLvLab(int packid)
+        private void saveLv(int packid)
         {
             foreach (ListViewItem lvitems in lvLab.Items)
             {
                 int id = int.Parse(lvitems.SubItems[0].Text);
                 packageLabController.save(id,packid);
             }
+
+
+            foreach (ListViewItem lvitems in lvXray.Items)
+            {
+                int id = int.Parse(lvitems.SubItems[0].Text);
+                packageXray.save(id,packid );
+            }
         }
 
-        private void initlvIdsLabRemove()
+        private void initlvIdRemove()
         {
             foreach(PackagesNames n in packagesNamesLab)
             {
@@ -164,18 +214,38 @@ namespace RMC.Admin.PackageDialog
                     idsRemoveInLabpack.Add(n.id);
                 }
             }
+
+            foreach (PackagesNames n in packagesNamesXray)
+            {
+                if (!lvXrayFound(n.id))
+                {
+                    idsRemoveInXraypack.Add(n.id);
+                }
+            }
+
+
+            foreach (PackagesNames n in packagesNamesOther)
+            {
+                if (!lvOthersFound(n.id))
+                {
+                    idsRemoveInOtherspack.Add(n.id);
+                }
+            }
         }
 
-        private void removelvLab()
+        private void removelv()
         {
-            initlvIdsLabRemove();
+            initlvIdRemove();
             foreach(int id in idsRemoveInLabpack)
             {
                 packageLabController.remove(idPack, id);
             }
+
+            foreach (int id in idsRemoveInXraypack)
+            {
+                packageXray.remove(idPack, id);
+            }
         }
-
-
 
         private bool lvLabFound(int id)
         {
@@ -391,16 +461,16 @@ namespace RMC.Admin.PackageDialog
 
             if (isEdit)
             {
-                removelvLab();
+                removelv();
                
                 packagesController.update(txtName.Text.Trim(), float.Parse(txtPriceSave.Text.Trim()), txtDesc.Text.Trim(),idPack);
-                saveLvLab(idPack);
+                saveLv(idPack);
             }
             else
             {
              
                 packagesController.save(txtName.Text.Trim(), float.Parse(txtPriceSave.Text.Trim()), txtDesc.Text.Trim());
-                saveLvLab();
+                saveLv();
             }
             MessageBox.Show("Succesfully Save Data");
             this.Close();
