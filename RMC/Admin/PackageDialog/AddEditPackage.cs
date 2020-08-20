@@ -1,5 +1,6 @@
 ﻿using RMC.Components;
 using RMC.Database.Controllers;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,9 @@ namespace RMC.Admin.PackageDialog
         LaboratoryController laboratoryController = new LaboratoryController();
         ServiceController serviceController = new ServiceController();
         XrayControllers xrayControllers = new XrayControllers();
+        PackageLabController packageLabController = new PackageLabController();
+        List<int> idsRemoveInLabpack = new List<int>();
+        List<PackagesNames> packagesNamesLab = new List<PackagesNames>();
         int cbValueLab = 0;
         int cbValueService = 0;
         int cbValueXray = 0;
@@ -34,6 +38,64 @@ namespace RMC.Admin.PackageDialog
             initColLv();
         }
 
+        public AddEditPackage(params string[] data)
+        {
+            InitializeComponent();
+            this.DoubleBuffered = true;
+            loadFromDbtoCb();
+            initColLv();
+            initEditState(data);
+        }
+
+        private async void getLvlabData(int id)
+        {
+            packagesNamesLab = await packageLabController.getPackagesLab(id);
+            
+        }
+
+        private void getInitStateLvLab()
+        {
+            foreach(PackagesNames n in packagesNamesLab)
+            {
+                ListViewItem lvItem = new ListViewItem();
+                lvItem.Text = n.id.ToString();
+                lvItem.SubItems.Add(n.name);
+                lvItem.SubItems.Add(n.price.ToString());
+
+                lvLab.Items.Add(lvItem);
+            }
+        }
+
+        private void initEditState(string [] data)
+        {
+            isEdit = true;
+            idPack = int.Parse(data[0]);
+            txtName.Text = data[1];
+            txtPriceSave.Text = data[2];
+            txtDesc.Text = data[3];
+
+            getLvlabData(idPack);
+
+            getInitStateLvLab();
+        }
+
+        private void initColLv()
+        {
+            lvLab.View = View.Details;
+            lvLab.Columns.Add("Lab Id", 150, HorizontalAlignment.Right);
+            lvLab.Columns.Add("Lab Name", 200, HorizontalAlignment.Right);
+            lvLab.Columns.Add("Price", 150, HorizontalAlignment.Right);
+
+            lvXray.View = View.Details;
+            lvXray.Columns.Add("Id", 150, HorizontalAlignment.Right);
+            lvXray.Columns.Add("Name", 200, HorizontalAlignment.Right);
+            lvXray.Columns.Add("Price", 150, HorizontalAlignment.Right);
+
+            lvService.View = View.Details;
+            lvService.Columns.Add("Services Id", 150, HorizontalAlignment.Right);
+            lvService.Columns.Add("Services Name", 200, HorizontalAlignment.Right);
+            lvService.Columns.Add("Price", 150, HorizontalAlignment.Right);
+        }
 
         private void AddSuggestedPrice()
         {
@@ -74,6 +136,105 @@ namespace RMC.Admin.PackageDialog
 
         }
 
+
+        private void saveLvLab()
+        {
+            foreach(ListViewItem lvitems in lvLab.Items)
+            {
+                int id = int.Parse(lvitems.SubItems[0].Text);
+                packageLabController.save(id);
+            }
+        }
+
+        private void saveLvLab(int packid)
+        {
+            foreach (ListViewItem lvitems in lvLab.Items)
+            {
+                int id = int.Parse(lvitems.SubItems[0].Text);
+                packageLabController.save(id,packid);
+            }
+        }
+
+        private void initlvIdsLabRemove()
+        {
+            foreach(PackagesNames n in packagesNamesLab)
+            {
+                if (!lvLabFound(n.id))
+                {
+                    idsRemoveInLabpack.Add(n.id);
+                }
+            }
+        }
+
+        private void removelvLab()
+        {
+            initlvIdsLabRemove();
+            foreach(int id in idsRemoveInLabpack)
+            {
+                packageLabController.remove(idPack, id);
+            }
+        }
+
+
+
+        private bool lvLabFound(int id)
+        {
+            foreach (ListViewItem items in lvLab.Items)
+            {
+                if (id == int.Parse(items.SubItems[0].Text))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        private bool lvXrayFound(int id)
+        {
+            foreach (ListViewItem items in lvXray.Items)
+            {
+                if (id == int.Parse(items.SubItems[0].Text))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        private bool lvOthersFound(int id)
+        {
+            foreach (ListViewItem items in lvService.Items)
+            {
+                if (id == int.Parse(items.SubItems[0].Text))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        private bool isValid()
+        {
+            errorProvider1.Clear();
+            bool isValid = true;
+
+            float _;
+
+            isValid = (txtName.Text.Trim() != "") && isValid;
+            isTextNull(ref txtName, "Please Fill the Field");
+            isValid = (txtPriceSave.Text.Trim() != "") && isValid;
+            isTextNull(ref txtPriceSave, "Please Fill the Field");
+
+            isValid = (float.TryParse(txtPriceSave.Text.Trim(), out _)) && isValid;
+            isFormatPriceCorrect(isValid, ref txtPriceSave, "Inccorect Number Format");
+
+
+            return isValid;
+        }
+
         private void cbLab_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbValueLab = int.Parse((cbLab.SelectedItem as ComboBoxItem).Value.ToString());
@@ -94,23 +255,7 @@ namespace RMC.Admin.PackageDialog
             this.Close();
         }
 
-        private void initColLv()
-        {
-            lvLab.View = View.Details;
-            lvLab.Columns.Add("Lab Id", 150, HorizontalAlignment.Right);
-            lvLab.Columns.Add("Lab Name", 200, HorizontalAlignment.Right);
-            lvLab.Columns.Add("Price", 150, HorizontalAlignment.Right);
-
-            lvXray.View = View.Details;
-            lvXray.Columns.Add("Id", 150, HorizontalAlignment.Right);
-            lvXray.Columns.Add("Name", 200, HorizontalAlignment.Right);
-            lvXray.Columns.Add("Price", 150, HorizontalAlignment.Right);
-
-            lvService.View = View.Details;
-            lvService.Columns.Add("Services Id", 150, HorizontalAlignment.Right);
-            lvService.Columns.Add("Services Name", 200, HorizontalAlignment.Right);
-            lvService.Columns.Add("Price", 150, HorizontalAlignment.Right);
-        }
+      
 
         private async void btnAddLab_Click(object sender, EventArgs e)
         {
@@ -187,43 +332,7 @@ namespace RMC.Admin.PackageDialog
             }
         }
 
-        private bool lvLabFound(int id)
-        {
-            foreach(ListViewItem items in lvLab.Items)
-            {
-                if(id == int.Parse(items.SubItems[0].Text))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-
-        private bool lvXrayFound(int id)
-        {
-            foreach (ListViewItem items in lvXray.Items)
-            {
-                if (id == int.Parse(items.SubItems[0].Text))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-
-        private bool lvOthersFound(int id)
-        {
-            foreach (ListViewItem items in lvService.Items)
-            {
-                if (id == int.Parse(items.SubItems[0].Text))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+    
 
         private void btnRemoveLab_Click(object sender, EventArgs e)
         {
@@ -282,35 +391,23 @@ namespace RMC.Admin.PackageDialog
 
             if (isEdit)
             {
-
+                removelvLab();
+               
+                packagesController.update(txtName.Text.Trim(), float.Parse(txtPriceSave.Text.Trim()), txtDesc.Text.Trim(),idPack);
+                saveLvLab(idPack);
             }
             else
             {
+             
                 packagesController.save(txtName.Text.Trim(), float.Parse(txtPriceSave.Text.Trim()), txtDesc.Text.Trim());
+                saveLvLab();
             }
             MessageBox.Show("Succesfully Save Data");
             this.Close();
 
         }
 
-        private bool isValid()
-        {
-            errorProvider1.Clear();
-            bool isValid = true;
-
-            float _;
-
-            isValid = (txtName.Text.Trim() != "") && isValid;
-            isTextNull(ref txtName, "Please Fill the Field");
-            isValid = (txtPriceSave.Text.Trim() != "") && isValid;
-            isTextNull(ref txtPriceSave, "Please Fill the Field");
-
-            isValid = (float.TryParse(txtPriceSave.Text.Trim(), out _)) && isValid;
-            isFormatPriceCorrect(isValid, ref txtPriceSave, "Inccorect Number Format");
-
-
-            return isValid;
-        }
+    
 
         private void isFormatPriceCorrect(bool isvalid,ref TextBox tb,string msg)
         {

@@ -50,6 +50,7 @@ namespace RMC.Admin
 
         private void refreshLv(List<packages> packs)
         {
+            lvPackages.Items.Clear();
             foreach(packages p in packs)
             {
                 ListViewItem lvitems = new ListViewItem();
@@ -62,5 +63,20 @@ namespace RMC.Admin
         
         }
 
+        private void btnEditItem_Click(object sender, EventArgs e)
+        {
+            if (lvPackages.Items.Count == 0)
+                return;
+
+            if (lvPackages.SelectedItems.Count == 0)
+                return;
+
+            AddEditPackage form = new AddEditPackage(lvPackages.SelectedItems[0].SubItems[0].Text,
+                                                    lvPackages.SelectedItems[0].SubItems[1].Text,
+                                                    lvPackages.SelectedItems[0].SubItems[2].Text,
+                                                    lvPackages.SelectedItems[0].SubItems[3].Text);
+            form.ShowDialog();
+            loadPackages();
+        }
     }
 }

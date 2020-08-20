@@ -17,7 +17,7 @@ namespace RMC.Database.Controllers
         {
             List<packages> packages = new List<packages>();
 
-            string sql = @"SELECT * FROM `packages`";
+            string sql = @"SELECT * FROM packages";
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
@@ -48,6 +48,22 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, listparams);
 
+
+        }
+
+        public async void update(string name,float price,string desc,int id)
+        {
+            string sql = @"UPDATE packages SET package_name = @name, package_price = @price,
+                           package_description = @desc WHERE package_id = @id ";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@name", name));
+            listparams.Add(new MySqlParameter("@price", price));
+            listparams.Add(new MySqlParameter("@desc", desc));
+            listparams.Add(new MySqlParameter("@id", id));
+
+
+            await crud.ExecuteAsync(sql, listparams);
 
         }
     }
