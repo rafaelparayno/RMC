@@ -55,18 +55,13 @@ namespace RMC.Components
             userracounts.changePassword(UserLog.getUserId(), txtNewPassword.Text.Trim());
 
             this.Hide();
-            if(UserLog.getRole() == 13)
-            {
-                AdminDashboard frm = new AdminDashboard();
-                this.Hide();
-                frm.Show();
-            }
-            else
+            if(UserLog.getRole() != 13)
             {
                 UserDashboard frm = new UserDashboard();
-                this.Hide();
+               
                 frm.Show();
             }
+            this.Hide();
         }
 
         private bool isValid()

@@ -17,6 +17,7 @@ using RMC.Admin.PanelPharForms;
 using RMC.Admin.PanelReportsForms;
 using RMC.Admin.PanelUtilitiesForms;
 using RMC.Admin.PanelLabForms.PanelsSettings;
+using RMC.Components;
 
 namespace RMC.Admin
 {
@@ -454,6 +455,12 @@ namespace RMC.Admin
         {
             openChildForm(new XrayEcg());
             showSubMenuTitle(sender);
+        }
+
+        private void btnChangePass_Click(object sender, EventArgs e)
+        {
+            ChangePassword form = new ChangePassword();
+            form.ShowDialog();
         }
     }
 }

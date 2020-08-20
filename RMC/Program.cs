@@ -21,7 +21,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Promos());
+            Application.Run(new Login());
         }
     }
 }

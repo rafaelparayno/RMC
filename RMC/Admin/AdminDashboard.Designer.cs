@@ -77,6 +77,7 @@
             this.timelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnChangePass = new FontAwesome.Sharp.IconButton();
             this.panelSideMenu.SuspendLayout();
             this.panelSubUtilities.SuspendLayout();
             this.panelSubReports.SuspendLayout();
@@ -118,6 +119,7 @@
             // panelSubUtilities
             // 
             this.panelSubUtilities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
+            this.panelSubUtilities.Controls.Add(this.btnChangePass);
             this.panelSubUtilities.Controls.Add(this.btnNetworkSettings);
             this.panelSubUtilities.Controls.Add(this.btnAuditTrail);
             this.panelSubUtilities.Controls.Add(this.btnArchive);
@@ -125,7 +127,7 @@
             this.panelSubUtilities.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubUtilities.Location = new System.Drawing.Point(0, 931);
             this.panelSubUtilities.Name = "panelSubUtilities";
-            this.panelSubUtilities.Size = new System.Drawing.Size(233, 190);
+            this.panelSubUtilities.Size = new System.Drawing.Size(233, 232);
             this.panelSubUtilities.TabIndex = 18;
             // 
             // btnNetworkSettings
@@ -599,7 +601,7 @@
             this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton4.IconSize = 35;
             this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 1121);
+            this.iconButton4.Location = new System.Drawing.Point(0, 1163);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton4.Rotation = 0D;
@@ -955,6 +957,29 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnChangePass
+            // 
+            this.btnChangePass.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnChangePass.FlatAppearance.BorderSize = 0;
+            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangePass.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnChangePass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnChangePass.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            this.btnChangePass.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnChangePass.IconSize = 25;
+            this.btnChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChangePass.Location = new System.Drawing.Point(0, 180);
+            this.btnChangePass.Name = "btnChangePass";
+            this.btnChangePass.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
+            this.btnChangePass.Rotation = 0D;
+            this.btnChangePass.Size = new System.Drawing.Size(233, 45);
+            this.btnChangePass.TabIndex = 11;
+            this.btnChangePass.Text = "Change Password";
+            this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnChangePass.UseVisualStyleBackColor = true;
+            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1039,5 +1064,6 @@
         private FontAwesome.Sharp.IconButton btnServices;
         private FontAwesome.Sharp.IconButton btnEcgXray;
         private FontAwesome.Sharp.IconButton btnAutomated;
+        private FontAwesome.Sharp.IconButton btnChangePass;
     }
 }
