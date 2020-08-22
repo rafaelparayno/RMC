@@ -17,9 +17,6 @@ namespace RMC.Database.Controllers
             string sql;
             List<MySqlParameter> list = new List<MySqlParameter>();
 
-            /*  sql = @"INSERT INTO salespharma (invoice_id,item_id) VALUES 
-                      (@invoice,(SELECT item_id FROM itemlist WHERE sku = @sku))";*/
-
             sql = @"INSERT INTO salespharma(invoice_id, item_id,sales_qty) VALUES
                     ((SELECT invoice_id FROM invoice ORDER BY invoice_id DESC LIMIT 1),
                     (SELECT item_id FROM itemlist WHERE sku = @sku), @qty)";

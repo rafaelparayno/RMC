@@ -15,7 +15,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 {
     public partial class ReceptionPayment : Form
     {
-
+        #region DBVARS
         CustomerRequestsController customerRequestsController = new CustomerRequestsController();
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
         PackagesController packagesController = new PackagesController();
@@ -23,7 +23,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         ServiceController serviceController = new ServiceController();
         XrayControllers xrayControllers = new XrayControllers();
         PricesServiceController pricesService = new PricesServiceController();
+        InvoiceController invoiceController = new InvoiceController();
+        SalesClinicController salesClinicController = new SalesClinicController();
+        #endregion
 
+        #region VariableState
         List<int> requests = new List<int>();
         private int consultS = 1;
         private int medCert = 2;
@@ -41,6 +45,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         float priceConsult = 0;
         float totalPrice = 0;
         DataTable dt = new DataTable();
+        #endregion
+
 
         public ReceptionPayment()
         {
@@ -55,6 +61,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
            
         }
 
+
+        #region OwnFunctions
         private void initColDg()
         {
             dt.Columns.Add("id", typeof(int));
@@ -74,6 +82,27 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             return await customerDetailsController.getCurrentCustomer();
         }
 
+        private void trigerCb()
+        {
+            if (cbFree.Checked)
+            {
+                foreach (DataGridViewRow dr in dataGridView1.Rows)
+                {
+                    string type = dr.Cells[2].Value.ToString();
+                    string name = dr.Cells[1].Value.ToString();
+                    if (type == "Service" && name == "Consultation")
+                    {
+                        int index = dr.Index;
+                        dt.Rows.RemoveAt(index);
+                    }
+                }
+            }
+            else
+            {
+                dt.Rows.Add(1, "Consultation", "Service", priceConsult);
+            }
+
+        }
 
         private async void setCustomerId()
         {
@@ -131,7 +160,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 float price = float.Parse(row.Cells["Price"].Value.ToString());
-
+          
                 totalPrice += price;
             }
 
@@ -182,6 +211,18 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             button2.Enabled = false;
             btnUpdate.Enabled = false;
         }
+        
+        private void processTransaction()
+        {
+            invoiceController.Save(totalPrice);
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                string type = dr.Cells[2].Value.ToString();
+                int id = int.Parse(dr.Cells[0].Value.ToString());
+
+                salesClinicController.Save(type, id);
+            }
+        }
 
         private bool isFoundGrid(string type, int idInSelect)
         {
@@ -198,6 +239,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             return false;
         }
 
+        #endregion
+
+
+        #region Handler
         private void cbLab_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbValueLab = int.Parse((cbLab.SelectedItem as ComboBoxItem).Value.ToString());
@@ -216,9 +261,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         private void cbPackages_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbValuePackages = int.Parse((cbPackages.SelectedItem as ComboBoxItem).Value.ToString());
-        }
-
-       
+        } 
 
         private async void btnLabAdd_Click(object sender, EventArgs e)
         {
@@ -303,12 +346,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 return;
             }
 
+            processTransaction();
             finishTransaction(payment);
-
-            //customerDetailsController.nextQueue();
-
-
-            //this.Hide();
+            customerDetailsController.nextQueue();
+            //show OR
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -353,7 +394,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private void cbFree_Click(object sender, EventArgs e)
         {
+            trigerCb();
             setTotalPrice();
         }
+        #endregion
+
+
     }
 }
