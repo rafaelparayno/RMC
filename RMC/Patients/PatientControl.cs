@@ -90,7 +90,20 @@ namespace RMC.Patients
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(((IconButton)sender).Tag.ToString());
+            //MessageBox.Show(((IconButton)sender).Tag.ToString());
+            int id = int.Parse(((IconButton)sender).Tag.ToString());
+            addEditPatient form = new addEditPatient(id);
+            form.ShowDialog();
+        }
+
+        private void panel1_MouseEnter(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Silver;
+        }
+
+        private void panel1_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FloralWhite;
         }
     }
 }

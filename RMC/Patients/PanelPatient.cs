@@ -88,11 +88,16 @@ namespace RMC.Patients
         }
 
         private void setNumber(object sender,EventArgs e)
-        {
-           
+        {  
             currentPage = int.Parse(((Label)sender).Tag.ToString());
             panelPatientList.Controls.Clear();
             populateitems();
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            addEditPatient form = new addEditPatient();
+            form.ShowDialog();
         }
     }
 }

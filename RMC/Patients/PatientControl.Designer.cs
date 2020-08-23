@@ -59,6 +59,8 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(659, 170);
             this.panel1.TabIndex = 0;
+            this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
+            this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
             // 
             // panelImgHolder
             // 

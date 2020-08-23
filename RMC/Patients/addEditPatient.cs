@@ -1,0 +1,64 @@
+﻿using RMC.Patients.PanelsDetails;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace RMC.Patients
+{
+    public partial class addEditPatient : Form
+    {
+
+        private Form activeForm = null;
+        private int patient_id = 0;
+        public addEditPatient()
+        {
+            InitializeComponent();
+            newInitState();
+            openChildForm(new PanelPatientDetails());
+        }
+
+        public addEditPatient(int id)
+        {
+            InitializeComponent();
+            patient_id = id;
+            openChildForm(new PanelPatientDetails());
+        }
+
+
+        private void openChildForm(Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelChild.Controls.Add(childForm);
+            panelChild.Tag = childForm;
+            childForm.BringToFront();
+
+
+            childForm.Show();
+        }
+
+        private void btnCloseApp_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void newInitState()
+        {
+            btnVital.Visible = false;
+            btnLabFiles.Visible = false;
+            btnXray.Visible = false;
+            btnDoctorRecord.Visible = false;
+        }
+    }
+}
