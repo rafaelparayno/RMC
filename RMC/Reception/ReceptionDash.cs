@@ -1,4 +1,5 @@
-﻿using RMC.Reception.PanelRequestForm;
+﻿using RMC.Patients;
+using RMC.Reception.PanelRequestForm;
 using RMC.Reception.PanelRequestForm.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,11 @@ namespace RMC
         {
             ShowQueue formq = new ShowQueue();
             formq.Show();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelPatient());
         }
     }
 }

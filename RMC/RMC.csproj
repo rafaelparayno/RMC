@@ -57,6 +57,7 @@
     <Reference Include="MySqlBackup, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MySqlBackup.NET.2.3.1\lib\net452\MySqlBackup.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
@@ -390,6 +391,7 @@
     <Compile Include="Database\Models\ItemList.cs" />
     <Compile Include="Database\Models\packages.cs" />
     <Compile Include="Database\Models\PackagesNames.cs" />
+    <Compile Include="Database\Models\patientDetails.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\useraccount.cs" />
@@ -453,6 +455,18 @@
     </Compile>
     <Compile Include="InventoryPharma\PharmaDash.Designer.cs">
       <DependentUpon>PharmaDash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\PanelPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelPatient.Designer.cs">
+      <DependentUpon>PanelPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\PatientControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Patients\PatientControl.Designer.cs">
+      <DependentUpon>PatientControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Pharma\POS.cs">
       <SubType>Form</SubType>
@@ -648,6 +662,12 @@
     <EmbeddedResource Include="InventoryPharma\PharmaDash.resx">
       <DependentUpon>PharmaDash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelPatient.resx">
+      <DependentUpon>PanelPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PatientControl.resx">
+      <DependentUpon>PatientControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pharma\POS.resx">
       <DependentUpon>POS.cs</DependentUpon>
     </EmbeddedResource>
@@ -714,6 +734,8 @@
   <ItemGroup>
     <None Include="Resources\rmc.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\silhuser.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
