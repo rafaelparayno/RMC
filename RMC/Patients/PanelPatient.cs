@@ -68,10 +68,19 @@ namespace RMC.Patients
                 patientControl.Gender = "Gender : " + p.gender;
                 patientControl.Cnumber = "Contact Number : " + p.contact;
                 patientControl.Dock = DockStyle.Top;
+                patientControl.btnView1.Click += new EventHandler(ClickBtnView);
                 panelPatientList.Controls.Add(patientControl);
             }
         }
 
+
+        private void ClickBtnView(object sender, EventArgs e)
+        {
+            int id = int.Parse(((IconButton)sender).Tag.ToString());
+            addEditPatient form = new addEditPatient(id);
+            form.ShowDialog();
+            refreshListPatient();
+        }
 
         private void showPaginate(int total)
         {

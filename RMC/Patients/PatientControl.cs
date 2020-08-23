@@ -33,7 +33,8 @@ namespace RMC.Patients
         public int PatientId
         {
             get { return _patientId; }
-            set { _patientId = value; btnView.Tag = value; }
+            set { _patientId = value; btnView.Tag = value;
+                lblId.Text = lblId.Text + " :" + value; }
         }
 
 
@@ -82,19 +83,18 @@ namespace RMC.Patients
             set { _icon = value;pbDisplayPicture.Image = value; }
         }
 
+        private Button _myBtn;
+
+        public Button btnView1
+        {
+            get { return btnView; }
+            set { btnView1 = value; }
+        }
 
 
 
 
         #endregion
-
-        private void btnView_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show(((IconButton)sender).Tag.ToString());
-            int id = int.Parse(((IconButton)sender).Tag.ToString());
-            addEditPatient form = new addEditPatient(id);
-            form.ShowDialog();
-        }
 
         private void panel1_MouseEnter(object sender, EventArgs e)
         {

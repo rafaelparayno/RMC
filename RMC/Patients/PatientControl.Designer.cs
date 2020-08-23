@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblId = new System.Windows.Forms.Label();
             this.panelImgHolder = new System.Windows.Forms.Panel();
             this.pbDisplayPicture = new System.Windows.Forms.PictureBox();
-            this.btnView = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblGender = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
             this.lblCn = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
+            this.btnView = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panelImgHolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplayPicture)).BeginInit();
@@ -45,6 +46,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblId);
             this.panel1.Controls.Add(this.panelImgHolder);
             this.panel1.Controls.Add(this.btnView);
             this.panel1.Controls.Add(this.panel2);
@@ -61,6 +63,16 @@
             this.panel1.TabIndex = 0;
             this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
             this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblId.Location = new System.Drawing.Point(462, 15);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(73, 17);
+            this.lblId.TabIndex = 10;
+            this.lblId.Text = "Patient ID:";
             // 
             // panelImgHolder
             // 
@@ -84,23 +96,6 @@
             this.pbDisplayPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbDisplayPicture.TabIndex = 0;
             this.pbDisplayPicture.TabStop = false;
-            // 
-            // btnView
-            // 
-            this.btnView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnView.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnView.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnView.IconColor = System.Drawing.Color.Black;
-            this.btnView.IconSize = 16;
-            this.btnView.Location = new System.Drawing.Point(0, 122);
-            this.btnView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnView.Name = "btnView";
-            this.btnView.Rotation = 0D;
-            this.btnView.Size = new System.Drawing.Size(659, 43);
-            this.btnView.TabIndex = 8;
-            this.btnView.Text = "View Details";
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // panel2
             // 
@@ -161,6 +156,23 @@
             this.lblName.TabIndex = 2;
             this.lblName.Text = "lblName";
             // 
+            // btnView
+            // 
+            this.btnView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnView.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnView.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnView.IconColor = System.Drawing.Color.Black;
+            this.btnView.IconSize = 16;
+            this.btnView.Location = new System.Drawing.Point(0, 122);
+            this.btnView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnView.Name = "btnView";
+            this.btnView.Rotation = 0D;
+            this.btnView.Size = new System.Drawing.Size(659, 43);
+            this.btnView.TabIndex = 8;
+            this.btnView.Text = "View Details";
+            this.btnView.UseVisualStyleBackColor = true;
+         
+            // 
             // PatientControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -189,7 +201,8 @@
         private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Panel panelImgHolder;
         private System.Windows.Forms.PictureBox pbDisplayPicture;
-        private FontAwesome.Sharp.IconButton btnView;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblId;
+        private FontAwesome.Sharp.IconButton btnView;
     }
 }

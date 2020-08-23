@@ -88,5 +88,26 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, listparams);
         }
+
+        public async void update(params string[] data)
+        {
+            string sql = @"UPDATE patientdetails 
+                         SET firstname = @fn,middlename = @mn,lastname = @ln,birthdate = @bdate , 
+                         age = @age ,gender = @gender,contactnumber = @cn ,civil_status = @status,
+                         address = @add WHERE patient_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@fn", data[0]));
+            listparams.Add(new MySqlParameter("@mn", data[1]));
+            listparams.Add(new MySqlParameter("@ln", data[2]));
+            listparams.Add(new MySqlParameter("@bdate", DateTime.Parse(data[3])));
+            listparams.Add(new MySqlParameter("@age", int.Parse(data[4])));
+            listparams.Add(new MySqlParameter("@gender", data[5]));
+            listparams.Add(new MySqlParameter("@cn", data[6]));
+            listparams.Add(new MySqlParameter("@status", data[7]));
+            listparams.Add(new MySqlParameter("@add", data[8]));
+            listparams.Add(new MySqlParameter("@id", int.Parse(data[9])));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
     }
 }

@@ -32,11 +32,13 @@ namespace RMC.Patients.PanelsDetails
                 txtfn.Text = details.Firstname;
                 txtLn.Text = details.lastname;
                 txtMn.Text = details.middlename;
+                dateTimePicker1.Value = DateTime.Parse(details.birthdate);
                 txtAge.Text = details.age.ToString();
                 txtAddress.Text = details.address;
                 txtCn.Text = details.contact;
                 cbGender.Text = details.gender;
                 cbStatus.Text = details.civil_status;
+                
             }
         }
 
@@ -62,13 +64,17 @@ namespace RMC.Patients.PanelsDetails
                                               txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                               txtAge.Text.Trim(), cbGender.SelectedItem.ToString(),txtCn.Text.Trim(),
                                               cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim());
-                MessageBox.Show("Succesfully Save Data");
-              
+               
             }
             else
             {
-
+                patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
+                                            txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
+                                            txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
+                                            cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim(),id.ToString());
+                
             }
+            MessageBox.Show("Succesfully Save Data");
 
         }
 
