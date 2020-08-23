@@ -20,14 +20,14 @@ namespace RMC.Patients
         {
             InitializeComponent();
             newInitState();
-            openChildForm(new PanelPatientDetails());
+            openChildForm(new PanelPatientDetails(patient_id));
         }
 
         public addEditPatient(int id)
         {
             InitializeComponent();
             patient_id = id;
-            openChildForm(new PanelPatientDetails());
+            openChildForm(new PanelPatientDetails(patient_id));
         }
 
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RMC.Database.Controllers;
+using RMC.Database.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +14,30 @@ namespace RMC.Patients.PanelsDetails
 {
     public partial class PanelPatientDetails : Form
     {
-        public PanelPatientDetails()
+        int id = 0;
+        PatientDetailsController patientDetailsController = new PatientDetailsController();
+        public PanelPatientDetails(int id)
         {
             InitializeComponent();
             dateTimePicker1.MaxDate = DateTime.Now;
+            this.id = id;
+            initEditState();
+        }
+
+        private async void initEditState()
+        {
+            if (id > 0)
+            {
+                patientDetails details = await patientDetailsController.getPatientId(id);
+                txtfn.Text = details.Firstname;
+                txtLn.Text = details.lastname;
+                txtMn.Text = details.middlename;
+                txtAge.Text = details.age.ToString();
+                txtAddress.Text = details.address;
+                txtCn.Text = details.contact;
+                cbGender.Text = details.gender;
+                cbStatus.Text = details.civil_status;
+            }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -33,6 +55,21 @@ namespace RMC.Patients.PanelsDetails
                 MessageBox.Show("PLease Complete Required Field");
                 return;
             }
+
+            if(id == 0)
+            {
+                patientDetailsController.save(txtfn.Text.Trim(), txtMn.Text.Trim(),
+                                              txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
+                                              txtAge.Text.Trim(), cbGender.SelectedItem.ToString(),txtCn.Text.Trim(),
+                                              cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim());
+                MessageBox.Show("Succesfully Save Data");
+              
+            }
+            else
+            {
+
+            }
+
         }
 
         private bool isValid()
