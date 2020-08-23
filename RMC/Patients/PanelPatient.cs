@@ -22,12 +22,10 @@ namespace RMC.Patients
         {
             InitializeComponent();
             this.DoubleBuffered = true;
-            loadPatientDetails();
-            populateitems();
-            showPaginate(listDetails.Count);
+            refreshListPatient();
 
         }
-
+         
         private async void loadPatientDetails()
         {
             listDetails = await patientDetailsController.getPatientDetails();
@@ -72,7 +70,6 @@ namespace RMC.Patients
                 panelPatientList.Controls.Add(patientControl);
             }
         }
-
 
         private void ClickBtnView(object sender, EventArgs e)
         {
