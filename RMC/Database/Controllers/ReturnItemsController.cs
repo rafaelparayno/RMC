@@ -32,12 +32,27 @@ namespace RMC.Database.Controllers
         public async Task<DataSet> getReturnItems()
         {
             string sql = @"SELECT itemlist.item_id,itemlist.item_name,suppliers.supplier_name,return_items.qty_return AS 'qtyRturn',
-                        return_items.reason,date_return FROM `return_items` 
+                        return_items.reason,date_return,CONCAT(useraccounts.firstname,' ', useraccounts.lastname) AS 'Issued' FROM `return_items` 
                         INNER JOIN itemlist ON return_items.item_id = itemlist.item_id
                         INNER JOIN suppliers ON return_items.supplier_id = suppliers.supplier_id
-                        INNER JOIN useraccounts ON return_items.u_id = useraccounts.u_id";
+                        INNER JOIN useraccounts ON return_items.u_id = useraccounts.u_id ";
 
            return await crud.GetDataSetAsync(sql, null);
+        }
+
+        public async Task<DataSet> getReturnItems(string date)
+        {
+            string sql = @"SELECT itemlist.item_id,itemlist.item_name,suppliers.supplier_name,return_items.qty_return AS 'qtyRturn',
+                        return_items.reason,date_return,CONCAT(useraccounts.firstname,' ', useraccounts.lastname) AS 'Issued' FROM `return_items` 
+                        INNER JOIN itemlist ON return_items.item_id = itemlist.item_id
+                        INNER JOIN suppliers ON return_items.supplier_id = suppliers.supplier_id
+                        INNER JOIN useraccounts ON return_items.u_id = useraccounts.u_id 
+                        WHERE return_items.`date_return` = @date";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
+
+
+            return await crud.GetDataSetAsync(sql, listparams);
         }
 
 
