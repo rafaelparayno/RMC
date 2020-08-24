@@ -2,6 +2,7 @@
 using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -51,6 +52,32 @@ namespace RMC.Database.Controllers
             return leadTime;
         }
 
-     
+        public async Task<DataSet> getData()
+        {
+            string sql = @"SELECT itemlist.item_name As 'Item Name',receive_orders.qty_ro AS 'quantity Receive',receive_orders.date_ro AS 'date Receive', 
+                        CONCAT(useraccounts.firstname,' ',useraccounts.lastname) AS 'Receive By' 
+                        FROM `receive_orders` INNER JOIN purchase_order_items ON receive_orders.po_item_id = purchase_order_items.po_item_id 
+                        INNER JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id 
+                        INNER JOIN useraccounts ON receive_orders.u_id = useraccounts.u_id";
+
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
+
+
+        public async Task<DataSet> getData(string date)
+        {
+            string sql = @"SELECT itemlist.item_name As 'Item Name',receive_orders.qty_ro AS 'quantity Receive',receive_orders.date_ro AS 'date Receive', 
+                        CONCAT(useraccounts.firstname,' ',useraccounts.lastname) AS 'Receive By' 
+                        FROM `receive_orders` INNER JOIN purchase_order_items ON receive_orders.po_item_id = purchase_order_items.po_item_id 
+                        INNER JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id 
+                        INNER JOIN useraccounts ON receive_orders.u_id = useraccounts.u_id 
+                        WHERE date_ro = @date";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
+
+            return await crud.GetDataSetAsync(sql, listparams);
+        }
+
     }
 }

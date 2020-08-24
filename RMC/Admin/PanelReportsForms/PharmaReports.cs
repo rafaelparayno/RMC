@@ -50,5 +50,10 @@ namespace RMC.Admin.PanelReportsForms
         {
             openChildForm(new returnRep());
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new recevRep());
+        }
     }
 }
