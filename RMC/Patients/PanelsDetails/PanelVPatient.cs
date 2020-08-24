@@ -87,6 +87,24 @@ namespace RMC.Patients.PanelsDetails
             }
         }
 
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (lvVitals.Items.Count == 0)
+                return;
 
+            if (lvVitals.SelectedItems.Count == 0)
+                return;
+
+            DialogResult diag = MessageBox.Show("Are you sure to delete the selected data?","Deleting", MessageBoxButtons.OKCancel,
+                                                MessageBoxIcon.Warning);
+
+            if(diag == DialogResult.OK)
+            {
+                int id = int.Parse(lvVitals.SelectedItems[0].SubItems[0].Text);
+                patV.delete(id);
+                MessageBox.Show("Succesfully Deleted data");
+                getDataFromDb();
+            }
+        }
     }
 }

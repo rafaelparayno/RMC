@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panelMenus = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.lvVitals = new System.Windows.Forms.ListView();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEditItem = new FontAwesome.Sharp.IconButton();
@@ -101,12 +99,6 @@
             this.groupBox2.TabIndex = 210;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Patient Vital Information";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // lvVitals
             // 
@@ -188,6 +180,7 @@
             this.btnRemove.Text = "Remove";
             this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // iconButton1
             // 
@@ -242,7 +235,6 @@
         private FontAwesome.Sharp.IconButton btnEditItem;
         private FontAwesome.Sharp.IconButton btnRemove;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ListView lvVitals;
     }
 }
