@@ -2,6 +2,7 @@
 using RMC.Components;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,13 @@ namespace RMC.Database.Controllers
     class AutoDocsController
     {
         dbcrud crud = new dbcrud();
+
+        public async Task<DataSet> getDs()
+        {
+            string sql = @"SELECT * FROM `auto_docs`";
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
 
         public async void save(string name,string path)
         {

@@ -45,5 +45,10 @@ namespace RMC.Admin.PanelLabForms
         {
             openChildForm(new PanelConsultSettings());
         }
+
+        private void btnAutomated_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ViewAutomated());
+        }
     }
 }
