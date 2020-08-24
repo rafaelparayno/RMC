@@ -366,6 +366,7 @@
     <Compile Include="Database\Controllers\PackagesController.cs" />
     <Compile Include="Database\Controllers\PackageXray.cs" />
     <Compile Include="Database\Controllers\PatientDetailsController.cs" />
+    <Compile Include="Database\Controllers\PatientVController.cs" />
     <Compile Include="Database\Controllers\PharmaStocksController.cs" />
     <Compile Include="Database\Controllers\PoController.cs" />
     <Compile Include="Database\Controllers\PoItemController.cs" />
@@ -393,6 +394,7 @@
     <Compile Include="Database\Models\packages.cs" />
     <Compile Include="Database\Models\PackagesNames.cs" />
     <Compile Include="Database\Models\patientDetails.cs" />
+    <Compile Include="Database\Models\patientVModel.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\useraccount.cs" />
@@ -469,11 +471,23 @@
     <Compile Include="Patients\PanelPatient.Designer.cs">
       <DependentUpon>PanelPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patients\PanelsDetails\Dialogs\AddEditVital.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\Dialogs\AddEditVital.Designer.cs">
+      <DependentUpon>AddEditVital.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\PanelsDetails\PanelPatientDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Patients\PanelsDetails\PanelPatientDetails.Designer.cs">
       <DependentUpon>PanelPatientDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelVPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelVPatient.Designer.cs">
+      <DependentUpon>PanelVPatient.cs</DependentUpon>
     </Compile>
     <Compile Include="Patients\PatientControl.cs">
       <SubType>UserControl</SubType>
@@ -681,8 +695,14 @@
     <EmbeddedResource Include="Patients\PanelPatient.resx">
       <DependentUpon>PanelPatient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelsDetails\Dialogs\AddEditVital.resx">
+      <DependentUpon>AddEditVital.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\PanelPatientDetails.resx">
       <DependentUpon>PanelPatientDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelsDetails\PanelVPatient.resx">
+      <DependentUpon>PanelVPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PatientControl.resx">
       <DependentUpon>PatientControl.cs</DependentUpon>

@@ -60,5 +60,15 @@ namespace RMC.Patients
             btnXray.Visible = false;
             btnDoctorRecord.Visible = false;
         }
+
+        private void btnVital_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelVPatient(patient_id));
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelPatientDetails(patient_id));
+        }
     }
 }
