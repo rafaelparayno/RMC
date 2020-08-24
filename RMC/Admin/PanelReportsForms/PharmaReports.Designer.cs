@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.panelChild = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelNavParam = new System.Windows.Forms.Panel();
-            this.btnReorder = new FontAwesome.Sharp.IconButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.btnReorder = new FontAwesome.Sharp.IconButton();
             this.panelChild.SuspendLayout();
             this.panelNavParam.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +54,14 @@
             this.panelChild.Name = "panelChild";
             this.panelChild.Size = new System.Drawing.Size(894, 376);
             this.panelChild.TabIndex = 23;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(894, 370);
+            this.panel1.TabIndex = 20;
             // 
             // panel2
             // 
@@ -82,59 +90,6 @@
             this.panelNavParam.Name = "panelNavParam";
             this.panelNavParam.Size = new System.Drawing.Size(894, 74);
             this.panelNavParam.TabIndex = 22;
-            // 
-            // btnReorder
-            // 
-            this.btnReorder.BackColor = System.Drawing.Color.Maroon;
-            this.btnReorder.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnReorder.FlatAppearance.BorderSize = 0;
-            this.btnReorder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReorder.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnReorder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnReorder.IconChar = FontAwesome.Sharp.IconChar.File;
-            this.btnReorder.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnReorder.IconSize = 18;
-            this.btnReorder.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnReorder.Location = new System.Drawing.Point(0, 0);
-            this.btnReorder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnReorder.Name = "btnReorder";
-            this.btnReorder.Rotation = 0D;
-            this.btnReorder.Size = new System.Drawing.Size(133, 57);
-            this.btnReorder.TabIndex = 12;
-            this.btnReorder.Text = "Items In Reorder point";
-            this.btnReorder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnReorder.UseVisualStyleBackColor = false;
-            this.btnReorder.Click += new System.EventHandler(this.btnReorder_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(894, 370);
-            this.panel1.TabIndex = 20;
-            // 
-            // iconButton6
-            // 
-            this.iconButton6.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.File;
-            this.iconButton6.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton6.IconSize = 18;
-            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton6.Location = new System.Drawing.Point(133, 0);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Rotation = 0D;
-            this.iconButton6.Size = new System.Drawing.Size(133, 57);
-            this.iconButton6.TabIndex = 22;
-            this.iconButton6.Text = "Item Expiry";
-            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton6.UseVisualStyleBackColor = false;
             // 
             // iconButton5
             // 
@@ -250,6 +205,52 @@
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton3.UseMnemonic = false;
             this.iconButton3.UseVisualStyleBackColor = false;
+            // 
+            // iconButton6
+            // 
+            this.iconButton6.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.File;
+            this.iconButton6.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton6.IconSize = 18;
+            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton6.Location = new System.Drawing.Point(133, 0);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.Rotation = 0D;
+            this.iconButton6.Size = new System.Drawing.Size(133, 57);
+            this.iconButton6.TabIndex = 22;
+            this.iconButton6.Text = "Item Expiry";
+            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton6.UseVisualStyleBackColor = false;
+            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
+            // 
+            // btnReorder
+            // 
+            this.btnReorder.BackColor = System.Drawing.Color.Maroon;
+            this.btnReorder.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnReorder.FlatAppearance.BorderSize = 0;
+            this.btnReorder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReorder.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnReorder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnReorder.IconChar = FontAwesome.Sharp.IconChar.File;
+            this.btnReorder.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnReorder.IconSize = 18;
+            this.btnReorder.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnReorder.Location = new System.Drawing.Point(0, 0);
+            this.btnReorder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnReorder.Name = "btnReorder";
+            this.btnReorder.Rotation = 0D;
+            this.btnReorder.Size = new System.Drawing.Size(133, 57);
+            this.btnReorder.TabIndex = 12;
+            this.btnReorder.Text = "Items In Reorder point";
+            this.btnReorder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReorder.UseVisualStyleBackColor = false;
+            this.btnReorder.Click += new System.EventHandler(this.btnReorder_Click);
             // 
             // PharmaReports
             // 

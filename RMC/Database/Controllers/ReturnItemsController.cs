@@ -2,6 +2,7 @@
 using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,5 +28,19 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
 
         }
+
+        public async Task<DataSet> getReturnItems()
+        {
+            string sql = @"SELECT itemlist.item_id,itemlist.item_name,suppliers.supplier_name,return_items.qty_return AS 'qtyRturn',
+                        return_items.reason,date_return FROM `return_items` 
+                        INNER JOIN itemlist ON return_items.item_id = itemlist.item_id
+                        INNER JOIN suppliers ON return_items.supplier_id = suppliers.supplier_id
+                        INNER JOIN useraccounts ON return_items.u_id = useraccounts.u_id";
+
+           return await crud.GetDataSetAsync(sql, null);
+        }
+
+
+
     }
 }

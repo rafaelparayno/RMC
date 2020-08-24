@@ -268,6 +268,12 @@
     <Compile Include="Admin\PanelReportsForms\LabReports.Designer.cs">
       <DependentUpon>LabReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\ExpRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\ExpRep.Designer.cs">
+      <DependentUpon>ExpRep.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\RopRep.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -649,6 +655,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\LabReports.resx">
       <DependentUpon>LabReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\ExpRep.resx">
+      <DependentUpon>ExpRep.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\RopRep.resx">
       <DependentUpon>RopRep.cs</DependentUpon>

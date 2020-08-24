@@ -43,6 +43,26 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
         }
 
+        public async Task<DataSet> getdatasetActiveExpiration()
+        {
+            string sql = @"SELECT item_id,item_name,SKU,Description,ExpirationDate FROM `itemlist` WHERE ExpirationDate 
+                            BETWEEN ExpirationDate and NOW() AND itemlist.is_active = 1";
+
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
+        public async Task<DataSet> getdatasetActiveExpirationWithDate(int days)
+        {
+            string sql = @"SELECT item_id,item_name,SKU,Description,ExpirationDate FROM `itemlist` WHERE ExpirationDate 
+                             BETWEEN NOW() AND DATE_ADD(NOW() , INTERVAL @day DAY) AND itemlist.is_active = 1";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@day", days));
+
+            return await crud.GetDataSetAsync(sql, listparams);
+        }
+
         public async Task<DataSet> getDataWithSupplierIdTotalStocks(int id)
         {
             string sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
