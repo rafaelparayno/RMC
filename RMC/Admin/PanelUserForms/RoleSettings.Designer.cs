@@ -40,6 +40,7 @@
             this.cbDoctor = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbInventory = new System.Windows.Forms.CheckBox();
+            this.cbXray = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRoles)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -195,6 +196,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.cbXray);
             this.groupBox2.Controls.Add(this.cbInventory);
             this.groupBox2.Controls.Add(this.cbDoctor);
             this.groupBox2.Controls.Add(this.cbReception);
@@ -220,6 +222,18 @@
             this.cbInventory.Text = "Inventory";
             this.cbInventory.UseVisualStyleBackColor = true;
             this.cbInventory.Click += new System.EventHandler(this.cbInventory_Click);
+            // 
+            // cbXray
+            // 
+            this.cbXray.AutoSize = true;
+            this.cbXray.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbXray.Location = new System.Drawing.Point(423, 19);
+            this.cbXray.Name = "cbXray";
+            this.cbXray.Size = new System.Drawing.Size(53, 45);
+            this.cbXray.TabIndex = 6;
+            this.cbXray.Text = "Xray";
+            this.cbXray.UseVisualStyleBackColor = true;
+            this.cbXray.Click += new System.EventHandler(this.cbXray_Click);
             // 
             // RoleSettings
             // 
@@ -257,5 +271,6 @@
         private System.Windows.Forms.CheckBox cbDoctor;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox cbInventory;
+        private System.Windows.Forms.CheckBox cbXray;
     }
 }

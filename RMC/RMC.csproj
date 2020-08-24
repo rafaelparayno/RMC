@@ -268,6 +268,12 @@
     <Compile Include="Admin\PanelReportsForms\LabReports.Designer.cs">
       <DependentUpon>LabReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\RopRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\RopRep.Designer.cs">
+      <DependentUpon>RopRep.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelReportsForms\PharmaReports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -641,6 +647,15 @@
     <EmbeddedResource Include="Admin\PanelPharForms\Units.resx">
       <DependentUpon>Units.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelReportsForms\LabReports.resx">
+      <DependentUpon>LabReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\RopRep.resx">
+      <DependentUpon>RopRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelReportsForms\PharmaReports.resx">
+      <DependentUpon>PharmaReports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelUserForms\dialogs\AddRole.resx">
       <DependentUpon>AddRole.cs</DependentUpon>
     </EmbeddedResource>
@@ -785,5 +800,6 @@
   <ItemGroup>
     <None Include="Resources\silhuser.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

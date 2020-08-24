@@ -27,6 +27,7 @@ namespace RMC.Admin.PanelUserForms
         private int receptionAcess = 4;
         private int doctorAccess = 5;
         private int inventoryAccess = 6;
+        private int xrayAccess = 7;
 
         public RoleSettings()
         {
@@ -137,6 +138,15 @@ namespace RMC.Admin.PanelUserForms
                 cbInventory.Checked = false;
             }
 
+            if (access.Contains(xrayAccess))
+            {
+                cbXray.Checked = true;
+            }
+            else
+            {
+                cbXray.Checked = false;
+            }
+
         }
 
         private void adminAccessCb_CheckedChanged(object sender, EventArgs e)
@@ -242,6 +252,23 @@ namespace RMC.Admin.PanelUserForms
             }
         }
 
+
+        private void cbXray_Click(object sender, EventArgs e)
+        {
+            if (cbXray.Checked == true)
+            {
+                newAccess.Add(xrayAccess);
+            }
+            else
+            {
+
+                int index = newAccess.FindIndex(t => xrayAccess == t);
+
+                if (index > -1)
+                    newAccess.RemoveAt(index);
+            }
+        }
+
         #endregion
 
         private List<int> findNoAccesses(List<int> access)
@@ -266,6 +293,9 @@ namespace RMC.Admin.PanelUserForms
             if (!access.Contains(inventoryAccess))
                 noAccess.Add(inventoryAccess);
 
+            if (!access.Contains(xrayAccess))
+                noAccess.Add(xrayAccess);
+
 
             return noAccess;
         }
@@ -288,6 +318,6 @@ namespace RMC.Admin.PanelUserForms
             RefreshGrid(ds);
         }
 
-      
+       
     }
 }

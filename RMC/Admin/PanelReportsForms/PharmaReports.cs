@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RMC.Admin.PanelReportsForms.PanelsPharmaRep;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,32 @@ namespace RMC.Admin.PanelReportsForms
 {
     public partial class PharmaReports : Form
     {
+        private Form activeForm = null;
         public PharmaReports()
         {
             InitializeComponent();
+        }
+
+        private void openChildForm(Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelChild.Controls.Add(childForm);
+            panelChild.Tag = childForm;
+            childForm.BringToFront();
+
+
+            childForm.Show();
+        }
+
+        private void btnReorder_Click(object sender, EventArgs e)
+        {
+            openChildForm(new RopRep());
         }
     }
 }

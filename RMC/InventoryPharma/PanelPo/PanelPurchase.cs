@@ -14,6 +14,8 @@ namespace RMC.InventoryPharma.PanelPo
 {
     public partial class PanelPurchase : Form
     {
+        #region Vars
+
         SupplierController supplierController = new SupplierController();
         SalesPharmaController salesPharmaController = new SalesPharmaController();
         PoController poController = new PoController();
@@ -27,7 +29,9 @@ namespace RMC.InventoryPharma.PanelPo
         decimal totalCost = 0;
         int cbSupValue = 0;
         int PONO = 0;
-        DataTable dt = new DataTable();
+        DataTable dt = new DataTable(); 
+        #endregion
+
         public PanelPurchase()
         {
             InitializeComponent();
@@ -37,6 +41,7 @@ namespace RMC.InventoryPharma.PanelPo
             initPO();
         }
 
+        #region Own Functions
         private void initDg()
         {
             dt.Columns.Add("Itemid", typeof(int));
@@ -53,16 +58,8 @@ namespace RMC.InventoryPharma.PanelPo
             Task<List<ComboBoxItem>>[] Cbs = new Task<List<ComboBoxItem>>[] { task1 };
             await Task.WhenAll(Cbs);
 
-           
-            cbSuppliers.Items.AddRange(task1.Result.ToArray());
-        }
 
-        private void cbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbSupValue = int.Parse((cbSuppliers.SelectedItem as ComboBoxItem).Value.ToString());
-          
-            loadGrid(cbSupValue);
-            ResetData();
+            cbSuppliers.Items.AddRange(task1.Result.ToArray());
         }
 
         private async void loadGrid(int id)
@@ -97,59 +94,30 @@ namespace RMC.InventoryPharma.PanelPo
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 int itemId = int.Parse(dr[0].ToString());
-                
+
                 int sum = days == 0 ? 0 : await getSum(days, itemId);
-                double avgLeadInt = days == 0 ? 0 : Math.Round(await getLeadSum(itemId, days),MidpointRounding.AwayFromZero);
-                decimal avg = Math.Round(Decimal.Divide(sum, days),MidpointRounding.AwayFromZero);
+                double avgLeadInt = days == 0 ? 0 : Math.Round(await getLeadSum(itemId, days), MidpointRounding.AwayFromZero);
+                decimal avg = Math.Round(Decimal.Divide(sum, days), MidpointRounding.AwayFromZero);
                 decimal safetyStock = Math.Round(days * avg, MidpointRounding.AwayFromZero);
                 decimal ROP = computeRop(avg, avgLeadInt, safetyStock);
-                decimal percentsOptimal =  safetyStock * decimal.Parse((PercentStocks  + 1) + "");
+                decimal percentsOptimal = safetyStock * decimal.Parse((PercentStocks + 1) + "");
                 ListViewItem items = new ListViewItem();
                 items.Text = dr[0].ToString();
                 items.SubItems.Add(dr[1].ToString());
                 items.SubItems.Add(dr[4].ToString());
                 string currentStocks = dr[2].ToString() == "" ? "0" : dr[2].ToString();
-                items.SubItems.Add(currentStocks);       
+                items.SubItems.Add(currentStocks);
                 items.SubItems.Add(dr[3].ToString());
                 items.SubItems.Add(avg == 0 ? "no data" : avg + "");
                 items.SubItems.Add(avgLeadInt == 0 ? "no data" : avgLeadInt + "");
-                items.SubItems.Add(safetyStock == 0 ? "no data" :  safetyStock + "");
+                items.SubItems.Add(safetyStock == 0 ? "no data" : safetyStock + "");
                 items.SubItems.Add(ROP == 0 ? "no data" : ROP + "");
-                items.SubItems.Add(percentsOptimal == 0 ? "no data" : percentsOptimal+"");  
+                items.SubItems.Add(percentsOptimal == 0 ? "no data" : percentsOptimal + "");
                 if (rbEoqShow.Checked) items.SubItems.Add("NONE");
 
                 lvItemsSuppliers.Items.Add(items);
             }
-           
-        }
 
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-            if (numericUpDown1.Value == 0)
-                return;
-            if (numericUpDown2.Value == 0)
-                return;
-
-            string lines = string.Format("{0}#{1}#{2}", numericUpDown1.Value.ToString(), numericUpDown2.Value.ToString(),isShowEoq.ToString());
-            System.IO.StreamWriter file = new System.IO.StreamWriter(Directory.GetCurrentDirectory() + @"\poSettings.txt");
-            file.WriteLine(lines);
-            file.Close();
-
-            initSettings();
-            loadGrid(cbSupValue);
-        }
-
-        private void rbEoqShow_CheckedChanged(object sender, EventArgs e)
-        {
-            if(rbEoqShow.Checked)
-              isShowEoq = true;
-
-        }
-
-        private void rbHideEoq_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbHideEoq.Checked)
-                isShowEoq = false;
         }
 
         private void initSettings()
@@ -160,7 +128,7 @@ namespace RMC.InventoryPharma.PanelPo
 
             numericUpDown1.Value = int.Parse(PoSettings.FetchPoSettings()[0]);
             numericUpDown2.Value = int.Parse(PoSettings.FetchPoSettings()[1]);
-            if(PoSettings.FetchPoSettings()[2] == "True")
+            if (PoSettings.FetchPoSettings()[2] == "True")
             {
                 rbEoqShow.Checked = true;
                 isShowEoq = true;
@@ -173,14 +141,14 @@ namespace RMC.InventoryPharma.PanelPo
 
         }
 
-        private decimal computeRop(decimal averageSales,double leadtime,decimal safetyStock)
+        private decimal computeRop(decimal averageSales, double leadtime, decimal safetyStock)
         {
-            return Decimal.Multiply(averageSales , decimal.Parse("" + leadtime)) + safetyStock;
+            return Decimal.Multiply(averageSales, decimal.Parse("" + leadtime)) + safetyStock;
         }
 
-        private async Task<float> getLeadSum(int itemid,int days)
+        private async Task<float> getLeadSum(int itemid, int days)
         {
-            return await receiveControllers.getSumLead(itemid,days);
+            return await receiveControllers.getSumLead(itemid, days);
         }
 
         private async Task<int> getSum(int days, int id)
@@ -196,12 +164,116 @@ namespace RMC.InventoryPharma.PanelPo
                 PercentStocks = float.Parse(PoSettings.FetchPoSettings()[1]) / 100;
 
                 return true;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
                 MessageBox.Show("Please Save a settings");
                 return false;
             }
+        }
+
+        private bool isFoundInDg(int id)
+        {
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (id == int.Parse(dr[0].ToString()))
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+        private int CurrentQty(int id)
+        {
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (id == int.Parse(dr[0].ToString()))
+                {
+                    return int.Parse(dr[3].ToString());
+                }
+
+            }
+
+            return 0;
+        }
+
+        private void ComputeTotalCost()
+        {
+            totalCost = 0;
+
+            foreach (DataGridViewRow dr in dgItemList.Rows)
+            {
+                totalCost += decimal.Parse(dr.Cells["SubTotal"].Value.ToString());
+            }
+
+            label7.Text = "PHP " + String.Format("{0:0.##}", totalCost);
+        }
+
+        private void initPO()
+        {
+            PONO = poController.getLastPoNo();
+            groupBox2.Text = "Purchase Order # " + PONO;
+        }
+
+        private void ResetData()
+        {
+            dt.Rows.Clear();
+            label7.Text = "PHP 0.00";
+        }
+
+        private async void SearchGrid(string searchkey, int cbSelect)
+        {
+            DataSet ds = await itemz.getDataWithSupplierIdTotalStocksWithSearch(cbSupValue, cbSelect, searchkey);
+            RefreshGrid(ds);
+        }
+        #endregion
+
+
+
+        #region Handler Events
+
+        private void cbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbSupValue = int.Parse((cbSuppliers.SelectedItem as ComboBoxItem).Value.ToString());
+
+            loadGrid(cbSupValue);
+            ResetData();
+        }
+
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (numericUpDown1.Value == 0)
+                return;
+            if (numericUpDown2.Value == 0)
+                return;
+
+            string lines = string.Format("{0}#{1}#{2}", numericUpDown1.Value.ToString(), numericUpDown2.Value.ToString(), isShowEoq.ToString());
+            System.IO.StreamWriter file = new System.IO.StreamWriter(Directory.GetCurrentDirectory() + @"\poSettings.txt");
+            file.WriteLine(lines);
+            file.Close();
+
+            initSettings();
+            loadGrid(cbSupValue);
+        }
+
+        private void rbEoqShow_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbEoqShow.Checked)
+                isShowEoq = true;
+
+        }
+
+        private void rbHideEoq_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbHideEoq.Checked)
+                isShowEoq = false;
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -236,51 +308,9 @@ namespace RMC.InventoryPharma.PanelPo
                       unitCosts, form.qty, subunitcosts);
             }
 
-           
+
             dgItemList.DataSource = dt;
             ComputeTotalCost();
-        }
-
-        private bool isFoundInDg(int id)
-        {
-           
-            foreach(DataRow dr in dt.Rows)
-            {
-                if (id == int.Parse(dr[0].ToString()))
-                {
-                    return true;
-                }
-                    
-            }
-
-            return false;
-        }
-
-        private int CurrentQty (int id)
-        {
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                if (id == int.Parse(dr[0].ToString()))
-                {
-                    return int.Parse(dr[3].ToString());
-                }
-
-            }
-
-            return 0;
-        }
-
-        private void ComputeTotalCost()
-        {
-            totalCost = 0;
-       
-            foreach (DataGridViewRow dr in dgItemList.Rows)
-            {
-                totalCost += decimal.Parse(dr.Cells["SubTotal"].Value.ToString());
-            }
-
-            label7.Text = "PHP " + String.Format("{0:0.##}", totalCost);
         }
 
         private void btnRemoveOrder_Click(object sender, EventArgs e)
@@ -306,7 +336,7 @@ namespace RMC.InventoryPharma.PanelPo
             {
                 poItemController.Save(int.Parse(dr.Cells["Itemid"].Value.ToString()),
                                     int.Parse(dr.Cells["Quantity"].Value.ToString()));
-             //   poController.save( cbSupValue, int.Parse(dr.Cells["Quantity"].Value.ToString()), PONO);
+                //   poController.save( cbSupValue, int.Parse(dr.Cells["Quantity"].Value.ToString()), PONO);
             }
 
             MessageBox.Show("Succesfully Added A Purchase Order");
@@ -314,25 +344,6 @@ namespace RMC.InventoryPharma.PanelPo
             ResetData();
 
         }
-
-        private void initPO()
-        {
-            PONO = poController.getLastPoNo();
-            groupBox2.Text = "Purchase Order # " + PONO;
-        }
-
-        private void ResetData()
-        {
-            dt.Rows.Clear();
-            label7.Text = "PHP 0.00";
-        }
-
-        private async void SearchGrid(string searchkey, int cbSelect)
-        {
-            DataSet ds = await itemz.getDataWithSupplierIdTotalStocksWithSearch(cbSupValue,cbSelect, searchkey);
-            RefreshGrid(ds);
-        }
-
         private void iconButton2_Click(object sender, EventArgs e)
         {
             int selectedCombobx = comboBox1.SelectedIndex;
@@ -345,7 +356,8 @@ namespace RMC.InventoryPharma.PanelPo
             {
                 SearchGrid(txtName.Text.Trim(), selectedCombobx);
             }
-           
-        }
+
+        } 
+        #endregion
     }
 }

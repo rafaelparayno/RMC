@@ -95,6 +95,10 @@ namespace RMC.UserDash
             {
                 InventoryBtn.Visible = true;
             }
+            if (useraccess.Contains(7))
+            {
+                btnXray.Visible = true;
+            }
         }
 
         private void iconButton4_Click(object sender, EventArgs e)
@@ -173,11 +177,6 @@ namespace RMC.UserDash
             changingLabel("Pharmacy");
         }
 
-        private void iconButton4_Click_2(object sender, EventArgs e)
-        {
-            contextMenuStrip1.Show(iconButton4, new Point(iconButton4.Width - contextMenuStrip1.Width, iconButton4.Height));
-        }
-
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
             iconButton4.IconChar = IconChar.AngleUp;
@@ -192,6 +191,11 @@ namespace RMC.UserDash
         {
             openChildForm(new ReceptionDash());
             changingLabel("Reception");
+        }
+
+        private void iconButton4_Click_3(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(iconButton4, new Point(iconButton4.Width - contextMenuStrip1.Width, iconButton4.Height));
         }
     }
 }
