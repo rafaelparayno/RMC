@@ -38,6 +38,12 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             totalCost = await salesPharmaController.getTotalCostDays(d1,d2);
         }
 
+        private async void searchMonths(int d1, int d2,int year)
+        {
+            listsales = await salesPharmaController.getSearchMonths(d1, d2,year);
+         //   totalCost = await salesPharmaController.getTotalCostDays(d1, d2);
+        }
+
         private void iconButton3_Click(object sender, EventArgs e)
         {
             loadAllData();
@@ -60,17 +66,32 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
           
         }
 
-        private void showDataChartData()
+        private void showDataChartDays()
         {
             chart1.Visible = true;
             chart1.Series.Clear();
-            chart1.Titles.Add("Sales");
+         
             Series series = chart1.Series.Add("Total Revenue");
             series.ChartType = SeriesChartType.Column;
-
+      
             foreach(salesPharmacyModel s in listsales)
             {
                 series.Points.AddXY(s.dateInvoice.ToString("MMMM,dd yyyy"), s.sales);
+            }
+        }
+
+        private async void showDataChartMonths(int d,int d2,int yr)
+        {
+            chart1.Visible = true;
+            chart1.Series.Clear();
+            
+            Series series = chart1.Series.Add("Total Revenue");
+            series.ChartType = SeriesChartType.Column;
+            for(int i = d; i <= d2; i++)
+            {
+                float totalSalesInMonth = await salesPharmaController.getSumInMonth(i,yr);
+                
+                series.Points.AddXY(StaticData.months[i-1], totalSalesInMonth);
             }
         }
 
@@ -88,8 +109,21 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             float netIncome = totalRev - totalCost;
             searchDays(d1, d2);
             refrshData();
-            showDataChartData();
+            showDataChartDays();
            
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            DiagMonths form = new DiagMonths();
+            form.ShowDialog();
+
+            if (form.m == 0)
+                return;
+
+            searchMonths(form.m, form.m2,form.year);
+            refrshData();
+            showDataChartMonths(form.m, form.m2,form.year);
         }
     }
 }

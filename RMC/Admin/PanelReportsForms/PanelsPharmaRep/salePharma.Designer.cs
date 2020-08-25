@@ -36,11 +36,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgItemList = new System.Windows.Forms.DataGridView();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -49,6 +44,11 @@
             this.lblReve = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -133,114 +133,6 @@
             this.dgItemList.Size = new System.Drawing.Size(311, 194);
             this.dgItemList.StandardTab = true;
             this.dgItemList.TabIndex = 116;
-            // 
-            // iconButton6
-            // 
-            this.iconButton6.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton6.ForeColor = System.Drawing.Color.White;
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton6.IconColor = System.Drawing.Color.White;
-            this.iconButton6.IconSize = 28;
-            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton6.Location = new System.Drawing.Point(3, 214);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Rotation = 0D;
-            this.iconButton6.Size = new System.Drawing.Size(311, 47);
-            this.iconButton6.TabIndex = 9;
-            this.iconButton6.Text = "Print";
-            this.iconButton6.UseVisualStyleBackColor = false;
-            // 
-            // iconButton3
-            // 
-            this.iconButton3.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton3.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton3.ForeColor = System.Drawing.Color.White;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton3.IconColor = System.Drawing.Color.White;
-            this.iconButton3.IconSize = 28;
-            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton3.Location = new System.Drawing.Point(481, 18);
-            this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Rotation = 0D;
-            this.iconButton3.Size = new System.Drawing.Size(150, 42);
-            this.iconButton3.TabIndex = 236;
-            this.iconButton3.Text = "View All";
-            this.iconButton3.UseVisualStyleBackColor = false;
-            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
-            // 
-            // iconButton4
-            // 
-            this.iconButton4.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton4.ForeColor = System.Drawing.Color.White;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton4.IconColor = System.Drawing.Color.White;
-            this.iconButton4.IconSize = 28;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton4.Location = new System.Drawing.Point(331, 18);
-            this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Rotation = 0D;
-            this.iconButton4.Size = new System.Drawing.Size(150, 42);
-            this.iconButton4.TabIndex = 235;
-            this.iconButton4.Text = "Year";
-            this.iconButton4.UseVisualStyleBackColor = false;
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.Color.White;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconSize = 28;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton2.Location = new System.Drawing.Point(149, 18);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Rotation = 0D;
-            this.iconButton2.Size = new System.Drawing.Size(182, 42);
-            this.iconButton2.TabIndex = 234;
-            this.iconButton2.Text = "Month";
-            this.iconButton2.UseVisualStyleBackColor = false;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconSize = 28;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton1.Location = new System.Drawing.Point(3, 18);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(146, 42);
-            this.iconButton1.TabIndex = 233;
-            this.iconButton1.Text = "Days";
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // panel6
             // 
@@ -330,6 +222,7 @@
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
@@ -337,6 +230,115 @@
             this.chart1.Size = new System.Drawing.Size(556, 136);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
+            // 
+            // iconButton6
+            // 
+            this.iconButton6.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton6.ForeColor = System.Drawing.Color.White;
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton6.IconColor = System.Drawing.Color.White;
+            this.iconButton6.IconSize = 28;
+            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton6.Location = new System.Drawing.Point(3, 214);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.Rotation = 0D;
+            this.iconButton6.Size = new System.Drawing.Size(311, 47);
+            this.iconButton6.TabIndex = 9;
+            this.iconButton6.Text = "Print";
+            this.iconButton6.UseVisualStyleBackColor = false;
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton3.ForeColor = System.Drawing.Color.White;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton3.IconColor = System.Drawing.Color.White;
+            this.iconButton3.IconSize = 28;
+            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton3.Location = new System.Drawing.Point(481, 18);
+            this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Rotation = 0D;
+            this.iconButton3.Size = new System.Drawing.Size(150, 42);
+            this.iconButton3.TabIndex = 236;
+            this.iconButton3.Text = "View All";
+            this.iconButton3.UseVisualStyleBackColor = false;
+            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton4.ForeColor = System.Drawing.Color.White;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton4.IconColor = System.Drawing.Color.White;
+            this.iconButton4.IconSize = 28;
+            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton4.Location = new System.Drawing.Point(331, 18);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Rotation = 0D;
+            this.iconButton4.Size = new System.Drawing.Size(150, 42);
+            this.iconButton4.TabIndex = 235;
+            this.iconButton4.Text = "Year";
+            this.iconButton4.UseVisualStyleBackColor = false;
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton2.ForeColor = System.Drawing.Color.White;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconSize = 28;
+            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton2.Location = new System.Drawing.Point(149, 18);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Rotation = 0D;
+            this.iconButton2.Size = new System.Drawing.Size(182, 42);
+            this.iconButton2.TabIndex = 234;
+            this.iconButton2.Text = "Month";
+            this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconSize = 28;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton1.Location = new System.Drawing.Point(3, 18);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(146, 42);
+            this.iconButton1.TabIndex = 233;
+            this.iconButton1.Text = "Days";
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // salePharma
             // 
