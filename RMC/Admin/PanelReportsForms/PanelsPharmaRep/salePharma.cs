@@ -41,7 +41,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
         private async void searchMonths(int d1, int d2,int year)
         {
             listsales = await salesPharmaController.getSearchMonths(d1, d2,year);
-         //   totalCost = await salesPharmaController.getTotalCostDays(d1, d2);
+           totalCost = await salesPharmaController.getTotalCostMonths(d1, d2,year);
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
@@ -87,11 +87,18 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             
             Series series = chart1.Series.Add("Total Revenue");
             series.ChartType = SeriesChartType.Column;
-            for(int i = d; i <= d2; i++)
+            Series series2 = chart1.Series.Add("Total Costahahaha");
+            series.ChartType = SeriesChartType.Column;
+            for (int i = d; i <= d2; i++)
             {
-                float totalSalesInMonth = await salesPharmaController.getSumInMonth(i,yr);
-                
-                series.Points.AddXY(StaticData.months[i-1], totalSalesInMonth);
+                Task<float> totalSalesInMonth =  salesPharmaController.getSumInMonth(i,yr);
+                Task<float> totalCostInMonth = salesPharmaController.getTotalCostMonths(i, i, yr);
+                Task<float>[] costsalesTask = new Task<float>[] { totalSalesInMonth, totalCostInMonth};
+
+                await Task.WhenAll(costsalesTask);
+
+                series.Points.AddXY(StaticData.months[i-1], totalSalesInMonth.Result);
+                series2.Points.AddXY(StaticData.months[i - 1], totalCostInMonth.Result);
             }
         }
 
@@ -124,6 +131,16 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             searchMonths(form.m, form.m2,form.year);
             refrshData();
             showDataChartMonths(form.m, form.m2,form.year);
+        }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            DiagYears form = new DiagYears();
+            form.ShowDialog();
+
+            if (form.yrFrom == 0)
+                return;
+
         }
     }
 }

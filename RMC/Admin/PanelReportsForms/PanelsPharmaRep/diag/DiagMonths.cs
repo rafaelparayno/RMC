@@ -48,6 +48,10 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.diag
         private void btnQty_Click(object sender, EventArgs e)
         {
             year = dateTimePicker1.Value.Year;
+            if (comboBox1.SelectedIndex == -1)
+                return;
+            if (comboBox2.SelectedIndex == -1)
+                return;
 
             m = comboBox1.SelectedIndex + 1;
             m2 = StaticData.months.ToList().IndexOf(comboBox2.SelectedItem.ToString()) + 1;

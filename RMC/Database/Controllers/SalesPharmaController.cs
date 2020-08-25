@@ -43,9 +43,9 @@ namespace RMC.Database.Controllers
             List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();
             string sql;
 
-            sql = d == d2? @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
+            sql = d == d2 ? @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
                         INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
-                        WHERE invoice.date_invoice BETWEEN @dt1 AND NOW() ORDER BY `invoice`.`date_invoice` ASC" :
+                        WHERE invoice.date_invoice BETWEEN @dt1 AND DATE_ADD(@dt1,INTERVAL 1 DAY) ORDER BY `invoice`.`date_invoice` ASC" :
                         @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
                         INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
                         WHERE invoice.date_invoice BETWEEN @dt1 AND @d2 ORDER BY `invoice`.`date_invoice` ASC";
@@ -53,6 +53,42 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@dt1", DateTime.Parse(d)));
 
             if(d != d2) listparams.Add(new MySqlParameter("@d2", DateTime.Parse(d2)));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                salesPharmacyModel s = new salesPharmacyModel();
+                s.id = int.Parse(reader["invoice_id"].ToString());
+                s.sales = float.Parse(reader["sales"].ToString());
+                s.dateInvoice = DateTime.Parse(reader["date_invoice"].ToString());
+                salesPharmas.Add(s);
+            }
+
+            crud.CloseConnection();
+
+            return salesPharmas;
+        }
+
+
+        public async Task<List<salesPharmacyModel>> getSearchMonths(int d, int d2, int y)
+        {
+            List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();
+            string sql;
+
+            sql = d == d2 ? @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
+                        INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
+                        WHERE month(invoice.date_invoice) = @dt1 AND year(invoice.date_invoice) = @y
+                        ORDER BY `invoice`.`date_invoice` ASC" :
+                        @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
+                        INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
+                        WHERE month(invoice.date_invoice) BETWEEN @dt1 AND @d2 AND year(invoice.date_invoice) = @y
+                        ORDER BY `invoice`.`date_invoice` ASC";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@dt1", d));
+            listparams.Add(new MySqlParameter("@y", y));
+
+            if (d != d2) listparams.Add(new MySqlParameter("@d2", d2));
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
 
@@ -93,40 +129,61 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async Task<List<salesPharmacyModel>> getSearchMonths(int d, int d2,int y)
+        public async Task<float> getSumInYears(int yr)
         {
-            List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();
-            string sql;
-
-            sql = d == d2 ? @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
-                        INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
-                        WHERE invoice.date_invoice BETWEEN @dt1 AND NOW() AND year(invoice.date_invoice) = @y
-                        ORDER BY `invoice`.`date_invoice` ASC" :
-                        @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
-                        INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
-                        WHERE month(invoice.date_invoice) BETWEEN @dt1 AND @d2 AND year(invoice.date_invoice) = @y
-                        ORDER BY `invoice`.`date_invoice` ASC";
+            float totalSales = 0;
+            string sql = @"SELECT SUM(sales) As 'sales' FROM invoice 
+                        WHERE invoice_id in (SELECT invoice_id FROM salespharma) 
+                        AND year(date_invoice) = @y";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
-            listparams.Add(new MySqlParameter("@dt1", d));
-            listparams.Add(new MySqlParameter("@y", y));
 
-            if (d != d2) listparams.Add(new MySqlParameter("@d2", d2));
-
+            listparams.Add(new MySqlParameter("@y", yr));
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
 
-            while (await reader.ReadAsync())
+            if (await reader.ReadAsync())
             {
-                salesPharmacyModel s = new salesPharmacyModel();
-                s.id = int.Parse(reader["invoice_id"].ToString());
-                s.sales = float.Parse(reader["sales"].ToString());
-                s.dateInvoice = DateTime.Parse(reader["date_invoice"].ToString());
-                salesPharmas.Add(s);
+                totalSales = reader["sales"].ToString() == "" ? 0 : float.Parse(reader["sales"].ToString());
+
             }
 
             crud.CloseConnection();
 
-            return salesPharmas;
+            return totalSales;
         }
+
+
+        public async Task<float> getTotalCostMonths(int m1, int m2,int yr)
+        {
+            float totalCost = 0;
+            string sql;
+
+            sql = m1 == m2 ? @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
+                        INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id 
+                        LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id 
+                        WHERE month(invoice.date_invoice) = @m AND year(invoice.date_invoice) = @yr" :
+                      @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
+                        INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id 
+                        LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id 
+                        WHERE month(invoice.date_invoice) BETWEEN @m AND @m2 AND year(invoice.date_invoice) = @yr";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@m", m1));
+            listparams.Add(new MySqlParameter("@yr", yr));
+
+            if (m1 != m2) listparams.Add(new MySqlParameter("@m2", m2));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+
+            while (await reader.ReadAsync())
+            {
+                totalCost = reader["totalCost"].ToString() == "" ? 0 : float.Parse(reader["totalCost"].ToString());
+            }
+
+            crud.CloseConnection();
+            return totalCost;
+        }
+
 
         public async Task<float> getTotalCostDays(string d,string d2)
         {
@@ -136,7 +193,7 @@ namespace RMC.Database.Controllers
             sql = d == d2 ? @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
                         INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id
                         LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id
-                        WHERE invoice.date_invoice BETWEEN @dt1 AND NOW()" :
+                        WHERE invoice.date_invoice BETWEEN @dt1 AND DATE_ADD(@dt1,INTERVAL 1 DAY) " :
                       @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
                         INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id 
                         LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id 
@@ -152,7 +209,7 @@ namespace RMC.Database.Controllers
 
             while (await reader.ReadAsync())
             {
-                totalCost = float.Parse(reader["totalCost"].ToString());
+                totalCost = reader["totalCost"].ToString() == "" ? 0 : float.Parse(reader["totalCost"].ToString());
             }
 
             crud.CloseConnection();

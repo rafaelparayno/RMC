@@ -281,6 +281,12 @@
     <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\diag\DiagMonths.Designer.cs">
       <DependentUpon>DiagMonths.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\diag\DiagYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\diag\DiagYears.Designer.cs">
+      <DependentUpon>DiagYears.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\ExpRep.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -699,6 +705,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\diag\DiagMonths.resx">
       <DependentUpon>DiagMonths.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\diag\DiagYears.resx">
+      <DependentUpon>DiagYears.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\ExpRep.resx">
       <DependentUpon>ExpRep.cs</DependentUpon>
