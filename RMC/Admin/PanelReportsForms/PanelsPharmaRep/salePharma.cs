@@ -94,7 +94,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
         {
             chart1.Visible = true;
             chart1.Series.Clear();
-            dtYears.Rows.Clear();
+            dtMonths.Rows.Clear();
             Series series = chart1.Series.Add("Total Revenue Per Month");
             series.ChartType = SeriesChartType.Column;
             Series series2 = chart1.Series.Add("Total Cost Per Month");
@@ -111,14 +111,14 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
 
                 series.Points.AddXY(StaticData.months[i-1], totalSalesInMonth.Result);
                 series2.Points.AddXY(StaticData.months[i - 1], totalCostInMonth.Result);
-                dtYears.Rows.Add(StaticData.months[i - 1], totalSalesInMonth.Result, totalCostInMonth.Result);
+                dtMonths.Rows.Add(StaticData.months[i - 1], totalSalesInMonth.Result, totalCostInMonth.Result);
                 totalCostInM += totalCostInMonth.Result;
                 totalrevenue += totalSalesInMonth.Result;      
             }
             totalCost = totalCostInM;
             float netIncome = totalrevenue - totalCost;
             dgItemList.DataSource = "";
-            dgItemList.DataSource = dtYears;
+            dgItemList.DataSource = dtMonths;
 
             refrshData(totalrevenue, netIncome);
         }
@@ -127,7 +127,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
         {
             chart1.Visible = true;
             chart1.Series.Clear();
-            dtMonths.Rows.Clear();
+            dtYears.Rows.Clear();
             Series series = chart1.Series.Add("Total Revenue Per Month");
             series.ChartType = SeriesChartType.Column;
             Series series2 = chart1.Series.Add("Total Cost Per Month");
