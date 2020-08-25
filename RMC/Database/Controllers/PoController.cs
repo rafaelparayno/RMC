@@ -15,6 +15,29 @@ namespace RMC.Database.Controllers
         dbcrud crud = new dbcrud();
 
 
+        public async Task<DataSet> getDsPo()
+        {
+            string sql = @"SELECT purchase_order.po_id AS 'PO NO',suppliers.supplier_name,date_order As 'Date Ordered',
+            CONCAT(useraccounts.firstname,' ',useraccounts.lastname) AS 'Order By' FROM `purchase_order`
+            INNER JOIN suppliers ON purchase_order.supplier_id = suppliers.supplier_id
+            LEFT JOIN useraccounts ON purchase_order.u_id = useraccounts.u_id";
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
+
+        public async Task<DataSet> getDsPo(string date)
+        {
+            string sql = @"SELECT purchase_order.po_id AS 'PO NO',suppliers.supplier_name,date_order As 'Date Ordered',
+            CONCAT(useraccounts.firstname,' ',useraccounts.lastname) AS 'Order By' FROM `purchase_order`
+            INNER JOIN suppliers ON purchase_order.supplier_id = suppliers.supplier_id
+            LEFT JOIN useraccounts ON purchase_order.u_id = useraccounts.u_id 
+            WHERE date_order = @date";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@date", date));
+
+            return await crud.GetDataSetAsync(sql, listparams);
+        }
+
         public async Task<List<PoModel>> getPoNo(int po_no)
         {
             List<PoModel> purchaseOrder = new List<PoModel>();
