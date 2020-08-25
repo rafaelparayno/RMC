@@ -227,9 +227,31 @@ namespace RMC.Database.Controllers
             return totalCost;
         }
 
+        public async Task<float> getTotalCostYears(int year)
+        {
+            float totalCost = 0;
+            string sql;
 
-       
+            sql = @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
+                        INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id 
+                        LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id 
+                        WHERE year(invoice.date_invoice) = @yr";
 
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+  
+            listparams.Add(new MySqlParameter("@yr", year));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+
+            while (await reader.ReadAsync())
+            {
+                totalCost = reader["totalCost"].ToString() == "" ? 0 : float.Parse(reader["totalCost"].ToString());
+            }
+
+            crud.CloseConnection();
+            return totalCost;
+        }
 
         public async void Save(string sku,int qty)
         {

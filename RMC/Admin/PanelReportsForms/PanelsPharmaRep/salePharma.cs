@@ -19,12 +19,14 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
         SalesPharmaController salesPharmaController = new SalesPharmaController();
         List<salesPharmacyModel> listsales = new List<salesPharmacyModel>();
         DataTable dtMonths = new DataTable();
+        DataTable dtYears = new DataTable();
         float totalCost = 0;
         public salePharma()
         {
             InitializeComponent();
             chart1.Visible = false;
             initGridMonths();
+            initGridYears();
         }
 
         private void initGridMonths()
@@ -33,7 +35,15 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             dtMonths.Columns.Add("Revenue", typeof(float));
             dtMonths.Columns.Add("Costs", typeof(float));
         }
-        
+
+
+        private void initGridYears()
+        {
+            dtYears.Columns.Add("Years", typeof(string));
+            dtYears.Columns.Add("Revenue", typeof(float));
+            dtYears.Columns.Add("Costs", typeof(float));
+        }
+
         private async void loadAllData()
         {
             listsales = await salesPharmaController.getDataAllSales();
@@ -84,7 +94,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
         {
             chart1.Visible = true;
             chart1.Series.Clear();
-            dtMonths.Rows.Clear();
+            dtYears.Rows.Clear();
             Series series = chart1.Series.Add("Total Revenue Per Month");
             series.ChartType = SeriesChartType.Column;
             Series series2 = chart1.Series.Add("Total Cost Per Month");
@@ -101,14 +111,49 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
 
                 series.Points.AddXY(StaticData.months[i-1], totalSalesInMonth.Result);
                 series2.Points.AddXY(StaticData.months[i - 1], totalCostInMonth.Result);
-                dtMonths.Rows.Add(StaticData.months[i - 1], totalSalesInMonth.Result, totalCostInMonth.Result);
+                dtYears.Rows.Add(StaticData.months[i - 1], totalSalesInMonth.Result, totalCostInMonth.Result);
                 totalCostInM += totalCostInMonth.Result;
                 totalrevenue += totalSalesInMonth.Result;      
             }
             totalCost = totalCostInM;
             float netIncome = totalrevenue - totalCost;
             dgItemList.DataSource = "";
-            dgItemList.DataSource = dtMonths;
+            dgItemList.DataSource = dtYears;
+
+            refrshData(totalrevenue, netIncome);
+        }
+
+        private async void loadDatasInYear(int yr1,int yr2)
+        {
+            chart1.Visible = true;
+            chart1.Series.Clear();
+            dtMonths.Rows.Clear();
+            Series series = chart1.Series.Add("Total Revenue Per Month");
+            series.ChartType = SeriesChartType.Column;
+            Series series2 = chart1.Series.Add("Total Cost Per Month");
+            series.ChartType = SeriesChartType.Column;
+            float totalCostInM = 0;
+            float totalrevenue = 0;
+
+            for (int i = yr1; i <= yr2; i++)
+            {
+                Task<float> totalSalesInYears = salesPharmaController.getSumInYears(i);
+                Task<float> totalCostInYears = salesPharmaController.getTotalCostYears(i);
+                Task<float>[] costsalesTask = new Task<float>[] { totalSalesInYears, totalCostInYears };
+
+                await Task.WhenAll(costsalesTask);
+
+                series.Points.AddXY(i, totalSalesInYears.Result);
+                series2.Points.AddXY(i, totalCostInYears.Result);
+                 dtYears.Rows.Add(i.ToString(), totalSalesInYears.Result, totalCostInYears.Result);
+                totalCostInM += totalCostInYears.Result;
+                totalrevenue += totalSalesInYears.Result;
+            }
+
+            totalCost = totalCostInM;
+            float netIncome = totalrevenue - totalCost;
+            dgItemList.DataSource = "";
+            dgItemList.DataSource = dtYears;
 
             refrshData(totalrevenue, netIncome);
         }
@@ -143,8 +188,6 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             if (form.m == 0)
                 return;
 
-            // searchMonths(form.m, form.m2,form.year);
-            // refrshData();
             loadDatasInMonth(form.m, form.m2,form.year);
         }
 
@@ -156,6 +199,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             if (form.yrFrom == 0)
                 return;
 
+            loadDatasInYear(form.yrFrom, form.yrTo);
         }
     }
 }
