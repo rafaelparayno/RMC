@@ -18,14 +18,22 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
     {
         SalesPharmaController salesPharmaController = new SalesPharmaController();
         List<salesPharmacyModel> listsales = new List<salesPharmacyModel>();
-
+        DataTable dtMonths = new DataTable();
         float totalCost = 0;
         public salePharma()
         {
             InitializeComponent();
             chart1.Visible = false;
+            initGridMonths();
         }
 
+        private void initGridMonths()
+        {
+            dtMonths.Columns.Add("Months", typeof(string));
+            dtMonths.Columns.Add("Revenue", typeof(float));
+            dtMonths.Columns.Add("Costs", typeof(float));
+        }
+        
         private async void loadAllData()
         {
             listsales = await salesPharmaController.getDataAllSales();
@@ -38,32 +46,24 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             totalCost = await salesPharmaController.getTotalCostDays(d1,d2);
         }
 
-        private async void searchMonths(int d1, int d2,int year)
-        {
-            listsales = await salesPharmaController.getSearchMonths(d1, d2,year);
-           totalCost = await salesPharmaController.getTotalCostMonths(d1, d2,year);
-        }
-
         private void iconButton3_Click(object sender, EventArgs e)
         {
             loadAllData();
-           
-            refrshData();
+            float totalRev = listsales.Sum(s => s.sales);
+            float netIncome = totalRev - totalCost;
+            refrshData(totalRev,netIncome);
+            dgItemList.DataSource = "";
+            dgItemList.DataSource = listsales;
+            dgItemList.AutoResizeColumns();
             chart1.Visible = false;
         }
 
-        private void refrshData()
+        private void refrshData(float totalRev,float netIncome)
         {
-            float totalRev = listsales.Sum(s => s.sales);
-            float netIncome = totalRev - totalCost;
 
             lblReve.Text = "Total Revenue  \n" + "PHP " + totalRev;
             lblNet.Text = "Total Cost:\n" + totalCost + "\n" + "Total Net Income  " + "PHP " + netIncome;
-            dgItemList.DataSource = "";
 
-            dgItemList.DataSource = listsales;
-            dgItemList.AutoResizeColumns();
-          
         }
 
         private void showDataChartDays()
@@ -80,26 +80,37 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             }
         }
 
-        private async void showDataChartMonths(int d,int d2,int yr)
+        private async void loadDatasInMonth(int d,int d2,int yr)
         {
             chart1.Visible = true;
             chart1.Series.Clear();
-            
-            Series series = chart1.Series.Add("Total Revenue");
+            dtMonths.Rows.Clear();
+            Series series = chart1.Series.Add("Total Revenue Per Month");
             series.ChartType = SeriesChartType.Column;
-            Series series2 = chart1.Series.Add("Total Costahahaha");
+            Series series2 = chart1.Series.Add("Total Cost Per Month");
             series.ChartType = SeriesChartType.Column;
+            float totalCostInM = 0;
+            float totalrevenue = 0;
             for (int i = d; i <= d2; i++)
             {
                 Task<float> totalSalesInMonth =  salesPharmaController.getSumInMonth(i,yr);
-                Task<float> totalCostInMonth = salesPharmaController.getTotalCostMonths(i, i, yr);
+                Task<float> totalCostInMonth = salesPharmaController.getTotalCostMonths(i, yr);
                 Task<float>[] costsalesTask = new Task<float>[] { totalSalesInMonth, totalCostInMonth};
 
                 await Task.WhenAll(costsalesTask);
 
                 series.Points.AddXY(StaticData.months[i-1], totalSalesInMonth.Result);
                 series2.Points.AddXY(StaticData.months[i - 1], totalCostInMonth.Result);
+                dtMonths.Rows.Add(StaticData.months[i - 1], totalSalesInMonth.Result, totalCostInMonth.Result);
+                totalCostInM += totalCostInMonth.Result;
+                totalrevenue += totalSalesInMonth.Result;      
             }
+            totalCost = totalCostInM;
+            float netIncome = totalrevenue - totalCost;
+            dgItemList.DataSource = "";
+            dgItemList.DataSource = dtMonths;
+
+            refrshData(totalrevenue, netIncome);
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -112,10 +123,14 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
 
             string d1 = form.dateFrom;
             string d2 = form.dateTo;
+         
+            searchDays(d1, d2);
             float totalRev = listsales.Sum(s => s.sales);
             float netIncome = totalRev - totalCost;
-            searchDays(d1, d2);
-            refrshData();
+            dgItemList.DataSource = "";
+            dgItemList.DataSource = listsales;
+            dgItemList.AutoResizeColumns();
+            refrshData(totalRev,netIncome);
             showDataChartDays();
            
         }
@@ -128,9 +143,9 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             if (form.m == 0)
                 return;
 
-            searchMonths(form.m, form.m2,form.year);
-            refrshData();
-            showDataChartMonths(form.m, form.m2,form.year);
+            // searchMonths(form.m, form.m2,form.year);
+            // refrshData();
+            loadDatasInMonth(form.m, form.m2,form.year);
         }
 
         private void iconButton4_Click(object sender, EventArgs e)

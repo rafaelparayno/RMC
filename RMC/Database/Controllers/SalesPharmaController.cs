@@ -19,8 +19,7 @@ namespace RMC.Database.Controllers
         {
             List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();
             string sql = @"SELECT * FROM `invoice` 
-                        INNER JOIN salespharma 
-                        ON invoice.invoice_id = salespharma.invoice_id ORDER BY `invoice`.`date_invoice` DESC";
+                          WHERE invoice_id in (SELECT invoice_id FROM salespharma)";
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
@@ -36,6 +35,24 @@ namespace RMC.Database.Controllers
             crud.CloseConnection();
 
             return salesPharmas;
+        }
+
+        public async Task<float> getTotalCost()
+        {
+            float totalCost = 0;
+            string sql = @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
+                        INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id
+                        LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while (await reader.ReadAsync())
+            {
+                totalCost = float.Parse(reader["totalCost"].ToString());
+            }
+
+            crud.CloseConnection();
+            return totalCost;
         }
 
         public async Task<List<salesPharmacyModel>> getSearchDays(string d,string d2)
@@ -152,25 +169,19 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async Task<float> getTotalCostMonths(int m1, int m2,int yr)
+        public async Task<float> getTotalCostMonths(int m1,int yr)
         {
             float totalCost = 0;
             string sql;
 
-            sql = m1 == m2 ? @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
+            sql =  @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
                         INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id 
                         LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id 
-                        WHERE month(invoice.date_invoice) = @m AND year(invoice.date_invoice) = @yr" :
-                      @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
-                        INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id 
-                        LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id 
-                        WHERE month(invoice.date_invoice) BETWEEN @m AND @m2 AND year(invoice.date_invoice) = @yr";
+                        WHERE month(invoice.date_invoice) = @m AND year(invoice.date_invoice) = @yr";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@m", m1));
             listparams.Add(new MySqlParameter("@yr", yr));
-
-            if (m1 != m2) listparams.Add(new MySqlParameter("@m2", m2));
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
 
@@ -217,23 +228,7 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async Task<float> getTotalCost()
-        {
-            float totalCost = 0;
-            string sql = @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
-                        INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id
-                        LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id";
-
-            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
-
-            while (await reader.ReadAsync())
-            {
-                totalCost = float.Parse(reader["totalCost"].ToString());
-            }
-
-            crud.CloseConnection();
-            return totalCost;
-        }
+       
 
 
         public async void Save(string sku,int qty)
