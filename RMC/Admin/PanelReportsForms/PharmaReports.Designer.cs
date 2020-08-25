@@ -136,6 +136,7 @@
             this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton5.UseMnemonic = false;
             this.iconButton5.UseVisualStyleBackColor = false;
+            this.iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
             // 
             // iconButton4
             // 

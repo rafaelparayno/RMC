@@ -101,3 +101,5 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelReportsFo
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelReportsForms.PanelsPharmaRep.returnRep.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelReportsForms.PanelsPharmaRep.recevRep.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelReportsForms.PanelsPharmaRep.PoRep.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelReportsForms.PanelsPharmaRep.salePharma.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelReportsForms.PanelsPharmaRep.diag.DiagDays.resources

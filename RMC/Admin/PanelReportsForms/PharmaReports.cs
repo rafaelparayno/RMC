@@ -1,4 +1,5 @@
 ﻿using RMC.Admin.PanelReportsForms.PanelsPharmaRep;
+using RMC.Database.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,6 +60,11 @@ namespace RMC.Admin.PanelReportsForms
         private void iconButton4_Click(object sender, EventArgs e)
         {
             openChildForm(new PoRep());
+        }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            openChildForm(new salePharma());
         }
     }
 }

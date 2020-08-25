@@ -1,4 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using RMC.Admin.PanelReportsForms.PanelsPharmaRep;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -8,9 +10,116 @@ using System.Threading.Tasks;
 
 namespace RMC.Database.Controllers
 {
-    public class SalesPharmaController
+     class SalesPharmaController
     {
         dbcrud crud = new dbcrud();
+
+
+        public async Task<List<salesPharmacyModel>> getDataAllSales()
+        {
+            List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();
+            string sql = @"SELECT * FROM `invoice` 
+                        INNER JOIN salespharma 
+                        ON invoice.invoice_id = salespharma.invoice_id ORDER BY `invoice`.`date_invoice` DESC";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while (await reader.ReadAsync())
+            {
+                salesPharmacyModel s = new salesPharmacyModel();
+                s.id = int.Parse(reader["invoice_id"].ToString());
+                s.sales = float.Parse(reader["sales"].ToString());
+                s.dateInvoice = DateTime.Parse(reader["date_invoice"].ToString());
+                salesPharmas.Add(s);
+            }
+
+            crud.CloseConnection();
+
+            return salesPharmas;
+        }
+
+        public async Task<List<salesPharmacyModel>> getSearchDays(string d,string d2)
+        {
+            List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();
+            string sql;
+
+            sql = d == d2? @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
+                        INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
+                        WHERE invoice.date_invoice BETWEEN @dt1 AND NOW()" :
+                        @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
+                        INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
+                        WHERE invoice.date_invoice BETWEEN @dt1 AND @d2";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@dt1", DateTime.Parse(d)));
+
+            if(d != d2) listparams.Add(new MySqlParameter("@d2", DateTime.Parse(d2)));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                salesPharmacyModel s = new salesPharmacyModel();
+                s.id = int.Parse(reader["invoice_id"].ToString());
+                s.sales = float.Parse(reader["sales"].ToString());
+                s.dateInvoice = DateTime.Parse(reader["date_invoice"].ToString());
+                salesPharmas.Add(s);
+            }
+
+            crud.CloseConnection();
+
+            return salesPharmas;
+        }
+
+        public async Task<float> getTotalCostDays(string d,string d2)
+        {
+            float totalCost = 0;
+            string sql;
+
+            sql = d == d2 ? @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
+                        INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id
+                        LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id
+                        WHERE invoice.date_invoice BETWEEN @dt1 AND NOW()" :
+                      @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
+                        INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id 
+                        LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id 
+                        WHERE invoice.date_invoice BETWEEN @dt1 AND @d2";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@dt1", DateTime.Parse(d)));
+
+            if (d != d2) listparams.Add(new MySqlParameter("@d2", DateTime.Parse(d2)));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+
+            while (await reader.ReadAsync())
+            {
+                totalCost = float.Parse(reader["totalCost"].ToString());
+            }
+
+            crud.CloseConnection();
+            return totalCost;
+        }
+
+
+        public async Task<float> getTotalCost()
+        {
+            float totalCost = 0;
+            string sql = @"SELECT SUM(sales_qty * itemlist.UnitPrice) AS 'totalCost' FROM `salespharma` 
+                        INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id
+                        LEFT JOIN itemlist ON salespharma.item_id = itemlist.item_id";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while (await reader.ReadAsync())
+            {
+                totalCost = float.Parse(reader["totalCost"].ToString());
+            }
+
+            crud.CloseConnection();
+            return totalCost;
+        }
+
 
         public async void Save(string sku,int qty)
         {
