@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using RMC.Components;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,6 +22,45 @@ namespace RMC.Database.Controllers
                         LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id";
 
             return await crud.GetDataSetAsync(sql, null);
+        }
+
+      /*  public async Task<DataSet> get(int type)
+        {
+            string sql = @"SELECT laboratorylist.`laboratory_id` AS 'ID',
+                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS'
+                        FROM `laboratorylist` 
+                        INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
+                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id 
+                        WHERE laboratorylist.labtype_id = @type";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@type", type));
+
+            return await crud.GetDataSetAsync(sql, listparams);
+        }*/
+
+        public async Task<List<labModel>> getLabModel(int type)
+        {
+            List<labModel> listlabmodels = new List<labModel>();
+            string sql = @"SELECT * FROM `laboratorylist`
+                        WHERE labtype_id = @type";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@type", type));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while(await reader.ReadAsync())
+            {
+                labModel l = new labModel();
+                l.id = int.Parse(reader["laboratory_id"].ToString());
+                l.name = reader["labname"].ToString();
+                l.autodocsid = int.Parse(reader["auto_docs_id"].ToString());
+                listlabmodels.Add(l);
+            }
+
+            crud.CloseConnection();
+
+
+            return listlabmodels;
         }
 
         public async Task<DataSet> getDataSearch(int searchType,string searchkey)

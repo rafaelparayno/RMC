@@ -452,6 +452,7 @@
     <Compile Include="Database\Models\consumablesServMod.cs" />
     <Compile Include="Database\Models\customerDetailsMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
+    <Compile Include="Database\Models\labModel.cs" />
     <Compile Include="Database\Models\packages.cs" />
     <Compile Include="Database\Models\PackagesNames.cs" />
     <Compile Include="Database\Models\patientDetails.cs" />

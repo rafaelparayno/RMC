@@ -2,6 +2,7 @@
 using RMC.Admin.PanelLabForms;
 using RMC.Components;
 using RMC.InventoryPharma.PanelRo;
+using RMC.Lab.Panels.Diags;
 using RMC.Patients;
 using RMC.Reception.PanelRequestForm;
 using RMC.Reception.PanelRequestForm.Dialogs;
@@ -23,7 +24,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new DiagLab());
         }
     }
 }
