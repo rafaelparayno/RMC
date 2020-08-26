@@ -17,6 +17,7 @@ namespace RMC.Lab.Panels.Diags
     {
         LaboratoryController labC = new LaboratoryController();
         LabTypeController labTypeController = new LabTypeController();
+        AutoDocsController autoDocsController = new AutoDocsController();
         public DiagLab()
         {
             InitializeComponent();
@@ -55,12 +56,20 @@ namespace RMC.Lab.Panels.Diags
             {
                 panelWithAuto.Visible = false;
                 groupBox1.Visible = true;
+               
             }
             else
             {
                 panelWithAuto.Visible = true;
                 groupBox1.Visible = false;
+                getDisplayAutomated(lab.autodocsid);
             }
+        }
+
+        private async void getDisplayAutomated(int id)
+        {
+            string fullPath = await autoDocsController.getFullPath(id);
+            pbAutomated.Image = Image.FromFile(fullPath);
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)
