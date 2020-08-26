@@ -40,6 +40,63 @@ namespace RMC.Database.Controllers
             return patientDetails;
         }
 
+
+        public async Task<patientDetails> getPatientFName(string fname)
+        {
+            patientDetails patientDetails = new patientDetails();
+            string sql = @"SELECT * FROM patientdetails WHERE firstname = @name";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@name", fname));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                patientDetails.id = int.Parse(reader["patient_id"].ToString());
+                patientDetails.Firstname = reader["firstname"].ToString();
+                patientDetails.middlename = reader["middlename"].ToString();
+                patientDetails.lastname = reader["lastname"].ToString();
+
+                patientDetails.age = int.Parse(reader["age"].ToString());
+                patientDetails.gender = reader["gender"].ToString();
+                patientDetails.address = reader["address"].ToString();
+                patientDetails.contact = reader["contactnumber"].ToString();
+                patientDetails.birthdate = reader["birthdate"].ToString();
+                patientDetails.civil_status = reader["civil_status"].ToString();
+            }
+            crud.CloseConnection();
+
+            return patientDetails;
+        }
+
+        public async Task<patientDetails> getPatientLName(string lname)
+        {
+            patientDetails patientDetails = new patientDetails();
+            string sql = @"SELECT * FROM patientdetails WHERE lastname = @name";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@name", lname));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                patientDetails.id = int.Parse(reader["patient_id"].ToString());
+                patientDetails.Firstname = reader["firstname"].ToString();
+                patientDetails.middlename = reader["middlename"].ToString();
+                patientDetails.lastname = reader["lastname"].ToString();
+
+                patientDetails.age = int.Parse(reader["age"].ToString());
+                patientDetails.gender = reader["gender"].ToString();
+                patientDetails.address = reader["address"].ToString();
+                patientDetails.contact = reader["contactnumber"].ToString();
+                patientDetails.birthdate = reader["birthdate"].ToString();
+                patientDetails.civil_status = reader["civil_status"].ToString();
+            }
+            crud.CloseConnection();
+
+            return patientDetails;
+        }
+
         public async Task<List<patientDetails>> getPatientDetails()
         {
             List<patientDetails> listpatient = new List<patientDetails>();

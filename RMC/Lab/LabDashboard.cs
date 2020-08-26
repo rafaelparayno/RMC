@@ -38,7 +38,7 @@ namespace RMC.Lab
 
         private void btnPo_Click(object sender, EventArgs e)
         {
-          
+            openChildForm(new PanelLabForm());
         }
 
         private void btnReturn_Click(object sender, EventArgs e)

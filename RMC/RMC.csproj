@@ -527,6 +527,18 @@
     <Compile Include="Lab\LabDashboard.Designer.cs">
       <DependentUpon>LabDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\Panels\Diags\DiagLab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\Panels\Diags\DiagLab.Designer.cs">
+      <DependentUpon>DiagLab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab\Panels\PanelLabForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\Panels\PanelLabForm.Designer.cs">
+      <DependentUpon>PanelLabForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\Panels\PanelViewStocks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -801,6 +813,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\LabDashboard.resx">
       <DependentUpon>LabDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\Panels\Diags\DiagLab.resx">
+      <DependentUpon>DiagLab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\Panels\PanelLabForm.resx">
+      <DependentUpon>PanelLabForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\Panels\PanelViewStocks.resx">
       <DependentUpon>PanelViewStocks.cs</DependentUpon>
