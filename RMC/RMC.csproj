@@ -521,6 +521,18 @@
     <Compile Include="InventoryPharma\PharmaDash.Designer.cs">
       <DependentUpon>PharmaDash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\LabDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\LabDashboard.Designer.cs">
+      <DependentUpon>LabDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab\Panels\PanelViewStocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\Panels\PanelViewStocks.Designer.cs">
+      <DependentUpon>PanelViewStocks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\addEditPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -786,6 +798,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PharmaDash.resx">
       <DependentUpon>PharmaDash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\LabDashboard.resx">
+      <DependentUpon>LabDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\Panels\PanelViewStocks.resx">
+      <DependentUpon>PanelViewStocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\addEditPatient.resx">
       <DependentUpon>addEditPatient.cs</DependentUpon>

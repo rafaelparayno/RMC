@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
+using RMC.Lab;
 
 namespace RMC.UserDash
 {
@@ -154,6 +155,7 @@ namespace RMC.UserDash
 
         private void LabBtn_Click(object sender, EventArgs e)
         {
+            openChildForm(new LabDashboard());
             changingLabel("Laboratory");
         }
 

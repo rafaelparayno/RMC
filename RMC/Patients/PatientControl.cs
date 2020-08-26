@@ -83,7 +83,7 @@ namespace RMC.Patients
             set { _icon = value;pbDisplayPicture.Image = value; }
         }
 
-        private Button _myBtn;
+      
 
         public Button btnView1
         {
