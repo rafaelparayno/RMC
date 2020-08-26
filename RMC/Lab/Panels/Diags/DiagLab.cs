@@ -18,6 +18,8 @@ namespace RMC.Lab.Panels.Diags
         LaboratoryController labC = new LaboratoryController();
         LabTypeController labTypeController = new LabTypeController();
         AutoDocsController autoDocsController = new AutoDocsController();
+        AutoParamController autoParamController = new AutoParamController();
+        List<ListParams> listofListparams = new List<ListParams>();
         public DiagLab()
         {
             InitializeComponent();
@@ -63,8 +65,38 @@ namespace RMC.Lab.Panels.Diags
                 panelWithAuto.Visible = true;
                 groupBox1.Visible = false;
                 getDisplayAutomated(lab.autodocsid);
+                displayParams(lab.autodocsid);
             }
         }
+
+        private async void displayParams(int id)
+        {
+            Task<List<ListParams>> listt = autoParamController.getListParams(id);
+            await Task.WhenAll(listt);
+            listofListparams = listt.Result;
+
+            panelParam.Controls.Clear();
+            foreach (ListParams l in listofListparams)
+            {
+                l.textbox1.TextChanged += new EventHandler(textChangeForDraw);
+                l.Dock = DockStyle.Top;
+                panelParam.Controls.Add(l);
+            }
+            // ListParams s = listofListparams.Find(item => int.Parse((item.textbox1).Tag.ToString()) == 1);
+        }
+
+        private void textChangeForDraw(object sender, EventArgs e)
+        {
+            int id = int.Parse(((TextBox)sender).Tag.ToString());
+            ListParams s = listofListparams.Find(item => int.Parse((item.textbox1).Tag.ToString()) == id);
+
+            //TODO add draw to the image when typing in textbox
+        }
+
+
+
+
+
 
         private async void getDisplayAutomated(int id)
         {

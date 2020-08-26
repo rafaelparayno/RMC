@@ -66,7 +66,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FloralWhite;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(580, 35);
+            this.panel2.Size = new System.Drawing.Size(642, 35);
             this.panel2.TabIndex = 10;
             // 
             // btnSave
@@ -79,7 +79,7 @@
             this.btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnSave.IconColor = System.Drawing.Color.Black;
             this.btnSave.IconSize = 16;
-            this.btnSave.Location = new System.Drawing.Point(302, 4);
+            this.btnSave.Location = new System.Drawing.Point(364, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Rotation = 0D;
             this.btnSave.Size = new System.Drawing.Size(236, 27);
@@ -97,7 +97,7 @@
             this.btnCloseApp.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
             this.btnCloseApp.IconColor = System.Drawing.Color.White;
             this.btnCloseApp.IconSize = 25;
-            this.btnCloseApp.Location = new System.Drawing.Point(547, 5);
+            this.btnCloseApp.Location = new System.Drawing.Point(609, 5);
             this.btnCloseApp.Name = "btnCloseApp";
             this.btnCloseApp.Rotation = 0D;
             this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
@@ -126,7 +126,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(580, 222);
+            this.panel1.Size = new System.Drawing.Size(642, 384);
             this.panel1.TabIndex = 11;
             // 
             // panelWithAuto
@@ -136,7 +136,7 @@
             this.panelWithAuto.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelWithAuto.Location = new System.Drawing.Point(0, 210);
             this.panelWithAuto.Name = "panelWithAuto";
-            this.panelWithAuto.Size = new System.Drawing.Size(563, 487);
+            this.panelWithAuto.Size = new System.Drawing.Size(625, 487);
             this.panelWithAuto.TabIndex = 8;
             this.panelWithAuto.Visible = false;
             // 
@@ -147,7 +147,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 177);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(563, 310);
+            this.panel4.Size = new System.Drawing.Size(625, 310);
             this.panel4.TabIndex = 1;
             // 
             // pbAutomated
@@ -165,7 +165,7 @@
             this.panelParam.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelParam.Location = new System.Drawing.Point(0, 0);
             this.panelParam.Name = "panelParam";
-            this.panelParam.Size = new System.Drawing.Size(563, 177);
+            this.panelParam.Size = new System.Drawing.Size(625, 177);
             this.panelParam.TabIndex = 0;
             // 
             // groupBox1
@@ -178,7 +178,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(563, 81);
+            this.groupBox1.Size = new System.Drawing.Size(625, 81);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Visible = false;
@@ -237,7 +237,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(563, 129);
+            this.groupBox3.Size = new System.Drawing.Size(625, 129);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             // 
@@ -263,7 +263,7 @@
             this.cbLabType.FormattingEnabled = true;
             this.cbLabType.Location = new System.Drawing.Point(18, 30);
             this.cbLabType.Name = "cbLabType";
-            this.cbLabType.Size = new System.Drawing.Size(526, 24);
+            this.cbLabType.Size = new System.Drawing.Size(588, 24);
             this.cbLabType.TabIndex = 255;
             this.cbLabType.SelectedIndexChanged += new System.EventHandler(this.cbLabType_SelectedIndexChanged);
             // 
@@ -291,7 +291,7 @@
             this.cbLab.FormattingEnabled = true;
             this.cbLab.Location = new System.Drawing.Point(18, 89);
             this.cbLab.Name = "cbLab";
-            this.cbLab.Size = new System.Drawing.Size(526, 24);
+            this.cbLab.Size = new System.Drawing.Size(588, 24);
             this.cbLab.TabIndex = 253;
             this.cbLab.SelectedIndexChanged += new System.EventHandler(this.cbLab_SelectedIndexChanged);
             // 
@@ -300,7 +300,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(580, 257);
+            this.ClientSize = new System.Drawing.Size(642, 419);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
