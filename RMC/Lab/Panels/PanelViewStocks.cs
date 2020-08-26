@@ -83,6 +83,13 @@ namespace RMC.Lab.Panels
             return brand;
         }
 
+        private async void SearchGrid(string searchkey, int cbSelect)
+        {
+
+            DataSet ds = await itemz.getDsSearchActiveClinic(cbSelect, searchkey);
+            refreshGrid(ds);
+        }
+
 
         private string formatCategory(int ds)
         {
@@ -102,6 +109,21 @@ namespace RMC.Lab.Panels
             }
 
             return cat;
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            int selectedCombobx = comboBox1.SelectedIndex;
+            if (selectedCombobx == -1)
+            {
+
+                loadData();
+
+            }
+            else
+            {
+                SearchGrid(txtName.Text.Trim(), selectedCombobx);
+            }
         }
     }
 }
