@@ -20,7 +20,10 @@ namespace RMC.Lab.Panels
         patientDetails patientmod = new patientDetails();
         PatientDetailsController patD = new PatientDetailsController();
         PatientLabController patientLabC = new PatientLabController();
+        ConsumablesController consumablesController = new ConsumablesController();
         List<Image> listImg = new List<Image>();
+        Dictionary<int, int> consumables = new Dictionary<int, int>();
+        ClinicStocksController clinicStocksController = new ClinicStocksController();
         public PanelLabForm()
         {
             InitializeComponent();
@@ -147,8 +150,27 @@ namespace RMC.Lab.Panels
             string datenow = DateTime.Now.ToString("dd-mm-yyyy");
 
             saveData(datenow, filePath);
+            processConsumables();
             MessageBox.Show("Succesfully Save Data");
             clearDataNew();
+        }
+
+        private async void processConsumables()
+        {
+            foreach(ListViewItem item in lvItemLab.Items)
+            {
+                int labid = int.Parse(item.SubItems[2].Text);
+                consumables = await consumablesController.getListItemConsumables(labid);
+                foreach(KeyValuePair<int,int> kp in consumables)
+                {
+                    int currentStocks = await clinicStocksController.getStocks(kp.Key);
+                    int stocktosave = currentStocks - kp.Value;
+                    stocktosave = stocktosave > 0 ? stocktosave : 0;
+                    clinicStocksController.Save(kp.Key, stocktosave);
+                }
+
+
+            }
         }
 
         private void saveData(string datenow,string path)

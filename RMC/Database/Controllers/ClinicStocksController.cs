@@ -10,6 +10,7 @@ namespace RMC.Database.Controllers
      public class ClinicStocksController
     {
         dbcrud crud = new dbcrud();
+
         private bool check(int id)
         {
             bool stocks = false;
