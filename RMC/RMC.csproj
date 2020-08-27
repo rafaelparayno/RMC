@@ -415,6 +415,7 @@
     <Compile Include="Database\Controllers\ConsumablesController.cs" />
     <Compile Include="Database\Controllers\ConsumablesServController.cs" />
     <Compile Include="Database\Controllers\ConsumablesXrayControllers.cs" />
+    <Compile Include="Database\Controllers\ConsumedItems.cs" />
     <Compile Include="Database\Controllers\CustomerDetailsController.cs" />
     <Compile Include="Database\Controllers\CustomerRequestsController.cs" />
     <Compile Include="Database\Controllers\InvoiceController.cs" />

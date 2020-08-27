@@ -24,6 +24,7 @@ namespace RMC.Lab.Panels
         List<Image> listImg = new List<Image>();
         Dictionary<int, int> consumables = new Dictionary<int, int>();
         ClinicStocksController clinicStocksController = new ClinicStocksController();
+        ConsumedItems consumeditems = new ConsumedItems();
         public PanelLabForm()
         {
             InitializeComponent();
@@ -167,6 +168,7 @@ namespace RMC.Lab.Panels
                     int stocktosave = currentStocks - kp.Value;
                     stocktosave = stocktosave > 0 ? stocktosave : 0;
                     clinicStocksController.Save(kp.Key, stocktosave);
+                    consumeditems.save(kp.Key, kp.Value);
                 }
 
 
