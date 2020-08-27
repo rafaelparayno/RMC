@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnSave = new FontAwesome.Sharp.IconButton();
-            this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelParam = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbLabType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbLab = new System.Windows.Forms.ComboBox();
-            this.panelParam = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pbAutomated = new System.Windows.Forms.PictureBox();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnSave = new FontAwesome.Sharp.IconButton();
+            this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).BeginInit();
             this.SuspendLayout();
@@ -66,43 +66,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(838, 35);
             this.panel2.TabIndex = 10;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.Color.Maroon;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnSave.IconColor = System.Drawing.Color.Black;
-            this.btnSave.IconSize = 16;
-            this.btnSave.Location = new System.Drawing.Point(560, 4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Rotation = 0D;
-            this.btnSave.Size = new System.Drawing.Size(236, 27);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Add";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCloseApp
-            // 
-            this.btnCloseApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseApp.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseApp.FlatAppearance.BorderSize = 0;
-            this.btnCloseApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseApp.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnCloseApp.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
-            this.btnCloseApp.IconColor = System.Drawing.Color.White;
-            this.btnCloseApp.IconSize = 25;
-            this.btnCloseApp.Location = new System.Drawing.Point(805, 5);
-            this.btnCloseApp.Name = "btnCloseApp";
-            this.btnCloseApp.Rotation = 0D;
-            this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
-            this.btnCloseApp.TabIndex = 2;
-            this.btnCloseApp.UseVisualStyleBackColor = false;
-            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
             // 
             // label8
             // 
@@ -126,6 +89,55 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(402, 360);
             this.panel1.TabIndex = 11;
+            // 
+            // panelParam
+            // 
+            this.panelParam.AutoScroll = true;
+            this.panelParam.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelParam.Location = new System.Drawing.Point(0, 210);
+            this.panelParam.Name = "panelParam";
+            this.panelParam.Size = new System.Drawing.Size(402, 150);
+            this.panelParam.TabIndex = 21;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.iconButton1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 129);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(402, 81);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(260, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 17);
+            this.label3.TabIndex = 256;
+            this.label3.Text = "File Name";
+            this.label3.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(15, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 17);
+            this.label1.TabIndex = 254;
+            this.label1.Text = "File";
             // 
             // groupBox3
             // 
@@ -196,42 +208,25 @@
             this.cbLab.TabIndex = 253;
             this.cbLab.SelectedIndexChanged += new System.EventHandler(this.cbLab_SelectedIndexChanged_1);
             // 
-            // panelParam
+            // panel4
             // 
-            this.panelParam.AutoScroll = true;
-            this.panelParam.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelParam.Location = new System.Drawing.Point(0, 210);
-            this.panelParam.Name = "panelParam";
-            this.panelParam.Size = new System.Drawing.Size(402, 150);
-            this.panelParam.TabIndex = 21;
+            this.panel4.AutoScroll = true;
+            this.panel4.Controls.Add(this.pbAutomated);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(402, 35);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(436, 360);
+            this.panel4.TabIndex = 19;
             // 
-            // groupBox1
+            // pbAutomated
             // 
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.iconButton1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 129);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(402, 81);
-            this.groupBox1.TabIndex = 22;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(260, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 17);
-            this.label3.TabIndex = 256;
-            this.label3.Text = "File Name";
-            this.label3.Visible = false;
+            this.pbAutomated.Image = global::RMC.Properties.Resources.noimg;
+            this.pbAutomated.Location = new System.Drawing.Point(12, 6);
+            this.pbAutomated.Name = "pbAutomated";
+            this.pbAutomated.Size = new System.Drawing.Size(240, 135);
+            this.pbAutomated.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAutomated.TabIndex = 1;
+            this.pbAutomated.TabStop = false;
             // 
             // iconButton1
             // 
@@ -252,36 +247,42 @@
             this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // label1
+            // btnSave
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(15, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 17);
-            this.label1.TabIndex = 254;
-            this.label1.Text = "File";
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.Color.Maroon;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnSave.IconColor = System.Drawing.Color.Black;
+            this.btnSave.IconSize = 16;
+            this.btnSave.Location = new System.Drawing.Point(560, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Rotation = 0D;
+            this.btnSave.Size = new System.Drawing.Size(236, 27);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Add";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // panel4
+            // btnCloseApp
             // 
-            this.panel4.AutoScroll = true;
-            this.panel4.Controls.Add(this.pbAutomated);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(402, 35);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(436, 360);
-            this.panel4.TabIndex = 19;
-            // 
-            // pbAutomated
-            // 
-            this.pbAutomated.Location = new System.Drawing.Point(12, 6);
-            this.pbAutomated.Name = "pbAutomated";
-            this.pbAutomated.Size = new System.Drawing.Size(240, 135);
-            this.pbAutomated.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbAutomated.TabIndex = 1;
-            this.pbAutomated.TabStop = false;
+            this.btnCloseApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCloseApp.BackColor = System.Drawing.Color.Transparent;
+            this.btnCloseApp.FlatAppearance.BorderSize = 0;
+            this.btnCloseApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseApp.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnCloseApp.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
+            this.btnCloseApp.IconColor = System.Drawing.Color.White;
+            this.btnCloseApp.IconSize = 25;
+            this.btnCloseApp.Location = new System.Drawing.Point(805, 5);
+            this.btnCloseApp.Name = "btnCloseApp";
+            this.btnCloseApp.Rotation = 0D;
+            this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
+            this.btnCloseApp.TabIndex = 2;
+            this.btnCloseApp.UseVisualStyleBackColor = false;
+            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
             // 
             // DiagLab
             // 
@@ -301,12 +302,11 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).EndInit();
             this.ResumeLayout(false);
 

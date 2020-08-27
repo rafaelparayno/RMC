@@ -1,4 +1,5 @@
-﻿using RMC.Components;
+﻿using MySql.Data;
+using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
 using System;
@@ -24,6 +25,7 @@ namespace RMC.Lab.Panels.Diags
         labModel lab = new labModel();
         Graphics graphicsImg = null;
         Image img = null;
+        Image noImg = null;
 
         public Image imgToAdd = null;
         public string Lab = "";
@@ -38,6 +40,7 @@ namespace RMC.Lab.Panels.Diags
             Lab = "";
             labType = "";
             labid = 0;
+            noImg = pbAutomated.Image;
         }
 
         private async void loadFromDbtoCb()
@@ -162,14 +165,15 @@ namespace RMC.Lab.Panels.Diags
 
             if (lab.autodocsid == 0 && cbLabType.SelectedIndex != -1)
             {
-                
+                pbAutomated.Image = noImg;
+                pbAutomated.SizeMode = PictureBoxSizeMode.StretchImage;
                 panelParam.Visible = false;
                 groupBox1.Visible = true;
 
             }
             else
             {
-                
+                pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;
                 panelParam.Visible = true;
                 groupBox1.Visible = false;
                 getDisplayAutomated(lab.autodocsid);
@@ -187,7 +191,7 @@ namespace RMC.Lab.Panels.Diags
             {
 
                 filePath = openFileDialog.FileName;
-
+                pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;
                 pbAutomated.Image = Image.FromFile(filePath);
                 img = Image.FromFile(filePath);
                 coordinatesAutomated.Clear();
