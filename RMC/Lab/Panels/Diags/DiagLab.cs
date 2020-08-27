@@ -82,20 +82,35 @@ namespace RMC.Lab.Panels.Diags
                 l.Dock = DockStyle.Top;
                 panelParam.Controls.Add(l);
             }
-            // ListParams s = listofListparams.Find(item => int.Parse((item.textbox1).Tag.ToString()) == 1);
+        
         }
 
         private void textChangeForDraw(object sender, EventArgs e)
         {
             int id = int.Parse(((TextBox)sender).Tag.ToString());
             ListParams s = listofListparams.Find(item => int.Parse((item.textbox1).Tag.ToString()) == id);
-
-            //TODO add draw to the image when typing in textbox
+            string txt = s.textbox1.Text;
+            Draw(txt, s.XCoordinates, s.YCoordinates);
+            
         }
 
+        private void Draw(string txt,float x,float y)
+        {
+          
+            Color cb = Color.LightGray;
 
+            Brush brush = new SolidBrush(cb);
+            Font font = new Font(new FontFamily("Times New Roman"), 20);
 
-
+            Image newImg = pbAutomated.Image;
+            Graphics graphicsImg = Graphics.FromImage(newImg);
+            graphicsImg.DrawString(txt, font, brush, x, y);
+     
+            pbAutomated.Image = newImg;
+            graphicsImg.Dispose();
+            pbAutomated.Invalidate();
+            Update();
+        }
 
 
         private async void getDisplayAutomated(int id)
