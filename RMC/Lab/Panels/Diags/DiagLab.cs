@@ -20,6 +20,10 @@ namespace RMC.Lab.Panels.Diags
         AutoDocsController autoDocsController = new AutoDocsController();
         AutoParamController autoParamController = new AutoParamController();
         List<ListParams> listofListparams = new List<ListParams>();
+        List<CoordinatesList> coordinatesAutomated = new List<CoordinatesList>();
+        Graphics graphicsImg = null;
+        Image img = null;
+    
         public DiagLab()
         {
             InitializeComponent();
@@ -32,12 +36,6 @@ namespace RMC.Lab.Panels.Diags
             cbLabType.Items.AddRange(task3.ToArray());
         }
 
-        private void cbLabType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int cblabType = int.Parse((cbLabType.SelectedItem as ComboBoxItem).Value.ToString());
-            refreshDataInCbLab(cblabType);
-            cbLab.Enabled = true;
-        }
 
         private async void refreshDataInCbLab(int labtype)
         {
@@ -48,25 +46,6 @@ namespace RMC.Lab.Panels.Diags
             cbLab.DataSource = labModels;
             cbLab.DisplayMember = "name";
 
-        }
-
-        private void cbLab_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            labModel lab = (labModel)cbLab.SelectedItem;
-
-            if(lab.autodocsid == 0 && cbLabType.SelectedIndex != -1)
-            {
-                panelWithAuto.Visible = false;
-                groupBox1.Visible = true;
-               
-            }
-            else
-            {
-                panelWithAuto.Visible = true;
-                groupBox1.Visible = false;
-                getDisplayAutomated(lab.autodocsid);
-                displayParams(lab.autodocsid);
-            }
         }
 
         private async void displayParams(int id)
@@ -80,7 +59,7 @@ namespace RMC.Lab.Panels.Diags
             {
                 l.textbox1.TextChanged += new EventHandler(textChangeForDraw);
                 l.Dock = DockStyle.Top;
-                panelParam.Controls.Add(l);
+               panelParam.Controls.Add(l);
             }
         
         }
@@ -89,24 +68,58 @@ namespace RMC.Lab.Panels.Diags
         {
             int id = int.Parse(((TextBox)sender).Tag.ToString());
             ListParams s = listofListparams.Find(item => int.Parse((item.textbox1).Tag.ToString()) == id);
-            string txt = s.textbox1.Text;
-            Draw(txt, s.XCoordinates, s.YCoordinates);
+            CoordinatesList cor = new CoordinatesList();
+            Console.WriteLine(s.textbox1.Text);
+            if(s.textbox1.Text != "")
+            {
+                int index = coordinatesAutomated.FindIndex(a => a.xCoor == s.XCoordinates);
+           
+                if (index == -1)
+                {
+                    Console.WriteLine("added");
+                    cor.nameVar = s.textbox1.Text;
+                    cor.xCoor = s.XCoordinates;
+                    cor.yCoor = s.YCoordinates;
+                    coordinatesAutomated.Add(cor);
+                }
+                else
+                {
+                    coordinatesAutomated[index].nameVar = s.textbox1.Text;
+                }
+            }
+            else
+            {
+                int index = coordinatesAutomated.FindIndex(a => a.xCoor == s.XCoordinates);
+                if (index > -1)
+                    coordinatesAutomated.RemoveAt(index);
+            
+             
+            }
+            Draw();
             
         }
 
-        private void Draw(string txt,float x,float y)
+        private Image resize(Image imgToResize, Size size)
         {
-          
-            Color cb = Color.LightGray;
+            return (Image)(new Bitmap(imgToResize, size));
+        }
+
+        private void Draw()
+        {
+
+            Color cb = Color.Black;
 
             Brush brush = new SolidBrush(cb);
-            Font font = new Font(new FontFamily("Times New Roman"), 20);
+            Font font = new Font(new FontFamily("Times New Roman"), 14);
 
-            Image newImg = pbAutomated.Image;
-            Graphics graphicsImg = Graphics.FromImage(newImg);
-            graphicsImg.DrawString(txt, font, brush, x, y);
-     
+            Image newImg = resize(img, pbAutomated.ClientSize);
+            graphicsImg = Graphics.FromImage(newImg);
+            foreach (CoordinatesList cors in coordinatesAutomated)
+            {
+                graphicsImg.DrawString(cors.nameVar, font, brush, cors.xCoor, cors.yCoor);
+            }
             pbAutomated.Image = newImg;
+     
             graphicsImg.Dispose();
             pbAutomated.Invalidate();
             Update();
@@ -116,12 +129,43 @@ namespace RMC.Lab.Panels.Diags
         private async void getDisplayAutomated(int id)
         {
             string fullPath = await autoDocsController.getFullPath(id);
-            pbAutomated.Image = Image.FromFile(fullPath);
+            img = Image.FromFile(fullPath);
+            pbAutomated.Image = img;
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cbLabType_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            int cblabType = int.Parse((cbLabType.SelectedItem as ComboBoxItem).Value.ToString());
+            pbAutomated.Image = null;
+            refreshDataInCbLab(cblabType);
+            cbLab.Enabled = true;
+           
+        }
+
+        private void cbLab_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            labModel lab = (labModel)cbLab.SelectedItem;
+
+            if (lab.autodocsid == 0 && cbLabType.SelectedIndex != -1)
+            {
+                
+                panelParam.Visible = false;
+                groupBox1.Visible = true;
+
+            }
+            else
+            {
+                
+                panelParam.Visible = true;
+                groupBox1.Visible = false;
+                getDisplayAutomated(lab.autodocsid);
+                displayParams(lab.autodocsid);
+            }
         }
     }
 }

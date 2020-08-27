@@ -30,6 +30,7 @@
         {
             this.lblParamName = new System.Windows.Forms.Label();
             this.txtParam = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // lblParamName
@@ -50,11 +51,21 @@
             this.txtParam.Size = new System.Drawing.Size(584, 24);
             this.txtParam.TabIndex = 1;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Salmon;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 77);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(625, 10);
+            this.panel1.TabIndex = 2;
+            // 
             // ListParams
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtParam);
             this.Controls.Add(this.lblParamName);
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -70,5 +81,6 @@
 
         private System.Windows.Forms.Label lblParamName;
         private System.Windows.Forms.TextBox txtParam;
+        private System.Windows.Forms.Panel panel1;
     }
 }

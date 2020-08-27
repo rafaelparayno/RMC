@@ -33,26 +33,24 @@
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelWithAuto = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pbAutomated = new System.Windows.Forms.PictureBox();
-            this.panelParam = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbLabType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbLab = new System.Windows.Forms.ComboBox();
+            this.panelParam = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pbAutomated = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panelWithAuto.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -66,7 +64,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FloralWhite;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(642, 35);
+            this.panel2.Size = new System.Drawing.Size(838, 35);
             this.panel2.TabIndex = 10;
             // 
             // btnSave
@@ -79,7 +77,7 @@
             this.btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnSave.IconColor = System.Drawing.Color.Black;
             this.btnSave.IconSize = 16;
-            this.btnSave.Location = new System.Drawing.Point(364, 4);
+            this.btnSave.Location = new System.Drawing.Point(560, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Rotation = 0D;
             this.btnSave.Size = new System.Drawing.Size(236, 27);
@@ -97,7 +95,7 @@
             this.btnCloseApp.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
             this.btnCloseApp.IconColor = System.Drawing.Color.White;
             this.btnCloseApp.IconSize = 25;
-            this.btnCloseApp.Location = new System.Drawing.Point(609, 5);
+            this.btnCloseApp.Location = new System.Drawing.Point(805, 5);
             this.btnCloseApp.Name = "btnCloseApp";
             this.btnCloseApp.Rotation = 0D;
             this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
@@ -119,54 +117,92 @@
             // 
             // panel1
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.panelWithAuto);
+            this.panel1.Controls.Add(this.panelParam);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(642, 384);
+            this.panel1.Size = new System.Drawing.Size(402, 360);
             this.panel1.TabIndex = 11;
             // 
-            // panelWithAuto
+            // groupBox3
             // 
-            this.panelWithAuto.Controls.Add(this.panel4);
-            this.panelWithAuto.Controls.Add(this.panelParam);
-            this.panelWithAuto.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelWithAuto.Location = new System.Drawing.Point(0, 210);
-            this.panelWithAuto.Name = "panelWithAuto";
-            this.panelWithAuto.Size = new System.Drawing.Size(625, 487);
-            this.panelWithAuto.TabIndex = 8;
-            this.panelWithAuto.Visible = false;
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.cbLabType);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.cbLab);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(0, 0);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Size = new System.Drawing.Size(402, 129);
+            this.groupBox3.TabIndex = 20;
+            this.groupBox3.TabStop = false;
             // 
-            // panel4
+            // label4
             // 
-            this.panel4.AutoScroll = true;
-            this.panel4.Controls.Add(this.pbAutomated);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 177);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(625, 310);
-            this.panel4.TabIndex = 1;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label4.Location = new System.Drawing.Point(15, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(113, 17);
+            this.label4.TabIndex = 256;
+            this.label4.Text = "Laboratory List";
             // 
-            // pbAutomated
+            // cbLabType
             // 
-            this.pbAutomated.Location = new System.Drawing.Point(12, 6);
-            this.pbAutomated.Name = "pbAutomated";
-            this.pbAutomated.Size = new System.Drawing.Size(240, 135);
-            this.pbAutomated.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbAutomated.TabIndex = 1;
-            this.pbAutomated.TabStop = false;
+            this.cbLabType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbLabType.BackColor = System.Drawing.Color.FloralWhite;
+            this.cbLabType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLabType.FormattingEnabled = true;
+            this.cbLabType.Location = new System.Drawing.Point(18, 30);
+            this.cbLabType.Name = "cbLabType";
+            this.cbLabType.Size = new System.Drawing.Size(365, 24);
+            this.cbLabType.TabIndex = 255;
+            this.cbLabType.SelectedIndexChanged += new System.EventHandler(this.cbLabType_SelectedIndexChanged_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label2.Location = new System.Drawing.Point(15, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 17);
+            this.label2.TabIndex = 254;
+            this.label2.Text = "Laboratory type";
+            // 
+            // cbLab
+            // 
+            this.cbLab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbLab.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbLab.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbLab.BackColor = System.Drawing.Color.FloralWhite;
+            this.cbLab.Enabled = false;
+            this.cbLab.FormattingEnabled = true;
+            this.cbLab.Location = new System.Drawing.Point(18, 89);
+            this.cbLab.Name = "cbLab";
+            this.cbLab.Size = new System.Drawing.Size(365, 24);
+            this.cbLab.TabIndex = 253;
+            this.cbLab.SelectedIndexChanged += new System.EventHandler(this.cbLab_SelectedIndexChanged_1);
             // 
             // panelParam
             // 
             this.panelParam.AutoScroll = true;
-            this.panelParam.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelParam.Location = new System.Drawing.Point(0, 0);
+            this.panelParam.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelParam.Location = new System.Drawing.Point(0, 210);
             this.panelParam.Name = "panelParam";
-            this.panelParam.Size = new System.Drawing.Size(625, 177);
-            this.panelParam.TabIndex = 0;
+            this.panelParam.Size = new System.Drawing.Size(402, 150);
+            this.panelParam.TabIndex = 21;
             // 
             // groupBox1
             // 
@@ -178,8 +214,8 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(625, 81);
-            this.groupBox1.TabIndex = 7;
+            this.groupBox1.Size = new System.Drawing.Size(402, 81);
+            this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Visible = false;
             // 
@@ -226,81 +262,32 @@
             this.label1.TabIndex = 254;
             this.label1.Text = "File";
             // 
-            // groupBox3
+            // panel4
             // 
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.cbLabType);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.cbLab);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(625, 129);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
+            this.panel4.AutoScroll = true;
+            this.panel4.Controls.Add(this.pbAutomated);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(402, 35);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(436, 360);
+            this.panel4.TabIndex = 19;
             // 
-            // label4
+            // pbAutomated
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(15, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 17);
-            this.label4.TabIndex = 256;
-            this.label4.Text = "Laboratory List";
-            // 
-            // cbLabType
-            // 
-            this.cbLabType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbLabType.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbLabType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLabType.FormattingEnabled = true;
-            this.cbLabType.Location = new System.Drawing.Point(18, 30);
-            this.cbLabType.Name = "cbLabType";
-            this.cbLabType.Size = new System.Drawing.Size(588, 24);
-            this.cbLabType.TabIndex = 255;
-            this.cbLabType.SelectedIndexChanged += new System.EventHandler(this.cbLabType_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(15, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 17);
-            this.label2.TabIndex = 254;
-            this.label2.Text = "Laboratory type";
-            // 
-            // cbLab
-            // 
-            this.cbLab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbLab.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbLab.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbLab.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbLab.Enabled = false;
-            this.cbLab.FormattingEnabled = true;
-            this.cbLab.Location = new System.Drawing.Point(18, 89);
-            this.cbLab.Name = "cbLab";
-            this.cbLab.Size = new System.Drawing.Size(588, 24);
-            this.cbLab.TabIndex = 253;
-            this.cbLab.SelectedIndexChanged += new System.EventHandler(this.cbLab_SelectedIndexChanged);
+            this.pbAutomated.Location = new System.Drawing.Point(12, 6);
+            this.pbAutomated.Name = "pbAutomated";
+            this.pbAutomated.Size = new System.Drawing.Size(240, 135);
+            this.pbAutomated.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbAutomated.TabIndex = 1;
+            this.pbAutomated.TabStop = false;
             // 
             // DiagLab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(642, 419);
+            this.ClientSize = new System.Drawing.Size(838, 395);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -312,14 +299,13 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panelWithAuto.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -331,18 +317,17 @@
         private FontAwesome.Sharp.IconButton btnCloseApp;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbLabType;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbLab;
+        private System.Windows.Forms.Panel panelParam;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbLab;
-        private System.Windows.Forms.Panel panelWithAuto;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pbAutomated;
-        private System.Windows.Forms.Panel panelParam;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbLabType;
     }
 }
