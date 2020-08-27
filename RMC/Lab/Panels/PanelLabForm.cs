@@ -127,6 +127,10 @@ namespace RMC.Lab.Panels
 
             if (lvItemLab.SelectedItems.Count == 0)
                 return;
+
+            int index = lvItemLab.SelectedItems[0].Index;
+            lvItemLab.Items.RemoveAt(index);
+            listImg.RemoveAt(index);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -137,11 +141,14 @@ namespace RMC.Lab.Panels
             if (patientmod.id == 0)
                 return;
 
-
-            string newFilePath = CreateDirectory.CreateDir(patientmod.lastname +"-"+patientmod.id);
+            CreateDirectory.CreateDir(patientmod.lastname + "-" + patientmod.id);
+            string newFilePath2 = CreateDirectory.CreateDir(patientmod.lastname + "-" + patientmod.id + "\\" + "LabFiles");
+            string filePath = newFilePath2;
             string datenow = DateTime.Now.ToString("dd-mm-yyyy");
 
-            saveData(datenow, newFilePath);
+            saveData(datenow, filePath);
+            MessageBox.Show("Succesfully Save Data");
+            clearDataNew();
         }
 
         private void saveData(string datenow,string path)
@@ -149,11 +156,20 @@ namespace RMC.Lab.Panels
            foreach(ListViewItem lv in lvItemLab.Items)
             {
                 Image im = listImg[lv.Index];
-                saveImginPath(im, path, patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
+                saveImginPath(im, path,"Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
                 patientLabC.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
-                                patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow, path);
+                                "Lab-"+ patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow, path);
 
             }
+        }
+
+        private void clearDataNew()
+        {
+            listImg.Clear();
+            lvItemLab.Items.Clear();
+            patientmod = new patientDetails();
+            panelPatient.Controls.Clear();
+            txtName.Text = "";
         }
 
         private void saveImginPath(Image imgSave,string path, string fileName)
