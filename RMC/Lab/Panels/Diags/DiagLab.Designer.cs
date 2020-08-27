@@ -84,6 +84,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Add";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCloseApp
             // 
@@ -249,6 +250,7 @@
             this.iconButton1.TabIndex = 255;
             this.iconButton1.Text = "Open File";
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // label1
             // 

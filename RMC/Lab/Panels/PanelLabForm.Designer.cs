@@ -34,24 +34,22 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMenus = new System.Windows.Forms.Panel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelPatient = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgCategory = new System.Windows.Forms.DataGridView();
-            this.btnAddItem = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.btnEditItem = new FontAwesome.Sharp.IconButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelPatient = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.lvItemLab = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
             this.panelMenus.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panelPatient.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgCategory)).BeginInit();
+            this.panelPatient.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -126,7 +124,6 @@
             // panelMenus
             // 
             this.panelMenus.Controls.Add(this.iconButton1);
-            this.panelMenus.Controls.Add(this.btnEditItem);
             this.panelMenus.Controls.Add(this.btnAddItem);
             this.panelMenus.Controls.Add(this.btnSave);
             this.panelMenus.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -135,102 +132,28 @@
             this.panelMenus.Size = new System.Drawing.Size(674, 61);
             this.panelMenus.TabIndex = 216;
             // 
-            // btnSave
+            // iconButton1
             // 
-            this.btnSave.BackColor = System.Drawing.Color.Maroon;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnSave.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.btnSave.IconColor = System.Drawing.Color.White;
-            this.btnSave.IconSize = 24;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSave.Location = new System.Drawing.Point(599, 0);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Rotation = 0D;
-            this.btnSave.Size = new System.Drawing.Size(75, 61);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSave.UseVisualStyleBackColor = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panelPatient);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 72);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(674, 428);
-            this.panel1.TabIndex = 217;
-            // 
-            // panelPatient
-            // 
-            this.panelPatient.BackColor = System.Drawing.Color.Salmon;
-            this.panelPatient.Controls.Add(this.label2);
-            this.panelPatient.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPatient.Location = new System.Drawing.Point(0, 0);
-            this.panelPatient.Name = "panelPatient";
-            this.panelPatient.Size = new System.Drawing.Size(674, 150);
-            this.panelPatient.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.groupBox2);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 150);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(674, 278);
-            this.panel3.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Maroon;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(674, 10);
-            this.panel4.TabIndex = 1;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.dgCategory);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(674, 268);
-            this.groupBox2.TabIndex = 235;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "List Lab Added";
-            // 
-            // dgCategory
-            // 
-            this.dgCategory.AllowUserToAddRows = false;
-            this.dgCategory.AllowUserToDeleteRows = false;
-            this.dgCategory.AllowUserToResizeColumns = false;
-            this.dgCategory.AllowUserToResizeRows = false;
-            this.dgCategory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgCategory.BackgroundColor = System.Drawing.Color.FloralWhite;
-            this.dgCategory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgCategory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgCategory.Location = new System.Drawing.Point(3, 19);
-            this.dgCategory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgCategory.MultiSelect = false;
-            this.dgCategory.Name = "dgCategory";
-            this.dgCategory.ReadOnly = true;
-            this.dgCategory.RowHeadersVisible = false;
-            this.dgCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCategory.Size = new System.Drawing.Size(668, 245);
-            this.dgCategory.StandardTab = true;
-            this.dgCategory.TabIndex = 113;
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconSize = 24;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton1.Location = new System.Drawing.Point(449, 0);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(75, 61);
+            this.iconButton1.TabIndex = 15;
+            this.iconButton1.Text = "Remove";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // btnAddItem
             // 
@@ -255,49 +178,82 @@
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
-            // iconButton1
+            // btnSave
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconSize = 24;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton1.Location = new System.Drawing.Point(374, 0);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(75, 61);
-            this.iconButton1.TabIndex = 15;
-            this.iconButton1.Text = "Remove";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.btnSave.BackColor = System.Drawing.Color.Maroon;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnSave.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.btnSave.IconColor = System.Drawing.Color.White;
+            this.btnSave.IconSize = 24;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSave.Location = new System.Drawing.Point(599, 0);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Rotation = 0D;
+            this.btnSave.Size = new System.Drawing.Size(75, 61);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnEditItem
+            // panel1
             // 
-            this.btnEditItem.BackColor = System.Drawing.Color.Maroon;
-            this.btnEditItem.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnEditItem.FlatAppearance.BorderSize = 0;
-            this.btnEditItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditItem.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnEditItem.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditItem.ForeColor = System.Drawing.Color.White;
-            this.btnEditItem.IconChar = FontAwesome.Sharp.IconChar.Edit;
-            this.btnEditItem.IconColor = System.Drawing.Color.White;
-            this.btnEditItem.IconSize = 24;
-            this.btnEditItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditItem.Location = new System.Drawing.Point(449, 0);
-            this.btnEditItem.Name = "btnEditItem";
-            this.btnEditItem.Rotation = 0D;
-            this.btnEditItem.Size = new System.Drawing.Size(75, 61);
-            this.btnEditItem.TabIndex = 14;
-            this.btnEditItem.Text = "Edit Forms";
-            this.btnEditItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEditItem.UseVisualStyleBackColor = false;
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panelPatient);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 72);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(674, 428);
+            this.panel1.TabIndex = 217;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.groupBox2);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 150);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(674, 278);
+            this.panel3.TabIndex = 1;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.lvItemLab);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(0, 10);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(674, 268);
+            this.groupBox2.TabIndex = 235;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "List Lab Added";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Maroon;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(674, 10);
+            this.panel4.TabIndex = 1;
+            // 
+            // panelPatient
+            // 
+            this.panelPatient.BackColor = System.Drawing.Color.Salmon;
+            this.panelPatient.Controls.Add(this.label2);
+            this.panelPatient.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelPatient.Location = new System.Drawing.Point(0, 0);
+            this.panelPatient.Name = "panelPatient";
+            this.panelPatient.Size = new System.Drawing.Size(674, 150);
+            this.panelPatient.TabIndex = 0;
             // 
             // label2
             // 
@@ -313,6 +269,19 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "No Data";
             // 
+            // lvItemLab
+            // 
+            this.lvItemLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvItemLab.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvItemLab.FullRowSelect = true;
+            this.lvItemLab.GridLines = true;
+            this.lvItemLab.HideSelection = false;
+            this.lvItemLab.Location = new System.Drawing.Point(3, 19);
+            this.lvItemLab.Name = "lvItemLab";
+            this.lvItemLab.Size = new System.Drawing.Size(668, 245);
+            this.lvItemLab.TabIndex = 1;
+            this.lvItemLab.UseCompatibleStateImageBehavior = false;
+            // 
             // PanelLabForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -325,16 +294,16 @@
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PanelLabForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PanelLabForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelMenus.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panelPatient.ResumeLayout(false);
-            this.panelPatient.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgCategory)).EndInit();
+            this.panelPatient.ResumeLayout(false);
+            this.panelPatient.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -353,10 +322,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.DataGridView dgCategory;
         private FontAwesome.Sharp.IconButton btnAddItem;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton btnEditItem;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListView lvItemLab;
     }
 }

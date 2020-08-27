@@ -21,13 +21,23 @@ namespace RMC.Lab.Panels.Diags
         AutoParamController autoParamController = new AutoParamController();
         List<ListParams> listofListparams = new List<ListParams>();
         List<CoordinatesList> coordinatesAutomated = new List<CoordinatesList>();
+        labModel lab = new labModel();
         Graphics graphicsImg = null;
         Image img = null;
-    
+
+        public Image imgToAdd = null;
+        public string Lab = "";
+        public string labType = "";
+        public int labid = 0;
+
         public DiagLab()
         {
             InitializeComponent();
             loadFromDbtoCb();
+            imgToAdd = null;
+            Lab = "";
+            labType = "";
+            labid = 0;
         }
 
         private async void loadFromDbtoCb()
@@ -69,14 +79,14 @@ namespace RMC.Lab.Panels.Diags
             int id = int.Parse(((TextBox)sender).Tag.ToString());
             ListParams s = listofListparams.Find(item => int.Parse((item.textbox1).Tag.ToString()) == id);
             CoordinatesList cor = new CoordinatesList();
-            Console.WriteLine(s.textbox1.Text);
+       
             if(s.textbox1.Text != "")
             {
                 int index = coordinatesAutomated.FindIndex(a => a.xCoor == s.XCoordinates);
            
                 if (index == -1)
                 {
-                    Console.WriteLine("added");
+              
                     cor.nameVar = s.textbox1.Text;
                     cor.xCoor = s.XCoordinates;
                     cor.yCoor = s.YCoordinates;
@@ -92,8 +102,6 @@ namespace RMC.Lab.Panels.Diags
                 int index = coordinatesAutomated.FindIndex(a => a.xCoor == s.XCoordinates);
                 if (index > -1)
                     coordinatesAutomated.RemoveAt(index);
-            
-             
             }
             Draw();
             
@@ -144,12 +152,13 @@ namespace RMC.Lab.Panels.Diags
             pbAutomated.Image = null;
             refreshDataInCbLab(cblabType);
             cbLab.Enabled = true;
-           
+            coordinatesAutomated.Clear();
+
         }
 
         private void cbLab_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            labModel lab = (labModel)cbLab.SelectedItem;
+           lab = (labModel)cbLab.SelectedItem;
 
             if (lab.autodocsid == 0 && cbLabType.SelectedIndex != -1)
             {
@@ -166,6 +175,40 @@ namespace RMC.Lab.Panels.Diags
                 getDisplayAutomated(lab.autodocsid);
                 displayParams(lab.autodocsid);
             }
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Files|*.jpg;*.jpeg;*.png;";
+            string filePath = "";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                filePath = openFileDialog.FileName;
+
+                pbAutomated.Image = Image.FromFile(filePath);
+                img = Image.FromFile(filePath);
+                coordinatesAutomated.Clear();
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (cbLab.SelectedIndex == -1)
+                return;
+            if (cbLabType.SelectedIndex == -1)
+                return;
+            if (pbAutomated.Image == null)
+                return;
+
+
+            Lab = cbLab.Text;
+            labType = cbLabType.Text;
+            imgToAdd = pbAutomated.Image;
+            labid = lab.id;
+            this.Close();
         }
     }
 }
