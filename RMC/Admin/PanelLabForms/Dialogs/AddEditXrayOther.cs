@@ -56,6 +56,17 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             consumablesModsEdit = new List<consumablesMod>();
             consumablesModsEdit = await consumablesXrayController.getEditedConsumables(xrayId);
 
+            if (data[5] == "")
+            {
+                rbNone.Checked = true;
+
+            }
+            else
+            {
+                rbWithAuto.Checked = true;
+                cbAutomated.Text = data[5];
+            }
+
             setLvEdited();
         }
 
@@ -313,7 +324,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 idstobeRemove = getRemoveId();
                 removeConsumables(idstobeRemove);
                 updateConsumables();
-                xrayControllers.update(xrayId, txtName.Text.Trim(), txtDesc.Text.Trim(), cbTypeValue, float.Parse(txtSellingPrice.Text.Trim()));
+                xrayControllers.update(xrayId, txtName.Text.Trim(), txtDesc.Text.Trim(), 
+                                        cbTypeValue, float.Parse(txtSellingPrice.Text.Trim()),cbAutoValue, isAuto);
                
             }
             else

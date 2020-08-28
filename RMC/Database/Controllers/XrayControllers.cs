@@ -48,17 +48,18 @@ namespace RMC.Database.Controllers
 
         }
 
-        public async void update(int id,string name,string desc,int type,float price)
+        public async void update(int id,string name,string desc,int type,float price, int idauto, bool isAuto)
         {
 
             string sql = @"UPDATE xraylist SET xray_name = @name, xray_type = @type,
-                          description = @desc , xray_price = @price WHERE xray_id = @id";
+                          description = @desc , xray_price = @price, auto_docs_id = @auto WHERE xray_id = @id";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@name", name));
             listparams.Add(new MySqlParameter("@desc", desc));
             listparams.Add(new MySqlParameter("@type", type));
             listparams.Add(new MySqlParameter("@price", price));
             listparams.Add(new MySqlParameter("@id", id));
+            listparams.Add(new MySqlParameter("@auto", isAuto ? idauto : 0));
 
             await crud.ExecuteAsync(sql, listparams);
         }
