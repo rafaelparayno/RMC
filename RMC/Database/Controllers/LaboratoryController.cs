@@ -24,19 +24,6 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
         }
 
-      /*  public async Task<DataSet> get(int type)
-        {
-            string sql = @"SELECT laboratorylist.`laboratory_id` AS 'ID',
-                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS'
-                        FROM `laboratorylist` 
-                        INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
-                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id 
-                        WHERE laboratorylist.labtype_id = @type";
-            List<MySqlParameter> listparams = new List<MySqlParameter>();
-            listparams.Add(new MySqlParameter("@type", type));
-
-            return await crud.GetDataSetAsync(sql, listparams);
-        }*/
 
         public async Task<List<labModel>> getLabModel(int type)
         {

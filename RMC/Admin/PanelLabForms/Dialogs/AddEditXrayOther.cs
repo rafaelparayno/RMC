@@ -19,10 +19,13 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         ItemController itemz = new ItemController();
         XrayControllers xrayControllers = new XrayControllers();
         ConsumablesXrayControllers consumablesXrayController = new ConsumablesXrayControllers();
+        AutoDocsController autoDocsController = new AutoDocsController();
         int cbTypeValue = 0;
         int cbConValue = 0;
         bool isEdit = false;
+        bool isAuto = true;
         int xrayId = 0;
+        int cbAutoValue = 0;
         List<int> idstobeRemove = new List<int>();
         List<consumablesMod> consumablesModsEdit;
 
@@ -69,6 +72,17 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         }
 
 
+        private async void getImgPath()
+        {
+            string fullPath = await autoDocsController.getFullPath(cbAutoValue);
+            if (fullPath != "")
+            {
+                pbAutomated.Image = Image.FromFile(fullPath);
+            }
+
+        }
+
+
 
         private void saveConsumables()
         {
@@ -103,12 +117,14 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         private async void loadFromDbtoCb()
         {
             Task<List<ComboBoxItem>> task1 = itemz.getComboDatas();
+            Task<List<ComboBoxItem>> task2 = autoDocsController.getComboDatas();
 
-            Task<List<ComboBoxItem>>[] Cbs = new Task<List<ComboBoxItem>>[] { task1 };
+            Task<List<ComboBoxItem>>[] Cbs = new Task<List<ComboBoxItem>>[] { task1,task2 };
 
             await Task.WhenAll(Cbs);
 
             cbConsumables.Items.AddRange(task1.Result.ToArray());
+            cbAutomated.Items.AddRange(task2.Result.ToArray());
 
         }
 
@@ -302,11 +318,42 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             }
             else
             {
-                xrayControllers.save(txtName.Text.Trim(), txtDesc.Text.Trim(), cbTypeValue, float.Parse(txtSellingPrice.Text.Trim()));
+                xrayControllers.save(txtName.Text.Trim(), txtDesc.Text.Trim(), 
+                                    cbTypeValue, float.Parse(txtSellingPrice.Text.Trim()),cbAutoValue,isAuto);
                 saveConsumables();
             }
             MessageBox.Show("Succesfully Save Data");
             this.Close();
+        }
+
+        private void rbWithAuto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbWithAuto.Checked)
+            {
+                isAuto = true;
+                panelForImg.Visible = true;
+                cbAutomated.Visible = true;
+                label11.Visible = true;
+            }
+        }
+
+        private void rbNone_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbNone.Checked)
+            {
+                isAuto = false;
+                panelForImg.Visible = false;
+                cbAutomated.Visible = false;
+                label11.Visible = false;
+            }
+        }
+
+        private void cbAutomated_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            cbAutoValue = int.Parse((cbAutomated.SelectedItem as ComboBoxItem).Value.ToString());
+
+            getImgPath();
         }
     }
 }

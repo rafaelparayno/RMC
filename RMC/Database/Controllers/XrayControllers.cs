@@ -16,7 +16,8 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataSet()
         {
-            string sql = @"SELECT * FROM `xraylist`";
+            string sql = @"SELECT xray_id,xray_name,xray_type,description,xray_price,filename FROM `xraylist` 
+                    LEFT JOIN auto_docs ON xraylist.auto_docs_id = auto_docs.auto_docs_id";
 
             return await crud.GetDataSetAsync(sql, null);
         }
@@ -32,15 +33,16 @@ namespace RMC.Database.Controllers
            return  await crud.GetDataSetAsync(sql, listparams);
         }
 
-        public async void save(string name,string desc,int type,float price)
+        public async void save(string name,string desc,int type,float price,int idauto,bool isAuto)
         {
-            string sql = @"INSERT INTO xraylist (xray_name,xray_type,description,xray_price)
-                           VALUES (@name,@type,@desc,@price)";
+            string sql = @"INSERT INTO xraylist (xray_name,xray_type,description,xray_price,auto_docs_id)
+                           VALUES (@name,@type,@desc,@price,@auto)";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@name", name));
             listparams.Add(new MySqlParameter("@desc", desc));
             listparams.Add(new MySqlParameter("@type", type));
             listparams.Add(new MySqlParameter("@price", price));
+            listparams.Add(new MySqlParameter("@auto", isAuto ?  idauto : 0));
 
             await crud.ExecuteAsync(sql, listparams);
 

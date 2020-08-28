@@ -56,22 +56,23 @@ namespace RMC.Admin.PanelLabForms
             dt.Columns.Add("Type");
             dt.Columns.Add("Description");
             dt.Columns.Add("Price");
-       
+            dt.Columns.Add("Docs");
+
 
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 //your code here
                 if (int.Parse(dr["xray_type"].ToString()) == 1)
                 {
-                    dt.Rows.Add(dr[0], dr[1], "Xray", dr[3], dr[4]);
+                    dt.Rows.Add(dr[0], dr[1], "Xray", dr[3], dr[4],dr[5]);
                 }
                 else if (int.Parse(dr["xray_type"].ToString()) == 2)
                 {
-                    dt.Rows.Add(dr[0], dr[1], "ECG", dr[3], dr[4]);
+                    dt.Rows.Add(dr[0], dr[1], "ECG", dr[3], dr[4], dr[5]);
                 }
                 else
                 {
-                    dt.Rows.Add(dr[0], dr[1], "Ultrasound", dr[3], dr[4]);
+                    dt.Rows.Add(dr[0], dr[1], "Ultrasound", dr[3], dr[4], dr[5]);
                 }
 
             }
@@ -91,7 +92,8 @@ namespace RMC.Admin.PanelLabForms
                                                          dgLabList.SelectedRows[0].Cells[1].Value.ToString(),
                                                          dgLabList.SelectedRows[0].Cells[2].Value.ToString(),
                                                          dgLabList.SelectedRows[0].Cells[3].Value.ToString(),
-                                                         dgLabList.SelectedRows[0].Cells[4].Value.ToString());
+                                                         dgLabList.SelectedRows[0].Cells[4].Value.ToString(),
+                                                         dgLabList.SelectedRows[0].Cells[5].Value.ToString());
             form.ShowDialog();
             loadGrid();
         }
