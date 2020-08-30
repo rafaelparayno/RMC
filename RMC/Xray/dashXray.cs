@@ -1,4 +1,5 @@
 ﻿using RMC.Lab.Panels;
+using RMC.Xray.Panels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +41,11 @@ namespace RMC.Xray
         private void btnReturn_Click(object sender, EventArgs e)
         {
             openChildForm(new PanelViewStocks());
+        }
+
+        private void btnPo_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelXrayForm());
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace RMC.Lab.Panels.Diags
+﻿namespace RMC.Xray.Panels
 {
-    partial class DiagLab
+    partial class DiagXray
     {
         /// <summary>
         /// Required designer variable.
@@ -65,7 +65,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(838, 35);
-            this.panel2.TabIndex = 10;
+            this.panel2.TabIndex = 11;
             // 
             // btnSave
             // 
@@ -84,7 +84,6 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Add";
             this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCloseApp
             // 
@@ -102,7 +101,6 @@
             this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
             this.btnCloseApp.TabIndex = 2;
             this.btnCloseApp.UseVisualStyleBackColor = false;
-            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
             // 
             // label8
             // 
@@ -125,7 +123,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 35);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(402, 360);
-            this.panel1.TabIndex = 11;
+            this.panel1.TabIndex = 12;
             // 
             // panelParam
             // 
@@ -181,7 +179,6 @@
             this.iconButton1.TabIndex = 255;
             this.iconButton1.Text = "Open File";
             this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // label1
             // 
@@ -234,7 +231,6 @@
             this.cbLabType.Name = "cbLabType";
             this.cbLabType.Size = new System.Drawing.Size(365, 24);
             this.cbLabType.TabIndex = 255;
-            this.cbLabType.SelectedIndexChanged += new System.EventHandler(this.cbLabType_SelectedIndexChanged_1);
             // 
             // label2
             // 
@@ -262,7 +258,6 @@
             this.cbLab.Name = "cbLab";
             this.cbLab.Size = new System.Drawing.Size(365, 24);
             this.cbLab.TabIndex = 253;
-            this.cbLab.SelectedIndexChanged += new System.EventHandler(this.cbLab_SelectedIndexChanged_1);
             // 
             // panel4
             // 
@@ -272,7 +267,7 @@
             this.panel4.Location = new System.Drawing.Point(402, 35);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(436, 360);
-            this.panel4.TabIndex = 19;
+            this.panel4.TabIndex = 20;
             // 
             // pbAutomated
             // 
@@ -284,21 +279,21 @@
             this.pbAutomated.TabIndex = 1;
             this.pbAutomated.TabStop = false;
             // 
-            // DiagLab
+            // DiagXray
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(838, 395);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "DiagLab";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "DiagXray";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DiagLab";
+            this.Text = "DiagXray";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -319,16 +314,16 @@
         private FontAwesome.Sharp.IconButton btnCloseApp;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbLabType;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbLab;
         private System.Windows.Forms.Panel panelParam;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbLabType;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbLab;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pbAutomated;
     }

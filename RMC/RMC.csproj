@@ -655,6 +655,12 @@
     <Compile Include="Xray\dashXray.Designer.cs">
       <DependentUpon>dashXray.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xray\Panels\PanelXrayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xray\Panels\PanelXrayForm.Designer.cs">
+      <DependentUpon>PanelXrayForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Admin\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -899,6 +905,9 @@
     <EmbeddedResource Include="Xray\dashXray.resx">
       <DependentUpon>dashXray.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Xray\Panels\PanelXrayForm.resx">
+      <DependentUpon>PanelXrayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -934,8 +943,6 @@
   <ItemGroup>
     <None Include="Resources\noimg.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Xray\Panels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

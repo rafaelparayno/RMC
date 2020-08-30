@@ -169,6 +169,7 @@
             this.btnPo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPo.UseVisualStyleBackColor = false;
+            this.btnPo.Click += new System.EventHandler(this.btnPo_Click);
             // 
             // panelLogo
             // 
