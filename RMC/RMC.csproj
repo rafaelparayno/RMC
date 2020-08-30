@@ -896,6 +896,9 @@
     <EmbeddedResource Include="UserDash\UserDashboard.resx">
       <DependentUpon>UserDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Xray\dashXray.resx">
+      <DependentUpon>dashXray.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -930,6 +933,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\noimg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Xray\Panels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
