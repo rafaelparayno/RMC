@@ -84,6 +84,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Add";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCloseApp
             // 
@@ -101,6 +102,7 @@
             this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
             this.btnCloseApp.TabIndex = 2;
             this.btnCloseApp.UseVisualStyleBackColor = false;
+            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
             // 
             // label8
             // 
@@ -110,9 +112,9 @@
             this.label8.ForeColor = System.Drawing.Color.FloralWhite;
             this.label8.Location = new System.Drawing.Point(3, 10);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 16);
+            this.label8.Size = new System.Drawing.Size(75, 16);
             this.label8.TabIndex = 1;
-            this.label8.Text = "Add Lab Form";
+            this.label8.Text = "Add Form";
             // 
             // panel1
             // 
@@ -179,6 +181,7 @@
             this.iconButton1.TabIndex = 255;
             this.iconButton1.Text = "Open File";
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // label1
             // 
@@ -215,9 +218,9 @@
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label4.Location = new System.Drawing.Point(15, 62);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 17);
+            this.label4.Size = new System.Drawing.Size(32, 17);
             this.label4.TabIndex = 256;
-            this.label4.Text = "Laboratory List";
+            this.label4.Text = "List";
             // 
             // cbLabType
             // 
@@ -231,6 +234,7 @@
             this.cbLabType.Name = "cbLabType";
             this.cbLabType.Size = new System.Drawing.Size(365, 24);
             this.cbLabType.TabIndex = 255;
+            this.cbLabType.SelectedIndexChanged += new System.EventHandler(this.cbLabType_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -240,9 +244,9 @@
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label2.Location = new System.Drawing.Point(15, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 17);
+            this.label2.Size = new System.Drawing.Size(78, 17);
             this.label2.TabIndex = 254;
-            this.label2.Text = "Laboratory type";
+            this.label2.Text = "Xray Type";
             // 
             // cbLab
             // 
@@ -258,6 +262,7 @@
             this.cbLab.Name = "cbLab";
             this.cbLab.Size = new System.Drawing.Size(365, 24);
             this.cbLab.TabIndex = 253;
+            this.cbLab.SelectedIndexChanged += new System.EventHandler(this.cbLab_SelectedIndexChanged);
             // 
             // panel4
             // 
@@ -290,7 +295,7 @@
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DiagXray";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DiagXray";

@@ -464,6 +464,7 @@
     <Compile Include="Database\Models\salesPharmacyModel.cs" />
     <Compile Include="Database\Models\useraccount.cs" />
     <Compile Include="Database\Models\UserLog.cs" />
+    <Compile Include="Database\Models\xraymodel.cs" />
     <Compile Include="InventoryPharma\Dialogs\seniorDiag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -654,6 +655,12 @@
     </Compile>
     <Compile Include="Xray\dashXray.Designer.cs">
       <DependentUpon>dashXray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xray\Panels\DiagXray.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xray\Panels\DiagXray.Designer.cs">
+      <DependentUpon>DiagXray.cs</DependentUpon>
     </Compile>
     <Compile Include="Xray\Panels\PanelXrayForm.cs">
       <SubType>Form</SubType>
@@ -904,6 +911,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Xray\dashXray.resx">
       <DependentUpon>dashXray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xray\Panels\DiagXray.resx">
+      <DependentUpon>DiagXray.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xray\Panels\PanelXrayForm.resx">
       <DependentUpon>PanelXrayForm.cs</DependentUpon>

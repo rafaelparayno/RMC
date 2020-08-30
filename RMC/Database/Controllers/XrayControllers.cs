@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using RMC.Components;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +21,31 @@ namespace RMC.Database.Controllers
                     LEFT JOIN auto_docs ON xraylist.auto_docs_id = auto_docs.auto_docs_id";
 
             return await crud.GetDataSetAsync(sql, null);
+        }
+
+        public async Task<List<xraymodel>> getLabModel(int type)
+        {
+            List<xraymodel> listxraymodels = new List<xraymodel>();
+            string sql = @"SELECT * FROM `xraylist`
+                        WHERE xray_type = @type";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@type", type));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                xraymodel l = new xraymodel();
+                l.id = int.Parse(reader["xray_id"].ToString());
+                l.name = reader["xray_name"].ToString();
+                l.autodocsid = int.Parse(reader["auto_docs_id"].ToString());
+                listxraymodels.Add(l);
+            }
+
+            crud.CloseConnection();
+
+
+            return listxraymodels;
         }
 
         public async Task<DataSet> getSearchDataset(string searchkey)

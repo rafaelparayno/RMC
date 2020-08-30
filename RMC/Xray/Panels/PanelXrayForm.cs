@@ -103,5 +103,42 @@ namespace RMC.Xray.Panels
 
             }
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            DiagXray form = new DiagXray();
+            form.ShowDialog();
+
+            if (form.Lab == "")
+                return;
+
+
+            ListViewItem lvitems = new ListViewItem();
+
+            lvitems.Text = form.labType;
+            lvitems.SubItems.Add(form.Lab);
+            lvitems.SubItems.Add(form.xrayid + "");
+            lvItemLab.Items.Add(lvitems);
+            listImg.Add(form.imgToAdd);
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+
+            if (lvItemLab.Items.Count == 0)
+                return;
+
+            if (lvItemLab.SelectedItems.Count == 0)
+                return;
+
+            int index = lvItemLab.SelectedItems[0].Index;
+            lvItemLab.Items.RemoveAt(index);
+            listImg.RemoveAt(index);
+        }
     }
 }

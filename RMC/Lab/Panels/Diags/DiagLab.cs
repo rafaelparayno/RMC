@@ -146,6 +146,11 @@ namespace RMC.Lab.Panels.Diags
 
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
+            Lab = "";
+            labType = "";
+            imgToAdd = null;
+            labid = 0;
+
             this.Close();
         }
 

@@ -7,6 +7,7 @@ using RMC.Lab.Panels.Diags;
 using RMC.Patients;
 using RMC.Reception.PanelRequestForm;
 using RMC.Reception.PanelRequestForm.Dialogs;
+using RMC.Xray.Panels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new PanelXrayForm());
         }
     }
 }
