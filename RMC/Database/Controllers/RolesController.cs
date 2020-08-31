@@ -88,7 +88,7 @@ namespace RMC.Database.Controllers
 
         public async Task<List<ComboBoxItem>> getComboDatas()
         {
-            string sql = String.Format(@"SELECT * FROM {0} ", role.tableName);
+            string sql = String.Format(@"SELECT * FROM {0} WHERE Position != 'SuperAdmin' ", role.tableName);
             MySqlDataReader reader = null;
             crud.RetrieveRecords(sql, ref reader,null);
 
@@ -98,7 +98,7 @@ namespace RMC.Database.Controllers
                 cbItems.Add(new ComboBoxItem(reader["Position"].ToString(), int.Parse(reader["role_id"].ToString())));
                 
             }
-         /*   cb.Items.AddRange(cbItems.ToArray());*/
+       
 
             crud.CloseConnection();
             return cbItems;
