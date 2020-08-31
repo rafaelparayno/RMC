@@ -642,6 +642,12 @@
     <Compile Include="Reception\ReceptionDash.Designer.cs">
       <DependentUpon>ReceptionDash.cs</DependentUpon>
     </Compile>
+    <Compile Include="splashscreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="splashscreen.Designer.cs">
+      <DependentUpon>splashscreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaticData.cs" />
     <Compile Include="SystemSettings\PoSettings.cs" />
     <Compile Include="UserDash\UserDashboard.cs">
@@ -907,6 +913,9 @@
     <EmbeddedResource Include="Reception\ReceptionDash.resx">
       <DependentUpon>ReceptionDash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="splashscreen.resx">
+      <DependentUpon>splashscreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserDash\UserDashboard.resx">
       <DependentUpon>UserDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -954,6 +963,8 @@
   <ItemGroup>
     <None Include="Resources\noimg.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\spash.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
