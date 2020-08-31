@@ -17,6 +17,9 @@ namespace RMC.Lab.Panels
 {
     public partial class PanelLabForm : Form
     {
+
+        #region Variables
+
         patientDetails patientmod = new patientDetails();
         PatientDetailsController patD = new PatientDetailsController();
         PatientLabController patientLabC = new PatientLabController();
@@ -24,12 +27,16 @@ namespace RMC.Lab.Panels
         List<Image> listImg = new List<Image>();
         Dictionary<int, int> consumables = new Dictionary<int, int>();
         ClinicStocksController clinicStocksController = new ClinicStocksController();
-        ConsumedItems consumeditems = new ConsumedItems();
+        ConsumedItems consumeditems = new ConsumedItems(); 
+        #endregion
+
         public PanelLabForm()
         {
             InitializeComponent();
             initLvCols();
         }
+
+        #region My Own Functions
 
         private async void getDataId(int id)
         {
@@ -49,10 +56,62 @@ namespace RMC.Lab.Panels
         private void initLvCols()
         {
             lvItemLab.View = View.Details;
-            lvItemLab.Columns.Add("Lab Type", 100, HorizontalAlignment.Center);      
+            lvItemLab.Columns.Add("Lab Type", 100, HorizontalAlignment.Center);
             lvItemLab.Columns.Add("Laboratory Name", 400, HorizontalAlignment.Center);
             lvItemLab.Columns.Add("Laboratory Id", 100, HorizontalAlignment.Center);
         }
+
+        private async void processConsumables()
+        {
+            foreach (ListViewItem item in lvItemLab.Items)
+            {
+                int labid = int.Parse(item.SubItems[2].Text);
+                consumables = await consumablesController.getListItemConsumables(labid);
+                foreach (KeyValuePair<int, int> kp in consumables)
+                {
+                    int currentStocks = await clinicStocksController.getStocks(kp.Key);
+                    int stocktosave = currentStocks - kp.Value;
+                    stocktosave = stocktosave > 0 ? stocktosave : 0;
+                    clinicStocksController.Save(kp.Key, stocktosave);
+                    consumeditems.save(kp.Key, kp.Value);
+                }
+
+
+            }
+        }
+
+        private void saveData(string datenow, string path)
+        {
+            foreach (ListViewItem lv in lvItemLab.Items)
+            {
+                Image im = listImg[lv.Index];
+                saveImginPath(im, path, "Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
+                patientLabC.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
+                                "Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow, path);
+
+            }
+        }
+
+        private void clearDataNew()
+        {
+            listImg.Clear();
+            lvItemLab.Items.Clear();
+            patientmod = new patientDetails();
+            panelPatient.Controls.Clear();
+            txtName.Text = "";
+        }
+
+        private void saveImginPath(Image imgSave, string path, string fileName)
+        {
+
+
+            Image newImg = imgSave;
+            newImg.Save(path + fileName + ".jpg");
+        }
+        #endregion
+
+
+        #region Handlers Input
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
@@ -81,7 +140,7 @@ namespace RMC.Lab.Panels
             }
             panelPatient.Controls.Clear();
 
-            if(patientmod.id != 0)
+            if (patientmod.id != 0)
             {
 
                 PatientControl patView = new PatientControl();
@@ -92,7 +151,7 @@ namespace RMC.Lab.Panels
                 patView.Gender = "Gender : " + patientmod.gender;
                 patView.Address = "Address: " + patientmod.address;
                 patView.Cnumber = "Contact Number : " + patientmod.contact;
-               
+
                 patView.Dock = DockStyle.Fill;
                 panelPatient.BackColor = Color.FloralWhite;
                 panelPatient.Controls.Add(patView);
@@ -101,9 +160,9 @@ namespace RMC.Lab.Panels
             {
                 panelPatient.BackColor = Color.Salmon;
                 panelPatient.Controls.Add(label2);
-                
+
             }
-          
+
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -157,52 +216,7 @@ namespace RMC.Lab.Panels
             clearDataNew();
         }
 
-        private async void processConsumables()
-        {
-            foreach(ListViewItem item in lvItemLab.Items)
-            {
-                int labid = int.Parse(item.SubItems[2].Text);
-                consumables = await consumablesController.getListItemConsumables(labid);
-                foreach(KeyValuePair<int,int> kp in consumables)
-                {
-                    int currentStocks = await clinicStocksController.getStocks(kp.Key);
-                    int stocktosave = currentStocks - kp.Value;
-                    stocktosave = stocktosave > 0 ? stocktosave : 0;
-                    clinicStocksController.Save(kp.Key, stocktosave);
-                    consumeditems.save(kp.Key, kp.Value);
-                }
+        #endregion
 
-
-            }
-        }
-
-        private void saveData(string datenow,string path)
-        {
-           foreach(ListViewItem lv in lvItemLab.Items)
-            {
-                Image im = listImg[lv.Index];
-                saveImginPath(im, path,"Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
-                patientLabC.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
-                                "Lab-"+ patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow, path);
-
-            }
-        }
-
-        private void clearDataNew()
-        {
-            listImg.Clear();
-            lvItemLab.Items.Clear();
-            patientmod = new patientDetails();
-            panelPatient.Controls.Clear();
-            txtName.Text = "";
-        }
-
-        private void saveImginPath(Image imgSave,string path, string fileName)
-        {
-
-
-            Image newImg = imgSave;
-            newImg.Save(path + fileName + ".jpg");
-        }
     }
 }

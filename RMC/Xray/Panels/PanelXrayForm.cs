@@ -1,6 +1,7 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.Patients;
+using RMC.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,19 +16,28 @@ namespace RMC.Xray.Panels
 {
     public partial class PanelXrayForm : Form
     {
+        
+        #region variables
+
         patientDetails patientmod = new patientDetails();
         PatientDetailsController patD = new PatientDetailsController();
-        PatientLabController patientLabC = new PatientLabController();
+        PatientXrayController patientLabX = new PatientXrayController();
         List<Image> listImg = new List<Image>();
-  /*      ConsumablesController consumablesController = new ConsumablesController();*/
+        ConsumablesXrayControllers consumablesXrayController = new ConsumablesXrayControllers();
         Dictionary<int, int> consumables = new Dictionary<int, int>();
         ClinicStocksController clinicStocksController = new ClinicStocksController();
-        ConsumedItems consumeditems = new ConsumedItems();
+        ConsumedItems consumeditems = new ConsumedItems(); 
+        #endregion
+
+
         public PanelXrayForm()
         {
             InitializeComponent();
             initLvCols();
         }
+
+
+        #region My Functions
 
         private async void getDataId(int id)
         {
@@ -52,6 +62,57 @@ namespace RMC.Xray.Panels
             lvItemLab.Columns.Add("Xray Id", 100, HorizontalAlignment.Center);
         }
 
+        private async void processConsumables()
+        {
+            foreach (ListViewItem item in lvItemLab.Items)
+            {
+                int labid = int.Parse(item.SubItems[2].Text);
+                consumables = await consumablesXrayController.getListItemConsumables(labid);
+                foreach (KeyValuePair<int, int> kp in consumables)
+                {
+                    int currentStocks = await clinicStocksController.getStocks(kp.Key);
+                    int stocktosave = currentStocks - kp.Value;
+                    stocktosave = stocktosave > 0 ? stocktosave : 0;
+                    clinicStocksController.Save(kp.Key, stocktosave);
+                    consumeditems.save(kp.Key, kp.Value);
+                }
+
+
+            }
+        }
+
+        private void saveData(string datenow, string path)
+        {
+            foreach (ListViewItem lv in lvItemLab.Items)
+            {
+                Image im = listImg[lv.Index];
+                saveImginPath(im, path, "Xray-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
+                patientLabX.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
+                                "Xray-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow, path);
+
+            }
+        }
+
+        private void clearDataNew()
+        {
+            listImg.Clear();
+            lvItemLab.Items.Clear();
+            patientmod = new patientDetails();
+            panelPatient.Controls.Clear();
+            txtName.Text = "";
+        }
+
+        private void saveImginPath(Image imgSave, string path, string fileName)
+        {
+
+
+            Image newImg = imgSave;
+            newImg.Save(path + fileName + ".jpg");
+        }
+        #endregion
+
+
+        #region Handler Inputs
         private void iconButton2_Click(object sender, EventArgs e)
         {
 
@@ -106,7 +167,22 @@ namespace RMC.Xray.Panels
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (lvItemLab.Items.Count == 0)
+                return;
 
+            if (patientmod.id == 0)
+                return;
+
+            CreateDirectory.CreateDir(patientmod.lastname + "-" + patientmod.id);
+            string newFilePath2 = CreateDirectory.CreateDir(patientmod.lastname + "-" + patientmod.id + "\\" + "XrayFiles");
+            string filePath = newFilePath2;
+            string datenow = DateTime.Now.ToString("yyyy--MM--dd");
+            string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
+            string combine = datenow + "--" + timenow;
+            saveData(combine, filePath);
+            processConsumables();
+            MessageBox.Show("Succesfully Save Data");
+            clearDataNew();
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -140,5 +216,9 @@ namespace RMC.Xray.Panels
             lvItemLab.Items.RemoveAt(index);
             listImg.RemoveAt(index);
         }
+
+
+        #endregion
+
     }
 }

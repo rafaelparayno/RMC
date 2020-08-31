@@ -13,6 +13,28 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
+        public async Task<Dictionary<int, int>> getListItemConsumables(int labid)
+        {
+            Dictionary<int, int> consumables = new Dictionary<int, int>();
+
+            string sql = @"SELECT * FROM `consumables_xrays` WHERE xray_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", labid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                consumables.Add(int.Parse(reader["item_id"].ToString()),
+                                int.Parse(reader["consumables_x_qty"].ToString()));
+            }
+
+            crud.CloseConnection();
+
+
+            return consumables;
+        }
+
 
         public async Task<List<consumablesMod>> getEditedConsumables(int xrayid)
         {

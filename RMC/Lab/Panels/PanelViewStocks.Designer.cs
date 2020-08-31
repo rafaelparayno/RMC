@@ -53,7 +53,7 @@
             this.groupBox2.Size = new System.Drawing.Size(674, 489);
             this.groupBox2.TabIndex = 215;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Stocks In Pharmacy";
+            this.groupBox2.Text = "Stocks In Clinics";
             // 
             // dgItemList
             // 

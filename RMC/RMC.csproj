@@ -430,6 +430,7 @@
     <Compile Include="Database\Controllers\PatientDetailsController.cs" />
     <Compile Include="Database\Controllers\PatientLabController.cs" />
     <Compile Include="Database\Controllers\PatientVController.cs" />
+    <Compile Include="Database\Controllers\PatientXrayController.cs" />
     <Compile Include="Database\Controllers\PharmaStocksController.cs" />
     <Compile Include="Database\Controllers\PoController.cs" />
     <Compile Include="Database\Controllers\PoItemController.cs" />

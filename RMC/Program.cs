@@ -26,7 +26,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PanelXrayForm());
+            Application.Run(new Login());
         }
     }
 }
