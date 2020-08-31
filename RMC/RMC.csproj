@@ -466,6 +466,12 @@
     <Compile Include="Database\Models\useraccount.cs" />
     <Compile Include="Database\Models\UserLog.cs" />
     <Compile Include="Database\Models\xraymodel.cs" />
+    <Compile Include="Doctor\DashDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor\DashDoc.Designer.cs">
+      <DependentUpon>DashDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\Dialogs\seniorDiag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -815,6 +821,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\IPConfigForms.resx">
       <DependentUpon>IPConfigForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor\DashDoc.resx">
+      <DependentUpon>DashDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\Dialogs\seniorDiag.resx">
       <DependentUpon>seniorDiag.cs</DependentUpon>
