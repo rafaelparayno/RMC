@@ -157,6 +157,7 @@
             this.DocBtn.Text = "Doctor";
             this.DocBtn.UseVisualStyleBackColor = false;
             this.DocBtn.Visible = false;
+            this.DocBtn.Click += new System.EventHandler(this.DocBtn_Click);
             // 
             // ReceptionBtn
             // 

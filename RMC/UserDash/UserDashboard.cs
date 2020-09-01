@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using FontAwesome.Sharp;
 using RMC.Lab;
 using RMC.Xray;
+using RMC.Doctor;
 
 namespace RMC.UserDash
 {
@@ -204,6 +205,7 @@ namespace RMC.UserDash
         private void btnXray_Click(object sender, EventArgs e)
         {
             openChildForm(new dashXray());
+            changingLabel("Xray");
         }
 
         private void UserDashboard_Load(object sender, EventArgs e)
@@ -221,6 +223,12 @@ namespace RMC.UserDash
                 t1.Stop();   //this stops the timer if the form is completely displayed
             else
                 this.Opacity += 0.025;
+        }
+
+        private void DocBtn_Click(object sender, EventArgs e)
+        {
+            openChildForm(new DashDoc());
+            changingLabel("Doctor");
         }
     }
 }
