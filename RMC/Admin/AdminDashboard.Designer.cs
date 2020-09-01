@@ -996,6 +996,7 @@
             this.Name = "AdminDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminDashboard";
+            this.Load += new System.EventHandler(this.AdminDashboard_Load);
             this.panelSideMenu.ResumeLayout(false);
             this.panelSubUtilities.ResumeLayout(false);
             this.panelSubReports.ResumeLayout(false);

@@ -18,7 +18,7 @@ namespace RMC.UserDash
     {
         private List<int> useraccess = new List<int>();
         AccessController accesses = new AccessController();
-
+        Timer t1 = new Timer();
 
         private Form activeForm = null;
 
@@ -204,6 +204,23 @@ namespace RMC.UserDash
         private void btnXray_Click(object sender, EventArgs e)
         {
             openChildForm(new dashXray());
+        }
+
+        private void UserDashboard_Load(object sender, EventArgs e)
+        {
+            this.Opacity = 0;      //first the opacity is 0
+
+            t1.Interval = 10;  //we'll increase the opacity every 10ms
+            t1.Tick += new EventHandler(fadeIn);  //this calls the function that changes opacity 
+            t1.Start();
+        }
+
+        void fadeIn(object sender, EventArgs e)
+        {
+            if (Opacity >= 1)
+                t1.Stop();   //this stops the timer if the form is completely displayed
+            else
+                this.Opacity += 0.025;
         }
     }
 }

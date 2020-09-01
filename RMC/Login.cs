@@ -14,6 +14,7 @@ namespace RMC
     {
         dbConnection dbcon = new dbConnection();
         LoginController log = new LoginController();
+        Timer t1 = new Timer();
         bool isConnected = false;
         public Login()
         {
@@ -108,8 +109,6 @@ namespace RMC
             }
         }
 
-      
-
         private void iconPictureBox1_Click(object sender, EventArgs e)
         {
             if (!isConnected)
@@ -118,6 +117,23 @@ namespace RMC
                 frm.ShowDialog();
                 CheckConnection();
             }
+        }
+
+        void fadeIn(object sender, EventArgs e)
+        {
+            if (Opacity >= 1)
+                t1.Stop();   //this stops the timer if the form is completely displayed
+            else
+                Opacity += 0.025;
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            Opacity = 0;      //first the opacity is 0
+
+            t1.Interval = 10;  //we'll increase the opacity every 10ms
+            t1.Tick += new EventHandler(fadeIn);  //this calls the function that changes opacity 
+            t1.Start();
         }
     }
 }

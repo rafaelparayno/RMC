@@ -30,7 +30,7 @@ namespace RMC.Admin
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wparam, int lPartam);
         //For Dragging
         IDictionary<string, int> MainNav = new Dictionary<string, int>();
-
+        Timer t1 = new Timer();
 
         public AdminDashboard()
         {
@@ -457,6 +457,24 @@ namespace RMC.Admin
         {
             ChangePassword form = new ChangePassword();
             form.ShowDialog();
+        }
+
+        private void AdminDashboard_Load(object sender, EventArgs e)
+        {
+
+            this.Opacity = 0;      //first the opacity is 0
+
+            t1.Interval = 10;  //we'll increase the opacity every 10ms
+            t1.Tick += new EventHandler(fadeIn);  //this calls the function that changes opacity 
+            t1.Start();
+        }
+
+        void fadeIn(object sender, EventArgs e)
+        {
+            if (Opacity >= 1)
+                t1.Stop();   //this stops the timer if the form is completely displayed
+            else
+                this.Opacity += 0.025;
         }
     }
 }
