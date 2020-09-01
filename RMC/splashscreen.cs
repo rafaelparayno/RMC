@@ -19,7 +19,7 @@ namespace RMC
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            panel2.Width += 3;
+            panel2.Width += 5;
             if(panel2.Width >= 700)
             {
                 timer1.Stop();
