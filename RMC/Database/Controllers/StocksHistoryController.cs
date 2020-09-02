@@ -14,13 +14,26 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getStockHis()
         {
-            string sql = @"SELECT action,quantity,item_name,Concat(firstname,' ',lastname) AS 'Name' FROM `stockshistory` 
+            string sql = @"SELECT action,quantity,item_name,date_stock_his AS 'Date',
+                            Concat(firstname,' ',lastname) AS 'Name' FROM `stockshistory` 
                             LEFT JOIN itemlist on itemlist.item_id = stockshistory.item_id
                             LEFT JOIN useraccounts ON useraccounts.u_id = stockshistory.u_id";
      
            return await crud.GetDataSetAsync(sql, null);
         }
+        public async Task<DataSet> getStockHis(string date)
+        {
+            string sql = @"SELECT action,quantity,item_name,date_stock_his AS 'Date',
+                            Concat(firstname,' ',lastname) AS 'Name' FROM `stockshistory` 
+                            LEFT JOIN itemlist on itemlist.item_id = stockshistory.item_id
+                            LEFT JOIN useraccounts ON useraccounts.u_id = stockshistory.u_id 
+                            WHERE date_stock_his = @date";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
 
+            listparams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
+
+            return await crud.GetDataSetAsync(sql, listparams);
+        }
 
         public async void Save(string action,int qty,int uid,int item_id)
         {

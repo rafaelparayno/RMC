@@ -323,6 +323,12 @@
     <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\salePharma.Designer.cs">
       <DependentUpon>salePharma.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\stockHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\stockHistory.Designer.cs">
+      <DependentUpon>stockHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelReportsForms\PharmaReports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -791,6 +797,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\salePharma.resx">
       <DependentUpon>salePharma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\stockHistory.resx">
+      <DependentUpon>stockHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\PharmaReports.resx">
       <DependentUpon>PharmaReports.cs</DependentUpon>

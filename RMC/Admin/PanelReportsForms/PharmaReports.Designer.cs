@@ -33,6 +33,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelNavParam = new System.Windows.Forms.Panel();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
@@ -78,6 +79,7 @@
             this.panelNavParam.AutoScroll = true;
             this.panelNavParam.BackColor = System.Drawing.Color.FloralWhite;
             this.panelNavParam.Controls.Add(this.iconButton2);
+            this.panelNavParam.Controls.Add(this.iconButton7);
             this.panelNavParam.Controls.Add(this.iconButton5);
             this.panelNavParam.Controls.Add(this.iconButton4);
             this.panelNavParam.Controls.Add(this.iconButton1);
@@ -99,20 +101,44 @@
             this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.UserMd;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.ChartArea;
             this.iconButton2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton2.IconSize = 18;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton2.Location = new System.Drawing.Point(798, 0);
+            this.iconButton2.Location = new System.Drawing.Point(931, 0);
             this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Rotation = 0D;
             this.iconButton2.Size = new System.Drawing.Size(133, 57);
-            this.iconButton2.TabIndex = 28;
+            this.iconButton2.TabIndex = 30;
             this.iconButton2.Text = "inventory Analysis";
             this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton2.UseMnemonic = false;
             this.iconButton2.UseVisualStyleBackColor = false;
+            // 
+            // iconButton7
+            // 
+            this.iconButton7.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton7.FlatAppearance.BorderSize = 0;
+            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton7.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.ListAlt;
+            this.iconButton7.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton7.IconSize = 18;
+            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton7.Location = new System.Drawing.Point(798, 0);
+            this.iconButton7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton7.Name = "iconButton7";
+            this.iconButton7.Rotation = 0D;
+            this.iconButton7.Size = new System.Drawing.Size(133, 57);
+            this.iconButton7.TabIndex = 29;
+            this.iconButton7.Text = "Inventory History";
+            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton7.UseMnemonic = false;
+            this.iconButton7.UseVisualStyleBackColor = false;
+            this.iconButton7.Click += new System.EventHandler(this.iconButton7_Click);
             // 
             // iconButton5
             // 
@@ -122,7 +148,7 @@
             this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton5.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.UserMd;
+            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.Receipt;
             this.iconButton5.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton5.IconSize = 18;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -146,7 +172,7 @@
             this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.UserMd;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.TruckMoving;
             this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton4.IconSize = 18;
             this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -170,7 +196,7 @@
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.UserMd;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Dolly;
             this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton1.IconSize = 18;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -194,7 +220,7 @@
             this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton3.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.UserMd;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.PollH;
             this.iconButton3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton3.IconSize = 18;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -218,7 +244,7 @@
             this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.File;
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.Box;
             this.iconButton6.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton6.IconSize = 18;
             this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -240,10 +266,11 @@
             this.btnReorder.FlatAppearance.BorderSize = 0;
             this.btnReorder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReorder.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnReorder.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReorder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnReorder.IconChar = FontAwesome.Sharp.IconChar.File;
             this.btnReorder.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnReorder.IconSize = 18;
+            this.btnReorder.IconSize = 16;
             this.btnReorder.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnReorder.Location = new System.Drawing.Point(0, 0);
             this.btnReorder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -287,5 +314,6 @@
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton6;
         private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton iconButton7;
     }
 }

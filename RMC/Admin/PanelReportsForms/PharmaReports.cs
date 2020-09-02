@@ -66,5 +66,10 @@ namespace RMC.Admin.PanelReportsForms
         {
             openChildForm(new salePharma());
         }
+
+        private void iconButton7_Click(object sender, EventArgs e)
+        {
+            openChildForm(new stockHistory());
+        }
     }
 }
