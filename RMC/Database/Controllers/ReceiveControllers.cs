@@ -64,6 +64,31 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
         }
 
+        public async Task<int> getReceive(int id ,string d)
+        {
+            int totalrec = 0;
+            string sql = @"SELECT SUM(qty_ro) AS 'totalRec' FROM `receive_orders` 
+                         INNER JOIN purchase_order_items 
+                                ON receive_orders.po_item_id = purchase_order_items.po_item_id
+                         WHERE receive_orders.po_item_id in 
+                                (SELECT po_item_id FROM purchase_order_items 
+                                WHERE purchase_order_items.item_id = @id)
+                         AND date_ro = @date";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", id));
+            listparams.Add(new MySqlParameter("@date", DateTime.Parse(d)));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+            while(await reader.ReadAsync())
+            {
+                totalrec = reader["totalRec"].ToString() == "" ? 0 : int.Parse(reader["totalRec"].ToString());
+            }
+
+            crud.CloseConnection();
+            return totalrec;
+        }
+
+
 
         public async Task<DataSet> getData(string date)
         {

@@ -62,8 +62,10 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
             foreach(AnalysisModel a in ListAnalysis)
             {
                 ListViewItem lvItem = new ListViewItem();
-                decimal percentageUnitsSold = decimal.Round((decimal.Divide(a.unitsSold, totalAnnualUnitsSold) * 100),1);
-                float percentageAnnualCon = (float)Math.Round(a.anualConsumation / totalAnnualConsumationValue * 100,1);
+              
+                 decimal percentageUnitsSold = a.unitsSold == 0 ? 0 : decimal.Round((decimal.Divide(a.unitsSold, totalAnnualUnitsSold) * 100),1);
+
+                float percentageAnnualCon = a.anualConsumation == 0 ? 0 : (float)Math.Round(a.anualConsumation / totalAnnualConsumationValue * 100,1);
                 lvItem.Text = a.name;
                 lvItem.SubItems.Add(a.unitsSold.ToString());
                 lvItem.SubItems.Add(a.price.ToString());
@@ -74,8 +76,8 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
 
                 lvsAnalysis.Items.Add(lvItem);
             }
-
-            label1.Text = $"{label1.Text} : {totalAnnualUnitsSold} \nTotal Annual Consumation Value  : ₱{totalAnnualConsumationValue}";
+            label1.Text = "";
+            label1.Text = $"Total Annual Units Sold: : {totalAnnualUnitsSold} \nTotal Annual Consumation Value  : ₱{totalAnnualConsumationValue}";
             label1.Visible = true;
         }
 
@@ -87,10 +89,12 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
             {
                 int index = lvI.Index;
                 float f = float.Parse(lvI.SubItems[5].Text);
+                if (f == 0)
+                    return;
+
                 Cumulative += f;
                 if (Cumulative <= 80)
                 {
-                    
                     lvsAnalysis.Items[index].BackColor = Color.DarkSeaGreen;
                 }
             }
@@ -101,6 +105,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
 
         private async void iconButton1_Click(object sender, EventArgs e)
         {
+            lvsAnalysis.Items.Clear();
             await getDs();
             displayItemsA();
          

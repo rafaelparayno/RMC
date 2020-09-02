@@ -40,5 +40,10 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
         {
             openChildForm(new ABCA());
         }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FNSA());
+        }
     }
 }

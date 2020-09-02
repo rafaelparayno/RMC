@@ -291,6 +291,51 @@ namespace RMC.Database.Controllers
             return sum;
         }
 
+        public async Task<int> getOpeningBalance(int id,string date)
+        {
+            int sum = 0;
+            string sql = @"SELECT SUM(sales_qty) AS 'addBal' FROM
+                            salespharma 
+                            LEFT JOIN invoice ON salespharma.invoice_id = invoice.invoice_id
+                            WHERE  invoice.date_invoice  BETWEEN @day AND NOW() AND item_id = @itemid";
+
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@day", DateTime.Parse(date)));
+            list.Add(new MySqlParameter("@itemid", id));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, list);
+
+            while (await reader.ReadAsync())
+            {
+                sum = reader["addBal"].ToString() == "" ? 0 : int.Parse(reader["addBal"].ToString());
+            }
+            crud.CloseConnection();
+
+            return sum;
+        }
+
+        public async Task<int> getQtyInDate(int id,string date)
+        {
+            int sum = 0;
+            string sql = @"SELECT SUM(sales_qty) As 'salesDate' FROM salespharma 
+                        INNER JOIN invoice ON salespharma.`invoice_id` = invoice.`invoice_id` 
+                    	 WHERE invoice.date_invoice BETWEEN @day 
+                                    AND DATE_ADD(@day,INTERVAL 1 DAY)
+                         AND  salespharma.`item_id` = @itemid";
+
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@day", DateTime.Parse(date)));
+            list.Add(new MySqlParameter("@itemid", id));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, list);
+
+            while (await reader.ReadAsync())
+            {
+                sum = reader["salesDate"].ToString() == "" ? 0 : int.Parse(reader["salesDate"].ToString());
+            }
+            crud.CloseConnection();
+
+            return sum;
+        }
+
         public async Task<int> getAnualUnitsSold(int id,int yr)
         {
             int unitsSold = 0;

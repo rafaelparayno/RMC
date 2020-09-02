@@ -275,6 +275,12 @@
     <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\Analysis Panel\ABCA.Designer.cs">
       <DependentUpon>ABCA.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\Analysis Panel\FNSA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\Analysis Panel\FNSA.Designer.cs">
+      <DependentUpon>FNSA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\diag\DiagDays.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -473,6 +479,7 @@
     <Compile Include="Database\Models\consumablesMod.cs" />
     <Compile Include="Database\Models\consumablesServMod.cs" />
     <Compile Include="Database\Models\customerDetailsMod.cs" />
+    <Compile Include="Database\Models\fnsaItemMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
     <Compile Include="Database\Models\labModel.cs" />
     <Compile Include="Database\Models\packages.cs" />
@@ -786,6 +793,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\Analysis Panel\ABCA.resx">
       <DependentUpon>ABCA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\Analysis Panel\FNSA.resx">
+      <DependentUpon>FNSA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\diag\DiagDays.resx">
       <DependentUpon>DiagDays.cs</DependentUpon>
