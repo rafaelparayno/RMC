@@ -1,5 +1,6 @@
 ﻿using RMC.Admin;
 using RMC.Admin.PanelLabForms;
+using RMC.Admin.PanelReportsForms.PanelsPharmaRep;
 using RMC.Components;
 using RMC.InventoryPharma.PanelRo;
 using RMC.Lab.Panels;

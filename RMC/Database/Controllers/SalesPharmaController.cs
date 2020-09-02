@@ -290,5 +290,28 @@ namespace RMC.Database.Controllers
           
             return sum;
         }
+
+        public async Task<int> getAnualUnitsSold(int id,int yr)
+        {
+            int unitsSold = 0;
+            string sql = @"SELECT SUM(sales_qty) As 'AnualConsumption' FROM salespharma 
+                        INNER JOIN invoice ON salespharma.`invoice_id` = invoice.`invoice_id` 
+                        WHERE year(invoice.date_invoice) = @yr AND 
+                        salespharma.`item_id` = @id";
+
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@yr", yr));
+            list.Add(new MySqlParameter("@id", id));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, list);
+
+
+            while (await reader.ReadAsync())
+            {
+                unitsSold = reader["AnualConsumption"].ToString() == "" ? 0 : int.Parse(reader["AnualConsumption"].ToString());
+            }
+            crud.CloseConnection();
+
+            return unitsSold;
+        }
     }
 }

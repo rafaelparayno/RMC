@@ -269,6 +269,12 @@
     <Compile Include="Admin\PanelReportsForms\LabReports.Designer.cs">
       <DependentUpon>LabReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\Analysis Panel\ABCA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\Analysis Panel\ABCA.Designer.cs">
+      <DependentUpon>ABCA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\diag\DiagDays.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,6 +298,12 @@
     </Compile>
     <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\ExpRep.Designer.cs">
       <DependentUpon>ExpRep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\InventoryAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\InventoryAnalysis.Designer.cs">
+      <DependentUpon>InventoryAnalysis.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\PanelReportsForms\PanelsPharmaRep\PoRep.cs">
       <SubType>Form</SubType>
@@ -457,6 +469,7 @@
     <Compile Include="Database\DbSettings\dbConfigFile.cs" />
     <Compile Include="Database\DbSettings\dbConnection.cs" />
     <Compile Include="Database\Models\access.cs" />
+    <Compile Include="Database\Models\AnalysisModel.cs" />
     <Compile Include="Database\Models\consumablesMod.cs" />
     <Compile Include="Database\Models\consumablesServMod.cs" />
     <Compile Include="Database\Models\customerDetailsMod.cs" />
@@ -771,6 +784,9 @@
     <EmbeddedResource Include="Admin\PanelReportsForms\LabReports.resx">
       <DependentUpon>LabReports.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\Analysis Panel\ABCA.resx">
+      <DependentUpon>ABCA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\diag\DiagDays.resx">
       <DependentUpon>DiagDays.cs</DependentUpon>
     </EmbeddedResource>
@@ -782,6 +798,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\ExpRep.resx">
       <DependentUpon>ExpRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\InventoryAnalysis.resx">
+      <DependentUpon>InventoryAnalysis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelReportsForms\PanelsPharmaRep\PoRep.resx">
       <DependentUpon>PoRep.cs</DependentUpon>

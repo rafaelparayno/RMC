@@ -235,7 +235,6 @@ namespace RMC.InventoryPharma.PanelPo
         #endregion
 
 
-
         #region Handler Events
 
         private void cbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
@@ -359,5 +358,6 @@ namespace RMC.InventoryPharma.PanelPo
 
         } 
         #endregion
+
     }
 }
