@@ -87,7 +87,7 @@ namespace RMC.Lab.Panels
                 Image im = listImg[lv.Index];
                 saveImginPath(im, path, "Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
                 patientLabC.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
-                                "Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow, path);
+                                "Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow + ".jpg", path);
 
             }
         }
