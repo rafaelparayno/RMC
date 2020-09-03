@@ -232,6 +232,7 @@
             this.lvLabDetails.Size = new System.Drawing.Size(386, 182);
             this.lvLabDetails.TabIndex = 2;
             this.lvLabDetails.UseCompatibleStateImageBehavior = false;
+            this.lvLabDetails.SelectedIndexChanged += new System.EventHandler(this.lvLabDetails_SelectedIndexChanged);
             // 
             // PanelLabDetail
             // 

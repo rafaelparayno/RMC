@@ -54,5 +54,28 @@ namespace RMC.Patients.PanelsDetails
                 lvLabDetails.Items.Add(lvitem);
             }
         }
+
+        private async Task showDocLab(int id)
+        {
+            string fullpath = await patientLabController.getFullPath(id);
+           
+           pbEdited.Image = Image.FromFile(fullpath);
+
+        }
+
+        private async void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvLabDetails.Items.Count == 0)
+                return;
+
+            if (lvLabDetails.SelectedItems.Count == 0)
+                return;
+
+            int id = int.Parse(lvLabDetails.SelectedItems[0].Text);
+
+            await showDocLab(id);
+        }
+
+
     }
 }

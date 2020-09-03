@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using RMC.Database.Models;
+using RMC.Lab;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -27,6 +28,26 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, listparams);
 
+        }
+
+        public async Task<string> getFullPath(int id)
+        {
+            string FullPath = "";
+            string sql = @"SELECT CONCAT(path,filename) AS 'FullPath' 
+                            FROM `patient_lab` WHERE patient_lab_id  = @id";
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+            listParams.Add(new MySqlParameter("@id", id));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
+
+            while(await reader.ReadAsync())
+            {
+                FullPath = reader["FullPath"].ToString();
+            }
+
+            crud.CloseConnection();
+
+            return FullPath;
         }
 
         public async Task<List<patientLabModel>> getPatientLabModel(int id)
