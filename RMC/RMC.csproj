@@ -479,6 +479,7 @@
     <Compile Include="Database\Models\averageStayFns.cs" />
     <Compile Include="Database\Models\consumablesMod.cs" />
     <Compile Include="Database\Models\consumablesServMod.cs" />
+    <Compile Include="Database\Models\ConsumationRateFns.cs" />
     <Compile Include="Database\Models\customerDetailsMod.cs" />
     <Compile Include="Database\Models\fnsaItemMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />

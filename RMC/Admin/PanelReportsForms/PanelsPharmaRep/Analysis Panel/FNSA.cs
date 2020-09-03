@@ -50,6 +50,9 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
             lvAnalysis2.View = View.Details;
             lvAnalysis2.Columns.Add("Id Code", 200, HorizontalAlignment.Left);
             lvAnalysis2.Columns.Add("Consumpation Rate", 200, HorizontalAlignment.Left);
+            lvAnalysis2.Columns.Add("Cumulative Con Rate", 200, HorizontalAlignment.Left);
+            lvAnalysis2.Columns.Add("% Con Rate", 200, HorizontalAlignment.Left);
+            // lvsAnalysis.Columns.Add("FSN Classification", 200, HorizontalAlignment.Left);
 
         }
 
@@ -109,7 +112,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
             DataSet ds = await itemz.getdataSetActive();
             datasDic = new Dictionary<int, List<fnsaItemMod>>();
             List<averageStayFns> ListAvgStayFns = new List<averageStayFns>();
-            float cumAvgStay = 0;
+            List<ConsumationRateFns> listConsumtionRate = new List<ConsumationRateFns>();
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 int id = int.Parse(dr[0].ToString());
@@ -122,6 +125,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
             foreach (KeyValuePair<int, List<fnsaItemMod>> d in datasDic)
             {
                 averageStayFns avgSStayFns = new averageStayFns();
+                ConsumationRateFns conSsFns = new ConsumationRateFns();
                 int CurrentStocks = await pharmaStocksController.getStocks(d.Key);
                 int Balance = await salesPharmaController.getOpeningBalance(d.Key,
                                                     dateTimePicker1.Value.ToString("yyyy-MM-dd"));
@@ -132,12 +136,19 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
                 float ConsumationRate = (float)d.Value.Sum(x => x.salesQty) / d.Value.Count;
                 avgSStayFns.itemcode = d.Key;
                 avgSStayFns.avgStay = avgStay;
+
+                conSsFns.itemcode = d.Key;
+                conSsFns.consumtionRate = ConsumationRate;
+
                 ListAvgStayFns.Add(avgSStayFns);
+                listConsumtionRate.Add(conSsFns);
             }
 
 
             ListAvgStayFns = ListAvgStayFns.OrderByDescending(x => x.avgStay).ToList();
+            listConsumtionRate = listConsumtionRate.OrderByDescending(x => x.consumtionRate).ToList();
             settingLvAvgStay(ListAvgStayFns);
+            settingLvConsumtionRate(listConsumtionRate);
 
         }
 
@@ -169,12 +180,37 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
             }
         }
 
-    
-
-        private void showFnsClassificationInStay()
+        private void settingLvConsumtionRate(List<ConsumationRateFns> listConsumtionRate)
         {
+            float cumConsumtionRate = 0;
 
+            foreach(ConsumationRateFns c in listConsumtionRate)
+            {
+                cumConsumtionRate += c.consumtionRate;
+                c.cumConsumtionRate = cumConsumtionRate;
+            }
+
+            float lastCumConsumtionRate = listConsumtionRate.LastOrDefault().cumConsumtionRate;
+
+            foreach (ConsumationRateFns c in listConsumtionRate)
+            {
+                c.percentageConsumtionRate = (float)Math.Round((c.cumConsumtionRate
+                                                                / lastCumConsumtionRate) * 100, 2);
+            }
+
+            foreach (ConsumationRateFns c in listConsumtionRate)
+            {
+                ListViewItem lvitem = new ListViewItem();
+                lvitem.Text = c.itemcode.ToString();
+                lvitem.SubItems.Add(c.consumtionRate.ToString());
+                lvitem.SubItems.Add(c.cumConsumtionRate.ToString());
+                lvitem.SubItems.Add(c.percentageConsumtionRate.ToString());
+
+                lvAnalysis2.Items.Add(lvitem);
+            }
 
         }
+
+       
     }
 }
