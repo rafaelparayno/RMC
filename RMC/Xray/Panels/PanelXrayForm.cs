@@ -88,7 +88,7 @@ namespace RMC.Xray.Panels
                 Image im = listImg[lv.Index];
                 saveImginPath(im, path, "Xray-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
                 patientLabX.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
-                                "Xray-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow, path);
+                                "Xray-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow + ".jpg", path);
 
             }
         }

@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,33 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, listparams);
 
+        }
+
+        public async Task<List<patientXrayModel>> getPatientXray(int id)
+        {
+            List<patientXrayModel> listPatientXrayMod = new List<patientXrayModel>();
+            string sql = @"SELECT patient_xray.patient_xray_id AS 'ID',
+                        xraylist.xray_name,xraylist.xray_type,patient_xray.date_patient_xray as 'dateXray' FROM `patient_xray` 
+                        INNER JOIN xraylist ON patient_xray.xray_id = xraylist.xray_id 
+                        WHERE patient_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", id));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while(await reader.ReadAsync())
+            {
+                patientXrayModel patientXrayModel = new patientXrayModel();
+                patientXrayModel.id = int.Parse(reader["ID"].ToString());
+                patientXrayModel.name = reader["xray_name"].ToString();
+                patientXrayModel.type = int.Parse(reader["xray_type"].ToString());
+                patientXrayModel.date = DateTime.Parse(reader["dateXray"].ToString());
+
+                listPatientXrayMod.Add(patientXrayModel);
+            }
+
+            crud.CloseConnection();
+            return listPatientXrayMod;
         }
 
     }
