@@ -15,5 +15,9 @@ namespace RMC.Database.Models
         public int recQty { get; set; }
 
         public int salesQty { get; set; }
+
+        public int closingBal { get; set; }
+
+        public int holdingDays { get; set; }
     }
 }

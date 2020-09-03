@@ -35,10 +35,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lvsAnalysis = new System.Windows.Forms.ListView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lvAnalysis2 = new System.Windows.Forms.ListView();
             this.panelMenus.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,7 +69,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(553, 30);
+            this.dateTimePicker2.Location = new System.Drawing.Point(529, 35);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(236, 24);
             this.dateTimePicker2.TabIndex = 247;
@@ -74,7 +77,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(280, 30);
+            this.dateTimePicker1.Location = new System.Drawing.Point(274, 35);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(240, 24);
             this.dateTimePicker1.TabIndex = 246;
@@ -87,7 +90,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(550, 7);
+            this.label1.Location = new System.Drawing.Point(526, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 17);
             this.label1.TabIndex = 245;
@@ -100,7 +103,7 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(277, 7);
+            this.label2.Location = new System.Drawing.Point(271, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 17);
             this.label2.TabIndex = 244;
@@ -118,7 +121,7 @@
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
             this.iconButton1.IconColor = System.Drawing.Color.White;
             this.iconButton1.IconSize = 18;
-            this.iconButton1.Location = new System.Drawing.Point(795, 33);
+            this.iconButton1.Location = new System.Drawing.Point(795, 35);
             this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Rotation = 0D;
@@ -129,18 +132,6 @@
             this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.lvsAnalysis);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(862, 160);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Analysis";
-            // 
             // lvsAnalysis
             // 
             this.lvsAnalysis.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -150,9 +141,46 @@
             this.lvsAnalysis.HideSelection = false;
             this.lvsAnalysis.Location = new System.Drawing.Point(3, 20);
             this.lvsAnalysis.Name = "lvsAnalysis";
-            this.lvsAnalysis.Size = new System.Drawing.Size(856, 137);
+            this.lvsAnalysis.Size = new System.Drawing.Size(415, 137);
             this.lvsAnalysis.TabIndex = 11;
             this.lvsAnalysis.UseCompatibleStateImageBehavior = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lvsAnalysis);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(421, 160);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Analysis";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lvAnalysis2);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.groupBox2.Location = new System.Drawing.Point(421, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(441, 160);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Analysis";
+            // 
+            // lvAnalysis2
+            // 
+            this.lvAnalysis2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvAnalysis2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvAnalysis2.FullRowSelect = true;
+            this.lvAnalysis2.GridLines = true;
+            this.lvAnalysis2.HideSelection = false;
+            this.lvAnalysis2.Location = new System.Drawing.Point(3, 20);
+            this.lvAnalysis2.Name = "lvAnalysis2";
+            this.lvAnalysis2.Size = new System.Drawing.Size(435, 137);
+            this.lvAnalysis2.TabIndex = 11;
+            this.lvAnalysis2.UseCompatibleStateImageBehavior = false;
             // 
             // FNSA
             // 
@@ -160,6 +188,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(862, 227);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenus);
@@ -170,6 +199,7 @@
             this.panelMenus.ResumeLayout(false);
             this.panelMenus.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -183,7 +213,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListView lvsAnalysis;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListView lvAnalysis2;
     }
 }
