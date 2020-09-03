@@ -476,6 +476,7 @@
     <Compile Include="Database\DbSettings\dbConnection.cs" />
     <Compile Include="Database\Models\access.cs" />
     <Compile Include="Database\Models\AnalysisModel.cs" />
+    <Compile Include="Database\Models\averageStayFns.cs" />
     <Compile Include="Database\Models\consumablesMod.cs" />
     <Compile Include="Database\Models\consumablesServMod.cs" />
     <Compile Include="Database\Models\customerDetailsMod.cs" />
