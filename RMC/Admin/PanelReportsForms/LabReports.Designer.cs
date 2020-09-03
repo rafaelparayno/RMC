@@ -55,9 +55,10 @@
             this.btnSuppliers.Rotation = 0D;
             this.btnSuppliers.Size = new System.Drawing.Size(114, 60);
             this.btnSuppliers.TabIndex = 10;
-            this.btnSuppliers.Text = "&Lab Type";
+            this.btnSuppliers.Text = "Sales In Clinic";
             this.btnSuppliers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSuppliers.UseVisualStyleBackColor = false;
+            this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
             // 
             // btnAutomated
             // 
