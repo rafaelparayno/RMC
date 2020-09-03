@@ -141,6 +141,7 @@
             this.btnLabFiles.Text = "Lab Files";
             this.btnLabFiles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLabFiles.UseVisualStyleBackColor = false;
+            this.btnLabFiles.Click += new System.EventHandler(this.btnLabFiles_Click);
             // 
             // btnDoctorRecord
             // 

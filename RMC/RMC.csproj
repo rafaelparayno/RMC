@@ -493,6 +493,7 @@
     <Compile Include="Database\Models\packages.cs" />
     <Compile Include="Database\Models\PackagesNames.cs" />
     <Compile Include="Database\Models\patientDetails.cs" />
+    <Compile Include="Database\Models\patientLabModel.cs" />
     <Compile Include="Database\Models\patientVModel.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\role.cs" />
@@ -613,6 +614,12 @@
     </Compile>
     <Compile Include="Patients\PanelsDetails\Dialogs\AddEditVital.Designer.cs">
       <DependentUpon>AddEditVital.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelLabDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelLabDetail.Designer.cs">
+      <DependentUpon>PanelLabDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Patients\PanelsDetails\PanelPatientDetails.cs">
       <SubType>Form</SubType>
@@ -927,6 +934,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\Dialogs\AddEditVital.resx">
       <DependentUpon>AddEditVital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelsDetails\PanelLabDetail.resx">
+      <DependentUpon>PanelLabDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\PanelPatientDetails.resx">
       <DependentUpon>PanelPatientDetails.cs</DependentUpon>
