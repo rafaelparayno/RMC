@@ -15,6 +15,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
         public salesClinic()
         {
             InitializeComponent();
+            chart1.Visible = false;
         }
     }
 }
