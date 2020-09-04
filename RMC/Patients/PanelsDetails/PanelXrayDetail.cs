@@ -23,6 +23,7 @@ namespace RMC.Patients.PanelsDetails
             this.id = id;
             initListCols();
             getData();
+            dateTimePicker1.MaxDate = DateTime.Now;
         }
 
         private async void getData()
@@ -31,9 +32,17 @@ namespace RMC.Patients.PanelsDetails
             refreshLvs();
         }
 
+        private async Task searchData()
+        {
+            listXrayModel = await patientXrayController.getPatientXray(id,
+                                dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            refreshLvs();
+        }
+
 
         private void refreshLvs()
         {
+            lvLabDetails.Items.Clear();
             foreach(patientXrayModel pmodel in listXrayModel)
             {
                 ListViewItem lvitem = new ListViewItem();
@@ -90,6 +99,11 @@ namespace RMC.Patients.PanelsDetails
             string path = await patientXrayController.getFullPath(id);
 
             pbEdited.Image = Image.FromFile(path);
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            searchData();
         }
     }
 }

@@ -86,9 +86,9 @@ namespace RMC.Patients.PanelsDetails
             await showDocLab(id);
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private async void iconButton1_Click(object sender, EventArgs e)
         {
-            searchData();
+            await searchData();
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
