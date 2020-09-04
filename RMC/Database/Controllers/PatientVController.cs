@@ -69,6 +69,38 @@ namespace RMC.Database.Controllers
             return listpatientv;
         }
 
+        public async Task<List<patientVModel>> getPatientV(int id,string date)
+        {
+            List<patientVModel> listpatientv = new List<patientVModel>();
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            string sql = @"SELECT * FROM `patientvital` 
+                            WHERE patient_id = @patid AND date_vital = @date";
+            listparams.Add(new MySqlParameter("@patid", id));
+            listparams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+
+            while (await reader.ReadAsync())
+            {
+                patientVModel patientV = new patientVModel();
+
+                patientV.id = int.Parse(reader["patient_vital_id"].ToString());
+                patientV.date_vital = reader["date_vital"].ToString();
+                patientV.bp = reader["BP"].ToString();
+                patientV.temp = reader["TEMP"].ToString();
+                patientV.wt = reader["WT"].ToString();
+                patientV.lmp = reader["LMP"].ToString();
+                patientV.ua = reader["UA"].ToString();
+                patientV.pus = reader["PUS"].ToString();
+                patientV.rbc = reader["rbc"].ToString();
+                listpatientv.Add(patientV);
+            }
+
+            crud.CloseConnection();
+
+            return listpatientv;
+        }
+
         public async void save(params string[] data)
         {
             string sql = @"INSERT INTO patientvital 

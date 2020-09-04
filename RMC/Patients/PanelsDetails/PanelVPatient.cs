@@ -24,6 +24,7 @@ namespace RMC.Patients.PanelsDetails
             this.id = id;
             initColLv();
             getDataFromDb();
+            dateTimePicker1.MaxDate = DateTime.Now;
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -68,6 +69,13 @@ namespace RMC.Patients.PanelsDetails
             refreshGrid(listpatv);
         }
 
+        private async Task searchDataFromDb()
+        {
+            listpatv = await patV.getPatientV(id,
+                        dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            refreshGrid(listpatv);
+        }
+
         private void refreshGrid(List<patientVModel> listvv)
         {
             lvVitals.Items.Clear();
@@ -105,6 +113,16 @@ namespace RMC.Patients.PanelsDetails
                 MessageBox.Show("Succesfully Deleted data");
                 getDataFromDb();
             }
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            getDataFromDb();
+        }
+
+        private async void iconButton1_Click(object sender, EventArgs e)
+        {
+             await searchDataFromDb();
         }
     }
 }
