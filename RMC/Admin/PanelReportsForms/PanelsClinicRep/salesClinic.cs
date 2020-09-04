@@ -18,12 +18,14 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
         SalesClinicController salesClinicController = new SalesClinicController();
         DataTable dtDays = new DataTable();
         DataTable dtMonths = new DataTable();
+        DataTable dtyears = new DataTable();
         public salesClinic()
         {
             InitializeComponent();
             chart1.Visible = false;
             initDtDays();
             initDtMonths();
+            initDtYrs();
         }
 
         #region Days Actions
@@ -79,6 +81,8 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
 
         #endregion
 
+        #region Months Action
+
         private void initDtMonths()
         {
             dtMonths.Columns.Add("Month", typeof(string));
@@ -91,7 +95,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
             chart1.Visible = true;
             chart1.Series.Clear();
             dtMonths.Rows.Clear();
-            Series series = chart1.Series.Add("Sales Per Day");
+            Series series = chart1.Series.Add("Sales Per Month");
             series.ChartType = SeriesChartType.Column;
 
             for (int i = d; i <= d2; i++)
@@ -118,7 +122,56 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
                 return;
 
             await loadDataInMonth(form.m, form.m2, form.year);
-           // loadDatasInMonth(form.m, form.m2, form.year);
+
         }
+
+
+
+        #endregion
+
+
+        private void initDtYrs()
+        {
+            dtyears.Columns.Add("Year", typeof(string));
+            dtyears.Columns.Add("Sales", typeof(float));
+        }
+
+        private async Task loadDatasInYear(int yr1,int yr2)
+        {
+            float totalSalesInYear = 0;
+            chart1.Visible = true;
+            chart1.Series.Clear();
+            dtyears.Rows.Clear();
+            Series series = chart1.Series.Add("Sales Per Year");
+            series.ChartType = SeriesChartType.Column;
+
+
+            for (int i = yr1; i <= yr2; i++)
+            {
+                float salesInYear = await salesClinicController.getSearchYear(i);
+
+                dtyears.Rows.Add(i.ToString(), salesInYear);
+                series.Points.AddXY(i, salesInYear);
+                totalSalesInYear += salesInYear;
+            }
+
+            dgItemList.DataSource = "";
+            dgItemList.DataSource = dtyears;
+
+            lblReve.Text = "Total Sales  \n" + "PHP " + totalSalesInYear;
+        }
+
+        private async void iconButton4_Click(object sender, EventArgs e)
+        {
+            DiagYears form = new DiagYears();
+            form.ShowDialog();
+
+            if (form.yrFrom == 0)
+                return;
+
+             await loadDatasInYear(form.yrFrom, form.yrTo);
+        }
+
+
     }
 }
