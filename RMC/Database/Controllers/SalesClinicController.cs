@@ -2,6 +2,7 @@
 using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,33 @@ namespace RMC.Database.Controllers
             list.Add(new MySqlParameter("@type", type));
             list.Add(new MySqlParameter("@id", id));
             await crud.ExecuteAsync(sql, list);
+        }
+
+        public async Task<DataSet> getDataTableAllSales()
+        {
+            string sql = @"SELECT sales,DATE_FORMAT(date_invoice, '%M %d %Y') AS 'Date' FROM invoice 
+                        WHERE invoice_id in (SELECT invoice_id FROM salesclinic)";
+
+           return await crud.GetDataSetAsync(sql, null);
+        }
+
+        public async Task<float> getTotalSales()
+        {
+            float totalSales = 0;
+            string sql = @"SELECT SUM(sales) AS 'sales' FROM invoice 
+                            WHERE invoice_id in (SELECT invoice_id FROM salesclinic)";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while(await reader.ReadAsync())
+            {
+                totalSales = reader["sales"].ToString() == "" ? 0 : 
+                            float.Parse(reader["sales"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return totalSales;
         }
 
         public async Task<float> getSearchDays(string date)

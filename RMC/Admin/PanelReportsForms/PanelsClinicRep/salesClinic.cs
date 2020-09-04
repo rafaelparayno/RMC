@@ -129,6 +129,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
 
         #endregion
 
+        #region Year Action
 
         private void initDtYrs()
         {
@@ -136,7 +137,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
             dtyears.Columns.Add("Sales", typeof(float));
         }
 
-        private async Task loadDatasInYear(int yr1,int yr2)
+        private async Task loadDatasInYear(int yr1, int yr2)
         {
             float totalSalesInYear = 0;
             chart1.Visible = true;
@@ -169,9 +170,31 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
             if (form.yrFrom == 0)
                 return;
 
-             await loadDatasInYear(form.yrFrom, form.yrTo);
+            await loadDatasInYear(form.yrFrom, form.yrTo);
         }
 
+
+        #endregion
+
+
+        private async Task loadAllSales()
+        {
+            DataSet ds = await salesClinicController.getDataTableAllSales();
+
+            dgItemList.DataSource = "";
+            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.AutoResizeColumns();
+        }
+
+        private async void iconButton3_Click(object sender, EventArgs e)
+        {
+            await loadAllSales();
+            float totalSales = await salesClinicController.getTotalSales();
+
+            lblReve.Text = "Total Sales  \n" + "PHP " + totalSales;
+            chart1.Series.Clear();
+            chart1.Visible = false;
+        }
 
     }
 }
