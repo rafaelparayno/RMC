@@ -17,12 +17,16 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
     {
         SalesClinicController salesClinicController = new SalesClinicController();
         DataTable dtDays = new DataTable();
+        DataTable dtMonths = new DataTable();
         public salesClinic()
         {
             InitializeComponent();
             chart1.Visible = false;
             initDtDays();
+            initDtMonths();
         }
+
+        #region Days Actions
 
         private void initDtDays()
         {
@@ -30,7 +34,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
             dtDays.Columns.Add("Sales", typeof(float));
         }
 
-        private async Task loadDataIndays(string dateFrom,string dateTo)
+        private async Task loadDataIndays(string dateFrom, string dateTo)
         {
             float TotalSalesDays = 0;
             dtDays.Rows.Clear();
@@ -38,11 +42,11 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
             DateTime dateTimeTo = DateTime.Parse(dateTo);
             chart1.Visible = true;
             chart1.Series.Clear();
-            Console.WriteLine(dateTimeFrom + " " + dateTimeTo);
+           
             Series series = chart1.Series.Add("Sales Per Day");
             series.ChartType = SeriesChartType.Column;
-          
-            
+
+
             for (DateTime date = dateTimeFrom; date <= dateTimeTo; date = date.AddDays(1))
             {
                 float sales = await salesClinicController.getSearchDays(date.ToString("yyyy-MM-dd"));
@@ -70,6 +74,51 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
             string d2 = form.dateTo;
 
             await loadDataIndays(d1, d2);
+        }
+
+
+        #endregion
+
+        private void initDtMonths()
+        {
+            dtMonths.Columns.Add("Month", typeof(string));
+            dtMonths.Columns.Add("Sales", typeof(float));
+        }
+
+        private async Task loadDataInMonth(int d, int d2, int yr)
+        {
+            float totalSalesInMonth = 0;
+            chart1.Visible = true;
+            chart1.Series.Clear();
+            dtMonths.Rows.Clear();
+            Series series = chart1.Series.Add("Sales Per Day");
+            series.ChartType = SeriesChartType.Column;
+
+            for (int i = d; i <= d2; i++)
+            {
+                float salesInMonth = await salesClinicController.getSearchMonths(i, yr);
+
+                totalSalesInMonth += salesInMonth;
+                dtMonths.Rows.Add(StaticData.months[i - 1], salesInMonth);
+                series.Points.AddXY(StaticData.months[i - 1], salesInMonth);
+
+            }
+
+            dgItemList.DataSource = "";
+            dgItemList.DataSource = dtMonths;
+            lblReve.Text = "Total Sales  \n" + "PHP " + totalSalesInMonth;
+        }
+
+        private async void iconButton2_Click(object sender, EventArgs e)
+        {
+            DiagMonths form = new DiagMonths();
+            form.ShowDialog();
+
+            if (form.m == 0)
+                return;
+
+            await loadDataInMonth(form.m, form.m2, form.year);
+           // loadDatasInMonth(form.m, form.m2, form.year);
         }
     }
 }
