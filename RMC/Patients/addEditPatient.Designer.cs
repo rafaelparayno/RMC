@@ -120,6 +120,7 @@
             this.btnXray.Text = "Xray Files";
             this.btnXray.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnXray.UseVisualStyleBackColor = false;
+            this.btnXray.Click += new System.EventHandler(this.btnXray_Click);
             // 
             // btnLabFiles
             // 

@@ -495,6 +495,7 @@
     <Compile Include="Database\Models\patientDetails.cs" />
     <Compile Include="Database\Models\patientLabModel.cs" />
     <Compile Include="Database\Models\patientVModel.cs" />
+    <Compile Include="Database\Models\patientXrayModel.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\salesPharmacyModel.cs" />
@@ -632,6 +633,12 @@
     </Compile>
     <Compile Include="Patients\PanelsDetails\PanelVPatient.Designer.cs">
       <DependentUpon>PanelVPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelXrayDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelXrayDetail.Designer.cs">
+      <DependentUpon>PanelXrayDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Patients\PatientControl.cs">
       <SubType>UserControl</SubType>
@@ -943,6 +950,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\PanelVPatient.resx">
       <DependentUpon>PanelVPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelsDetails\PanelXrayDetail.resx">
+      <DependentUpon>PanelXrayDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PatientControl.resx">
       <DependentUpon>PatientControl.cs</DependentUpon>

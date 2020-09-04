@@ -38,7 +38,7 @@ namespace RMC.Patients.PanelsDetails
             lvLabDetails.Columns.Add("ID", 100, HorizontalAlignment.Left);
             lvLabDetails.Columns.Add("Laboratory Name", 200, HorizontalAlignment.Left);
             lvLabDetails.Columns.Add("Lab Type", 200, HorizontalAlignment.Left);
-            lvLabDetails.Columns.Add("Date Taken", 200, HorizontalAlignment.Left);
+            lvLabDetails.Columns.Add("Date Taken", 300, HorizontalAlignment.Left);
         }
 
         private void refreshListView()
