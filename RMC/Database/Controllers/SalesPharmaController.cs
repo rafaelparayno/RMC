@@ -87,42 +87,6 @@ namespace RMC.Database.Controllers
             return salesPharmas;
         }
 
-
-        public async Task<List<salesPharmacyModel>> getSearchMonths(int d, int d2, int y)
-        {
-            List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();
-            string sql;
-
-            sql = d == d2 ? @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
-                        INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
-                        WHERE month(invoice.date_invoice) = @dt1 AND year(invoice.date_invoice) = @y
-                        ORDER BY `invoice`.`date_invoice` ASC" :
-                        @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM `invoice` 
-                        INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
-                        WHERE month(invoice.date_invoice) BETWEEN @dt1 AND @d2 AND year(invoice.date_invoice) = @y
-                        ORDER BY `invoice`.`date_invoice` ASC";
-            List<MySqlParameter> listparams = new List<MySqlParameter>();
-            listparams.Add(new MySqlParameter("@dt1", d));
-            listparams.Add(new MySqlParameter("@y", y));
-
-            if (d != d2) listparams.Add(new MySqlParameter("@d2", d2));
-
-            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
-
-            while (await reader.ReadAsync())
-            {
-                salesPharmacyModel s = new salesPharmacyModel();
-                s.id = int.Parse(reader["invoice_id"].ToString());
-                s.sales = float.Parse(reader["sales"].ToString());
-                s.dateInvoice = DateTime.Parse(reader["date_invoice"].ToString());
-                salesPharmas.Add(s);
-            }
-
-            crud.CloseConnection();
-
-            return salesPharmas;
-        }
-
         public async Task<float> getSumInMonth(int m,int y)
         {
             float totalSales = 0;

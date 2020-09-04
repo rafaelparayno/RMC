@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,5 +25,112 @@ namespace RMC.Database.Controllers
             list.Add(new MySqlParameter("@id", id));
             await crud.ExecuteAsync(sql, list);
         }
+
+        public async Task<float> getSearchDays(string date)
+        {
+            float totalSales = 0;
+            string sql = @"SELECT SUM(sales) As 'sales' FROM invoice 
+                        WHERE invoice_id in (SELECT invoice_id FROM salesclinic)
+                        AND date_invoice BETWEEN @date AND DATE_ADD(@date, INTERVAL 1 DAY)";
+
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+            listParams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
+
+            while(await reader.ReadAsync())
+            {
+                totalSales = reader["sales"].ToString() == "" ? 0 : 
+                            float.Parse(reader["sales"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return totalSales;
+        }
+
+        public async Task<float> getSearchMonths(int m,int y)
+        {
+            float totalSales = 0;
+            string sql = @"SELECT SUM(sales) As 'sales' FROM invoice 
+                        WHERE invoice_id in (SELECT invoice_id FROM salesclinic)
+                        AND month(date_invoice) = @m AND year(date_invoice) = @y";
+
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+            listParams.Add(new MySqlParameter("@m", m));
+            listParams.Add(new MySqlParameter("@y", y));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
+
+            while(await reader.ReadAsync())
+            {
+                totalSales = reader["sales"].ToString() == "" ? 0 :
+                             float.Parse(reader["sales"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return totalSales;
+        }
+
+        public async Task<float> getSearchYear(int y)
+        {
+            float totalSales = 0;
+            string sql = @"SELECT SUM(sales) As 'sales' FROM invoice 
+                        WHERE invoice_id in (SELECT invoice_id FROM salesclinic)
+                        AND year(date_invoice) = @y";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@y", y));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                totalSales = reader["sales"].ToString() == "" ? 0 : 
+                            float.Parse(reader["sales"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+            return totalSales;
+        }
+
+        /*public async Task<float> getTotalCostDay(string date)
+        {
+            float totalCost = 0;
+            List<SalesClinicTypeMod> listSalesClinicTypeMod = new List<SalesClinicTypeMod>();
+
+            string sql = @"SELECT * FROM `salesclinic`
+                    WHERE invoice_id in (SELECT invoice_id FROM invoice 
+                                                WHERE invoice.date_invoice BETWEEN @date 
+                     							AND DATE_ADD(@date,INTERVAL 1 DAY))";
+
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+            listParams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
+
+            while(await reader.ReadAsync())
+            {
+                SalesClinicTypeMod s = new SalesClinicTypeMod();
+                s.type = reader["type_sales"].ToString();
+                s.typeid = int.Parse(reader["type_sales_id"].ToString());
+                listSalesClinicTypeMod.Add(s);
+            }
+            crud.CloseConnection();
+
+           *//* foreach (SalesClinicTypeMod itemsSales in listSalesClinicTypeMod)
+            {
+                switch (itemsSales.type)
+                {
+                    case
+                }
+            }*//*
+
+        
+
+            return totalCost;
+        }*/
     }
 }

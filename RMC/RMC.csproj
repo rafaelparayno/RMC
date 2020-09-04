@@ -498,6 +498,7 @@
     <Compile Include="Database\Models\patientXrayModel.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\role.cs" />
+    <Compile Include="Database\Models\SalesClinicTypeMod.cs" />
     <Compile Include="Database\Models\salesPharmacyModel.cs" />
     <Compile Include="Database\Models\useraccount.cs" />
     <Compile Include="Database\Models\UserLog.cs" />
