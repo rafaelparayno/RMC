@@ -24,11 +24,20 @@ namespace RMC.Patients.PanelsDetails
             this.id = id;
             initLvsCols();
             loadData();
+            dateTimePicker1.MaxDate = DateTime.Now;
         }
 
         private async void loadData()
         {
             listpatientModel = await patientLabController.getPatientLabModel(id);
+            refreshListView();
+        }
+
+        private async Task searchData()
+        {
+            listpatientModel = await patientLabController.getPatientLabModel(id,
+                                        dateTimePicker1.Value.ToString("yyy-MM-dd"));
+
             refreshListView();
         }
 
@@ -43,6 +52,7 @@ namespace RMC.Patients.PanelsDetails
 
         private void refreshListView()
         {
+            lvLabDetails.Items.Clear();
            foreach(patientLabModel l in listpatientModel)
             {
                 ListViewItem lvitem = new ListViewItem();
@@ -76,6 +86,14 @@ namespace RMC.Patients.PanelsDetails
             await showDocLab(id);
         }
 
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            searchData();
+        }
 
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            loadData();
+        }
     }
 }

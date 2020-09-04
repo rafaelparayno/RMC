@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.panelMenus = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEditItem = new FontAwesome.Sharp.IconButton();
             this.btnRemove = new FontAwesome.Sharp.IconButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbEdited = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvLabDetails = new System.Windows.Forms.ListView();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.panelMenus.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -58,58 +59,6 @@
             this.panelMenus.Name = "panelMenus";
             this.panelMenus.Size = new System.Drawing.Size(717, 45);
             this.panelMenus.TabIndex = 6;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.iconButton1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(717, 72);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(18, 37);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(585, 24);
-            this.dateTimePicker1.TabIndex = 223;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Search";
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconSize = 18;
-            this.iconButton1.Location = new System.Drawing.Point(621, 37);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(38, 23);
-            this.iconButton1.TabIndex = 222;
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
             // 
             // btnAddItem
             // 
@@ -177,6 +126,60 @@
             this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRemove.UseVisualStyleBackColor = false;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.iconButton2);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.iconButton1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(717, 72);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(256, 37);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(347, 24);
+            this.dateTimePicker1.TabIndex = 223;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconSize = 18;
+            this.iconButton1.Location = new System.Drawing.Point(621, 37);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(38, 23);
+            this.iconButton1.TabIndex = 222;
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(253, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Search";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Salmon;
@@ -234,6 +237,26 @@
             this.lvLabDetails.UseCompatibleStateImageBehavior = false;
             this.lvLabDetails.SelectedIndexChanged += new System.EventHandler(this.lvLabDetails_SelectedIndexChanged);
             // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton2.ForeColor = System.Drawing.Color.White;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconSize = 18;
+            this.iconButton2.Location = new System.Drawing.Point(12, 33);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Rotation = 0D;
+            this.iconButton2.Size = new System.Drawing.Size(238, 27);
+            this.iconButton2.TabIndex = 224;
+            this.iconButton2.Text = "View All";
+            this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
             // PanelLabDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -275,5 +298,6 @@
         private System.Windows.Forms.PictureBox pbEdited;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lvLabDetails;
+        private FontAwesome.Sharp.IconButton iconButton2;
     }
 }
