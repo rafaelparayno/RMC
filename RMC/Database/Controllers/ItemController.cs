@@ -18,6 +18,7 @@ namespace RMC.Database.Controllers
 
 
 
+       
         public async Task<DataSet> getdataSetActive()
         {
             string sql = @"SELECT item_id,item_name ,UnitPrice , MarkupPrice ,
@@ -559,6 +560,24 @@ namespace RMC.Database.Controllers
             list.Add(new MySqlParameter("@isactive", 1));
             
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, list);
+            while (await reader.ReadAsync())
+            {
+                cbItems.Add(new ComboBoxItem(reader["item_name"].ToString(),
+                    int.Parse(reader["item_id"].ToString())));
+            }
+            crud.CloseConnection();
+            return cbItems;
+        }
+
+        public async Task<List<ComboBoxItem>> getMedicinesActive()
+        {
+
+            List<ComboBoxItem> cbItems = new List<ComboBoxItem>();
+            string sql = @"SELECT * FROM itemlist 
+                         WHERE category_id in (SELECT category_id FROM category WHERE item_type = 1)
+                         AND is_active = 1";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
             while (await reader.ReadAsync())
             {
                 cbItems.Add(new ComboBoxItem(reader["item_name"].ToString(),

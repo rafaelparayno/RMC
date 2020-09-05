@@ -496,6 +496,7 @@
     <Compile Include="Database\Models\fnsaItemMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
     <Compile Include="Database\Models\labModel.cs" />
+    <Compile Include="Database\Models\MedsMod.cs" />
     <Compile Include="Database\Models\packages.cs" />
     <Compile Include="Database\Models\PackagesNames.cs" />
     <Compile Include="Database\Models\patientDetails.cs" />

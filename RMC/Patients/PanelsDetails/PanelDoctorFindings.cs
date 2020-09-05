@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Doctor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +34,12 @@ namespace RMC.Patients.PanelsDetails
             }
 
 
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            DoctorForm form = new DoctorForm();
+            form.ShowDialog();
         }
     }
 }

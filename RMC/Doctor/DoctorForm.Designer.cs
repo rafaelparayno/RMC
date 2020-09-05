@@ -228,7 +228,6 @@
             this.cbSymp.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbSymp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbSymp.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbSymp.Enabled = false;
             this.cbSymp.FormattingEnabled = true;
             this.cbSymp.Location = new System.Drawing.Point(15, 42);
             this.cbSymp.Name = "cbSymp";
@@ -542,7 +541,6 @@
             this.cbLab.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbLab.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbLab.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbLab.Enabled = false;
             this.cbLab.FormattingEnabled = true;
             this.cbLab.Location = new System.Drawing.Point(15, 49);
             this.cbLab.Name = "cbLab";
@@ -555,7 +553,6 @@
             this.cbXray.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbXray.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbXray.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbXray.Enabled = false;
             this.cbXray.FormattingEnabled = true;
             this.cbXray.Location = new System.Drawing.Point(15, 49);
             this.cbXray.Name = "cbXray";
@@ -568,7 +565,6 @@
             this.cbMeds.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbMeds.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbMeds.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbMeds.Enabled = false;
             this.cbMeds.FormattingEnabled = true;
             this.cbMeds.Location = new System.Drawing.Point(16, 49);
             this.cbMeds.Name = "cbMeds";
@@ -606,7 +602,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DoctorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DoctorForm";
+            this.Load += new System.EventHandler(this.DoctorForm_Load);
             this.panel1.ResumeLayout(false);
             this.panelP.ResumeLayout(false);
             this.panelA.ResumeLayout(false);
