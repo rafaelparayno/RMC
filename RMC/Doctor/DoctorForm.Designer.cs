@@ -233,6 +233,7 @@
             this.cbSymp.Name = "cbSymp";
             this.cbSymp.Size = new System.Drawing.Size(852, 24);
             this.cbSymp.TabIndex = 255;
+            this.cbSymp.SelectedIndexChanged += new System.EventHandler(this.cbSymp_SelectedIndexChanged);
             // 
             // btnAddSymp
             // 
@@ -443,7 +444,7 @@
             this.btnRemSymp.Rotation = 0D;
             this.btnRemSymp.Size = new System.Drawing.Size(322, 24);
             this.btnRemSymp.TabIndex = 257;
-            this.btnRemSymp.Text = "Add Symptoms";
+            this.btnRemSymp.Text = "Remove";
             this.btnRemSymp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemSymp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemSymp.UseVisualStyleBackColor = false;
@@ -546,6 +547,7 @@
             this.cbLab.Name = "cbLab";
             this.cbLab.Size = new System.Drawing.Size(852, 24);
             this.cbLab.TabIndex = 254;
+            this.cbLab.SelectedIndexChanged += new System.EventHandler(this.cbLab_SelectedIndexChanged);
             // 
             // cbXray
             // 
@@ -558,6 +560,7 @@
             this.cbXray.Name = "cbXray";
             this.cbXray.Size = new System.Drawing.Size(852, 24);
             this.cbXray.TabIndex = 255;
+            this.cbXray.SelectedIndexChanged += new System.EventHandler(this.cbXray_SelectedIndexChanged);
             // 
             // cbMeds
             // 
@@ -570,6 +573,7 @@
             this.cbMeds.Name = "cbMeds";
             this.cbMeds.Size = new System.Drawing.Size(851, 24);
             this.cbMeds.TabIndex = 256;
+            this.cbMeds.SelectedIndexChanged += new System.EventHandler(this.cbMeds_SelectedIndexChanged);
             // 
             // txtInstructMeds
             // 

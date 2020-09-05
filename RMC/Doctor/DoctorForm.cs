@@ -19,9 +19,37 @@ namespace RMC.Doctor
         ItemController itemz = new ItemController();
         LaboratoryController laboratoryController = new LaboratoryController();
         XrayControllers xrayControllers = new XrayControllers();
+
+        private int cbLabValue = 0;
+        private int cbXrayValue = 0;
+        private int cbSympValue = 0;
+        private int cbMedsValue = 0;
         public DoctorForm()
         {
             InitializeComponent();
+            initLvsCols();
+        }
+
+        private void initLvsCols()
+        {
+            lvLab.View = View.Details;
+            lvXray.View = View.Details;
+            lvSymp.View = View.Details;
+            lvMeds.View = View.Details;
+
+
+            lvLab.Columns.Add("Lab ID", 100, HorizontalAlignment.Left);
+            lvLab.Columns.Add("Lab Name", 500, HorizontalAlignment.Left);
+
+            lvXray.Columns.Add("Xray ID", 100, HorizontalAlignment.Left);
+            lvXray.Columns.Add("Xray Name", 500, HorizontalAlignment.Left);
+
+            lvSymp.Columns.Add("Symptom ID", 100, HorizontalAlignment.Left);
+            lvSymp.Columns.Add("Symptom Name", 500, HorizontalAlignment.Left);
+
+            lvMeds.Columns.Add("Meds ID", 100, HorizontalAlignment.Left);
+            lvMeds.Columns.Add("Meds Name", 300, HorizontalAlignment.Left);
+            lvMeds.Columns.Add("Instruction", 600, HorizontalAlignment.Left);
         }
 
         private async Task loadCbs()
@@ -47,5 +75,27 @@ namespace RMC.Doctor
         {
            await  loadCbs();
         }
+
+        private void cbSymp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbSympValue = int.Parse((cbSymp.SelectedItem as ComboBoxItem).Value.ToString());
+        }
+
+        private void cbLab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbLabValue = int.Parse((cbLab.SelectedItem as ComboBoxItem).Value.ToString());
+        }
+
+        private void cbXray_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbXrayValue = int.Parse((cbXray.SelectedItem as ComboBoxItem).Value.ToString());
+        }
+
+        private void cbMeds_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbMedsValue = int.Parse((cbMeds.SelectedItem as ComboBoxItem).Value.ToString());
+        }
+
+
     }
 }
