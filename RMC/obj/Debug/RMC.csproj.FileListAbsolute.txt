@@ -144,3 +144,4 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\ShockwaveFlashObjects.dl
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Patients.PanelsDetails.PanelDoctorFindings.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Doctor.PanelDoctor.Diag.addEditSymp.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Doctor.PanelDoctor.PanelDoctorSettings.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Doctor.DoctorForm.resources

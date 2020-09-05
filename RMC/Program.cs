@@ -3,6 +3,7 @@ using RMC.Admin.PanelLabForms;
 using RMC.Admin.PanelReportsForms.PanelsPharmaRep;
 using RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel;
 using RMC.Components;
+using RMC.Doctor;
 using RMC.InventoryPharma.PanelRo;
 using RMC.Lab.Panels;
 using RMC.Lab.Panels.Diags;
@@ -28,7 +29,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new splashscreen());
+            Application.Run(new DoctorForm());
         }
     }
 }
