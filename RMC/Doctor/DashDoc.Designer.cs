@@ -32,17 +32,17 @@
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.datelabel = new System.Windows.Forms.Label();
             this.timelabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.panelLogo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDoctorSet = new FontAwesome.Sharp.IconButton();
             this.btnPatientRec = new FontAwesome.Sharp.IconButton();
-            this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelChildForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelSideMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,18 +87,6 @@
             this.timelabel.Text = "Date & Time";
             this.timelabel.Visible = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::RMC.Properties.Resources.full_copy;
-            this.pictureBox1.Location = new System.Drawing.Point(31, 85);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(631, 428);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Maroon;
@@ -121,6 +109,29 @@
             this.panelSideMenu.Size = new System.Drawing.Size(250, 600);
             this.panelSideMenu.TabIndex = 223;
             // 
+            // panelLogo
+            // 
+            this.panelLogo.BackColor = System.Drawing.Color.Salmon;
+            this.panelLogo.Controls.Add(this.pictureBox2);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.ForeColor = System.Drawing.Color.FloralWhite;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(250, 75);
+            this.panelLogo.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::RMC.Properties.Resources.full_copy;
+            this.pictureBox1.Location = new System.Drawing.Point(31, 85);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(631, 428);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnDoctorSet
             // 
             this.btnDoctorSet.BackColor = System.Drawing.Color.Salmon;
@@ -140,7 +151,7 @@
             this.btnDoctorSet.Rotation = 0D;
             this.btnDoctorSet.Size = new System.Drawing.Size(250, 45);
             this.btnDoctorSet.TabIndex = 17;
-            this.btnDoctorSet.Text = "View Clinic Stocks";
+            this.btnDoctorSet.Text = "Doctor Settings";
             this.btnDoctorSet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDoctorSet.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDoctorSet.UseVisualStyleBackColor = false;
@@ -170,17 +181,6 @@
             this.btnPatientRec.UseVisualStyleBackColor = false;
             this.btnPatientRec.Click += new System.EventHandler(this.btnPatientRec_Click);
             // 
-            // panelLogo
-            // 
-            this.panelLogo.BackColor = System.Drawing.Color.Salmon;
-            this.panelLogo.Controls.Add(this.pictureBox2);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.ForeColor = System.Drawing.Color.FloralWhite;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(250, 75);
-            this.panelLogo.TabIndex = 1;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -208,9 +208,9 @@
             this.Text = "DashDoc";
             this.panelChildForm.ResumeLayout(false);
             this.panelChildForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelSideMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 

@@ -16,6 +16,8 @@ namespace RMC.Patients
 
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         List<patientDetails> listDetails = new List<patientDetails>();
+        AccessController accessController = new AccessController();
+        List<int> listAcc = new List<int>();
         int currentPage = 1;
         int rowsPerPage = 10;
        
@@ -24,7 +26,16 @@ namespace RMC.Patients
             InitializeComponent();
             this.DoubleBuffered = true;
             refreshListPatient();
+            getAccess();
+        }
 
+        private void getAccess()
+        {
+            listAcc = accessController.accesses(UserLog.getRole());
+            if (listAcc.Contains(4))
+            {
+                iconButton2.Visible = true;
+            }
         }
          
         private async Task loadPatientDetails()
