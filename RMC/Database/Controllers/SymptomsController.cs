@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,31 @@ namespace RMC.Database.Controllers
     class SymptomsController
     {
         dbcrud crud = new dbcrud();
+
+
+        public async Task<List<SymptomsMod>> getSymptomsMod(int uid)
+        {
+            List<SymptomsMod> listSymptoms = new List<SymptomsMod>();
+            string sql = @"SELECT symptoms_id,symptoms_name FROM symptoms 
+                        WHERE u_id = @uid";
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+
+            listParams.Add(new MySqlParameter("@uid", uid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
+
+            while(await reader.ReadAsync())
+            {
+                SymptomsMod s = new SymptomsMod();
+                s.id = int.Parse(reader["symptoms_id"].ToString());
+                s.name = reader["symptoms_name"].ToString();
+                listSymptoms.Add(s);
+
+            }
+
+            crud.CloseConnection();
+            return listSymptoms;
+        }
 
         public async Task<DataSet> getDataset(int uid)
         {
