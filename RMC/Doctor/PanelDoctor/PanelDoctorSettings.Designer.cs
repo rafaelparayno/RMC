@@ -32,12 +32,12 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMenus = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dbServiceList = new System.Windows.Forms.DataGridView();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEditItem = new FontAwesome.Sharp.IconButton();
             this.btnRemove = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dbServiceList = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.panelMenus.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -87,6 +87,42 @@
             this.panelMenus.Size = new System.Drawing.Size(674, 61);
             this.panelMenus.TabIndex = 5;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.dbServiceList);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(0, 72);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(674, 428);
+            this.groupBox2.TabIndex = 211;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "List of Symptoms";
+            // 
+            // dbServiceList
+            // 
+            this.dbServiceList.AllowUserToAddRows = false;
+            this.dbServiceList.AllowUserToDeleteRows = false;
+            this.dbServiceList.AllowUserToResizeColumns = false;
+            this.dbServiceList.AllowUserToResizeRows = false;
+            this.dbServiceList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dbServiceList.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dbServiceList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dbServiceList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dbServiceList.Location = new System.Drawing.Point(3, 19);
+            this.dbServiceList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dbServiceList.MultiSelect = false;
+            this.dbServiceList.Name = "dbServiceList";
+            this.dbServiceList.ReadOnly = true;
+            this.dbServiceList.RowHeadersVisible = false;
+            this.dbServiceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dbServiceList.Size = new System.Drawing.Size(668, 405);
+            this.dbServiceList.StandardTab = true;
+            this.dbServiceList.TabIndex = 113;
+            // 
             // btnAddItem
             // 
             this.btnAddItem.BackColor = System.Drawing.Color.Maroon;
@@ -108,6 +144,7 @@
             this.btnAddItem.Text = "New Symptoms";
             this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAddItem.UseVisualStyleBackColor = false;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // btnEditItem
             // 
@@ -130,6 +167,7 @@
             this.btnEditItem.Text = "Edit Symptom";
             this.btnEditItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEditItem.UseVisualStyleBackColor = false;
+            this.btnEditItem.Click += new System.EventHandler(this.btnEditItem_Click);
             // 
             // btnRemove
             // 
@@ -173,42 +211,7 @@
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.dbServiceList);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 72);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(674, 428);
-            this.groupBox2.TabIndex = 211;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "List of Symptoms";
-            // 
-            // dbServiceList
-            // 
-            this.dbServiceList.AllowUserToAddRows = false;
-            this.dbServiceList.AllowUserToDeleteRows = false;
-            this.dbServiceList.AllowUserToResizeColumns = false;
-            this.dbServiceList.AllowUserToResizeRows = false;
-            this.dbServiceList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dbServiceList.BackgroundColor = System.Drawing.Color.FloralWhite;
-            this.dbServiceList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dbServiceList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dbServiceList.Location = new System.Drawing.Point(3, 19);
-            this.dbServiceList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dbServiceList.MultiSelect = false;
-            this.dbServiceList.Name = "dbServiceList";
-            this.dbServiceList.ReadOnly = true;
-            this.dbServiceList.RowHeadersVisible = false;
-            this.dbServiceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dbServiceList.Size = new System.Drawing.Size(668, 405);
-            this.dbServiceList.StandardTab = true;
-            this.dbServiceList.TabIndex = 113;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // PanelDoctorSettings
             // 

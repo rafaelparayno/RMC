@@ -1,4 +1,5 @@
-﻿using RMC.Patients;
+﻿using RMC.Doctor.PanelDoctor;
+using RMC.Patients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +41,11 @@ namespace RMC.Doctor
         private void btnPatientRec_Click(object sender, EventArgs e)
         {
             openChildForm(new PanelPatient());
+        }
+
+        private void btnDoctorSet_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelDoctorSettings());
         }
     }
 }

@@ -155,6 +155,7 @@
             this.btnDoctorSet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDoctorSet.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDoctorSet.UseVisualStyleBackColor = false;
+            this.btnDoctorSet.Click += new System.EventHandler(this.btnDoctorSet_Click);
             // 
             // btnPatientRec
             // 

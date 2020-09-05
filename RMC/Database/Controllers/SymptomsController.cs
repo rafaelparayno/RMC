@@ -14,10 +14,24 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataset(int uid)
         {
-            string sql = @"SELECT * FROM symptoms WHERE u_id = @uid";
+            string sql = @"SELECT symptoms_id,symptoms_name FROM symptoms 
+                        WHERE u_id = @uid";
             List<MySqlParameter> listParams = new List<MySqlParameter>();
 
             listParams.Add(new MySqlParameter("@uid", uid));
+
+            return await crud.GetDataSetAsync(sql, listParams);
+        }
+
+        public async Task<DataSet> getDataset(int uid,string name)
+        {
+            string sql = @"SELECT symptoms_id,symptoms_name FROM symptoms 
+                            WHERE u_id = @uid AND symptoms_name LIKE @key";
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+
+            listParams.Add(new MySqlParameter("@uid", uid));
+            string key = "%" + name + "%";
+            listParams.Add(new MySqlParameter("@key", key));
 
             return await crud.GetDataSetAsync(sql, listParams);
         }
@@ -39,13 +53,14 @@ namespace RMC.Database.Controllers
 
         public async Task update(int uid,string name,int id)
         {
-            string sql = @"UPDATE symptoms SET symptoms_name = @name WHERE u_id = @uid AND symptoms_id = @id";
+            string sql = @"UPDATE symptoms SET symptoms_name = @name 
+                            WHERE u_id = @uid AND symptoms_id = @id";
 
             List<MySqlParameter> listParams = new List<MySqlParameter>();
 
             listParams.Add(new MySqlParameter("@uid", uid));
             listParams.Add(new MySqlParameter("@name", name));
-            listParams.Add(new MySqlParameter("@id", name));
+            listParams.Add(new MySqlParameter("@id", id));
 
 
             await crud.ExecuteAsync(sql, listParams);

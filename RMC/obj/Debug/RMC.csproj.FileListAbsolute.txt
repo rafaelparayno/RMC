@@ -142,3 +142,5 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\CrystalDecisions.ReportA
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\stdole.dll
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Patients.PanelsDetails.PanelDoctorFindings.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Doctor.PanelDoctor.Diag.addEditSymp.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Doctor.PanelDoctor.PanelDoctorSettings.resources
