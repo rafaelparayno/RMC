@@ -96,6 +96,79 @@ namespace RMC.Doctor
             cbMedsValue = int.Parse((cbMeds.SelectedItem as ComboBoxItem).Value.ToString());
         }
 
+        private void btnAddSymp_Click(object sender, EventArgs e)
+        {
+            if (cbSympValue == 0)
+                return;
 
+            ListViewItem lv = new ListViewItem();
+            lv.Text = cbSympValue.ToString();
+            lv.SubItems.Add(cbSymp.Text);
+
+            lvSymp.Items.Add(lv);
+        }
+
+        private void btnRemSymp_Click(object sender, EventArgs e)
+        {
+            if (lvSymp.Items.Count == 0)
+                return;
+
+            if (lvSymp.SelectedItems.Count == 0)
+                return;
+
+            int index = lvSymp.SelectedItems[0].Index;
+            lvSymp.Items.RemoveAt(index);
+        }
+
+        private void btnAddLab_Click(object sender, EventArgs e)
+        {
+            if (cbLabValue == 0)
+                return;
+
+            ListViewItem lvItems = new ListViewItem();
+            lvItems.Text = cbLabValue.ToString();
+            lvItems.SubItems.Add(cbLab.Text);
+
+            lvLab.Items.Add(lvItems);
+        }
+
+        private void btnRemoveLab_Click(object sender, EventArgs e)
+        {
+            if (lvLab.Items.Count == 0)
+                return;
+
+            if (lvLab.SelectedItems.Count == 0)
+                return;
+
+
+            int index = lvLab.SelectedItems[0].Index;
+
+            lvLab.Items.RemoveAt(index);
+        }
+
+        private void btnAddX_Click(object sender, EventArgs e)
+        {
+            if (cbXrayValue == 0)
+                return;
+
+            ListViewItem lvItems = new ListViewItem();
+            lvItems.Text = cbXrayValue.ToString();
+            lvItems.SubItems.Add(cbXray.Text);
+
+            lvXray.Items.Add(lvItems);
+        }
+
+        private void btnRemX_Click(object sender, EventArgs e)
+        {
+            if (lvXray.Items.Count == 0)
+                return;
+
+            if (lvXray.SelectedItems.Count == 0)
+                return;
+
+            int index = lvXray.SelectedItems[0].Index;
+
+            lvXray.Items.RemoveAt(index);
+        }
     }
 }

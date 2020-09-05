@@ -37,7 +37,6 @@
             this.txtSubjective = new System.Windows.Forms.TextBox();
             this.lblO = new System.Windows.Forms.Label();
             this.panelS = new System.Windows.Forms.Panel();
-            this.lvSymp = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.panelCC = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -65,6 +64,7 @@
             this.cbMeds = new System.Windows.Forms.ComboBox();
             this.txtInstructMeds = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.lvSymp = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.panelP.SuspendLayout();
             this.panelA.SuspendLayout();
@@ -98,7 +98,7 @@
             this.panelP.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelP.Location = new System.Drawing.Point(0, 569);
             this.panelP.Name = "panelP";
-            this.panelP.Size = new System.Drawing.Size(894, 665);
+            this.panelP.Size = new System.Drawing.Size(894, 697);
             this.panelP.TabIndex = 4;
             // 
             // panelA
@@ -133,10 +133,10 @@
             // 
             // panelO
             // 
+            this.panelO.Controls.Add(this.lvSymp);
             this.panelO.Controls.Add(this.btnRemSymp);
             this.panelO.Controls.Add(this.btnAddSymp);
             this.panelO.Controls.Add(this.cbSymp);
-            this.panelO.Controls.Add(this.lvSymp);
             this.panelO.Controls.Add(this.lblO);
             this.panelO.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelO.Location = new System.Drawing.Point(0, 237);
@@ -173,17 +173,6 @@
             this.panelS.Name = "panelS";
             this.panelS.Size = new System.Drawing.Size(894, 140);
             this.panelS.TabIndex = 1;
-            // 
-            // lvSymp
-            // 
-            this.lvSymp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvSymp.HideSelection = false;
-            this.lvSymp.Location = new System.Drawing.Point(15, 71);
-            this.lvSymp.Name = "lvSymp";
-            this.lvSymp.Size = new System.Drawing.Size(852, 82);
-            this.lvSymp.TabIndex = 1;
-            this.lvSymp.UseCompatibleStateImageBehavior = false;
-            this.lvSymp.View = System.Windows.Forms.View.Details;
             // 
             // label1
             // 
@@ -256,6 +245,7 @@
             this.btnAddSymp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddSymp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddSymp.UseVisualStyleBackColor = false;
+            this.btnAddSymp.Click += new System.EventHandler(this.btnAddSymp_Click);
             // 
             // groupBox8
             // 
@@ -319,6 +309,7 @@
             this.btnRemoveLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemoveLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemoveLab.UseVisualStyleBackColor = false;
+            this.btnRemoveLab.Click += new System.EventHandler(this.btnRemoveLab_Click);
             // 
             // btnAddLab
             // 
@@ -341,6 +332,7 @@
             this.btnAddLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddLab.UseVisualStyleBackColor = false;
+            this.btnAddLab.Click += new System.EventHandler(this.btnAddLab_Click);
             // 
             // groupBox1
             // 
@@ -404,6 +396,7 @@
             this.btnRemX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemX.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemX.UseVisualStyleBackColor = false;
+            this.btnRemX.Click += new System.EventHandler(this.btnRemX_Click);
             // 
             // btnAddX
             // 
@@ -426,6 +419,7 @@
             this.btnAddX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddX.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddX.UseVisualStyleBackColor = false;
+            this.btnAddX.Click += new System.EventHandler(this.btnAddX_Click);
             // 
             // btnRemSymp
             // 
@@ -448,6 +442,7 @@
             this.btnRemSymp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemSymp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemSymp.UseVisualStyleBackColor = false;
+            this.btnRemSymp.Click += new System.EventHandler(this.btnRemSymp_Click);
             // 
             // groupBox2
             // 
@@ -463,7 +458,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(894, 244);
+            this.groupBox2.Size = new System.Drawing.Size(894, 276);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             // 
@@ -474,9 +469,9 @@
             this.lvMeds.FullRowSelect = true;
             this.lvMeds.GridLines = true;
             this.lvMeds.HideSelection = false;
-            this.lvMeds.Location = new System.Drawing.Point(15, 144);
+            this.lvMeds.Location = new System.Drawing.Point(15, 160);
             this.lvMeds.Name = "lvMeds";
-            this.lvMeds.Size = new System.Drawing.Size(852, 54);
+            this.lvMeds.Size = new System.Drawing.Size(852, 70);
             this.lvMeds.TabIndex = 250;
             this.lvMeds.UseCompatibleStateImageBehavior = false;
             // 
@@ -503,7 +498,7 @@
             this.btnRemoveMeds.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
             this.btnRemoveMeds.IconColor = System.Drawing.Color.White;
             this.btnRemoveMeds.IconSize = 18;
-            this.btnRemoveMeds.Location = new System.Drawing.Point(328, 205);
+            this.btnRemoveMeds.Location = new System.Drawing.Point(328, 237);
             this.btnRemoveMeds.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRemoveMeds.Name = "btnRemoveMeds";
             this.btnRemoveMeds.Rotation = 0D;
@@ -525,7 +520,7 @@
             this.btnAddMeds.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
             this.btnAddMeds.IconColor = System.Drawing.Color.White;
             this.btnAddMeds.IconSize = 18;
-            this.btnAddMeds.Location = new System.Drawing.Point(16, 205);
+            this.btnAddMeds.Location = new System.Drawing.Point(15, 237);
             this.btnAddMeds.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddMeds.Name = "btnAddMeds";
             this.btnAddMeds.Rotation = 0D;
@@ -569,7 +564,7 @@
             this.cbMeds.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbMeds.BackColor = System.Drawing.Color.FloralWhite;
             this.cbMeds.FormattingEnabled = true;
-            this.cbMeds.Location = new System.Drawing.Point(16, 49);
+            this.cbMeds.Location = new System.Drawing.Point(16, 65);
             this.cbMeds.Name = "cbMeds";
             this.cbMeds.Size = new System.Drawing.Size(851, 24);
             this.cbMeds.TabIndex = 256;
@@ -578,7 +573,7 @@
             // txtInstructMeds
             // 
             this.txtInstructMeds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInstructMeds.Location = new System.Drawing.Point(16, 114);
+            this.txtInstructMeds.Location = new System.Drawing.Point(16, 130);
             this.txtInstructMeds.Name = "txtInstructMeds";
             this.txtInstructMeds.Size = new System.Drawing.Size(851, 24);
             this.txtInstructMeds.TabIndex = 257;
@@ -589,11 +584,24 @@
             this.label5.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(13, 85);
+            this.label5.Location = new System.Drawing.Point(13, 109);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 17);
             this.label5.TabIndex = 258;
             this.label5.Text = "Instruction";
+            // 
+            // lvSymp
+            // 
+            this.lvSymp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvSymp.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvSymp.FullRowSelect = true;
+            this.lvSymp.GridLines = true;
+            this.lvSymp.HideSelection = false;
+            this.lvSymp.Location = new System.Drawing.Point(15, 82);
+            this.lvSymp.Name = "lvSymp";
+            this.lvSymp.Size = new System.Drawing.Size(852, 69);
+            this.lvSymp.TabIndex = 258;
+            this.lvSymp.UseCompatibleStateImageBehavior = false;
             // 
             // DoctorForm
             // 
@@ -644,7 +652,6 @@
         private System.Windows.Forms.Panel panelA;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView lvSymp;
         private System.Windows.Forms.ComboBox cbSymp;
         private FontAwesome.Sharp.IconButton btnAddSymp;
         private System.Windows.Forms.GroupBox groupBox8;
@@ -668,5 +675,6 @@
         private System.Windows.Forms.ComboBox cbXray;
         private System.Windows.Forms.ComboBox cbLab;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListView lvSymp;
     }
 }
