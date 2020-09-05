@@ -164,6 +164,7 @@
             this.btnDoctorRecord.Text = "Doctor Record";
             this.btnDoctorRecord.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDoctorRecord.UseVisualStyleBackColor = false;
+            this.btnDoctorRecord.Click += new System.EventHandler(this.btnDoctorRecord_Click);
             // 
             // btnVital
             // 

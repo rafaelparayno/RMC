@@ -168,6 +168,7 @@
             this.btnPatientRec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPatientRec.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPatientRec.UseVisualStyleBackColor = false;
+            this.btnPatientRec.Click += new System.EventHandler(this.btnPatientRec_Click);
             // 
             // panelLogo
             // 

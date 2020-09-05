@@ -80,5 +80,10 @@ namespace RMC.Patients
         {
             openChildForm(new PanelXrayDetail(patient_id));
         }
+
+        private void btnDoctorRecord_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelDoctorFindings());
+        }
     }
 }

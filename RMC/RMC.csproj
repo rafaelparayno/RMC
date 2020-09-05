@@ -36,6 +36,10 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FontAwesome.Sharp, Version=5.13.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\FontAwesome.Sharp.5.13.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
@@ -83,6 +87,7 @@
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -617,6 +622,12 @@
     <Compile Include="Patients\PanelsDetails\Dialogs\AddEditVital.Designer.cs">
       <DependentUpon>AddEditVital.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelDoctorFindings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelDoctorFindings.Designer.cs">
+      <DependentUpon>PanelDoctorFindings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\PanelsDetails\PanelLabDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -942,6 +953,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\Dialogs\AddEditVital.resx">
       <DependentUpon>AddEditVital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelsDetails\PanelDoctorFindings.resx">
+      <DependentUpon>PanelDoctorFindings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\PanelLabDetail.resx">
       <DependentUpon>PanelLabDetail.cs</DependentUpon>
