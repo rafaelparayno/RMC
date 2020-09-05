@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RMC.Patients
@@ -26,7 +27,7 @@ namespace RMC.Patients
 
         }
          
-        private async void loadPatientDetails()
+        private async Task loadPatientDetails()
         {
             listDetails = await patientDetailsController.getPatientDetails();
         }
@@ -120,11 +121,42 @@ namespace RMC.Patients
             refreshListPatient();
         }
 
-        private void refreshListPatient()
+        private async void refreshListPatient()
         {
-            loadPatientDetails();
+            await loadPatientDetails();
             populateitems();
             showPaginate(listDetails.Count);
+        }
+
+        private async Task loadPatientSearchDetails()
+        {
+            listDetails = await patientDetailsController.getSearchPatient(txtName.Text.Trim(),
+                                                                        comboBox1.SelectedIndex);
+        }
+
+        private async Task searchListPatient()
+        {
+            await loadPatientSearchDetails();
+            populateitems();
+            showPaginate(listDetails.Count);
+
+        }
+
+        private async void iconButton1_Click(object sender, EventArgs e)
+        {
+            int _;
+            if(comboBox1.SelectedIndex == -1)
+            {
+                refreshListPatient();
+            }
+            else
+            {
+                if (comboBox1.SelectedIndex == 0 && !(int.TryParse(txtName.Text.Trim(), out _)))
+                    return;
+
+               await searchListPatient();
+               
+            }
         }
     }
 }

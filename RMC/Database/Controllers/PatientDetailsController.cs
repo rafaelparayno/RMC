@@ -12,6 +12,58 @@ namespace RMC.Database.Controllers
     class PatientDetailsController
     {
         dbcrud crud = new dbcrud();
+
+        public async Task<List<patientDetails>> getSearchPatient(string searchkey,int cb)
+        {
+            List<patientDetails> listpatient = new List<patientDetails>();
+            string sql = "";
+            string searches = "";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            switch (cb)
+            {
+                case 0:
+                    sql = @"SELECT * FROM patientdetails WHERE patient_id LIKE @searchKey";
+                    listparams.Add(new MySqlParameter("@searchKey", int.Parse(searchkey)));
+                    break;
+
+                case 1:
+                    sql = @"SELECT * FROM `patientdetails` where firstname LIKE @key";
+                     searches = "%" + searchkey + "%";
+                    listparams.Add(new MySqlParameter("@key", searches));
+                    break;
+
+                case 2:
+                    sql = @"SELECT * FROM patientdetails WHERE lastname LIKE @key";
+                    searches = "%" + searchkey + "%";
+                    listparams.Add(new MySqlParameter("@key", searches));
+                    break;
+            }
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while(await reader.ReadAsync())
+            {
+                patientDetails p = new patientDetails();
+                p.id = int.Parse(reader["patient_id"].ToString());
+                p.Firstname = reader["firstname"].ToString();
+                p.middlename = reader["middlename"].ToString();
+                p.lastname = reader["lastname"].ToString();
+
+                p.age = int.Parse(reader["age"].ToString());
+                p.gender = reader["gender"].ToString();
+                p.address = reader["address"].ToString();
+                p.contact = reader["contactnumber"].ToString();
+
+
+                listpatient.Add(p);
+            }
+
+            crud.CloseConnection();
+
+            return listpatient;
+        }
+
+
         public async Task<patientDetails> getPatientId(int id)
         {
             patientDetails patientDetails = new patientDetails();

@@ -35,10 +35,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelSideMenu = new System.Windows.Forms.Panel();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.btnReturn = new FontAwesome.Sharp.IconButton();
-            this.btnPo = new FontAwesome.Sharp.IconButton();
+            this.btnDoctorSet = new FontAwesome.Sharp.IconButton();
+            this.btnPatientRec = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelChildForm.SuspendLayout();
@@ -114,10 +112,8 @@
             // 
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.Salmon;
-            this.panelSideMenu.Controls.Add(this.iconButton2);
-            this.panelSideMenu.Controls.Add(this.iconButton1);
-            this.panelSideMenu.Controls.Add(this.btnReturn);
-            this.panelSideMenu.Controls.Add(this.btnPo);
+            this.panelSideMenu.Controls.Add(this.btnDoctorSet);
+            this.panelSideMenu.Controls.Add(this.btnPatientRec);
             this.panelSideMenu.Controls.Add(this.panelLogo);
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
@@ -125,101 +121,53 @@
             this.panelSideMenu.Size = new System.Drawing.Size(250, 600);
             this.panelSideMenu.TabIndex = 223;
             // 
-            // iconButton2
+            // btnDoctorSet
             // 
-            this.iconButton2.BackColor = System.Drawing.Color.Salmon;
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.ListAlt;
-            this.iconButton2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton2.IconSize = 35;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(0, 210);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton2.Rotation = 0D;
-            this.iconButton2.Size = new System.Drawing.Size(250, 45);
-            this.iconButton2.TabIndex = 19;
-            this.iconButton2.Text = "View Clinic Stocks";
-            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = false;
+            this.btnDoctorSet.BackColor = System.Drawing.Color.Salmon;
+            this.btnDoctorSet.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDoctorSet.FlatAppearance.BorderSize = 0;
+            this.btnDoctorSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDoctorSet.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnDoctorSet.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDoctorSet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnDoctorSet.IconChar = FontAwesome.Sharp.IconChar.ListAlt;
+            this.btnDoctorSet.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnDoctorSet.IconSize = 35;
+            this.btnDoctorSet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDoctorSet.Location = new System.Drawing.Point(0, 120);
+            this.btnDoctorSet.Name = "btnDoctorSet";
+            this.btnDoctorSet.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnDoctorSet.Rotation = 0D;
+            this.btnDoctorSet.Size = new System.Drawing.Size(250, 45);
+            this.btnDoctorSet.TabIndex = 17;
+            this.btnDoctorSet.Text = "View Clinic Stocks";
+            this.btnDoctorSet.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDoctorSet.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDoctorSet.UseVisualStyleBackColor = false;
             // 
-            // iconButton1
+            // btnPatientRec
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.Salmon;
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.ListAlt;
-            this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton1.IconSize = 35;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 165);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(250, 45);
-            this.iconButton1.TabIndex = 18;
-            this.iconButton1.Text = "View Clinic Stocks";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            // 
-            // btnReturn
-            // 
-            this.btnReturn.BackColor = System.Drawing.Color.Salmon;
-            this.btnReturn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReturn.FlatAppearance.BorderSize = 0;
-            this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReturn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnReturn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnReturn.IconChar = FontAwesome.Sharp.IconChar.ListAlt;
-            this.btnReturn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnReturn.IconSize = 35;
-            this.btnReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReturn.Location = new System.Drawing.Point(0, 120);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnReturn.Rotation = 0D;
-            this.btnReturn.Size = new System.Drawing.Size(250, 45);
-            this.btnReturn.TabIndex = 17;
-            this.btnReturn.Text = "View Clinic Stocks";
-            this.btnReturn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReturn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReturn.UseVisualStyleBackColor = false;
-            // 
-            // btnPo
-            // 
-            this.btnPo.BackColor = System.Drawing.Color.Salmon;
-            this.btnPo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPo.FlatAppearance.BorderSize = 0;
-            this.btnPo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPo.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnPo.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnPo.IconChar = FontAwesome.Sharp.IconChar.LaptopMedical;
-            this.btnPo.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnPo.IconSize = 35;
-            this.btnPo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPo.Location = new System.Drawing.Point(0, 75);
-            this.btnPo.Name = "btnPo";
-            this.btnPo.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnPo.Rotation = 0D;
-            this.btnPo.Size = new System.Drawing.Size(250, 45);
-            this.btnPo.TabIndex = 5;
-            this.btnPo.Text = "Add Forms";
-            this.btnPo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPo.UseVisualStyleBackColor = false;
+            this.btnPatientRec.BackColor = System.Drawing.Color.Salmon;
+            this.btnPatientRec.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPatientRec.FlatAppearance.BorderSize = 0;
+            this.btnPatientRec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPatientRec.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnPatientRec.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPatientRec.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnPatientRec.IconChar = FontAwesome.Sharp.IconChar.UserMd;
+            this.btnPatientRec.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnPatientRec.IconSize = 35;
+            this.btnPatientRec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPatientRec.Location = new System.Drawing.Point(0, 75);
+            this.btnPatientRec.Name = "btnPatientRec";
+            this.btnPatientRec.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnPatientRec.Rotation = 0D;
+            this.btnPatientRec.Size = new System.Drawing.Size(250, 45);
+            this.btnPatientRec.TabIndex = 5;
+            this.btnPatientRec.Text = "Patient Records";
+            this.btnPatientRec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPatientRec.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPatientRec.UseVisualStyleBackColor = false;
             // 
             // panelLogo
             // 
@@ -257,7 +205,6 @@
             this.Name = "DashDoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DashDoc";
-      
             this.panelChildForm.ResumeLayout(false);
             this.panelChildForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -276,11 +223,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panelSideMenu;
-        private FontAwesome.Sharp.IconButton btnReturn;
-        private FontAwesome.Sharp.IconButton btnPo;
+        private FontAwesome.Sharp.IconButton btnDoctorSet;
+        private FontAwesome.Sharp.IconButton btnPatientRec;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }
