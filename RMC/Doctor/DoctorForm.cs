@@ -20,6 +20,8 @@ namespace RMC.Doctor
         LaboratoryController laboratoryController = new LaboratoryController();
         XrayControllers xrayControllers = new XrayControllers();
         doctorResultsController dController = new doctorResultsController();
+        PatientPrescriptionController ppController = new PatientPrescriptionController();
+
 
         private int cbLabValue = 0;
         private int cbXrayValue = 0;
@@ -206,7 +208,10 @@ namespace RMC.Doctor
 
             await dController.save(textBox1.Text.Trim(), txtSubjective.Text.Trim(), textBox2.Text.Trim());
 
-
+            foreach(ListViewItem lvItems in lvMeds.Items)
+            {
+                await ppController.save(int.Parse(lvItems.SubItems[0].Text),lvItems.SubItems[2].Text);
+            }
         }
     }
 }
