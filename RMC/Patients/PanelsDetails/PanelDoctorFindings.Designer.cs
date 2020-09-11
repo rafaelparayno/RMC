@@ -156,7 +156,7 @@
             this.groupBox2.Size = new System.Drawing.Size(217, 250);
             this.groupBox2.TabIndex = 214;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Patient Lab Information";
+            this.groupBox2.Text = "Patient Information";
             // 
             // lvLabDetails
             // 

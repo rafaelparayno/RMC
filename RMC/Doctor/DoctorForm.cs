@@ -19,6 +19,7 @@ namespace RMC.Doctor
         ItemController itemz = new ItemController();
         LaboratoryController laboratoryController = new LaboratoryController();
         XrayControllers xrayControllers = new XrayControllers();
+        doctorResultsController dController = new doctorResultsController();
 
         private int cbLabValue = 0;
         private int cbXrayValue = 0;
@@ -169,6 +170,43 @@ namespace RMC.Doctor
             int index = lvXray.SelectedItems[0].Index;
 
             lvXray.Items.RemoveAt(index);
+        }
+
+        private void btnAddMeds_Click(object sender, EventArgs e)
+        {
+            if (cbMedsValue == 0)
+                return;
+
+            if (cbMeds.SelectedIndex == -1)
+                return;
+
+            if (txtInstructMeds.Text == "")
+                return;
+
+            ListViewItem lvItems = new ListViewItem();
+            lvItems.Text = cbMedsValue.ToString();
+            lvItems.SubItems.Add(cbMeds.Text);
+            lvItems.SubItems.Add(txtInstructMeds.Text.Trim());
+            lvMeds.Items.Add(lvItems);
+
+
+            txtInstructMeds.Text = "";
+
+        }
+
+        private async void iconButton1_Click(object sender, EventArgs e)
+        {
+            await saveDetails();
+            this.Close();
+        }
+
+        private async Task saveDetails()
+        {
+
+
+            await dController.save(textBox1.Text.Trim(), txtSubjective.Text.Trim(), textBox2.Text.Trim());
+
+
         }
     }
 }
