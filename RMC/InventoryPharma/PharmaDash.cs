@@ -70,5 +70,10 @@ namespace RMC.InventoryPharma
         {
             openChildForm(new PrintBarcodes());
         }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelReturnShop());
+        }
     }
 }

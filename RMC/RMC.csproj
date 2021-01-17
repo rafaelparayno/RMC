@@ -475,6 +475,7 @@
     <Compile Include="Database\Controllers\ReceiveControllers.cs" />
     <Compile Include="Database\Controllers\ReturnItemsController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />
+    <Compile Include="Database\Controllers\rtsController.cs" />
     <Compile Include="Database\Controllers\SalesClinicController.cs" />
     <Compile Include="Database\Controllers\SalesPharmaController.cs" />
     <Compile Include="Database\Controllers\ServiceController.cs" />
@@ -566,6 +567,12 @@
     </Compile>
     <Compile Include="InventoryPharma\PanelReturn\PanelR.Designer.cs">
       <DependentUpon>PanelR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelReturn\PanelReturnShop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelReturn\PanelReturnShop.Designer.cs">
+      <DependentUpon>PanelReturnShop.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryPharma\PanelRo\Dialogs\AddQtyRo.cs">
       <SubType>Form</SubType>
@@ -959,6 +966,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelReturn\PanelR.resx">
       <DependentUpon>PanelR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelReturn\PanelReturnShop.resx">
+      <DependentUpon>PanelReturnShop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\Dialogs\AddQtyRo.resx">
       <DependentUpon>AddQtyRo.cs</DependentUpon>

@@ -283,7 +283,8 @@ namespace RMC.InventoryPharma.PanelReturn
         private void cbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbSupValue = int.Parse((cbSuppliers.SelectedItem as ComboBoxItem).Value.ToString());
-
+            dt.Rows.Clear();
+            itemsIdList.Clear();
             loadGrid(cbSupValue);
             //ResetData();
         }

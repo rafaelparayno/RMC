@@ -1,8 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using RMC.Admin.PanelReportsForms.PanelsPharmaRep;
 using RMC.Database.Models;
+using RMC.Lab;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -14,6 +16,19 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
+
+        public async Task<DataSet> getInvoiceInSalesPharma(int invoice_id)
+        {
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@invoice_id", invoice_id));
+
+            DataSet ds = await crud.GetDataSetAsync(@"SELECT sku,item_name as 'name',sales_qty as 'qty',(sales_qty * SellingPrice) AS 'Sales' 
+                                                    FROM `salespharma` INNER JOIN itemlist 
+                                                    ON salespharma.item_id = itemlist.item_id
+                                                    WHERE invoice_id = @invoice_id", listparams);
+
+            return ds;
+        }
 
         public async Task<List<salesPharmacyModel>> getDataAllSales()
         {
@@ -215,6 +230,37 @@ namespace RMC.Database.Controllers
 
             crud.CloseConnection();
             return totalCost;
+        }
+
+        public async void updateReturn(string sku,int qty,int invoice_id)
+        {
+            string sql;
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            if (qty > 0)
+            {
+                sql = @"UPDATE salespharma SET sales_qty = @qty 
+                    WHERE item_id = (SELECT item_id FROM itemlist WHERE SKU = @sku) 
+                    AND invoice_id = @invoice_id";
+
+                list = new List<MySqlParameter>();
+                list.Add(new MySqlParameter("@sku", sku));
+                list.Add(new MySqlParameter("@qty", qty));
+                list.Add(new MySqlParameter("@invoice_id", invoice_id));
+            }
+            else
+            {
+                sql = @"DELETE FROM salespharma 
+                        WHERE item_id = (SELECT item_id FROM itemlist WHERE SKU = @sku) 
+                        AND invoice_id = @invoice_id";
+
+                list = new List<MySqlParameter>();
+                list.Add(new MySqlParameter("@sku", sku));
+            
+                list.Add(new MySqlParameter("@invoice_id", invoice_id));
+            }
+          
+
+            await  crud.ExecuteAsync(sql, list);
         }
 
         public async void Save(string sku,int qty)

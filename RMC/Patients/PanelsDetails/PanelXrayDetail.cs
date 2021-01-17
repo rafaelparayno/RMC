@@ -101,9 +101,9 @@ namespace RMC.Patients.PanelsDetails
             pbEdited.Image = Image.FromFile(path);
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private async void iconButton1_Click(object sender, EventArgs e)
         {
-            searchData();
+          await searchData();
         }
     }
 }

@@ -138,7 +138,7 @@ namespace RMC.Admin.PanelPharForms
             loadGrid();
         }
 
-        private async void iconButton1_Click(object sender, EventArgs e)
+        private void iconButton1_Click(object sender, EventArgs e)
         {
             int selectedCombobx = comboBox1.SelectedIndex;
            if(selectedCombobx == -1)
