@@ -1,4 +1,5 @@
-﻿using RMC.InventoryPharma.PanelPo;
+﻿using RMC.InventoryPharma.Barcodes;
+using RMC.InventoryPharma.PanelPo;
 using RMC.InventoryPharma.PanelReturn;
 using RMC.InventoryPharma.PanelRo;
 using RMC.InventoryPharma.PanelViewStocks;
@@ -63,6 +64,11 @@ namespace RMC.InventoryPharma
         private void btnReturn_Click(object sender, EventArgs e)
         {
             openChildForm(new PanelR());
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PrintBarcodes());
         }
     }
 }

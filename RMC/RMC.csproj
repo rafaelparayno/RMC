@@ -537,6 +537,12 @@
     <Compile Include="Doctor\PanelDoctor\PanelDoctorSettings.Designer.cs">
       <DependentUpon>PanelDoctorSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\Barcodes\PrintBarcodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\Barcodes\PrintBarcodes.Designer.cs">
+      <DependentUpon>PrintBarcodes.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\Dialogs\seniorDiag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -731,6 +737,12 @@
     <Compile Include="Reception\ReceptionDash.Designer.cs">
       <DependentUpon>ReceptionDash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\barcode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>barcode.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="splashscreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -746,6 +758,7 @@
       <DependentUpon>UserDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\CreateDirectory.cs" />
+    <Compile Include="Utilities\ReadFileServerPath.cs" />
     <Compile Include="Xray\dashXray.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -932,6 +945,9 @@
     <EmbeddedResource Include="Doctor\PanelDoctor\PanelDoctorSettings.resx">
       <DependentUpon>PanelDoctorSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\Barcodes\PrintBarcodes.resx">
+      <DependentUpon>PrintBarcodes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\Dialogs\seniorDiag.resx">
       <DependentUpon>seniorDiag.cs</DependentUpon>
     </EmbeddedResource>
@@ -1038,6 +1054,10 @@
     <EmbeddedResource Include="Reception\ReceptionDash.resx">
       <DependentUpon>ReceptionDash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\barcode.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>barcode.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="splashscreen.resx">
       <DependentUpon>splashscreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -1091,6 +1111,8 @@
   <ItemGroup>
     <None Include="Resources\spash.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

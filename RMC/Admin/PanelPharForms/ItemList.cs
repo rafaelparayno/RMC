@@ -138,17 +138,18 @@ namespace RMC.Admin.PanelPharForms
             loadGrid();
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private async void iconButton1_Click(object sender, EventArgs e)
         {
             int selectedCombobx = comboBox1.SelectedIndex;
            if(selectedCombobx == -1)
             {
                 loadGrid();
-
+                
+               
             }
             else
             {
-                SearchGrid(txtName.Text.Trim(), selectedCombobx);
+               SearchGrid(txtName.Text.Trim(), selectedCombobx);
             }
         }
     }

@@ -85,5 +85,13 @@ namespace RMC.Patients
         {
             openChildForm(new PanelDoctorFindings());
         }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+        }
     }
 }

@@ -34,8 +34,6 @@
             this.panelSubUtilities = new System.Windows.Forms.Panel();
             this.btnChangePass = new FontAwesome.Sharp.IconButton();
             this.btnNetworkSettings = new FontAwesome.Sharp.IconButton();
-            this.btnAuditTrail = new FontAwesome.Sharp.IconButton();
-            this.btnArchive = new FontAwesome.Sharp.IconButton();
             this.btnBackupRestore = new FontAwesome.Sharp.IconButton();
             this.btnUtilities = new FontAwesome.Sharp.IconButton();
             this.panelSubReports = new System.Windows.Forms.Panel();
@@ -121,13 +119,11 @@
             this.panelSubUtilities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(39)))), ((int)(((byte)(50)))));
             this.panelSubUtilities.Controls.Add(this.btnChangePass);
             this.panelSubUtilities.Controls.Add(this.btnNetworkSettings);
-            this.panelSubUtilities.Controls.Add(this.btnAuditTrail);
-            this.panelSubUtilities.Controls.Add(this.btnArchive);
             this.panelSubUtilities.Controls.Add(this.btnBackupRestore);
             this.panelSubUtilities.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSubUtilities.Location = new System.Drawing.Point(0, 931);
             this.panelSubUtilities.Name = "panelSubUtilities";
-            this.panelSubUtilities.Size = new System.Drawing.Size(233, 232);
+            this.panelSubUtilities.Size = new System.Drawing.Size(233, 143);
             this.panelSubUtilities.TabIndex = 18;
             // 
             // btnChangePass
@@ -141,7 +137,7 @@
             this.btnChangePass.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnChangePass.IconSize = 25;
             this.btnChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChangePass.Location = new System.Drawing.Point(0, 180);
+            this.btnChangePass.Location = new System.Drawing.Point(0, 90);
             this.btnChangePass.Name = "btnChangePass";
             this.btnChangePass.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
             this.btnChangePass.Rotation = 0D;
@@ -164,7 +160,7 @@
             this.btnNetworkSettings.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnNetworkSettings.IconSize = 25;
             this.btnNetworkSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNetworkSettings.Location = new System.Drawing.Point(0, 135);
+            this.btnNetworkSettings.Location = new System.Drawing.Point(0, 45);
             this.btnNetworkSettings.Name = "btnNetworkSettings";
             this.btnNetworkSettings.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
             this.btnNetworkSettings.Rotation = 0D;
@@ -175,52 +171,6 @@
             this.btnNetworkSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNetworkSettings.UseVisualStyleBackColor = true;
             this.btnNetworkSettings.Click += new System.EventHandler(this.btnNetworkSettings_Click);
-            // 
-            // btnAuditTrail
-            // 
-            this.btnAuditTrail.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAuditTrail.FlatAppearance.BorderSize = 0;
-            this.btnAuditTrail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAuditTrail.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnAuditTrail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnAuditTrail.IconChar = FontAwesome.Sharp.IconChar.ListUl;
-            this.btnAuditTrail.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnAuditTrail.IconSize = 25;
-            this.btnAuditTrail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAuditTrail.Location = new System.Drawing.Point(0, 90);
-            this.btnAuditTrail.Name = "btnAuditTrail";
-            this.btnAuditTrail.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
-            this.btnAuditTrail.Rotation = 0D;
-            this.btnAuditTrail.Size = new System.Drawing.Size(233, 45);
-            this.btnAuditTrail.TabIndex = 9;
-            this.btnAuditTrail.Text = "Audit Trail";
-            this.btnAuditTrail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAuditTrail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAuditTrail.UseVisualStyleBackColor = true;
-            this.btnAuditTrail.Click += new System.EventHandler(this.btnAuditTrail_Click);
-            // 
-            // btnArchive
-            // 
-            this.btnArchive.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnArchive.FlatAppearance.BorderSize = 0;
-            this.btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArchive.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnArchive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnArchive.IconChar = FontAwesome.Sharp.IconChar.Archive;
-            this.btnArchive.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnArchive.IconSize = 25;
-            this.btnArchive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnArchive.Location = new System.Drawing.Point(0, 45);
-            this.btnArchive.Name = "btnArchive";
-            this.btnArchive.Padding = new System.Windows.Forms.Padding(45, 0, 20, 0);
-            this.btnArchive.Rotation = 0D;
-            this.btnArchive.Size = new System.Drawing.Size(233, 45);
-            this.btnArchive.TabIndex = 8;
-            this.btnArchive.Text = "Archive";
-            this.btnArchive.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnArchive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnArchive.UseVisualStyleBackColor = true;
-            this.btnArchive.Click += new System.EventHandler(this.btnArchive_Click);
             // 
             // btnBackupRestore
             // 
@@ -624,7 +574,7 @@
             this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton4.IconSize = 35;
             this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 1163);
+            this.iconButton4.Location = new System.Drawing.Point(0, 1074);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton4.Rotation = 0D;
@@ -1052,8 +1002,6 @@
         private FontAwesome.Sharp.IconButton btnLabReports;
         private FontAwesome.Sharp.IconButton btnPharmaReports;
         private System.Windows.Forms.Panel panelSubUtilities;
-        private FontAwesome.Sharp.IconButton btnAuditTrail;
-        private FontAwesome.Sharp.IconButton btnArchive;
         private FontAwesome.Sharp.IconButton btnBackupRestore;
         private FontAwesome.Sharp.IconButton btnUtilities;
         private FontAwesome.Sharp.IconButton btnNetworkSettings;

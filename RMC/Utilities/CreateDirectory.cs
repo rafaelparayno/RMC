@@ -12,8 +12,10 @@ namespace RMC.Utilities
         public static string CreateDir(string dirName)
         {
             //CreateFileServer
-            string newDir = String.Format(@"C:\{0}\",dirName);
-            bool exists = File.Exists(newDir);
+            string filePathServer = ReadFileServerPath.FetchServerLocation();
+         //   string newDir = String.Format(@"C:\{0}\",dirName);
+            string newDir = String.Format(@"{0}{1}\", filePathServer,dirName);
+            bool exists = Directory.Exists(newDir);
 
             if (!exists)
             {

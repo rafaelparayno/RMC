@@ -39,6 +39,7 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelChild = new System.Windows.Forms.Panel();
+            this.btnMaximize = new FontAwesome.Sharp.IconButton();
             this.panel2.SuspendLayout();
             this.panelNavParam.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Salmon;
+            this.panel2.Controls.Add(this.btnMaximize);
             this.panel2.Controls.Add(this.btnCloseApp);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -228,6 +230,24 @@
             this.panelChild.Size = new System.Drawing.Size(733, 366);
             this.panelChild.TabIndex = 20;
             // 
+            // btnMaximize
+            // 
+            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
+            this.btnMaximize.FlatAppearance.BorderSize = 0;
+            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaximize.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnMaximize.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.btnMaximize.IconColor = System.Drawing.Color.White;
+            this.btnMaximize.IconSize = 20;
+            this.btnMaximize.Location = new System.Drawing.Point(671, 3);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.Rotation = 0D;
+            this.btnMaximize.Size = new System.Drawing.Size(23, 26);
+            this.btnMaximize.TabIndex = 4;
+            this.btnMaximize.UseVisualStyleBackColor = false;
+            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
+            // 
             // addEditPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -264,5 +284,6 @@
         private FontAwesome.Sharp.IconButton btnDoctorRecord;
         private FontAwesome.Sharp.IconButton btnVital;
         private FontAwesome.Sharp.IconButton btnXray;
+        private FontAwesome.Sharp.IconButton btnMaximize;
     }
 }
