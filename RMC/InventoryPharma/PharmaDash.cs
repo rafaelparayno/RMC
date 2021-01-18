@@ -18,6 +18,7 @@ namespace RMC.InventoryPharma
     public partial class PharmaDash : Form
     {
         private Form activeForm = null;
+        int countTimer = 0;
         public PharmaDash()
         {
             InitializeComponent();
@@ -53,6 +54,7 @@ namespace RMC.InventoryPharma
 
         private void btnPos_Click_1(object sender, EventArgs e)
         {
+
             /*openChildForm(new POS());*/
         }
 
@@ -68,12 +70,52 @@ namespace RMC.InventoryPharma
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            countTimer = 0;
+            timer1.Start();
+            disableButtons();
             openChildForm(new PrintBarcodes());
+           
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
             openChildForm(new PanelReturnShop());
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            countTimer++;
+            if (countTimer == 5)
+            {
+               
+                timer1.Stop();
+                enabledButtons();
+            }
+        }
+
+        private void disableButtons()
+        {
+            btnPo.Enabled = false;
+
+            btnRec.Enabled = false;
+
+            btnReturn.Enabled = false;
+            btnViewStocks.Enabled = false;
+            iconButton1.Enabled = false;
+            iconButton2.Enabled = false;
+        }
+
+        private void enabledButtons()
+        {
+            btnPo.Enabled = true;
+
+            btnRec.Enabled = true;
+
+            btnReturn.Enabled = true;
+            btnViewStocks.Enabled = true;
+            iconButton1.Enabled = true;
+            iconButton2.Enabled = true;
         }
     }
 }

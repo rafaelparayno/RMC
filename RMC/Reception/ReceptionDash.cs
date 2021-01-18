@@ -1,4 +1,5 @@
 ﻿using RMC.Patients;
+using RMC.Reception;
 using RMC.Reception.PanelRequestForm;
 using RMC.Reception.PanelRequestForm.Dialogs;
 using System;
@@ -16,6 +17,7 @@ namespace RMC
     public partial class ReceptionDash : Form
     {
         private Form activeForm = null;
+        int countTimer = 0;
         public ReceptionDash()
         {
             InitializeComponent();
@@ -52,6 +54,43 @@ namespace RMC
         private void iconButton1_Click(object sender, EventArgs e)
         {
             openChildForm(new PanelPatient());
+        }
+
+        private void btnDaily_Click(object sender, EventArgs e)
+        {
+            countTimer = 0;
+            openChildForm(new DailySalesRep());
+            disableBtns();
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            countTimer++;
+
+            if(countTimer > 5)
+            {
+
+                timer1.Stop();
+                enableBtns();
+            }
+        }
+
+        private void disableBtns()
+        {
+            btnPo.Enabled = false;
+            btnDaily.Enabled = false;
+            iconButton1.Enabled = false;
+            iconButton2.Enabled = false;
+        }
+
+        private void enableBtns()
+        {
+            btnPo.Enabled = true;
+            btnDaily.Enabled = true;
+            iconButton1.Enabled = true;
+            iconButton2.Enabled = true;
         }
     }
 }

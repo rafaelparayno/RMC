@@ -714,6 +714,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reception\DailySalesRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception\DailySalesRep.Designer.cs">
+      <DependentUpon>DailySalesRep.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reception\PanelRequestForm\Dialogs\AddEditRequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -748,6 +754,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>barcode.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DailySalesReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailySalesReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="splashscreen.cs">
@@ -1049,6 +1061,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reception\DailySalesRep.resx">
+      <DependentUpon>DailySalesRep.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reception\PanelRequestForm\Dialogs\AddEditRequestForm.resx">
       <DependentUpon>AddEditRequestForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1067,6 +1082,10 @@
     <EmbeddedResource Include="Reports\barcode.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>barcode.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailySalesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailySalesReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="splashscreen.resx">
       <DependentUpon>splashscreen.cs</DependentUpon>

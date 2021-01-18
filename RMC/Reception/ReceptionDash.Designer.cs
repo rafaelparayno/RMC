@@ -28,22 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReceptionDash));
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.datelabel = new System.Windows.Forms.Label();
             this.timelabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.panelLogo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnDaily = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnPo = new FontAwesome.Sharp.IconButton();
-            this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelChildForm.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelSideMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,6 +101,32 @@
             this.timelabel.Text = "Date & Time";
             this.timelabel.Visible = false;
             // 
+            // panelSideMenu
+            // 
+            this.panelSideMenu.AutoScroll = true;
+            this.panelSideMenu.BackColor = System.Drawing.Color.Salmon;
+            this.panelSideMenu.Controls.Add(this.btnDaily);
+            this.panelSideMenu.Controls.Add(this.iconButton2);
+            this.panelSideMenu.Controls.Add(this.iconButton1);
+            this.panelSideMenu.Controls.Add(this.btnPo);
+            this.panelSideMenu.Controls.Add(this.panelLogo);
+            this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelSideMenu.Name = "panelSideMenu";
+            this.panelSideMenu.Size = new System.Drawing.Size(250, 554);
+            this.panelSideMenu.TabIndex = 6;
+            // 
+            // panelLogo
+            // 
+            this.panelLogo.BackColor = System.Drawing.Color.Salmon;
+            this.panelLogo.Controls.Add(this.pictureBox2);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.ForeColor = System.Drawing.Color.FloralWhite;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(250, 75);
+            this.panelLogo.TabIndex = 1;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -110,19 +139,30 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // panelSideMenu
+            // btnDaily
             // 
-            this.panelSideMenu.AutoScroll = true;
-            this.panelSideMenu.BackColor = System.Drawing.Color.Salmon;
-            this.panelSideMenu.Controls.Add(this.iconButton2);
-            this.panelSideMenu.Controls.Add(this.iconButton1);
-            this.panelSideMenu.Controls.Add(this.btnPo);
-            this.panelSideMenu.Controls.Add(this.panelLogo);
-            this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(250, 554);
-            this.panelSideMenu.TabIndex = 6;
+            this.btnDaily.BackColor = System.Drawing.Color.Salmon;
+            this.btnDaily.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDaily.FlatAppearance.BorderSize = 0;
+            this.btnDaily.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDaily.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnDaily.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDaily.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnDaily.IconChar = FontAwesome.Sharp.IconChar.CommentDollar;
+            this.btnDaily.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnDaily.IconSize = 35;
+            this.btnDaily.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDaily.Location = new System.Drawing.Point(0, 210);
+            this.btnDaily.Name = "btnDaily";
+            this.btnDaily.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnDaily.Rotation = 0D;
+            this.btnDaily.Size = new System.Drawing.Size(250, 45);
+            this.btnDaily.TabIndex = 8;
+            this.btnDaily.Text = "Daily Sales Report";
+            this.btnDaily.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDaily.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDaily.UseVisualStyleBackColor = false;
+            this.btnDaily.Click += new System.EventHandler(this.btnDaily_Click);
             // 
             // iconButton2
             // 
@@ -199,17 +239,6 @@
             this.btnPo.UseVisualStyleBackColor = false;
             this.btnPo.Click += new System.EventHandler(this.btnPo_Click);
             // 
-            // panelLogo
-            // 
-            this.panelLogo.BackColor = System.Drawing.Color.Salmon;
-            this.panelLogo.Controls.Add(this.pictureBox2);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.ForeColor = System.Drawing.Color.FloralWhite;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(250, 75);
-            this.panelLogo.TabIndex = 1;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -221,6 +250,11 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 300;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ReceptionDash
             // 
@@ -237,9 +271,9 @@
             this.Text = "ReceptionDash";
             this.panelChildForm.ResumeLayout(false);
             this.panelChildForm.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelSideMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -258,5 +292,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnDaily;
+        private System.Windows.Forms.Timer timer1;
     }
 }

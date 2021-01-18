@@ -52,6 +52,30 @@ namespace RMC.Database.Controllers
             return salesPharmas;
         }
 
+        public async Task<float> getTotalMedicineTodaySales()
+        {
+            float totalMed = 0;
+            string sql = @"SELECT (salespharma.sales_qty * itemlist.SellingPrice) as 'medicinesales' FROM `salespharma` 
+                            INNER JOIN invoice ON salespharma.invoice_id = invoice.invoice_id 
+                            INNER JOIN itemlist ON salespharma.item_id = itemlist.item_id
+                            WHERE salespharma.item_id in 
+                            (SELECT itemlist.item_id FROM itemlist 
+ 	                            WHERE itemlist.category_id = (SELECT category.category_id FROM category WHERE category.item_type = 1)) 
+                            AND DATE(invoice.date_invoice) = CURDATE()";
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while (await reader.ReadAsync())
+            {
+                totalMed = float.Parse(reader["medicinesales"].ToString());
+            }
+
+            crud.CloseConnection();
+
+
+            return totalMed;
+        }
+
+
         public async Task<float> getTotalCost()
         {
             float totalCost = 0;

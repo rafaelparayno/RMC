@@ -43,7 +43,7 @@ namespace RMC.Database.Controllers
                 int accid = int.Parse(reader["u_id"].ToString());
                 int ischange = int.Parse(reader["is_change"].ToString());
                 UserLog user = new UserLog(reader["firstname"].ToString(),
-                                           reader["firstname"].ToString(), reader["firstname"].ToString(), 
+                                           reader["lastname"].ToString(), reader["middlename"].ToString(), 
                                            roleid, reader["username"].ToString(),
                                             accid, ischange); 
             }
