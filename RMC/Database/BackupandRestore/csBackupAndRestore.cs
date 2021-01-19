@@ -26,9 +26,10 @@ namespace RMC.Database
         public static void DoBackup()
         {
             CreateDirectory();
-
-            string filePath = @"C:\RMC-backup\BACKUP--" + DateTime.Now.ToString("yyyy--MM--dd--HH--mm--ss--tt") + ".sql";
-
+            string filePathServer = ReadFileServerPath.FetchServerLocation();
+         
+            string backupDirectory = String.Format(@"{0}RMC-backup\BACKUP--{1}.sql", filePathServer, 
+                DateTime.Now.ToString("yyyy--MM--dd--HH--mm--ss--tt"));
             dbConnection.EstablishConnection2();
 
             using (MySqlCommand cmd = new MySqlCommand())
@@ -36,7 +37,7 @@ namespace RMC.Database
                 using (MySqlBackup md = new MySqlBackup(cmd))
                 {
                     cmd.Connection = dbConnection.connection;
-                    md.ExportToFile(filePath);
+                    md.ExportToFile(backupDirectory);
                     dbConnection.connection.Close();
                 }
             }
@@ -45,13 +46,16 @@ namespace RMC.Database
         public static void DoRestore(string date, string time)
         {
             DoBackup();
+            string filePathServer = ReadFileServerPath.FetchServerLocation();
             string dateParse = DateTime.Parse(date).ToString("yyyy--MM--dd");
             string timeParse = DateTime.Parse(time).ToString("HH--mm--ss--tt");
             string combine = dateParse + "--" + timeParse;
 
-            string filePath = @"C:\RMC-backup\BACKUP--" + combine + ".sql";
+            string filePath = String.Format(@"{0}RMC-backup\BACKUP--{1}.sql", filePathServer, 
+                combine);
+          
 
-            Console.WriteLine(filePath);
+         
             dbConnection.EstablishConnection2();
 
             using (MySqlCommand cmd = new MySqlCommand())

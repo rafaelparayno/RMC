@@ -60,6 +60,7 @@
             this.lv_Backup.TabIndex = 1047;
             this.lv_Backup.UseCompatibleStateImageBehavior = false;
             this.lv_Backup.View = System.Windows.Forms.View.Details;
+            this.lv_Backup.Click += new System.EventHandler(this.lv_Backup_Click);
             // 
             // columnHeader6
             // 
@@ -129,6 +130,7 @@
             // 
             this.ResetPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ResetPassword.BackColor = System.Drawing.Color.Maroon;
+            this.ResetPassword.Enabled = false;
             this.ResetPassword.FlatAppearance.BorderSize = 0;
             this.ResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ResetPassword.Flip = FontAwesome.Sharp.FlipOrientation.Normal;

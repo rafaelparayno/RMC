@@ -129,5 +129,20 @@ namespace RMC.Admin.PanelUtilitiesForms
         {
             datePick_Logs.Value = DateTime.Now;
         }
+
+        private void lv_Backup_Click(object sender, EventArgs e)
+        {
+            if (lv_Backup.SelectedItems.Count == 1)
+            {
+                dateClicked = lv_Backup.SelectedItems[0].SubItems[0].Text;
+                timeClicked = lv_Backup.SelectedItems[0].SubItems[1].Text;
+
+                ResetPassword.Enabled = true;
+            }
+            else
+            {
+                ResetPassword.Enabled = false;
+            }
+        }
     }
 }
