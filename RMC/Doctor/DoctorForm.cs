@@ -21,16 +21,20 @@ namespace RMC.Doctor
         XrayControllers xrayControllers = new XrayControllers();
         doctorResultsController dController = new doctorResultsController();
         PatientPrescriptionController ppController = new PatientPrescriptionController();
-
+        DoctorRequestLabController ddController = new DoctorRequestLabController();
+        DoctorRequestXrayController dxController = new DoctorRequestXrayController();
+        PatientSymptomsController psController = new PatientSymptomsController();
 
         private int cbLabValue = 0;
         private int cbXrayValue = 0;
         private int cbSympValue = 0;
         private int cbMedsValue = 0;
-        public DoctorForm()
+        private int patientId = 0;
+        public DoctorForm(int id)
         {
             InitializeComponent();
             initLvsCols();
+            this.patientId = id;
         }
 
         private void initLvsCols()
@@ -205,12 +209,30 @@ namespace RMC.Doctor
         private async Task saveDetails()
         {
 
-
-            await dController.save(textBox1.Text.Trim(), txtSubjective.Text.Trim(), textBox2.Text.Trim());
+            await dController.save(textBox1.Text.Trim(), txtSubjective.Text.Trim(), 
+                                    textBox2.Text.Trim() ,patientId.ToString(), textBox3.Text.Trim());
 
             foreach(ListViewItem lvItems in lvMeds.Items)
             {
                 await ppController.save(int.Parse(lvItems.SubItems[0].Text),lvItems.SubItems[2].Text);
+            }
+
+            foreach(ListViewItem lv in lvLab.Items)
+            {
+
+                await ddController.save(int.Parse(lv.SubItems[0].Text));
+            }
+
+            foreach (ListViewItem lv in lvXray.Items)
+            {
+
+                await dxController.save(int.Parse(lv.SubItems[0].Text));
+            }
+
+            foreach (ListViewItem lv in lvSymp.Items)
+            {
+
+                await psController.save(int.Parse(lv.SubItems[0].Text));
             }
         }
     }

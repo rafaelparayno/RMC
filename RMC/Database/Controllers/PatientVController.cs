@@ -39,6 +39,34 @@ namespace RMC.Database.Controllers
             
         }
 
+        public async Task<patientVModel> getDetailsidDate(int id,string date)
+        {
+            patientVModel pv = new patientVModel();
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            string sql = @"SELECT * FROM `patientvital` WHERE patient_id = @id 
+                        AND date_vital = @date";
+            listparams.Add(new MySqlParameter("@id", id));
+            listparams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                pv.id = int.Parse(reader["patient_vital_id"].ToString());
+                pv.date_vital = reader["date_vital"].ToString();
+                pv.bp = reader["BP"].ToString();
+                pv.temp = reader["TEMP"].ToString();
+                pv.wt = reader["WT"].ToString();
+                pv.lmp = reader["LMP"].ToString();
+                pv.ua = reader["UA"].ToString();
+                pv.pus = reader["PUS"].ToString();
+                pv.rbc = reader["rbc"].ToString();
+            }
+            crud.CloseConnection();
+
+            return pv;
+
+        }
+
         public async Task<List<patientVModel>> getPatientV(int id)
         {
             List<patientVModel> listpatientv = new List<patientVModel>();

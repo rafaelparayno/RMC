@@ -83,7 +83,7 @@ namespace RMC.Patients
 
         private void btnDoctorRecord_Click(object sender, EventArgs e)
         {
-            openChildForm(new PanelDoctorFindings());
+            openChildForm(new PanelDoctorFindings(patient_id));
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)

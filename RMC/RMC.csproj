@@ -459,6 +459,8 @@
     <Compile Include="Database\Controllers\ConsumedItems.cs" />
     <Compile Include="Database\Controllers\CustomerDetailsController.cs" />
     <Compile Include="Database\Controllers\CustomerRequestsController.cs" />
+    <Compile Include="Database\Controllers\DoctorRequestLabController.cs" />
+    <Compile Include="Database\Controllers\DoctorRequestXrayController.cs" />
     <Compile Include="Database\Controllers\doctorResultsController.cs" />
     <Compile Include="Database\Controllers\InvoiceController.cs" />
     <Compile Include="Database\Controllers\ItemController.cs" />
@@ -472,6 +474,7 @@
     <Compile Include="Database\Controllers\PatientDetailsController.cs" />
     <Compile Include="Database\Controllers\PatientLabController.cs" />
     <Compile Include="Database\Controllers\PatientPrescriptionController.cs" />
+    <Compile Include="Database\Controllers\PatientSymptomsController.cs" />
     <Compile Include="Database\Controllers\PatientVController.cs" />
     <Compile Include="Database\Controllers\PatientXrayController.cs" />
     <Compile Include="Database\Controllers\PharmaStocksController.cs" />
@@ -502,6 +505,7 @@
     <Compile Include="Database\Models\consumablesServMod.cs" />
     <Compile Include="Database\Models\ConsumationRateFns.cs" />
     <Compile Include="Database\Models\customerDetailsMod.cs" />
+    <Compile Include="Database\Models\DoctorResult.cs" />
     <Compile Include="Database\Models\fnsaItemMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
     <Compile Include="Database\Models\labModel.cs" />
@@ -510,6 +514,8 @@
     <Compile Include="Database\Models\PackagesNames.cs" />
     <Compile Include="Database\Models\patientDetails.cs" />
     <Compile Include="Database\Models\patientLabModel.cs" />
+    <Compile Include="Database\Models\PatientPrescriptionModel.cs" />
+    <Compile Include="Database\Models\PatientSymptomsModel.cs" />
     <Compile Include="Database\Models\patientVModel.cs" />
     <Compile Include="Database\Models\patientXrayModel.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
@@ -766,6 +772,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DailySalesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DoctorsSample.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DoctorsSample.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="splashscreen.cs">
@@ -1098,6 +1110,10 @@
     <EmbeddedResource Include="Reports\DailySalesReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailySalesReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DoctorsSample.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DoctorsSample.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="splashscreen.resx">
       <DependentUpon>splashscreen.cs</DependentUpon>

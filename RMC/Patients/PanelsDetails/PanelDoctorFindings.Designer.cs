@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -38,6 +39,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvLabDetails = new System.Windows.Forms.ListView();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -96,6 +98,7 @@
             this.iconButton2.TabIndex = 224;
             this.iconButton2.Text = "View All";
             this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // dateTimePicker1
             // 
@@ -123,6 +126,7 @@
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // label1
             // 
@@ -153,7 +157,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(217, 250);
+            this.groupBox2.Size = new System.Drawing.Size(235, 250);
             this.groupBox2.TabIndex = 214;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Patient Information";
@@ -167,9 +171,10 @@
             this.lvLabDetails.HideSelection = false;
             this.lvLabDetails.Location = new System.Drawing.Point(3, 19);
             this.lvLabDetails.Name = "lvLabDetails";
-            this.lvLabDetails.Size = new System.Drawing.Size(211, 227);
+            this.lvLabDetails.Size = new System.Drawing.Size(229, 227);
             this.lvLabDetails.TabIndex = 2;
             this.lvLabDetails.UseCompatibleStateImageBehavior = false;
+            this.lvLabDetails.SelectedIndexChanged += new System.EventHandler(this.lvLabDetails_SelectedIndexChanged);
             // 
             // crystalReportViewer1
             // 
@@ -177,11 +182,15 @@
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(217, 72);
+            this.crystalReportViewer1.Location = new System.Drawing.Point(235, 72);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(500, 250);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(482, 250);
             this.crystalReportViewer1.TabIndex = 215;
             this.crystalReportViewer1.ToolPanelWidth = 50;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // PanelDoctorFindings
             // 
@@ -217,5 +226,6 @@
         private System.Windows.Forms.ListView lvLabDetails;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private FontAwesome.Sharp.IconButton iconButton3;
+        private System.Windows.Forms.Timer timer1;
     }
 }
