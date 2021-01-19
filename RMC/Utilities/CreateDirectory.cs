@@ -13,7 +13,7 @@ namespace RMC.Utilities
         {
             //CreateFileServer
             string filePathServer = ReadFileServerPath.FetchServerLocation();
-         //   string newDir = String.Format(@"C:\{0}\",dirName);
+      
             string newDir = String.Format(@"{0}{1}\", filePathServer,dirName);
             bool exists = Directory.Exists(newDir);
 

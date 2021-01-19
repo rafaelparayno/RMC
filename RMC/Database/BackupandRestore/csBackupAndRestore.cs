@@ -2,6 +2,7 @@
 using System.IO;
 using MySql.Data.MySqlClient;
 using RMC.Database.DbSettings;
+using RMC.Utilities;
 
 namespace RMC.Database
 {
@@ -10,7 +11,10 @@ namespace RMC.Database
         dbConnection dbConnection = new dbConnection();
         public static void CreateDirectory()
         {
-            string backupDirectory = @"C:\CST-backup\";
+            string filePathServer = ReadFileServerPath.FetchServerLocation();
+
+            string backupDirectory = String.Format(@"{0}{1}\", filePathServer, "RMC-backup");
+
             bool exists = File.Exists(backupDirectory);
 
             if (!exists)
@@ -23,7 +27,7 @@ namespace RMC.Database
         {
             CreateDirectory();
 
-            string filePath = @"C:\CST-backup\BACKUP--" + DateTime.Now.ToString("yyyy--MM--dd--HH--mm--ss--tt") + ".sql";
+            string filePath = @"C:\RMC-backup\BACKUP--" + DateTime.Now.ToString("yyyy--MM--dd--HH--mm--ss--tt") + ".sql";
 
             dbConnection.EstablishConnection2();
 
@@ -45,7 +49,7 @@ namespace RMC.Database
             string timeParse = DateTime.Parse(time).ToString("HH--mm--ss--tt");
             string combine = dateParse + "--" + timeParse;
 
-            string filePath = @"C:\CST-backup\BACKUP--" + combine + ".sql";
+            string filePath = @"C:\RMC-backup\BACKUP--" + combine + ".sql";
 
             Console.WriteLine(filePath);
             dbConnection.EstablishConnection2();
