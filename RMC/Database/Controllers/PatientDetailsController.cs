@@ -27,16 +27,11 @@ namespace RMC.Database.Controllers
                     break;
 
                 case 1:
-                    sql = @"SELECT * FROM `patientdetails` where firstname LIKE @key";
-                     searches = "%" + searchkey + "%";
-                    listparams.Add(new MySqlParameter("@key", searches));
-                    break;
-
-                case 2:
-                    sql = @"SELECT * FROM patientdetails WHERE lastname LIKE @key";
+                    sql = @"SELECT * FROM `patientdetails` where CONCAT(firstname,' ',lastname) LIKE @key";
                     searches = "%" + searchkey + "%";
                     listparams.Add(new MySqlParameter("@key", searches));
                     break;
+
             }
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);

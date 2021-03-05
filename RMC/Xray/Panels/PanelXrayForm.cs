@@ -99,7 +99,7 @@ namespace RMC.Xray.Panels
             lvItemLab.Items.Clear();
             patientmod = new patientDetails();
             panelPatient.Controls.Clear();
-            txtName.Text = "";
+          
         }
 
         private void saveImginPath(Image imgSave, string path, string fileName)
@@ -120,6 +120,7 @@ namespace RMC.Xray.Panels
                 return;
 
             int selectedCb = comboBox1.SelectedIndex;
+            clearDataNew();
 
             switch (selectedCb)
             {
@@ -156,11 +157,18 @@ namespace RMC.Xray.Panels
                 patView.Dock = DockStyle.Fill;
                 panelPatient.BackColor = Color.FloralWhite;
                 panelPatient.Controls.Add(patView);
+                btnAddItem.Enabled = true;
+                btnSave.Enabled = true;
+                iconButton1.Enabled = true; ;
+
             }
             else
             {
                 panelPatient.BackColor = Color.Salmon;
                 panelPatient.Controls.Add(label2);
+                btnAddItem.Enabled = false;
+                btnSave.Enabled = false;
+                iconButton1.Enabled = false;
 
             }
         }

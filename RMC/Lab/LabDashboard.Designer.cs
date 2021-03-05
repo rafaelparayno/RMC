@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -19,9 +18,7 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -30,20 +27,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LabDashboard));
             this.panelSideMenu = new System.Windows.Forms.Panel();
-            this.btnReturn = new FontAwesome.Sharp.IconButton();
-            this.btnPo = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.datelabel = new System.Windows.Forms.Label();
             this.timelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnReturn = new FontAwesome.Sharp.IconButton();
+            this.btnPo = new FontAwesome.Sharp.IconButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelSideMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelChildForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSideMenu
@@ -59,56 +56,6 @@
             this.panelSideMenu.Size = new System.Drawing.Size(250, 600);
             this.panelSideMenu.TabIndex = 3;
             // 
-            // btnReturn
-            // 
-            this.btnReturn.BackColor = System.Drawing.Color.Salmon;
-            this.btnReturn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReturn.FlatAppearance.BorderSize = 0;
-            this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReturn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnReturn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnReturn.IconChar = FontAwesome.Sharp.IconChar.ListAlt;
-            this.btnReturn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnReturn.IconSize = 35;
-            this.btnReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReturn.Location = new System.Drawing.Point(0, 120);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnReturn.Rotation = 0D;
-            this.btnReturn.Size = new System.Drawing.Size(250, 45);
-            this.btnReturn.TabIndex = 17;
-            this.btnReturn.Text = "View Clinic Stocks";
-            this.btnReturn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReturn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReturn.UseVisualStyleBackColor = false;
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
-            // 
-            // btnPo
-            // 
-            this.btnPo.BackColor = System.Drawing.Color.Salmon;
-            this.btnPo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPo.FlatAppearance.BorderSize = 0;
-            this.btnPo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPo.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnPo.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnPo.IconChar = FontAwesome.Sharp.IconChar.LaptopMedical;
-            this.btnPo.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnPo.IconSize = 35;
-            this.btnPo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPo.Location = new System.Drawing.Point(0, 75);
-            this.btnPo.Name = "btnPo";
-            this.btnPo.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnPo.Rotation = 0D;
-            this.btnPo.Size = new System.Drawing.Size(250, 45);
-            this.btnPo.TabIndex = 5;
-            this.btnPo.Text = "Add Forms";
-            this.btnPo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPo.UseVisualStyleBackColor = false;
-            this.btnPo.Click += new System.EventHandler(this.btnPo_Click);
-            // 
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.Salmon;
@@ -119,18 +66,6 @@
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(250, 75);
             this.panelLogo.TabIndex = 1;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(-61, -48);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(361, 184);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
             // 
             // panel3
             // 
@@ -194,6 +129,68 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnReturn
+            // 
+            this.btnReturn.BackColor = System.Drawing.Color.Salmon;
+            this.btnReturn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReturn.FlatAppearance.BorderSize = 0;
+            this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReturn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnReturn.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnReturn.IconChar = FontAwesome.Sharp.IconChar.ListAlt;
+            this.btnReturn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnReturn.IconSize = 35;
+            this.btnReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReturn.Location = new System.Drawing.Point(0, 120);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnReturn.Rotation = 0D;
+            this.btnReturn.Size = new System.Drawing.Size(250, 45);
+            this.btnReturn.TabIndex = 17;
+            this.btnReturn.Text = "View Clinic Stocks";
+            this.btnReturn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReturn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReturn.UseVisualStyleBackColor = false;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
+            // btnPo
+            // 
+            this.btnPo.BackColor = System.Drawing.Color.Salmon;
+            this.btnPo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPo.FlatAppearance.BorderSize = 0;
+            this.btnPo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPo.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnPo.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnPo.IconChar = FontAwesome.Sharp.IconChar.LaptopMedical;
+            this.btnPo.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnPo.IconSize = 35;
+            this.btnPo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPo.Location = new System.Drawing.Point(0, 75);
+            this.btnPo.Name = "btnPo";
+            this.btnPo.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnPo.Rotation = 0D;
+            this.btnPo.Size = new System.Drawing.Size(250, 45);
+            this.btnPo.TabIndex = 5;
+            this.btnPo.Text = "Add Forms";
+            this.btnPo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPo.UseVisualStyleBackColor = false;
+            this.btnPo.Click += new System.EventHandler(this.btnPo_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(-61, -48);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(361, 184);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
             // LabDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -209,16 +206,14 @@
             this.Text = "LabDashboard";
             this.panelSideMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelChildForm.ResumeLayout(false);
             this.panelChildForm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
-
         #endregion
-
         private System.Windows.Forms.Panel panelSideMenu;
         private FontAwesome.Sharp.IconButton btnReturn;
         private FontAwesome.Sharp.IconButton btnPo;
@@ -229,5 +224,6 @@
         private System.Windows.Forms.Label datelabel;
         private System.Windows.Forms.Label timelabel;
         private System.Windows.Forms.PictureBox pictureBox1;
+
     }
 }

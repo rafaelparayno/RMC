@@ -22,18 +22,21 @@ namespace RMC.Patients.PanelsDetails
         PatientVController patientVController = new PatientVController();
         PatientSymptomsController patientSymptomsController = new PatientSymptomsController();
         PatientPrescriptionController patientPrescriptionController = new PatientPrescriptionController();
+        DoctorRequestLabController doctorReqLabController = new DoctorRequestLabController();
+        DoctorRequestXrayController docReqXrayController = new DoctorRequestXrayController();
+
 
         List<int> listAccess = new List<int>();
         private int id = 0;
         private int timerRefresh = 0;
-
         List<DoctorResult> listDoctorResult;
         DoctorResult doctorResultData;
         patientDetails patientDetailsData;
         patientVModel patientVModelData;
         List<PatientSymptomsModel> listPatientSymp;
         List<PatientPrescriptionModel> listPatientPrescription;
-
+        List<labModel> listlabModel;
+        List<xraymodel> listXrayModel;
 
         public PanelDoctorFindings(int id)
         {
@@ -43,31 +46,23 @@ namespace RMC.Patients.PanelsDetails
             initColLv();
             loadData();
         }
-
         private void initColLv()
         {
-
             lvLabDetails.View = View.Details;
             lvLabDetails.Columns.Add("ID", 100, HorizontalAlignment.Left);
             lvLabDetails.Columns.Add("Date", 300, HorizontalAlignment.Left);
         }
-
-
         private async void loadData()
         {
             listDoctorResult = await dsController.getDoctorResults(id);
             refreshListView();
         }
-
-
         private async Task searchData()
         {
             listDoctorResult = await dsController.getDoctorResults(id,
                                         dateTimePicker1.Value.ToString("yyy-MM-dd"));
-
             refreshListView();
         }
-
         private void refreshListView()
         {
             lvLabDetails.Items.Clear();
@@ -79,50 +74,37 @@ namespace RMC.Patients.PanelsDetails
                 lvLabDetails.Items.Add(lvitem);
             }
         }
-
         private void getAccess()
         {
-            listAccess =  accessController.accesses(UserLog.getRole());
-
+            listAccess = accessController.accesses(UserLog.getRole());
             if (listAccess.Contains(5))
             {
                 iconButton3.Visible = true;
             }
         }
-
         private void iconButton3_Click(object sender, EventArgs e)
         {
             DoctorForm form = new DoctorForm(id);
             form.ShowDialog();
         }
-
         private async void iconButton1_Click(object sender, EventArgs e)
         {
             await searchData();
         }
-
         private void iconButton2_Click(object sender, EventArgs e)
         {
             loadData();
         }
-
         private void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvLabDetails.Items.Count == 0)
                 return;
-
             if (lvLabDetails.SelectedItems.Count == 0)
                 return;
-
-
             startShowing();
-
             int id = int.Parse(lvLabDetails.SelectedItems[0].Text);
-
             showCrystalReportData(id);
         }
-
-
         private async void showCrystalReportData(int resultdsid)
         {
             doctorResultData = await dsController.getDoctorResultsSearchId(resultdsid);
@@ -130,31 +112,45 @@ namespace RMC.Patients.PanelsDetails
             patientVModelData = await patientVController.getDetailsidDate(id,
                 doctorResultData.date_results.ToString("yyyy-MM-dd"));
 
-            
 
+            listlabModel = await doctorReqLabController.getLabModelDoctorResult(resultdsid);
             listPatientSymp = await patientSymptomsController.getPatientSymptomsMod(resultdsid);
             listPatientPrescription = await patientPrescriptionController.getPrescriptionModel(resultdsid);
+            listXrayModel = await docReqXrayController.getXrayData(resultdsid);
 
-            string objectiveSymp = "" ;
+            string objectiveSymp = "";
+            string prescriptions = "";
+            string docReqLab = "";
+            string docReqX = "";
+
             foreach (PatientSymptomsModel listPs in listPatientSymp)
             {
                 objectiveSymp += listPs.symptoms + "\n\t";
             }
 
-            string prescriptions = "";
 
-            foreach(PatientPrescriptionModel listPP in listPatientPrescription)
+
+            foreach (PatientPrescriptionModel listPP in listPatientPrescription)
             {
                 prescriptions += listPP.medName + " " + listPP.instruction + "\n\t";
             }
-                
-            
+
+
+            foreach (labModel labm in listlabModel)
+            {
+                docReqLab += labm.name + "\n\t";
+            }
+
+            foreach (xraymodel xrayM in listXrayModel)
+            {
+                docReqX += xrayM.name + "\n\t";
+            }
+
 
             DoctorsSample cos = new DoctorsSample();
-            cos.SetParameterValue("ccParam",doctorResultData.cc);
+            cos.SetParameterValue("ccParam", doctorResultData.cc);
             cos.SetParameterValue("aParam", doctorResultData.assestment);
             cos.SetParameterValue("aParam", doctorResultData.assestment);
-
             cos.SetParameterValue("patientNameParam", patientDetailsData.FullName);
             cos.SetParameterValue("cnParam", patientDetailsData.contact);
             cos.SetParameterValue("ageParam", patientDetailsData.age);
@@ -163,21 +159,24 @@ namespace RMC.Patients.PanelsDetails
             cos.SetParameterValue("cvilParam", patientDetailsData.civil_status);
             cos.SetParameterValue("addressParam", patientDetailsData.address);
             cos.SetParameterValue("dateDynamic", doctorResultData.date_results.ToShortDateString());
-
-            cos.SetParameterValue("bpParam", patientVModelData.bp  == "" || patientVModelData.bp == null ? "" :
+            cos.SetParameterValue("bpParam", patientVModelData.bp == "" || patientVModelData.bp == null ? "" :
                                         patientVModelData.bp);
-            cos.SetParameterValue("tempParam", patientVModelData.temp == "" || patientVModelData.temp == null ? 
+            cos.SetParameterValue("tempParam", patientVModelData.temp == "" || patientVModelData.temp == null ?
                                 "" : patientVModelData.temp);
-
             cos.SetParameterValue("oParam", objectiveSymp);
-
             cos.SetParameterValue("pParam", doctorResultData.procedureA);
 
             cos.SetParameterValue("medsReqParam", prescriptions);
 
+            cos.SetParameterValue("labReqParam", "Lab Request** \n\t" + docReqLab);
+
+            cos.SetParameterValue("xrayReqParam", "xray Request** \n\t" + docReqX);
+
+
             crystalReportViewer1.ReportSource = cos;
 
-            
+
+
         }
 
 

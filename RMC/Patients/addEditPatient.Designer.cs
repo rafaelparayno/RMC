@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -19,9 +18,7 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -29,9 +26,11 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnMaximize = new FontAwesome.Sharp.IconButton();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.label8 = new System.Windows.Forms.Label();
             this.panelNavParam = new System.Windows.Forms.Panel();
+            this.btnPrescription = new FontAwesome.Sharp.IconButton();
             this.btnXray = new FontAwesome.Sharp.IconButton();
             this.btnLabFiles = new FontAwesome.Sharp.IconButton();
             this.btnDoctorRecord = new FontAwesome.Sharp.IconButton();
@@ -39,7 +38,6 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelChild = new System.Windows.Forms.Panel();
-            this.btnMaximize = new FontAwesome.Sharp.IconButton();
             this.panel2.SuspendLayout();
             this.panelNavParam.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +55,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(733, 35);
             this.panel2.TabIndex = 9;
+            // 
+            // btnMaximize
+            // 
+            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
+            this.btnMaximize.FlatAppearance.BorderSize = 0;
+            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaximize.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnMaximize.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.btnMaximize.IconColor = System.Drawing.Color.White;
+            this.btnMaximize.IconSize = 20;
+            this.btnMaximize.Location = new System.Drawing.Point(671, 3);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.Rotation = 0D;
+            this.btnMaximize.Size = new System.Drawing.Size(23, 26);
+            this.btnMaximize.TabIndex = 4;
+            this.btnMaximize.UseVisualStyleBackColor = false;
+            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
             // 
             // btnCloseApp
             // 
@@ -91,6 +107,7 @@
             // panelNavParam
             // 
             this.panelNavParam.AutoScroll = true;
+            this.panelNavParam.Controls.Add(this.btnPrescription);
             this.panelNavParam.Controls.Add(this.btnXray);
             this.panelNavParam.Controls.Add(this.btnLabFiles);
             this.panelNavParam.Controls.Add(this.btnDoctorRecord);
@@ -101,6 +118,28 @@
             this.panelNavParam.Name = "panelNavParam";
             this.panelNavParam.Size = new System.Drawing.Size(733, 48);
             this.panelNavParam.TabIndex = 18;
+            // 
+            // btnPrescription
+            // 
+            this.btnPrescription.BackColor = System.Drawing.Color.Maroon;
+            this.btnPrescription.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnPrescription.FlatAppearance.BorderSize = 0;
+            this.btnPrescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrescription.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnPrescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnPrescription.IconChar = FontAwesome.Sharp.IconChar.Microscope;
+            this.btnPrescription.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnPrescription.IconSize = 18;
+            this.btnPrescription.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPrescription.Location = new System.Drawing.Point(570, 0);
+            this.btnPrescription.Name = "btnPrescription";
+            this.btnPrescription.Rotation = 0D;
+            this.btnPrescription.Size = new System.Drawing.Size(114, 48);
+            this.btnPrescription.TabIndex = 24;
+            this.btnPrescription.Text = "Prescriptions";
+            this.btnPrescription.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPrescription.UseVisualStyleBackColor = false;
+            this.btnPrescription.Click += new System.EventHandler(this.btnPrescription_Click);
             // 
             // btnXray
             // 
@@ -230,24 +269,6 @@
             this.panelChild.Size = new System.Drawing.Size(733, 366);
             this.panelChild.TabIndex = 20;
             // 
-            // btnMaximize
-            // 
-            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
-            this.btnMaximize.FlatAppearance.BorderSize = 0;
-            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximize.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnMaximize.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            this.btnMaximize.IconColor = System.Drawing.Color.White;
-            this.btnMaximize.IconSize = 20;
-            this.btnMaximize.Location = new System.Drawing.Point(671, 3);
-            this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Rotation = 0D;
-            this.btnMaximize.Size = new System.Drawing.Size(23, 26);
-            this.btnMaximize.TabIndex = 4;
-            this.btnMaximize.UseVisualStyleBackColor = false;
-            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
-            // 
             // addEditPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -270,9 +291,7 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
-
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconButton btnCloseApp;
         private System.Windows.Forms.Label label8;
@@ -285,5 +304,7 @@
         private FontAwesome.Sharp.IconButton btnVital;
         private FontAwesome.Sharp.IconButton btnXray;
         private FontAwesome.Sharp.IconButton btnMaximize;
+        private FontAwesome.Sharp.IconButton btnPrescription;
+
     }
 }

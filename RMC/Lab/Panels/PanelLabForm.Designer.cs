@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -19,9 +18,7 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -40,10 +37,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lvItemLab = new System.Windows.Forms.ListView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelPatient = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.lvItemLab = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
             this.panelMenus.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -136,6 +133,7 @@
             // 
             this.iconButton1.BackColor = System.Drawing.Color.Maroon;
             this.iconButton1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.iconButton1.Enabled = false;
             this.iconButton1.FlatAppearance.BorderSize = 0;
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -159,6 +157,7 @@
             // 
             this.btnAddItem.BackColor = System.Drawing.Color.Maroon;
             this.btnAddItem.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAddItem.Enabled = false;
             this.btnAddItem.FlatAppearance.BorderSize = 0;
             this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddItem.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -182,6 +181,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.Maroon;
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSave.Enabled = false;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -236,6 +236,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "List Lab Added";
             // 
+            // lvItemLab
+            // 
+            this.lvItemLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvItemLab.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvItemLab.FullRowSelect = true;
+            this.lvItemLab.GridLines = true;
+            this.lvItemLab.HideSelection = false;
+            this.lvItemLab.Location = new System.Drawing.Point(3, 19);
+            this.lvItemLab.Name = "lvItemLab";
+            this.lvItemLab.Size = new System.Drawing.Size(668, 245);
+            this.lvItemLab.TabIndex = 1;
+            this.lvItemLab.UseCompatibleStateImageBehavior = false;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Maroon;
@@ -257,8 +270,8 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -268,19 +281,6 @@
             this.label2.Size = new System.Drawing.Size(132, 39);
             this.label2.TabIndex = 0;
             this.label2.Text = "No Data";
-            // 
-            // lvItemLab
-            // 
-            this.lvItemLab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvItemLab.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvItemLab.FullRowSelect = true;
-            this.lvItemLab.GridLines = true;
-            this.lvItemLab.HideSelection = false;
-            this.lvItemLab.Location = new System.Drawing.Point(3, 19);
-            this.lvItemLab.Name = "lvItemLab";
-            this.lvItemLab.Size = new System.Drawing.Size(668, 245);
-            this.lvItemLab.TabIndex = 1;
-            this.lvItemLab.UseCompatibleStateImageBehavior = false;
             // 
             // PanelLabForm
             // 
@@ -305,11 +305,8 @@
             this.panelPatient.ResumeLayout(false);
             this.panelPatient.PerformLayout();
             this.ResumeLayout(false);
-
         }
-
         #endregion
-
         private System.Windows.Forms.GroupBox groupBox1;
         private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -326,5 +323,6 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListView lvItemLab;
+
     }
 }

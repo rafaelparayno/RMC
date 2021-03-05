@@ -98,8 +98,18 @@ namespace RMC.Patients.PanelsDetails
         {
             string path = await patientXrayController.getFullPath(id);
 
-            pbEdited.Image = Image.FromFile(path);
+            try
+            {
+                pbEdited.Image = Image.FromFile(path);
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show("There was an error opening the image. \n" +
+                           "Please check the path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
+
 
         private async void iconButton1_Click(object sender, EventArgs e)
         {

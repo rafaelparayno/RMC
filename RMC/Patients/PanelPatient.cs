@@ -45,20 +45,7 @@ namespace RMC.Patients
 
         private void populateitems()
         {
-            /*List<patientDetails> listDetails = new List<patientDetails>();
-
-            for (int i = 0; i < 100; i++)
-            {
-                patientDetails pdetails = new patientDetails();
-                pdetails.id = i;
-                pdetails.Firstname = "RAFAEL";
-                pdetails.lastname = "Parayno";
-                pdetails.age = i;
-                pdetails.contact = "6391231";
-                pdetails.address = "blk 22 lot 8 adelfa street gardenai valley molino bacoor";
-                pdetails.gender = "Male";
-                listDetails.Add(pdetails);
-            }*/
+         
             panelPatientList.Controls.Clear();
             int indexofLastRow = currentPage * rowsPerPage;
             int indexofFirstRow = indexofLastRow - rowsPerPage;

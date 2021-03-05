@@ -68,10 +68,20 @@ namespace RMC.Patients.PanelsDetails
         private async Task showDocLab(int id)
         {
             string fullpath = await patientLabController.getFullPath(id);
-           
-           pbEdited.Image = Image.FromFile(fullpath);
+
+
+            try
+            {
+                pbEdited.Image = Image.FromFile(fullpath);
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show("There was an error opening the image." +
+                           "Please check the path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
+
 
         private async void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
         {

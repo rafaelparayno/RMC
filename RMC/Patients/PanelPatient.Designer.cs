@@ -84,8 +84,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Patient Id",
-            "First name",
-            "Last name"});
+            "Name"});
             this.comboBox1.Location = new System.Drawing.Point(18, 41);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox1.Name = "comboBox1";

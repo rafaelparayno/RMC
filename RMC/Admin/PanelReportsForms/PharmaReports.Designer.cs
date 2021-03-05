@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -19,9 +18,7 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -32,6 +29,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelNavParam = new System.Windows.Forms.Panel();
+            this.iconButton8 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
@@ -78,6 +76,7 @@
             // 
             this.panelNavParam.AutoScroll = true;
             this.panelNavParam.BackColor = System.Drawing.Color.FloralWhite;
+            this.panelNavParam.Controls.Add(this.iconButton8);
             this.panelNavParam.Controls.Add(this.iconButton2);
             this.panelNavParam.Controls.Add(this.iconButton7);
             this.panelNavParam.Controls.Add(this.iconButton5);
@@ -92,6 +91,30 @@
             this.panelNavParam.Name = "panelNavParam";
             this.panelNavParam.Size = new System.Drawing.Size(894, 74);
             this.panelNavParam.TabIndex = 22;
+            // 
+            // iconButton8
+            // 
+            this.iconButton8.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton8.FlatAppearance.BorderSize = 0;
+            this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton8.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.FolderPlus;
+            this.iconButton8.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton8.IconSize = 18;
+            this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton8.Location = new System.Drawing.Point(1064, 0);
+            this.iconButton8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton8.Name = "iconButton8";
+            this.iconButton8.Rotation = 0D;
+            this.iconButton8.Size = new System.Drawing.Size(146, 57);
+            this.iconButton8.TabIndex = 31;
+            this.iconButton8.Text = "Return Items to shop";
+            this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton8.UseMnemonic = false;
+            this.iconButton8.UseVisualStyleBackColor = false;
+            this.iconButton8.Click += new System.EventHandler(this.iconButton8_Click);
             // 
             // iconButton2
             // 
@@ -231,7 +254,7 @@
             this.iconButton3.Rotation = 0D;
             this.iconButton3.Size = new System.Drawing.Size(133, 57);
             this.iconButton3.TabIndex = 23;
-            this.iconButton3.Text = "Return Items";
+            this.iconButton3.Text = "Return Items To Supplier";
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton3.UseMnemonic = false;
             this.iconButton3.UseVisualStyleBackColor = false;
@@ -301,9 +324,7 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
-
         private System.Windows.Forms.Panel panelChild;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelNavParam;
@@ -316,5 +337,7 @@
         private FontAwesome.Sharp.IconButton iconButton6;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton7;
+        private FontAwesome.Sharp.IconButton iconButton8;
     }
+
 }

@@ -59,6 +59,8 @@ namespace RMC.Patients
             btnLabFiles.Visible = false;
             btnXray.Visible = false;
             btnDoctorRecord.Visible = false;
+            btnPrescription.Visible = false;
+
         }
 
         private void btnVital_Click(object sender, EventArgs e)
@@ -92,6 +94,12 @@ namespace RMC.Patients
                 WindowState = FormWindowState.Maximized;
             else
                 WindowState = FormWindowState.Normal;
+        }
+
+        private void btnPrescription_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelPrescriptionData(patient_id));
+
         }
     }
 }

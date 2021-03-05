@@ -168,6 +168,7 @@
             this.iconButton1.FlatAppearance.BorderSize = 0;
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.Enabled = false;
             this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconButton1.ForeColor = System.Drawing.Color.White;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Trash;
@@ -188,6 +189,8 @@
             // 
             this.btnAddItem.BackColor = System.Drawing.Color.Maroon;
             this.btnAddItem.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnAddItem.Enabled = false;
+
             this.btnAddItem.FlatAppearance.BorderSize = 0;
             this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddItem.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -211,6 +214,8 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.Maroon;
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSave.Enabled = false;
+
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;

@@ -84,17 +84,17 @@ namespace RMC.Xray.Panels
 
         private void textChangeForDraw(object sender, EventArgs e)
         {
+            if (pbAutomated.Image == null)
+                return;
+
             int id = int.Parse(((TextBox)sender).Tag.ToString());
             ListParams s = listofListparams.Find(item => int.Parse((item.textbox1).Tag.ToString()) == id);
             CoordinatesList cor = new CoordinatesList();
-
             if (s.textbox1.Text != "")
             {
                 int index = coordinatesAutomated.FindIndex(a => a.xCoor == s.XCoordinates);
-
                 if (index == -1)
                 {
-
                     cor.nameVar = s.textbox1.Text;
                     cor.xCoor = s.XCoordinates;
                     cor.yCoor = s.YCoordinates;
@@ -112,23 +112,16 @@ namespace RMC.Xray.Panels
                     coordinatesAutomated.RemoveAt(index);
             }
             Draw();
-
         }
-
-
         private Image resize(Image imgToResize, Size size)
         {
             return (Image)(new Bitmap(imgToResize, size));
         }
-
         private void Draw()
         {
-
             Color cb = Color.Black;
-
             Brush brush = new SolidBrush(cb);
             Font font = new Font(new FontFamily("Times New Roman"), 14);
-
             Image newImg = resize(img, pbAutomated.ClientSize);
             graphicsImg = Graphics.FromImage(newImg);
             foreach (CoordinatesList cors in coordinatesAutomated)
@@ -136,19 +129,26 @@ namespace RMC.Xray.Panels
                 graphicsImg.DrawString(cors.nameVar, font, brush, cors.xCoor, cors.yCoor);
             }
             pbAutomated.Image = newImg;
-
             graphicsImg.Dispose();
             pbAutomated.Invalidate();
             Update();
         }
-
-
         private async void getDisplayAutomated(int id)
         {
             string fullPath = await autoDocsController.getFullPath(id);
-            img = Image.FromFile(fullPath);
-            pbAutomated.Image = img;
+            try
+            {
+                img = Image.FromFile(fullPath);
+                pbAutomated.Image = img;
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show("ERROR! check valid path", "ERROR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
+
 
 
 

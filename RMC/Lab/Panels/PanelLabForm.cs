@@ -98,27 +98,22 @@ namespace RMC.Lab.Panels
             lvItemLab.Items.Clear();
             patientmod = new patientDetails();
             panelPatient.Controls.Clear();
-            txtName.Text = "";
         }
 
         private void saveImginPath(Image imgSave, string path, string fileName)
         {
-
-
             Image newImg = imgSave;
             newImg.Save(path + fileName + ".jpg");
         }
         #endregion
-
-
         #region Handlers Input
-
         private void iconButton2_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == -1)
                 return;
 
             int selectedCb = comboBox1.SelectedIndex;
+            clearDataNew();
 
             switch (selectedCb)
             {
@@ -139,10 +134,8 @@ namespace RMC.Lab.Panels
                     return;
             }
             panelPatient.Controls.Clear();
-
             if (patientmod.id != 0)
             {
-
                 PatientControl patView = new PatientControl();
                 patView.PatientId = patientmod.id;
                 patView.PatientName = "Name: " + patientmod.FullName;
@@ -151,21 +144,25 @@ namespace RMC.Lab.Panels
                 patView.Gender = "Gender : " + patientmod.gender;
                 patView.Address = "Address: " + patientmod.address;
                 patView.Cnumber = "Contact Number : " + patientmod.contact;
-
                 patView.Dock = DockStyle.Fill;
                 panelPatient.BackColor = Color.FloralWhite;
                 panelPatient.Controls.Add(patView);
+                btnSave.Enabled = true;
+                btnAddItem.Enabled = true;
+                iconButton1.Enabled = true;
             }
             else
             {
                 panelPatient.BackColor = Color.Salmon;
                 panelPatient.Controls.Add(label2);
+                btnSave.Enabled = false;
+                btnAddItem.Enabled = false;
+                iconButton1.Enabled = false;
 
             }
-
         }
 
-        private void btnAddItem_Click(object sender, EventArgs e)
+            private void btnAddItem_Click(object sender, EventArgs e)
         {
             DiagLab form = new DiagLab();
             form.ShowDialog();
