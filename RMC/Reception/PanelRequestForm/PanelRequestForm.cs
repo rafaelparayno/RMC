@@ -1,4 +1,5 @@
-﻿using RMC.Database.Controllers;
+﻿using MySql.Data;
+using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.Reception.PanelRequestForm.Dialogs;
 using System;
@@ -34,13 +35,23 @@ namespace RMC.Reception.PanelRequestForm
         private void initLvCol()
         {
             lvCustomerDetails.View = View.Details;
+
+            ImageList imgs = new ImageList();
+            imgs.ImageSize = new Size(25, 25);
+
+            imgs.Images.Add(Properties.Resources.noimg);
+            imgs.Images.Add(Properties.Resources.silhuser);
             lvCustomerDetails.Columns.Add("QUEUE NO", 150, HorizontalAlignment.Left);
             lvCustomerDetails.Columns.Add("Name", 200, HorizontalAlignment.Left);
             lvCustomerDetails.Columns.Add("age", 80, HorizontalAlignment.Left);
-            lvCustomerDetails.Columns.Add("gender", 100, HorizontalAlignment.Left);
-            lvCustomerDetails.Columns.Add("CS", 100, HorizontalAlignment.Left);
-            lvCustomerDetails.Columns.Add("CP# no", 100, HorizontalAlignment.Left);
-            lvCustomerDetails.Columns.Add("Address", 200, HorizontalAlignment.Left);
+            lvCustomerDetails.Columns.Add("Consult", 100, HorizontalAlignment.Left);
+            lvCustomerDetails.Columns.Add("Xray", 100, HorizontalAlignment.Left);
+            lvCustomerDetails.Columns.Add("Lab", 100, HorizontalAlignment.Left);
+            lvCustomerDetails.Columns.Add("Services", 100, HorizontalAlignment.Left);
+            lvCustomerDetails.Columns.Add("Paid", 200, HorizontalAlignment.Left);
+
+            lvCustomerDetails.SmallImageList = imgs;
+          
         }
 
         private async void getData()
@@ -61,10 +72,10 @@ namespace RMC.Reception.PanelRequestForm
                 lvItem.Text = c.id.ToString();
                 lvItem.SubItems.Add(c.name);
                 lvItem.SubItems.Add(c.age.ToString());
-                lvItem.SubItems.Add(c.gender);
+             /*   lvItem.SubItems.Add(c.gender);
                 lvItem.SubItems.Add(c.cs);
                 lvItem.SubItems.Add(c.cp_no);
-                lvItem.SubItems.Add(c.address);
+                lvItem.SubItems.Add(c.address);*/
 
                 lvCustomerDetails.Items.Add(lvItem);
             }

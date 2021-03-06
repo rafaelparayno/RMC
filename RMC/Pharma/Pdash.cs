@@ -45,6 +45,7 @@ namespace RMC.Pharma
         private void btnViewPrescription_Click(object sender, EventArgs e)
         {
             //Viewing prescription
+            openChildForm(new ViewPrescriptions());
         }
     }
 }
