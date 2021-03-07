@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.panelMenus = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgCustomerList = new System.Windows.Forms.DataGridView();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEdit = new FontAwesome.Sharp.IconButton();
             this.btnNextReq = new FontAwesome.Sharp.IconButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lvCustomerDetails = new System.Windows.Forms.ListView();
             this.panelMenus.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustomerList)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenus
@@ -48,6 +49,42 @@
             this.panelMenus.Name = "panelMenus";
             this.panelMenus.Size = new System.Drawing.Size(684, 61);
             this.panelMenus.TabIndex = 4;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.dgCustomerList);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(684, 465);
+            this.groupBox2.TabIndex = 210;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "List of Queue Request";
+            // 
+            // dgCustomerList
+            // 
+            this.dgCustomerList.AllowUserToAddRows = false;
+            this.dgCustomerList.AllowUserToDeleteRows = false;
+            this.dgCustomerList.AllowUserToResizeColumns = false;
+            this.dgCustomerList.AllowUserToResizeRows = false;
+            this.dgCustomerList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgCustomerList.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dgCustomerList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgCustomerList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgCustomerList.Location = new System.Drawing.Point(3, 19);
+            this.dgCustomerList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgCustomerList.MultiSelect = false;
+            this.dgCustomerList.Name = "dgCustomerList";
+            this.dgCustomerList.ReadOnly = true;
+            this.dgCustomerList.RowHeadersVisible = false;
+            this.dgCustomerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgCustomerList.Size = new System.Drawing.Size(678, 442);
+            this.dgCustomerList.StandardTab = true;
+            this.dgCustomerList.TabIndex = 117;
             // 
             // btnAddItem
             // 
@@ -118,34 +155,6 @@
             this.btnNextReq.UseVisualStyleBackColor = false;
             this.btnNextReq.Click += new System.EventHandler(this.btnNextReq_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.lvCustomerDetails);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(684, 465);
-            this.groupBox2.TabIndex = 210;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "List of Queue Request";
-            // 
-            // lvCustomerDetails
-            // 
-            this.lvCustomerDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvCustomerDetails.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvCustomerDetails.FullRowSelect = true;
-            this.lvCustomerDetails.GridLines = true;
-            this.lvCustomerDetails.HideSelection = false;
-            this.lvCustomerDetails.Location = new System.Drawing.Point(3, 19);
-            this.lvCustomerDetails.Name = "lvCustomerDetails";
-            this.lvCustomerDetails.Size = new System.Drawing.Size(678, 442);
-            this.lvCustomerDetails.TabIndex = 1;
-            this.lvCustomerDetails.UseCompatibleStateImageBehavior = false;
-            // 
             // PanelRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -161,6 +170,7 @@
             this.Text = "PanelRequestForm";
             this.panelMenus.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustomerList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,6 +182,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private FontAwesome.Sharp.IconButton btnAddItem;
         private FontAwesome.Sharp.IconButton btnEdit;
-        private System.Windows.Forms.ListView lvCustomerDetails;
+        public System.Windows.Forms.DataGridView dgCustomerList;
     }
 }

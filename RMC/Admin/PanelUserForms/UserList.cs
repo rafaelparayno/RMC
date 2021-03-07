@@ -76,6 +76,9 @@ namespace RMC.Admin.PanelForms
             if (dgUserAccounts.Rows.Count == 0)
                 return;
 
+            if (dgUserAccounts.SelectedRows.Count == 0)
+                return;
+
             string userName = dgUserAccounts.SelectedRows[0].Cells[4].Value.ToString();
             int id = int.Parse(dgUserAccounts.SelectedRows[0].Cells[0].Value.ToString());
             DialogResult diag = MessageBox.Show("Do you want to Delete this " + userName + " account?",
