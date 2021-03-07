@@ -465,6 +465,7 @@
     <Compile Include="Database\Controllers\ConsumedItems.cs" />
     <Compile Include="Database\Controllers\CustomerDetailsController.cs" />
     <Compile Include="Database\Controllers\CustomerRequestsController.cs" />
+    <Compile Include="Database\Controllers\DoctorQueueController.cs" />
     <Compile Include="Database\Controllers\DoctorRequestLabController.cs" />
     <Compile Include="Database\Controllers\DoctorRequestXrayController.cs" />
     <Compile Include="Database\Controllers\doctorResultsController.cs" />

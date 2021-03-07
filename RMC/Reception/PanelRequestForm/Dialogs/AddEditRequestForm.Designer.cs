@@ -36,46 +36,57 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.cbMedCert = new System.Windows.Forms.CheckBox();
             this.checkOthers = new System.Windows.Forms.CheckBox();
             this.checkMeds = new System.Windows.Forms.CheckBox();
             this.checkPackage = new System.Windows.Forms.CheckBox();
             this.checkXray = new System.Windows.Forms.CheckBox();
             this.checkLab = new System.Windows.Forms.CheckBox();
-            this.Medcert = new System.Windows.Forms.CheckBox();
             this.checkConsult = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtCpno = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtcs = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.rbFemale = new System.Windows.Forms.RadioButton();
-            this.rbMale = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtAge = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.cbGender = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtCn = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.txtAge = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtLn = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMn = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtfn = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.tbSearchId = new System.Windows.Forms.TextBox();
+            this.lblPatientID = new System.Windows.Forms.Label();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -89,7 +100,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FloralWhite;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(528, 35);
+            this.panel2.Size = new System.Drawing.Size(835, 35);
             this.panel2.TabIndex = 9;
             // 
             // btnSave
@@ -102,7 +113,7 @@
             this.btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnSave.IconColor = System.Drawing.Color.Black;
             this.btnSave.IconSize = 16;
-            this.btnSave.Location = new System.Drawing.Point(250, 4);
+            this.btnSave.Location = new System.Drawing.Point(557, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Rotation = 0D;
             this.btnSave.Size = new System.Drawing.Size(236, 27);
@@ -121,7 +132,7 @@
             this.btnCloseApp.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
             this.btnCloseApp.IconColor = System.Drawing.Color.White;
             this.btnCloseApp.IconSize = 25;
-            this.btnCloseApp.Location = new System.Drawing.Point(495, 5);
+            this.btnCloseApp.Location = new System.Drawing.Point(802, 5);
             this.btnCloseApp.Name = "btnCloseApp";
             this.btnCloseApp.Rotation = 0D;
             this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
@@ -143,46 +154,58 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.groupBox7);
+            this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.groupBox6);
+            this.panel1.Controls.Add(this.groupBox7);
             this.panel1.Controls.Add(this.groupBox5);
-            this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(528, 648);
+            this.panel1.Size = new System.Drawing.Size(835, 435);
             this.panel1.TabIndex = 10;
             // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.groupBox8);
-            this.groupBox7.Controls.Add(this.label3);
-            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox7.Location = new System.Drawing.Point(0, 488);
+            this.groupBox7.Controls.Add(this.label10);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox7.Location = new System.Drawing.Point(0, 422);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox7.Size = new System.Drawing.Size(528, 160);
-            this.groupBox7.TabIndex = 8;
+            this.groupBox7.Size = new System.Drawing.Size(818, 131);
+            this.groupBox7.TabIndex = 17;
             this.groupBox7.TabStop = false;
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.cbMedCert);
             this.groupBox8.Controls.Add(this.checkOthers);
             this.groupBox8.Controls.Add(this.checkMeds);
             this.groupBox8.Controls.Add(this.checkPackage);
             this.groupBox8.Controls.Add(this.checkXray);
             this.groupBox8.Controls.Add(this.checkLab);
-            this.groupBox8.Controls.Add(this.Medcert);
             this.groupBox8.Controls.Add(this.checkConsult);
-            this.groupBox8.Location = new System.Drawing.Point(20, 55);
+            this.groupBox8.Location = new System.Drawing.Point(18, 35);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(488, 98);
+            this.groupBox8.Size = new System.Drawing.Size(758, 83);
             this.groupBox8.TabIndex = 254;
             this.groupBox8.TabStop = false;
+            // 
+            // cbMedCert
+            // 
+            this.cbMedCert.AutoSize = true;
+            this.cbMedCert.Location = new System.Drawing.Point(19, 51);
+            this.cbMedCert.Name = "cbMedCert";
+            this.cbMedCert.Size = new System.Drawing.Size(89, 21);
+            this.cbMedCert.TabIndex = 7;
+            this.cbMedCert.Text = "MEDCERT";
+            this.cbMedCert.UseVisualStyleBackColor = true;
+            this.cbMedCert.Click += new System.EventHandler(this.cbMedCert_Click_1);
             // 
             // checkOthers
             // 
@@ -239,17 +262,6 @@
             this.checkLab.UseVisualStyleBackColor = true;
             this.checkLab.Click += new System.EventHandler(this.checkLab_Click);
             // 
-            // Medcert
-            // 
-            this.Medcert.AutoSize = true;
-            this.Medcert.Location = new System.Drawing.Point(19, 51);
-            this.Medcert.Name = "Medcert";
-            this.Medcert.Size = new System.Drawing.Size(89, 21);
-            this.Medcert.TabIndex = 1;
-            this.Medcert.Text = "MEDCERT";
-            this.Medcert.UseVisualStyleBackColor = true;
-            this.Medcert.Click += new System.EventHandler(this.Medcert_Click);
-            // 
             // checkConsult
             // 
             this.checkConsult.AutoSize = true;
@@ -261,233 +273,370 @@
             this.checkConsult.UseVisualStyleBackColor = true;
             this.checkConsult.Click += new System.EventHandler(this.checkConsult_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 17);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Request";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.txtAddress);
-            this.groupBox6.Controls.Add(this.label10);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox6.Location = new System.Drawing.Point(0, 373);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox6.Size = new System.Drawing.Size(528, 115);
-            this.groupBox6.TabIndex = 7;
-            this.groupBox6.TabStop = false;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAddress.Location = new System.Drawing.Point(18, 41);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(492, 60);
-            this.txtAddress.TabIndex = 2;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(15, 21);
+            this.label10.Location = new System.Drawing.Point(15, 15);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 17);
+            this.label10.Size = new System.Drawing.Size(58, 17);
             this.label10.TabIndex = 1;
-            this.label10.Text = "Address";
+            this.label10.Text = "Request";
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.txtCpno);
-            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.txtAddress);
+            this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox5.Location = new System.Drawing.Point(0, 301);
+            this.groupBox5.Location = new System.Drawing.Point(0, 295);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Size = new System.Drawing.Size(528, 72);
-            this.groupBox5.TabIndex = 6;
+            this.groupBox5.Size = new System.Drawing.Size(818, 127);
+            this.groupBox5.TabIndex = 16;
             this.groupBox5.TabStop = false;
             // 
-            // txtCpno
+            // txtAddress
             // 
-            this.txtCpno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCpno.Location = new System.Drawing.Point(18, 42);
-            this.txtCpno.Name = "txtCpno";
-            this.txtCpno.Size = new System.Drawing.Size(491, 24);
-            this.txtCpno.TabIndex = 1;
+            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAddress.Location = new System.Drawing.Point(18, 37);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(788, 70);
+            this.txtAddress.TabIndex = 10;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(15, 17);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 17);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Address:";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cbStatus);
+            this.groupBox3.Controls.Add(this.cbGender);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.txtCn);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(0, 223);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Size = new System.Drawing.Size(818, 72);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            // 
+            // cbStatus
+            // 
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
+            "Single",
+            "Married",
+            "Separated",
+            "Widowed"});
+            this.cbStatus.Location = new System.Drawing.Point(507, 41);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(236, 24);
+            this.cbStatus.TabIndex = 10;
+            // 
+            // cbGender
+            // 
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.cbGender.Location = new System.Drawing.Point(18, 37);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(198, 24);
+            this.cbGender.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(504, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 17);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Civil Status";
+            // 
+            // txtCn
+            // 
+            this.txtCn.Location = new System.Drawing.Point(269, 41);
+            this.txtCn.Name = "txtCn";
+            this.txtCn.Size = new System.Drawing.Size(198, 24);
+            this.txtCn.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 17);
+            this.label5.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(266, 21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 17);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "CP No:";
+            this.label5.Size = new System.Drawing.Size(123, 17);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Contact Number";
             // 
-            // groupBox4
+            // label7
             // 
-            this.groupBox4.Controls.Add(this.txtcs);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox4.Location = new System.Drawing.Point(0, 229);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(528, 72);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(15, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 17);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Gender";
             // 
-            // txtcs
+            // groupBox2
             // 
-            this.txtcs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtcs.Location = new System.Drawing.Point(18, 42);
-            this.txtcs.Name = "txtcs";
-            this.txtcs.Size = new System.Drawing.Size(491, 24);
-            this.txtcs.TabIndex = 1;
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.txtAge);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Location = new System.Drawing.Point(0, 151);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(818, 72);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(18, 41);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(449, 24);
+            this.dateTimePicker1.TabIndex = 7;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // txtAge
+            // 
+            this.txtAge.Enabled = false;
+            this.txtAge.Location = new System.Drawing.Point(507, 41);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(236, 24);
+            this.txtAge.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(15, 17);
+            this.label4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(504, 17);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "CS:";
+            this.label4.Size = new System.Drawing.Size(40, 17);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Age:";
             // 
-            // groupBox3
+            // label6
             // 
-            this.groupBox3.Controls.Add(this.groupBox9);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(0, 144);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(528, 85);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(15, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(79, 17);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "BirthDate:";
             // 
-            // groupBox9
+            // groupBox4
             // 
-            this.groupBox9.Controls.Add(this.rbFemale);
-            this.groupBox9.Controls.Add(this.rbMale);
-            this.groupBox9.Location = new System.Drawing.Point(21, 17);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(488, 50);
-            this.groupBox9.TabIndex = 253;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Gender";
+            this.groupBox4.Controls.Add(this.txtLn);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.txtMn);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.txtfn);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox4.Location = new System.Drawing.Point(0, 79);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox4.Size = new System.Drawing.Size(818, 72);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
             // 
-            // rbFemale
+            // txtLn
             // 
-            this.rbFemale.AutoSize = true;
-            this.rbFemale.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbFemale.Location = new System.Drawing.Point(83, 21);
-            this.rbFemale.Name = "rbFemale";
-            this.rbFemale.Size = new System.Drawing.Size(77, 23);
-            this.rbFemale.TabIndex = 248;
-            this.rbFemale.Text = "Female";
-            this.rbFemale.UseVisualStyleBackColor = true;
-            this.rbFemale.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
+            this.txtLn.Location = new System.Drawing.Point(507, 41);
+            this.txtLn.Name = "txtLn";
+            this.txtLn.Size = new System.Drawing.Size(236, 24);
+            this.txtLn.TabIndex = 5;
             // 
-            // rbMale
+            // label3
             // 
-            this.rbMale.AutoSize = true;
-            this.rbMale.Checked = true;
-            this.rbMale.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbMale.Location = new System.Drawing.Point(18, 21);
-            this.rbMale.Name = "rbMale";
-            this.rbMale.Size = new System.Drawing.Size(59, 23);
-            this.rbMale.TabIndex = 247;
-            this.rbMale.TabStop = true;
-            this.rbMale.Text = "Male";
-            this.rbMale.UseVisualStyleBackColor = true;
-            this.rbMale.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(504, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 17);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Last Name:";
             // 
-            // groupBox2
+            // txtMn
             // 
-            this.groupBox2.Controls.Add(this.txtAge);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 72);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(528, 72);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            // 
-            // txtAge
-            // 
-            this.txtAge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAge.Location = new System.Drawing.Point(18, 42);
-            this.txtAge.MaxLength = 2;
-            this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(491, 24);
-            this.txtAge.TabIndex = 1;
-            this.txtAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAge_KeyPress);
+            this.txtMn.Location = new System.Drawing.Point(269, 41);
+            this.txtMn.Name = "txtMn";
+            this.txtMn.Size = new System.Drawing.Size(198, 24);
+            this.txtMn.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 17);
+            this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(266, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Age";
+            this.label2.Size = new System.Drawing.Size(101, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Middle Name:";
+            // 
+            // txtfn
+            // 
+            this.txtfn.Location = new System.Drawing.Point(18, 42);
+            this.txtfn.Name = "txtfn";
+            this.txtfn.Size = new System.Drawing.Size(198, 24);
+            this.txtfn.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(15, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 17);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "First Name:";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.iconButton1);
+            this.groupBox1.Controls.Add(this.tbSearchId);
+            this.groupBox1.Controls.Add(this.lblPatientID);
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(528, 72);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.Size = new System.Drawing.Size(818, 79);
+            this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
-            // txtName
+            // iconButton1
             // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(18, 42);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(491, 24);
-            this.txtName.TabIndex = 1;
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconSize = 16;
+            this.iconButton1.Location = new System.Drawing.Point(507, 45);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(236, 27);
+            this.iconButton1.TabIndex = 4;
+            this.iconButton1.Text = "Search";
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Visible = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // label1
+            // tbSearchId
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            this.tbSearchId.Location = new System.Drawing.Point(118, 48);
+            this.tbSearchId.Name = "tbSearchId";
+            this.tbSearchId.Size = new System.Drawing.Size(383, 24);
+            this.tbSearchId.TabIndex = 3;
+            this.tbSearchId.Visible = false;
+            // 
+            // lblPatientID
+            // 
+            this.lblPatientID.AutoSize = true;
+            this.lblPatientID.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPatientID.Location = new System.Drawing.Point(115, 23);
+            this.lblPatientID.Name = "lblPatientID";
+            this.lblPatientID.Size = new System.Drawing.Size(83, 17);
+            this.lblPatientID.TabIndex = 2;
+            this.lblPatientID.Text = "Patient ID:";
+            this.lblPatientID.Visible = false;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(12, 51);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(94, 21);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Old Record";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(12, 24);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(100, 21);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "New Record";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBox3);
+            this.groupBox6.Controls.Add(this.label14);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox6.Location = new System.Drawing.Point(0, 553);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox6.Size = new System.Drawing.Size(818, 72);
+            this.groupBox6.TabIndex = 18;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Visible = false;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(18, 42);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(788, 24);
+            this.textBox3.TabIndex = 1;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(15, 17);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(258, 17);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Chief Complaints( For Consulation) :";
             // 
             // AddEditRequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(528, 683);
+            this.ClientSize = new System.Drawing.Size(835, 470);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -503,20 +652,19 @@
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -528,35 +676,47 @@
         private FontAwesome.Sharp.IconButton btnCloseApp;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox txtCpno;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox txtcs;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtAge;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.RadioButton rbFemale;
-        private System.Windows.Forms.RadioButton rbMale;
+        private System.Windows.Forms.TextBox txtCn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtAge;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtLn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtfn;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbSearchId;
+        private System.Windows.Forms.Label lblPatientID;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox cbMedCert;
         private System.Windows.Forms.CheckBox checkOthers;
         private System.Windows.Forms.CheckBox checkMeds;
         private System.Windows.Forms.CheckBox checkPackage;
         private System.Windows.Forms.CheckBox checkXray;
         private System.Windows.Forms.CheckBox checkLab;
-        private System.Windows.Forms.CheckBox Medcert;
         private System.Windows.Forms.CheckBox checkConsult;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.Label label12;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label14;
     }
 }

@@ -88,6 +88,36 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task<patientDetails> getPatientQueueNo(int queue_no)
+        {
+            patientDetails patientDetails = new patientDetails();
+            string sql = @"SELECT * FROM patientdetails WHERE patient_id in 
+                    (SELECT patient_id FROM customer_request_details WHERE queue_no = @queue_no )";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@queue_no", queue_no));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                patientDetails.id = int.Parse(reader["patient_id"].ToString());
+                patientDetails.Firstname = reader["firstname"].ToString();
+                patientDetails.middlename = reader["middlename"].ToString();
+                patientDetails.lastname = reader["lastname"].ToString();
+
+                patientDetails.age = int.Parse(reader["age"].ToString());
+                patientDetails.gender = reader["gender"].ToString();
+                patientDetails.address = reader["address"].ToString();
+                patientDetails.contact = reader["contactnumber"].ToString();
+                patientDetails.birthdate = reader["birthdate"].ToString();
+                patientDetails.civil_status = reader["civil_status"].ToString();
+            }
+            crud.CloseConnection();
+
+            return patientDetails;
+        }
+
+
         public async Task<patientDetails> getPatientFName(string fname)
         {
             patientDetails patientDetails = new patientDetails();
@@ -212,6 +242,23 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@id", int.Parse(data[9])));
 
             await crud.ExecuteAsync(sql, listparams);
+        }
+
+        public int getRecentPID()
+        {
+            string sql = String.Format(@"SELECT AUTO_INCREMENT As 'Last_id'
+                                        FROM information_schema.tables 
+                                        WHERE table_name='patientdetails' 
+                                        AND table_schema= DATABASE()");
+            MySqlDataReader reader = null;
+            crud.RetrieveRecords(sql, ref reader, null);
+            int last_id = 0;
+            if (reader.Read())
+            {
+                last_id = int.Parse(reader["Last_id"].ToString());
+            }
+            crud.CloseConnection();
+            return last_id;
         }
     }
 }

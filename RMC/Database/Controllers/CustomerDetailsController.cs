@@ -17,11 +17,11 @@ namespace RMC.Database.Controllers
         public async Task<List<customerDetailsMod>> getDetailsList()
         {
             
-            string sql = @"SELECT * FROM customer_request_details WHERE req_done = 0 ORDER BY customer_id ASC";
+            string sql = @"SELECT * FROM customer_request_details 
+                            LEFT JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
+                            ORDER BY queue_no ASC";
             List<customerDetailsMod> detailsList = new List<customerDetailsMod>();
-        /*    List<MySqlParameter> listparams = new List<MySqlParameter>();
-
-            listparams.Add(new MySqlParameter("@done", 0));*/
+       
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
             while(await reader.ReadAsync())
@@ -29,12 +29,15 @@ namespace RMC.Database.Controllers
                 customerDetailsMod customerDetailsMod = new customerDetailsMod();
 
                 customerDetailsMod.id = int.Parse(reader["customer_id"].ToString());
-                customerDetailsMod.name = reader["customer_name"].ToString();
+                customerDetailsMod.quueu_no = int.Parse(reader["queue_no"].ToString());
+                customerDetailsMod.fname = reader["firstname"].ToString();
+                customerDetailsMod.mname = reader["middlename"].ToString();
+                customerDetailsMod.lname = reader["lastname"].ToString();
                 customerDetailsMod.age = int.Parse(reader["age"].ToString());
                 customerDetailsMod.gender = reader["gender"].ToString();
-                customerDetailsMod.cp_no = reader["cp_no"].ToString();
-                customerDetailsMod.cs = reader["CS"].ToString();
-                customerDetailsMod.address = reader["customer_address"].ToString();
+                customerDetailsMod.address = reader["address"].ToString();
+                customerDetailsMod.cp_no = reader["contactnumber"].ToString();
+                customerDetailsMod.address = reader["address"].ToString();
                 detailsList.Add(customerDetailsMod);
             }
 
@@ -43,53 +46,54 @@ namespace RMC.Database.Controllers
             return detailsList;
         }
 
+        public async Task<int> getLastQueue()
+        {
+            int lastq = 0;
+
+            string sql = @"SELECT MAX(queue_no) AS 'last_q' FROM `customer_request_details`";
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while(await reader.ReadAsync())
+            {
+                lastq = reader["last_q"].ToString() == "" || reader["last_q"].ToString() == null
+                    ? 0 : int.Parse(reader["last_q"].ToString());
+            }
+
+            crud.CloseConnection();
+
+
+            return lastq;
+        }
 
         public async void save(params string [] data)
         {
-            string sql = @"INSERT INTO customer_request_details (customer_name,age,gender,CS,cp_no,customer_address,req_done)
-                          VALUES (@name,@age,@gender,@cs,@cpno,@addrs,0)";
+            string sql = @"INSERT INTO customer_request_details (is_paid,queue_no,patient_id)
+                          VALUES (0,@q,@id)";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
-            listparams.Add(new MySqlParameter("@name", data[0]));
-            listparams.Add(new MySqlParameter("@age", int.Parse(data[1])));
-            listparams.Add(new MySqlParameter("@gender", data[2]));
-            listparams.Add(new MySqlParameter("@cs", data[3]));
-            listparams.Add(new MySqlParameter("@cpno", data[4]));
-            listparams.Add(new MySqlParameter("@addrs", data[5]));
+       
+            listparams.Add(new MySqlParameter("@q", int.Parse(data[0])));
+            listparams.Add(new MySqlParameter("@id", int.Parse(data[1])));
+
 
             await crud.ExecuteAsync(sql, listparams);
         }
 
-        public async void update(params string[] data)
-        {
-            string sql = @"UPDATE customer_request_details SET customer_name = @name,
-                           age = @age,gender = @gender, CS = @cs,cp_no = @cpno, 
-                            customer_address = @addrs WHERE customer_id = @id";
-            List<MySqlParameter> listparams = new List<MySqlParameter>();
 
-            listparams.Add(new MySqlParameter("@name", data[0]));
-            listparams.Add(new MySqlParameter("@age", int.Parse(data[1])));
-            listparams.Add(new MySqlParameter("@gender", data[2]));
-            listparams.Add(new MySqlParameter("@cs", data[3]));
-            listparams.Add(new MySqlParameter("@cpno", data[4]));
-            listparams.Add(new MySqlParameter("@addrs", data[5]));
-            listparams.Add(new MySqlParameter("@id", int.Parse(data[6])));
 
-            await crud.ExecuteAsync(sql, listparams);
-        }
-
-        public async Task<int> getCurrentCustomer()
+        public async Task<int> getPatientIDinQueue(int qno)
         {
             int currentReq = 0;
-            string sql = @"SELECT * FROM customer_request_details  WHERE customer_id = (SELECT MIN(customer_id) 
-                        FROM customer_request_details WHERE req_done = 0)";
-         
+            string sql = @"SELECT * FROM customer_request_details  WHERE queue_no = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
 
-            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+            listparams.Add(new MySqlParameter("@id", qno));
 
-            if(await reader.ReadAsync())
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
             {
-                currentReq = int.Parse(reader["customer_id"].ToString());
+                currentReq = int.Parse(reader["patient_id"].ToString());
             }
 
             crud.CloseConnection();
@@ -97,35 +101,56 @@ namespace RMC.Database.Controllers
             return currentReq;
         }
 
-        public async Task<int> nextCurrentCustomer()
-        {
-            int nextReq = 0;
-            string sql = @"SELECT * FROM customer_request_details  WHERE customer_id = ((SELECT MIN(customer_id) 
-                        FROM customer_request_details WHERE req_done = 0) + 1)";
 
 
-            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
-
-            if (await reader.ReadAsync())
-            {
-                nextReq = int.Parse(reader["customer_id"].ToString());
-            }
-
-            crud.CloseConnection();
-
-            return nextReq;
-        }
+        /*  public async Task<int> getCurrentCustomer()
+          {
+              int currentReq = 0;
+              string sql = @"SELECT * FROM customer_request_details  WHERE customer_id = (SELECT MIN(customer_id) 
+                          FROM customer_request_details WHERE req_done = 0)";
 
 
+              DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
-        public async void nextQueue()
-        {
-            string sql = @"UPDATE customer_request_details SET req_done = 1 
-                        WHERE customer_id = (SELECT MIN(customer_id) 
-                        FROM customer_request_details WHERE req_done = 0)";
+              if(await reader.ReadAsync())
+              {
+                  currentReq = int.Parse(reader["customer_id"].ToString());
+              }
 
-            await crud.ExecuteAsync(sql, null);
-        }
+              crud.CloseConnection();
+
+              return currentReq;
+          }
+
+          public async Task<int> nextCurrentCustomer()
+          {
+              int nextReq = 0;
+              string sql = @"SELECT * FROM customer_request_details  WHERE customer_id = ((SELECT MIN(customer_id) 
+                          FROM customer_request_details WHERE req_done = 0) + 1)";
+
+
+              DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+              if (await reader.ReadAsync())
+              {
+                  nextReq = int.Parse(reader["customer_id"].ToString());
+              }
+
+              crud.CloseConnection();
+
+              return nextReq;
+          }
+
+
+
+          public async void nextQueue()
+          {
+              string sql = @"UPDATE customer_request_details SET req_done = 1 
+                          WHERE customer_id = (SELECT MIN(customer_id) 
+                          FROM customer_request_details WHERE req_done = 0)";
+
+              await crud.ExecuteAsync(sql, null);
+          }*/
 
 
     }

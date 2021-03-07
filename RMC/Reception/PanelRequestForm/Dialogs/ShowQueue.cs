@@ -24,7 +24,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             player.Play();
         }
 
-        private async Task<int> getCurrentQueue()
+       /* private async Task<int> getCurrentQueue()
         {
            return  await customerDetailsController.getCurrentCustomer();
         }
@@ -32,16 +32,16 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         private async Task<int> getNextQueue()
         {
             return await customerDetailsController.nextCurrentCustomer();
-        }
+        }*/
 
 
         private async void refreshQue()
         {
-            int q  =  await getCurrentQueue();
-            int nq = await getNextQueue();
-            lastQue = q;
+          /*  int q  =  await getCurrentQueue();
+            int nq = await getNextQueue();*/
+          /*  lastQue = q;
             setQueue(q);
-            setNextQ(nq);
+            setNextQ(nq);*/
         }
 
         private void setQueue(int cQ)
@@ -72,16 +72,16 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private async void timer1_Tick(object sender, EventArgs e)
         {
-            int getQ = await getCurrentQueue();
-            int getNQ = await getNextQueue();
-            if (lastQue != getQ)
+          /*  int getQ = await getCurrentQueue();
+            int getNQ = await getNextQueue();*/
+            /*if (lastQue != getQ)
             {
                 lastQue = getQ;
                 setQueue(getQ);
                 setNextQ(getNQ);
                 playSounds();
             }
-           
+           */
         }
     }
 }

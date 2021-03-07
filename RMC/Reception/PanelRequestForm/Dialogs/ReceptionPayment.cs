@@ -77,10 +77,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             requests = await customerRequestsController.getListTypeReq(customerid);
         }
 
-        private async Task<int> getCurrentQueue()
+       /* private async Task<int> getCurrentQueue()
         {
             return await customerDetailsController.getCurrentCustomer();
-        }
+        }*/
 
         private void trigerCb()
         {
@@ -106,7 +106,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private async void setCustomerId()
         {
-            customerid = await getCurrentQueue();
+          /*  customerid = await getCurrentQueue();*/
             txtCode.Text = customerid.ToString();
         }
 
@@ -348,7 +348,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
             processTransaction();
             finishTransaction(payment);
-            customerDetailsController.nextQueue();
+            /*customerDetailsController.nextQueue();*/
             //show OR
         }
 

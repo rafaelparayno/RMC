@@ -28,19 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelMenus = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgCustomerList = new System.Windows.Forms.DataGridView();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEdit = new FontAwesome.Sharp.IconButton();
             this.btnNextReq = new FontAwesome.Sharp.IconButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgCustomerList = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.paymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goToLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goToDoctorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnResetQ = new FontAwesome.Sharp.IconButton();
             this.panelMenus.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomerList)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenus
             // 
+            this.panelMenus.Controls.Add(this.btnResetQ);
             this.panelMenus.Controls.Add(this.btnAddItem);
             this.panelMenus.Controls.Add(this.btnEdit);
             this.panelMenus.Controls.Add(this.btnNextReq);
@@ -49,42 +58,6 @@
             this.panelMenus.Name = "panelMenus";
             this.panelMenus.Size = new System.Drawing.Size(684, 61);
             this.panelMenus.TabIndex = 4;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.dgCustomerList);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(684, 465);
-            this.groupBox2.TabIndex = 210;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "List of Queue Request";
-            // 
-            // dgCustomerList
-            // 
-            this.dgCustomerList.AllowUserToAddRows = false;
-            this.dgCustomerList.AllowUserToDeleteRows = false;
-            this.dgCustomerList.AllowUserToResizeColumns = false;
-            this.dgCustomerList.AllowUserToResizeRows = false;
-            this.dgCustomerList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgCustomerList.BackgroundColor = System.Drawing.Color.FloralWhite;
-            this.dgCustomerList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgCustomerList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgCustomerList.Location = new System.Drawing.Point(3, 19);
-            this.dgCustomerList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgCustomerList.MultiSelect = false;
-            this.dgCustomerList.Name = "dgCustomerList";
-            this.dgCustomerList.ReadOnly = true;
-            this.dgCustomerList.RowHeadersVisible = false;
-            this.dgCustomerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomerList.Size = new System.Drawing.Size(678, 442);
-            this.dgCustomerList.StandardTab = true;
-            this.dgCustomerList.TabIndex = 117;
             // 
             // btnAddItem
             // 
@@ -141,7 +114,7 @@
             this.btnNextReq.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnNextReq.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNextReq.ForeColor = System.Drawing.Color.White;
-            this.btnNextReq.IconChar = FontAwesome.Sharp.IconChar.ArrowRight;
+            this.btnNextReq.IconChar = FontAwesome.Sharp.IconChar.Trash;
             this.btnNextReq.IconColor = System.Drawing.Color.White;
             this.btnNextReq.IconSize = 24;
             this.btnNextReq.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -150,10 +123,104 @@
             this.btnNextReq.Rotation = 0D;
             this.btnNextReq.Size = new System.Drawing.Size(75, 61);
             this.btnNextReq.TabIndex = 8;
-            this.btnNextReq.Text = "Next";
+            this.btnNextReq.Text = "Remove";
             this.btnNextReq.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNextReq.UseVisualStyleBackColor = false;
             this.btnNextReq.Click += new System.EventHandler(this.btnNextReq_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.dgCustomerList);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(684, 465);
+            this.groupBox2.TabIndex = 210;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "List of Queue Request";
+            // 
+            // dgCustomerList
+            // 
+            this.dgCustomerList.AllowUserToAddRows = false;
+            this.dgCustomerList.AllowUserToDeleteRows = false;
+            this.dgCustomerList.AllowUserToResizeColumns = false;
+            this.dgCustomerList.AllowUserToResizeRows = false;
+            this.dgCustomerList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgCustomerList.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dgCustomerList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgCustomerList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgCustomerList.Location = new System.Drawing.Point(3, 19);
+            this.dgCustomerList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgCustomerList.MultiSelect = false;
+            this.dgCustomerList.Name = "dgCustomerList";
+            this.dgCustomerList.ReadOnly = true;
+            this.dgCustomerList.RowHeadersVisible = false;
+            this.dgCustomerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgCustomerList.Size = new System.Drawing.Size(678, 442);
+            this.dgCustomerList.StandardTab = true;
+            this.dgCustomerList.TabIndex = 117;
+            this.dgCustomerList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgCustomerList_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.paymentToolStripMenuItem,
+            this.goToLabToolStripMenuItem,
+            this.gToolStripMenuItem,
+            this.goToDoctorToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 92);
+            // 
+            // paymentToolStripMenuItem
+            // 
+            this.paymentToolStripMenuItem.Name = "paymentToolStripMenuItem";
+            this.paymentToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.paymentToolStripMenuItem.Text = "Payment";
+            // 
+            // goToLabToolStripMenuItem
+            // 
+            this.goToLabToolStripMenuItem.Name = "goToLabToolStripMenuItem";
+            this.goToLabToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.goToLabToolStripMenuItem.Text = "Go to Lab";
+            // 
+            // gToolStripMenuItem
+            // 
+            this.gToolStripMenuItem.Name = "gToolStripMenuItem";
+            this.gToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.gToolStripMenuItem.Text = "Go to Xray";
+            this.gToolStripMenuItem.Click += new System.EventHandler(this.gToolStripMenuItem_Click);
+            // 
+            // goToDoctorToolStripMenuItem
+            // 
+            this.goToDoctorToolStripMenuItem.Name = "goToDoctorToolStripMenuItem";
+            this.goToDoctorToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.goToDoctorToolStripMenuItem.Text = "Go to Doctor";
+            // 
+            // btnResetQ
+            // 
+            this.btnResetQ.BackColor = System.Drawing.Color.Maroon;
+            this.btnResetQ.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnResetQ.FlatAppearance.BorderSize = 0;
+            this.btnResetQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetQ.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnResetQ.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetQ.ForeColor = System.Drawing.Color.White;
+            this.btnResetQ.IconChar = FontAwesome.Sharp.IconChar.Reply;
+            this.btnResetQ.IconColor = System.Drawing.Color.White;
+            this.btnResetQ.IconSize = 24;
+            this.btnResetQ.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnResetQ.Location = new System.Drawing.Point(384, 0);
+            this.btnResetQ.Name = "btnResetQ";
+            this.btnResetQ.Rotation = 0D;
+            this.btnResetQ.Size = new System.Drawing.Size(75, 61);
+            this.btnResetQ.TabIndex = 12;
+            this.btnResetQ.Text = "Reset Queue";
+            this.btnResetQ.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnResetQ.UseVisualStyleBackColor = false;
             // 
             // PanelRequestForm
             // 
@@ -171,6 +238,7 @@
             this.panelMenus.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomerList)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -183,5 +251,11 @@
         private FontAwesome.Sharp.IconButton btnAddItem;
         private FontAwesome.Sharp.IconButton btnEdit;
         public System.Windows.Forms.DataGridView dgCustomerList;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem paymentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem goToLabToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem goToDoctorToolStripMenuItem;
+        private FontAwesome.Sharp.IconButton btnResetQ;
     }
 }

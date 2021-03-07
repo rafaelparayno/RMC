@@ -22,6 +22,9 @@ namespace RMC.Reception.PanelRequestForm
         CustomerRequestsController customerRequestsController = new CustomerRequestsController();
         DataTable dt = new DataTable();
         ImageList ImageList1 = new ImageList();
+
+        string idRightClick = "";
+     
         private int consultS = 1;
         private int medCert = 2;
         private int labS = 3;
@@ -44,7 +47,7 @@ namespace RMC.Reception.PanelRequestForm
 
         private void initLvCol()
         {
-
+            dt.Columns.Add("ID", typeof(int));
             dt.Columns.Add("QueueNo", typeof(int));
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Age", typeof(int));
@@ -61,15 +64,21 @@ namespace RMC.Reception.PanelRequestForm
             ImageList1.Images.Add(Properties.Resources.check);
             ImageList1.Images.Add(Properties.Resources.x);
             ImageList1.Images.Add(Properties.Resources.wait);
+
+          
         }
+        
+
+      
+
 
         private async void getData()
         {
-            customerDetailsModsList = new List<customerDetailsMod>() ;
+            customerDetailsModsList = new List<customerDetailsMod>();
 
             customerDetailsModsList = await customerDetailsController.getDetailsList();
             RefreshGrid(customerDetailsModsList);
-          
+
         }
 
         private async void RefreshGrid(List<customerDetailsMod> customers)
@@ -112,7 +121,7 @@ namespace RMC.Reception.PanelRequestForm
                     imgLab = ImageList1.Images[1];
                 }
 
-                if (requests.Contains(otherS) || requests.Contains(medCert))
+                if (requests.Contains(otherS) || requests.Contains(medCert) || requests.Contains(packagesS))
                 {
                     imgServices = ImageList1.Images[2];
                 }
@@ -122,7 +131,7 @@ namespace RMC.Reception.PanelRequestForm
                 }
 
 
-                dt.Rows.Add(c.id, c.name, c.age, imgConsult, imgX, imgLab, imgServices, ImageList1.Images[1]);
+                dt.Rows.Add(c.id,c.quueu_no ,c.name, c.age, imgConsult, imgX, imgLab, imgServices, ImageList1.Images[1]);
 
             }
 
@@ -133,8 +142,8 @@ namespace RMC.Reception.PanelRequestForm
 
         private void btnNextReq_Click(object sender, EventArgs e)
         {
-            ReceptionPayment form = new ReceptionPayment();
-            form.ShowDialog();
+           /* ReceptionPayment form = new ReceptionPayment();
+            form.ShowDialog();*/
 
             /*customerDetailsController.nextQueue();*/
             getData();
@@ -147,16 +156,34 @@ namespace RMC.Reception.PanelRequestForm
 
             if (dgCustomerList.SelectedRows.Count == 0)
                 return;
-/*
-            AddEditRequestForm form = new AddEditRequestForm(dgCustomerList.SelectedItems[0].SubItems[0].Text,
-                                                            dgCustomerList.SelectedItems[0].SubItems[1].Text,
-                                                            dgCustomerList.SelectedItems[0].SubItems[2].Text,
-                                                            dgCustomerList.SelectedItems[0].SubItems[3].Text,
-                                                            dgCustomerList.SelectedItems[0].SubItems[4].Text,
-                                                            dgCustomerList.SelectedItems[0].SubItems[5].Text,
-                                                            dgCustomerList.SelectedItems[0].SubItems[6].Text);
-            form.ShowDialog();*/
+
+            AddEditRequestForm form = new AddEditRequestForm(dgCustomerList.SelectedRows[0].Cells[0].Value.ToString(), 
+                dgCustomerList.SelectedRows[0].Cells[1].Value.ToString());
+            form.ShowDialog();
             getData();
+        }
+
+        private void dgCustomerList_MouseClick(object sender, MouseEventArgs e)
+        {
+   
+            if (e.Button == MouseButtons.Right)
+            {
+           
+                int currentMouseOverRow = dgCustomerList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                    idRightClick = dgCustomerList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    contextMenuStrip1.Show(dgCustomerList, new Point(e.X, e.Y));
+                }
+
+            }
+        }
+
+        private void gToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

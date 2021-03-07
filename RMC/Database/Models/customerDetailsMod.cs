@@ -10,9 +10,23 @@ namespace RMC.Database.Models
     {
         public int id { get; set; }
 
-        public string name { get; set; }
+        public string name
+        {
+            get { return fname + " " + mname + " " + lname; }
+            set { name = value; }
+        }
+
+    
+
+        public string fname { get; set; }
+
+        public string lname { get; set; }
+
+        public string mname { get; set; }
 
         public int age { get; set; }
+
+        public int quueu_no { get; set; }
 
         public string gender { get; set; }
 
