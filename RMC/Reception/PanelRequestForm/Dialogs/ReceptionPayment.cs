@@ -43,17 +43,18 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         int cbValuePackages = 0;
         float priceMedCert = 0;
         float priceConsult = 0;
+        float priceSConsult = 0;
         float totalPrice = 0;
         DataTable dt = new DataTable();
         #endregion
 
 
-        public ReceptionPayment()
+        public ReceptionPayment(int reqid)
         {
             InitializeComponent();
             initColDg();
             setInitPrice();
-            setCustomerId();
+            setCustomerId(reqid);
             InitRequests();
             initGroupBoxState();
             loadFromDbtoCb();
@@ -73,14 +74,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private async void InitRequests()
         {
-            // foreach()
+            
             requests = await customerRequestsController.getListTypeReq(customerid);
         }
 
-       /* private async Task<int> getCurrentQueue()
-        {
-            return await customerDetailsController.getCurrentCustomer();
-        }*/
+      
 
         private void trigerCb()
         {
@@ -99,14 +97,17 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
             else
             {
-                dt.Rows.Add(1, "Consultation", "Service", priceConsult);
+                if (radioButton1.Checked)
+                    dt.Rows.Add(1, "Consultation", "Service", priceConsult);
+                else
+                    dt.Rows.Add(1, "Consultation", "Service", priceSConsult);
             }
 
         }
 
-        private async void setCustomerId()
+        private void setCustomerId(int reqid)
         {
-          /*  customerid = await getCurrentQueue();*/
+            customerid = reqid;
             txtCode.Text = customerid.ToString();
         }
 
@@ -180,6 +181,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             priceMedCert = await pricesService.getPrice("MedCert");
             priceConsult = await pricesService.getPrice("Consulation");
+            priceSConsult = await pricesService.getPrice("SConsultation");
 
             txtPriceConsult.Text = priceConsult.ToString();
             textBox1.Text = priceMedCert.ToString();
@@ -397,8 +399,19 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             trigerCb();
             setTotalPrice();
         }
+
         #endregion
 
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+           
+            txtPriceConsult.Text = priceSConsult.ToString();
+        }
 
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+        
+            txtPriceConsult.Text = priceConsult.ToString();
+        }
     }
 }

@@ -74,6 +74,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -282,7 +284,7 @@
             this.gbPackages.Controls.Add(this.iconButton10);
             this.gbPackages.Controls.Add(this.cbPackages);
             this.gbPackages.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbPackages.Location = new System.Drawing.Point(0, 502);
+            this.gbPackages.Location = new System.Drawing.Point(0, 545);
             this.gbPackages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbPackages.Name = "gbPackages";
             this.gbPackages.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -395,7 +397,7 @@
             this.gbServices.Controls.Add(this.iconButton7);
             this.gbServices.Controls.Add(this.cbOther);
             this.gbServices.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbServices.Location = new System.Drawing.Point(0, 403);
+            this.gbServices.Location = new System.Drawing.Point(0, 446);
             this.gbServices.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbServices.Name = "gbServices";
             this.gbServices.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -508,7 +510,7 @@
             this.gbXray.Controls.Add(this.iconButton4);
             this.gbXray.Controls.Add(this.cbXray);
             this.gbXray.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbXray.Location = new System.Drawing.Point(0, 304);
+            this.gbXray.Location = new System.Drawing.Point(0, 347);
             this.gbXray.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbXray.Name = "gbXray";
             this.gbXray.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -621,7 +623,7 @@
             this.gbLab.Controls.Add(this.btnAddLab);
             this.gbLab.Controls.Add(this.cbLab);
             this.gbLab.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbLab.Location = new System.Drawing.Point(0, 205);
+            this.gbLab.Location = new System.Drawing.Point(0, 248);
             this.gbLab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbLab.Name = "gbLab";
             this.gbLab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -731,7 +733,7 @@
             this.gbMedCert.Controls.Add(this.textBox1);
             this.gbMedCert.Controls.Add(this.label2);
             this.gbMedCert.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbMedCert.Location = new System.Drawing.Point(0, 115);
+            this.gbMedCert.Location = new System.Drawing.Point(0, 158);
             this.gbMedCert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbMedCert.Name = "gbMedCert";
             this.gbMedCert.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -762,6 +764,8 @@
             // 
             // gpConsulation
             // 
+            this.gpConsulation.Controls.Add(this.radioButton2);
+            this.gpConsulation.Controls.Add(this.radioButton1);
             this.gpConsulation.Controls.Add(this.cbFree);
             this.gpConsulation.Controls.Add(this.txtPriceConsult);
             this.gpConsulation.Controls.Add(this.label1);
@@ -770,7 +774,7 @@
             this.gpConsulation.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gpConsulation.Name = "gpConsulation";
             this.gpConsulation.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gpConsulation.Size = new System.Drawing.Size(275, 115);
+            this.gpConsulation.Size = new System.Drawing.Size(275, 158);
             this.gpConsulation.TabIndex = 3;
             this.gpConsulation.TabStop = false;
             this.gpConsulation.Visible = false;
@@ -790,7 +794,7 @@
             // 
             this.txtPriceConsult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPriceConsult.Enabled = false;
-            this.txtPriceConsult.Location = new System.Drawing.Point(18, 37);
+            this.txtPriceConsult.Location = new System.Drawing.Point(18, 46);
             this.txtPriceConsult.Name = "txtPriceConsult";
             this.txtPriceConsult.Size = new System.Drawing.Size(238, 23);
             this.txtPriceConsult.TabIndex = 1;
@@ -835,6 +839,30 @@
             this.button2.Text = "Senior Discount";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(23, 105);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(67, 20);
+            this.radioButton1.TabIndex = 3;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Normal";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(23, 131);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(80, 20);
+            this.radioButton2.TabIndex = 4;
+            this.radioButton2.Text = "Specialist";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // ReceptionPayment
             // 
@@ -926,5 +954,7 @@
         private System.Windows.Forms.ComboBox cbPackages;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelMenus = new System.Windows.Forms.Panel();
+            this.btnResetQ = new FontAwesome.Sharp.IconButton();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEdit = new FontAwesome.Sharp.IconButton();
             this.btnNextReq = new FontAwesome.Sharp.IconButton();
@@ -40,7 +41,7 @@
             this.goToLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToDoctorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnResetQ = new FontAwesome.Sharp.IconButton();
+            this.btnpay = new FontAwesome.Sharp.IconButton();
             this.panelMenus.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomerList)).BeginInit();
@@ -49,6 +50,7 @@
             // 
             // panelMenus
             // 
+            this.panelMenus.Controls.Add(this.btnpay);
             this.panelMenus.Controls.Add(this.btnResetQ);
             this.panelMenus.Controls.Add(this.btnAddItem);
             this.panelMenus.Controls.Add(this.btnEdit);
@@ -58,6 +60,28 @@
             this.panelMenus.Name = "panelMenus";
             this.panelMenus.Size = new System.Drawing.Size(684, 61);
             this.panelMenus.TabIndex = 4;
+            // 
+            // btnResetQ
+            // 
+            this.btnResetQ.BackColor = System.Drawing.Color.Maroon;
+            this.btnResetQ.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnResetQ.FlatAppearance.BorderSize = 0;
+            this.btnResetQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetQ.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnResetQ.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetQ.ForeColor = System.Drawing.Color.White;
+            this.btnResetQ.IconChar = FontAwesome.Sharp.IconChar.Reply;
+            this.btnResetQ.IconColor = System.Drawing.Color.White;
+            this.btnResetQ.IconSize = 24;
+            this.btnResetQ.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnResetQ.Location = new System.Drawing.Point(384, 0);
+            this.btnResetQ.Name = "btnResetQ";
+            this.btnResetQ.Rotation = 0D;
+            this.btnResetQ.Size = new System.Drawing.Size(75, 61);
+            this.btnResetQ.TabIndex = 12;
+            this.btnResetQ.Text = "Reset Queue";
+            this.btnResetQ.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnResetQ.UseVisualStyleBackColor = false;
             // 
             // btnAddItem
             // 
@@ -200,27 +224,28 @@
             this.goToDoctorToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.goToDoctorToolStripMenuItem.Text = "Go to Doctor";
             // 
-            // btnResetQ
+            // btnpay
             // 
-            this.btnResetQ.BackColor = System.Drawing.Color.Maroon;
-            this.btnResetQ.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnResetQ.FlatAppearance.BorderSize = 0;
-            this.btnResetQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetQ.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnResetQ.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetQ.ForeColor = System.Drawing.Color.White;
-            this.btnResetQ.IconChar = FontAwesome.Sharp.IconChar.Reply;
-            this.btnResetQ.IconColor = System.Drawing.Color.White;
-            this.btnResetQ.IconSize = 24;
-            this.btnResetQ.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnResetQ.Location = new System.Drawing.Point(384, 0);
-            this.btnResetQ.Name = "btnResetQ";
-            this.btnResetQ.Rotation = 0D;
-            this.btnResetQ.Size = new System.Drawing.Size(75, 61);
-            this.btnResetQ.TabIndex = 12;
-            this.btnResetQ.Text = "Reset Queue";
-            this.btnResetQ.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnResetQ.UseVisualStyleBackColor = false;
+            this.btnpay.BackColor = System.Drawing.Color.Maroon;
+            this.btnpay.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnpay.FlatAppearance.BorderSize = 0;
+            this.btnpay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnpay.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnpay.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnpay.ForeColor = System.Drawing.Color.White;
+            this.btnpay.IconChar = FontAwesome.Sharp.IconChar.ProductHunt;
+            this.btnpay.IconColor = System.Drawing.Color.White;
+            this.btnpay.IconSize = 24;
+            this.btnpay.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnpay.Location = new System.Drawing.Point(309, 0);
+            this.btnpay.Name = "btnpay";
+            this.btnpay.Rotation = 0D;
+            this.btnpay.Size = new System.Drawing.Size(75, 61);
+            this.btnpay.TabIndex = 13;
+            this.btnpay.Text = "Payment";
+            this.btnpay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnpay.UseVisualStyleBackColor = false;
+            this.btnpay.Click += new System.EventHandler(this.btnpay_Click);
             // 
             // PanelRequestForm
             // 
@@ -257,5 +282,6 @@
         private System.Windows.Forms.ToolStripMenuItem gToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goToDoctorToolStripMenuItem;
         private FontAwesome.Sharp.IconButton btnResetQ;
+        private FontAwesome.Sharp.IconButton btnpay;
     }
 }

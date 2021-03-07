@@ -142,10 +142,7 @@ namespace RMC.Reception.PanelRequestForm
 
         private void btnNextReq_Click(object sender, EventArgs e)
         {
-           /* ReceptionPayment form = new ReceptionPayment();
-            form.ShowDialog();*/
-
-            /*customerDetailsController.nextQueue();*/
+            //delete
             getData();
         }
 
@@ -184,6 +181,20 @@ namespace RMC.Reception.PanelRequestForm
         private void gToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnpay_Click(object sender, EventArgs e)
+        {
+            if (dgCustomerList.Rows.Count == 0)
+                return;
+
+            if (dgCustomerList.SelectedRows.Count == 0)
+                return;
+
+            int req = int.Parse(dgCustomerList.SelectedRows[0].Cells[0].Value.ToString());
+            ReceptionPayment form = new ReceptionPayment(req);
+            form.ShowDialog();
+            getData();
         }
     }
 }
