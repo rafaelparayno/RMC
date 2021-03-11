@@ -59,7 +59,7 @@ namespace RMC.Database.Controllers
 
         }
 
-        private async Task<bool> isFound(int uid)
+        public async Task<bool> isFound(int uid)
         {
             bool isFound = false;
             string sql = @"SELECT * FROM doctor_data WHERE u_id = @id";

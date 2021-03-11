@@ -433,6 +433,12 @@
     </Compile>
     <Compile Include="Animation\Animate_utils.cs" />
     <Compile Include="Animation\HideImageByOpaque.cs" />
+    <Compile Include="Components\AlertForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\AlertForm.Designer.cs">
+      <DependentUpon>AlertForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1003,6 +1009,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Promos.resx">
       <DependentUpon>Promos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\AlertForm.resx">
+      <DependentUpon>AlertForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>

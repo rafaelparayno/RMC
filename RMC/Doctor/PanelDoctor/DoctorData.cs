@@ -37,7 +37,7 @@ namespace RMC.Doctor.PanelDoctor
             txtfilepath.Text = data.imgPath;
 
 
-            if (data.imgPath == "")
+            if (data.imgPath == "" || data.imgPath == null)
                 return;
 
             try
