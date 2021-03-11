@@ -466,6 +466,7 @@
     <Compile Include="Database\Controllers\ConsumedItems.cs" />
     <Compile Include="Database\Controllers\CustomerDetailsController.cs" />
     <Compile Include="Database\Controllers\CustomerRequestsController.cs" />
+    <Compile Include="Database\Controllers\DoctorDataController.cs" />
     <Compile Include="Database\Controllers\DoctorQueueController.cs" />
     <Compile Include="Database\Controllers\DoctorRequestLabController.cs" />
     <Compile Include="Database\Controllers\DoctorRequestXrayController.cs" />
@@ -513,6 +514,7 @@
     <Compile Include="Database\Models\consumablesServMod.cs" />
     <Compile Include="Database\Models\ConsumationRateFns.cs" />
     <Compile Include="Database\Models\customerDetailsMod.cs" />
+    <Compile Include="Database\Models\DoctorDataModel.cs" />
     <Compile Include="Database\Models\DoctorResult.cs" />
     <Compile Include="Database\Models\fnsaItemMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
@@ -551,6 +553,12 @@
     </Compile>
     <Compile Include="Doctor\PanelDoctor\Diag\addEditSymp.Designer.cs">
       <DependentUpon>addEditSymp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\PanelDoctor\DoctorData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor\PanelDoctor\DoctorData.Designer.cs">
+      <DependentUpon>DoctorData.cs</DependentUpon>
     </Compile>
     <Compile Include="Doctor\PanelDoctor\PanelDoctorSettings.cs">
       <SubType>Form</SubType>
@@ -1013,6 +1021,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\Diag\addEditSymp.resx">
       <DependentUpon>addEditSymp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor\PanelDoctor\DoctorData.resx">
+      <DependentUpon>DoctorData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\PanelDoctorSettings.resx">
       <DependentUpon>PanelDoctorSettings.cs</DependentUpon>
