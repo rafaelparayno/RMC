@@ -78,22 +78,23 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             requests = await customerRequestsController.getListTypeReq(customerid);
         }
 
-      
 
         private void trigerCb()
         {
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                string type = dr.Cells[2].Value.ToString();
+                string name = dr.Cells[1].Value.ToString();
+                if (type == "Service" && name == "Consultation")
+                {
+                    int index = dr.Index;
+                    dt.Rows.RemoveAt(index);
+                }
+            }
+
             if (cbFree.Checked)
             {
-                foreach (DataGridViewRow dr in dataGridView1.Rows)
-                {
-                    string type = dr.Cells[2].Value.ToString();
-                    string name = dr.Cells[1].Value.ToString();
-                    if (type == "Service" && name == "Consultation")
-                    {
-                        int index = dr.Index;
-                        dt.Rows.RemoveAt(index);
-                    }
-                }
+                dt.Rows.Add(1, "Consultation", "Service", 0);
             }
             else
             {
@@ -157,7 +158,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         private void setTotalPrice()
         {
             totalPrice = 0;
-            double removeVat = 0;
+            //    double removeVat = 0;
+            float dis = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 float price = float.Parse(row.Cells["Price"].Value.ToString());
@@ -165,14 +167,29 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 totalPrice += price;
             }
 
-            if (seniorId != "")
+         
+
+            if(seniorId != "")
             {
-                removeVat = Math.Round(totalPrice / 1.12, 2);
-                totalPrice = float.Parse(removeVat + "");
-                float discount = totalPrice * .20f;
-                totalPrice -= discount;
+                bool isValidDis = float.TryParse(txtDis.Text.Trim(), out _);
+
+                dis = isValidDis ? float.Parse(txtDis.Text.Trim()) : 0;
+
+                if (totalPrice >= dis)
+                {
+                    totalPrice -= dis;
+                }
             }
 
+            //Senior discount automatically
+
+            /* if (seniorId != "")
+             {
+                 removeVat = Math.Round(totalPrice / 1.12, 2);
+                 totalPrice = float.Parse(removeVat + "");
+                 float discount = totalPrice * .20f;
+                 totalPrice -= discount;
+             }*/
 
             textBox3.Text = String.Format("PHP {0:0.##}", totalPrice);
         }
@@ -387,10 +404,17 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             form.ShowDialog();
             seniorId = form.seniorId;
 
-            if (totalPrice > 0)
+            if (seniorId != "" || seniorId != null)
+            {
+                txtDis.Visible = true;
+                label11.Visible = true;
+            }
+       
+            //automated discount
+          /*  if (totalPrice > 0)
             {
                 setTotalPrice();
-            }
+            }*/
 
         }
 
@@ -400,18 +424,40 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             setTotalPrice();
         }
 
-        #endregion
+        
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void radioButton2_Click(object sender, EventArgs e)
         {
-           
-            txtPriceConsult.Text = priceSConsult.ToString();
+            trigerCb();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioButton1_Click(object sender, EventArgs e)
         {
-        
-            txtPriceConsult.Text = priceConsult.ToString();
+            trigerCb();
+        }
+        #endregion
+
+        private void txtDis_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDis_TextChanged(object sender, EventArgs e)
+        {
+            setTotalPrice();
         }
     }
 }

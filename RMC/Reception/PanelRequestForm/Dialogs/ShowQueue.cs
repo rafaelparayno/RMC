@@ -44,7 +44,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             setNextQ(nq);*/
         }
 
-        private void setQueue(int cQ)
+      /*  private void setQueue(int cQ)
         {
             if (cQ == 0)
             {
@@ -56,9 +56,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
 
         
-        }
+        }*/
 
-        private void setNextQ(int nQ)
+       /* private void setNextQ(int nQ)
         {
             if (nQ == 0)
             {
@@ -68,7 +68,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             {
                 label4.Text = String.Format("No# : {0}", nQ);
             }
-        }
+        }*/
 
         private async void timer1_Tick(object sender, EventArgs e)
         {
