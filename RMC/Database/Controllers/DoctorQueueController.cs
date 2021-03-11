@@ -26,6 +26,49 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, list);
         }
 
+        public async void setDone(int queu_no)
+        {
+            string sql = "UPDATE doctor_queue SET is_done = 1 WHERE queue_no = @q";
+
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@q", queu_no));
+
+            await crud.ExecuteAsync(sql, list);
+        }
+
+        public async Task<List<int>> getQueueDoc()
+        {
+            List<int> listQueue = new List<int>();
+
+            string sql = @"SELECT * FROM doctor_queue WHERE is_done = 0 ORDER BY queue_no DESC";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while(await reader.ReadAsync())
+            {
+                listQueue.Add(int.Parse(reader["queue_no"].ToString()));
+            }
+
+            crud.CloseConnection();
+            return listQueue;
+        }
+
+        public async Task<int> getCurrentQ()
+        {
+            int currentQ = 0;
+
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync("SELECT MIN(queue_no) AS 'current' FROM doctor_queue WHERE is_done = 0", null);
+
+            if (await reader.ReadAsync())
+            {
+                currentQ = reader["current"].ToString() == "" ? 0 : int.Parse(reader["current"].ToString());
+            }
+
+            crud.CloseConnection();
+            return currentQ;
+        }
+
         public async Task<string> getCC(int queue_no)
         {
             string cc = "";

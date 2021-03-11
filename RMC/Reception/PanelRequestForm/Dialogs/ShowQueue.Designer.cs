@@ -42,11 +42,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panelLab = new System.Windows.Forms.Panel();
+            this.panelD = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panelX = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.panelDoc = new System.Windows.Forms.Panel();
+            this.panelLab = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -140,11 +140,11 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.panelDoc);
+            this.panel9.Controls.Add(this.panelLab);
             this.panel9.Controls.Add(this.panel13);
             this.panel9.Controls.Add(this.panelX);
             this.panel9.Controls.Add(this.panel11);
-            this.panel9.Controls.Add(this.panelLab);
+            this.panel9.Controls.Add(this.panelD);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 150);
             this.panel9.Name = "panel9";
@@ -154,7 +154,7 @@
             // label3
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Tahoma", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(334, 140);
@@ -165,32 +165,32 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(345, 140);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Doctors";
+            this.label2.Text = "Laboratory";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(334, 140);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Laboratory";
+            this.label1.Text = "Doctors";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelLab
+            // panelD
             // 
-            this.panelLab.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLab.Location = new System.Drawing.Point(0, 0);
-            this.panelLab.Name = "panelLab";
-            this.panelLab.Size = new System.Drawing.Size(334, 468);
-            this.panelLab.TabIndex = 0;
+            this.panelD.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelD.Location = new System.Drawing.Point(0, 0);
+            this.panelD.Name = "panelD";
+            this.panelD.Size = new System.Drawing.Size(334, 468);
+            this.panelD.TabIndex = 0;
             // 
             // panel11
             // 
@@ -218,13 +218,13 @@
             this.panel13.Size = new System.Drawing.Size(10, 468);
             this.panel13.TabIndex = 4;
             // 
-            // panelDoc
+            // panelLab
             // 
-            this.panelDoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDoc.Location = new System.Drawing.Point(344, 0);
-            this.panelDoc.Name = "panelDoc";
-            this.panelDoc.Size = new System.Drawing.Size(345, 468);
-            this.panelDoc.TabIndex = 5;
+            this.panelLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLab.Location = new System.Drawing.Point(344, 0);
+            this.panelLab.Name = "panelLab";
+            this.panelLab.Size = new System.Drawing.Size(345, 468);
+            this.panelLab.TabIndex = 5;
             // 
             // ShowQueue
             // 
@@ -258,11 +258,11 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Panel panelDoc;
+        private System.Windows.Forms.Panel panelLab;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panelX;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel panelLab;
+        private System.Windows.Forms.Panel panelD;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
