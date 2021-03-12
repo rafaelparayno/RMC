@@ -43,16 +43,19 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.txtDis = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -244,73 +247,19 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.txtDis);
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Location = new System.Drawing.Point(330, 264);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(342, 237);
             this.panel1.TabIndex = 271;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.Black;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.Snow;
-            this.textBox4.Location = new System.Drawing.Point(0, 204);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(342, 33);
-            this.textBox4.TabIndex = 279;
-            this.textBox4.Text = "0.00";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.Salmon;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(0, 158);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(342, 46);
-            this.label6.TabIndex = 278;
-            this.label6.Text = "Change";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.Black;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox2.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(0, 125);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(342, 33);
-            this.textBox2.TabIndex = 277;
-            this.textBox2.Text = "0.00";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.Salmon;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(0, 79);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(342, 46);
-            this.label5.TabIndex = 276;
-            this.label5.Text = "Payment";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox3
             // 
@@ -322,7 +271,7 @@
             this.textBox3.ForeColor = System.Drawing.Color.Snow;
             this.textBox3.Location = new System.Drawing.Point(0, 46);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(342, 33);
+            this.textBox3.Size = new System.Drawing.Size(325, 33);
             this.textBox3.TabIndex = 275;
             this.textBox3.Text = "0.00";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -335,7 +284,7 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(342, 46);
+            this.label8.Size = new System.Drawing.Size(325, 46);
             this.label8.TabIndex = 273;
             this.label8.Text = "Total Price";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -392,12 +341,115 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // txtDis
+            // 
+            this.txtDis.BackColor = System.Drawing.Color.Black;
+            this.txtDis.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDis.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtDis.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDis.ForeColor = System.Drawing.Color.Snow;
+            this.txtDis.Location = new System.Drawing.Point(0, 125);
+            this.txtDis.Name = "txtDis";
+            this.txtDis.Size = new System.Drawing.Size(325, 33);
+            this.txtDis.TabIndex = 283;
+            this.txtDis.Text = "0.00";
+            this.txtDis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDis.Visible = false;
+            this.txtDis.TextChanged += new System.EventHandler(this.txtDis_TextChanged);
+            this.txtDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDis_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Salmon;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label11.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(0, 79);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(325, 46);
+            this.label11.TabIndex = 282;
+            this.label11.Text = "Discount";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.Visible = false;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.Black;
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox4.Enabled = false;
+            this.textBox4.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.Snow;
+            this.textBox4.Location = new System.Drawing.Point(0, 283);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(325, 33);
+            this.textBox4.TabIndex = 287;
+            this.textBox4.Text = "0.00";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Salmon;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(0, 237);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(325, 46);
+            this.label6.TabIndex = 286;
+            this.label6.Text = "Change";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.Black;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.textBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox2.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Location = new System.Drawing.Point(0, 204);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(325, 33);
+            this.textBox2.TabIndex = 285;
+            this.textBox2.Text = "0.00";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress_1);
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Salmon;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(0, 158);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(325, 46);
+            this.label5.TabIndex = 284;
+            this.label5.Text = "Payment";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button7
+            // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button7.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button7.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button7.Location = new System.Drawing.Point(23, 232);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(293, 33);
+            this.button7.TabIndex = 276;
+            this.button7.Text = "Search";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
             // POS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(684, 526);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.numericUpDown1);
@@ -447,15 +499,18 @@
         internal System.Windows.Forms.Label label13;
         internal System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.Panel panel1;
-        internal System.Windows.Forms.TextBox textBox4;
-        internal System.Windows.Forms.Label label6;
-        internal System.Windows.Forms.TextBox textBox2;
-        internal System.Windows.Forms.Label label5;
         internal System.Windows.Forms.TextBox textBox3;
         internal System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
+        internal System.Windows.Forms.TextBox txtDis;
+        internal System.Windows.Forms.Label label11;
+        internal System.Windows.Forms.TextBox textBox4;
+        internal System.Windows.Forms.Label label6;
+        internal System.Windows.Forms.TextBox textBox2;
+        internal System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button7;
     }
 }

@@ -105,18 +105,31 @@ namespace RMC.InventoryPharma
         private void CalculateTotal()
         {
             totalAmount = 0;
-            double removeVat = 0;
+            //double removeVat = 0;
+            float dis = 0;
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
                 totalAmount += float.Parse(dr.Cells["Price"].Value.ToString());
             }
 
-            if( seniorId != "")
+            /*if( seniorId != "")
             {
                 removeVat = Math.Round(totalAmount / 1.12,2);
                 totalAmount = float.Parse(removeVat + "");
                 float discount = totalAmount * .20f;
                 totalAmount -= discount;
+            }*/
+
+            if (seniorId != "")
+            {
+                bool isValidDis = float.TryParse(txtDis.Text.Trim(), out _);
+
+                dis = isValidDis ? float.Parse(txtDis.Text.Trim()) : 0;
+
+                if (totalAmount >= dis)
+                {
+                    totalAmount -= dis;
+                }
             }
 
             textBox3.Text = "PHP " + String.Format("{0:0.##}", totalAmount);
@@ -178,15 +191,7 @@ namespace RMC.InventoryPharma
             finishTransaction(payment);
         }
 
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            string validKeys = "0123456789.";
-
-            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
+       
 
         private void processTransaction()
         {
@@ -213,6 +218,10 @@ namespace RMC.InventoryPharma
             btnUpdate.Enabled = false;
             button3.Enabled = false;
             txtCode.Enabled = false;
+          
+            txtDis.Visible = false;
+            label11.Visible = false;
+            
             seniorId = "";
             CalculateTotal();
         }
@@ -241,6 +250,36 @@ namespace RMC.InventoryPharma
 
             seniorId = form.seniorId;
 
+            if (seniorId != "" || seniorId != null)
+            {
+                txtDis.Visible = true;
+                label11.Visible = true;
+            }
+
+        }
+
+        private void textBox2_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDis_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDis_TextChanged(object sender, EventArgs e)
+        {
             CalculateTotal();
         }
     }
