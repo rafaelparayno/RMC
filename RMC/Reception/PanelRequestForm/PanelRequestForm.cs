@@ -206,5 +206,10 @@ namespace RMC.Reception.PanelRequestForm
             form.ShowDialog();
             getData();
         }
+
+        private void btnResetQ_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

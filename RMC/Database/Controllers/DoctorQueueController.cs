@@ -21,7 +21,7 @@ namespace RMC.Database.Controllers
                             CONCAT(patientdetails.firstname,' ',patientdetails.lastname) AS 'patientname',age,gender FROM `doctor_queue`
                                             INNER JOIN customer_request_details ON doctor_queue.queue_no = customer_request_details.queue_no
                                             INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id 
-                                            WHERE doctor_queue.is_done = 0";
+                                            WHERE doctor_queue.is_done = 0 AND DATE(customer_request_details.date_req) = CURDATE()";
             return await crud.GetDataSetAsync(sql, null);
         }
 
@@ -39,7 +39,7 @@ namespace RMC.Database.Controllers
 
         public async void setDone(int queu_no)
         {
-            string sql = "UPDATE doctor_queue SET is_done = 1 WHERE queue_no = @q";
+            string sql = "UPDATE doctor_queue SET is_done = 1 WHERE queue_no = @q AND DATE(date_q) = CURDATE()";
 
             List<MySqlParameter> list = new List<MySqlParameter>();
             list.Add(new MySqlParameter("@q", queu_no));
@@ -51,7 +51,7 @@ namespace RMC.Database.Controllers
         {
             List<int> listQueue = new List<int>();
 
-            string sql = @"SELECT * FROM doctor_queue WHERE is_done = 0 ORDER BY queue_no DESC";
+            string sql = @"SELECT * FROM doctor_queue WHERE is_done = 0 AND DATE(date_q) = CURDATE() ORDER BY queue_no DESC";
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
@@ -69,7 +69,7 @@ namespace RMC.Database.Controllers
             int currentQ = 0;
 
 
-            DbDataReader reader = await crud.RetrieveRecordsAsync("SELECT MIN(queue_no) AS 'current' FROM doctor_queue WHERE is_done = 0", null);
+            DbDataReader reader = await crud.RetrieveRecordsAsync("SELECT MIN(queue_no) AS 'current' FROM doctor_queue WHERE is_done = 0  AND DATE(date_q) = CURDATE() ", null);
 
             if (await reader.ReadAsync())
             {
@@ -83,7 +83,7 @@ namespace RMC.Database.Controllers
         public async Task<string> getCC(int queue_no)
         {
             string cc = "";
-            string sql = @"SELECT * FROM `doctor_queue` WHERE queue_no = @id";
+            string sql = @"SELECT * FROM `doctor_queue` WHERE queue_no = @id AND DATE(date_q) = CURDATE() ";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
             listparams.Add(new MySqlParameter("@id", queue_no));
@@ -103,7 +103,7 @@ namespace RMC.Database.Controllers
         public async void Remove(int req_id)
         {
             string sql = @"DELETE FROM doctor_queue WHERE queue_no in 
-                            (SELECT queue_no FROM customer_request_details WHERE customer_id = @q)";
+                            (SELECT queue_no FROM customer_request_details WHERE customer_id = @q) AND DATE(date_q) = CURDATE()";
 
             List<MySqlParameter> list = new List<MySqlParameter>();
             list.Add(new MySqlParameter("@q", req_id));
@@ -114,7 +114,7 @@ namespace RMC.Database.Controllers
         public async Task<bool> isDone(int queue_no)
         {
             bool isDone = false;
-            string sql = @"SELECT * FROM `doctor_queue` WHERE queue_no = @id AND is_done = 1";
+            string sql = @"SELECT * FROM `doctor_queue` WHERE queue_no = @id AND is_done = 1 AND DATE(date_q) = CURDATE()";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
             listparams.Add(new MySqlParameter("@id", queue_no));

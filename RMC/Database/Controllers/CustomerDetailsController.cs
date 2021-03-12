@@ -19,6 +19,7 @@ namespace RMC.Database.Controllers
             
             string sql = @"SELECT * FROM customer_request_details 
                             LEFT JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
+                            WHERE DATE(date_req) = CURDATE()
                             ORDER BY queue_no ASC";
             List<customerDetailsMod> detailsList = new List<customerDetailsMod>();
        
@@ -51,7 +52,7 @@ namespace RMC.Database.Controllers
         {
             int lastq = 0;
 
-            string sql = @"SELECT MAX(queue_no) AS 'last_q' FROM `customer_request_details`";
+            string sql = @"SELECT MAX(queue_no) AS 'last_q' FROM `customer_request_details`  WHERE DATE(date_req) = CURDATE()";
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
             while(await reader.ReadAsync())
@@ -97,7 +98,7 @@ namespace RMC.Database.Controllers
         public async Task<int> getPatientIDinQueue(int qno)
         {
             int currentReq = 0;
-            string sql = @"SELECT * FROM customer_request_details  WHERE queue_no = @id";
+            string sql = @"SELECT * FROM customer_request_details  WHERE queue_no = @id  AND DATE(date_req) = CURDATE()";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
             listparams.Add(new MySqlParameter("@id", qno));

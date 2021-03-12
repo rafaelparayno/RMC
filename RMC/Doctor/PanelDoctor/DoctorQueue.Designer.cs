@@ -112,7 +112,7 @@
             this.groupBox2.Size = new System.Drawing.Size(674, 489);
             this.groupBox2.TabIndex = 212;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Queue";
+            this.groupBox2.Text = "Queue Today";
             // 
             // dbServiceList
             // 
@@ -148,21 +148,21 @@
             // viewDataToolStripMenuItem
             // 
             this.viewDataToolStripMenuItem.Name = "viewDataToolStripMenuItem";
-            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.viewDataToolStripMenuItem.Text = "View Data";
             this.viewDataToolStripMenuItem.Click += new System.EventHandler(this.viewDataToolStripMenuItem_Click);
             // 
             // doctorFormToolStripMenuItem
             // 
             this.doctorFormToolStripMenuItem.Name = "doctorFormToolStripMenuItem";
-            this.doctorFormToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.doctorFormToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.doctorFormToolStripMenuItem.Text = "Doctor Form";
             this.doctorFormToolStripMenuItem.Click += new System.EventHandler(this.doctorFormToolStripMenuItem_Click);
             // 
             // doneToolStripMenuItem
             // 
             this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
-            this.doneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.doneToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.doneToolStripMenuItem.Text = "Done";
             this.doneToolStripMenuItem.Click += new System.EventHandler(this.doneToolStripMenuItem_Click);
             // 
