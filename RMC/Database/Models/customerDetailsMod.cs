@@ -35,5 +35,7 @@ namespace RMC.Database.Models
         public string cp_no { get; set; }
 
         public string address { get; set; }
+
+        public int isPaid { get; set; }
     }
 }

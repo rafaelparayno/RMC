@@ -38,6 +38,7 @@ namespace RMC.Database.Controllers
                 customerDetailsMod.address = reader["address"].ToString();
                 customerDetailsMod.cp_no = reader["contactnumber"].ToString();
                 customerDetailsMod.address = reader["address"].ToString();
+                customerDetailsMod.isPaid = int.Parse(reader["is_paid"].ToString());
                 detailsList.Add(customerDetailsMod);
             }
 
@@ -63,6 +64,18 @@ namespace RMC.Database.Controllers
 
 
             return lastq;
+        }
+
+        public async Task setPaid(int customerid)
+        {
+            string sql = @"UPDATE customer_request_details SET is_paid = 1 WHERE customer_id  = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+
+            listparams.Add(new MySqlParameter("@id", customerid));
+
+
+            await crud.ExecuteAsync(sql, listparams);
         }
 
         public async void save(params string [] data)
@@ -101,56 +114,6 @@ namespace RMC.Database.Controllers
             return currentReq;
         }
 
-
-
-        /*  public async Task<int> getCurrentCustomer()
-          {
-              int currentReq = 0;
-              string sql = @"SELECT * FROM customer_request_details  WHERE customer_id = (SELECT MIN(customer_id) 
-                          FROM customer_request_details WHERE req_done = 0)";
-
-
-              DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
-
-              if(await reader.ReadAsync())
-              {
-                  currentReq = int.Parse(reader["customer_id"].ToString());
-              }
-
-              crud.CloseConnection();
-
-              return currentReq;
-          }
-
-          public async Task<int> nextCurrentCustomer()
-          {
-              int nextReq = 0;
-              string sql = @"SELECT * FROM customer_request_details  WHERE customer_id = ((SELECT MIN(customer_id) 
-                          FROM customer_request_details WHERE req_done = 0) + 1)";
-
-
-              DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
-
-              if (await reader.ReadAsync())
-              {
-                  nextReq = int.Parse(reader["customer_id"].ToString());
-              }
-
-              crud.CloseConnection();
-
-              return nextReq;
-          }
-
-
-
-          public async void nextQueue()
-          {
-              string sql = @"UPDATE customer_request_details SET req_done = 1 
-                          WHERE customer_id = (SELECT MIN(customer_id) 
-                          FROM customer_request_details WHERE req_done = 0)";
-
-              await crud.ExecuteAsync(sql, null);
-          }*/
 
 
     }

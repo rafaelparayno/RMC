@@ -111,6 +111,26 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, list);
         }
 
+        public async Task<bool> isDone(int queue_no)
+        {
+            bool isDone = false;
+            string sql = @"SELECT * FROM `doctor_queue` WHERE queue_no = @id AND is_done = 1";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@id", queue_no));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                isDone = true;
+            }
+
+            crud.CloseConnection();
+
+            return isDone;
+        }
+
 
 
 

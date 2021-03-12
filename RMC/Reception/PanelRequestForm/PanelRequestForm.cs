@@ -20,6 +20,8 @@ namespace RMC.Reception.PanelRequestForm
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
         List<customerDetailsMod> customerDetailsModsList;
         CustomerRequestsController customerRequestsController = new CustomerRequestsController();
+        DoctorQueueController docQController = new DoctorQueueController();
+
         DataTable dt = new DataTable();
         ImageList ImageList1 = new ImageList();
 
@@ -69,9 +71,6 @@ namespace RMC.Reception.PanelRequestForm
         }
         
 
-      
-
-
         private async void getData()
         {
             customerDetailsModsList = new List<customerDetailsMod>();
@@ -92,11 +91,22 @@ namespace RMC.Reception.PanelRequestForm
                 Image imgX;
                 Image imgLab;
                 Image imgServices;
-                Image imgPaid;
+                Image imgPaid = c.isPaid == 0 ? ImageList1.Images[1] : ImageList1.Images[0];
+
+            
 
                 if (requests.Contains(consultS))
                 {
-                    imgConsult = ImageList1.Images[2];
+                    if(await docQController.isDone(c.quueu_no))
+                    {
+                        imgConsult = ImageList1.Images[0];
+                    }
+                    else
+                    {
+                        imgConsult = ImageList1.Images[2];
+                    }
+                  
+
                 }
                 else
                 {
@@ -131,7 +141,7 @@ namespace RMC.Reception.PanelRequestForm
                 }
 
 
-                dt.Rows.Add(c.id,c.quueu_no ,c.name, c.age, imgConsult, imgX, imgLab, imgServices, ImageList1.Images[1]);
+                dt.Rows.Add(c.id,c.quueu_no ,c.name, c.age, imgConsult, imgX, imgLab, imgServices, imgPaid);
 
             }
 

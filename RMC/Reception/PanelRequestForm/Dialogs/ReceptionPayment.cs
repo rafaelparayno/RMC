@@ -347,7 +347,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             int _;
             float payment = 0;
@@ -367,7 +367,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
             processTransaction();
             finishTransaction(payment);
-            /*customerDetailsController.nextQueue();*/
+            await customerDetailsController.setPaid(customerid);
             //show OR
         }
 
