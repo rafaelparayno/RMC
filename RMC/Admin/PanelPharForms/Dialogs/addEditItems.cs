@@ -336,7 +336,11 @@ namespace RMC.Admin.PanelPharForms.Dialogs
                 float unitP = float.Parse(unitPrice);
                 float markupP = float.Parse(markup);
 
-                double sellingPrice = unitP + markupP;
+                float perc = markupP / 100;
+                float AdditionPrice = unitP * perc;
+
+
+                double sellingPrice = unitP + AdditionPrice;
 
                 txtSellingPrice.Text = Math.Round(sellingPrice, 2).ToString();
             }

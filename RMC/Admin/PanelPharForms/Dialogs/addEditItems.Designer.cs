@@ -243,9 +243,9 @@
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label4.Location = new System.Drawing.Point(346, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 17);
+            this.label4.Size = new System.Drawing.Size(163, 17);
             this.label4.TabIndex = 248;
-            this.label4.Text = "Markup Price";
+            this.label4.Text = "Markup Percentage %";
             // 
             // label2
             // 
@@ -312,7 +312,7 @@
             this.txtMarkup.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtMarkup.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMarkup.Location = new System.Drawing.Point(33, 19);
-            this.txtMarkup.MaxLength = 20;
+            this.txtMarkup.MaxLength = 3;
             this.txtMarkup.Name = "txtMarkup";
             this.txtMarkup.Size = new System.Drawing.Size(303, 23);
             this.txtMarkup.TabIndex = 5;
