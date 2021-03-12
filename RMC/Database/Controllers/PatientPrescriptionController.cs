@@ -14,15 +14,17 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async Task save(int item_id,string instruction)
+        public async Task save(int item_id,string instruction,string sInstruction,string disNo)
         {
-            string sql = @"INSERT INTO patient_prescription (item_id,instruction,doctor_results_id) 
-                            VALUES (@itemid,@instruction, 
+            string sql = @"INSERT INTO patient_prescription (item_id,instruction,dispense_no,sInstruction,doctor_results_id) 
+                            VALUES (@itemid,@instruction,@dis,@sIns, 
                             (SELECT doctor_results_id FROM doctor_results ORDER BY doctor_results_id DESC LIMIT 1)) ";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@itemid", item_id));
             listparams.Add(new MySqlParameter("@instruction", instruction));
+            listparams.Add(new MySqlParameter("@dis", disNo));
+            listparams.Add(new MySqlParameter("@sIns", sInstruction));
 
             await crud.ExecuteAsync(sql, listparams);
         }
@@ -30,11 +32,11 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataset(int id)
         {
-            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,date_prescription ,
-                        CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname' FROM `patient_prescription`
+            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,
+                        patient_prescription.dispense_no,patient_prescription.sInstruction,date_prescription ,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname' FROM `patient_prescription`
                         INNER JOIN doctor_results ON patient_prescription.doctor_results_id = doctor_results.doctor_results_id
                         INNER JOIN itemlist ON patient_prescription.item_id = itemlist.item_id
-                        INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id 
+                        INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id
                         WHERE doctor_results.patient_id = @id";
 
             List<MySqlParameter> listparam = new List<MySqlParameter>();
@@ -48,11 +50,11 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataset(int id, string date)
         {
-            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,date_prescription ,
-                        CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname' FROM `patient_prescription`
+            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,
+                        patient_prescription.dispense_no,patient_prescription.sInstruction,date_prescription ,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname' FROM `patient_prescription`
                         INNER JOIN doctor_results ON patient_prescription.doctor_results_id = doctor_results.doctor_results_id
                         INNER JOIN itemlist ON patient_prescription.item_id = itemlist.item_id
-                        INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id 
+                        INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id
                         WHERE doctor_results.patient_id = @id AND date_prescription = @date";
 
             List<MySqlParameter> listparam = new List<MySqlParameter>();
@@ -68,11 +70,11 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDatasetName(string keySearch)
         {
-            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,date_prescription ,
-                        CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname' FROM `patient_prescription`
+            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,
+                        patient_prescription.dispense_no,patient_prescription.sInstruction,date_prescription ,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname' FROM `patient_prescription`
                         INNER JOIN doctor_results ON patient_prescription.doctor_results_id = doctor_results.doctor_results_id
                         INNER JOIN itemlist ON patient_prescription.item_id = itemlist.item_id
-                        INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id 
+                        INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id
                         WHERE Concat(patientdetails.firstname,' ',patientdetails.lastname) LIKE @key";
 
             List<MySqlParameter> listparam = new List<MySqlParameter>();
@@ -87,11 +89,11 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataset(string date)
         {
-            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,date_prescription ,
-                        CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname' FROM `patient_prescription`
+            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,
+                        patient_prescription.dispense_no,patient_prescription.sInstruction,date_prescription ,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname' FROM `patient_prescription`
                         INNER JOIN doctor_results ON patient_prescription.doctor_results_id = doctor_results.doctor_results_id
                         INNER JOIN itemlist ON patient_prescription.item_id = itemlist.item_id
-                        INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id 
+                        INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id
                         WHERE date_prescription = @date";
 
             List<MySqlParameter> listparam = new List<MySqlParameter>();
@@ -105,8 +107,8 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataset()
         {
-            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,date_prescription ,
-                        CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname' FROM `patient_prescription`
+            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,
+                        patient_prescription.dispense_no,patient_prescription.sInstruction,date_prescription ,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname' FROM `patient_prescription`
                         INNER JOIN doctor_results ON patient_prescription.doctor_results_id = doctor_results.doctor_results_id
                         INNER JOIN itemlist ON patient_prescription.item_id = itemlist.item_id
                         INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id ";
@@ -200,6 +202,8 @@ namespace RMC.Database.Controllers
          
                 ppModel.instruction = reader["instruction"].ToString();
                 ppModel.medName = reader["item_name"].ToString();
+                ppModel.dispenseno = reader["dispense_no"].ToString();
+                ppModel.sinstruction = reader["sInstruction"].ToString();
                 ppModel.date = DateTime.Parse(reader["date_prescription"].ToString());
 
                 listpatientP.Add(ppModel);

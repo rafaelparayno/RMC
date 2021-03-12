@@ -32,6 +32,14 @@
             this.panelP = new System.Windows.Forms.Panel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rbGeneric = new System.Windows.Forms.RadioButton();
+            this.rbBranded = new System.Windows.Forms.RadioButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtInstructMeds = new System.Windows.Forms.TextBox();
             this.cbMeds = new System.Windows.Forms.ComboBox();
@@ -52,6 +60,8 @@
             this.btnRemoveLab = new FontAwesome.Sharp.IconButton();
             this.btnAddLab = new FontAwesome.Sharp.IconButton();
             this.panelA = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panelO = new System.Windows.Forms.Panel();
@@ -66,11 +76,10 @@
             this.panelCC = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblCC = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panelP.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.panelA.SuspendLayout();
@@ -90,7 +99,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(911, 530);
+            this.panel1.Size = new System.Drawing.Size(885, 530);
             this.panel1.TabIndex = 0;
             // 
             // panelP
@@ -102,13 +111,13 @@
             this.panelP.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelP.Location = new System.Drawing.Point(0, 708);
             this.panelP.Name = "panelP";
-            this.panelP.Size = new System.Drawing.Size(894, 733);
+            this.panelP.Size = new System.Drawing.Size(868, 918);
             this.panelP.TabIndex = 4;
             // 
             // iconButton1
             // 
             this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.iconButton1.FlatAppearance.BorderSize = 0;
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -117,11 +126,11 @@
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Save;
             this.iconButton1.IconColor = System.Drawing.Color.White;
             this.iconButton1.IconSize = 18;
-            this.iconButton1.Location = new System.Drawing.Point(0, 684);
+            this.iconButton1.Location = new System.Drawing.Point(0, 873);
             this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(894, 45);
+            this.iconButton1.Size = new System.Drawing.Size(868, 45);
             this.iconButton1.TabIndex = 246;
             this.iconButton1.Text = "Save";
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -131,6 +140,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtInstructMeds);
             this.groupBox2.Controls.Add(this.cbMeds);
@@ -143,9 +158,96 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(894, 276);
+            this.groupBox2.Size = new System.Drawing.Size(868, 461);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rbGeneric);
+            this.groupBox3.Controls.Add(this.rbBranded);
+            this.groupBox3.Location = new System.Drawing.Point(23, 48);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(825, 60);
+            this.groupBox3.TabIndex = 265;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Generic/Branded";
+            // 
+            // rbGeneric
+            // 
+            this.rbGeneric.AutoSize = true;
+            this.rbGeneric.Location = new System.Drawing.Point(156, 23);
+            this.rbGeneric.Name = "rbGeneric";
+            this.rbGeneric.Size = new System.Drawing.Size(71, 21);
+            this.rbGeneric.TabIndex = 1;
+            this.rbGeneric.Text = "Generic";
+            this.rbGeneric.UseVisualStyleBackColor = true;
+            this.rbGeneric.CheckedChanged += new System.EventHandler(this.rbGeneric_CheckedChanged);
+            // 
+            // rbBranded
+            // 
+            this.rbBranded.AutoSize = true;
+            this.rbBranded.Checked = true;
+            this.rbBranded.Location = new System.Drawing.Point(35, 23);
+            this.rbBranded.Name = "rbBranded";
+            this.rbBranded.Size = new System.Drawing.Size(77, 21);
+            this.rbBranded.TabIndex = 0;
+            this.rbBranded.TabStop = true;
+            this.rbBranded.Text = "Branded";
+            this.rbBranded.UseVisualStyleBackColor = true;
+            this.rbBranded.CheckedChanged += new System.EventHandler(this.rbBranded_CheckedChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label10.Location = new System.Drawing.Point(20, 111);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 17);
+            this.label10.TabIndex = 263;
+            this.label10.Text = "Name";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label8.Location = new System.Drawing.Point(20, 286);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(137, 17);
+            this.label8.TabIndex = 262;
+            this.label8.Text = "Special Instruction";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox5.Location = new System.Drawing.Point(23, 315);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(825, 24);
+            this.textBox5.TabIndex = 261;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label7.Location = new System.Drawing.Point(19, 181);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 17);
+            this.label7.TabIndex = 260;
+            this.label7.Text = "Dispense No:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.Location = new System.Drawing.Point(147, 178);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(209, 24);
+            this.textBox4.TabIndex = 259;
             // 
             // label5
             // 
@@ -153,18 +255,18 @@
             this.label5.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(13, 109);
+            this.label5.Location = new System.Drawing.Point(20, 221);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 17);
+            this.label5.Size = new System.Drawing.Size(123, 17);
             this.label5.TabIndex = 258;
-            this.label5.Text = "Instruction";
+            this.label5.Text = "Sig / Instruction";
             // 
             // txtInstructMeds
             // 
             this.txtInstructMeds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInstructMeds.Location = new System.Drawing.Point(16, 130);
+            this.txtInstructMeds.Location = new System.Drawing.Point(23, 250);
             this.txtInstructMeds.Name = "txtInstructMeds";
-            this.txtInstructMeds.Size = new System.Drawing.Size(851, 24);
+            this.txtInstructMeds.Size = new System.Drawing.Size(825, 24);
             this.txtInstructMeds.TabIndex = 257;
             // 
             // cbMeds
@@ -174,9 +276,9 @@
             this.cbMeds.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbMeds.BackColor = System.Drawing.Color.FloralWhite;
             this.cbMeds.FormattingEnabled = true;
-            this.cbMeds.Location = new System.Drawing.Point(16, 65);
+            this.cbMeds.Location = new System.Drawing.Point(23, 144);
             this.cbMeds.Name = "cbMeds";
-            this.cbMeds.Size = new System.Drawing.Size(851, 24);
+            this.cbMeds.Size = new System.Drawing.Size(825, 24);
             this.cbMeds.TabIndex = 256;
             this.cbMeds.SelectedIndexChanged += new System.EventHandler(this.cbMeds_SelectedIndexChanged);
             // 
@@ -187,9 +289,9 @@
             this.lvMeds.FullRowSelect = true;
             this.lvMeds.GridLines = true;
             this.lvMeds.HideSelection = false;
-            this.lvMeds.Location = new System.Drawing.Point(15, 160);
+            this.lvMeds.Location = new System.Drawing.Point(22, 345);
             this.lvMeds.Name = "lvMeds";
-            this.lvMeds.Size = new System.Drawing.Size(852, 70);
+            this.lvMeds.Size = new System.Drawing.Size(826, 70);
             this.lvMeds.TabIndex = 250;
             this.lvMeds.UseCompatibleStateImageBehavior = false;
             // 
@@ -199,7 +301,7 @@
             this.label4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(12, 17);
+            this.label4.Location = new System.Drawing.Point(20, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 17);
             this.label4.TabIndex = 249;
@@ -216,7 +318,7 @@
             this.btnRemoveMeds.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
             this.btnRemoveMeds.IconColor = System.Drawing.Color.White;
             this.btnRemoveMeds.IconSize = 18;
-            this.btnRemoveMeds.Location = new System.Drawing.Point(328, 237);
+            this.btnRemoveMeds.Location = new System.Drawing.Point(344, 422);
             this.btnRemoveMeds.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRemoveMeds.Name = "btnRemoveMeds";
             this.btnRemoveMeds.Rotation = 0D;
@@ -226,6 +328,7 @@
             this.btnRemoveMeds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemoveMeds.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRemoveMeds.UseVisualStyleBackColor = false;
+            this.btnRemoveMeds.Click += new System.EventHandler(this.btnRemoveMeds_Click);
             // 
             // btnAddMeds
             // 
@@ -238,7 +341,7 @@
             this.btnAddMeds.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
             this.btnAddMeds.IconColor = System.Drawing.Color.White;
             this.btnAddMeds.IconSize = 18;
-            this.btnAddMeds.Location = new System.Drawing.Point(15, 237);
+            this.btnAddMeds.Location = new System.Drawing.Point(22, 422);
             this.btnAddMeds.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddMeds.Name = "btnAddMeds";
             this.btnAddMeds.Rotation = 0D;
@@ -262,7 +365,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(894, 204);
+            this.groupBox1.Size = new System.Drawing.Size(868, 204);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             // 
@@ -275,7 +378,7 @@
             this.cbXray.FormattingEnabled = true;
             this.cbXray.Location = new System.Drawing.Point(15, 49);
             this.cbXray.Name = "cbXray";
-            this.cbXray.Size = new System.Drawing.Size(852, 24);
+            this.cbXray.Size = new System.Drawing.Size(826, 24);
             this.cbXray.TabIndex = 255;
             this.cbXray.SelectedIndexChanged += new System.EventHandler(this.cbXray_SelectedIndexChanged);
             // 
@@ -288,7 +391,7 @@
             this.lvXray.HideSelection = false;
             this.lvXray.Location = new System.Drawing.Point(16, 79);
             this.lvXray.Name = "lvXray";
-            this.lvXray.Size = new System.Drawing.Size(851, 69);
+            this.lvXray.Size = new System.Drawing.Size(825, 69);
             this.lvXray.TabIndex = 250;
             this.lvXray.UseCompatibleStateImageBehavior = false;
             // 
@@ -362,7 +465,7 @@
             this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox8.Size = new System.Drawing.Size(894, 204);
+            this.groupBox8.Size = new System.Drawing.Size(868, 204);
             this.groupBox8.TabIndex = 22;
             this.groupBox8.TabStop = false;
             // 
@@ -375,7 +478,7 @@
             this.cbLab.FormattingEnabled = true;
             this.cbLab.Location = new System.Drawing.Point(15, 49);
             this.cbLab.Name = "cbLab";
-            this.cbLab.Size = new System.Drawing.Size(852, 24);
+            this.cbLab.Size = new System.Drawing.Size(826, 24);
             this.cbLab.TabIndex = 254;
             this.cbLab.SelectedIndexChanged += new System.EventHandler(this.cbLab_SelectedIndexChanged);
             // 
@@ -388,7 +491,7 @@
             this.lvLab.HideSelection = false;
             this.lvLab.Location = new System.Drawing.Point(16, 79);
             this.lvLab.Name = "lvLab";
-            this.lvLab.Size = new System.Drawing.Size(851, 69);
+            this.lvLab.Size = new System.Drawing.Size(825, 69);
             this.lvLab.TabIndex = 250;
             this.lvLab.UseCompatibleStateImageBehavior = false;
             // 
@@ -459,8 +562,26 @@
             this.panelA.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelA.Location = new System.Drawing.Point(0, 429);
             this.panelA.Name = "panelA";
-            this.panelA.Size = new System.Drawing.Size(894, 279);
+            this.panelA.Size = new System.Drawing.Size(868, 279);
             this.panelA.TabIndex = 3;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.Location = new System.Drawing.Point(12, 168);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(826, 86);
+            this.textBox3.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 148);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(129, 17);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Procedure (Advise):";
             // 
             // textBox2
             // 
@@ -468,7 +589,7 @@
             this.textBox2.Location = new System.Drawing.Point(12, 41);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(852, 86);
+            this.textBox2.Size = new System.Drawing.Size(826, 86);
             this.textBox2.TabIndex = 1;
             // 
             // label3
@@ -490,7 +611,7 @@
             this.panelO.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelO.Location = new System.Drawing.Point(0, 237);
             this.panelO.Name = "panelO";
-            this.panelO.Size = new System.Drawing.Size(894, 192);
+            this.panelO.Size = new System.Drawing.Size(868, 192);
             this.panelO.TabIndex = 2;
             // 
             // lvSymp
@@ -502,7 +623,7 @@
             this.lvSymp.HideSelection = false;
             this.lvSymp.Location = new System.Drawing.Point(15, 82);
             this.lvSymp.Name = "lvSymp";
-            this.lvSymp.Size = new System.Drawing.Size(852, 69);
+            this.lvSymp.Size = new System.Drawing.Size(826, 69);
             this.lvSymp.TabIndex = 258;
             this.lvSymp.UseCompatibleStateImageBehavior = false;
             // 
@@ -580,7 +701,7 @@
             this.panelS.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelS.Location = new System.Drawing.Point(0, 97);
             this.panelS.Name = "panelS";
-            this.panelS.Size = new System.Drawing.Size(894, 140);
+            this.panelS.Size = new System.Drawing.Size(868, 140);
             this.panelS.TabIndex = 1;
             // 
             // label1
@@ -600,7 +721,7 @@
             this.txtSubjective.Location = new System.Drawing.Point(15, 63);
             this.txtSubjective.Multiline = true;
             this.txtSubjective.Name = "txtSubjective";
-            this.txtSubjective.Size = new System.Drawing.Size(852, 71);
+            this.txtSubjective.Size = new System.Drawing.Size(826, 71);
             this.txtSubjective.TabIndex = 1;
             // 
             // panelCC
@@ -610,7 +731,7 @@
             this.panelCC.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCC.Location = new System.Drawing.Point(0, 0);
             this.panelCC.Name = "panelCC";
-            this.panelCC.Size = new System.Drawing.Size(894, 97);
+            this.panelCC.Size = new System.Drawing.Size(868, 97);
             this.panelCC.TabIndex = 0;
             // 
             // textBox1
@@ -618,9 +739,10 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(15, 58);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(852, 24);
+            this.textBox1.Size = new System.Drawing.Size(826, 24);
             this.textBox1.TabIndex = 1;
             // 
             // lblCC
@@ -632,30 +754,12 @@
             this.lblCC.TabIndex = 0;
             this.lblCC.Text = "Chief Complaint(CC)";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 148);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 17);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Procedure (Advise):";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(12, 168);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(852, 86);
-            this.textBox3.TabIndex = 3;
-            // 
             // DoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(911, 530);
+            this.ClientSize = new System.Drawing.Size(885, 530);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -668,6 +772,8 @@
             this.panelP.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -695,36 +801,44 @@
         private System.Windows.Forms.Label lblO;
         private System.Windows.Forms.Panel panelS;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panelP;
         private System.Windows.Forms.Panel panelA;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbSymp;
         private FontAwesome.Sharp.IconButton btnAddSymp;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ListView lvLab;
-        private System.Windows.Forms.Label label9;
-        private FontAwesome.Sharp.IconButton btnRemoveLab;
-        private FontAwesome.Sharp.IconButton btnAddLab;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListView lvXray;
-        private System.Windows.Forms.Label label2;
-        private FontAwesome.Sharp.IconButton btnRemX;
-        private FontAwesome.Sharp.IconButton btnAddX;
         private FontAwesome.Sharp.IconButton btnRemSymp;
+        private System.Windows.Forms.ListView lvSymp;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panelP;
+        private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtInstructMeds;
+        private System.Windows.Forms.ComboBox cbMeds;
         private System.Windows.Forms.ListView lvMeds;
         private System.Windows.Forms.Label label4;
         private FontAwesome.Sharp.IconButton btnRemoveMeds;
         private FontAwesome.Sharp.IconButton btnAddMeds;
-        private System.Windows.Forms.TextBox txtInstructMeds;
-        private System.Windows.Forms.ComboBox cbMeds;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbXray;
+        private System.Windows.Forms.ListView lvXray;
+        private System.Windows.Forms.Label label2;
+        private FontAwesome.Sharp.IconButton btnRemX;
+        private FontAwesome.Sharp.IconButton btnAddX;
+        private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.ComboBox cbLab;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListView lvSymp;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ListView lvLab;
+        private System.Windows.Forms.Label label9;
+        private FontAwesome.Sharp.IconButton btnRemoveLab;
+        private FontAwesome.Sharp.IconButton btnAddLab;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton rbGeneric;
+        private System.Windows.Forms.RadioButton rbBranded;
     }
 }

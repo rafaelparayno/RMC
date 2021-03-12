@@ -30,7 +30,7 @@ namespace RMC.Doctor
         private int cbSympValue = 0;
         private int cbMedsValue = 0;
         private int patientId = 0;
-
+     
 
         public DoctorForm(int id)
         {
@@ -67,19 +67,21 @@ namespace RMC.Doctor
 
             lvMeds.Columns.Add("Meds ID", 100, HorizontalAlignment.Left);
             lvMeds.Columns.Add("Meds Name", 300, HorizontalAlignment.Left);
+            lvMeds.Columns.Add("Dispense No", 600, HorizontalAlignment.Left);
             lvMeds.Columns.Add("Instruction", 600, HorizontalAlignment.Left);
+            lvMeds.Columns.Add("Special Instruction", 600, HorizontalAlignment.Left);
         }
 
         private async Task loadCbs()
         {
             Task<List<ComboBoxItem>> task1 = laboratoryController.getComboDatas();
             Task<List<ComboBoxItem>> task2 = xrayControllers.getComboDatas();
-            Task<List<ComboBoxItem>> task3 = itemz.getMedicinesActive();
+            Task<List<ComboBoxItem>> task3 = itemz.getMedicinesBrandedActive();
             Task<List<ComboBoxItem>> task4 = sController.getComboDatas(UserLog.getUserId());
 
 
             Task<List<ComboBoxItem>>[] Cbs = new Task<List<ComboBoxItem>>[] { task1, task2,
-                                                                            task3, task4 };
+                                                                              task3,task4 };
 
             await Task.WhenAll(Cbs);
             cbLab.Items.AddRange(task1.Result.ToArray());
@@ -114,16 +116,47 @@ namespace RMC.Doctor
             cbMedsValue = int.Parse((cbMeds.SelectedItem as ComboBoxItem).Value.ToString());
         }
 
-        private void btnAddSymp_Click(object sender, EventArgs e)
+        private async void btnAddSymp_Click(object sender, EventArgs e)
         {
-            if (cbSympValue == 0)
+            /* if (cbSympValue == 0)
+                 return;*/
+
+            if (cbSymp.Text == "")
                 return;
 
-            ListViewItem lv = new ListViewItem();
-            lv.Text = cbSympValue.ToString();
-            lv.SubItems.Add(cbSymp.Text);
 
-            lvSymp.Items.Add(lv);
+            bool isf = await sController.isFound(UserLog.getUserId(), cbSymp.Text.ToString().Trim());
+
+            if (isf)
+            {
+                ListViewItem lv = new ListViewItem();
+                lv.Text = cbSympValue.ToString();
+                lv.SubItems.Add(cbSymp.Text);
+
+                lvSymp.Items.Add(lv);
+
+            }
+            else
+            {
+
+
+                DialogResult dialogRes = MessageBox.Show("Are you Want to save new data?", "Validation",
+                   MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                if (dialogRes == DialogResult.OK)
+                {
+                    await sController.save(UserLog.getUserId(), cbSymp.Text);
+
+                    ListViewItem lv = new ListViewItem();
+                    int recentid = sController.getRecentItemID() - 1;
+                    lv.Text = recentid.ToString();
+                    lv.SubItems.Add(cbSymp.Text);
+
+                    lvSymp.Items.Add(lv);
+                }
+            }
+
+
         }
 
         private void btnRemSymp_Click(object sender, EventArgs e)
@@ -203,11 +236,15 @@ namespace RMC.Doctor
             ListViewItem lvItems = new ListViewItem();
             lvItems.Text = cbMedsValue.ToString();
             lvItems.SubItems.Add(cbMeds.Text);
+            lvItems.SubItems.Add(textBox4.Text);
             lvItems.SubItems.Add(txtInstructMeds.Text.Trim());
+            lvItems.SubItems.Add(textBox5.Text.Trim());
             lvMeds.Items.Add(lvItems);
 
 
             txtInstructMeds.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
 
         }
 
@@ -223,9 +260,17 @@ namespace RMC.Doctor
             await dController.save(textBox1.Text.Trim(), txtSubjective.Text.Trim(), 
                                     textBox2.Text.Trim() ,patientId.ToString(), textBox3.Text.Trim());
 
-            foreach(ListViewItem lvItems in lvMeds.Items)
+/*
+            lvMeds.Columns.Add("Meds ID", 100, HorizontalAlignment.Left);
+            lvMeds.Columns.Add("Meds Name", 300, HorizontalAlignment.Left);
+            lvMeds.Columns.Add("Dispense No", 600, HorizontalAlignment.Left);
+            lvMeds.Columns.Add("Instruction", 600, HorizontalAlignment.Left);
+            lvMeds.Columns.Add("Special Instruction", 600, HorizontalAlignment.Left);*/
+
+            foreach (ListViewItem lvItems in lvMeds.Items)
             {
-                await ppController.save(int.Parse(lvItems.SubItems[0].Text),lvItems.SubItems[2].Text);
+                await ppController.save(int.Parse(lvItems.SubItems[0].Text),lvItems.SubItems[3].Text,
+                                        lvItems.SubItems[4].Text, lvItems.SubItems[2].Text);
             }
 
             foreach(ListViewItem lv in lvLab.Items)
@@ -245,6 +290,40 @@ namespace RMC.Doctor
 
                 await psController.save(int.Parse(lv.SubItems[0].Text));
             }
+        }
+
+        private async void rbBranded_CheckedChanged(object sender, EventArgs e)
+        {
+            List<ComboBoxItem> listCbs = await itemz.getMedicinesBrandedActive();
+           
+
+
+            cbMeds.Items.Clear();
+            cbMedsValue = 0;
+            cbMeds.Items.AddRange(listCbs.ToArray());
+
+        }
+
+        private async void rbGeneric_CheckedChanged(object sender, EventArgs e)
+        {
+            List<ComboBoxItem> listCbs = await itemz.getMedicinesGenericActive();
+
+            cbMeds.Items.Clear();
+            cbMedsValue = 0;
+            cbMeds.Items.AddRange(listCbs.ToArray());
+        }
+
+        private void btnRemoveMeds_Click(object sender, EventArgs e)
+        {
+            if (lvMeds.Items.Count == 0)
+                return;
+
+            if (lvMeds.SelectedItems.Count == 0)
+                return;
+
+            int index = lvMeds.SelectedItems[0].Index;
+
+            lvMeds.Items.RemoveAt(index);
         }
     }
 }

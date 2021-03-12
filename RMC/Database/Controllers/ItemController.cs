@@ -569,13 +569,31 @@ namespace RMC.Database.Controllers
             return cbItems;
         }
 
-        public async Task<List<ComboBoxItem>> getMedicinesActive()
+        public async Task<List<ComboBoxItem>> getMedicinesBrandedActive()
         {
 
             List<ComboBoxItem> cbItems = new List<ComboBoxItem>();
             string sql = @"SELECT * FROM itemlist 
                          WHERE category_id in (SELECT category_id FROM category WHERE item_type = 1)
-                         AND is_active = 1";
+                         AND is_active = 1 AND isBranded = 1";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+            while (await reader.ReadAsync())
+            {
+                cbItems.Add(new ComboBoxItem(reader["item_name"].ToString(),
+                    int.Parse(reader["item_id"].ToString())));
+            }
+            crud.CloseConnection();
+            return cbItems;
+        }
+
+        public async Task<List<ComboBoxItem>> getMedicinesGenericActive()
+        {
+
+            List<ComboBoxItem> cbItems = new List<ComboBoxItem>();
+            string sql = @"SELECT * FROM itemlist 
+                         WHERE category_id in (SELECT category_id FROM category WHERE item_type = 1)
+                         AND is_active = 1 AND isBranded = 2";
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
             while (await reader.ReadAsync())

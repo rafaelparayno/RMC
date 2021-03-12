@@ -14,6 +14,10 @@ namespace RMC.Database.Models
 
         public string instruction { get; set; }
 
+        public string dispenseno { get; set; }
+
+        public string sinstruction { get; set; }
+
         public DateTime date { get; set; }
     }
 }
