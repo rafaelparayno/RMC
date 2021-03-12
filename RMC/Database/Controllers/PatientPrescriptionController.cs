@@ -164,6 +164,29 @@ namespace RMC.Database.Controllers
             return listpatientP;
         }
 
+
+        public async Task<string> getPrescriptionSKU(int id)
+        {
+            string sku = "";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            string sql = @"SELECT * FROM `patient_prescription` 
+                        INNER JOIN itemlist ON patient_prescription.item_id = itemlist.item_id 
+                        WHERE patient_prescription_id = @id";
+
+            listparams.Add(new MySqlParameter("@id", id));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+
+            if (await reader.ReadAsync())
+            {
+                sku = reader["SKU"].ToString();
+            }
+
+            crud.CloseConnection();
+
+            return sku;
+        }
+
         public async Task<List<PatientPrescriptionModel>> getPrescriptionModel( )
         {
             List<PatientPrescriptionModel> listpatientP = new List<PatientPrescriptionModel>();

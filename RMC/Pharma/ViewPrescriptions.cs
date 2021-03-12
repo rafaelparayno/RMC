@@ -14,10 +14,21 @@ namespace RMC.Pharma
     public partial class ViewPrescriptions : Form
     {
         PatientPrescriptionController ppController = new PatientPrescriptionController();
+        int dyn = 0;
+        public string sku = "";
+        string idRightClick = "";
+
 
         public ViewPrescriptions()
         {
             InitializeComponent();
+        }
+
+        public ViewPrescriptions(int dyn)
+        {
+            InitializeComponent();
+            this.dyn = dyn;
+            sku = "";
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
@@ -97,6 +108,35 @@ namespace RMC.Pharma
                 txtName.Visible = true;
             }
 
+        }
+
+        private void dgItemList_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dyn == 0)
+                return;
+
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgItemList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                    idRightClick = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    /* Sku = dgItemList.Rows[currentMouseOverRow].Cells[5].Value.ToString();*/
+                    contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
+
+                }
+
+            }
+        }
+
+        private async void addToCartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(idRightClick);
+            sku = await ppController.getPrescriptionSKU(id);
+            this.Close();
         }
     }
 }

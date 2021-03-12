@@ -286,8 +286,10 @@ namespace RMC.InventoryPharma
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ViewPrescriptions form = new ViewPrescriptions();
+            ViewPrescriptions form = new ViewPrescriptions(1);
             form.ShowDialog();
+
+            txtCode.Text = form.sku;
         }
 
         private void button7_Click(object sender, EventArgs e)
