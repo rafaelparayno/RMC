@@ -15,7 +15,7 @@ namespace RMC.Database.Controllers
 
         public async Task save(params string[] data)
         {
-            string sql = @"INSERT INTO doctor_results (cc,sfindings,assestment,procedureA,patient_id) 
+            string sql = @"INSERT INTO `doctor_results`( `cc`, `sfindings`, `assestment`, `procedureA`,`patient_id`)
                           VALUES (@cc,@sfindings,@ass,@procA,@id)";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
@@ -25,6 +25,26 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@ass", data[2]));
             listparams.Add(new MySqlParameter("@procA", data[4]));
             listparams.Add(new MySqlParameter("@id", patientid));
+
+            await crud.ExecuteAsync(sql, listparams);
+
+        }
+
+        public async Task update(params string[] data)
+        {
+            string sql = @"UPDATE doctor_results SET cc = @cc , sfindings = @sfindings, assestment = @ass 
+                           , procedureA = @procA WHERE patient_id = @id AND doctor_results_id = @resid";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            int patientid = int.Parse(data[3]);
+            int resid = int.Parse(data[5]);
+            listparams.Add(new MySqlParameter("@cc", data[0]));
+            listparams.Add(new MySqlParameter("@sfindings", data[1]));
+            listparams.Add(new MySqlParameter("@ass", data[2]));
+            listparams.Add(new MySqlParameter("@procA", data[4]));
+            listparams.Add(new MySqlParameter("@id", patientid));
+            listparams.Add(new MySqlParameter("@resid", resid));
+
 
             await crud.ExecuteAsync(sql, listparams);
 

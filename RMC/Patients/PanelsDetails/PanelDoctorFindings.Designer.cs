@@ -40,12 +40,14 @@
             this.lvLabDetails = new System.Windows.Forms.ListView();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.iconButton4);
             this.groupBox1.Controls.Add(this.iconButton3);
             this.groupBox1.Controls.Add(this.iconButton2);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
@@ -70,11 +72,11 @@
             this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Plus;
             this.iconButton3.IconColor = System.Drawing.Color.White;
             this.iconButton3.IconSize = 18;
-            this.iconButton3.Location = new System.Drawing.Point(539, 35);
+            this.iconButton3.Location = new System.Drawing.Point(606, 35);
             this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Rotation = 0D;
-            this.iconButton3.Size = new System.Drawing.Size(172, 23);
+            this.iconButton3.Size = new System.Drawing.Size(105, 23);
             this.iconButton3.TabIndex = 225;
             this.iconButton3.UseVisualStyleBackColor = false;
             this.iconButton3.Visible = false;
@@ -192,6 +194,26 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // iconButton4
+            // 
+            this.iconButton4.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton4.ForeColor = System.Drawing.Color.White;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.iconButton4.IconColor = System.Drawing.Color.White;
+            this.iconButton4.IconSize = 18;
+            this.iconButton4.Location = new System.Drawing.Point(515, 35);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Rotation = 0D;
+            this.iconButton4.Size = new System.Drawing.Size(85, 23);
+            this.iconButton4.TabIndex = 226;
+            this.iconButton4.UseVisualStyleBackColor = false;
+            this.iconButton4.Visible = false;
+            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
+            // 
             // PanelDoctorFindings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -227,5 +249,6 @@
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private FontAwesome.Sharp.IconButton iconButton3;
         private System.Windows.Forms.Timer timer1;
+        private FontAwesome.Sharp.IconButton iconButton4;
     }
 }

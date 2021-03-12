@@ -9,12 +9,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace RMC.Doctor
 {
     public partial class DoctorForm : Form
     {
+
+        #region DBcontrollers
         SymptomsController sController = new SymptomsController();
         ItemController itemz = new ItemController();
         LaboratoryController laboratoryController = new LaboratoryController();
@@ -24,13 +27,29 @@ namespace RMC.Doctor
         DoctorRequestLabController ddController = new DoctorRequestLabController();
         DoctorRequestXrayController dxController = new DoctorRequestXrayController();
         PatientSymptomsController psController = new PatientSymptomsController();
+        #endregion
+
+        #region Variables
+
+
+        DoctorResult doctorResultData;
+
+        List<PatientSymptomsModel> listPatientSymp;
+        List<PatientPrescriptionModel> listPatientPrescription;
+        List<labModel> listlabModel;
+        List<xraymodel> listXrayModel;
+
 
         private int cbLabValue = 0;
         private int cbXrayValue = 0;
         private int cbSympValue = 0;
         private int cbMedsValue = 0;
         private int patientId = 0;
-     
+        private int resid = 0;
+
+      
+
+        #endregion
 
         public DoctorForm(int id)
         {
@@ -45,6 +64,76 @@ namespace RMC.Doctor
             initLvsCols();
             this.patientId = id;
             textBox1.Text = cc;
+        }
+
+        public DoctorForm(int id, int resid)
+        {
+            InitializeComponent();
+            initLvsCols();
+            this.patientId = id;
+            this.resid = resid;
+            initEditState();
+        }
+
+        #region My Functions
+
+        private async void initEditState()
+        {
+            doctorResultData = await dController.getDoctorResultsSearchId(resid);
+
+            textBox1.Text = doctorResultData.cc;
+            txtSubjective.Text = doctorResultData.sfindings;
+            textBox2.Text = doctorResultData.assestment;
+            textBox3.Text = doctorResultData.procedureA;
+
+
+            listlabModel = await ddController.getLabModelDoctorResult(resid);
+            listPatientSymp = await psController.getPatientSymptomsMod(resid);
+            listPatientPrescription = await ppController.getPrescriptionModel(resid);
+            listXrayModel = await dxController.getXrayData(resid);
+
+
+            foreach (PatientSymptomsModel listPs in listPatientSymp)
+            {
+                ListViewItem lv = new ListViewItem();
+                lv.Text = listPs.s_id.ToString();
+                lv.SubItems.Add(listPs.symptoms);
+
+                lvSymp.Items.Add(lv);
+            }
+
+
+
+            foreach (PatientPrescriptionModel listPP in listPatientPrescription)
+            {
+                ListViewItem lvItems = new ListViewItem();
+                lvItems.Text = listPP.itemid.ToString();
+                lvItems.SubItems.Add(listPP.medName);
+                lvItems.SubItems.Add(listPP.dispenseno);
+                lvItems.SubItems.Add(listPP.instruction);
+                lvItems.SubItems.Add(listPP.sinstruction);
+                lvMeds.Items.Add(lvItems);
+            }
+
+
+            foreach (labModel labm in listlabModel)
+            {
+                ListViewItem lvItems = new ListViewItem();
+                lvItems.Text = labm.labID.ToString();
+                lvItems.SubItems.Add(labm.name);
+
+                lvLab.Items.Add(lvItems);
+            }
+
+            foreach (xraymodel xrayM in listXrayModel)
+            {
+
+                ListViewItem lvItems = new ListViewItem();
+                lvItems.Text = xrayM.id.ToString();
+                lvItems.SubItems.Add(xrayM.name);
+
+                lvXray.Items.Add(lvItems);
+            }
         }
 
 
@@ -88,8 +177,203 @@ namespace RMC.Doctor
             cbXray.Items.AddRange(task2.Result.ToArray());
             cbMeds.Items.AddRange(task3.Result.ToArray());
             cbSymp.Items.AddRange(task4.Result.ToArray());
-      
+
         }
+
+
+        private async Task saveDetails()
+        {
+
+            if (resid > 0)
+            {
+                List<int> idsInEditPres = listPatientPrescription.Select(pres => pres.itemid).ToList();
+                List<int> idsInEditSymp = listPatientSymp.Select(s => s.s_id).ToList();
+                List<int> idsInEditXr = listXrayModel.Select(x => x.id).ToList();
+                List<int> idsInEditLb = listlabModel.Select(l => l.labID).ToList();
+
+                List<int> idCurrent = new List<int>();
+                List<int> idCurrent1 = new List<int>();
+                List<int> idCurrent2 = new List<int>();
+
+                await dController.update(textBox1.Text.Trim(), txtSubjective.Text.Trim(),
+                                   textBox2.Text.Trim(), patientId.ToString(), textBox3.Text.Trim(), resid.ToString());
+
+
+                //Prescription
+                foreach (ListViewItem lvItems in lvMeds.Items)
+                {
+                    int MedidInLV = int.Parse(lvItems.SubItems[0].Text);
+
+                    idCurrent.Add(MedidInLV);
+    
+                }
+
+                foreach (int i in idsInEditPres)
+                {
+                    if (!idCurrent.Contains(i))
+                    {
+                        await ppController.remove(i, resid);
+
+                    }
+                }
+
+
+                foreach (ListViewItem lvItems in lvMeds.Items)
+                {
+                    int MedidInLV = int.Parse(lvItems.SubItems[0].Text);
+
+
+
+                    if (!await ppController.isFound(resid, MedidInLV))
+                        await ppController.save(MedidInLV, lvItems.SubItems[3].Text,
+                                              lvItems.SubItems[4].Text, lvItems.SubItems[2].Text);
+                }
+                //Prescription
+
+
+
+                //SYMP
+
+                idCurrent = new List<int>();
+
+                foreach (ListViewItem lv in lvSymp.Items)
+                {
+                    int sidLV = int.Parse(lv.SubItems[0].Text);
+
+                    idCurrent.Add(sidLV);
+                }
+
+
+                foreach (int i in idsInEditSymp)
+                {
+                    if (!idCurrent.Contains(i))
+                    {
+                        await psController.remove(i, resid);
+
+                    }
+                }
+
+                foreach (ListViewItem lv in lvSymp.Items)
+                {
+                    int sidLV = int.Parse(lv.SubItems[0].Text);
+
+                    if (!await psController.isFound(resid, sidLV))
+                        await psController.save(sidLV);
+
+                }
+
+                //SYMP
+
+                /*      idCurrent = new List<int>();*/
+
+                //xray
+
+                foreach (ListViewItem lv in lvXray.Items)
+                {
+                    int xidLV = int.Parse(lv.SubItems[0].Text);
+
+                    idCurrent1.Add(xidLV);
+                }
+
+
+
+                foreach (int i in idsInEditXr)
+                {
+                    if (!idCurrent1.Contains(i))
+                    {
+                        await dxController.remove(i, resid);
+                    }
+                }
+
+
+                foreach (ListViewItem lv in lvXray.Items)
+                {
+                    int xidLV = int.Parse(lv.SubItems[0].Text);
+
+                    if (!await dxController.isFound(resid, xidLV))
+                        await dxController.save(xidLV);
+                }
+                //xray
+
+                //Lab
+
+
+                foreach (ListViewItem lv in lvLab.Items)
+                {
+                    int lidLV = int.Parse(lv.SubItems[0].Text);
+
+                    idCurrent2.Add(lidLV);
+                }
+
+
+
+                foreach (int i in idsInEditLb)
+                {
+                    if (!idCurrent2.Contains(i))
+                    {
+                        await ddController.remove(i, resid);
+                    }
+                }
+
+
+                foreach (ListViewItem lv in lvLab.Items)
+                {
+                    int lidLV = int.Parse(lv.SubItems[0].Text);
+
+                    if (!await ddController.isFound(resid, lidLV))
+                        await ddController.save(lidLV);
+                }
+                //Lab
+
+            }
+            else
+            {
+                await dController.save(textBox1.Text.Trim(), txtSubjective.Text.Trim(),
+                                  textBox2.Text.Trim(), patientId.ToString(), textBox3.Text.Trim());
+
+                foreach (ListViewItem lvItems in lvMeds.Items)
+                {
+                    int MedidInLV = int.Parse(lvItems.SubItems[0].Text);
+
+
+                    await ppController.save(MedidInLV, lvItems.SubItems[3].Text,
+                                          lvItems.SubItems[4].Text, lvItems.SubItems[2].Text);
+                }
+
+                foreach (ListViewItem lv in lvLab.Items)
+                {
+
+                    await ddController.save(int.Parse(lv.SubItems[0].Text));
+
+
+                }
+
+                foreach (ListViewItem lv in lvXray.Items)
+                {
+
+                    await dxController.save(int.Parse(lv.SubItems[0].Text));
+
+
+                }
+
+                foreach (ListViewItem lv in lvSymp.Items)
+                {
+
+                    await psController.save(int.Parse(lv.SubItems[0].Text));
+
+
+                }
+
+            }
+           
+
+         
+        }
+
+        #endregion
+
+        #region My Event Handlers
+
 
         private async void DoctorForm_Load(object sender, EventArgs e)
         {
@@ -254,43 +538,7 @@ namespace RMC.Doctor
             this.Close();
         }
 
-        private async Task saveDetails()
-        {
-
-            await dController.save(textBox1.Text.Trim(), txtSubjective.Text.Trim(), 
-                                    textBox2.Text.Trim() ,patientId.ToString(), textBox3.Text.Trim());
-
-/*
-            lvMeds.Columns.Add("Meds ID", 100, HorizontalAlignment.Left);
-            lvMeds.Columns.Add("Meds Name", 300, HorizontalAlignment.Left);
-            lvMeds.Columns.Add("Dispense No", 600, HorizontalAlignment.Left);
-            lvMeds.Columns.Add("Instruction", 600, HorizontalAlignment.Left);
-            lvMeds.Columns.Add("Special Instruction", 600, HorizontalAlignment.Left);*/
-
-            foreach (ListViewItem lvItems in lvMeds.Items)
-            {
-                await ppController.save(int.Parse(lvItems.SubItems[0].Text),lvItems.SubItems[3].Text,
-                                        lvItems.SubItems[4].Text, lvItems.SubItems[2].Text);
-            }
-
-            foreach(ListViewItem lv in lvLab.Items)
-            {
-
-                await ddController.save(int.Parse(lv.SubItems[0].Text));
-            }
-
-            foreach (ListViewItem lv in lvXray.Items)
-            {
-
-                await dxController.save(int.Parse(lv.SubItems[0].Text));
-            }
-
-            foreach (ListViewItem lv in lvSymp.Items)
-            {
-
-                await psController.save(int.Parse(lv.SubItems[0].Text));
-            }
-        }
+       
 
         private async void rbBranded_CheckedChanged(object sender, EventArgs e)
         {
@@ -325,5 +573,9 @@ namespace RMC.Doctor
 
             lvMeds.Items.RemoveAt(index);
         }
+
+        #endregion
+
+
     }
 }

@@ -12,6 +12,8 @@ namespace RMC.Database.Models
 
         public string medName { get; set; }
 
+        public int itemid { get; set; }
+
         public string instruction { get; set; }
 
         public string dispenseno { get; set; }

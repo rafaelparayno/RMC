@@ -80,6 +80,7 @@ namespace RMC.Patients.PanelsDetails
             if (listAccess.Contains(5))
             {
                 iconButton3.Visible = true;
+                iconButton4.Visible = true;
             }
         }
         private void iconButton3_Click(object sender, EventArgs e)
@@ -150,7 +151,6 @@ namespace RMC.Patients.PanelsDetails
             DoctorsSample cos = new DoctorsSample();
             cos.SetParameterValue("ccParam", doctorResultData.cc);
             cos.SetParameterValue("aParam", doctorResultData.assestment);
-            cos.SetParameterValue("aParam", doctorResultData.assestment);
             cos.SetParameterValue("patientNameParam", patientDetailsData.FullName);
             cos.SetParameterValue("cnParam", patientDetailsData.contact);
             cos.SetParameterValue("ageParam", patientDetailsData.age);
@@ -196,6 +196,20 @@ namespace RMC.Patients.PanelsDetails
                 timer1.Stop();
                 lvLabDetails.Enabled = true;
             }
+        }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            if (lvLabDetails.Items.Count == 0)
+                return;
+
+            if (lvLabDetails.SelectedItems.Count == 0)
+                return;
+
+            int resid = int.Parse(lvLabDetails.Items[0].SubItems[0].Text);
+
+            DoctorForm form = new DoctorForm(id,resid);
+            form.ShowDialog();
         }
     }
 }

@@ -10,6 +10,9 @@ namespace RMC.Database.Models
     {
         public int id { get; set; }
 
+
+        public int xrayid { get; set; }
+
         public string name { get; set; }
 
         public int autodocsid { get; set; }

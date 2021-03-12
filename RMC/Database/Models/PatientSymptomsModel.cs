@@ -12,5 +12,7 @@ namespace RMC.Database.Models
 
         public string symptoms { get; set; }
 
+        public int s_id { get; set; }
+
     }
 }

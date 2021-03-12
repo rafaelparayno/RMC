@@ -29,6 +29,18 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
+        public async Task remove(int item_id,int resid)
+        {
+            string sql = @"DELETE FROM patient_prescription WHERE doctor_results_id = @resid AND item_id = @itemid";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@itemid", item_id));
+            listparams.Add(new MySqlParameter("@resid", resid));
+
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+
 
         public async Task<DataSet> getDataset(int id)
         {
@@ -202,6 +214,7 @@ namespace RMC.Database.Controllers
          
                 ppModel.instruction = reader["instruction"].ToString();
                 ppModel.medName = reader["item_name"].ToString();
+                ppModel.itemid = int.Parse(reader["item_id"].ToString());
                 ppModel.dispenseno = reader["dispense_no"].ToString();
                 ppModel.sinstruction = reader["sInstruction"].ToString();
                 ppModel.date = DateTime.Parse(reader["date_prescription"].ToString());
@@ -214,5 +227,25 @@ namespace RMC.Database.Controllers
             return listpatientP;
         }
 
+        public async Task<bool> isFound(int resid, int itemid)
+        {
+            bool isFound = false;
+            string sql = @"SELECT * FROM `patient_prescription` WHERE doctor_results_id = @id AND item_id = @itemid";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", resid));
+            listparams.Add(new MySqlParameter("@itemid", itemid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                isFound = true;
+            }
+
+            crud.CloseConnection();
+
+            return isFound;
+        }
     }
+
 }

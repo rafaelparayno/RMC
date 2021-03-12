@@ -120,7 +120,7 @@
             this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox8.Size = new System.Drawing.Size(710, 184);
+            this.groupBox8.Size = new System.Drawing.Size(710, 215);
             this.groupBox8.TabIndex = 16;
             this.groupBox8.TabStop = false;
             // 
@@ -157,7 +157,7 @@
             this.btnRemoveSupplier.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
             this.btnRemoveSupplier.IconColor = System.Drawing.Color.White;
             this.btnRemoveSupplier.IconSize = 18;
-            this.btnRemoveSupplier.Location = new System.Drawing.Point(367, 142);
+            this.btnRemoveSupplier.Location = new System.Drawing.Point(367, 145);
             this.btnRemoveSupplier.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRemoveSupplier.Name = "btnRemoveSupplier";
             this.btnRemoveSupplier.Rotation = 0D;
@@ -181,7 +181,7 @@
             this.btnAddSupplier.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
             this.btnAddSupplier.IconColor = System.Drawing.Color.White;
             this.btnAddSupplier.IconSize = 18;
-            this.btnAddSupplier.Location = new System.Drawing.Point(18, 142);
+            this.btnAddSupplier.Location = new System.Drawing.Point(18, 145);
             this.btnAddSupplier.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddSupplier.Name = "btnAddSupplier";
             this.btnAddSupplier.Rotation = 0D;

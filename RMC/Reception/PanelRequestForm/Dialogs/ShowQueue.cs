@@ -129,11 +129,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             int getNDQ = await doctorQueueController.getCurrentQ();
             if(getCurrentDQ != getNDQ)
             {
-                refreshQue();
-           
                 if(getNDQ != 0)
                   speech("Doctor", getNDQ.ToString());
             }
+
+            refreshQue();
             /*  int getQ = await getCurrentQueue();
               int getNQ = await getNextQueue();*/
             /*if (lastQue != getQ)
