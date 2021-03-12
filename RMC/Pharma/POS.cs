@@ -1,6 +1,7 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.InventoryPharma.Dialogs;
+using RMC.Pharma;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -281,6 +282,22 @@ namespace RMC.InventoryPharma
         private void txtDis_TextChanged(object sender, EventArgs e)
         {
             CalculateTotal();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ViewPrescriptions form = new ViewPrescriptions();
+            form.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            itemSearchDiag form = new itemSearchDiag();
+            form.ShowDialog();
+            string skuFromSearch = form.Sku;
+
+            txtCode.Text = skuFromSearch;
+            
         }
     }
 }

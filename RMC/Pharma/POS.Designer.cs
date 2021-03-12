@@ -325,6 +325,7 @@
             this.button4.TabIndex = 274;
             this.button4.Text = "View Prescription";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button6
             // 
@@ -442,6 +443,7 @@
             this.button7.TabIndex = 276;
             this.button7.Text = "Search";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // POS
             // 

@@ -746,6 +746,12 @@
     <Compile Include="Patients\PatientControl.Designer.cs">
       <DependentUpon>PatientControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pharma\itemSearchDiag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pharma\itemSearchDiag.Designer.cs">
+      <DependentUpon>itemSearchDiag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pharma\POS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1129,6 +1135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PatientControl.resx">
       <DependentUpon>PatientControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pharma\itemSearchDiag.resx">
+      <DependentUpon>itemSearchDiag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pharma\POS.resx">
       <DependentUpon>POS.cs</DependentUpon>
