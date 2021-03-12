@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,16 @@ namespace RMC.Database.Controllers
 
         dbcrud crud = new dbcrud();
 
+
+        public async Task<DataSet> getDataSetDocQ()
+        {
+            string sql = @"SELECT doctor_queue.queue_no,patientdetails.patient_id,
+                            CONCAT(patientdetails.firstname,' ',patientdetails.lastname) AS 'patientname',age,gender FROM `doctor_queue`
+                                            INNER JOIN customer_request_details ON doctor_queue.queue_no = customer_request_details.queue_no
+                                            INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id 
+                                            WHERE doctor_queue.is_done = 0";
+            return await crud.GetDataSetAsync(sql, null);
+        }
 
         public async void Save(int queu_no,string cc)
         {

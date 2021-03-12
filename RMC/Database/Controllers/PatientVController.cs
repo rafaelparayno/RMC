@@ -29,8 +29,6 @@ namespace RMC.Database.Controllers
                 pv.temp = reader["TEMP"].ToString();
                 pv.wt = reader["WT"].ToString();
                 pv.lmp = reader["LMP"].ToString();
-                pv.ua = reader["UA"].ToString();
-                pv.pus = reader["PUS"].ToString();
                 pv.rbc = reader["rbc"].ToString();
             }
             crud.CloseConnection();
@@ -57,8 +55,6 @@ namespace RMC.Database.Controllers
                 pv.temp = reader["TEMP"].ToString();
                 pv.wt = reader["WT"].ToString();
                 pv.lmp = reader["LMP"].ToString();
-                pv.ua = reader["UA"].ToString();
-                pv.pus = reader["PUS"].ToString();
                 pv.rbc = reader["rbc"].ToString();
             }
             crud.CloseConnection();
@@ -86,8 +82,6 @@ namespace RMC.Database.Controllers
                 patientV.temp = reader["TEMP"].ToString();
                 patientV.wt = reader["WT"].ToString();
                 patientV.lmp = reader["LMP"].ToString();
-                patientV.ua = reader["UA"].ToString();
-                patientV.pus = reader["PUS"].ToString();
                 patientV.rbc = reader["rbc"].ToString();
                 listpatientv.Add(patientV);
             }
@@ -118,8 +112,6 @@ namespace RMC.Database.Controllers
                 patientV.temp = reader["TEMP"].ToString();
                 patientV.wt = reader["WT"].ToString();
                 patientV.lmp = reader["LMP"].ToString();
-                patientV.ua = reader["UA"].ToString();
-                patientV.pus = reader["PUS"].ToString();
                 patientV.rbc = reader["rbc"].ToString();
                 listpatientv.Add(patientV);
             }
@@ -132,8 +124,8 @@ namespace RMC.Database.Controllers
         public async void save(params string[] data)
         {
             string sql = @"INSERT INTO patientvital 
-                        (patient_id,date_vital,BP,TEMP,WT,LMP,UA,PUS,rbc) 
-                        VALUES (@patid,@date,@bp,@temp,@wt,@lmp,@ua,@pus,@rbc)";
+                        (patient_id,date_vital,BP,TEMP,WT,LMP,rbc) 
+                        VALUES (@patid,@date,@bp,@temp,@wt,@lmp,@rbc)";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@patid", int.Parse(data[0])));
             listparams.Add(new MySqlParameter("@date", DateTime.Parse(data[1])));
@@ -141,9 +133,7 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@temp", data[3]));
             listparams.Add(new MySqlParameter("@wt", data[4]));
             listparams.Add(new MySqlParameter("@lmp", data[5]));
-            listparams.Add(new MySqlParameter("@ua", data[6]));
-            listparams.Add(new MySqlParameter("@pus", data[7]));
-            listparams.Add(new MySqlParameter("@rbc", data[8]));
+            listparams.Add(new MySqlParameter("@rbc", data[6]));
 
 
           await crud.ExecuteAsync(sql, listparams);
@@ -154,7 +144,7 @@ namespace RMC.Database.Controllers
         {
             string sql = @"UPDATE patientvital 
                         SET date_vital = @date, BP = @bp, TEMP = @temp, WT = @wt,
-                        LMP = @lmp,UA = @ua,PUS = @pus,rbc = @rbc 
+                        LMP = @lmp,rbc = @rbc 
                         WHERE patient_vital_id = @id ";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
@@ -164,9 +154,7 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@temp", data[3]));
             listparams.Add(new MySqlParameter("@wt", data[4]));
             listparams.Add(new MySqlParameter("@lmp", data[5]));
-            listparams.Add(new MySqlParameter("@ua", data[6]));
-            listparams.Add(new MySqlParameter("@pus", data[7]));
-            listparams.Add(new MySqlParameter("@rbc", data[8]));
+            listparams.Add(new MySqlParameter("@rbc", data[6]));
 
             await crud.ExecuteAsync(sql, listparams);
         }

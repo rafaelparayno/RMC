@@ -30,12 +30,23 @@ namespace RMC.Doctor
         private int cbSympValue = 0;
         private int cbMedsValue = 0;
         private int patientId = 0;
+
+
         public DoctorForm(int id)
         {
             InitializeComponent();
             initLvsCols();
             this.patientId = id;
         }
+
+        public DoctorForm(int id,string cc)
+        {
+            InitializeComponent();
+            initLvsCols();
+            this.patientId = id;
+            textBox1.Text = cc;
+        }
+
 
         private void initLvsCols()
         {

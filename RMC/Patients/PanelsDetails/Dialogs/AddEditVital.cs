@@ -41,8 +41,7 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             txttemp.Text = pv.temp;
             txtwt.Text = pv.wt;
             txtrbc.Text = pv.rbc;
-            txtua.Text = pv.ua;
-            txtpus.Text = pv.pus;
+     
             dateTimePicker1.Value = DateTime.Parse(pv.date_vital);
         }
 
@@ -63,15 +62,13 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             {
                 patientVController.save(patid.ToString(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                         txtbp.Text.Trim(), txttemp.Text.Trim(), txtwt.Text.Trim(),
-                                         txtlmp.Text.Trim(), txtua.Text.Trim(), txtpus.Text.Trim(),
-                                         txtrbc.Text.Trim());
+                                         txtlmp.Text.Trim(), txtrbc.Text.Trim());
             }
             else
             {
                 patientVController.update(vid.ToString(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                   txtbp.Text.Trim(), txttemp.Text.Trim(), txtwt.Text.Trim(),
-                                   txtlmp.Text.Trim(), txtua.Text.Trim(), txtpus.Text.Trim(),
-                                   txtrbc.Text.Trim());
+                                   txtlmp.Text.Trim(), txtrbc.Text.Trim());
             }
             MessageBox.Show("Succesfully Save Data");
             this.Close();
@@ -98,16 +95,6 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             }
 
             if (txtrbc.Text != "")
-            {
-                count++;
-            }
-
-            if (txtua.Text != "")
-            {
-                count++;
-            }
-
-            if (txtpus.Text != "")
             {
                 count++;
             }

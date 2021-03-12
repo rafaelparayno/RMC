@@ -58,8 +58,6 @@ namespace RMC.Patients.PanelsDetails
             lvVitals.Columns.Add("TEMP", 80, HorizontalAlignment.Center);
             lvVitals.Columns.Add("WT", 80, HorizontalAlignment.Center);
             lvVitals.Columns.Add("LMP", 80, HorizontalAlignment.Center);
-            lvVitals.Columns.Add("UA", 80, HorizontalAlignment.Center);
-            lvVitals.Columns.Add("PUS", 80, HorizontalAlignment.Center);
             lvVitals.Columns.Add("RBC", 80, HorizontalAlignment.Center);
         }
 
@@ -88,8 +86,7 @@ namespace RMC.Patients.PanelsDetails
                 lvitems.SubItems.Add(p.temp);
                 lvitems.SubItems.Add(p.wt);
                 lvitems.SubItems.Add(p.lmp);
-                lvitems.SubItems.Add(p.ua);
-                lvitems.SubItems.Add(p.pus);
+    
                 lvitems.SubItems.Add(p.rbc);
                 lvVitals.Items.Add(lvitems);
             }

@@ -70,5 +70,10 @@ namespace RMC.Doctor
         {
             openChildForm(new DoctorData());
         }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new DoctorQueue());
+        }
     }
 }

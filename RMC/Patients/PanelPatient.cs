@@ -40,7 +40,9 @@ namespace RMC.Patients
          
         private async Task loadPatientDetails()
         {
-            listDetails = await patientDetailsController.getPatientDetails();
+               listDetails = await patientDetailsController.getPatientDetails();
+
+        
         }
 
         private void populateitems()
@@ -49,19 +51,25 @@ namespace RMC.Patients
             panelPatientList.Controls.Clear();
             int indexofLastRow = currentPage * rowsPerPage;
             int indexofFirstRow = indexofLastRow - rowsPerPage;
+
             indexofFirstRow = indexofLastRow > listDetails.Count ? listDetails.Count - rowsPerPage :
                 indexofFirstRow;
+
             int rowsss = rowsPerPage;
-            listDetails = listDetails.Count > rowsPerPage ? listDetails.GetRange(indexofFirstRow, rowsss).ToList()
+            List<patientDetails> listDetails2 = new List<patientDetails>();
+            listDetails2 = listDetails.Count > rowsPerPage ? listDetails.GetRange(indexofFirstRow, rowsss).ToList()
                 : listDetails;
 
-            foreach (patientDetails p in listDetails)
+
+
+
+            foreach (patientDetails p in listDetails2)
             {
                 PatientControl patientControl = new PatientControl();
                 patientControl.Age = "Age : " + p.age.ToString();
                 patientControl.PatientId = p.id;
                 patientControl.PatientName = "Name: " + p.FullName;
-                patientControl.Address = "Address: " +  p.address;
+                patientControl.Address = "Address: " + p.address;
                 patientControl.Gender = "Gender : " + p.gender;
                 patientControl.Cnumber = "Contact Number : " + p.contact;
                 patientControl.Dock = DockStyle.Top;
@@ -123,7 +131,9 @@ namespace RMC.Patients
         {
             await loadPatientDetails();
             populateitems();
+            
             showPaginate(listDetails.Count);
+          
         }
 
         private async Task loadPatientSearchDetails()

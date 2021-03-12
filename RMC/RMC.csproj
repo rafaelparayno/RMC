@@ -566,6 +566,12 @@
     <Compile Include="Doctor\PanelDoctor\DoctorData.Designer.cs">
       <DependentUpon>DoctorData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\PanelDoctor\DoctorQueue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor\PanelDoctor\DoctorQueue.Designer.cs">
+      <DependentUpon>DoctorQueue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doctor\PanelDoctor\PanelDoctorSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1033,6 +1039,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\DoctorData.resx">
       <DependentUpon>DoctorData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor\PanelDoctor\DoctorQueue.resx">
+      <DependentUpon>DoctorQueue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\PanelDoctorSettings.resx">
       <DependentUpon>PanelDoctorSettings.cs</DependentUpon>
