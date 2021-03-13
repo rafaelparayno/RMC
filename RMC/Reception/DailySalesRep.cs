@@ -51,7 +51,7 @@ namespace RMC.Reception
             cos.SetParameterValue("xrayParam", task3.Result);
             cos.SetParameterValue("MedicineParam", task4.Result);
             cos.SetParameterValue("miscParam", totalMisc);
-            cos.SetParameterValue("outByParam", UserLog.getFullName());
+        /*    cos.SetParameterValue("outByParam", UserLog.getFullName());*/
 
             crystalReportViewer1.ReportSource = cos;
         }
