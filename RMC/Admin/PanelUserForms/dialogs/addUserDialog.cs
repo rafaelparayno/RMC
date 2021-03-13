@@ -142,7 +142,7 @@ namespace RMC.Admin.PanelForms.dialogs
         {
             if (txtLn.Text.Length > 0)
             {
-                txtUsername.Text = txtLn.Text[0] + "-" + txtFirstName.Text + "-" + fixID(id);
+                txtUsername.Text = txtLn.Text[0] + "-" + txtFirstName.Text.Trim().Split(' ')[0] + "-" + fixID(id);
             }
             else
             {
@@ -154,7 +154,7 @@ namespace RMC.Admin.PanelForms.dialogs
         {
             if (txtLn.Text.Length > 0)
             {
-                txtUsername.Text = txtLn.Text[0] + "-" + txtFirstName.Text+"-"+fixID(id);
+                txtUsername.Text = txtLn.Text[0] + "-" + txtFirstName.Text.Trim().Split(' ')[0] + "-" + fixID(id);
             }
             else
             {
