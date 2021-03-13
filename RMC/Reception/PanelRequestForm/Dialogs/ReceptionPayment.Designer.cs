@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtDis = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -72,12 +78,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.txtDis = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -106,6 +107,94 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(297, 286);
             this.panel1.TabIndex = 272;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.Black;
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox4.Enabled = false;
+            this.textBox4.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.Snow;
+            this.textBox4.Location = new System.Drawing.Point(0, 283);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(280, 33);
+            this.textBox4.TabIndex = 287;
+            this.textBox4.Text = "0.00";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Salmon;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(0, 237);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(280, 46);
+            this.label6.TabIndex = 286;
+            this.label6.Text = "Change";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.Black;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.textBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox2.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Location = new System.Drawing.Point(0, 204);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(280, 33);
+            this.textBox2.TabIndex = 285;
+            this.textBox2.Text = "0.00";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Salmon;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(0, 158);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(280, 46);
+            this.label5.TabIndex = 284;
+            this.label5.Text = "Payment";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtDis
+            // 
+            this.txtDis.BackColor = System.Drawing.Color.Black;
+            this.txtDis.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDis.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtDis.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDis.ForeColor = System.Drawing.Color.Snow;
+            this.txtDis.Location = new System.Drawing.Point(0, 125);
+            this.txtDis.Name = "txtDis";
+            this.txtDis.Size = new System.Drawing.Size(280, 33);
+            this.txtDis.TabIndex = 281;
+            this.txtDis.Text = "0.00";
+            this.txtDis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDis.Visible = false;
+            this.txtDis.TextChanged += new System.EventHandler(this.txtDis_TextChanged);
+            this.txtDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDis_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Salmon;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label11.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(0, 79);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(280, 46);
+            this.label11.TabIndex = 280;
+            this.label11.Text = "Discount";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.Visible = false;
             // 
             // textBox3
             // 
@@ -233,7 +322,7 @@
             this.gbPackages.Controls.Add(this.iconButton10);
             this.gbPackages.Controls.Add(this.cbPackages);
             this.gbPackages.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbPackages.Location = new System.Drawing.Point(0, 545);
+            this.gbPackages.Location = new System.Drawing.Point(0, 561);
             this.gbPackages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbPackages.Name = "gbPackages";
             this.gbPackages.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -346,7 +435,7 @@
             this.gbServices.Controls.Add(this.iconButton7);
             this.gbServices.Controls.Add(this.cbOther);
             this.gbServices.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbServices.Location = new System.Drawing.Point(0, 446);
+            this.gbServices.Location = new System.Drawing.Point(0, 462);
             this.gbServices.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbServices.Name = "gbServices";
             this.gbServices.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -459,7 +548,7 @@
             this.gbXray.Controls.Add(this.iconButton4);
             this.gbXray.Controls.Add(this.cbXray);
             this.gbXray.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbXray.Location = new System.Drawing.Point(0, 347);
+            this.gbXray.Location = new System.Drawing.Point(0, 363);
             this.gbXray.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbXray.Name = "gbXray";
             this.gbXray.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -572,7 +661,7 @@
             this.gbLab.Controls.Add(this.btnAddLab);
             this.gbLab.Controls.Add(this.cbLab);
             this.gbLab.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbLab.Location = new System.Drawing.Point(0, 248);
+            this.gbLab.Location = new System.Drawing.Point(0, 264);
             this.gbLab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbLab.Name = "gbLab";
             this.gbLab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -682,7 +771,7 @@
             this.gbMedCert.Controls.Add(this.textBox1);
             this.gbMedCert.Controls.Add(this.label2);
             this.gbMedCert.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbMedCert.Location = new System.Drawing.Point(0, 158);
+            this.gbMedCert.Location = new System.Drawing.Point(0, 174);
             this.gbMedCert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbMedCert.Name = "gbMedCert";
             this.gbMedCert.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -713,6 +802,7 @@
             // 
             // gpConsulation
             // 
+            this.gpConsulation.Controls.Add(this.radioButton3);
             this.gpConsulation.Controls.Add(this.radioButton2);
             this.gpConsulation.Controls.Add(this.radioButton1);
             this.gpConsulation.Controls.Add(this.cbFree);
@@ -723,7 +813,7 @@
             this.gpConsulation.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gpConsulation.Name = "gpConsulation";
             this.gpConsulation.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gpConsulation.Size = new System.Drawing.Size(275, 158);
+            this.gpConsulation.Size = new System.Drawing.Size(275, 174);
             this.gpConsulation.TabIndex = 3;
             this.gpConsulation.TabStop = false;
             this.gpConsulation.Visible = false;
@@ -731,7 +821,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(23, 131);
+            this.radioButton2.Location = new System.Drawing.Point(23, 128);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(80, 20);
             this.radioButton2.TabIndex = 4;
@@ -743,7 +833,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(23, 105);
+            this.radioButton1.Location = new System.Drawing.Point(23, 104);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(67, 20);
             this.radioButton1.TabIndex = 3;
@@ -755,7 +845,7 @@
             // cbFree
             // 
             this.cbFree.AutoSize = true;
-            this.cbFree.Location = new System.Drawing.Point(23, 79);
+            this.cbFree.Location = new System.Drawing.Point(23, 77);
             this.cbFree.Name = "cbFree";
             this.cbFree.Size = new System.Drawing.Size(53, 20);
             this.cbFree.TabIndex = 2;
@@ -767,7 +857,7 @@
             // 
             this.txtPriceConsult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPriceConsult.Enabled = false;
-            this.txtPriceConsult.Location = new System.Drawing.Point(18, 46);
+            this.txtPriceConsult.Location = new System.Drawing.Point(18, 47);
             this.txtPriceConsult.Name = "txtPriceConsult";
             this.txtPriceConsult.Size = new System.Drawing.Size(238, 23);
             this.txtPriceConsult.TabIndex = 1;
@@ -777,7 +867,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 17);
+            this.label1.Location = new System.Drawing.Point(15, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 17);
             this.label1.TabIndex = 0;
@@ -813,93 +903,16 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // txtDis
+            // radioButton3
             // 
-            this.txtDis.BackColor = System.Drawing.Color.Black;
-            this.txtDis.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDis.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtDis.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDis.ForeColor = System.Drawing.Color.Snow;
-            this.txtDis.Location = new System.Drawing.Point(0, 125);
-            this.txtDis.Name = "txtDis";
-            this.txtDis.Size = new System.Drawing.Size(280, 33);
-            this.txtDis.TabIndex = 281;
-            this.txtDis.Text = "0.00";
-            this.txtDis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtDis.Visible = false;
-            this.txtDis.TextChanged += new System.EventHandler(this.txtDis_TextChanged);
-            this.txtDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDis_KeyPress);
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.Salmon;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label11.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(0, 79);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(280, 46);
-            this.label11.TabIndex = 280;
-            this.label11.Text = "Discount";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label11.Visible = false;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.Black;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.Snow;
-            this.textBox4.Location = new System.Drawing.Point(0, 283);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(280, 33);
-            this.textBox4.TabIndex = 287;
-            this.textBox4.Text = "0.00";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.Salmon;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(0, 237);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(280, 46);
-            this.label6.TabIndex = 286;
-            this.label6.Text = "Change";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.Black;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox2.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(0, 204);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(280, 33);
-            this.textBox2.TabIndex = 285;
-            this.textBox2.Text = "0.00";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.Salmon;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(0, 158);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(280, 46);
-            this.label5.TabIndex = 284;
-            this.label5.Text = "Payment";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(23, 149);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(81, 20);
+            this.radioButton3.TabIndex = 5;
+            this.radioButton3.Text = "Follow up";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.Click += new System.EventHandler(this.radioButton3_Click);
             // 
             // ReceptionPayment
             // 
@@ -995,5 +1008,6 @@
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.TextBox textBox2;
         internal System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton radioButton3;
     }
 }

@@ -44,6 +44,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         float priceMedCert = 0;
         float priceConsult = 0;
         float priceSConsult = 0;
+        float priceFConsult = 0;
         float totalPrice = 0;
         DataTable dt = new DataTable();
         #endregion
@@ -100,8 +101,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             {
                 if (radioButton1.Checked)
                     dt.Rows.Add(1, "Consultation", "Service", priceConsult);
-                else
+                else if(radioButton2.Checked)
                     dt.Rows.Add(1, "Consultation", "Service", priceSConsult);
+                else
+                    dt.Rows.Add(1, "Consultation", "Service", priceFConsult);
             }
 
         }
@@ -199,6 +202,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             priceMedCert = await pricesService.getPrice("MedCert");
             priceConsult = await pricesService.getPrice("Consulation");
             priceSConsult = await pricesService.getPrice("SConsultation");
+            priceFConsult = await pricesService.getPrice("priceConsultF");
+
 
             txtPriceConsult.Text = priceConsult.ToString();
             textBox1.Text = priceMedCert.ToString();
@@ -429,11 +434,13 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         private void radioButton2_Click(object sender, EventArgs e)
         {
             trigerCb();
+            txtPriceConsult.Text = priceSConsult.ToString();
         }
 
         private void radioButton1_Click(object sender, EventArgs e)
         {
             trigerCb();
+            txtPriceConsult.Text = priceConsult.ToString();
         }
         #endregion
 
@@ -458,6 +465,12 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         private void txtDis_TextChanged(object sender, EventArgs e)
         {
             setTotalPrice();
+        }
+
+        private void radioButton3_Click(object sender, EventArgs e)
+        {
+            trigerCb();
+            txtPriceConsult.Text = priceFConsult.ToString();
         }
     }
 }

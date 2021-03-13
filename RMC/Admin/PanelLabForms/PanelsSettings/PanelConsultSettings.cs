@@ -16,6 +16,7 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
         float priceMedCert = 0;
         float priceConsult = 0;
         float priceConsultS = 0;
+        float priceConsultF = 0;
 
         PricesServiceController serviceController = new PricesServiceController();
         public PanelConsultSettings()
@@ -47,9 +48,11 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             priceMedCert = await serviceController.getPrice("MedCert");
             priceConsult = await serviceController.getPrice("Consulation");
             priceConsultS = await serviceController.getPrice("SConsultation");
+            priceConsultF = await serviceController.getPrice("priceConsultF");
             txtSellingPrice.Text = priceConsult.ToString();
             textBox1.Text = priceMedCert.ToString();
             textBox2.Text = priceConsultS.ToString();
+            textBox3.Text = priceConsultF.ToString();
         }
 
         private bool isValid()
@@ -108,14 +111,25 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             float priceConsulation = float.Parse(txtSellingPrice.Text.Trim());
             float priceMedCert = float.Parse(textBox1.Text.Trim());
             float priceSConsulation = float.Parse(textBox2.Text.Trim());
+            float priceFConsulation = float.Parse(textBox3.Text.Trim());
             serviceController.save(priceConsulation, "Consulation");
             serviceController.save(priceMedCert, "MedCert");
             serviceController.save(priceSConsulation, "SConsultation");
+            serviceController.save(priceFConsulation, "priceConsultF");
 
             MessageBox.Show("Succesfully Save Data");
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
             string validKeys = "0123456789.";
             if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
