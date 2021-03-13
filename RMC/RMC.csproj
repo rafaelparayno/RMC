@@ -692,6 +692,12 @@
     <Compile Include="Patients\addEditPatient.Designer.cs">
       <DependentUpon>addEditPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patients\ChangePhotoDiag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\ChangePhotoDiag.Designer.cs">
+      <DependentUpon>ChangePhotoDiag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\PanelPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1108,6 +1114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\addEditPatient.resx">
       <DependentUpon>addEditPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\ChangePhotoDiag.resx">
+      <DependentUpon>ChangePhotoDiag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelPatient.resx">
       <DependentUpon>PanelPatient.cs</DependentUpon>

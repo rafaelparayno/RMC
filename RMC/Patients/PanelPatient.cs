@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,8 +62,6 @@ namespace RMC.Patients
                 : listDetails;
 
 
-
-
             foreach (patientDetails p in listDetails2)
             {
                 PatientControl patientControl = new PatientControl();
@@ -74,6 +73,16 @@ namespace RMC.Patients
                 patientControl.Cnumber = "Contact Number : " + p.contact;
                 patientControl.Dock = DockStyle.Top;
                 patientControl.btnView1.Click += new EventHandler(ClickBtnView);
+
+
+                if(File.Exists(p.imgPath))
+                {
+                    Image img = Image.FromFile(p.imgPath);
+
+                    patientControl.Icon = img;
+                }
+            
+
                 panelPatientList.Controls.Add(patientControl);
             }
         }

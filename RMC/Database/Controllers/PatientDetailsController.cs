@@ -48,7 +48,7 @@ namespace RMC.Database.Controllers
                 p.gender = reader["gender"].ToString();
                 p.address = reader["address"].ToString();
                 p.contact = reader["contactnumber"].ToString();
-
+                p.imgPath = reader["img_path"].ToString();
 
                 listpatient.Add(p);
             }
@@ -81,6 +81,7 @@ namespace RMC.Database.Controllers
                 patientDetails.contact = reader["contactnumber"].ToString();
                 patientDetails.birthdate = reader["birthdate"].ToString();
                 patientDetails.civil_status = reader["civil_status"].ToString();
+                patientDetails.imgPath = reader["img_path"].ToString();
             }
             crud.CloseConnection();
 
@@ -111,6 +112,7 @@ namespace RMC.Database.Controllers
                 patientDetails.contact = reader["contactnumber"].ToString();
                 patientDetails.birthdate = reader["birthdate"].ToString();
                 patientDetails.civil_status = reader["civil_status"].ToString();
+                patientDetails.imgPath = reader["img_path"].ToString();
             }
             crud.CloseConnection();
 
@@ -140,6 +142,7 @@ namespace RMC.Database.Controllers
                 patientDetails.contact = reader["contactnumber"].ToString();
                 patientDetails.birthdate = reader["birthdate"].ToString();
                 patientDetails.civil_status = reader["civil_status"].ToString();
+                patientDetails.imgPath = reader["img_path"].ToString();
             }
             crud.CloseConnection();
 
@@ -168,6 +171,7 @@ namespace RMC.Database.Controllers
                 patientDetails.contact = reader["contactnumber"].ToString();
                 patientDetails.birthdate = reader["birthdate"].ToString();
                 patientDetails.civil_status = reader["civil_status"].ToString();
+                patientDetails.imgPath = reader["img_path"].ToString();
             }
             crud.CloseConnection();
 
@@ -192,7 +196,7 @@ namespace RMC.Database.Controllers
                 p.gender = reader["gender"].ToString();
                 p.address = reader["address"].ToString();
                 p.contact = reader["contactnumber"].ToString();
-             
+                p.imgPath = reader["img_path"].ToString();
 
                 listpatient.Add(p);
 
@@ -219,6 +223,18 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@cn", data[6]));
             listparams.Add(new MySqlParameter("@status", data[7]));
             listparams.Add(new MySqlParameter("@add", data[8]));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+
+        public async void saveIMG(string path,int id)
+        {
+            string sql = @"UPDATE patientdetails SET img_path = @path WHERE patient_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@path",path));
+           
+            listparams.Add(new MySqlParameter("@id", id));
 
             await crud.ExecuteAsync(sql, listparams);
         }

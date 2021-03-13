@@ -80,7 +80,7 @@ namespace RMC.Patients
         public Image Icon
         {
             get { return _icon; }
-            set { _icon = value;pbDisplayPicture.Image = value; }
+            set { _icon = value;    pbDisplayPicture.Image = value; }
         }
 
       
@@ -104,6 +104,18 @@ namespace RMC.Patients
         private void panel1_MouseLeave(object sender, EventArgs e)
         {
             this.BackColor = Color.FloralWhite;
+        }
+
+        private void pbDisplayPicture_MouseClick(object sender, MouseEventArgs e)
+        {      
+             contextMenuStrip1.Show(pbDisplayPicture, new Point(e.X, e.Y));
+        }
+
+        private void changePhotoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // MessageBox.Show(_patientId.ToString());
+            ChangePhotoDiag form = new ChangePhotoDiag(_patientId);
+            form.ShowDialog();
         }
     }
 }

@@ -28,20 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblId = new System.Windows.Forms.Label();
             this.panelImgHolder = new System.Windows.Forms.Panel();
             this.pbDisplayPicture = new System.Windows.Forms.PictureBox();
+            this.btnView = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblGender = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
             this.lblCn = new System.Windows.Forms.Label();
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.btnView = new FontAwesome.Sharp.IconButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.changePhotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panelImgHolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplayPicture)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -96,6 +100,23 @@
             this.pbDisplayPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbDisplayPicture.TabIndex = 0;
             this.pbDisplayPicture.TabStop = false;
+            this.pbDisplayPicture.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbDisplayPicture_MouseClick);
+            // 
+            // btnView
+            // 
+            this.btnView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnView.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnView.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnView.IconColor = System.Drawing.Color.Black;
+            this.btnView.IconSize = 16;
+            this.btnView.Location = new System.Drawing.Point(0, 122);
+            this.btnView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnView.Name = "btnView";
+            this.btnView.Rotation = 0D;
+            this.btnView.Size = new System.Drawing.Size(659, 43);
+            this.btnView.TabIndex = 8;
+            this.btnView.Text = "View Details";
+            this.btnView.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -156,22 +177,19 @@
             this.lblName.TabIndex = 2;
             this.lblName.Text = "lblName";
             // 
-            // btnView
+            // contextMenuStrip1
             // 
-            this.btnView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnView.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnView.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnView.IconColor = System.Drawing.Color.Black;
-            this.btnView.IconSize = 16;
-            this.btnView.Location = new System.Drawing.Point(0, 122);
-            this.btnView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnView.Name = "btnView";
-            this.btnView.Rotation = 0D;
-            this.btnView.Size = new System.Drawing.Size(659, 43);
-            this.btnView.TabIndex = 8;
-            this.btnView.Text = "View Details";
-            this.btnView.UseVisualStyleBackColor = true;
-         
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changePhotoToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // changePhotoToolStripMenuItem
+            // 
+            this.changePhotoToolStripMenuItem.Name = "changePhotoToolStripMenuItem";
+            this.changePhotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changePhotoToolStripMenuItem.Text = "Change Photo";
+            this.changePhotoToolStripMenuItem.Click += new System.EventHandler(this.changePhotoToolStripMenuItem_Click);
             // 
             // PatientControl
             // 
@@ -187,6 +205,7 @@
             this.panel1.PerformLayout();
             this.panelImgHolder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplayPicture)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -204,5 +223,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblId;
         private FontAwesome.Sharp.IconButton btnView;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem changePhotoToolStripMenuItem;
     }
 }

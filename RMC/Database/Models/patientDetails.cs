@@ -35,5 +35,7 @@ namespace RMC.Database.Models
         public string birthdate { get; set; }
 
         public string civil_status { get; set; }
+
+        public string imgPath { get; set; }
     }
 }
