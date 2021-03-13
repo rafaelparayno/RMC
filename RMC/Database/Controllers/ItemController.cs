@@ -604,5 +604,24 @@ namespace RMC.Database.Controllers
             crud.CloseConnection();
             return cbItems;
         }
+
+        public async Task<bool> isFoundSKU(string sku)
+        {
+            bool isFound = false;
+            string sql = @"SELECT * FROM `itemlist` WHERE is_active = 1 AND SKU = @sku";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@sku", sku));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                isFound = true;
+            }
+
+            crud.CloseConnection();
+
+            return isFound;
+        }
     }
 }

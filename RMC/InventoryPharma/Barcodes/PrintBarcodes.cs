@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+
 
 namespace RMC.InventoryPharma.Barcodes
 {
@@ -24,6 +26,7 @@ namespace RMC.InventoryPharma.Barcodes
 
         private async void PrintBarcodes_Load(object sender, EventArgs e)
         {
+     
             DataSet ds = await itemZ.getdataSetActive();
 
             barcode cos = new barcode();

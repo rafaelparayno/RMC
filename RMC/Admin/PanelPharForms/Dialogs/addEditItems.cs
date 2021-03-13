@@ -369,27 +369,36 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             }
         }
 
-        private void setUpSKU(int itemType,int catId)
+        private async void setUpSKU(int itemType,int catId)
         {
-            if (itemType == 0)
+            string sku = "";
+            List<int> myValues = new List<int>(new int[] { 1, 2, 8, 4, 5, 6 });
+            Random r = new Random();
+            IEnumerable<int> threeRandom = myValues.OrderBy(x => r.Next()).Take(6);
+
+            foreach (int i in threeRandom)
             {
-                txtSku.Text = "";
-                return;
+                sku += i.ToString();
             }
 
-            if (catId == 0)
+            while ( await items.isFoundSKU(sku))
             {
-                txtSku.Text = "";
-                return;
+                myValues = new List<int>(new int[] { 1, 2, 8, 4, 5, 6 });
+                r = new Random();
+                 threeRandom = myValues.OrderBy(x => r.Next()).Take(6);
+                foreach (int i in threeRandom)
+                {
+                    sku += i.ToString();
+                }
+
+              
             }
 
-
-            txtSku.Text =  itemType+Catid.ToString() + fixID(recentId);
-    
+            txtSku.Text = sku;
         }
 
 
-        private string fixID(int lastid)
+       /* private string fixID(int lastid)
         {
             string id = "";
             if (lastid < 10)
@@ -409,7 +418,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
                 id = lastid + "";
             }
             return id;
-        }
+        }*/
 
         private bool isValid()
         {

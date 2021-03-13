@@ -159,3 +159,14 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Components.AlertForm
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Doctor.PanelDoctor.DoctorQueue.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Pharma.itemSearchDiag.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Patients.ChangePhotoDiag.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.Drawing.Common.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.Text.Json.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.ValueTuple.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.Text.Json.xml
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.ValueTuple.xml
