@@ -17,6 +17,7 @@ namespace RMC.Patients.PanelsDetails.Dialogs
     public partial class AddViewOther : Form
     {
         private int patient_id = 0;
+        private int id = 0;
         patientDetails p = new patientDetails();
         PatientOthersController patientOthersController = new PatientOthersController();
 
@@ -28,6 +29,33 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             this.patient_id = patient_id;
 
         }
+
+        public AddViewOther(int patient_id,int id)
+        {
+            InitializeComponent();
+            this.patient_id = patient_id;
+            this.id = id;
+
+            panel1.Visible = false;
+            loadPdf();
+        }
+
+
+        private async void loadPdf()
+        {
+            string path = await patientOthersController.getPathName(id);
+
+            if (File.Exists(path))
+            {
+                axAcroPDF1.src = path;
+            }
+            else
+            {
+                MessageBox.Show("No file found");
+            }
+
+        }
+        
 
 
         private void iconButton1_Click(object sender, EventArgs e)

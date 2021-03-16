@@ -550,6 +550,7 @@
     <Compile Include="Database\Models\patientDetails.cs" />
     <Compile Include="Database\Models\patientLabModel.cs" />
     <Compile Include="Database\Models\PatientPrescriptionModel.cs" />
+    <Compile Include="Database\Models\PatientsOtherModel.cs" />
     <Compile Include="Database\Models\PatientSymptomsModel.cs" />
     <Compile Include="Database\Models\patientVModel.cs" />
     <Compile Include="Database\Models\patientXrayModel.cs" />

@@ -127,6 +127,7 @@
             this.btnEditItem.Text = "View";
             this.btnEditItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEditItem.UseVisualStyleBackColor = false;
+            this.btnEditItem.Click += new System.EventHandler(this.btnEditItem_Click);
             // 
             // btnRemove
             // 
