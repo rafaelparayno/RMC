@@ -114,7 +114,7 @@
             this.btnXray.Rotation = 0D;
             this.btnXray.Size = new System.Drawing.Size(75, 72);
             this.btnXray.TabIndex = 230;
-            this.btnXray.Text = "Xray";
+            this.btnXray.Text = "Radio";
             this.btnXray.UseVisualStyleBackColor = false;
             this.btnXray.Visible = false;
             this.btnXray.Click += new System.EventHandler(this.btnXray_Click);

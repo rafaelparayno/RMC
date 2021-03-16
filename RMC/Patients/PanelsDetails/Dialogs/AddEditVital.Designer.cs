@@ -153,7 +153,7 @@
             // 
             this.txtrbc.Location = new System.Drawing.Point(18, 42);
             this.txtrbc.Name = "txtrbc";
-            this.txtrbc.Size = new System.Drawing.Size(218, 20);
+            this.txtrbc.Size = new System.Drawing.Size(474, 20);
             this.txtrbc.TabIndex = 1;
             // 
             // label10
@@ -162,9 +162,9 @@
             this.label10.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(15, 17);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 17);
+            this.label10.Size = new System.Drawing.Size(65, 17);
             this.label10.TabIndex = 0;
-            this.label10.Text = "RBC:";
+            this.label10.Text = "Allergies";
             // 
             // groupBox3
             // 

@@ -58,7 +58,7 @@ namespace RMC.Patients.PanelsDetails
             lvVitals.Columns.Add("TEMP", 80, HorizontalAlignment.Center);
             lvVitals.Columns.Add("WT", 80, HorizontalAlignment.Center);
             lvVitals.Columns.Add("LMP", 80, HorizontalAlignment.Center);
-            lvVitals.Columns.Add("RBC", 80, HorizontalAlignment.Center);
+            lvVitals.Columns.Add("allergies", 80, HorizontalAlignment.Center);
         }
 
         private async void getDataFromDb()
@@ -87,7 +87,7 @@ namespace RMC.Patients.PanelsDetails
                 lvitems.SubItems.Add(p.wt);
                 lvitems.SubItems.Add(p.lmp);
     
-                lvitems.SubItems.Add(p.rbc);
+                lvitems.SubItems.Add(p.allergies);
                 lvVitals.Items.Add(lvitems);
             }
         }

@@ -127,7 +127,7 @@
             this.btnPrescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrescription.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnPrescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnPrescription.IconChar = FontAwesome.Sharp.IconChar.Microscope;
+            this.btnPrescription.IconChar = FontAwesome.Sharp.IconChar.Medkit;
             this.btnPrescription.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnPrescription.IconSize = 18;
             this.btnPrescription.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -149,7 +149,7 @@
             this.btnXray.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXray.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnXray.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnXray.IconChar = FontAwesome.Sharp.IconChar.Microscope;
+            this.btnXray.IconChar = FontAwesome.Sharp.IconChar.XRay;
             this.btnXray.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnXray.IconSize = 18;
             this.btnXray.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -158,7 +158,7 @@
             this.btnXray.Rotation = 0D;
             this.btnXray.Size = new System.Drawing.Size(114, 48);
             this.btnXray.TabIndex = 23;
-            this.btnXray.Text = "Xray Files";
+            this.btnXray.Text = "Radio Files";
             this.btnXray.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnXray.UseVisualStyleBackColor = false;
             this.btnXray.Click += new System.EventHandler(this.btnXray_Click);
@@ -193,7 +193,7 @@
             this.btnDoctorRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDoctorRecord.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnDoctorRecord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnDoctorRecord.IconChar = FontAwesome.Sharp.IconChar.Microscope;
+            this.btnDoctorRecord.IconChar = FontAwesome.Sharp.IconChar.Syringe;
             this.btnDoctorRecord.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnDoctorRecord.IconSize = 18;
             this.btnDoctorRecord.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;

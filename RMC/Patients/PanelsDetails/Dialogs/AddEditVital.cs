@@ -40,7 +40,7 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             txtlmp.Text = pv.lmp;
             txttemp.Text = pv.temp;
             txtwt.Text = pv.wt;
-            txtrbc.Text = pv.rbc;
+            txtrbc.Text = pv.allergies;
      
             dateTimePicker1.Value = DateTime.Parse(pv.date_vital);
         }

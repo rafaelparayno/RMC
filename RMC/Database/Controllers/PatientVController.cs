@@ -29,7 +29,7 @@ namespace RMC.Database.Controllers
                 pv.temp = reader["TEMP"].ToString();
                 pv.wt = reader["WT"].ToString();
                 pv.lmp = reader["LMP"].ToString();
-                pv.rbc = reader["rbc"].ToString();
+                pv.allergies = reader["allergies"].ToString();
             }
             crud.CloseConnection();
 
@@ -55,7 +55,7 @@ namespace RMC.Database.Controllers
                 pv.temp = reader["TEMP"].ToString();
                 pv.wt = reader["WT"].ToString();
                 pv.lmp = reader["LMP"].ToString();
-                pv.rbc = reader["rbc"].ToString();
+                pv.allergies = reader["allergies"].ToString();
             }
             crud.CloseConnection();
 
@@ -82,7 +82,7 @@ namespace RMC.Database.Controllers
                 patientV.temp = reader["TEMP"].ToString();
                 patientV.wt = reader["WT"].ToString();
                 patientV.lmp = reader["LMP"].ToString();
-                patientV.rbc = reader["rbc"].ToString();
+                patientV.allergies = reader["allergies"].ToString();
                 listpatientv.Add(patientV);
             }
 
@@ -112,7 +112,7 @@ namespace RMC.Database.Controllers
                 patientV.temp = reader["TEMP"].ToString();
                 patientV.wt = reader["WT"].ToString();
                 patientV.lmp = reader["LMP"].ToString();
-                patientV.rbc = reader["rbc"].ToString();
+                patientV.allergies = reader["allergies"].ToString();
                 listpatientv.Add(patientV);
             }
 
@@ -124,8 +124,8 @@ namespace RMC.Database.Controllers
         public async void save(params string[] data)
         {
             string sql = @"INSERT INTO patientvital 
-                        (patient_id,date_vital,BP,TEMP,WT,LMP,rbc) 
-                        VALUES (@patid,@date,@bp,@temp,@wt,@lmp,@rbc)";
+                        (patient_id,date_vital,BP,TEMP,WT,LMP,allergies) 
+                        VALUES (@patid,@date,@bp,@temp,@wt,@lmp,@allergies)";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@patid", int.Parse(data[0])));
             listparams.Add(new MySqlParameter("@date", DateTime.Parse(data[1])));
@@ -133,7 +133,7 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@temp", data[3]));
             listparams.Add(new MySqlParameter("@wt", data[4]));
             listparams.Add(new MySqlParameter("@lmp", data[5]));
-            listparams.Add(new MySqlParameter("@rbc", data[6]));
+            listparams.Add(new MySqlParameter("@allergies", data[6]));
 
 
           await crud.ExecuteAsync(sql, listparams);
@@ -144,7 +144,7 @@ namespace RMC.Database.Controllers
         {
             string sql = @"UPDATE patientvital 
                         SET date_vital = @date, BP = @bp, TEMP = @temp, WT = @wt,
-                        LMP = @lmp,rbc = @rbc 
+                        LMP = @lmp,allergies = @allergies 
                         WHERE patient_vital_id = @id ";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
@@ -154,7 +154,7 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@temp", data[3]));
             listparams.Add(new MySqlParameter("@wt", data[4]));
             listparams.Add(new MySqlParameter("@lmp", data[5]));
-            listparams.Add(new MySqlParameter("@rbc", data[6]));
+            listparams.Add(new MySqlParameter("@allergies", data[6]));
 
             await crud.ExecuteAsync(sql, listparams);
         }

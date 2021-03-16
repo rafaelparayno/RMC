@@ -20,6 +20,6 @@ namespace RMC.Database.Models
         public string ua { get; set; }
         public string pus { get; set; }
 
-        public string rbc { get; set; }
+        public string allergies { get; set; }
     }
 }
