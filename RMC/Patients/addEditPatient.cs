@@ -105,9 +105,7 @@ namespace RMC.Patients
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            AddViewOther form = new AddViewOther();
-
-            form.ShowDialog();
+            openChildForm(new PanelOtherFiles(patient_id));
         }
     }
 }

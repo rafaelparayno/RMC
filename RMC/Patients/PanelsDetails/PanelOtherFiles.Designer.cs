@@ -104,6 +104,7 @@
             this.btnAddItem.Text = "Add Files";
             this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAddItem.UseVisualStyleBackColor = false;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
             // btnEditItem
             // 

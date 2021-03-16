@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RMC.Patients.PanelsDetails.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,17 @@ namespace RMC.Patients.PanelsDetails
 {
     public partial class PanelOtherFiles : Form
     {
-        public PanelOtherFiles()
+        int patient_id = 0;
+        public PanelOtherFiles(int patient_id)
         {
             InitializeComponent();
+            this.patient_id = patient_id;
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            AddViewOther form = new AddViewOther(patient_id);
+            form.ShowDialog();
         }
     }
 }
