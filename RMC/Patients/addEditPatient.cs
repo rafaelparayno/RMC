@@ -1,4 +1,5 @@
 ﻿using RMC.Patients.PanelsDetails;
+using RMC.Patients.PanelsDetails.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -100,6 +101,13 @@ namespace RMC.Patients
         {
             openChildForm(new PanelPrescriptionData(patient_id));
 
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            AddViewOther form = new AddViewOther();
+
+            form.ShowDialog();
         }
     }
 }

@@ -168,6 +168,7 @@
             // 
             // PanelPatient
             // 
+            this.AcceptButton = this.iconButton1;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(684, 526);

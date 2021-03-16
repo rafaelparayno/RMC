@@ -38,6 +38,7 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelChild = new System.Windows.Forms.Panel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel2.SuspendLayout();
             this.panelNavParam.SuspendLayout();
             this.SuspendLayout();
@@ -107,6 +108,7 @@
             // panelNavParam
             // 
             this.panelNavParam.AutoScroll = true;
+            this.panelNavParam.Controls.Add(this.iconButton1);
             this.panelNavParam.Controls.Add(this.btnPrescription);
             this.panelNavParam.Controls.Add(this.btnXray);
             this.panelNavParam.Controls.Add(this.btnLabFiles);
@@ -116,7 +118,7 @@
             this.panelNavParam.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelNavParam.Location = new System.Drawing.Point(0, 35);
             this.panelNavParam.Name = "panelNavParam";
-            this.panelNavParam.Size = new System.Drawing.Size(733, 48);
+            this.panelNavParam.Size = new System.Drawing.Size(733, 68);
             this.panelNavParam.TabIndex = 18;
             // 
             // btnPrescription
@@ -134,7 +136,7 @@
             this.btnPrescription.Location = new System.Drawing.Point(570, 0);
             this.btnPrescription.Name = "btnPrescription";
             this.btnPrescription.Rotation = 0D;
-            this.btnPrescription.Size = new System.Drawing.Size(114, 48);
+            this.btnPrescription.Size = new System.Drawing.Size(114, 51);
             this.btnPrescription.TabIndex = 24;
             this.btnPrescription.Text = "Prescriptions";
             this.btnPrescription.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -156,7 +158,7 @@
             this.btnXray.Location = new System.Drawing.Point(456, 0);
             this.btnXray.Name = "btnXray";
             this.btnXray.Rotation = 0D;
-            this.btnXray.Size = new System.Drawing.Size(114, 48);
+            this.btnXray.Size = new System.Drawing.Size(114, 51);
             this.btnXray.TabIndex = 23;
             this.btnXray.Text = "Radio Files";
             this.btnXray.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -178,7 +180,7 @@
             this.btnLabFiles.Location = new System.Drawing.Point(342, 0);
             this.btnLabFiles.Name = "btnLabFiles";
             this.btnLabFiles.Rotation = 0D;
-            this.btnLabFiles.Size = new System.Drawing.Size(114, 48);
+            this.btnLabFiles.Size = new System.Drawing.Size(114, 51);
             this.btnLabFiles.TabIndex = 22;
             this.btnLabFiles.Text = "Lab Files";
             this.btnLabFiles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -200,7 +202,7 @@
             this.btnDoctorRecord.Location = new System.Drawing.Point(228, 0);
             this.btnDoctorRecord.Name = "btnDoctorRecord";
             this.btnDoctorRecord.Rotation = 0D;
-            this.btnDoctorRecord.Size = new System.Drawing.Size(114, 48);
+            this.btnDoctorRecord.Size = new System.Drawing.Size(114, 51);
             this.btnDoctorRecord.TabIndex = 21;
             this.btnDoctorRecord.Text = "Doctor Record";
             this.btnDoctorRecord.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -222,7 +224,7 @@
             this.btnVital.Location = new System.Drawing.Point(114, 0);
             this.btnVital.Name = "btnVital";
             this.btnVital.Rotation = 0D;
-            this.btnVital.Size = new System.Drawing.Size(114, 48);
+            this.btnVital.Size = new System.Drawing.Size(114, 51);
             this.btnVital.TabIndex = 19;
             this.btnVital.Text = "Patient Vitals";
             this.btnVital.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -244,7 +246,7 @@
             this.iconButton3.Location = new System.Drawing.Point(0, 0);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Rotation = 0D;
-            this.iconButton3.Size = new System.Drawing.Size(114, 48);
+            this.iconButton3.Size = new System.Drawing.Size(114, 51);
             this.iconButton3.TabIndex = 17;
             this.iconButton3.Text = "Personal Info";
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -256,7 +258,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Salmon;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 83);
+            this.panel1.Location = new System.Drawing.Point(0, 103);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(733, 5);
             this.panel1.TabIndex = 19;
@@ -264,17 +266,39 @@
             // panelChild
             // 
             this.panelChild.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChild.Location = new System.Drawing.Point(0, 88);
+            this.panelChild.Location = new System.Drawing.Point(0, 108);
             this.panelChild.Name = "panelChild";
-            this.panelChild.Size = new System.Drawing.Size(733, 366);
+            this.panelChild.Size = new System.Drawing.Size(733, 372);
             this.panelChild.TabIndex = 20;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.File;
+            this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton1.IconSize = 18;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton1.Location = new System.Drawing.Point(684, 0);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(114, 51);
+            this.iconButton1.TabIndex = 25;
+            this.iconButton1.Text = "Other Files";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // addEditPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(733, 454);
+            this.ClientSize = new System.Drawing.Size(733, 480);
             this.Controls.Add(this.panelChild);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelNavParam);
@@ -305,6 +329,6 @@
         private FontAwesome.Sharp.IconButton btnXray;
         private FontAwesome.Sharp.IconButton btnMaximize;
         private FontAwesome.Sharp.IconButton btnPrescription;
-
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

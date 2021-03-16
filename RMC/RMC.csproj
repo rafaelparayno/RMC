@@ -728,6 +728,12 @@
     <Compile Include="Patients\PanelsDetails\Dialogs\AddEditVital.Designer.cs">
       <DependentUpon>AddEditVital.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patients\PanelsDetails\Dialogs\AddViewOther.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\Dialogs\AddViewOther.Designer.cs">
+      <DependentUpon>AddViewOther.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\PanelsDetails\PanelDoctorFindings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -739,6 +745,12 @@
     </Compile>
     <Compile Include="Patients\PanelsDetails\PanelLabDetail.Designer.cs">
       <DependentUpon>PanelLabDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelOtherFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelOtherFiles.Designer.cs">
+      <DependentUpon>PanelOtherFiles.cs</DependentUpon>
     </Compile>
     <Compile Include="Patients\PanelsDetails\PanelPatientDetails.cs">
       <SubType>Form</SubType>
@@ -1142,11 +1154,17 @@
     <EmbeddedResource Include="Patients\PanelsDetails\Dialogs\AddEditVital.resx">
       <DependentUpon>AddEditVital.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelsDetails\Dialogs\AddViewOther.resx">
+      <DependentUpon>AddViewOther.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\PanelDoctorFindings.resx">
       <DependentUpon>PanelDoctorFindings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\PanelLabDetail.resx">
       <DependentUpon>PanelLabDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelsDetails\PanelOtherFiles.resx">
+      <DependentUpon>PanelOtherFiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\PanelPatientDetails.resx">
       <DependentUpon>PanelPatientDetails.cs</DependentUpon>
@@ -1282,6 +1300,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

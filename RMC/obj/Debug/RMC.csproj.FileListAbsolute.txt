@@ -170,3 +170,10 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.Text.Encodings.We
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.Text.Json.xml
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.ValueTuple.xml
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Patients.PanelsDetails.PanelOtherFiles.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\Interop.AcroPDFLib.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AxInterop.AcroPDFLib.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\Interop.AcroPDFLib.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\AxInterop.AcroPDFLib.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.csproj.ResolveComReference.cache
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Patients.PanelsDetails.Dialogs.AddViewOther.resources
