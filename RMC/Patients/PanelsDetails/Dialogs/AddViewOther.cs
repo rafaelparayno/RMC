@@ -18,6 +18,8 @@ namespace RMC.Patients.PanelsDetails.Dialogs
     {
         private int patient_id = 0;
         patientDetails p = new patientDetails();
+        PatientOthersController patientOthersController = new PatientOthersController();
+
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         string fileSource = "";
         public AddViewOther(int patient_id)
@@ -53,8 +55,12 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             string datenow = DateTime.Now.ToString("yyyy--MM--dd");
             string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
             string combine = datenow + "--" + timenow;
-            string fileSave = "otherFiles-" + p.id + "-" + txtName.Text.Trim() + "-" + combine+".pdf";
-            File.Copy(fileSource, filePath+fileSave, true);
+            string fileSave =  txtName.Text.Trim() +".pdf";
+             File.Copy(fileSource, filePath+fileSave, true);
+
+            await patientOthersController.save(filePath, patient_id, txtName.Text.Trim() +".pdf");
+
+            this.Close();
         }
     }
 }

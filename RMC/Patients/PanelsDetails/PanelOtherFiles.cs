@@ -18,12 +18,22 @@ namespace RMC.Patients.PanelsDetails
         {
             InitializeComponent();
             this.patient_id = patient_id;
+            initColLv();
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             AddViewOther form = new AddViewOther(patient_id);
             form.ShowDialog();
+        }
+
+        private void initColLv()
+        {
+            lvVitals.View = View.Details;
+            lvVitals.Columns.Add("File Id", 80, HorizontalAlignment.Center);
+            lvVitals.Columns.Add("File Name", 100, HorizontalAlignment.Center);
+            lvVitals.Columns.Add("Date Uploaded", 100, HorizontalAlignment.Center);
+
         }
     }
 }
