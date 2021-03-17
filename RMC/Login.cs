@@ -65,6 +65,7 @@ namespace RMC
             if (isConnected)
             {
                 iconPictureBox1.IconColor = Color.SeaGreen;
+                iconButton1.Enabled = true;
             }
             else
             {

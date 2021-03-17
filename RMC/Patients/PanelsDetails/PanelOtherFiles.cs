@@ -37,8 +37,8 @@ namespace RMC.Patients.PanelsDetails
             {
                 ListViewItem lvsItem = new ListViewItem();
                 lvsItem.Text = p.id.ToString();
-                lvsItem.SubItems.Add(p.name);
-                lvsItem.SubItems.Add(p.date_upload.ToString().Split(' ')[0]);
+                lvsItem.SubItems.Add(p.name); 
+               lvsItem.SubItems.Add(p.date_upload.ToString().Split(' ')[0]);
 
                 lvVitals.Items.Add(lvsItem);
             }
