@@ -275,7 +275,6 @@
             this.txtSellingPrice.BackColor = System.Drawing.Color.FloralWhite;
             this.txtSellingPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSellingPrice.Dock = System.Windows.Forms.DockStyle.Left;
-            this.txtSellingPrice.Enabled = false;
             this.txtSellingPrice.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSellingPrice.Location = new System.Drawing.Point(33, 19);
             this.txtSellingPrice.MaxLength = 40;
@@ -283,6 +282,9 @@
             this.txtSellingPrice.Size = new System.Drawing.Size(615, 23);
             this.txtSellingPrice.TabIndex = 5;
             this.txtSellingPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSellingPrice.TextChanged += new System.EventHandler(this.txtSellingPrice_TextChanged);
+            this.txtSellingPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSellingPrice_KeyPress);
+            this.txtSellingPrice.Leave += new System.EventHandler(this.txtSellingPrice_Leave);
             // 
             // label6
             // 
@@ -319,6 +321,7 @@
             this.txtMarkup.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMarkup.TextChanged += new System.EventHandler(this.txtMarkup_TextChanged);
             this.txtMarkup.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMarkup_KeyPress);
+            this.txtMarkup.Leave += new System.EventHandler(this.txtMarkup_Leave);
             // 
             // label3
             // 

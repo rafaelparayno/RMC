@@ -30,6 +30,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         private int unitID = 0;
         private bool isEdit = false;
         private int ITEM_ID = 0;
+        private float perc = 0;
         private Dictionary<string, int> suppliersDic = new Dictionary<string, int>();
 
         #endregion
@@ -134,6 +135,15 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             }
         }
 
+        private void txtSellingPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
 
         private void cbUnits_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -142,13 +152,33 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 
         private void txtUnitPrice_TextChanged(object sender, EventArgs e)
         {
-            CalculateTxtSellingPrice(txtUnitPrice.Text.Trim(), txtMarkup.Text.Trim());
+            txtSellingPrice.Text = "";
+
+            txtMarkup.Text = "";
+            //CalculateTxtSellingPrice(txtUnitPrice.Text.Trim(), txtMarkup.Text.Trim());
         }
 
         private void txtMarkup_TextChanged(object sender, EventArgs e)
         {
+           // CalculateTxtSellingPrice(txtUnitPrice.Text.Trim(), txtMarkup.Text.Trim());
+        }
+
+        private void txtMarkup_Leave(object sender, EventArgs e)
+        {
             CalculateTxtSellingPrice(txtUnitPrice.Text.Trim(), txtMarkup.Text.Trim());
         }
+
+        private void txtSellingPrice_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void txtSellingPrice_Leave(object sender, EventArgs e)
+        {
+            CalculateTxtMarkup(txtUnitPrice.Text.Trim(), txtSellingPrice.Text.Trim());
+        }
+
+
 
         private void btnAddSupplier_Click(object sender, EventArgs e)
         {
@@ -208,6 +238,9 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             MessageBox.Show("Succesfully Save Data");
             this.Close();
         }
+
+
+
 
         #endregion
 
@@ -330,23 +363,60 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         {
             bool isUnitValid = float.TryParse(unitPrice, out _);
             bool isMarkupvalid = float.TryParse(markup, out _);
+          
 
             if (isUnitValid && isMarkupvalid)
             {
                 float unitP = float.Parse(unitPrice);
                 float markupP = float.Parse(markup);
 
-                float perc = markupP / 100;
+                perc = markupP / 100;
                 float AdditionPrice = unitP * perc;
 
 
                 double sellingPrice = unitP + AdditionPrice;
+                float percStr = perc * 100;
 
-                txtSellingPrice.Text = Math.Round(sellingPrice, 2).ToString();
+
+
+                txtMarkup.Text = percStr.ToString();
+                txtSellingPrice.Text = Math.Round(sellingPrice, 1).ToString();
             }
             else
             {
                 txtSellingPrice.Text = "";
+
+                txtMarkup.Text = "";
+            }
+        }
+
+
+        private void CalculateTxtMarkup(string unitPrice, string selling)
+        {
+            bool isUnitValid = float.TryParse(unitPrice, out _);
+            bool isSellingValid = float.TryParse(selling, out _);
+
+
+            if (isUnitValid && isSellingValid)
+            {
+              
+                float unitP = float.Parse(unitPrice);
+                float sellingP = float.Parse(selling);
+
+                if (unitP > sellingP)
+                    return;
+
+                float markupP = ((sellingP / unitP)- 1) * 100;
+
+
+                txtMarkup.Text = markupP.ToString();
+               
+            }
+            else
+            {
+                txtSellingPrice.Text = "";
+
+                txtMarkup.Text = "";
             }
         }
 
@@ -498,8 +568,12 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         }
 
 
+
+
+
+
         #endregion
 
-      
+       
     }
 }
