@@ -21,7 +21,7 @@ namespace RMC.Reception.PanelRequestForm
         List<customerDetailsMod> customerDetailsModsList;
         CustomerRequestsController customerRequestsController = new CustomerRequestsController();
         DoctorQueueController docQController = new DoctorQueueController();
-
+        UserracountsController uc = new UserracountsController();
         DataTable dt = new DataTable();
         ImageList ImageList1 = new ImageList();
 
@@ -38,6 +38,8 @@ namespace RMC.Reception.PanelRequestForm
             InitializeComponent();
             initLvCol();
             getData();
+
+            loadOnlineDoctors();
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -188,10 +190,25 @@ namespace RMC.Reception.PanelRequestForm
             }
         }
 
-        private void gToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void loadOnlineDoctors()
         {
+           
+            List<string> doctors = await uc.listDoctorOnlines();
+
+            foreach(string d in doctors)
+            {
+                goToDoctorToolStripMenuItem.DropDownItems.Add(d, null, new EventHandler(SubmenuItem_Click));
+            }
+        }
+
+        private void SubmenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem click = ((ToolStripMenuItem)sender);
+
+            int id = int.Parse(click.Text.Split('-')[1]);
 
         }
+
 
         private void btnpay_Click(object sender, EventArgs e)
         {
@@ -211,5 +228,7 @@ namespace RMC.Reception.PanelRequestForm
         {
 
         }
+
+      
     }
 }

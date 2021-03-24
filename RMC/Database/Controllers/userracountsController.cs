@@ -3,6 +3,7 @@ using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -46,6 +47,28 @@ namespace RMC.Database.Controllers
             crud.CloseConnection();
 
             return datas;
+        }
+
+        public async Task<List<string>> listDoctorOnlines()
+        {
+            List<string> listDoctors = new List<string>();
+
+            string Sql = @"SELECT * FROM useraccounts WHERE isOnline = 1 AND role_id in(SELECT role_id FROM access WHERE access = 5)";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(Sql, null);
+
+            while (await reader.ReadAsync())
+            {
+                string uid = reader["u_id"].ToString();
+                string fn = reader["firstname"].ToString();
+                string ln = reader["lastname"].ToString();
+
+                listDoctors.Add($"ID-{uid}-{fn} {ln}");
+
+            }
+
+            crud.CloseConnection();
+            return listDoctors;
         }
 
         public async void saveUserAccount(params string[] dataInput)

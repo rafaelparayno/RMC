@@ -37,7 +37,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgCustomerList = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.paymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToDoctorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -191,37 +190,31 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.paymentToolStripMenuItem,
             this.goToLabToolStripMenuItem,
             this.gToolStripMenuItem,
             this.goToDoctorToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 92);
-            // 
-            // paymentToolStripMenuItem
-            // 
-            this.paymentToolStripMenuItem.Name = "paymentToolStripMenuItem";
-            this.paymentToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-            this.paymentToolStripMenuItem.Text = "Payment";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
             // 
             // goToLabToolStripMenuItem
             // 
             this.goToLabToolStripMenuItem.Name = "goToLabToolStripMenuItem";
-            this.goToLabToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.goToLabToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.goToLabToolStripMenuItem.Text = "Go to Lab";
             // 
             // gToolStripMenuItem
             // 
             this.gToolStripMenuItem.Name = "gToolStripMenuItem";
-            this.gToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.gToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gToolStripMenuItem.Text = "Go to Xray";
-            this.gToolStripMenuItem.Click += new System.EventHandler(this.gToolStripMenuItem_Click);
+         
             // 
             // goToDoctorToolStripMenuItem
             // 
             this.goToDoctorToolStripMenuItem.Name = "goToDoctorToolStripMenuItem";
-            this.goToDoctorToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.goToDoctorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.goToDoctorToolStripMenuItem.Text = "Go to Doctor";
+        
             // 
             // PanelRequestForm
             // 
@@ -253,7 +246,6 @@
         private FontAwesome.Sharp.IconButton btnEdit;
         public System.Windows.Forms.DataGridView dgCustomerList;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem paymentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goToLabToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goToDoctorToolStripMenuItem;
