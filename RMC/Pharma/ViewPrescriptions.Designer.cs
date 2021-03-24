@@ -40,15 +40,18 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToCartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Controls.Add(this.dgItemList);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -70,7 +73,7 @@
             this.dgItemList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgItemList.BackgroundColor = System.Drawing.Color.FloralWhite;
             this.dgItemList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgItemList.Location = new System.Drawing.Point(3, 19);
             this.dgItemList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgItemList.MultiSelect = false;
@@ -78,7 +81,7 @@
             this.dgItemList.ReadOnly = true;
             this.dgItemList.RowHeadersVisible = false;
             this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemList.Size = new System.Drawing.Size(678, 387);
+            this.dgItemList.Size = new System.Drawing.Size(678, 138);
             this.dgItemList.StandardTab = true;
             this.dgItemList.TabIndex = 114;
             this.dgItemList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgItemList_MouseClick);
@@ -194,14 +197,36 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToCartToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(148, 26);
             // 
             // addToCartToolStripMenuItem
             // 
             this.addToCartToolStripMenuItem.Name = "addToCartToolStripMenuItem";
-            this.addToCartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToCartToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.addToCartToolStripMenuItem.Text = "Add This Item";
             this.addToCartToolStripMenuItem.Click += new System.EventHandler(this.addToCartToolStripMenuItem_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 157);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(678, 249);
+            this.dataGridView1.StandardTab = true;
+            this.dataGridView1.TabIndex = 115;
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // ViewPrescriptions
             // 
@@ -221,6 +246,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -238,6 +264,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addToCartToolStripMenuItem;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 
 }

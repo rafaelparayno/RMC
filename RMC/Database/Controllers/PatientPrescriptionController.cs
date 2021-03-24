@@ -42,6 +42,106 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task<DataSet> GetDataSetInfo()
+        {
+            string sql = @"SELECT DISTINCT patient_prescription.doctor_results_id,date_prescription,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname'
+                    FROM `patient_prescription` 
+                    INNER JOIN doctor_results ON patient_prescription.doctor_results_id = doctor_results.doctor_results_id
+                    INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id";
+
+
+            DataSet ds = await crud.GetDataSetAsync(sql, null);
+
+            return ds;
+        }
+
+        public async Task<DataSet> GetDataSetInfoMeds()
+        {
+            string sql = @"SELECT DISTINCT patient_prescription.doctor_results_id,date_prescription,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname'
+                    FROM `patient_prescription` 
+                    INNER JOIN doctor_results ON patient_prescription.doctor_results_id = doctor_results.doctor_results_id
+                    INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id";
+
+
+            DataSet ds = await crud.GetDataSetAsync(sql, null);
+
+            return ds;
+        }
+
+        public async Task<DataSet> GetDataSetInfo(int id)
+        {
+            string sql = @"SELECT DISTINCT patient_prescription.doctor_results_id,date_prescription,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname'
+                    FROM `patient_prescription` 
+                    INNER JOIN doctor_results ON patient_prescription.doctor_results_id = doctor_results.doctor_results_id
+                    INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id    
+                    WHERE doctor_results.patient_id = @id";
+
+            List<MySqlParameter> listparam = new List<MySqlParameter>();
+
+            listparam.Add(new MySqlParameter("@id", id));
+
+            DataSet ds = await crud.GetDataSetAsync(sql, listparam);
+
+            return ds;
+        }
+
+
+
+        public async Task<DataSet> GetDataSetInfo(string searchkey)
+        {
+            string sql = @"SELECT DISTINCT patient_prescription.doctor_results_id,date_prescription,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname'
+                    FROM `patient_prescription` 
+                    INNER JOIN doctor_results ON patient_prescription.doctor_results_id = doctor_results.doctor_results_id
+                    INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id    
+                      WHERE Concat(patientdetails.firstname,' ',patientdetails.lastname) LIKE @key";
+
+            List<MySqlParameter> listparam = new List<MySqlParameter>();
+            string searches = "%" + searchkey + "%";
+            listparam.Add(new MySqlParameter("@key", searches));
+
+
+            DataSet ds = await crud.GetDataSetAsync(sql, listparam);
+
+            return ds;
+        }
+
+        public async Task<DataSet> GetDataSetInfoDate(string date)
+        {
+            string sql = @"SELECT DISTINCT patient_prescription.doctor_results_id,date_prescription,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) As 'patientname'
+                    FROM `patient_prescription` 
+                    INNER JOIN doctor_results ON patient_prescription.doctor_results_id = doctor_results.doctor_results_id
+                    INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id    
+                     WHERE date_prescription = @date";
+
+            List<MySqlParameter> listparam = new List<MySqlParameter>();
+
+            listparam.Add(new MySqlParameter("@date", DateTime.Parse(date)));
+
+            DataSet ds = await crud.GetDataSetAsync(sql, listparam);
+
+            return ds;
+        }
+
+       
+
+        public async Task<DataSet> getPrescriptionByResID(int resid)
+        {
+            string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,
+                        patient_prescription.dispense_no,patient_prescription.sInstruction FROM `patient_prescription`
+                        INNER JOIN itemlist ON patient_prescription.item_id = itemlist.item_id
+                        WHERE doctor_results_id = @resid";
+
+
+            List<MySqlParameter> listparam = new List<MySqlParameter>();
+
+            listparam.Add(new MySqlParameter("@resid", resid));
+
+            DataSet ds = await crud.GetDataSetAsync(sql, listparam);
+
+            return ds;
+        
+        }
+
         public async Task<DataSet> getDataset(int id)
         {
             string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,

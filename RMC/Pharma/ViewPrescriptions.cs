@@ -17,6 +17,7 @@ namespace RMC.Pharma
         int dyn = 0;
         public string sku = "";
         string idRightClick = "";
+        string idRightClick2 = "";
 
 
         public ViewPrescriptions()
@@ -39,8 +40,14 @@ namespace RMC.Pharma
 
         private async void loadData()
         {
-            DataSet ds = await ppController.getDataset();
+            DataSet ds = await ppController.GetDataSetInfo();
             refreshGrid(ds);
+        }
+
+        private async void loadDataItem(int resid)
+        {
+            DataSet ds = await ppController.getPrescriptionByResID(resid);
+            refreshGridItem(ds);
         }
 
         private async void searchData(string date)
@@ -56,14 +63,14 @@ namespace RMC.Pharma
                         return;
 
                     int patientid = int.Parse(txtName.Text.Trim());
-                    ds = await ppController.getDataset(patientid);
+                    ds = await ppController.GetDataSetInfo(patientid);
 
                     break;
                 case 1:
-                    ds = await ppController.getDatasetName(txtName.Text.Trim());
+                    ds = await ppController.GetDataSetInfo(txtName.Text.Trim());
                     break;
                 case 2:
-                    ds = await ppController.getDataset(date);
+                    ds = await ppController.GetDataSetInfoDate(date);
                     break;
 
 
@@ -77,6 +84,13 @@ namespace RMC.Pharma
             dgItemList.DataSource = "";
             dgItemList.DataSource = ds.Tables[0];
             dgItemList.AutoResizeColumns();
+        }
+
+        private void refreshGridItem(DataSet ds)
+        {
+            dataGridView1.DataSource = "";
+            dataGridView1.DataSource = ds.Tables[0];
+            dataGridView1.AutoResizeColumns();
         }
 
         private void ViewPrescriptions_Load(object sender, EventArgs e)
@@ -112,10 +126,10 @@ namespace RMC.Pharma
 
         private void dgItemList_MouseClick(object sender, MouseEventArgs e)
         {
-            if (dyn == 0)
-                return;
+            /*   if (dyn == 0)
+                   return;*/
 
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Left)
             {
 
                 int currentMouseOverRow = dgItemList.HitTest(e.X, e.Y).RowIndex;
@@ -125,7 +139,8 @@ namespace RMC.Pharma
                 {
                     idRightClick = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
                     /* Sku = dgItemList.Rows[currentMouseOverRow].Cells[5].Value.ToString();*/
-                    contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
+                    int res = int.Parse(idRightClick);
+                    loadDataItem(res);
 
                 }
 
@@ -134,9 +149,30 @@ namespace RMC.Pharma
 
         private async void addToCartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(idRightClick);
+            int id = int.Parse(idRightClick2);
             sku = await ppController.getPrescriptionSKU(id);
             this.Close();
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dyn == 0)
+                return;
+
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                    idRightClick2 = dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    contextMenuStrip1.Show(dataGridView1, new Point(e.X, e.Y));
+
+                }
+
+            }
         }
     }
 }
