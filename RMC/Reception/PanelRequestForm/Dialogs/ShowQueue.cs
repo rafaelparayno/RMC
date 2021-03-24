@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
 using RMC.Components;
+using RMC.Database.Models;
 
 namespace RMC.Reception.PanelRequestForm.Dialogs
 {
@@ -18,8 +19,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         DoctorQueueController doctorQueueController = new DoctorQueueController();
         UserracountsController uc = new UserracountsController();
         SpeechSynthesizer _ss = new SpeechSynthesizer();
-        List<int> currentDocsQ = new List<int>();
-     
+        List<DoctorQueueModel> Cdoctors;
+
+
         public ShowQueue()
         {
             InitializeComponent();
@@ -45,40 +47,30 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             return _isStopped;
         }
 
-        private async void populateDocs(List<int> currentDocsQ)
+        private async void populateDocs()
         {
             panelDoctor.Controls.Clear();
-            Dictionary<int,string> doctors = await uc.listDoctorOnlinesDic();
-
-
-            foreach(KeyValuePair<int,string> valuePair in doctors)
+            foreach(DoctorQueueModel d in Cdoctors)
             {
                 DoctorQueueControl dc = new DoctorQueueControl();
 
-                int currentq = await  doctorQueueController.getCurrentDoctorQ(valuePair.Key);
-                int nextQ = await doctorQueueController.getNextDoctorQ(valuePair.Key);
-                dc.DoctorName = valuePair.Value;
-                dc.DocId = valuePair.Key;
+                int currentq = await  doctorQueueController.getCurrentDoctorQ(d.id);
+                int nextQ = await doctorQueueController.getNextDoctorQ(d.id);
+                int index = Cdoctors.FindIndex(item => item.id == d.id);
+
+
+                Cdoctors[index].currentQueue = currentq;
+                Cdoctors[index].nextQueue = nextQ;
+
+                dc.DoctorName = d.doctorname;
+                dc.DocId = d.id;
                 dc.CurrentQueue = currentq.ToString();
                 dc.NextQueue = nextQ == 0 ? "" : nextQ.ToString();
-
+                dc.Dock = DockStyle.Left;
                 panelDoctor.Controls.Add(dc);
 
             }
-            /*    foreach (int i in currentDocsQ)
-                {
-                    Label l = new Label();
-                    l.Dock = DockStyle.Top;
-                    l.AutoSize = false;
-                    l.Size = new Size(345, 70);
-                    l.Font = new Font("Tahoma", 32, FontStyle.Regular);
-                    l.TextAlign = ContentAlignment.TopCenter;
-                    l.Text = i.ToString();
-                    panelDoctor.Controls.Add(l);
-                }
-
-
-    */
+       
 
 
         }
@@ -98,8 +90,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private async void refreshQue()
         {
-            currentDocsQ = await doctorQueueController.getQueueDoc();
-            populateDocs(currentDocsQ);
+            Cdoctors = await uc.listDoctorOnlinesModel();
+            populateDocs();
 
 
             /*  int q  =  await getCurrentQueue();
@@ -140,15 +132,33 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             /* List<int> currentDocsQ = await doctorQueueController.getQueueDoc();
              populateDocs(currentDocsQ);*/
 
-       /*     int getCurrentDQ = currentDocsQ.Last();
-            int getNDQ = await doctorQueueController.getCurrentQ();
-            if(getCurrentDQ != getNDQ)
+            List<DoctorQueueModel> newDocQue = await uc.listDoctorOnlinesModel();
+
+            foreach (DoctorQueueModel d in newDocQue)
             {
-                if(getNDQ != 0)
-                  speech("Doctor", getNDQ.ToString());
+                int currentq = await doctorQueueController.getCurrentDoctorQ(d.id);
+
+
+
+                DoctorQueueModel s = Cdoctors.Find(item => item.id == d.id);
+
+                if(s.currentQueue != currentq)
+                {
+                    speech(s.doctorname, currentq.ToString());
+                }
+
             }
 
-            refreshQue();*/
+                /*
+                            int getCurrentDQ = currentDocsQ.Last();
+                            int getNDQ = await doctorQueueController.getCurrentQ();
+                            if (getCurrentDQ != getNDQ)
+                            {
+                                if (getNDQ != 0)
+                                    speech("Doctor", getNDQ.ToString());
+                            }*/
+
+                refreshQue();
 
 
             /*  int getQ = await getCurrentQueue();

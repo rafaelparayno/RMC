@@ -194,13 +194,13 @@ namespace RMC.Reception.PanelRequestForm
 
         private async void loadOnlineDoctors()
         {
-           
-            List<string> doctors = await uc.listDoctorOnlines();
+            List<DoctorQueueModel> listdocs = await uc.listDoctorOnlinesModel();
 
-            foreach(string d in doctors)
+            foreach(DoctorQueueModel d in listdocs)
             {
-                goToDoctorToolStripMenuItem.DropDownItems.Add(d, null, new EventHandler(SubmenuItem_Click));
+                goToDoctorToolStripMenuItem.DropDownItems.Add($"ID-{d.id}-{d.doctorname}", null, new EventHandler(SubmenuItem_Click));
             }
+
         }
 
         private async void SubmenuItem_Click(object sender, EventArgs e)

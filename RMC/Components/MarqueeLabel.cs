@@ -11,7 +11,7 @@ namespace RMC.Components
         {
             DoubleBuffered = true;
             timer = new Timer();
-            timer.Interval = 1000;
+            timer.Interval = 100;
             timer.Enabled = true;
             timer.Tick += Timer_Tick;
         }
@@ -19,7 +19,7 @@ namespace RMC.Components
         int textHeight = 0;
         private void Timer_Tick(object sender, EventArgs e)
         {
-            top -= 3;
+            top -= 5;
             if (top < -textHeight)
                 top = Height;
             Invalidate();

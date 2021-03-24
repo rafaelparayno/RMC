@@ -49,9 +49,10 @@ namespace RMC.Database.Controllers
             return datas;
         }
 
-        public async Task<List<string>> listDoctorOnlines()
+   
+        public async Task<List<DoctorQueueModel>> listDoctorOnlinesModel()
         {
-            List<string> listDoctors = new List<string>();
+            List<DoctorQueueModel> listDoctorQueueModel = new List<DoctorQueueModel>();
 
             string Sql = @"SELECT * FROM useraccounts WHERE isOnline = 1 AND role_id in(SELECT role_id FROM access WHERE access = 5)";
 
@@ -59,39 +60,21 @@ namespace RMC.Database.Controllers
 
             while (await reader.ReadAsync())
             {
-                string uid = reader["u_id"].ToString();
-                string fn = reader["firstname"].ToString();
-                string ln = reader["lastname"].ToString();
-
-                listDoctors.Add($"ID-{uid}-{fn} {ln}");
-
-            }
-
-            crud.CloseConnection();
-            return listDoctors;
-        }
-
-        public async Task<Dictionary<int,string>> listDoctorOnlinesDic()
-        {
-            Dictionary<int, string> listDoctors = new Dictionary<int, string>();
-
-            string Sql = @"SELECT * FROM useraccounts WHERE isOnline = 1 AND role_id in(SELECT role_id FROM access WHERE access = 5)";
-
-            DbDataReader reader = await crud.RetrieveRecordsAsync(Sql, null);
-
-            while (await reader.ReadAsync())
-            {
-                int uid =int.Parse(reader["u_id"].ToString());
+                DoctorQueueModel d = new DoctorQueueModel();
+                int uid = int.Parse(reader["u_id"].ToString());
                 string fn = reader["firstname"].ToString();
                 string ln = reader["lastname"].ToString();
 
 
-                listDoctors.Add(uid, fn + " " + ln);
-
+                d.doctorname = $"{fn} {ln}";
+                d.id = uid;
+                d.nextQueue = 0;
+                d.currentQueue = 0;
+                listDoctorQueueModel.Add(d);
             }
 
             crud.CloseConnection();
-            return listDoctors;
+            return listDoctorQueueModel;
         }
 
         public async void saveUserAccount(params string[] dataInput)
