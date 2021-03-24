@@ -240,16 +240,32 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             else
             {
             
-         
+                if(id> 0)
+                {
+                    patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
+                                   txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
+                                   txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
+                                   cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim(), id.ToString());
+
+                    customerDetailsController.save(lastQ.ToString(), id.ToString());
+
+                }
+                else
+                {
+                    patientDetailsController.save(txtfn.Text.Trim(), txtMn.Text.Trim(),
+                                              txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
+                                              txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
+                                              cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim());
+
+                    int pid = patientDetailsController.getRecentPID() - 1;
+
+                    customerDetailsController.save(lastQ.ToString(), pid.ToString());
+
+                }
               
-                patientDetailsController.save(txtfn.Text.Trim(), txtMn.Text.Trim(),
-                                           txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
-                                           txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
-                                           cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim());
+                
 
-                int pid = patientDetailsController.getRecentPID() - 1;
-
-                customerDetailsController.save(lastQ.ToString(), pid.ToString());
+               
 
                 if (checkConsult.Checked)
                     docQController.Save(lastQ, textBox3.Text.Trim());

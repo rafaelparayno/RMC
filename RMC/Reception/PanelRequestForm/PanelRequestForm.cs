@@ -2,6 +2,7 @@
 using Org.BouncyCastle.Ocsp;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Patients.PanelsDetails.Dialogs;
 using RMC.Reception.PanelRequestForm.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace RMC.Reception.PanelRequestForm
         ImageList ImageList1 = new ImageList();
 
         string idRightClick = "";
-     
+        string queNoClick = "";
         private int consultS = 1;
         private int medCert = 2;
         private int labS = 3;
@@ -56,7 +57,7 @@ namespace RMC.Reception.PanelRequestForm
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Age", typeof(int));
             dt.Columns.Add("Consult", typeof(Image));
-            dt.Columns.Add("Xray", typeof(Image));
+            dt.Columns.Add("Radio", typeof(Image));
             dt.Columns.Add("Lab", typeof(Image));
             dt.Columns.Add("Services", typeof(Image));
             dt.Columns.Add("Paid", typeof(Image));
@@ -184,6 +185,7 @@ namespace RMC.Reception.PanelRequestForm
                 if (currentMouseOverRow >= 0)
                 {
                     idRightClick = dgCustomerList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    queNoClick = dgCustomerList.Rows[currentMouseOverRow].Cells[1].Value.ToString();
                     contextMenuStrip1.Show(dgCustomerList, new Point(e.X, e.Y));
                 }
 
@@ -233,6 +235,15 @@ namespace RMC.Reception.PanelRequestForm
 
         }
 
-      
+        private async void addVitalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            int qno = int.Parse(queNoClick);
+            int patientid =    await customerDetailsController.getPatientIDinQueue(qno);
+            AddEditVital ad = new AddEditVital(patientid);
+            ad.ShowDialog();
+        }
+
     }
 }

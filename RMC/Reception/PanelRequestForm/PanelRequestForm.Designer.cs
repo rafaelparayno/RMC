@@ -40,6 +40,7 @@
             this.goToLabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.goToDoctorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addVitalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenus.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomerList)).BeginInit();
@@ -192,29 +193,35 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.goToLabToolStripMenuItem,
             this.gToolStripMenuItem,
-            this.goToDoctorToolStripMenuItem});
+            this.goToDoctorToolStripMenuItem,
+            this.addVitalToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
             // 
             // goToLabToolStripMenuItem
             // 
             this.goToLabToolStripMenuItem.Name = "goToLabToolStripMenuItem";
-            this.goToLabToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.goToLabToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.goToLabToolStripMenuItem.Text = "Go to Lab";
             // 
             // gToolStripMenuItem
             // 
             this.gToolStripMenuItem.Name = "gToolStripMenuItem";
-            this.gToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.gToolStripMenuItem.Text = "Go to Xray";
-         
             // 
             // goToDoctorToolStripMenuItem
             // 
             this.goToDoctorToolStripMenuItem.Name = "goToDoctorToolStripMenuItem";
-            this.goToDoctorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.goToDoctorToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.goToDoctorToolStripMenuItem.Text = "Go to Doctor";
-        
+            // 
+            // addVitalToolStripMenuItem
+            // 
+            this.addVitalToolStripMenuItem.Name = "addVitalToolStripMenuItem";
+            this.addVitalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addVitalToolStripMenuItem.Text = "Add Vital";
+            this.addVitalToolStripMenuItem.Click += new System.EventHandler(this.addVitalToolStripMenuItem_Click);
             // 
             // PanelRequestForm
             // 
@@ -250,5 +257,6 @@
         private System.Windows.Forms.ToolStripMenuItem gToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem goToDoctorToolStripMenuItem;
         private FontAwesome.Sharp.IconButton btnpay;
+        private System.Windows.Forms.ToolStripMenuItem addVitalToolStripMenuItem;
     }
 }
