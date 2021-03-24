@@ -117,5 +117,26 @@ namespace RMC.Database.Controllers
 
 
 
+        public async Task<int> getIsPaid(int qno)
+        {
+            int isPaid = 0;
+            string sql = @"SELECT * FROM customer_request_details  WHERE queue_no = @id  AND DATE(date_req) = CURDATE()";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@id", qno));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                isPaid = int.Parse(reader["is_paid"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return isPaid;
+        }
+
+
     }
 }

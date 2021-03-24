@@ -216,12 +216,19 @@ namespace RMC.Reception.PanelRequestForm
         }
 
 
-        private void btnpay_Click(object sender, EventArgs e)
+        private async void btnpay_Click(object sender, EventArgs e)
         {
             if (dgCustomerList.Rows.Count == 0)
                 return;
 
             if (dgCustomerList.SelectedRows.Count == 0)
+                return;
+
+            int qno = int.Parse(dgCustomerList.SelectedRows[0].Cells[1].Value.ToString());
+
+            int isPay = await customerDetailsController.getIsPaid(qno);
+
+            if (isPay == 1)
                 return;
 
             int req = int.Parse(dgCustomerList.SelectedRows[0].Cells[0].Value.ToString());
