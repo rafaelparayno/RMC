@@ -76,6 +76,7 @@
             this.panelCC = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblCC = new System.Windows.Forms.Label();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panelP.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -164,6 +165,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.iconButton2);
             this.groupBox3.Controls.Add(this.rbGeneric);
             this.groupBox3.Controls.Add(this.rbBranded);
             this.groupBox3.Location = new System.Drawing.Point(23, 48);
@@ -754,6 +756,29 @@
             this.lblCC.TabIndex = 0;
             this.lblCC.Text = "Chief Complaint(CC)";
             // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton2.ForeColor = System.Drawing.Color.White;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.SearchDollar;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconSize = 18;
+            this.iconButton2.Location = new System.Drawing.Point(509, 18);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Rotation = 0D;
+            this.iconButton2.Size = new System.Drawing.Size(306, 31);
+            this.iconButton2.TabIndex = 244;
+            this.iconButton2.Text = "View Stocks";
+            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
             // DoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -840,5 +865,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton rbGeneric;
         private System.Windows.Forms.RadioButton rbBranded;
+        private FontAwesome.Sharp.IconButton iconButton2;
     }
 }

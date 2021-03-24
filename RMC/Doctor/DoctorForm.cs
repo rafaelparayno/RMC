@@ -1,6 +1,7 @@
 ﻿using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Lab.Panels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -574,8 +575,13 @@ namespace RMC.Doctor
             lvMeds.Items.RemoveAt(index);
         }
 
-        #endregion
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            PanelViewStocks p = new PanelViewStocks();
+            p.ShowDialog();
+        }
 
+        #endregion
 
     }
 }
