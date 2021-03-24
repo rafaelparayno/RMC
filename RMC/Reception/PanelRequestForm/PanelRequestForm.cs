@@ -68,8 +68,8 @@ namespace RMC.Reception.PanelRequestForm
             ImageList1.Images.Add(Properties.Resources.check);
             ImageList1.Images.Add(Properties.Resources.x);
             ImageList1.Images.Add(Properties.Resources.wait);
+            ImageList1.Images.Add(Properties.Resources.emp);
 
-          
         }
         
 
@@ -121,7 +121,7 @@ namespace RMC.Reception.PanelRequestForm
                 }
                 else
                 {
-                    imgX = ImageList1.Images[1];
+                    imgX = ImageList1.Images[3];
                 }
 
                 if (requests.Contains(labS))
@@ -130,7 +130,7 @@ namespace RMC.Reception.PanelRequestForm
                 }
                 else
                 {
-                    imgLab = ImageList1.Images[1];
+                    imgLab = ImageList1.Images[3];
                 }
 
                 if (requests.Contains(otherS) || requests.Contains(medCert) || requests.Contains(packagesS))
@@ -139,7 +139,7 @@ namespace RMC.Reception.PanelRequestForm
                 }
                 else
                 {
-                    imgServices = ImageList1.Images[1];
+                    imgServices = ImageList1.Images[3];
                 }
 
 
@@ -201,12 +201,16 @@ namespace RMC.Reception.PanelRequestForm
             }
         }
 
-        private void SubmenuItem_Click(object sender, EventArgs e)
+        private async void SubmenuItem_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem click = ((ToolStripMenuItem)sender);
 
-            int id = int.Parse(click.Text.Split('-')[1]);
+            int uid = int.Parse(click.Text.Split('-')[1]);
+            int id = int.Parse(idRightClick);
 
+            await docQController.updateDoctorQueue(uid, id);
+
+            MessageBox.Show("Updated data");
         }
 
 

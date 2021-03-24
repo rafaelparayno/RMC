@@ -15,14 +15,30 @@ namespace RMC.Database.Controllers
         dbcrud crud = new dbcrud();
 
 
-        public async Task<DataSet> getDataSetDocQ()
+        public async Task<DataSet> getDataSetDocQ(int uid)
         {
             string sql = @"SELECT doctor_queue.queue_no,patientdetails.patient_id,
                             CONCAT(patientdetails.firstname,' ',patientdetails.lastname) AS 'patientname',age,gender FROM `doctor_queue`
                                             INNER JOIN customer_request_details ON doctor_queue.queue_no = customer_request_details.queue_no
                                             INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id 
-                                            WHERE doctor_queue.is_done = 0 AND DATE(customer_request_details.date_req) = CURDATE()";
-            return await crud.GetDataSetAsync(sql, null);
+                                            WHERE doctor_queue.is_done = 0 AND u_id = @id AND DATE(customer_request_details.date_req) = CURDATE()";
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+            listParams.Add(new MySqlParameter("@id", uid));
+            return await crud.GetDataSetAsync(sql, listParams);
+        }
+
+        public async Task updateDoctorQueue(int uid,int id)
+        {
+            string sql = @"UPDATE doctor_queue SET u_id = @uid WHERE queue_no IN (SELECT queue_no FROM customer_request_details WHERE customer_id = @id )";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+
+
+            listparams.Add(new MySqlParameter("@id", id));
+            listparams.Add(new MySqlParameter("@uid", uid));
+
+
+            await crud.ExecuteAsync(sql, listparams);
         }
 
         public async void Save(int queu_no,string cc)

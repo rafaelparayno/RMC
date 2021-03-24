@@ -1,4 +1,5 @@
 ﻿using RMC.Database.Controllers;
+using RMC.Database.Models;
 using RMC.Patients;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace RMC.Doctor.PanelDoctor
 
         private async void loadGrid()
         {
-            DataSet ds = await doctorQueueController.getDataSetDocQ();
+            DataSet ds = await doctorQueueController.getDataSetDocQ(UserLog.getUserId());
             RefreshGrid(ds);
         }
 
@@ -99,8 +100,6 @@ namespace RMC.Doctor.PanelDoctor
                 doctorQueueController.setDone(queueno);
             }
            
-
-
             loadGrid();
         }
 
