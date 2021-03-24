@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
+using RMC.Components;
 
 namespace RMC.Reception.PanelRequestForm.Dialogs
 {
@@ -15,6 +16,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
     {
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
         DoctorQueueController doctorQueueController = new DoctorQueueController();
+        UserracountsController uc = new UserracountsController();
         SpeechSynthesizer _ss = new SpeechSynthesizer();
         List<int> currentDocsQ = new List<int>();
      
@@ -43,30 +45,41 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             return _isStopped;
         }
 
-        private void populateDocs(List<int> currentDocsQ)
+        private async void populateDocs(List<int> currentDocsQ)
         {
-            panelD.Controls.Clear();
-          
-            foreach (int i in currentDocsQ)
-            {
-                Label l = new Label();
-                l.Dock = DockStyle.Top;
-                l.AutoSize = false;
-                l.Size = new Size(345, 70);
-                l.Font = new Font("Tahoma", 32, FontStyle.Regular);
-                l.TextAlign = ContentAlignment.TopCenter;
-                l.Text = i.ToString();
-                panelD.Controls.Add(l);
-            }
+            panelDoctor.Controls.Clear();
+            Dictionary<int,string> doctors = await uc.listDoctorOnlinesDic();
 
-            Label l2 = new Label();
-            l2.Dock = DockStyle.Top;
-            l2.Text = "Serving";
-            l2.Size = new Size(345, 70);
-            l2.Font = new Font("Tahoma", 32, FontStyle.Regular);
-            l2.TextAlign = ContentAlignment.TopCenter;
-            l2.AutoSize = false;
-            panelD.Controls.Add(l2);
+
+            foreach(KeyValuePair<int,string> valuePair in doctors)
+            {
+                DoctorQueueControl dc = new DoctorQueueControl();
+
+                int currentq = await  doctorQueueController.getCurrentDoctorQ(valuePair.Key);
+                int nextQ = await doctorQueueController.getNextDoctorQ(valuePair.Key);
+                dc.DoctorName = valuePair.Value;
+                dc.DocId = valuePair.Key;
+                dc.CurrentQueue = currentq.ToString();
+                dc.NextQueue = nextQ == 0 ? "" : nextQ.ToString();
+
+                panelDoctor.Controls.Add(dc);
+
+            }
+            /*    foreach (int i in currentDocsQ)
+                {
+                    Label l = new Label();
+                    l.Dock = DockStyle.Top;
+                    l.AutoSize = false;
+                    l.Size = new Size(345, 70);
+                    l.Font = new Font("Tahoma", 32, FontStyle.Regular);
+                    l.TextAlign = ContentAlignment.TopCenter;
+                    l.Text = i.ToString();
+                    panelDoctor.Controls.Add(l);
+                }
+
+
+    */
+
 
         }
 
@@ -87,6 +100,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             currentDocsQ = await doctorQueueController.getQueueDoc();
             populateDocs(currentDocsQ);
+
+
             /*  int q  =  await getCurrentQueue();
               int nq = await getNextQueue();*/
             /*  lastQue = q;
@@ -125,7 +140,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             /* List<int> currentDocsQ = await doctorQueueController.getQueueDoc();
              populateDocs(currentDocsQ);*/
 
-            int getCurrentDQ = currentDocsQ.Last();
+       /*     int getCurrentDQ = currentDocsQ.Last();
             int getNDQ = await doctorQueueController.getCurrentQ();
             if(getCurrentDQ != getNDQ)
             {
@@ -133,7 +148,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                   speech("Doctor", getNDQ.ToString());
             }
 
-            refreshQue();
+            refreshQue();*/
+
+
             /*  int getQ = await getCurrentQueue();
               int getNQ = await getNextQueue();*/
             /*if (lastQue != getQ)

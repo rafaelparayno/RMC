@@ -356,3 +356,4 @@ D:\Desktop\newrmc\RMC\RMC\obj\Debug\RMC.csproj.CoreCompileInputs.cache
 D:\Desktop\newrmc\RMC\RMC\obj\Debug\RMC.csproj.CopyComplete
 D:\Desktop\newrmc\RMC\RMC\obj\Debug\RMC.exe
 D:\Desktop\newrmc\RMC\RMC\obj\Debug\RMC.pdb
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Components.DoctorQueueControl.resources

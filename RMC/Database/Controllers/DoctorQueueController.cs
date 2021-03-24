@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
@@ -78,6 +79,64 @@ namespace RMC.Database.Controllers
 
             crud.CloseConnection();
             return listQueue;
+        }
+
+        public async Task<int> getCurrentDoctorQ(int uid)
+        {
+            int CURRENTQ = 0;
+
+            string sql = @"SELECT MIN(queue_no) as 'current' FROM doctor_queue WHERE is_done = 0 AND DATE(date_q) = CURDATE() AND u_id = @uid";
+
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@uid", uid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                CURRENTQ = reader["current"].ToString() == "" ? 0 : int.Parse(reader["current"].ToString());
+            }
+
+            crud.CloseConnection();
+
+
+            return CURRENTQ;
+        }
+
+        public async Task<int> getNextDoctorQ(int uid)
+        {
+            int NEXTQ = 0;
+            bool hasNext = false;
+            string sql = @"SELECT * FROM doctor_queue WHERE is_done = 0 AND DATE(date_q) = CURDATE() AND u_id = @uid ORDER BY queue_no ASC";
+
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@uid", uid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (reader.Read())
+            {
+                hasNext = true;
+                if (hasNext)
+                {
+                    if ( reader.Read())
+                    {
+                        NEXTQ = int.Parse(reader["queue_no"].ToString());
+                    }
+                }
+            }
+
+          
+           
+
+            crud.CloseConnection();
+
+
+            return NEXTQ;
         }
 
         public async Task<int> getCurrentQ()
