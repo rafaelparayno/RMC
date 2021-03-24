@@ -42,10 +42,11 @@ namespace RMC.Database.Controllers
                 roleid = int.Parse(reader["role_id"].ToString());
                 int accid = int.Parse(reader["u_id"].ToString());
                 int ischange = int.Parse(reader["is_change"].ToString());
+                int isOnline = int.Parse(reader["isOnline"].ToString());
                 UserLog user = new UserLog(reader["firstname"].ToString(),
                                            reader["lastname"].ToString(), reader["middlename"].ToString(), 
                                            roleid, reader["username"].ToString(),
-                                            accid, ischange); 
+                                            accid, ischange,isOnline); 
             }
             crud.CloseConnection();
             return roleid;

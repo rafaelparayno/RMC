@@ -19,6 +19,7 @@ namespace RMC.UserDash
     {
         private List<int> useraccess = new List<int>();
         AccessController accesses = new AccessController();
+        UserracountsController uc = new UserracountsController();
         Timer t1 = new Timer();
 
         private Form activeForm = null;
@@ -31,8 +32,9 @@ namespace RMC.UserDash
             this.DoubleBuffered = true;
         }
 
-        private void btnCloseApp_Click(object sender, EventArgs e)
+        private async void btnCloseApp_Click(object sender, EventArgs e)
         {
+            await uc.updateStatus(0,UserLog.getUserId());
             System.Windows.Forms.Application.Exit();
         }
 
@@ -44,6 +46,7 @@ namespace RMC.UserDash
 
         private void init()
         {
+       
             timer1.Start();
            
         }
@@ -161,7 +164,7 @@ namespace RMC.UserDash
             changingLabel("Laboratory");
         }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             DialogResult diag = MessageBox.Show("Do you want to Logout",
@@ -169,6 +172,7 @@ namespace RMC.UserDash
 
             if (diag == DialogResult.Yes)
             {
+                await uc.updateStatus(0, UserLog.getUserId());
                 Login log = new Login();
                 log.Show();
                 this.Hide();

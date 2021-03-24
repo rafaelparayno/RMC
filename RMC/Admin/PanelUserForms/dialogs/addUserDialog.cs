@@ -89,7 +89,7 @@ namespace RMC.Admin.PanelForms.dialogs
             else
             {
                 saveData();    
-               // MessageBox.Show(roleid + "");
+             
             }
             MessageBox.Show("Success Save Data");
             this.Close();
@@ -97,7 +97,7 @@ namespace RMC.Admin.PanelForms.dialogs
 
         private void saveData()
         {
-            string[] datas = new string[7];
+            string[] datas = new string[8];
             datas[0] = ToUpper(txtFirstName.Text.Trim());
             datas[1] = txtMn.Text.Trim() == "" ? "" : ToUpper(txtMn.Text.Trim());
             datas[2] = ToUpper(txtLn.Text.Trim());
@@ -106,6 +106,7 @@ namespace RMC.Admin.PanelForms.dialogs
             datas[4] = GeneratePassword(8);
             datas[5] = 0 + "";
             datas[6] = roleid + "";
+            datas[7] = 0 + "";
             useraccounts.saveUserAccount(datas);
         }
 

@@ -14,6 +14,7 @@ namespace RMC
     {
         dbConnection dbcon = new dbConnection();
         LoginController log = new LoginController();
+        UserracountsController uc = new UserracountsController();
         Timer t1 = new Timer();
         bool isConnected = false;
         public Login()
@@ -75,7 +76,7 @@ namespace RMC
         }
 
 
-        private void iconButton1_Click_1(object sender, EventArgs e)
+        private async  void iconButton1_Click_1(object sender, EventArgs e)
         {
             //login button
             int roleid = log.login(txtUsername.Text.Trim(), txtPassword.Text.Trim());
@@ -94,6 +95,7 @@ namespace RMC
 
                 if (UserLog.getIsPasswordChanged() == 1)
                 {
+                    await uc.updateStatus(1, UserLog.getUserId());
                     MessageBox.Show("Login Success");
                     UserDashboard frm = new UserDashboard();
                     frm.Show();
@@ -102,6 +104,7 @@ namespace RMC
                 }
                 else
                 {
+                    await uc.updateStatus(1, UserLog.getUserId());
                     ChangePassword changePass = new ChangePassword();
                     changePass.Show();
                     this.Hide();

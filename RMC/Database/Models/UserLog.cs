@@ -15,8 +15,9 @@ namespace RMC.Database.Models
 		private static int Role;
 		private static int useridd;
 		private static int isPasswordChanged;
+		private static int isOnline;
 
-		public UserLog(string firstName, string lastname, string middlename, int role_id, string username, int userid, int isPasword)
+		public UserLog(string firstName, string lastname, string middlename, int role_id, string username, int userid, int isPasword,int isOl)
 		{
 			FirstName = firstName;
 			LastName = lastname;
@@ -25,6 +26,7 @@ namespace RMC.Database.Models
 			UserName = username;
 			useridd = userid;
 			isPasswordChanged = isPasword;
+			isOnline = isOl;
 		}
 
 		public static string getFirstName()
@@ -62,6 +64,11 @@ namespace RMC.Database.Models
 		public static int getIsPasswordChanged()
 		{
 			return isPasswordChanged;
+		}
+
+		public static int getStatusOnline()
+		{
+			return isOnline;
 		}
 	}
 }

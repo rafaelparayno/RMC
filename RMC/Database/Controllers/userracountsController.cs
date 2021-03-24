@@ -52,7 +52,7 @@ namespace RMC.Database.Controllers
         {
             string tablename = useraccount.tableName;
             string table_columns = String.Join(",",useraccount.table_columns);
-            string sql = String.Format("INSERT INTO {0} ({1}) VALUES (@firstname,@middlename,@lastname,@username,@password,@is_change,@role_id)", tablename, table_columns);
+            string sql = String.Format(@"INSERT INTO {0} ({1}) VALUES (@firstname,@middlename,@lastname,@username,@password,@is_change,@role_id,@isOnline)", tablename, table_columns);
             List<MySqlParameter> list = new List<MySqlParameter>();
 
             list.Add(new MySqlParameter(useraccount.table_keys[0], dataInput[0]));
@@ -62,7 +62,7 @@ namespace RMC.Database.Controllers
             list.Add(new MySqlParameter(useraccount.table_keys[4], dataInput[4]));
             list.Add(new MySqlParameter(useraccount.table_keys[5], int.Parse(dataInput[5])));
             list.Add(new MySqlParameter(useraccount.table_keys[6], int.Parse(dataInput[6])));
-           
+            list.Add(new MySqlParameter(useraccount.table_keys[7], int.Parse(dataInput[7])));
             await crud.ExecuteAsync(sql, list);
            
         }
@@ -167,6 +167,18 @@ namespace RMC.Database.Controllers
             list.Add(new MySqlParameter("@value", value));
             DataSet dsUserAccounts = new DataSet();
             return dsUserAccounts = await crud.GetDataSetAsync(sql, list);
+        }
+
+        public async Task updateStatus(int value,int uid)
+        {
+            string sql = @"UPDATE useraccounts SET isOnline = @isol WHERE u_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@isol", value));
+            listparams.Add(new MySqlParameter("@id", uid));
+
+            await crud.ExecuteAsync(sql, listparams);
+            
         }
 
 

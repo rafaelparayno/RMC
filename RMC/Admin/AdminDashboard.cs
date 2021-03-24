@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
@@ -14,6 +13,8 @@ using RMC.Admin.PanelReportsForms;
 using RMC.Admin.PanelUtilitiesForms;
 using RMC.Admin.PanelLabForms.PanelsSettings;
 using RMC.Components;
+using RMC.Database.Controllers;
+using RMC.Database.Models;
 
 namespace RMC.Admin
 {
@@ -22,6 +23,7 @@ namespace RMC.Admin
         private IconButton currentBtn;
         private IconButton currentSubBtn;
         private Panel leftBorderBtn;
+        UserracountsController uc = new UserracountsController();
         private Form activeForm = null;
         //For Dragging
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -271,8 +273,9 @@ namespace RMC.Admin
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void btnCloseApp_Click(object sender, EventArgs e)
+        private async void btnCloseApp_Click(object sender, EventArgs e)
         {
+            await uc.updateStatus(0, UserLog.getUserId());
             System.Windows.Forms.Application.Exit();
         }
 
@@ -362,7 +365,7 @@ namespace RMC.Admin
 
         private void btnItemList_Click(object sender, EventArgs e)
         {
-            openChildForm(new ItemList());
+            openChildForm(new PanelPharForms.ItemList());
             showSubMenuTitle(sender);
         }
 
@@ -432,8 +435,11 @@ namespace RMC.Admin
         }
 
 
-        private void iconButton4_Click(object sender, EventArgs e)
+        private async void iconButton4_Click(object sender, EventArgs e)
         {
+
+            await uc.updateStatus(0, UserLog.getUserId());
+
             Login log = new Login();
             log.Show();
             this.Hide();
