@@ -249,7 +249,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
 
 
-        private async void processTransaction()
+        private async Task processTransaction()
         {
           
           
@@ -403,7 +403,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
         }
 
-        private  void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             int _;
             float payment = 0;
@@ -421,7 +421,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 return;
             }
 
-            processTransaction();
+            await processTransaction();
             finishTransaction(payment);
            
             //show OR
