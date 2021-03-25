@@ -15,7 +15,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 {
     public partial class ShowQueue : Form
     {
-        CustomerDetailsController customerDetailsController = new CustomerDetailsController();
+       
         DoctorQueueController doctorQueueController = new DoctorQueueController();
         UserracountsController uc = new UserracountsController();
         SpeechSynthesizer _ss = new SpeechSynthesizer();
@@ -68,25 +68,13 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 dc.NextQueue = nextQ == 0 ? "" : nextQ.ToString();
                 dc.Dock = DockStyle.Left;
                 panelDoctor.Controls.Add(dc);
-
             }
        
 
 
         }
 
-       
-
-       /* private async Task<int> getCurrentQueue()
-        {
-           return  await customerDetailsController.getCurrentCustomer();
-        }
-
-        private async Task<int> getNextQueue()
-        {
-            return await customerDetailsController.nextCurrentCustomer();
-        }*/
-
+ 
 
         private async void refreshQue()
         {
@@ -94,44 +82,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             populateDocs();
 
 
-            /*  int q  =  await getCurrentQueue();
-              int nq = await getNextQueue();*/
-            /*  lastQue = q;
-              setQueue(q);
-              setNextQ(nq);*/
+         
         }
 
-      /*  private void setQueue(int cQ)
+        private async Task doctorSounds()
         {
-            if (cQ == 0)
-            {
-                label3.Text = String.Format("No# : {0}", "None");
-            }
-            else
-            {
-                label3.Text = String.Format("No# : {0}", cQ);
-            }
-
-        
-        }*/
-
-       /* private void setNextQ(int nQ)
-        {
-            if (nQ == 0)
-            {
-                label4.Text = String.Format("No# : {0}", "None");
-            }
-            else
-            {
-                label4.Text = String.Format("No# : {0}", nQ);
-            }
-        }*/
-
-        private async void timer1_Tick(object sender, EventArgs e)
-        {
-            /* List<int> currentDocsQ = await doctorQueueController.getQueueDoc();
-             populateDocs(currentDocsQ);*/
-
             List<DoctorQueueModel> newDocQue = await uc.listDoctorOnlinesModel();
 
             foreach (DoctorQueueModel d in newDocQue)
@@ -142,37 +97,21 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
                 DoctorQueueModel s = Cdoctors.Find(item => item.id == d.id);
 
-                if(s.currentQueue != currentq)
+                if (s.currentQueue != currentq)
                 {
                     speech(s.doctorname, currentq.ToString());
                 }
 
             }
+        }
+  
 
-                /*
-                            int getCurrentDQ = currentDocsQ.Last();
-                            int getNDQ = await doctorQueueController.getCurrentQ();
-                            if (getCurrentDQ != getNDQ)
-                            {
-                                if (getNDQ != 0)
-                                    speech("Doctor", getNDQ.ToString());
-                            }*/
+        private async void timer1_Tick(object sender, EventArgs e)
+        {
 
-                refreshQue();
-
-
-            /*  int getQ = await getCurrentQueue();
-              int getNQ = await getNextQueue();*/
-            /*if (lastQue != getQ)
-            {
-                lastQue = getQ;
-                setQueue(getQ);
-                setNextQ(getNQ);
-                playSounds();
-            }
-           */
-
-
+            await doctorSounds();
+                 
+             refreshQue();
 
         }
 
