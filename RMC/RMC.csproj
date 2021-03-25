@@ -525,6 +525,7 @@
     <Compile Include="Database\Controllers\PoController.cs" />
     <Compile Include="Database\Controllers\PoItemController.cs" />
     <Compile Include="Database\Controllers\PricesServiceController.cs" />
+    <Compile Include="Database\Controllers\RadioQueueController.cs" />
     <Compile Include="Database\Controllers\ReceiveControllers.cs" />
     <Compile Include="Database\Controllers\ReturnItemsController.cs" />
     <Compile Include="Database\Controllers\RolesController.cs" />

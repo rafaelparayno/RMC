@@ -27,6 +27,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         InvoiceController invoiceController = new InvoiceController();
         SalesClinicController salesClinicController = new SalesClinicController();
         LabQueueController labQueueController = new LabQueueController();
+        RadioQueueController radioQueueController = new RadioQueueController();
         #endregion
 
         #region VariableState
@@ -287,6 +288,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
                 if (type == "Laboratory")
                     saves.Add(labQueueController.save(id, customerid));
+                if (type == "Radio")
+                    saves.Add(radioQueueController.save(customerid, id));
+
+
             }
 
             await Task.WhenAll(saves);
