@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         PricesServiceController pricesService = new PricesServiceController();
         InvoiceController invoiceController = new InvoiceController();
         SalesClinicController salesClinicController = new SalesClinicController();
+        LabQueueController labQueueController = new LabQueueController();
         #endregion
 
         #region VariableState
@@ -48,7 +50,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         float totalPrice = 0;
         DataTable dt = new DataTable();
         #endregion
-
+         
 
         public ReceptionPayment(int reqid)
         {
@@ -199,11 +201,19 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private async void setInitPrice()
         {
-            priceMedCert = await pricesService.getPrice("MedCert");
-            priceConsult = await pricesService.getPrice("Consulation");
-            priceSConsult = await pricesService.getPrice("SConsultation");
-            priceFConsult = await pricesService.getPrice("priceConsultF");
+            Task<float> price1 =  pricesService.getPrice("MedCert");
+            Task<float> price2 = pricesService.getPrice("Consulation");
+            Task<float> price3 = pricesService.getPrice("SConsultation");
+            Task<float> price4 = pricesService.getPrice("priceConsultF");
+         
+            Task<float>[] prices = new Task<float>[] {price1,price2,price3,price4 };
 
+            await Task.WhenAll(prices);
+
+            priceMedCert = price1.Result;
+            priceConsult = price2.Result;
+            priceSConsult = price3.Result;
+            priceFConsult = price4.Result;
 
             txtPriceConsult.Text = priceConsult.ToString();
             textBox1.Text = priceMedCert.ToString();
@@ -235,18 +245,54 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             button2.Enabled = false;
             btnUpdate.Enabled = false;
         }
-        
-        private void processTransaction()
+
+
+
+        private async void processTransaction()
         {
-            invoiceController.Save(totalPrice);
+          
+          
+            Task task1 = savesRadioLabQ();
+            Task task2 = customerDetailsController.setPaid(customerid);
+            Task task3 = saveclinicSales();
+            Task task4 = invoiceController.Save(totalPrice);
+            Task[] processes = new Task[] { task1, task2,task3,task4 };
+
+            await Task.WhenAll(processes);
+        }
+
+
+        private async Task saveclinicSales()
+        {
+            List<Task> saves = new List<Task>();
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                string type = dr.Cells[2].Value.ToString();
+                int id = int.Parse(dr.Cells[0].Value.ToString());
+                saves.Add(salesClinicController.Save(type, id));
+            
+            }
+            await Task.WhenAll(saves);
+        }
+
+        
+
+        private async Task savesRadioLabQ()
+        {
+            List<Task> saves = new List<Task>();
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
                 string type = dr.Cells[2].Value.ToString();
                 int id = int.Parse(dr.Cells[0].Value.ToString());
 
-                salesClinicController.Save(type, id);
+                if (type == "Laboratory")
+                    saves.Add(labQueueController.save(id, customerid));
             }
+
+            await Task.WhenAll(saves);
         }
+
+
 
         private bool isFoundGrid(string type, int idInSelect)
         {
@@ -310,10 +356,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 return;
 
 
-            if (!isFoundGrid("XEU", cbValueXray))
+            if (!isFoundGrid("Radio", cbValueXray))
             {
                 float price = await xrayControllers.getPrice(cbValueXray);
-                dt.Rows.Add(cbValueXray,cbXray.Text, "XEU", price);
+                dt.Rows.Add(cbValueXray,cbXray.Text, "Radio", price);
 
                 dataGridView1.DataSource = dt;
                 setTotalPrice();
@@ -352,7 +398,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
         }
 
-        private async void btnUpdate_Click(object sender, EventArgs e)
+        private  void btnUpdate_Click(object sender, EventArgs e)
         {
             int _;
             float payment = 0;
@@ -372,7 +418,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
             processTransaction();
             finishTransaction(payment);
-            await customerDetailsController.setPaid(customerid);
+           
             //show OR
         }
 
@@ -435,14 +481,23 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             trigerCb();
             txtPriceConsult.Text = priceSConsult.ToString();
+            setTotalPrice();
         }
 
         private void radioButton1_Click(object sender, EventArgs e)
         {
             trigerCb();
             txtPriceConsult.Text = priceConsult.ToString();
+            setTotalPrice();
         }
-        #endregion
+
+        private void radioButton3_Click(object sender, EventArgs e)
+        {
+            trigerCb();
+            txtPriceConsult.Text = priceFConsult.ToString();
+            setTotalPrice();
+        }
+
 
         private void txtDis_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -467,10 +522,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             setTotalPrice();
         }
 
-        private void radioButton3_Click(object sender, EventArgs e)
-        {
-            trigerCb();
-            txtPriceConsult.Text = priceFConsult.ToString();
-        }
+      
+        #endregion
+
+
     }
 }

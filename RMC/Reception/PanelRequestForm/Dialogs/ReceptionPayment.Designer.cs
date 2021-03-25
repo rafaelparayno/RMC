@@ -71,6 +71,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.gpConsulation = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.cbFree = new System.Windows.Forms.CheckBox();
@@ -78,7 +79,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -589,9 +589,9 @@
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label4.Location = new System.Drawing.Point(12, 17);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 17);
+            this.label4.Size = new System.Drawing.Size(51, 17);
             this.label4.TabIndex = 249;
-            this.label4.Text = "Xray,Ecg,UltraSound";
+            this.label4.Text = "Radio\'s";
             // 
             // iconButton3
             // 
@@ -818,6 +818,17 @@
             this.gpConsulation.TabStop = false;
             this.gpConsulation.Visible = false;
             // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(23, 149);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(81, 20);
+            this.radioButton3.TabIndex = 5;
+            this.radioButton3.Text = "Follow up";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.Click += new System.EventHandler(this.radioButton3_Click);
+            // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
@@ -902,17 +913,6 @@
             this.button2.Text = "Senior Discount";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(23, 149);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(81, 20);
-            this.radioButton3.TabIndex = 5;
-            this.radioButton3.Text = "Follow up";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.Click += new System.EventHandler(this.radioButton3_Click);
             // 
             // ReceptionPayment
             // 

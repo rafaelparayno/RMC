@@ -13,7 +13,7 @@ namespace RMC.Database.Controllers
     class SalesClinicController
     {
         dbcrud crud = new dbcrud();
-        public async void Save(string type, int id)
+        public async Task Save(string type, int id)
         {
             string sql;
             List<MySqlParameter> list = new List<MySqlParameter>();
@@ -270,41 +270,6 @@ namespace RMC.Database.Controllers
             return totalSalesConsulation;
         }
 
-        /*public async Task<float> getTotalCostDay(string date)
-        {
-            float totalCost = 0;
-            List<SalesClinicTypeMod> listSalesClinicTypeMod = new List<SalesClinicTypeMod>();
-
-            string sql = @"SELECT * FROM `salesclinic`
-                    WHERE invoice_id in (SELECT invoice_id FROM invoice 
-                                                WHERE invoice.date_invoice BETWEEN @date 
-                     							AND DATE_ADD(@date,INTERVAL 1 DAY))";
-
-            List<MySqlParameter> listParams = new List<MySqlParameter>();
-            listParams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
-
-            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
-
-            while(await reader.ReadAsync())
-            {
-                SalesClinicTypeMod s = new SalesClinicTypeMod();
-                s.type = reader["type_sales"].ToString();
-                s.typeid = int.Parse(reader["type_sales_id"].ToString());
-                listSalesClinicTypeMod.Add(s);
-            }
-            crud.CloseConnection();
-
-           *//* foreach (SalesClinicTypeMod itemsSales in listSalesClinicTypeMod)
-            {
-                switch (itemsSales.type)
-                {
-                    case
-                }
-            }*//*
-
-        
-
-            return totalCost;
-        }*/
+      
     }
 }

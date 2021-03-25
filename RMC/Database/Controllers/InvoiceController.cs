@@ -12,7 +12,7 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async void Save(float sales)
+        public async Task Save(float sales)
         {
             string sql;
             List<MySqlParameter> list = new List<MySqlParameter>();
