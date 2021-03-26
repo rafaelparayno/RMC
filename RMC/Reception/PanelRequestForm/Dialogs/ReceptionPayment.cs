@@ -1,6 +1,7 @@
 ﻿using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.InventoryPharma.Dialogs;
+using RMC.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -251,15 +252,55 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private void finishTransaction(float payment)
         {
+
+            printReceipt(payment);
             dt.Rows.Clear();
             dataGridView1.DataSource = dt;
 
-            float change = payment - totalPrice;
-            textBox4.Text = "PHP " + String.Format("{0:0.##}", change);
             button2.Enabled = false;
             btnUpdate.Enabled = false;
         }
 
+
+        public void printReceipt(float payment)
+        {
+            float change = payment - totalPrice;
+            textBox4.Text = "PHP " + String.Format("{0:0.##}", change);
+
+            float subtotal = 0;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("itemname", typeof(string));
+            dt.Columns.Add("qty", typeof(int));
+            dt.Columns.Add("price", typeof(float));
+
+
+
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                string name = dr.Cells["Name"].Value.ToString();
+             
+                float Tprice = float.Parse(dr.Cells["Price"].Value.ToString());
+           
+                subtotal += Tprice;
+                dt.Rows.Add(name, 1, Tprice);
+
+            }
+
+            ds.Tables.Add(dt);
+
+            receipts rec = new receipts();
+            rec.SetDataSource(ds);
+            rec.SetParameterValue("subTotal", subtotal);
+            rec.SetParameterValue("discount", float.Parse(txtDis.Text.Trim()));
+            rec.SetParameterValue("total", float.Parse(textBox3.Text.Trim().Split(' ')[1]));
+            rec.SetParameterValue("payment", float.Parse(textBox2.Text.Trim()));
+            rec.SetParameterValue("change", float.Parse(textBox4.Text.Trim().Split(' ')[1]));
+
+            rec.PrintToPrinter(1, false, 0, 0);
+
+        }
 
 
         private async Task processTransaction()
@@ -416,6 +457,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 setTotalPrice();
             }
         }
+
+
+        
 
         private async void btnUpdate_Click(object sender, EventArgs e)
         {
