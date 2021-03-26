@@ -94,7 +94,7 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, list);
         }
 
-        public async void SaveSKU(string sku, int qty)
+        public async Task SaveSKU(string sku, int qty)
         {
             string sql;
             List<MySqlParameter> list = new List<MySqlParameter>();

@@ -169,7 +169,7 @@ namespace RMC.InventoryPharma
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             int _;
             float payment = 0;
@@ -189,25 +189,29 @@ namespace RMC.InventoryPharma
                 return;
             }
 
-           // processTransaction();
+             await processTransaction();
             finishTransaction(payment);
       
         }
 
        
 
-        private async void processTransaction()
+        private async Task processTransaction()
         {
             await invoiceController.Save(totalAmount);
+            List<Task> listSave = new List<Task>();
+           
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
-                 pharmaStocksController.SaveSKU(dr.Cells["SKU"].Value.ToString(),
-                                                     int.Parse(dr.Cells["Quantity"].Value.ToString()));
-                salesPharmaController.Save(dr.Cells["SKU"].Value.ToString(),
-                                    int.Parse(dr.Cells["Quantity"].Value.ToString()));
+                listSave.Add(pharmaStocksController.SaveSKU(dr.Cells["SKU"].Value.ToString(),
+                                                     int.Parse(dr.Cells["Quantity"].Value.ToString())));
+                
+                listSave.Add(salesPharmaController.Save(dr.Cells["SKU"].Value.ToString(),
+                                    int.Parse(dr.Cells["Quantity"].Value.ToString())));
+               
             }
 
-
+            await Task.WhenAll(listSave);
 
         }
 
