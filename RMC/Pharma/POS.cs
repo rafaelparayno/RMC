@@ -2,6 +2,7 @@
 using RMC.Database.Models;
 using RMC.InventoryPharma.Dialogs;
 using RMC.Pharma;
+using RMC.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -188,15 +189,16 @@ namespace RMC.InventoryPharma
                 return;
             }
 
-            processTransaction();
+           // processTransaction();
             finishTransaction(payment);
+      
         }
 
        
 
-        private void processTransaction()
+        private async void processTransaction()
         {
-            invoiceController.Save(totalAmount);
+            await invoiceController.Save(totalAmount);
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
                  pharmaStocksController.SaveSKU(dr.Cells["SKU"].Value.ToString(),
@@ -209,13 +211,54 @@ namespace RMC.InventoryPharma
 
         }
 
+
+        public void printReceipt(float payment)
+        {
+            change = payment - totalAmount;
+            textBox4.Text = "PHP " + String.Format("{0:0.##}", change);
+
+            float subtotal = 0;
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("itemname", typeof(string));
+            dt.Columns.Add("qty", typeof(int));
+            dt.Columns.Add("price", typeof(float));
+
+
+
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                string name = dr.Cells["Product Name"].Value.ToString();
+                int qty = int.Parse(dr.Cells["Quantity"].Value.ToString());
+                float Tprice = float.Parse(dr.Cells["Price"].Value.ToString());
+                float sPrice = Tprice / qty;
+                subtotal += Tprice;
+                dt.Rows.Add(name, qty, sPrice);
+                
+            }
+
+            ds.Tables.Add(dt);
+
+            receipts rec = new receipts();
+            rec.SetDataSource(ds);
+            rec.SetParameterValue("subTotal", subtotal);
+            rec.SetParameterValue("discount", float.Parse(txtDis.Text.Trim()));
+            rec.SetParameterValue("total", float.Parse(textBox3.Text.Trim().Split(' ')[1]));
+            rec.SetParameterValue("payment", float.Parse(textBox2.Text.Trim()));
+            rec.SetParameterValue("change", float.Parse(textBox4.Text.Trim().Split(' ')[1]));
+
+            rec.PrintToPrinter(1, false, 0, 0);
+    
+        }
+
         private void finishTransaction(float payment)
         {
+            printReceipt(payment);
             dt.Rows.Clear();
             dataGridView1.DataSource = dt;
             clearItems();
-            change = payment - totalAmount;
-            textBox4.Text = "PHP " + String.Format("{0:0.##}", change);
+            
             btnUpdate.Enabled = false;
             button3.Enabled = false;
             txtCode.Enabled = false;

@@ -5,10 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Drawing.Printing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -50,6 +48,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         float priceFConsult = 0;
         float totalPrice = 0;
         DataTable dt = new DataTable();
+   /*     PrintDocument printDocument = new PrintDocument();
+        PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();*/
         #endregion
          
 
@@ -63,9 +63,22 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             initGroupBoxState();
             loadFromDbtoCb();
             setTotalPrice();
-           
+            printerSettings();
         }
 
+        private void printerSettings()
+        {
+          /*  printDocument.PrintPage += new PrintPageEventHandler(printDocs);
+            printDocument.DefaultPageSettings.PaperSize = new PaperSize("custom", 200, 200);*/
+            // printDocument.showdia
+     
+        }
+/*
+        private void printDocs(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(Properties.Resources.rmc, new Point(0, 0));
+        }
+*/
 
         #region OwnFunctions
         private void initColDg()
@@ -276,8 +289,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             await Task.WhenAll(saves);
         }
 
-        
-
         private async Task savesRadioLabQ()
         {
             List<Task> saves = new List<Task>();
@@ -296,6 +307,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
             await Task.WhenAll(saves);
         }
+
+
+        
 
 
 
@@ -527,7 +541,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             setTotalPrice();
         }
 
-      
+
+
         #endregion
 
 
