@@ -85,6 +85,9 @@ namespace RMC.InventoryPharma
             txtName.Clear();
             txtStock.Clear();
             txtrue.Text = "";
+            
+            txtDis.Visible = false;
+            label11.Visible = false;
         }
 
         private int checkstocks(string sku,int stocks)
@@ -298,7 +301,7 @@ namespace RMC.InventoryPharma
 
             seniorId = form.seniorId;
 
-            if (seniorId != "" || seniorId != null)
+            if (!string.IsNullOrEmpty(seniorId))
             {
                 txtDis.Visible = true;
                 label11.Visible = true;
@@ -347,6 +350,40 @@ namespace RMC.InventoryPharma
 
             txtCode.Text = skuFromSearch;
             
+        }
+
+        private void POS_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.F1)
+            {
+                button7.PerformClick();
+            }
+           if (e.KeyCode == Keys.F2)
+            {
+                button6.PerformClick();
+            }
+            if (e.KeyCode == Keys.F3)
+            {
+                button4.PerformClick();
+            }
+            if (e.KeyCode == Keys.F4)
+            {
+                button5.PerformClick();
+            }
+
+            if (e.KeyCode == Keys.F5)
+            {
+                button2.PerformClick();
+            }
+            if (e.KeyCode == Keys.F6)
+            {
+                button1.PerformClick();
+            }
+            if (e.KeyCode == Keys.F7)
+            {
+                btnUpdate.PerformClick();
+            }
         }
     }
 }
