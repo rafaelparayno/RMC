@@ -23,9 +23,11 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         LaboratoryController laboratoryController = new LaboratoryController();
         ConsumablesController consumablesController = new ConsumablesController();
         bool isAuto = true;
+        bool isCrystal = false;
         bool isEdit = false;
         int cbAutoValue = 0;
         int cbLabTypeValue = 0;
+        int cbCrystalValue = 0;
         int cbConValue = 0;
         int id = 0;
         List<int> idstobeRemove = new List<int>();
@@ -261,6 +263,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 panelForImg.Visible = true;
                 cbAutomated.Visible = true;
                 label11.Visible = true;
+
+                groupBox4.Visible = false; 
             }
                
         }
@@ -273,6 +277,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 panelForImg.Visible = false;
                 cbAutomated.Visible = false;
                 label11.Visible = false;
+
+                groupBox4.Visible = true;
             }
         }
 
@@ -329,12 +335,15 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 removeConsumables(idstobeRemove);
                 updateConsumables();
                 laboratoryController.save(txtName.Text.Trim(), txtDesc.Text.Trim(),
-                  cbLabTypeValue.ToString(), cbAutoValue.ToString(), isAuto.ToString(), txtSellingPrice.Text.Trim(),id.ToString());
+                  cbLabTypeValue.ToString(), cbAutoValue.ToString(), isAuto.ToString(),
+                  cbCrystalValue.ToString(), isCrystal.ToString(), txtSellingPrice.Text.Trim(),id.ToString());
             }
             else
             {
                 laboratoryController.save(txtName.Text.Trim(), txtDesc.Text.Trim(), 
-                    cbLabTypeValue.ToString(), cbAutoValue.ToString(), isAuto.ToString(),txtSellingPrice.Text.Trim());
+                    cbLabTypeValue.ToString(), cbAutoValue.ToString(), isAuto.ToString(),
+                    cbCrystalValue.ToString(),isCrystal.ToString(),
+                        txtSellingPrice.Text.Trim());
                 saveConsumables();
             }
 
@@ -365,7 +374,27 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         {
             cbLabTypeValue = int.Parse((cbLabType.SelectedItem as ComboBoxItem).Value.ToString());
         }
+
+        private void cbCrystal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /* if(cbCrystal.SelectedIndex == 0)
+             {
+
+             }*/
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            isCrystal = false;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            isCrystal = true;
+        }
+
         #endregion
 
+    
     }
 }

@@ -101,17 +101,18 @@ namespace RMC.Database.Controllers
             listparam.Add(new MySqlParameter("@desc", datas[1]));
             listparam.Add(new MySqlParameter("@lbid", datas[2]));
             listparam.Add(new MySqlParameter("@docsid", bool.Parse(datas[4]) == true ? int.Parse(datas[3]) : 0));
-            listparam.Add(new MySqlParameter("@price", float.Parse(datas[5])));
-            if (datas.Length == 6)
+            listparam.Add(new MySqlParameter("@price", float.Parse(datas[7])));
+            listparam.Add(new MySqlParameter("@csidlab", bool.Parse(datas[5]) == true ? int.Parse(datas[6]) : 0));
+            if (datas.Length == 8)
             {
-                sql = @"INSERT INTO laboratorylist (labname,description,price_lab,labtype_id,auto_docs_id) 
-                          VALUES (@name,@desc,@price,@lbid,@docsid)";
+                sql = @"INSERT INTO laboratorylist (labname,description,price_lab,labtype_id,auto_docs_id,crystal_id_lab) 
+                          VALUES (@name,@desc,@price,@lbid,@docsid,@csidlab)";
             }
             else
             {
                 sql = @"UPDATE laboratorylist SET labname = @name, description = @desc, price_lab = @price,
-                        labtype_id = @lbid, auto_docs_id = @docsid WHERE laboratory_id = @id";
-                listparam.Add(new MySqlParameter("@id", int.Parse(datas[6])));
+                        labtype_id = @lbid, auto_docs_id = @docsid ,crystal_id_lab = @csidlab WHERE laboratory_id = @id";
+                listparam.Add(new MySqlParameter("@id", int.Parse(datas[8])));
                
             }
 
