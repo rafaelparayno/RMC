@@ -730,6 +730,18 @@
     <Compile Include="Lab\Panels\PanelViewStocks.Designer.cs">
       <DependentUpon>PanelViewStocks.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewReports\Fecalysis.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Fecalysis.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewReports\Hematology.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hematology.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Patients\addEditPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1182,6 +1194,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\Panels\PanelViewStocks.resx">
       <DependentUpon>PanelViewStocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReports\Fecalysis.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Fecalysis.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReports\Hematology.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Hematology.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\addEditPatient.resx">
       <DependentUpon>addEditPatient.cs</DependentUpon>
