@@ -18,6 +18,8 @@ namespace RMC.Database.Models
 
         public string labtypename { get; set; }
 
+        public int crystal_id_lab { get; set; }
+
         public int is_done { get; set; }
     }
 }

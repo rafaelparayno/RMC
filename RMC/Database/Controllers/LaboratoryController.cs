@@ -16,12 +16,45 @@ namespace RMC.Database.Controllers
         public async Task<DataSet> getDataSet()
         {
             string sql = @"SELECT laboratorylist.`laboratory_id` AS 'ID',
-                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS'
+                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS',
+                        crystal_name
                         FROM `laboratorylist` 
                         INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
-                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id";
+                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id 
+                        LEFT JOIN automated_crystal ON laboratorylist.crystal_id_lab = automated_crystal.automated_crystal_id
+                        ORDER BY laboratory_id ASC";
 
             return await crud.GetDataSetAsync(sql, null);
+        }
+
+        public async Task<labModel>getLabModelInID(int id)
+        {
+            labModel labModel = new labModel();
+            string sql = @"SELECT * FROM `laboratorylist` WHERE laboratory_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", id));
+            DbDataReader reader = await  crud.RetrieveRecordsAsync(sql, listparams);
+
+            while(await reader.ReadAsync())
+            {
+                labModel.id = int.Parse(reader["laboratory_id"].ToString());
+
+                labModel.name = reader["labname"].ToString();
+
+                labModel.autodocsid = string.IsNullOrEmpty(reader["auto_docs_id"].ToString())? 0 : 
+                                        int.Parse(reader["auto_docs_id"].ToString());
+
+                labModel.crystal_id_lab = string.IsNullOrEmpty(reader["crystal_id_lab"].ToString()) ?
+                                    0 : int.Parse(reader["crystal_id_lab"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+
+            return labModel;
+            
+
         }
 
 
@@ -101,8 +134,9 @@ namespace RMC.Database.Controllers
             listparam.Add(new MySqlParameter("@desc", datas[1]));
             listparam.Add(new MySqlParameter("@lbid", datas[2]));
             listparam.Add(new MySqlParameter("@docsid", bool.Parse(datas[4]) == true ? int.Parse(datas[3]) : 0));
+          
+            listparam.Add(new MySqlParameter("@csidlab", bool.Parse(datas[6]) == true ? int.Parse(datas[5]) : 0));
             listparam.Add(new MySqlParameter("@price", float.Parse(datas[7])));
-            listparam.Add(new MySqlParameter("@csidlab", bool.Parse(datas[5]) == true ? int.Parse(datas[6]) : 0));
             if (datas.Length == 8)
             {
                 sql = @"INSERT INTO laboratorylist (labname,description,price_lab,labtype_id,auto_docs_id,crystal_id_lab) 
@@ -116,7 +150,10 @@ namespace RMC.Database.Controllers
                
             }
 
+            Console.WriteLine(sql);
+            Console.WriteLine(datas[6]+ " "  + datas[5]);
             await crud.ExecuteAsync(sql, listparam);
+
         }
 
         public async void remove(int id)

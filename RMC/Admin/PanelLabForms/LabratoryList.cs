@@ -58,6 +58,11 @@ namespace RMC.Admin.PanelLabForms
 
         private void btnEditItem_Click(object sender, EventArgs e)
         {
+
+
+            if (dgLabList.Rows.Count == 0)
+                return;
+
             if (dgLabList.SelectedRows.Count == 0)
                 return;
 
@@ -67,7 +72,8 @@ namespace RMC.Admin.PanelLabForms
                                             dgLabList.SelectedRows[0].Cells[2].Value.ToString(),
                                             dgLabList.SelectedRows[0].Cells[3].Value.ToString(),
                                             dgLabList.SelectedRows[0].Cells[4].Value.ToString(),
-                                            dgLabList.SelectedRows[0].Cells[5].Value.ToString());
+                                            dgLabList.SelectedRows[0].Cells[5].Value.ToString(),
+                                            dgLabList.SelectedRows[0].Cells[6].Value.ToString());
             form.ShowDialog();
             loadGrid();
         }

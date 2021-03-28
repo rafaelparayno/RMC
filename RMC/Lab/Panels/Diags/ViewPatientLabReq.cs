@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Lab.DialogReports;
 using RMC.Patients;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,12 @@ namespace RMC.Lab.Panels.Diags
     public partial class ViewPatientLabReq : Form
     {
         private int patientid = 0;
+       
         patientDetails patientmod = new patientDetails();
         PatientDetailsController patD = new PatientDetailsController();
         List<labModel> listLabModels = new List<labModel>();
         LabQueueController labQueueController = new LabQueueController();
-
+        LaboratoryController laboratoryController = new LaboratoryController();
         public ViewPatientLabReq(int patientid)
         {
             InitializeComponent();
@@ -90,5 +92,66 @@ namespace RMC.Lab.Panels.Diags
             }
         }
 
+        private void lvItemLab_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                var focusedItem = lvItemLab.FocusedItem;
+                if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
+                {
+                    
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+
+            }
+        }
+
+        private async void insertLabDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show()
+            if (lvItemLab.SelectedItems.Count == 0)
+                return;
+
+            if (lvItemLab.Items.Count == 0)
+                return;
+
+
+            int selectedIds = int.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
+
+            labModel lb = await laboratoryController.getLabModelInID(selectedIds);
+
+            if(lb.autodocsid > 0)
+            {
+                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds);
+                diagWithAutomated.ShowDialog();
+            }
+
+            if(lb.crystal_id_lab > 0)
+            {
+                switch (lb.crystal_id_lab)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        HematologyValueDiags hematologyValueDiags = new HematologyValueDiags();
+                        hematologyValueDiags.ShowDialog();
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                   
+
+                }
+            }
+
+            if(lb.autodocsid == 0 && lb.crystal_id_lab == 0)
+            {
+
+            }
+        }
     }
 }

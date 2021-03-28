@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelPatient = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvItemLab = new System.Windows.Forms.ListView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.insertLabDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelPatient
@@ -80,6 +84,21 @@
             this.lvItemLab.Size = new System.Drawing.Size(695, 412);
             this.lvItemLab.TabIndex = 1;
             this.lvItemLab.UseCompatibleStateImageBehavior = false;
+            this.lvItemLab.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvItemLab_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.insertLabDataToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // insertLabDataToolStripMenuItem
+            // 
+            this.insertLabDataToolStripMenuItem.Name = "insertLabDataToolStripMenuItem";
+            this.insertLabDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.insertLabDataToolStripMenuItem.Text = "Insert Lab Data";
+            this.insertLabDataToolStripMenuItem.Click += new System.EventHandler(this.insertLabDataToolStripMenuItem_Click);
             // 
             // ViewPatientLabReq
             // 
@@ -96,6 +115,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PatientReq";
             this.groupBox2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -106,5 +126,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lvItemLab;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem insertLabDataToolStripMenuItem;
     }
 }

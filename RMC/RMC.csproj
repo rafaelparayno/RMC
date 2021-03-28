@@ -497,6 +497,7 @@
     <Compile Include="Database\Controllers\ConsumablesServController.cs" />
     <Compile Include="Database\Controllers\ConsumablesXrayControllers.cs" />
     <Compile Include="Database\Controllers\ConsumedItems.cs" />
+    <Compile Include="Database\Controllers\crystalAutomatedController.cs" />
     <Compile Include="Database\Controllers\CustomerDetailsController.cs" />
     <Compile Include="Database\Controllers\CustomerRequestsController.cs" />
     <Compile Include="Database\Controllers\DoctorDataController.cs" />
@@ -682,6 +683,24 @@
     <Compile Include="InventoryPharma\PharmaDash.Designer.cs">
       <DependentUpon>PharmaDash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\DialogReports\HematologyDiagForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\DialogReports\HematologyDiagForms.Designer.cs">
+      <DependentUpon>HematologyDiagForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab\DialogReports\HematologyValueDiags.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\DialogReports\HematologyValueDiags.Designer.cs">
+      <DependentUpon>HematologyValueDiags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab\DialogReports\TextBoxParamsCrystal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Lab\DialogReports\TextBoxParamsCrystal.Designer.cs">
+      <DependentUpon>TextBoxParamsCrystal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\LabDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -699,6 +718,12 @@
     </Compile>
     <Compile Include="Lab\Panels\Diags\DiagLab.Designer.cs">
       <DependentUpon>DiagLab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab\Panels\Diags\DiagWithAutomated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\Panels\Diags\DiagWithAutomated.Designer.cs">
+      <DependentUpon>DiagWithAutomated.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab\Panels\Diags\ViewPatientLabReq.cs">
       <SubType>Form</SubType>
@@ -730,6 +755,12 @@
     <Compile Include="Lab\Panels\PanelViewStocks.Designer.cs">
       <DependentUpon>PanelViewStocks.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewReports\BloodChem.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BloodChem.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NewReports\Fecalysis.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -740,6 +771,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Hematology.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewReports\Serology.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Serology.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewReports\Urinalysis.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Urinalysis.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Patients\addEditPatient.cs">
@@ -1171,6 +1214,15 @@
     <EmbeddedResource Include="InventoryPharma\PharmaDash.resx">
       <DependentUpon>PharmaDash.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lab\DialogReports\HematologyDiagForms.resx">
+      <DependentUpon>HematologyDiagForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\DialogReports\HematologyValueDiags.resx">
+      <DependentUpon>HematologyValueDiags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\DialogReports\TextBoxParamsCrystal.resx">
+      <DependentUpon>TextBoxParamsCrystal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab\LabDashboard.resx">
       <DependentUpon>LabDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -1179,6 +1231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\Panels\Diags\DiagLab.resx">
       <DependentUpon>DiagLab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\Panels\Diags\DiagWithAutomated.resx">
+      <DependentUpon>DiagWithAutomated.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\Panels\Diags\ViewPatientLabReq.resx">
       <DependentUpon>ViewPatientLabReq.cs</DependentUpon>
@@ -1195,6 +1250,10 @@
     <EmbeddedResource Include="Lab\Panels\PanelViewStocks.resx">
       <DependentUpon>PanelViewStocks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewReports\BloodChem.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BloodChem.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewReports\Fecalysis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Fecalysis.cs</LastGenOutput>
@@ -1202,6 +1261,14 @@
     <EmbeddedResource Include="NewReports\Hematology.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Hematology.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReports\Serology.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Serology.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReports\Urinalysis.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Urinalysis.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\addEditPatient.resx">
       <DependentUpon>addEditPatient.cs</DependentUpon>

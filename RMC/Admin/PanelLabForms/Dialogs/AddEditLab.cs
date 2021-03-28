@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         LabTypeController labTypeController = new LabTypeController();
         LaboratoryController laboratoryController = new LaboratoryController();
         ConsumablesController consumablesController = new ConsumablesController();
+        crystalAutomatedController crystalAutomatedController = new crystalAutomatedController();
+
         bool isAuto = true;
         bool isCrystal = false;
         bool isEdit = false;
@@ -32,6 +35,11 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         int id = 0;
         List<int> idstobeRemove = new List<int>();
         List<consumablesMod> consumablesModsEdit;
+
+
+      
+
+
         #endregion 
 
         public AddEditLab()
@@ -54,6 +62,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
 
         #region Own Functions
+
+
         private void updateList(int qty)
         {
             ListViewItem item = lvConsumables.FindItemWithText(cbConValue + "");
@@ -90,14 +100,16 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             Task<List<ComboBoxItem>> task1 = itemz.getComboDatas();
             Task<List<ComboBoxItem>> task2 = autoDocsController.getComboDatas();
             Task<List<ComboBoxItem>> task3 = labTypeController.getComboDatas();
-            Task<List<ComboBoxItem>>[] Cbs = new Task<List<ComboBoxItem>>[] { task1, task2, task3 };
+            Task<List<ComboBoxItem>> task4 = crystalAutomatedController.getComboDatas();
+            Task<List<ComboBoxItem>>[] Cbs = new Task<List<ComboBoxItem>>[] { task1, task2, task3,task4 };
 
             await Task.WhenAll(Cbs);
 
             cbConsumables.Items.AddRange(task1.Result.ToArray());
             cbAutomated.Items.AddRange(task2.Result.ToArray());
             cbLabType.Items.AddRange(task3.Result.ToArray());
-
+            cbCrystal.Items.AddRange(task4.Result.ToArray());
+   
         }
 
         private void initColLv()
@@ -113,7 +125,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             string fullPath = await autoDocsController.getFullPath(cbAutoValue);
             if (fullPath != "")
             {
-                pbAutomated.Image = Image.FromFile(fullPath);
+                if(File.Exists(fullPath))
+                    pbAutomated.Image = Image.FromFile(fullPath);
             }
 
         }
@@ -173,9 +186,17 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             txtDesc.Text = datas[2];
             txtSellingPrice.Text = datas[3];
             cbLabType.Text = datas[4];
+            cbCrystal.Text = datas[6];
             consumablesModsEdit = new List<consumablesMod>();
             consumablesModsEdit = await consumablesController.getEditedConsumables(id);
-           
+
+
+            if (!string.IsNullOrEmpty(datas[6]))
+            {
+                radioButton2.Checked = true;
+                isCrystal = true;
+            }
+
             if (datas[5] == "")
             {
                 rbNone.Checked = true;
@@ -331,6 +352,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
             if (isEdit)
             {
+                //edit
                 idstobeRemove = getRemoveId();
                 removeConsumables(idstobeRemove);
                 updateConsumables();
@@ -340,6 +362,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             }
             else
             {
+
+                //adding
                 laboratoryController.save(txtName.Text.Trim(), txtDesc.Text.Trim(), 
                     cbLabTypeValue.ToString(), cbAutoValue.ToString(), isAuto.ToString(),
                     cbCrystalValue.ToString(),isCrystal.ToString(),
@@ -377,24 +401,30 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
         private void cbCrystal_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /* if(cbCrystal.SelectedIndex == 0)
-             {
-
-             }*/
+            cbCrystalValue = int.Parse((cbCrystal.SelectedItem as ComboBoxItem).Value.ToString());
+            
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioButton2_Click(object sender, EventArgs e)
         {
-            isCrystal = false;
-        }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
             isCrystal = true;
+            cbCrystal.Visible = true;
+            label3.Visible = true;
+
         }
+
+        private void radioButton1_Click(object sender, EventArgs e)
+        {
+
+            isCrystal = false;
+            cbCrystal.Visible = false;
+            label3.Visible = false;
+        }
+
 
         #endregion
 
-    
+     
     }
 }
