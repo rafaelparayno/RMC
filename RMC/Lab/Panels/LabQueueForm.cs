@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Lab.Panels.Diags;
+using RMC.Patients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,5 +76,20 @@ namespace RMC.Lab.Panels
             ViewPatientLabReq v = new ViewPatientLabReq(id);
             v.ShowDialog();
         }
+
+        private void doneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool isNumber = int.TryParse(idRightClick, out _);
+            if (!isNumber)
+                return;
+
+            int id = int.Parse(idRightClick);
+
+            addEditPatient form = new addEditPatient(id);
+            form.ShowDialog();
+            loadGrid();
+        }
+
+   
     }
 }

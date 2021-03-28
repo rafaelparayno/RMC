@@ -32,13 +32,13 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dbServiceList = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showLabRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.doneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceList)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -96,6 +96,27 @@
             this.groupBox1.TabIndex = 213;
             this.groupBox1.TabStop = false;
             // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconSize = 18;
+            this.iconButton1.Location = new System.Drawing.Point(575, 39);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(38, 23);
+            this.iconButton1.TabIndex = 222;
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            // 
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -130,7 +151,7 @@
             // showLabRequestsToolStripMenuItem
             // 
             this.showLabRequestsToolStripMenuItem.Name = "showLabRequestsToolStripMenuItem";
-            this.showLabRequestsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showLabRequestsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.showLabRequestsToolStripMenuItem.Text = "Show Lab Requests";
             this.showLabRequestsToolStripMenuItem.Click += new System.EventHandler(this.showLabRequestsToolStripMenuItem_Click);
             // 
@@ -138,28 +159,8 @@
             // 
             this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
             this.doneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.doneToolStripMenuItem.Text = "Done";
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconSize = 18;
-            this.iconButton1.Location = new System.Drawing.Point(575, 39);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(38, 23);
-            this.iconButton1.TabIndex = 222;
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.doneToolStripMenuItem.Text = "View Data";
+            this.doneToolStripMenuItem.Click += new System.EventHandler(this.doneToolStripMenuItem_Click);
             // 
             // LabQueueForm
             // 
