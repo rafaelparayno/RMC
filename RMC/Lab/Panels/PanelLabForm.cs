@@ -104,6 +104,7 @@ namespace RMC.Lab.Panels
             newImg.Save(path + fileName + ".jpg");
         }
         #endregion
+
         #region Handlers Input
         private void iconButton2_Click(object sender, EventArgs e)
         {
@@ -144,6 +145,12 @@ namespace RMC.Lab.Panels
                 patView.Cnumber = "Contact Number : " + patientmod.contact;
                 patView.Dock = DockStyle.Fill;
                 panelPatient.BackColor = Color.FloralWhite;
+                if (File.Exists(patientmod.imgPath))
+                {
+                    Image img = Image.FromFile(patientmod.imgPath);
+
+                    patView.Icon = img;
+                }
                 panelPatient.Controls.Add(patView);
                 btnSave.Enabled = true;
                 btnAddItem.Enabled = true;

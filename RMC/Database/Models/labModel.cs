@@ -16,5 +16,8 @@ namespace RMC.Database.Models
 
         public int autodocsid { get; set; }
 
+        public string labtypename { get; set; }
+
+        public int is_done { get; set; }
     }
 }

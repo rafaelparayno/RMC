@@ -45,5 +45,10 @@ namespace RMC.Lab
         {
             openChildForm(new PanelViewStocks());
         }
+
+        private void btnLabQueue_Click(object sender, EventArgs e)
+        {
+            openChildForm(new LabQueueForm());
+        }
     }
 }

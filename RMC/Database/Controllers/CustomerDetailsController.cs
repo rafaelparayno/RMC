@@ -2,6 +2,7 @@
 using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -135,6 +136,16 @@ namespace RMC.Database.Controllers
             crud.CloseConnection();
 
             return isPaid;
+        }
+
+        public async Task<DataSet> getLabQueue()
+        {
+            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+                         INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
+                            WHERE customer_id in (SELECT customer_id FROM lab_queue WHERE lab_queue.is_done_l = 0) 
+                        AND DATE(customer_request_details.date_req) = CURDATE()";
+
+            return await crud.GetDataSetAsync(sql, null);
         }
 
 

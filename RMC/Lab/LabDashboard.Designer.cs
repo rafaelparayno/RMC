@@ -33,6 +33,7 @@
             this.datelabel = new System.Windows.Forms.Label();
             this.timelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnLabQueue = new FontAwesome.Sharp.IconButton();
             this.btnReturn = new FontAwesome.Sharp.IconButton();
             this.btnPo = new FontAwesome.Sharp.IconButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -47,6 +48,7 @@
             // 
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.Salmon;
+            this.panelSideMenu.Controls.Add(this.btnLabQueue);
             this.panelSideMenu.Controls.Add(this.btnReturn);
             this.panelSideMenu.Controls.Add(this.btnPo);
             this.panelSideMenu.Controls.Add(this.panelLogo);
@@ -128,6 +130,31 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnLabQueue
+            // 
+            this.btnLabQueue.BackColor = System.Drawing.Color.Salmon;
+            this.btnLabQueue.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLabQueue.FlatAppearance.BorderSize = 0;
+            this.btnLabQueue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLabQueue.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnLabQueue.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLabQueue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnLabQueue.IconChar = FontAwesome.Sharp.IconChar.ListOl;
+            this.btnLabQueue.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnLabQueue.IconSize = 35;
+            this.btnLabQueue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLabQueue.Location = new System.Drawing.Point(0, 165);
+            this.btnLabQueue.Name = "btnLabQueue";
+            this.btnLabQueue.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnLabQueue.Rotation = 0D;
+            this.btnLabQueue.Size = new System.Drawing.Size(250, 45);
+            this.btnLabQueue.TabIndex = 18;
+            this.btnLabQueue.Text = "Lab Queue";
+            this.btnLabQueue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLabQueue.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLabQueue.UseVisualStyleBackColor = false;
+            this.btnLabQueue.Click += new System.EventHandler(this.btnLabQueue_Click);
             // 
             // btnReturn
             // 
@@ -224,6 +251,6 @@
         private System.Windows.Forms.Label datelabel;
         private System.Windows.Forms.Label timelabel;
         private System.Windows.Forms.PictureBox pictureBox1;
-
+        private FontAwesome.Sharp.IconButton btnLabQueue;
     }
 }

@@ -495,6 +495,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             id = int.Parse(tbSearchId.Text.Trim());
 
             patientDetails details = await patientDetailsController.getPatientId(id);
+            if (details.id == 0)
+                return;
+
             txtfn.Text = details.Firstname;
             txtLn.Text = details.lastname;
             txtMn.Text = details.middlename;
