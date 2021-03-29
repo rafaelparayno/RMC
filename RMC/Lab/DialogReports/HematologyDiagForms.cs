@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,24 +22,16 @@ namespace RMC.Lab.DialogReports
 
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         patientDetails patientDetails = new patientDetails();
+        PatientLabController patientLabController = new PatientLabController();
         private int patientid = 0;
-        private string labname = "";
+        private int labid = 0;
         Hematology hema = new Hematology();
 
-        public HematologyDiagForms(int patientid,string labname)
+        public HematologyDiagForms(int patientid,int labid)
         {
             InitializeComponent();
             this.patientid = patientid;
-            this.labname = labname;
-
-
-        }
-
-        public HematologyDiagForms(int patientid,string labname, int resultid)
-        {
-            InitializeComponent();
-            this.patientid = patientid;
-            this.labname = labname;
+            this.labid = labid;
         }
 
       
@@ -47,6 +40,7 @@ namespace RMC.Lab.DialogReports
 
             crystalReportViewer1.ReportSource = hema;
             patientDetails = await patientDetailsController.getPatientId(patientid);
+            await loadXmlValues();
             hema.SetParameterValue("patientName", patientDetails.FullName);
 
             hema.SetParameterValue("age", patientDetails.age.ToString());
@@ -54,40 +48,31 @@ namespace RMC.Lab.DialogReports
           
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async Task loadXmlValues()
         {
-            CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id);
-            string newFilePath2 = CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id + "\\" + "LabFiles");
-            string filePath = newFilePath2;
-            string datenow = DateTime.Now.ToString("yyyy--MM--dd");
-            string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
-            string combine = datenow + "--" + timenow;
-            saveData(combine, filePath);
-           
+            XmlDocument doc = new XmlDocument();
+            string path = await patientLabController.getFullPath(patientid, labid);
+
+
+            if (!File.Exists(path))
+                return;
+
+
+            doc.Load(path);
+
+
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+               
+                if (node.Name == "crystalautomatedid")
+                    continue;
+
+                hema.SetParameterValue(node.Name, node.InnerText);
+            }
+
+
         }
 
-        private void saveData(string combine, string filePath)
-        {
-            /*  Image newImg = imgSave;
-              newImg.Save(path + fileName + ".jpg");*/
-            string path = filePath;
-            string filename = "Lab-" + patientDetails.id + "-" + labname  + "-" + combine;
-
-         
-          
-            /*parameterField.CurrentValues = currentParameterValues;*/
-            //   ParameterValues param =
-            //MessageBox.Show(hema.Parameter_hemoGoblinParam.CurrentValues);
-            /* XmlWriter xwriter = XmlWriter.Create(path + filename + ".xml");
-
-             xwriter.WriteStartElement("Hematology");
-             xwriter.WriteElementString("hemogloblin", hema.Parameter_hemoGoblinParam.CurrentValues.ToString());
-             xwriter.WriteElementString("hematocrit", hema.Parameter_hematocritParam.CurrentValues.ToString());
-             xwriter.WriteElementString("WhiteBloodCells", hema.Parameter_wbcParam.CurrentValues.ToString());
-             xwriter.WriteElementString("rbc", hema.Parameter_rbcParam.CurrentValues.ToString());
-             xwriter.WriteElementString("platelet", hema.Parameter_plateletParam.CurrentValues.ToString());
-             xwriter.WriteEndElement();
-             xwriter.Flush();*/
-        }
+     
     }
 }

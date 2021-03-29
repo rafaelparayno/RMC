@@ -695,12 +695,6 @@
     <Compile Include="Lab\DialogReports\HematologyDiagForms.Designer.cs">
       <DependentUpon>HematologyDiagForms.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab\DialogReports\HematologyValueDiags.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Lab\DialogReports\HematologyValueDiags.Designer.cs">
-      <DependentUpon>HematologyValueDiags.cs</DependentUpon>
-    </Compile>
     <Compile Include="Lab\DialogReports\TextBoxParamsCrystal.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1225,9 +1219,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\DialogReports\HematologyDiagForms.resx">
       <DependentUpon>HematologyDiagForms.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lab\DialogReports\HematologyValueDiags.resx">
-      <DependentUpon>HematologyValueDiags.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\DialogReports\TextBoxParamsCrystal.resx">
       <DependentUpon>TextBoxParamsCrystal.cs</DependentUpon>

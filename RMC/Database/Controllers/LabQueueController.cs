@@ -29,6 +29,22 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task updateStatus(int labid, int patientid)
+        {
+            string sql = @"UPDATE lab_queue SET is_done_l = 1 
+                            WHERE laboratory_id = @labid AND customer_id in 
+                                (SELECT customer_id FROM customer_request_details WHERE patient_id = @pid)";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@labid", labid));
+
+            listparams.Add(new MySqlParameter("@pid", patientid));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+
+
         public async Task<List<labModel>> getReqLabByPatientID(int id)
         {
             List<labModel> listLabModel = new List<labModel>();
@@ -36,7 +52,7 @@ namespace RMC.Database.Controllers
             string sql = @"SELECT lab_queue.customer_id,lab_queue.laboratory_id,laboratorylist.labname,labtype.labtype_name,lab_queue.is_done_l FROM `lab_queue` 
                         INNER JOIN laboratorylist ON lab_queue.laboratory_id = laboratorylist.laboratory_id 
                         INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id
-                        WHERE customer_id IN (SELECT customer_id  FROM customer_request_details WHERE customer_request_details.patient_id = 5
+                        WHERE customer_id IN (SELECT customer_id  FROM customer_request_details WHERE customer_request_details.patient_id = @id
                                                     AND  DATE(date_req) = CURDATE()) ";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();

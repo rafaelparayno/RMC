@@ -77,6 +77,7 @@ namespace RMC.Lab.Panels.Diags
         
         private void setLabData()
         {
+            lvItemLab.Items.Clear();
             foreach(labModel l in listLabModels)
             {
               
@@ -115,6 +116,8 @@ namespace RMC.Lab.Panels.Diags
 
             if (lvItemLab.Items.Count == 0)
                 return;
+            if (lvItemLab.SelectedItems[0].SubItems[3].Text == "Done")
+                return;
 
 
             int selectedIds = int.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
@@ -132,29 +135,72 @@ namespace RMC.Lab.Panels.Diags
 
                 DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab,patientid,selectedIds);
                 dynform.ShowDialog();
-               /* switch (lb.crystal_id_lab)
-                {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        HematologyValueDiags hematologyValueDiags = new HematologyValueDiags();
-                        hematologyValueDiags.ShowDialog();
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                   
-
-                }*/
+              
             }
 
             if(lb.autodocsid == 0 && lb.crystal_id_lab == 0)
             {
 
             }
+            setData(patientid);
+        }
+
+        private async void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lvItemLab.SelectedItems.Count == 0)
+                return;
+
+            if (lvItemLab.Items.Count == 0)
+                return;
+            if (lvItemLab.SelectedItems[0].SubItems[3].Text == "No Data")
+            {
+                MessageBox.Show("No Data to View");
+                return;
+            }
+
+
+            int selectedIds = int.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
+
+            labModel lb = await laboratoryController.getLabModelInID(selectedIds);
+
+            if (lb.autodocsid > 0)
+            {
+               /* DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds);
+                diagWithAutomated.ShowDialog();*/
+            }
+
+            if (lb.crystal_id_lab > 0)
+            {
+                switch (lb.crystal_id_lab)
+                {
+                    case 1:
+                    
+                        break;
+                    case 2:
+                      
+                        break;
+                    case 3:
+                        HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(patientid, selectedIds);
+                        hematologyDiagForms.ShowDialog();
+                        break;
+                    case 4:
+                       
+                        break;
+                    case 5:
+                     
+                        break;
+                }
+                /*  DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds);
+                  dynform.ShowDialog();*/
+
+            }
+
+            if (lb.autodocsid == 0 && lb.crystal_id_lab == 0)
+            {
+
+            }
+            setData(patientid);
+
         }
     }
 }

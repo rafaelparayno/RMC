@@ -23,6 +23,7 @@ namespace RMC.Lab.DialogReports
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         patientDetails patientDetails = new patientDetails();
         PatientLabController patientLabController = new PatientLabController();
+        LabQueueController labQueueController = new LabQueueController();
         private int crsid = 0;
         private int patientid = 0;
         private int labid = 0;
@@ -218,10 +219,12 @@ namespace RMC.Lab.DialogReports
 
            
             string path = filePath;
-            string filename = "Lab-" + patientDetails.id + "-" + crsid + "-" + combine;
+            string filename = "Lab-" + patientDetails.id + "-" + labid + "-" + combine;
 
             await patientLabController.save(patientDetails.id, labid,
                               "Lab-" + patientDetails.id + "-" + labid + "-" + combine + ".xml", path);
+
+            await labQueueController.updateStatus(labid, patientDetails.id);
 
             XmlWriter xwriter = XmlWriter.Create(path + filename + ".xml");
 
@@ -241,6 +244,7 @@ namespace RMC.Lab.DialogReports
             xwriter.WriteEndElement();
             xwriter.Flush();
 
+            MessageBox.Show("Succesfully Save Data");
             this.Close();
         }
     }
