@@ -37,8 +37,11 @@ namespace RMC.Database.Controllers
             {
                 xraymodel l = new xraymodel();
                 l.id = int.Parse(reader["xray_id"].ToString());
+                l.type = int.Parse(reader["xray_type"].ToString());
                 l.name = reader["xray_name"].ToString();
                 l.autodocsid = int.Parse(reader["auto_docs_id"].ToString());
+                l.is_crystal = reader["is_crystal"].ToString() == "" ? 
+                        0 : int.Parse(reader["is_crystal"].ToString());
                 listxraymodels.Add(l);
             }
 
@@ -47,6 +50,37 @@ namespace RMC.Database.Controllers
 
             return listxraymodels;
         }
+
+
+
+        public async Task<xraymodel> getLabModelById(int id)
+        {
+            xraymodel xraymodel = new xraymodel();
+            string sql = @"SELECT * FROM `xraylist`
+                        WHERE xray_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", id));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+
+                xraymodel.id = int.Parse(reader["xray_id"].ToString());
+                xraymodel.type = int.Parse(reader["xray_type"].ToString());
+                xraymodel.name = reader["xray_name"].ToString();
+                xraymodel.autodocsid = int.Parse(reader["auto_docs_id"].ToString());
+                xraymodel.is_crystal = reader["is_crystal"].ToString() == "" ?
+                        0 : int.Parse(reader["is_crystal"].ToString());
+                           }
+
+            crud.CloseConnection();
+
+
+            return xraymodel;
+        }
+
+
 
         public async Task<DataSet> getSearchDataset(string searchkey)
         {
@@ -122,6 +156,9 @@ namespace RMC.Database.Controllers
             return price;
 
         }
+
+
+
 
         public async Task<List<ComboBoxItem>> getComboDatas()
         {

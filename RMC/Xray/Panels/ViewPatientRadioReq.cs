@@ -1,6 +1,7 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.Patients;
+using RMC.Xray.Panels.RepDiags;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace RMC.Xray.Panels
         patientDetails patientmod = new patientDetails();
         PatientDetailsController patD = new PatientDetailsController();
         List<xraymodel> listModels = new List<xraymodel>();
+        XrayControllers xrayControllers = new XrayControllers();
         /*  LabQueueController labQueueController = new LabQueueController();*/
         RadioQueueController radioQueueController = new RadioQueueController();
         LaboratoryController laboratoryController = new LaboratoryController();
@@ -106,5 +108,58 @@ namespace RMC.Xray.Panels
                 lvItemLab.Items.Add(lvs);
             }
         }
+
+        private void lvItemLab_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                var focusedItem = lvItemLab.FocusedItem;
+                if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
+                {
+
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+
+            }
+        }
+
+        private async void addDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lvItemLab.SelectedItems.Count == 0)
+                return;
+
+            if (lvItemLab.Items.Count == 0)
+                return;
+            if (lvItemLab.SelectedItems[0].SubItems[3].Text == "Done")
+                return;
+
+
+            int selectedIds = int.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
+
+
+            xraymodel xb = await xrayControllers.getLabModelById(selectedIds);
+
+            if (xb.autodocsid > 0)
+            {
+                /*DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
+                diagWithAutomated.ShowDialog();*/
+            }
+
+            if(xb.is_crystal == 1)
+            {
+                XrayDynamicValue xrayDynamicValue = new XrayDynamicValue(patientid,selectedIds);
+                xrayDynamicValue.ShowDialog();
+            }
+
+            if (xb.autodocsid == 0 && xb.is_crystal == 0)
+            {
+               /* DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid);
+                fileUpload.ShowDialog();*/
+            }
+
+            setData(patientid);
+        }
+    
     }
 }

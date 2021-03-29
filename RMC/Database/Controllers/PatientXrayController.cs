@@ -13,7 +13,7 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async void save(int pid, int xid, string filename, string path)
+        public async Task save(int pid, int xid, string filename, string path)
         {
             string sql = @"INSERT INTO patient_xray (patient_id,xray_id,filename,path) 
                           VALUES (@id,@xid,@fname,@path)";

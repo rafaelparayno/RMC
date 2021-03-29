@@ -27,6 +27,21 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task updateStatus(int xrayid, int patientid)
+        {
+            string sql = @"UPDATE radio_queue SET is_done_x = 1 
+                            WHERE xray_id = @id AND customer_id in 
+                                (SELECT customer_id FROM customer_request_details WHERE patient_id = @pid)";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@id", xrayid));
+
+            listparams.Add(new MySqlParameter("@pid", patientid));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+
         public async Task<List<xraymodel>> getReqLabByPatientID(int id)
         {
             List<xraymodel> listxraymodel = new List<xraymodel>();

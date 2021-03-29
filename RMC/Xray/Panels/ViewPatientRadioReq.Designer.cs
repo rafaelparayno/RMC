@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvItemLab = new System.Windows.Forms.ListView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelPatient = new System.Windows.Forms.Panel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -62,6 +67,7 @@
             this.lvItemLab.Size = new System.Drawing.Size(695, 412);
             this.lvItemLab.TabIndex = 1;
             this.lvItemLab.UseCompatibleStateImageBehavior = false;
+            this.lvItemLab.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvItemLab_MouseClick);
             // 
             // panel4
             // 
@@ -81,6 +87,27 @@
             this.panelPatient.Size = new System.Drawing.Size(701, 172);
             this.panelPatient.TabIndex = 237;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addDataToolStripMenuItem,
+            this.viewDataToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // addDataToolStripMenuItem
+            // 
+            this.addDataToolStripMenuItem.Name = "addDataToolStripMenuItem";
+            this.addDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addDataToolStripMenuItem.Text = "Add Data";
+            this.addDataToolStripMenuItem.Click += new System.EventHandler(this.addDataToolStripMenuItem_Click);
+            // 
+            // viewDataToolStripMenuItem
+            // 
+            this.viewDataToolStripMenuItem.Name = "viewDataToolStripMenuItem";
+            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.viewDataToolStripMenuItem.Text = "View Data";
+            // 
             // ViewPatientRadioReq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -95,6 +122,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewPatientRadioReq";
             this.groupBox2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -105,5 +133,8 @@
         private System.Windows.Forms.ListView lvItemLab;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panelPatient;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem addDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewDataToolStripMenuItem;
     }
 }

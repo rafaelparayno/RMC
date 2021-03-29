@@ -84,13 +84,13 @@ namespace RMC.Xray.Panels
             await Task.WhenAll(listTask);
         }
 
-        private void saveData(string datenow, string path)
+        private async void saveData(string datenow, string path)
         {
             foreach (ListViewItem lv in lvItemLab.Items)
             {
                 Image im = listImg[lv.Index];
                 saveImginPath(im, path, "Xray-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
-                patientLabX.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
+                 await  patientLabX.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
                                 "Xray-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow + ".jpg", path);
 
             }

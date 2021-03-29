@@ -1037,6 +1037,12 @@
     <Compile Include="Xray\Panels\RadioQueueForm.Designer.cs">
       <DependentUpon>RadioQueueForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xray\Panels\RepDiags\XrayDynamicValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xray\Panels\RepDiags\XrayDynamicValue.Designer.cs">
+      <DependentUpon>XrayDynamicValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xray\Panels\ViewPatientRadioReq.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1461,6 +1467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Xray\Panels\RadioQueueForm.resx">
       <DependentUpon>RadioQueueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xray\Panels\RepDiags\XrayDynamicValue.resx">
+      <DependentUpon>XrayDynamicValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xray\Panels\ViewPatientRadioReq.resx">
       <DependentUpon>ViewPatientRadioReq.cs</DependentUpon>
