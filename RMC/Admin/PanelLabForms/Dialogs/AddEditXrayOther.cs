@@ -24,6 +24,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         int cbConValue = 0;
         bool isEdit = false;
         bool isAuto = true;
+        int isCrystal = 0;
         int xrayId = 0;
         int cbAutoValue = 0;
         List<int> idstobeRemove = new List<int>();
@@ -325,13 +326,13 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 removeConsumables(idstobeRemove);
                 updateConsumables();
                 xrayControllers.update(xrayId, txtName.Text.Trim(), txtDesc.Text.Trim(), 
-                                        cbTypeValue, float.Parse(txtSellingPrice.Text.Trim()),cbAutoValue, isAuto);
+                                        cbTypeValue, float.Parse(txtSellingPrice.Text.Trim()),cbAutoValue, isAuto,isCrystal);
                
             }
             else
             {
                 xrayControllers.save(txtName.Text.Trim(), txtDesc.Text.Trim(), 
-                                    cbTypeValue, float.Parse(txtSellingPrice.Text.Trim()),cbAutoValue,isAuto);
+                                    cbTypeValue, float.Parse(txtSellingPrice.Text.Trim()),cbAutoValue,isAuto,isCrystal);
                 saveConsumables();
             }
             MessageBox.Show("Succesfully Save Data");
@@ -346,6 +347,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 panelForImg.Visible = true;
                 cbAutomated.Visible = true;
                 label11.Visible = true;
+                isCrystal = 0;
+                groupBox4.Visible = false;
             }
         }
 
@@ -357,6 +360,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 panelForImg.Visible = false;
                 cbAutomated.Visible = false;
                 label11.Visible = false;
+                groupBox4.Visible = true;
             }
         }
 
@@ -366,6 +370,17 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             cbAutoValue = int.Parse((cbAutomated.SelectedItem as ComboBoxItem).Value.ToString());
 
             getImgPath();
+        }
+
+     
+        private void radioButton2_Click(object sender, EventArgs e)
+        {
+            isCrystal = 1;
+        }
+
+        private void radioButton1_Click(object sender, EventArgs e)
+        {
+            isCrystal = 0;
         }
     }
 }

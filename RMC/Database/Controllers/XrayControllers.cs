@@ -59,26 +59,27 @@ namespace RMC.Database.Controllers
            return  await crud.GetDataSetAsync(sql, listparams);
         }
 
-        public async void save(string name,string desc,int type,float price,int idauto,bool isAuto)
+        public async void save(string name,string desc,int type,float price,int idauto,bool isAuto,int crystal)
         {
-            string sql = @"INSERT INTO xraylist (xray_name,xray_type,description,xray_price,auto_docs_id)
-                           VALUES (@name,@type,@desc,@price,@auto)";
+            string sql = @"INSERT INTO xraylist (xray_name,xray_type,description,xray_price,auto_docs_id,is_crystal)
+                           VALUES (@name,@type,@desc,@price,@auto,@cr)";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@name", name));
             listparams.Add(new MySqlParameter("@desc", desc));
             listparams.Add(new MySqlParameter("@type", type));
             listparams.Add(new MySqlParameter("@price", price));
             listparams.Add(new MySqlParameter("@auto", isAuto ?  idauto : 0));
+            listparams.Add(new MySqlParameter("@cr", crystal));
 
             await crud.ExecuteAsync(sql, listparams);
 
         }
 
-        public async void update(int id,string name,string desc,int type,float price, int idauto, bool isAuto)
+        public async void update(int id,string name,string desc,int type,float price, int idauto, bool isAuto,int crystal)
         {
 
             string sql = @"UPDATE xraylist SET xray_name = @name, xray_type = @type,
-                          description = @desc , xray_price = @price, auto_docs_id = @auto WHERE xray_id = @id";
+                          description = @desc , xray_price = @price, auto_docs_id = @auto,is_crystal = @cr WHERE xray_id = @id";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@name", name));
             listparams.Add(new MySqlParameter("@desc", desc));
@@ -86,6 +87,7 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@price", price));
             listparams.Add(new MySqlParameter("@id", id));
             listparams.Add(new MySqlParameter("@auto", isAuto ? idauto : 0));
+            listparams.Add(new MySqlParameter("@cr", crystal));
 
             await crud.ExecuteAsync(sql, listparams);
         }

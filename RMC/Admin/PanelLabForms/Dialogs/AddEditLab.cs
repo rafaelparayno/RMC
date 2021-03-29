@@ -195,6 +195,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             {
                 radioButton2.Checked = true;
                 isCrystal = true;
+                cbCrystal.Visible = true;
             }
 
             if (datas[5] == "")
