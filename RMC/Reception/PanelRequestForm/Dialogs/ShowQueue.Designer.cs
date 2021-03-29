@@ -237,6 +237,7 @@
             this.Name = "ShowQueue";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ShowQueue";
+            this.Load += new System.EventHandler(this.ShowQueue_Load);
             this.panel1.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

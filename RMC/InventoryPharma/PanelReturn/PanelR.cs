@@ -337,8 +337,9 @@ namespace RMC.InventoryPharma.PanelReturn
             }
         }
 
-        private void updatingOfstocks()
+        private async void updatingOfstocks()
         {
+            List<Task> listTasks = new List<Task>();
             if (rbPharma.Checked)
             {
                 foreach(int id in itemsIdList)
@@ -346,8 +347,8 @@ namespace RMC.InventoryPharma.PanelReturn
                     ListViewItem item = lvItemsSuppliers.FindItemWithText(id + "");
                     int indexLv = lvItemsSuppliers.Items.IndexOf(item);
                     int currentQty = int.Parse(lvItemsSuppliers.Items[indexLv].SubItems[3].Text);
-
-                    pharmaStocksController.Save(id, currentQty);    
+                    listTasks.Add(pharmaStocksController.Save(id, currentQty));
+                     
                 }
             }
             else
@@ -357,10 +358,14 @@ namespace RMC.InventoryPharma.PanelReturn
                     ListViewItem item = lvItemsSuppliers.FindItemWithText(id + "");
                     int indexLv = lvItemsSuppliers.Items.IndexOf(item);
                     int currentQty = int.Parse(lvItemsSuppliers.Items[indexLv].SubItems[3].Text);
-
-                    clinicStocksController.Save(id, currentQty);
+                    listTasks.Add(clinicStocksController.Save(id, currentQty));
+                 
                 }
+
+
             }
+
+            await Task.WhenAll(listTasks);
         }
         #endregion
 

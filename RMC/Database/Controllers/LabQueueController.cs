@@ -44,6 +44,32 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
+        public async Task<List<int>> listLabQueue()
+        {
+            List<int> liststrings = new List<int>();
+
+
+            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname, ' ', patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details
+                           INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
+                            WHERE customer_id in (SELECT customer_id FROM lab_queue WHERE lab_queue.is_done_l = 0) 
+                        AND DATE(customer_request_details.date_req) = CURDATE() ORDER BY queue_no DESC";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while(await reader.ReadAsync())
+            {
+                liststrings.Add(int.Parse(reader["queue_no"].ToString()));
+                 
+            }
+
+
+
+            crud.CloseConnection();
+
+            return liststrings;
+
+        }
+
 
         public async Task<List<labModel>> getReqLabByPatientID(int id)
         {

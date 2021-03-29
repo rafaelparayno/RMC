@@ -50,17 +50,17 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
           
             if (isPhar)
             {
             
-                pharmaStocksController.Save(id, int.Parse(numericUpDown1.Value.ToString()));
+              await  pharmaStocksController.Save(id, int.Parse(numericUpDown1.Value.ToString()));
             }
             else
             {
-                clinicStocksController.Save(id, int.Parse(numericUpDown1.Value.ToString()));
+               await clinicStocksController.Save(id, int.Parse(numericUpDown1.Value.ToString()));
             }
 
             stocksHistoryController.Save(action(),qty(), UserLog.getUserId(), id);

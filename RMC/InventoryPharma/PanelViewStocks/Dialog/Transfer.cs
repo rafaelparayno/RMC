@@ -79,19 +79,19 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
 
             int addStocks = int.Parse(numericUpDown2.Value.ToString());
             if (isPharma)
             {
-                pharmaStocksController.Save(id, int.Parse(textBox1.Text));
+               await pharmaStocksController.Save(id, int.Parse(textBox1.Text));
                 clinicStocksController.addStocks(id, addStocks);
                 stocksHistory.Save("Transfer to Clinic", addStocks, UserLog.getUserId(), id);
             }
             else
             {
-                clinicStocksController.Save(id, int.Parse(textBox1.Text));
+               await clinicStocksController.Save(id, int.Parse(textBox1.Text));
                 pharmaStocksController.addStocks(id, addStocks);
                 stocksHistory.Save("Transfer to Pharmacy", addStocks, UserLog.getUserId(), id);
             }

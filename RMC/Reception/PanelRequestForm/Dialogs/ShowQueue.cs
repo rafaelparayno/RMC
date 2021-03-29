@@ -10,6 +10,7 @@ using System.Linq;
 using System.Drawing;
 using RMC.Components;
 using RMC.Database.Models;
+using Org.BouncyCastle.Utilities;
 
 namespace RMC.Reception.PanelRequestForm.Dialogs
 {
@@ -17,15 +18,17 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
     {
        
         DoctorQueueController doctorQueueController = new DoctorQueueController();
+        LabQueueController labQueueController = new LabQueueController();
         UserracountsController uc = new UserracountsController();
         SpeechSynthesizer _ss = new SpeechSynthesizer();
         List<DoctorQueueModel> Cdoctors;
+        List<int> listQueStrings = new List<int>();
 
 
         public ShowQueue()
         {
             InitializeComponent();
-            refreshQue();
+         
             _ss.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Teen);
             timer1.Start();
         }
@@ -69,20 +72,69 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 dc.Dock = DockStyle.Left;
                 panelDoctor.Controls.Add(dc);
             }
-       
+        }
 
+        private void populateLabQueue()
+        {
+
+            panelLab.Controls.Clear();
+            foreach(int s in listQueStrings)
+            {
+                Label l = new Label();
+                l.Dock = DockStyle.Top;
+                l.Text = s.ToString();
+                l.Height = 50;
+                l.Width = 300;
+                l.TextAlign = ContentAlignment.TopCenter;
+                l.Font = new Font("Microsoft Sans Serif", 36);
+                panelLab.Controls.Add(l);
+            }
+
+
+            Label l2 = new Label();
+            l2.Dock = DockStyle.Top;
+            l2.Text = "Currently";
+            l2.Height = 50;
+            l2.Width = 300;
+            l2.TextAlign = ContentAlignment.TopCenter;
+            l2.Font = new Font("Microsoft Sans Serif", 24);
+            panelLab.Controls.Add(l2);
 
         }
 
- 
 
-        private async void refreshQue()
+
+        private async Task refreshQue()
         {
-            Cdoctors = await uc.listDoctorOnlinesModel();
-            populateDocs();
 
+            Task<List<DoctorQueueModel>> task1 = uc.listDoctorOnlinesModel();
+            Task<List<int>> task2 = labQueueController.listLabQueue();
+            Task[] taskargs = new Task[] { task1, task2 };
+
+            await Task.WhenAll(taskargs);
+
+            Cdoctors = task1.Result;
+            listQueStrings = task2.Result;
+
+
+            populateDocs();
+            populateLabQueue();
 
          
+        }
+
+        private async Task LabSounds()
+        {
+            List<int> newListLabQueue = await labQueueController.listLabQueue();
+
+            int newQ = newListLabQueue.Select(s => s).Min();
+            int lastQ = listQueStrings.Select(l => l).Min();
+
+            if(newQ != lastQ)
+            {
+                speech("Laboratory", newQ.ToString());
+            }
+
         }
 
         private async Task doctorSounds()
@@ -110,10 +162,14 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
 
             await doctorSounds();
-                 
-             refreshQue();
+            await LabSounds();     
+            await refreshQue();
 
         }
 
+        private async  void ShowQueue_Load(object sender, EventArgs e)
+        {
+            await refreshQue();
+        }
     }
 }
