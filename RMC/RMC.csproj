@@ -1043,6 +1043,12 @@
     <Compile Include="Xray\Panels\RepDiags\AddAutomatedXray.Designer.cs">
       <DependentUpon>AddAutomatedXray.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xray\Panels\RepDiags\AddXrayUploading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xray\Panels\RepDiags\AddXrayUploading.Designer.cs">
+      <DependentUpon>AddXrayUploading.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xray\Panels\RepDiags\RoetDiagForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1488,6 +1494,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Xray\Panels\RepDiags\AddAutomatedXray.resx">
       <DependentUpon>AddAutomatedXray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xray\Panels\RepDiags\AddXrayUploading.resx">
+      <DependentUpon>AddXrayUploading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xray\Panels\RepDiags\RoetDiagForm.resx">
       <DependentUpon>RoetDiagForm.cs</DependentUpon>

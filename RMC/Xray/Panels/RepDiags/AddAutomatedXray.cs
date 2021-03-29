@@ -31,7 +31,7 @@ namespace RMC.Xray.Panels.RepDiags
         AutoDocsController autoDocsController = new AutoDocsController();
         RadioQueueController radioQueueController = new RadioQueueController();
 
-        ConsumablesController consumablesController = new ConsumablesController();
+        ConsumablesXrayControllers consumablesXray = new ConsumablesXrayControllers();
         ClinicStocksController clinicStocks = new ClinicStocksController();
         ConsumedItems consumeditems = new ConsumedItems();
         Dictionary<int, int> consumables = new Dictionary<int, int>();
@@ -153,7 +153,7 @@ namespace RMC.Xray.Panels.RepDiags
 
         private async Task processConsumables()
         {
-            consumables = await consumablesController.getListItemConsumables(xid);
+            consumables = await consumablesXray.getListItemConsumables(xid);
             List<Task> listTasks = new List<Task>();
             foreach (KeyValuePair<int, int> kp in consumables)
             {
@@ -186,9 +186,9 @@ namespace RMC.Xray.Panels.RepDiags
             string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
             string combine = datenow + "--" + timenow;
 
-            saveImginPath(filePath, "Lab-" + patientDetails.id + "-" + xid + "-" + combine);
+            saveImginPath(filePath, "Xray-" + patientDetails.id + "-" + xid + "-" + combine);
             await patientXrayController.save(patientDetails.id, xid,
-                             "Lab-" + patientDetails.id + "-" + xid + "-" + combine + ".jpg", filePath);
+                             "Xray-" + patientDetails.id + "-" + xid + "-" + combine + ".jpg", filePath);
             await processConsumables();
 
             MessageBox.Show("succesfully Save Data");

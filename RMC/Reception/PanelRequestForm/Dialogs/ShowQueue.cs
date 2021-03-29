@@ -127,6 +127,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             List<int> newListLabQueue = await labQueueController.listLabQueue();
 
+            if (newListLabQueue.Count == 0)
+                return;
+
             int newQ = newListLabQueue.Select(s => s).Min();
             int lastQ = listQueStrings.Select(l => l).Min();
 

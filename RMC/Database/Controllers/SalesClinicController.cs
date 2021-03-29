@@ -253,7 +253,7 @@ namespace RMC.Database.Controllers
             string sql = @"SELECT SUM(xraylist.xray_price) as 'totalSales' FROM `salesclinic` 
                             INNER JOIN invoice on salesclinic.invoice_id = invoice.invoice_id
 							INNER JOIN xraylist ON xraylist.xray_id = salesclinic.type_sales_id
-                            WHERE type_sales = 'XEU' 
+                            WHERE type_sales = 'Radio' 
                             AND DATE(invoice.date_invoice) = CURDATE()";
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);

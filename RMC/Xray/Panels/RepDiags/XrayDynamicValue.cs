@@ -20,6 +20,7 @@ namespace RMC.Xray.Panels.RepDiags
     public partial class XrayDynamicValue : Form
     {
 
+        ClinicStocksController clinicStocks = new ClinicStocksController();
         List<TextBoxParamsCrystal> textBoxParamsCrystals = new List<TextBoxParamsCrystal>();
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         PatientXrayController patientXrayController = new PatientXrayController();
@@ -28,6 +29,13 @@ namespace RMC.Xray.Panels.RepDiags
         private int patientid = 0;
         private int xrayid = 0;
         Dictionary<string, string> valuesInReports;
+        ConsumablesXrayControllers consumablesXray = new ConsumablesXrayControllers();
+    
+        ConsumedItems consumeditems = new ConsumedItems();
+        Dictionary<int, int> consumables = new Dictionary<int, int>();
+
+
+
         public XrayDynamicValue(int patientid,int xrayid)
         {
             InitializeComponent();
@@ -96,10 +104,31 @@ namespace RMC.Xray.Panels.RepDiags
             string datenow = DateTime.Now.ToString("yyyy--MM--dd");
             string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
             string combine = datenow + "--" + timenow;
-          /*  await processConsumables();*/
+            await processConsumables();
             await saveData(combine, filePath);
         }
 
+
+        private async Task processConsumables()
+        {
+            List<Task> listTask = new List<Task>();
+          
+             
+                consumables = await consumablesXray.getListItemConsumables(xrayid);
+                foreach (KeyValuePair<int, int> kp in consumables)
+                {
+                    int currentStocks = await clinicStocks.getStocks(kp.Key);
+                    int stocktosave = currentStocks - kp.Value;
+                    stocktosave = stocktosave > 0 ? stocktosave : 0;
+                    listTask.Add(clinicStocks.Save(kp.Key, stocktosave));
+                    listTask.Add(consumeditems.save(kp.Key, kp.Value));
+
+                }
+
+
+            await Task.WhenAll(listTask);
+
+        }
         private async Task saveData(string combine, string filePath)
         {
 
