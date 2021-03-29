@@ -126,7 +126,7 @@ namespace RMC.Lab.Panels.Diags
 
             if(lb.autodocsid > 0)
             {
-                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds);
+                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
                 diagWithAutomated.ShowDialog();
             }
 

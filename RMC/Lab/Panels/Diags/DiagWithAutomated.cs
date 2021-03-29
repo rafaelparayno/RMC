@@ -1,6 +1,7 @@
 ﻿using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,24 +18,28 @@ namespace RMC.Lab.Panels.Diags
     public partial class DiagWithAutomated : Form
     {
         LaboratoryController laboratoryController = new LaboratoryController();
+        PatientLabController patientLabController = new PatientLabController();
+        PatientDetailsController patientDetailsController = new PatientDetailsController();
         List<ListParams> listofListparams = new List<ListParams>();
         AutoParamController autoParamController = new AutoParamController();
         labModel lab = new labModel();
         List<CoordinatesList> coordinatesAutomated = new List<CoordinatesList>();
         AutoDocsController autoDocsController = new AutoDocsController();
+        LabQueueController labQueueController = new LabQueueController();
 
         Graphics graphicsImg = null;
         Image img = null;
-     /*   Image noImg = null;*/
-
+        /*   Image noImg = null;*/
+        private int patientid = 0;
         public Image imgToAdd = null;
 
 
         int labId = 0;
-        public  DiagWithAutomated(int labId)
+        public  DiagWithAutomated(int labId,int patientid)
         {
             InitializeComponent();
             this.labId = labId;
+            this.patientid = patientid;
             getLabmodel();
         }
 
@@ -141,6 +146,33 @@ namespace RMC.Lab.Panels.Diags
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+       
+            patientDetails  patientmod = await patientDetailsController.getPatientId(patientid);
+
+            await labQueueController.updateStatus(labId, patientmod.id);
+            CreateDirectory.CreateDir(patientmod.lastname + "-" + patientmod.id);
+            string newFilePath2 = CreateDirectory.CreateDir(patientmod.lastname + "-" + patientmod.id + "\\" + "LabFiles");
+            string filePath = newFilePath2;
+            string datenow = DateTime.Now.ToString("yyyy--MM--dd");
+            string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
+            string combine = datenow + "--" + timenow;
+            saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + datenow);
+            await patientLabController.save(patientmod.id,labId,
+                             "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".jpg", filePath);
+
+            MessageBox.Show("succesfully Save Data");
+            this.Close();
+        }
+
+        private void saveImginPath( string path, string fileName)
+        {
+            Image newImg = pbAutomated.Image;
+            newImg.Save(path + fileName + ".jpg");
+            newImg.Dispose();
         }
     }
 }
