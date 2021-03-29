@@ -23,13 +23,15 @@ namespace RMC.Lab.DialogReports
         PatientLabController patientLabController = new PatientLabController();
         private int patientid = 0;
         private int labid = 0;
+        private int patient_lab_id = 0;
         Urinalysis urinalysis = new Urinalysis();
 
-        public UrinalysisDiagForms(int patientid, int labid)
+        public UrinalysisDiagForms(int patientid, int labid, int patient_lab_id)
         {
             InitializeComponent();
             this.patientid = patientid;
             this.labid = labid;
+            this.patient_lab_id = patient_lab_id;
         }
 
         private async void UrinalysisDiagForms_Load(object sender, EventArgs e)
@@ -47,8 +49,9 @@ namespace RMC.Lab.DialogReports
         private async Task loadXmlValues()
         {
             XmlDocument doc = new XmlDocument();
-            string path = await patientLabController.getFullPath(patientid, labid);
-
+            string path = patient_lab_id == 0 ?
+               await patientLabController.getFullPath(patientid, labid)
+               : await patientLabController.getFullPath(patient_lab_id);
 
             if (!File.Exists(path))
                 return;

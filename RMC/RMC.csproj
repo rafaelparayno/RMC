@@ -695,11 +695,23 @@
     <Compile Include="Lab\DialogReports\DynamicLabReportsValue.Designer.cs">
       <DependentUpon>DynamicLabReportsValue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\DialogReports\FecalysisDiagForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\DialogReports\FecalysisDiagForms.Designer.cs">
+      <DependentUpon>FecalysisDiagForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\DialogReports\HematologyDiagForms.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab\DialogReports\HematologyDiagForms.Designer.cs">
       <DependentUpon>HematologyDiagForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab\DialogReports\SerologyDiagForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\DialogReports\SerologyDiagForms.Designer.cs">
+      <DependentUpon>SerologyDiagForms.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab\DialogReports\TextBoxParamsCrystal.cs">
       <SubType>UserControl</SubType>
@@ -1232,8 +1244,14 @@
     <EmbeddedResource Include="Lab\DialogReports\DynamicLabReportsValue.resx">
       <DependentUpon>DynamicLabReportsValue.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lab\DialogReports\FecalysisDiagForms.resx">
+      <DependentUpon>FecalysisDiagForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab\DialogReports\HematologyDiagForms.resx">
       <DependentUpon>HematologyDiagForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\DialogReports\SerologyDiagForms.resx">
+      <DependentUpon>SerologyDiagForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\DialogReports\TextBoxParamsCrystal.resx">
       <DependentUpon>TextBoxParamsCrystal.cs</DependentUpon>

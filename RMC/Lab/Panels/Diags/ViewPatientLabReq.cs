@@ -178,17 +178,19 @@ namespace RMC.Lab.Panels.Diags
                         bloodChemDiagForms.ShowDialog();
                         break;
                     case 2:
-                      
+                        FecalysisDiagForms fecalysisDiagForms = new FecalysisDiagForms(patientid, selectedIds, 0);
+                        fecalysisDiagForms.ShowDialog();
                         break;
                     case 3:
-                        HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(patientid, selectedIds);
+                        HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(patientid, selectedIds,0);
                         hematologyDiagForms.ShowDialog();
                         break;
                     case 4:
-                       
+                        SerologyDiagForms serologyDiagForms = new SerologyDiagForms(patientid, selectedIds, 0);
+                        serologyDiagForms.ShowDialog();
                         break;
                     case 5:
-                        UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(patientid, selectedIds);
+                        UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(patientid, selectedIds,0);
                         urinalysisDiagForms.ShowDialog();
                         break;
                 }

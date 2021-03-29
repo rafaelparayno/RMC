@@ -248,7 +248,7 @@ namespace RMC.Lab.DialogReports
 
             xwriter.WriteEndElement();
             xwriter.Flush();
-
+            xwriter.Close();
             MessageBox.Show("Succesfully Save Data");
             this.Close();
         }

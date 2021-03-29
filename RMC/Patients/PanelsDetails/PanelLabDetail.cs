@@ -146,17 +146,20 @@ namespace RMC.Patients.PanelsDetails
                         bloodChemDiagForms.ShowDialog();
                         break;
                     case 2:
-
+                        FecalysisDiagForms fecalysisDiagForms = new FecalysisDiagForms(id,labModel.id,selectedIds);
+                        fecalysisDiagForms.ShowDialog();
                         break;
                     case 3:
-                        HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(id, labModel.id);
+                        HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(id, labModel.id, selectedIds);
                         hematologyDiagForms.ShowDialog();
                         break;
                     case 4:
+                        SerologyDiagForms serologyDiagForms = new SerologyDiagForms(id, labModel.id, selectedIds);
+                        serologyDiagForms.ShowDialog();
 
                         break;
                     case 5:
-                        UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(id, labModel.id);
+                        UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(id, labModel.id, selectedIds);
                         urinalysisDiagForms.ShowDialog();
                         break;
                 }
