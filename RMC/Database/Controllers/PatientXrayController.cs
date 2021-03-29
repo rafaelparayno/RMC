@@ -108,5 +108,29 @@ namespace RMC.Database.Controllers
             return fullPath;
         }
 
+
+        public async Task<string> getFullPath(int patientid, int xrayid)
+        {
+            string FullPath = "";
+            string sql = @"SELECT CONCAT(path,filename) AS 'FullPath' 
+                            FROM `patient_xray` WHERE patient_id = @id AND xray_id = @xray AND DATE(date_patient_xray) = CURDATE()";
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+            listParams.Add(new MySqlParameter("@id", patientid));
+
+            listParams.Add(new MySqlParameter("@xray", xrayid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
+
+            while (await reader.ReadAsync())
+            {
+                FullPath = reader["FullPath"].ToString();
+            }
+
+            crud.CloseConnection();
+
+            return FullPath;
+        }
+
+
     }
 }

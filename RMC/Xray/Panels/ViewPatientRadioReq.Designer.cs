@@ -105,8 +105,9 @@
             // viewDataToolStripMenuItem
             // 
             this.viewDataToolStripMenuItem.Name = "viewDataToolStripMenuItem";
-            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewDataToolStripMenuItem.Text = "View Data";
+            this.viewDataToolStripMenuItem.Click += new System.EventHandler(this.viewDataToolStripMenuItem_Click);
             // 
             // ViewPatientRadioReq
             // 

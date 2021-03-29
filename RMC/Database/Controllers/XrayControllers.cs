@@ -52,6 +52,36 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task<xraymodel> getxrayModelinPatientLab(int patientxrayid)
+        {
+            xraymodel xraymodel = new xraymodel();
+            string sql = @"SELECT * FROM `xraylist` WHERE xray_id in (SELECT patient_xray.xray_id FROM patient_xray WHERE patient_xray.patient_xray_id = @id)";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", patientxrayid));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                xraymodel.id = int.Parse(reader["xray_id"].ToString());
+
+                xraymodel.name = reader["xray_name"].ToString();
+                xraymodel.type = int.Parse(reader["xray_type"].ToString());
+                xraymodel.autodocsid = string.IsNullOrEmpty(reader["auto_docs_id"].ToString()) ? 0 :
+                                        int.Parse(reader["auto_docs_id"].ToString());
+
+                xraymodel.is_crystal = string.IsNullOrEmpty(reader["is_crystal"].ToString()) ?
+                                    0 : int.Parse(reader["is_crystal"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+
+            return xraymodel;
+
+
+        }
+
 
         public async Task<xraymodel> getLabModelById(int id)
         {

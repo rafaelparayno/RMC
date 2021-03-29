@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Xray.Panels.RepDiags;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace RMC.Patients.PanelsDetails
     {
         private int id = 0;
         PatientXrayController patientXrayController = new PatientXrayController();
+        XrayControllers xrayControllers = new XrayControllers();
         List<patientXrayModel> listXrayModel = new List<patientXrayModel>();
         public PanelXrayDetail(int id)
         {
@@ -81,7 +83,7 @@ namespace RMC.Patients.PanelsDetails
             lvLabDetails.Columns.Add("Date", 300, HorizontalAlignment.Left);
         }
 
-        private async void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
+        private  void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvLabDetails.Items.Count == 0)
                 return;
@@ -91,10 +93,10 @@ namespace RMC.Patients.PanelsDetails
 
             int id = int.Parse(lvLabDetails.SelectedItems[0].Text);
 
-           await showImg(id);
+          // await showImg(id);
         }
 
-        private async Task showImg(int id)
+       /* private async Task showImg(int id)
         {
             string path = await patientXrayController.getFullPath(id);
 
@@ -108,12 +110,52 @@ namespace RMC.Patients.PanelsDetails
                            "Please check the path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
+        }*/
 
 
         private async void iconButton1_Click(object sender, EventArgs e)
         {
           await searchData();
+        }
+
+        private void lvLabDetails_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                var focusedItem = lvLabDetails.FocusedItem;
+                if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
+                {
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+
+            }
+        }
+
+        private async void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lvLabDetails.SelectedItems.Count == 0)
+                return;
+
+            if (lvLabDetails.Items.Count == 0)
+                return;
+
+            int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
+            xraymodel xraymodel = await xrayControllers.getxrayModelinPatientLab(selectedIds);
+
+      
+
+            if (xraymodel.is_crystal > 0)
+            {
+
+                RoetDiagForm roetDiagForm = new RoetDiagForm(id,xraymodel.id,selectedIds);
+                roetDiagForm.ShowDialog();
+            }
+            else
+            {
+               /* ViewImageFile viewImageFile = new ViewImageFile(id, labModel.id, selectedIds, lvLabDetails.SelectedItems[0].SubItems[1].Text);
+                viewImageFile.ShowDialog();*/
+            }
         }
     }
 }

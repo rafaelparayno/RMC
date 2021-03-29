@@ -160,6 +160,10 @@ namespace RMC.Xray.Panels
 
             setData(patientid);
         }
-    
+
+        private void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

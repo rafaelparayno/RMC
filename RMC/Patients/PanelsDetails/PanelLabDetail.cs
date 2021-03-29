@@ -67,37 +67,6 @@ namespace RMC.Patients.PanelsDetails
             }
         }
 
-      /*  private async Task showDocLab(int id)
-        {
-            string fullpath = await patientLabController.getFullPath(id);
-
-
-            try
-            {
-                pbEdited.Image = Image.FromFile(fullpath);
-            }
-            catch (System.IO.FileNotFoundException)
-            {
-                MessageBox.Show("There was an error opening the image." +
-                           "Please check the path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }*/
-
-
-       /* private async void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lvLabDetails.Items.Count == 0)
-                return;
-
-            if (lvLabDetails.SelectedItems.Count == 0)
-                return;
-
-            int id = int.Parse(lvLabDetails.SelectedItems[0].Text);
-
-            await showDocLab(id);
-        }*/
-
         private async void iconButton1_Click(object sender, EventArgs e)
         {
             await searchData();
