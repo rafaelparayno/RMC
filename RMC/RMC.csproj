@@ -809,6 +809,12 @@
       <DependentUpon>Hematology.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="NewReports\Roetgenological.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Roetgenological.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NewReports\Serology.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1315,6 +1321,10 @@
     <EmbeddedResource Include="NewReports\Hematology.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Hematology.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReports\Roetgenological.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Roetgenological.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="NewReports\Serology.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

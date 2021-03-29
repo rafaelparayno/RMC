@@ -70,6 +70,8 @@ namespace RMC.Lab.DialogReports
 
                 if (node.Name == "crystalautomatedid")
                     continue;
+              /*  if (node.Name == "dateParam")
+                    continue;*/
 
                 bloodChem.SetParameterValue(node.Name, node.InnerText);
             }

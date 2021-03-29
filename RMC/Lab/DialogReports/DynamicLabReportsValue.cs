@@ -88,6 +88,8 @@ namespace RMC.Lab.DialogReports
                     continue;
                 if (parameterField.Name == "address")
                     continue;
+                if (parameterField.Name == "dateParam")
+                    continue;
 
                 textBoxParams.NameLabel = parameterField.Name;
                 textBoxParamsCrystals.Add(textBoxParams);
@@ -111,6 +113,8 @@ namespace RMC.Lab.DialogReports
                     continue;
 
                 if (parameterField.Name == "address")
+                    continue;
+                if (parameterField.Name == "dateParam")
                     continue;
 
                 textBoxParams.NameLabel = parameterField.Name;
@@ -136,6 +140,8 @@ namespace RMC.Lab.DialogReports
                     continue;
                 if (parameterField.Name == "address")
                     continue;
+                if (parameterField.Name == "dateParam")
+                    continue;
 
                 textBoxParams.NameLabel = parameterField.Name;
                 textBoxParamsCrystals.Add(textBoxParams);
@@ -159,6 +165,8 @@ namespace RMC.Lab.DialogReports
                     continue;
                 if (parameterField.Name == "address")
                     continue;
+                if (parameterField.Name == "dateParam")
+                    continue;
 
                 textBoxParams.NameLabel = parameterField.Name;
                 textBoxParamsCrystals.Add(textBoxParams);
@@ -180,6 +188,8 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "age")
                     continue;
                 if (parameterField.Name == "sex")
+                    continue;
+                if (parameterField.Name == "dateParam")
                     continue;
 
                 textBoxParams.NameLabel = parameterField.Name;
@@ -260,6 +270,9 @@ namespace RMC.Lab.DialogReports
 
             xwriter.WriteStartElement("Labrecords");
             xwriter.WriteElementString("crystalautomatedid", crsid.ToString());
+            xwriter.WriteElementString("dateParam", DateTime.Now.ToString("MMMM dd, yyyy"));
+
+
             foreach (KeyValuePair<string, string> k in valuesInReports)
             {
                 if (string.IsNullOrWhiteSpace(k.Value))
