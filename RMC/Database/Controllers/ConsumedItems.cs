@@ -11,7 +11,7 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async void save(int itemid,int qty)
+        public async Task save(int itemid,int qty)
         {
             string sql = @"INSERT INTO consumed_items (item_id,consumed_qty) 
                          VALUES(@itemid,@qty)";

@@ -19,11 +19,15 @@ namespace RMC.Lab.DialogReports
     public partial class DynamicLabReportsValue : Form
     {
         List<TextBoxParamsCrystal> textBoxParamsCrystals = new List<TextBoxParamsCrystal>();
+        ClinicStocksController clinicStocks = new ClinicStocksController();
         Dictionary<string, string> valuesInReports;
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         patientDetails patientDetails = new patientDetails();
         PatientLabController patientLabController = new PatientLabController();
         LabQueueController labQueueController = new LabQueueController();
+        ConsumablesController consumablesController = new ConsumablesController();
+        ConsumedItems consumeditems = new ConsumedItems();
+        Dictionary<int, int> consumables = new Dictionary<int, int>();
         private int crsid = 0;
         private int patientid = 0;
         private int labid = 0;
@@ -216,7 +220,28 @@ namespace RMC.Lab.DialogReports
             string datenow = DateTime.Now.ToString("yyyy--MM--dd");
             string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
             string combine = datenow + "--" + timenow;
+            await processConsumables();
             await saveData(combine, filePath);
+            
+        }
+
+
+        private async Task processConsumables()
+        {
+            consumables = await consumablesController.getListItemConsumables(labid);
+            List<Task> listTasks = new List<Task>();
+               foreach (KeyValuePair<int, int> kp in consumables)
+                {
+                    int currentStocks = await clinicStocks.getStocks(kp.Key);
+                    int stocktosave = currentStocks - kp.Value;
+                    stocktosave = stocktosave > 0 ? stocktosave : 0;
+                    listTasks.Add(clinicStocks.Save(kp.Key, stocktosave));
+                    listTasks.Add(consumeditems.save(kp.Key, kp.Value));
+               
+                }
+
+            await Task.WhenAll(listTasks);
+            
         }
 
         private async Task saveData(string combine, string filePath)

@@ -26,7 +26,10 @@ namespace RMC.Lab.Panels.Diags
         List<CoordinatesList> coordinatesAutomated = new List<CoordinatesList>();
         AutoDocsController autoDocsController = new AutoDocsController();
         LabQueueController labQueueController = new LabQueueController();
-
+        ConsumablesController consumablesController = new ConsumablesController();
+        ClinicStocksController clinicStocks = new ClinicStocksController();
+        ConsumedItems consumeditems = new ConsumedItems();
+        Dictionary<int, int> consumables = new Dictionary<int, int>();
         Graphics graphicsImg = null;
         Image img = null;
         /*   Image noImg = null;*/
@@ -148,9 +151,27 @@ namespace RMC.Lab.Panels.Diags
             this.Close();
         }
 
+        private async Task processConsumables()
+        {
+            consumables = await consumablesController.getListItemConsumables(labId);
+            List<Task> listTasks = new List<Task>();
+            foreach (KeyValuePair<int, int> kp in consumables)
+            {
+                int currentStocks = await clinicStocks.getStocks(kp.Key);
+                int stocktosave = currentStocks - kp.Value;
+                stocktosave = stocktosave > 0 ? stocktosave : 0;
+                listTasks.Add(clinicStocks.Save(kp.Key, stocktosave));
+                listTasks.Add(consumeditems.save(kp.Key, kp.Value));
+
+            }
+
+            await Task.WhenAll(listTasks);
+
+        }
+
         private async void btnSave_Click(object sender, EventArgs e)
         {
-       
+        
             patientDetails  patientmod = await patientDetailsController.getPatientId(patientid);
 
             await labQueueController.updateStatus(labId, patientmod.id);
@@ -163,6 +184,7 @@ namespace RMC.Lab.Panels.Diags
             saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + combine);
             await patientLabController.save(patientmod.id,labId,
                              "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".jpg", filePath);
+            await processConsumables();
 
             MessageBox.Show("succesfully Save Data");
             this.Close();

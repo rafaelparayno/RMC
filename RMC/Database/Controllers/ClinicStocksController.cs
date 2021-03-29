@@ -75,7 +75,7 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async void Save(int id, int qty)
+        public async Task Save(int id, int qty)
         {
             string sql;
             List<MySqlParameter> list = new List<MySqlParameter>();

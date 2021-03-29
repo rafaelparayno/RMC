@@ -737,6 +737,12 @@
     <Compile Include="Lab\ListParams.Designer.cs">
       <DependentUpon>ListParams.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\Panels\Diags\DiagFileUpload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\Panels\Diags\DiagFileUpload.Designer.cs">
+      <DependentUpon>DiagFileUpload.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\Panels\Diags\DiagLab.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1270,6 +1276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\ListParams.resx">
       <DependentUpon>ListParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\Panels\Diags\DiagFileUpload.resx">
+      <DependentUpon>DiagFileUpload.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\Panels\Diags\DiagLab.resx">
       <DependentUpon>DiagLab.cs</DependentUpon>

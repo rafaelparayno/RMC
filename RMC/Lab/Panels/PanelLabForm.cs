@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RMC.Lab.Panels
@@ -61,6 +62,7 @@ namespace RMC.Lab.Panels
 
         private async void processConsumables()
         {
+            List<Task> listTasks = new List<Task>();
             foreach (ListViewItem item in lvItemLab.Items)
             {
                 int labid = int.Parse(item.SubItems[2].Text);
@@ -70,11 +72,11 @@ namespace RMC.Lab.Panels
                     int currentStocks = await clinicStocksController.getStocks(kp.Key);
                     int stocktosave = currentStocks - kp.Value;
                     stocktosave = stocktosave > 0 ? stocktosave : 0;
-                    clinicStocksController.Save(kp.Key, stocktosave);
-                    consumeditems.save(kp.Key, kp.Value);
+                    listTasks.Add(clinicStocksController.Save(kp.Key, stocktosave));
+                    listTasks.Add(consumeditems.save(kp.Key, kp.Value));       
                 }
 
-
+                await Task.WhenAll(listTasks);
             }
         }
 

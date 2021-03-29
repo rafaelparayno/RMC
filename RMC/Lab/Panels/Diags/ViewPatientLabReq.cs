@@ -140,7 +140,8 @@ namespace RMC.Lab.Panels.Diags
 
             if(lb.autodocsid == 0 && lb.crystal_id_lab == 0)
             {
-
+                DiagFileUpload fileUpload = new DiagFileUpload(selectedIds,patientid);
+                fileUpload.ShowDialog();
             }
             setData(patientid);
         }
@@ -163,11 +164,7 @@ namespace RMC.Lab.Panels.Diags
 
             labModel lb = await laboratoryController.getLabModelInID(selectedIds);
 
-            if (lb.autodocsid > 0)
-            {
-               /* DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds);
-                diagWithAutomated.ShowDialog();*/
-            }
+    
 
             if (lb.crystal_id_lab > 0)
             {
@@ -194,14 +191,15 @@ namespace RMC.Lab.Panels.Diags
                         urinalysisDiagForms.ShowDialog();
                         break;
                 }
-            
+
 
             }
-
-            if (lb.autodocsid == 0 && lb.crystal_id_lab == 0)
+            else
             {
-
+                ViewImageFile viewImageFile = new ViewImageFile(patientid, selectedIds, 0, lvItemLab.SelectedItems[0].SubItems[1].Text);
+                viewImageFile.ShowDialog();
             }
+
             setData(patientid);
 
         }
