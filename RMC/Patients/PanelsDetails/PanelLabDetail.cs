@@ -1,6 +1,7 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.Lab.DialogReports;
+using RMC.Lab.Panels.Diags;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -167,7 +168,8 @@ namespace RMC.Patients.PanelsDetails
             }
             else
             {
-
+                ViewImageFile viewImageFile = new ViewImageFile(id, labModel.id, selectedIds,lvLabDetails.SelectedItems[0].SubItems[1].Text);
+                viewImageFile.ShowDialog();
             }
 
            

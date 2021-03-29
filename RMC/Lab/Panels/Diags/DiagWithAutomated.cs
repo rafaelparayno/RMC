@@ -160,7 +160,7 @@ namespace RMC.Lab.Panels.Diags
             string datenow = DateTime.Now.ToString("yyyy--MM--dd");
             string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
             string combine = datenow + "--" + timenow;
-            saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + datenow);
+            saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + combine);
             await patientLabController.save(patientmod.id,labId,
                              "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".jpg", filePath);
 

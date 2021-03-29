@@ -91,7 +91,6 @@
             this.pbAutomated.Location = new System.Drawing.Point(12, 6);
             this.pbAutomated.Name = "pbAutomated";
             this.pbAutomated.Size = new System.Drawing.Size(191, 123);
-            this.pbAutomated.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAutomated.TabIndex = 1;
             this.pbAutomated.TabStop = false;
             // 
@@ -106,7 +105,9 @@
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ViewImageFile";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewImageFile";
+            this.Load += new System.EventHandler(this.ViewImageFile_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel4.ResumeLayout(false);

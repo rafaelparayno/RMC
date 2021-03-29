@@ -749,6 +749,12 @@
     <Compile Include="Lab\Panels\Diags\DiagWithAutomated.Designer.cs">
       <DependentUpon>DiagWithAutomated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\Panels\Diags\ViewImageFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\Panels\Diags\ViewImageFile.Designer.cs">
+      <DependentUpon>ViewImageFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\Panels\Diags\ViewPatientLabReq.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1270,6 +1276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\Panels\Diags\DiagWithAutomated.resx">
       <DependentUpon>DiagWithAutomated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\Panels\Diags\ViewImageFile.resx">
+      <DependentUpon>ViewImageFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\Panels\Diags\ViewPatientLabReq.resx">
       <DependentUpon>ViewPatientLabReq.cs</DependentUpon>
