@@ -44,18 +44,23 @@ namespace RMC.Lab.DialogReports
             switch (crsid)
             {
                 case 1:
+                    label8.Text = "Add Blood Chem Values Report";
                     loadBloodChem();
                     break;
                 case 2:
+                    label8.Text = "Add Fecalysis Values Report";
                     LoadFecalysis();
                     break;
                 case 3:
+                    label8.Text = "Add Hematology Values Report";
                     loadHematology();
                     break;
                 case 4:
+                    label8.Text = "Add Serology Values Report";
                     loadSerology();
                     break;
                 case 5:
+                    label8.Text = "Add Urinalysis Values Report";
                     loadUrinalysis();
                     break;
             }

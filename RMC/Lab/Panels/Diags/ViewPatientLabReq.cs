@@ -187,11 +187,11 @@ namespace RMC.Lab.Panels.Diags
                        
                         break;
                     case 5:
-                     
+                        UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(patientid, selectedIds);
+                        urinalysisDiagForms.ShowDialog();
                         break;
                 }
-                /*  DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds);
-                  dynform.ShowDialog();*/
+            
 
             }
 

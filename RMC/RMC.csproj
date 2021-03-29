@@ -701,6 +701,12 @@
     <Compile Include="Lab\DialogReports\TextBoxParamsCrystal.Designer.cs">
       <DependentUpon>TextBoxParamsCrystal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\DialogReports\UrinalysisDiagForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\DialogReports\UrinalysisDiagForms.Designer.cs">
+      <DependentUpon>UrinalysisDiagForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\LabDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1222,6 +1228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\DialogReports\TextBoxParamsCrystal.resx">
       <DependentUpon>TextBoxParamsCrystal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\DialogReports\UrinalysisDiagForms.resx">
+      <DependentUpon>UrinalysisDiagForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\LabDashboard.resx">
       <DependentUpon>LabDashboard.cs</DependentUpon>
