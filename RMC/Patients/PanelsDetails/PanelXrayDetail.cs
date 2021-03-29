@@ -153,6 +153,8 @@ namespace RMC.Patients.PanelsDetails
             }
             else
             {
+                ViewImageXray viewImageXray = new ViewImageXray(id,xraymodel.id,selectedIds,xraymodel.name);
+                viewImageXray.ShowDialog();
                /* ViewImageFile viewImageFile = new ViewImageFile(id, labModel.id, selectedIds, lvLabDetails.SelectedItems[0].SubItems[1].Text);
                 viewImageFile.ShowDialog();*/
             }

@@ -1037,11 +1037,23 @@
     <Compile Include="Xray\Panels\RadioQueueForm.Designer.cs">
       <DependentUpon>RadioQueueForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xray\Panels\RepDiags\AddAutomatedXray.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xray\Panels\RepDiags\AddAutomatedXray.Designer.cs">
+      <DependentUpon>AddAutomatedXray.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xray\Panels\RepDiags\RoetDiagForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Xray\Panels\RepDiags\RoetDiagForm.Designer.cs">
       <DependentUpon>RoetDiagForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xray\Panels\RepDiags\ViewImageXray.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xray\Panels\RepDiags\ViewImageXray.Designer.cs">
+      <DependentUpon>ViewImageXray.cs</DependentUpon>
     </Compile>
     <Compile Include="Xray\Panels\RepDiags\XrayDynamicValue.cs">
       <SubType>Form</SubType>
@@ -1474,8 +1486,14 @@
     <EmbeddedResource Include="Xray\Panels\RadioQueueForm.resx">
       <DependentUpon>RadioQueueForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Xray\Panels\RepDiags\AddAutomatedXray.resx">
+      <DependentUpon>AddAutomatedXray.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Xray\Panels\RepDiags\RoetDiagForm.resx">
       <DependentUpon>RoetDiagForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xray\Panels\RepDiags\ViewImageXray.resx">
+      <DependentUpon>ViewImageXray.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xray\Panels\RepDiags\XrayDynamicValue.resx">
       <DependentUpon>XrayDynamicValue.cs</DependentUpon>

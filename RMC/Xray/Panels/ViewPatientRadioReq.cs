@@ -142,6 +142,8 @@ namespace RMC.Xray.Panels
 
             if (xb.autodocsid > 0)
             {
+                AddAutomatedXray addAutomatedXray = new AddAutomatedXray(selectedIds, patientid);
+                addAutomatedXray.ShowDialog();
                 /*DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
                 diagWithAutomated.ShowDialog();*/
             }

@@ -4,8 +4,6 @@ using RMC.Database.Models;
 using RMC.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -35,9 +33,9 @@ namespace RMC.Lab.Panels.Diags
         /*   Image noImg = null;*/
         private int patientid = 0;
         public Image imgToAdd = null;
-
-
         int labId = 0;
+
+
         public  DiagWithAutomated(int labId,int patientid)
         {
             InitializeComponent();
