@@ -15,6 +15,12 @@ namespace RMC.Database.Models
 
         public string name { get; set; }
 
+        public int type { get; set; }
+
         public int autodocsid { get; set; }
+
+        public int is_crystal { get; set; }
+
+        public int is_done { get; set; }
     }
 }

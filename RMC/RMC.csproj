@@ -1031,6 +1031,18 @@
     <Compile Include="Xray\Panels\PanelXrayForm.Designer.cs">
       <DependentUpon>PanelXrayForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xray\Panels\RadioQueueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xray\Panels\RadioQueueForm.Designer.cs">
+      <DependentUpon>RadioQueueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Xray\Panels\ViewPatientRadioReq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xray\Panels\ViewPatientRadioReq.Designer.cs">
+      <DependentUpon>ViewPatientRadioReq.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Admin\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -1446,6 +1458,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Xray\Panels\PanelXrayForm.resx">
       <DependentUpon>PanelXrayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xray\Panels\RadioQueueForm.resx">
+      <DependentUpon>RadioQueueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xray\Panels\ViewPatientRadioReq.resx">
+      <DependentUpon>ViewPatientRadioReq.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

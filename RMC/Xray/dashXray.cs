@@ -47,5 +47,10 @@ namespace RMC.Xray
         {
             openChildForm(new PanelXrayForm());
         }
+
+        private void btnLabQueue_Click(object sender, EventArgs e)
+        {
+            openChildForm(new RadioQueueForm());
+        }
     }
 }
