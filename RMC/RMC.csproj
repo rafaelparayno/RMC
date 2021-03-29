@@ -683,6 +683,12 @@
     <Compile Include="InventoryPharma\PharmaDash.Designer.cs">
       <DependentUpon>PharmaDash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\DialogReports\DynamicLabReportsValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\DialogReports\DynamicLabReportsValue.Designer.cs">
+      <DependentUpon>DynamicLabReportsValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\DialogReports\HematologyDiagForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1213,6 +1219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PharmaDash.resx">
       <DependentUpon>PharmaDash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\DialogReports\DynamicLabReportsValue.resx">
+      <DependentUpon>DynamicLabReportsValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\DialogReports\HematologyDiagForms.resx">
       <DependentUpon>HematologyDiagForms.cs</DependentUpon>

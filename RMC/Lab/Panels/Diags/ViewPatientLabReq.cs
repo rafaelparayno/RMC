@@ -129,7 +129,10 @@ namespace RMC.Lab.Panels.Diags
 
             if(lb.crystal_id_lab > 0)
             {
-                switch (lb.crystal_id_lab)
+
+                DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab,patientid,selectedIds);
+                dynform.ShowDialog();
+               /* switch (lb.crystal_id_lab)
                 {
                     case 1:
                         break;
@@ -145,7 +148,7 @@ namespace RMC.Lab.Panels.Diags
                         break;
                    
 
-                }
+                }*/
             }
 
             if(lb.autodocsid == 0 && lb.crystal_id_lab == 0)
