@@ -58,6 +58,37 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task<labModel> getLabModelinPatientLab(int patientlabid)
+        {
+            labModel labModel = new labModel();
+            string sql = @"SELECT * FROM `laboratorylist` WHERE laboratory_id in (SELECT patient_lab.laboratory_id FROM patient_lab WHERE patient_lab.patient_lab_id = @id)";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", patientlabid));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                labModel.id = int.Parse(reader["laboratory_id"].ToString());
+
+                labModel.name = reader["labname"].ToString();
+
+                labModel.autodocsid = string.IsNullOrEmpty(reader["auto_docs_id"].ToString()) ? 0 :
+                                        int.Parse(reader["auto_docs_id"].ToString());
+
+                labModel.crystal_id_lab = string.IsNullOrEmpty(reader["crystal_id_lab"].ToString()) ?
+                                    0 : int.Parse(reader["crystal_id_lab"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+
+            return labModel;
+
+
+        }
+
+
         public async Task<List<labModel>> getLabModel(int type)
         {
             List<labModel> listlabmodels = new List<labModel>();

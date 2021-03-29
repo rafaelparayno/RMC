@@ -30,8 +30,7 @@ namespace RMC.Lab.Panels.Diags
             this.patientid = patientid;
             initLvCols();
             setData(patientid);
-            setPatientData();
-            setLabData();
+
         }
 
 
@@ -40,7 +39,8 @@ namespace RMC.Lab.Panels.Diags
 
             patientmod = await patD.getPatientId(id);
             listLabModels = await labQueueController.getReqLabByPatientID(id);
-
+            setLabData();
+            setPatientData();
 
         }
 
@@ -174,7 +174,8 @@ namespace RMC.Lab.Panels.Diags
                 switch (lb.crystal_id_lab)
                 {
                     case 1:
-                    
+                        BloodChemDiagForms bloodChemDiagForms = new BloodChemDiagForms(patientid,selectedIds,0);
+                        bloodChemDiagForms.ShowDialog();
                         break;
                     case 2:
                       

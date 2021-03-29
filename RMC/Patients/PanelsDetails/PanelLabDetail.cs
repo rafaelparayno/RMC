@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Lab.DialogReports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace RMC.Patients.PanelsDetails
     public partial class PanelLabDetail : Form
     {
         PatientLabController patientLabController = new PatientLabController();
-
+        LaboratoryController laboratoryController = new LaboratoryController();
         List<patientLabModel> listpatientModel;
         private int id = 0;
         public PanelLabDetail(int id)
@@ -65,7 +66,7 @@ namespace RMC.Patients.PanelsDetails
             }
         }
 
-        private async Task showDocLab(int id)
+      /*  private async Task showDocLab(int id)
         {
             string fullpath = await patientLabController.getFullPath(id);
 
@@ -80,10 +81,10 @@ namespace RMC.Patients.PanelsDetails
                            "Please check the path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
+        }*/
 
 
-        private async void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
+       /* private async void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvLabDetails.Items.Count == 0)
                 return;
@@ -94,7 +95,7 @@ namespace RMC.Patients.PanelsDetails
             int id = int.Parse(lvLabDetails.SelectedItems[0].Text);
 
             await showDocLab(id);
-        }
+        }*/
 
         private async void iconButton1_Click(object sender, EventArgs e)
         {
@@ -104,6 +105,69 @@ namespace RMC.Patients.PanelsDetails
         private void iconButton2_Click(object sender, EventArgs e)
         {
             loadData();
+        }
+
+        private void lvLabDetails_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                var focusedItem = lvLabDetails.FocusedItem;
+                if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
+                { 
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+
+            }
+        }
+
+        private async void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lvLabDetails.SelectedItems.Count == 0)
+                return;
+
+            if (lvLabDetails.Items.Count == 0)
+                return;
+
+            int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
+            labModel labModel = await laboratoryController.getLabModelinPatientLab(selectedIds);
+
+         
+
+            if (labModel.crystal_id_lab > 0)
+            {
+
+                /* DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds);
+                 dynform.ShowDialog();*/
+                switch (labModel.crystal_id_lab)
+                {
+                    case 1:
+                        BloodChemDiagForms bloodChemDiagForms = new BloodChemDiagForms(id, labModel.id,selectedIds);
+                        bloodChemDiagForms.ShowDialog();
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+                        HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(id, labModel.id);
+                        hematologyDiagForms.ShowDialog();
+                        break;
+                    case 4:
+
+                        break;
+                    case 5:
+                        UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(id, labModel.id);
+                        urinalysisDiagForms.ShowDialog();
+                        break;
+                }
+
+            }
+            else
+            {
+
+            }
+
+           
         }
     }
 }

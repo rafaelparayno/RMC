@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pbEdited = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvLabDetails = new System.Windows.Forms.ListView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.viewDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbEdited)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -82,7 +83,6 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-
             this.dateTimePicker1.Location = new System.Drawing.Point(256, 37);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(347, 24);
@@ -129,37 +129,18 @@
             this.panel1.Size = new System.Drawing.Size(717, 5);
             this.panel1.TabIndex = 8;
             // 
-            // panel3
-            // 
-            this.panel3.AutoScroll = true;
-            this.panel3.Controls.Add(this.pbEdited);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(392, 72);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(325, 250);
-            this.panel3.TabIndex = 214;
-            // 
-            // pbEdited
-            // 
-            this.pbEdited.Location = new System.Drawing.Point(6, 7);
-            this.pbEdited.Name = "pbEdited";
-            this.pbEdited.Size = new System.Drawing.Size(100, 50);
-            this.pbEdited.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbEdited.TabIndex = 1;
-            this.pbEdited.TabStop = false;
-            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.lvLabDetails);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(0, 72);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(392, 250);
-            this.groupBox2.TabIndex = 213;
+            this.groupBox2.Size = new System.Drawing.Size(717, 250);
+            this.groupBox2.TabIndex = 214;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Patient Lab Information";
             // 
@@ -172,10 +153,31 @@
             this.lvLabDetails.HideSelection = false;
             this.lvLabDetails.Location = new System.Drawing.Point(3, 19);
             this.lvLabDetails.Name = "lvLabDetails";
-            this.lvLabDetails.Size = new System.Drawing.Size(386, 227);
+            this.lvLabDetails.Size = new System.Drawing.Size(711, 227);
             this.lvLabDetails.TabIndex = 2;
             this.lvLabDetails.UseCompatibleStateImageBehavior = false;
-            this.lvLabDetails.SelectedIndexChanged += new System.EventHandler(this.lvLabDetails_SelectedIndexChanged);
+            this.lvLabDetails.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvLabDetails_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewDataToolStripMenuItem,
+            this.editDataToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // viewDataToolStripMenuItem
+            // 
+            this.viewDataToolStripMenuItem.Name = "viewDataToolStripMenuItem";
+            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewDataToolStripMenuItem.Text = "View Data";
+            this.viewDataToolStripMenuItem.Click += new System.EventHandler(this.viewDataToolStripMenuItem_Click);
+            // 
+            // editDataToolStripMenuItem
+            // 
+            this.editDataToolStripMenuItem.Name = "editDataToolStripMenuItem";
+            this.editDataToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.editDataToolStripMenuItem.Text = "Edit Data";
             // 
             // PanelLabDetail
             // 
@@ -183,7 +185,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(717, 327);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
@@ -193,10 +194,8 @@
             this.Text = "PanelLabDetail";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbEdited)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -207,10 +206,11 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pbEdited;
+        private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lvLabDetails;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem viewDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editDataToolStripMenuItem;
     }
 }

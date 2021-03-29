@@ -78,13 +78,13 @@ namespace RMC.Lab.Panels
             }
         }
 
-        private void saveData(string datenow, string path)
+        private async void saveData(string datenow, string path)
         {
             foreach (ListViewItem lv in lvItemLab.Items)
             {
                 Image im = listImg[lv.Index];
                 saveImginPath(im, path, "Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
-                patientLabC.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
+               await patientLabC.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
                                 "Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow + ".jpg", path);
 
             }
