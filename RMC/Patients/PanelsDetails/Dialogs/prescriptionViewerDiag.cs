@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,8 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             prescription.SetParameterValue("dateParam", listP[0].date.ToString().Split(' ')[0]);
             prescription.SetParameterValue("licenseNo",doctorDataModel.license);
             prescription.SetParameterValue("prNoParam", doctorDataModel.pr);
+         
+                prescription.SetParameterValue("imgPath", doctorDataModel.imgPath);
 
             crystalReportViewer1.ReportSource = prescription;
             crystalReportViewer1.Zoom(75);
