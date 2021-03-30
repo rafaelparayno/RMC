@@ -88,11 +88,19 @@ namespace RMC.Doctor
             textBox3.Text = doctorResultData.procedureA;
 
 
-            listlabModel = await ddController.getLabModelDoctorResult(resid);
-            listPatientSymp = await psController.getPatientSymptomsMod(resid);
-            listPatientPrescription = await ppController.getPrescriptionModel(resid);
-            listXrayModel = await dxController.getXrayData(resid);
+            Task<List<labModel>> task1 = ddController.getLabModelDoctorResult(resid);
+            Task<List<PatientSymptomsModel>> task2 = psController.getPatientSymptomsMod(resid);
+            Task<List<PatientPrescriptionModel>> task3 = ppController.getPrescriptionModel(resid);
+            Task<List<xraymodel>> task4 = dxController.getXrayData(resid);
+            List<Task> listTask = new List<Task>() { task1 , task2 , task3 , task4 };
 
+            await Task.WhenAll(listTask);
+
+
+            listlabModel = task1.Result;
+            listPatientSymp = task2.Result;
+            listPatientPrescription = task3.Result;
+            listXrayModel = task4.Result;
 
             foreach (PatientSymptomsModel listPs in listPatientSymp)
             {
@@ -182,193 +190,209 @@ namespace RMC.Doctor
         }
 
 
-        private async Task saveDetails()
+        private async Task editUpdate()
+        {
+            List<int> idsInEditPres = listPatientPrescription.Select(pres => pres.itemid).ToList();
+            List<int> idsInEditSymp = listPatientSymp.Select(s => s.s_id).ToList();
+            List<int> idsInEditXr = listXrayModel.Select(x => x.id).ToList();
+            List<int> idsInEditLb = listlabModel.Select(l => l.labID).ToList();
+
+            List<int> idCurrent = new List<int>();
+            List<int> idCurrent1 = new List<int>();
+            List<int> idCurrent2 = new List<int>();
+
+            await dController.update(textBox1.Text.Trim(), txtSubjective.Text.Trim(),
+                               textBox2.Text.Trim(), patientId.ToString(), textBox3.Text.Trim(), resid.ToString());
+
+
+            //Prescription
+            foreach (ListViewItem lvItems in lvMeds.Items)
+            {
+                int MedidInLV = int.Parse(lvItems.SubItems[0].Text);
+
+                idCurrent.Add(MedidInLV);
+
+            }
+
+            foreach (int i in idsInEditPres)
+            {
+                if (!idCurrent.Contains(i))
+                {
+                    await ppController.remove(i, resid);
+
+                }
+            }
+
+
+            foreach (ListViewItem lvItems in lvMeds.Items)
+            {
+                int MedidInLV = int.Parse(lvItems.SubItems[0].Text);
+
+
+
+                if (!await ppController.isFound(resid, MedidInLV))
+                    await ppController.save(MedidInLV, lvItems.SubItems[3].Text,
+                                          lvItems.SubItems[4].Text, lvItems.SubItems[2].Text);
+            }
+            //Prescription
+
+
+
+            //SYMP
+
+            idCurrent = new List<int>();
+
+            foreach (ListViewItem lv in lvSymp.Items)
+            {
+                int sidLV = int.Parse(lv.SubItems[0].Text);
+
+                idCurrent.Add(sidLV);
+            }
+
+
+            foreach (int i in idsInEditSymp)
+            {
+                if (!idCurrent.Contains(i))
+                {
+                    await psController.remove(i, resid);
+
+                }
+            }
+
+            foreach (ListViewItem lv in lvSymp.Items)
+            {
+                int sidLV = int.Parse(lv.SubItems[0].Text);
+
+                if (!await psController.isFound(resid, sidLV))
+                    await psController.save(sidLV);
+
+            }
+
+            //SYMP
+
+            /*      idCurrent = new List<int>();*/
+
+            //xray
+
+            foreach (ListViewItem lv in lvXray.Items)
+            {
+                int xidLV = int.Parse(lv.SubItems[0].Text);
+
+                idCurrent1.Add(xidLV);
+            }
+
+
+
+            foreach (int i in idsInEditXr)
+            {
+                if (!idCurrent1.Contains(i))
+                {
+                    await dxController.remove(i, resid);
+                }
+            }
+
+
+            foreach (ListViewItem lv in lvXray.Items)
+            {
+                int xidLV = int.Parse(lv.SubItems[0].Text);
+
+                if (!await dxController.isFound(resid, xidLV))
+                    await dxController.save(xidLV);
+            }
+            //xray
+
+            //Lab
+
+
+            foreach (ListViewItem lv in lvLab.Items)
+            {
+                int lidLV = int.Parse(lv.SubItems[0].Text);
+
+                idCurrent2.Add(lidLV);
+            }
+
+
+
+            foreach (int i in idsInEditLb)
+            {
+                if (!idCurrent2.Contains(i))
+                {
+                    await ddController.remove(i, resid);
+                }
+            }
+
+
+            foreach (ListViewItem lv in lvLab.Items)
+            {
+                int lidLV = int.Parse(lv.SubItems[0].Text);
+
+                if (!await ddController.isFound(resid, lidLV))
+                    await ddController.save(lidLV);
+            }
+        }
+
+        private async Task saveNew()
+        {
+            List<Task> listTask = new List<Task>();
+            await dController.save(textBox1.Text.Trim(), txtSubjective.Text.Trim(),
+                              textBox2.Text.Trim(), patientId.ToString(),
+                              textBox3.Text.Trim(), UserLog.getUserId().ToString());
+
+            foreach (ListViewItem lvItems in lvMeds.Items)
+            {
+                int MedidInLV = int.Parse(lvItems.SubItems[0].Text);
+
+
+
+                listTask.Add(ppController.save(MedidInLV, lvItems.SubItems[3].Text,
+                                      lvItems.SubItems[4].Text, lvItems.SubItems[2].Text));
+
+                /* await ppController.save(MedidInLV, lvItems.SubItems[3].Text,
+                                       lvItems.SubItems[4].Text, lvItems.SubItems[2].Text);*/
+            }
+
+            foreach (ListViewItem lv in lvLab.Items)
+            {
+                listTask.Add(ddController.save(int.Parse(lv.SubItems[0].Text)));
+                /*      await ddController.save(int.Parse(lv.SubItems[0].Text));*/
+
+
+            }
+
+            foreach (ListViewItem lv in lvXray.Items)
+            {
+                listTask.Add(dxController.save(int.Parse(lv.SubItems[0].Text)));
+                /*await dxController.save(int.Parse(lv.SubItems[0].Text));*/
+
+
+            }
+
+            foreach (ListViewItem lv in lvSymp.Items)
+            {
+                listTask.Add(psController.save(int.Parse(lv.SubItems[0].Text)));
+                //  await psController.save(int.Parse(lv.SubItems[0].Text));
+
+
+            }
+
+            await Task.WhenAll(listTask);
+        }
+
+        private async Task saveEvents()
         {
 
             if (resid > 0)
             {
-                List<int> idsInEditPres = listPatientPrescription.Select(pres => pres.itemid).ToList();
-                List<int> idsInEditSymp = listPatientSymp.Select(s => s.s_id).ToList();
-                List<int> idsInEditXr = listXrayModel.Select(x => x.id).ToList();
-                List<int> idsInEditLb = listlabModel.Select(l => l.labID).ToList();
-
-                List<int> idCurrent = new List<int>();
-                List<int> idCurrent1 = new List<int>();
-                List<int> idCurrent2 = new List<int>();
-
-                await dController.update(textBox1.Text.Trim(), txtSubjective.Text.Trim(),
-                                   textBox2.Text.Trim(), patientId.ToString(), textBox3.Text.Trim(), resid.ToString());
-
-
-                //Prescription
-                foreach (ListViewItem lvItems in lvMeds.Items)
-                {
-                    int MedidInLV = int.Parse(lvItems.SubItems[0].Text);
-
-                    idCurrent.Add(MedidInLV);
-    
-                }
-
-                foreach (int i in idsInEditPres)
-                {
-                    if (!idCurrent.Contains(i))
-                    {
-                        await ppController.remove(i, resid);
-
-                    }
-                }
-
-
-                foreach (ListViewItem lvItems in lvMeds.Items)
-                {
-                    int MedidInLV = int.Parse(lvItems.SubItems[0].Text);
-
-
-
-                    if (!await ppController.isFound(resid, MedidInLV))
-                        await ppController.save(MedidInLV, lvItems.SubItems[3].Text,
-                                              lvItems.SubItems[4].Text, lvItems.SubItems[2].Text);
-                }
-                //Prescription
-
-
-
-                //SYMP
-
-                idCurrent = new List<int>();
-
-                foreach (ListViewItem lv in lvSymp.Items)
-                {
-                    int sidLV = int.Parse(lv.SubItems[0].Text);
-
-                    idCurrent.Add(sidLV);
-                }
-
-
-                foreach (int i in idsInEditSymp)
-                {
-                    if (!idCurrent.Contains(i))
-                    {
-                        await psController.remove(i, resid);
-
-                    }
-                }
-
-                foreach (ListViewItem lv in lvSymp.Items)
-                {
-                    int sidLV = int.Parse(lv.SubItems[0].Text);
-
-                    if (!await psController.isFound(resid, sidLV))
-                        await psController.save(sidLV);
-
-                }
-
-                //SYMP
-
-                /*      idCurrent = new List<int>();*/
-
-                //xray
-
-                foreach (ListViewItem lv in lvXray.Items)
-                {
-                    int xidLV = int.Parse(lv.SubItems[0].Text);
-
-                    idCurrent1.Add(xidLV);
-                }
-
-
-
-                foreach (int i in idsInEditXr)
-                {
-                    if (!idCurrent1.Contains(i))
-                    {
-                        await dxController.remove(i, resid);
-                    }
-                }
-
-
-                foreach (ListViewItem lv in lvXray.Items)
-                {
-                    int xidLV = int.Parse(lv.SubItems[0].Text);
-
-                    if (!await dxController.isFound(resid, xidLV))
-                        await dxController.save(xidLV);
-                }
-                //xray
 
                 //Lab
-
-
-                foreach (ListViewItem lv in lvLab.Items)
-                {
-                    int lidLV = int.Parse(lv.SubItems[0].Text);
-
-                    idCurrent2.Add(lidLV);
-                }
-
-
-
-                foreach (int i in idsInEditLb)
-                {
-                    if (!idCurrent2.Contains(i))
-                    {
-                        await ddController.remove(i, resid);
-                    }
-                }
-
-
-                foreach (ListViewItem lv in lvLab.Items)
-                {
-                    int lidLV = int.Parse(lv.SubItems[0].Text);
-
-                    if (!await ddController.isFound(resid, lidLV))
-                        await ddController.save(lidLV);
-                }
-                //Lab
-
+                await editUpdate();
             }
             else
             {
-                await dController.save(textBox1.Text.Trim(), txtSubjective.Text.Trim(),
-                                  textBox2.Text.Trim(), patientId.ToString(), textBox3.Text.Trim());
 
-                foreach (ListViewItem lvItems in lvMeds.Items)
-                {
-                    int MedidInLV = int.Parse(lvItems.SubItems[0].Text);
+                await saveNew();
 
-
-                    await ppController.save(MedidInLV, lvItems.SubItems[3].Text,
-                                          lvItems.SubItems[4].Text, lvItems.SubItems[2].Text);
-                }
-
-                foreach (ListViewItem lv in lvLab.Items)
-                {
-
-                    await ddController.save(int.Parse(lv.SubItems[0].Text));
-
-
-                }
-
-                foreach (ListViewItem lv in lvXray.Items)
-                {
-
-                    await dxController.save(int.Parse(lv.SubItems[0].Text));
-
-
-                }
-
-                foreach (ListViewItem lv in lvSymp.Items)
-                {
-
-                    await psController.save(int.Parse(lv.SubItems[0].Text));
-
-
-                }
-
-            }
-           
-
-         
+            }   
         }
 
         #endregion
@@ -535,7 +559,7 @@ namespace RMC.Doctor
 
         private async void iconButton1_Click(object sender, EventArgs e)
         {
-            await saveDetails();
+            await saveEvents();
             this.Close();
         }
 

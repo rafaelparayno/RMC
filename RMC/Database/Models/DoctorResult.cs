@@ -12,6 +12,8 @@ namespace RMC.Database.Models
         
         public int patient_id { get; set; }
 
+        public int doctor_id { get; set; }
+
         public string cc { get; set; }
 
         public string sfindings { get; set; }

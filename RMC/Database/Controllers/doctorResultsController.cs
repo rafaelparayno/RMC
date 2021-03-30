@@ -15,16 +15,18 @@ namespace RMC.Database.Controllers
 
         public async Task save(params string[] data)
         {
-            string sql = @"INSERT INTO `doctor_results`( `cc`, `sfindings`, `assestment`, `procedureA`,`patient_id`)
-                          VALUES (@cc,@sfindings,@ass,@procA,@id)";
+            string sql = @"INSERT INTO `doctor_results`( `cc`, `sfindings`, `assestment`, `procedureA`,`patient_id`,`user_id`)
+                          VALUES (@cc,@sfindings,@ass,@procA,@id,@uid)";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             int patientid = int.Parse(data[3]);
+            int userid = int.Parse(data[5]);
             listparams.Add(new MySqlParameter("@cc", data[0]));
             listparams.Add(new MySqlParameter("@sfindings", data[1]));
             listparams.Add(new MySqlParameter("@ass", data[2]));
             listparams.Add(new MySqlParameter("@procA", data[4]));
             listparams.Add(new MySqlParameter("@id", patientid));
+            listparams.Add(new MySqlParameter("@uid", userid));
 
             await crud.ExecuteAsync(sql, listparams);
 
@@ -68,7 +70,7 @@ namespace RMC.Database.Controllers
                 doctoResultModel.assestment =  reader["assestment"].ToString();
                 doctoResultModel.procedureA = reader["procedureA"].ToString();
                 doctoResultModel.date_results = DateTime.Parse(reader["date_results"].ToString());
-
+                doctoResultModel.doctor_id = int.Parse(reader["user_id"].ToString());
                 listDoctorResultmodel.Add(doctoResultModel);
             }
 
@@ -91,10 +93,13 @@ namespace RMC.Database.Controllers
             if (reader.Read())
             {
                 doctoResultModel.id = int.Parse(reader["doctor_results_id"].ToString());
+                doctoResultModel.patient_id = id;
                 doctoResultModel.cc = reader["cc"].ToString();
                 doctoResultModel.sfindings = reader["sfindings"].ToString();
                 doctoResultModel.assestment = reader["assestment"].ToString();
                 doctoResultModel.procedureA = reader["procedureA"].ToString();
+                doctoResultModel.doctor_id = int.Parse(reader["user_id"].ToString());
+               
                 doctoResultModel.date_results = DateTime.Parse(reader["date_results"].ToString());
             }
            

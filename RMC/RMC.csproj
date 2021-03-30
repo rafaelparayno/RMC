@@ -857,6 +857,12 @@
     <Compile Include="Patients\PanelsDetails\Dialogs\AddViewOther.Designer.cs">
       <DependentUpon>AddViewOther.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patients\PanelsDetails\Dialogs\prescriptionViewerDiag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\Dialogs\prescriptionViewerDiag.Designer.cs">
+      <DependentUpon>prescriptionViewerDiag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\PanelsDetails\PanelDoctorFindings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -995,6 +1001,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DoctorsSample.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Prescription.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Prescription.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\receipts.cs">
@@ -1397,6 +1409,9 @@
     <EmbeddedResource Include="Patients\PanelsDetails\Dialogs\AddViewOther.resx">
       <DependentUpon>AddViewOther.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelsDetails\Dialogs\prescriptionViewerDiag.resx">
+      <DependentUpon>prescriptionViewerDiag.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\PanelDoctorFindings.resx">
       <DependentUpon>PanelDoctorFindings.cs</DependentUpon>
     </EmbeddedResource>
@@ -1478,6 +1493,10 @@
     <EmbeddedResource Include="Reports\DoctorsSample.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DoctorsSample.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Prescription.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Prescription.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\receipts.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

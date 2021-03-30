@@ -1,4 +1,5 @@
 ﻿using RMC.Database.Controllers;
+using RMC.Patients.PanelsDetails.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -95,7 +96,7 @@ namespace RMC.Pharma
 
         private void ViewPrescriptions_Load(object sender, EventArgs e)
         {
-            string dateToday = DateTime.Now.ToString("yyyy-MM-dd");
+            
 
             //  searchData(dateToday);
         }
@@ -173,6 +174,20 @@ namespace RMC.Pharma
                 }
 
             }
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            if (dgItemList.Rows.Count == 0)
+                return;
+
+            if (dgItemList.SelectedRows.Count == 0)
+                return;
+
+            int docresid = int.Parse(dgItemList.SelectedRows[0].Cells[0].Value.ToString());
+
+            prescriptionViewerDiag prescriptionViewer = new prescriptionViewerDiag(docresid);
+            prescriptionViewer.ShowDialog();
         }
     }
 }
