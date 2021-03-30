@@ -24,7 +24,7 @@ namespace RMC.Patients.PanelsDetails
         PatientPrescriptionController patientPrescriptionController = new PatientPrescriptionController();
         DoctorRequestLabController doctorReqLabController = new DoctorRequestLabController();
         DoctorRequestXrayController docReqXrayController = new DoctorRequestXrayController();
-
+        DoctorDataController doctorDataController = new DoctorDataController();
 
         List<int> listAccess = new List<int>();
         private int id = 0;
@@ -96,7 +96,7 @@ namespace RMC.Patients.PanelsDetails
         {
             loadData();
         }
-        private void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
+        private async void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvLabDetails.Items.Count == 0)
                 return;
@@ -104,20 +104,41 @@ namespace RMC.Patients.PanelsDetails
                 return;
             startShowing();
             int id = int.Parse(lvLabDetails.SelectedItems[0].Text);
-            showCrystalReportData(id);
+            await  showCrystalReportData(id);
         }
-        private async void showCrystalReportData(int resultdsid)
+
+        private async Task showCrystalReportData(int resultdsid)
         {
-            doctorResultData = await dsController.getDoctorResultsSearchId(resultdsid);
-            patientDetailsData = await patientDetailsController.getPatientId(id);
+            
+            Task<DoctorResult> task1 = dsController.getDoctorResultsSearchId(resultdsid);
+            Task<patientDetails> task2 = patientDetailsController.getPatientId(id);
+
+            Task<List<labModel>> task3 = 
+                doctorReqLabController.getLabModelDoctorResult(resultdsid);
+            Task<List<PatientSymptomsModel>> task4 = 
+                patientSymptomsController.getPatientSymptomsMod(resultdsid);
+            Task<List<PatientPrescriptionModel>> task5 = 
+                patientPrescriptionController.getPrescriptionModel(resultdsid);
+
+            Task<List<xraymodel>> task6 = docReqXrayController.getXrayData(resultdsid);
+            List<Task> listTask = new List<Task>() { task1,task2,task3,task4,task5,task6};
+
+            await Task.WhenAll(listTask);
+
+            doctorResultData = task1.Result;
+            patientDetailsData = task2.Result;
+
+            listlabModel = task3.Result;
+            listPatientSymp = task4.Result;
+            listPatientPrescription = task5.Result;
+            listXrayModel = task6.Result;
+
             patientVModelData = await patientVController.getDetailsidDate(id,
-                doctorResultData.date_results.ToString("yyyy-MM-dd"));
+              doctorResultData.date_results.ToString("yyyy-MM-dd"));
+
+            DoctorDataModel d = await doctorDataController.getDoctorData(doctorResultData.doctor_id);
 
 
-            listlabModel = await doctorReqLabController.getLabModelDoctorResult(resultdsid);
-            listPatientSymp = await patientSymptomsController.getPatientSymptomsMod(resultdsid);
-            listPatientPrescription = await patientPrescriptionController.getPrescriptionModel(resultdsid);
-            listXrayModel = await docReqXrayController.getXrayData(resultdsid);
 
             string objectiveSymp = "";
             string prescriptions = "";
@@ -159,8 +180,15 @@ namespace RMC.Patients.PanelsDetails
             cos.SetParameterValue("cvilParam", patientDetailsData.civil_status);
             cos.SetParameterValue("addressParam", patientDetailsData.address);
             cos.SetParameterValue("dateDynamic", doctorResultData.date_results.ToShortDateString());
-            cos.SetParameterValue("bpParam", patientVModelData.bp == "" || patientVModelData.bp == null ? "" :
+            cos.SetParameterValue("bpParam", string.IsNullOrEmpty(patientVModelData.bp) ? "" :
                                         patientVModelData.bp);
+
+            cos.SetParameterValue("wtParam", string.IsNullOrEmpty(patientVModelData.wt) ? "" :
+                                        patientVModelData.wt);
+
+            cos.SetParameterValue("lmpParam", string.IsNullOrEmpty(patientVModelData.lmp) ? "" :
+                                      patientVModelData.lmp);
+
             cos.SetParameterValue("tempParam", patientVModelData.temp == "" || patientVModelData.temp == null ?
                                 "" : patientVModelData.temp);
             cos.SetParameterValue("oParam", objectiveSymp);
@@ -171,7 +199,10 @@ namespace RMC.Patients.PanelsDetails
             cos.SetParameterValue("labReqParam", "Lab Request** \n\t" + docReqLab);
 
             cos.SetParameterValue("xrayReqParam", "xray Request** \n\t" + docReqX);
+            cos.SetParameterValue("licenseNo", d.license);
+            cos.SetParameterValue("prNoParam", d.pr);
 
+            cos.SetParameterValue("imgPath", d.imgPath);
 
             crystalReportViewer1.ReportSource = cos;
 
