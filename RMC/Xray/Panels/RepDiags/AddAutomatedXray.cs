@@ -41,13 +41,24 @@ namespace RMC.Xray.Panels.RepDiags
         private int patientid = 0;
         public Image imgToAdd = null;
         int xid = 0;
-
+        private int patient_xray_id = 0;
+        private bool isEdited = false;
 
         public AddAutomatedXray(int xid, int patientid)
         {
             InitializeComponent();
             this.xid = xid;
             this.patientid = patientid;
+            getXrayModel();
+        }
+
+        public AddAutomatedXray(int xid, int patientid,int patient_xray_id)
+        {
+            InitializeComponent();
+            this.xid = xid;
+            this.patientid = patientid;
+            isEdited = true;
+            this.patient_xray_id = patient_xray_id;
             getXrayModel();
         }
 
@@ -177,22 +188,44 @@ namespace RMC.Xray.Panels.RepDiags
         private async void btnSave_Click(object sender, EventArgs e)
         {
             patientDetails patientDetails = await patientDetailsController.getPatientId(patientid);
-            await radioQueueController.updateStatus(xid, patientDetails.id);
 
-            CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id);
-            string newFilePath2 = CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id + "\\" + "XrayFiles");
-            string filePath = newFilePath2;
-            string datenow = DateTime.Now.ToString("yyyy--MM--dd");
-            string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
-            string combine = datenow + "--" + timenow;
 
-            saveImginPath(filePath, "Xray-" + patientDetails.id + "-" + xid + "-" + combine);
-            await patientXrayController.save(patientDetails.id, xid,
-                             "Xray-" + patientDetails.id + "-" + xid + "-" + combine + ".jpg", filePath);
-            await processConsumables();
+            if (!isEdited)
+            {
+                await radioQueueController.updateStatus(xid, patientDetails.id);
+
+                CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id);
+                string newFilePath2 = CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id + "\\" + "XrayFiles");
+                string filePath = newFilePath2;
+                string datenow = DateTime.Now.ToString("yyyy--MM--dd");
+                string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
+                string combine = datenow + "--" + timenow;
+
+                saveImginPath(filePath, "Xray-" + patientDetails.id + "-" + xid + "-" + combine);
+                await patientXrayController.save(patientDetails.id, xid,
+                                 "Xray-" + patientDetails.id + "-" + xid + "-" + combine + ".jpg", filePath);
+                await processConsumables();
+            }
+            else
+            {
+                string path = patient_xray_id == 0 ?
+                await patientXrayController.getFullPath(patientDetails.id, xid)
+               : await patientXrayController.getFullPath(patient_xray_id);
+
+                saveImginPathEdited(path);
+            }
+           
 
             MessageBox.Show("succesfully Save Data");
             this.Close();
+        }
+
+
+        private void saveImginPathEdited(string path)
+        {
+            Image newImg = pbAutomated.Image;
+            newImg.Save(path);
+            newImg.Dispose();
         }
 
         private void saveImginPath(string path, string fileName)

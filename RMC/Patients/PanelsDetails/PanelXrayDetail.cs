@@ -186,7 +186,7 @@ namespace RMC.Patients.PanelsDetails
 
             if (xraymodel.autodocsid == 0 && xraymodel.is_crystal == 0)
             {
-                AddXrayUploading addXrayUploading = new AddXrayUploading(xraymodel.id, id);
+                AddXrayUploading addXrayUploading = new AddXrayUploading(xraymodel.id, id,selectedIds);
                 addXrayUploading.ShowDialog();
               
             }

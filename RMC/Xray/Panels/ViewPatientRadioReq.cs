@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Lab.Panels.Diags;
 using RMC.Patients;
 using RMC.Xray.Panels.RepDiags;
 using System;
@@ -181,21 +182,19 @@ namespace RMC.Xray.Panels
 
             xraymodel xb = await xrayControllers.getLabModelById(selectedIds);
 
-            if (xb.autodocsid > 0)
-            {
-               
-            }
 
             if (xb.is_crystal == 1)
             {
                 RoetDiagForm roetDiagForm = new RoetDiagForm(patientid,xb.id,0);
                 roetDiagForm.ShowDialog();
             }
-
-            if (xb.autodocsid == 0 && xb.is_crystal == 0)
+            else
             {
-              
+                ViewImageXray viewImageXray = new ViewImageXray(patientid, xb.id, 0, xb.name);
+                viewImageXray.ShowDialog();
+
             }
+
 
             setData(patientid);
         }
@@ -232,7 +231,7 @@ namespace RMC.Xray.Panels
 
             if (xb.autodocsid == 0 && xb.is_crystal == 0)
             {
-                AddXrayUploading addXrayUploading = new AddXrayUploading(selectedIds, patientid);
+                AddXrayUploading addXrayUploading = new AddXrayUploading(selectedIds, patientid,0);
                 addXrayUploading.ShowDialog();
                 /* DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid);
                  fileUpload.ShowDialog();*/
