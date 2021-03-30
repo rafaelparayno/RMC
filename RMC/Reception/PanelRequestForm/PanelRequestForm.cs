@@ -205,10 +205,18 @@ namespace RMC.Reception.PanelRequestForm
 
         private async void SubmenuItem_Click(object sender, EventArgs e)
         {
+
             ToolStripMenuItem click = ((ToolStripMenuItem)sender);
 
             int uid = int.Parse(click.Text.Split('-')[1]);
             int id = int.Parse(idRightClick);
+
+            int qno = int.Parse(dgCustomerList.SelectedRows[0].Cells[0].Value.ToString());
+            List<int> req = await customerRequestsController.getListTypeReq(qno);
+
+            if (!req.Contains(consultS))
+                return;
+       
 
             await docQController.updateDoctorQueue(uid, id);
 
