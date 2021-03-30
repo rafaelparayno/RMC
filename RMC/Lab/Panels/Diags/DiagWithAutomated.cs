@@ -34,6 +34,7 @@ namespace RMC.Lab.Panels.Diags
         private int patientid = 0;
         public Image imgToAdd = null;
         int labId = 0;
+        private bool isEdited = false;
 
 
         public  DiagWithAutomated(int labId,int patientid)
@@ -42,6 +43,14 @@ namespace RMC.Lab.Panels.Diags
             this.labId = labId;
             this.patientid = patientid;
             getLabmodel();
+        }
+        public DiagWithAutomated(int labId, int patientid,bool isEdited)
+        {
+            InitializeComponent();
+            this.labId = labId;
+            this.patientid = patientid;
+            getLabmodel();
+            this.isEdited = isEdited;
         }
 
         public async void getLabmodel()
@@ -170,6 +179,10 @@ namespace RMC.Lab.Panels.Diags
         private async void btnSave_Click(object sender, EventArgs e)
         {
         
+            if(!isEdited)
+            {
+
+            
             patientDetails  patientmod = await patientDetailsController.getPatientId(patientid);
 
             await labQueueController.updateStatus(labId, patientmod.id);
@@ -183,9 +196,22 @@ namespace RMC.Lab.Panels.Diags
             await patientLabController.save(patientmod.id,labId,
                              "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".jpg", filePath);
             await processConsumables();
+            }
+            else
+            {
+                string path = await patientLabController.getFullPath(patientid, labId);
+                saveImginPathEdited(path);
+            }
 
             MessageBox.Show("succesfully Save Data");
             this.Close();
+        }
+
+        private void saveImginPathEdited(string path)
+        {
+            Image newImg = pbAutomated.Image;
+            newImg.Save(path);
+            newImg.Dispose();
         }
 
         private void saveImginPath( string path, string fileName)

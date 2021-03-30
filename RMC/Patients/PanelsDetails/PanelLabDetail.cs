@@ -158,8 +158,8 @@ namespace RMC.Patients.PanelsDetails
 
             if (labModel.autodocsid > 0)
             {
-                /*DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
-                diagWithAutomated.ShowDialog();*/
+                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(labModel.id, id,true);
+                diagWithAutomated.ShowDialog();
             }
 
             if (labModel.crystal_id_lab > 0)
