@@ -305,13 +305,12 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private async Task processTransaction()
         {
-          
-          
+            await invoiceController.Save(totalPrice);
             Task task1 = savesRadioLabQ();
             Task task2 = customerDetailsController.setPaid(customerid);
             Task task3 = saveclinicSales();
-            Task task4 = invoiceController.Save(totalPrice);
-            Task[] processes = new Task[] { task1, task2,task3,task4 };
+        
+            Task[] processes = new Task[] { task1, task2,task3 };
 
             await Task.WhenAll(processes);
         }
@@ -348,11 +347,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
             await Task.WhenAll(saves);
         }
-
-
-        
-
-
 
         private bool isFoundGrid(string type, int idInSelect)
         {
@@ -457,9 +451,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 setTotalPrice();
             }
         }
-
-
-        
 
         private async void btnUpdate_Click(object sender, EventArgs e)
         {

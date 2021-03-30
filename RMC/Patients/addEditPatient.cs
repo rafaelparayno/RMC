@@ -61,7 +61,7 @@ namespace RMC.Patients
             btnXray.Visible = false;
             btnDoctorRecord.Visible = false;
             btnPrescription.Visible = false;
-
+            iconButton1.Visible = false;
         }
 
         private void btnVital_Click(object sender, EventArgs e)

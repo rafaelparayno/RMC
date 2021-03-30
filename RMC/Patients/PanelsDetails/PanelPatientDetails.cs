@@ -15,6 +15,7 @@ namespace RMC.Patients.PanelsDetails
     public partial class PanelPatientDetails : Form
     {
         int id = 0;
+        private bool isSave = false;
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         public PanelPatientDetails(int id)
         {
@@ -58,12 +59,16 @@ namespace RMC.Patients.PanelsDetails
                 return;
             }
 
+            if (isSave)
+                return;
+
             if(id == 0)
             {
                 patientDetailsController.save(txtfn.Text.Trim(), txtMn.Text.Trim(),
                                               txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                               txtAge.Text.Trim(), cbGender.SelectedItem.ToString(),txtCn.Text.Trim(),
                                               cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim());
+                isSave = true;
                
             }
             else
@@ -72,9 +77,10 @@ namespace RMC.Patients.PanelsDetails
                                             txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                             txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
                                             cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim(),id.ToString());
-                
+               
             }
             MessageBox.Show("Succesfully Save Data");
+      
 
         }
 
