@@ -143,5 +143,39 @@ namespace RMC.Patients.PanelsDetails
 
            
         }
+
+        private async void editDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show()
+            if (lvLabDetails.SelectedItems.Count == 0)
+                return;
+
+            if (lvLabDetails.Items.Count == 0)
+                return;
+
+            int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
+            labModel labModel = await laboratoryController.getLabModelinPatientLab(selectedIds);
+
+            if (labModel.autodocsid > 0)
+            {
+                /*DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
+                diagWithAutomated.ShowDialog();*/
+            }
+
+            if (labModel.crystal_id_lab > 0)
+            {
+
+                DynamicLabReportsValue dynform = new DynamicLabReportsValue(labModel.crystal_id_lab, id, labModel.id, true);
+                dynform.ShowDialog();
+
+            }
+
+            if (labModel.autodocsid == 0 && labModel.crystal_id_lab == 0)
+            {
+                /*DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid);
+                fileUpload.ShowDialog();*/
+            }
+           // setData(patientid);
+        }
     }
 }
