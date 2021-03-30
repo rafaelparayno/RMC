@@ -133,7 +133,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             int newQ = newListLabQueue.Select(s => s).Min();
             int lastQ = listQueStrings.Select(l => l).Min();
 
-            if(newQ != lastQ)
+            if (newQ != lastQ)
             {
                 speech("Laboratory", newQ.ToString());
             }

@@ -234,7 +234,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
                 updateRequets();
 
-                if (checkConsult.Checked)
+                if (currentS.Contains(consultS))
                     docQController.Save(updateQ, textBox3.Text.Trim());
             }
             else
@@ -252,6 +252,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 }
                 else
                 {
+
                     patientDetailsController.save(txtfn.Text.Trim(), txtMn.Text.Trim(),
                                               txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                               txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
@@ -262,18 +263,18 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                     customerDetailsController.save(lastQ.ToString(), pid.ToString());
 
                 }
-              
-                
 
-               
 
-                if (checkConsult.Checked)
+
+
+
+                if (currentS.Contains(consultS))
                     docQController.Save(lastQ, textBox3.Text.Trim());
 
                 saveRequests();
             }
 
-           
+
 
 
             MessageBox.Show("SuccessFuly Added Request");
@@ -336,6 +337,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             if (checkConsult.Checked)
             {
+               
                 currentS.Add(consultS);
                 groupBox6.Visible = true;
             }

@@ -165,9 +165,39 @@ namespace RMC.Xray.Panels
             setData(patientid);
         }
 
-        private void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (lvItemLab.SelectedItems.Count == 0)
+                return;
 
+            if (lvItemLab.Items.Count == 0)
+                return;
+            if (lvItemLab.SelectedItems[0].SubItems[3].Text == "No Data")
+                return;
+
+
+            int selectedIds = int.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
+
+
+            xraymodel xb = await xrayControllers.getLabModelById(selectedIds);
+
+            if (xb.autodocsid > 0)
+            {
+               
+            }
+
+            if (xb.is_crystal == 1)
+            {
+                RoetDiagForm roetDiagForm = new RoetDiagForm(patientid,xb.id,0);
+                roetDiagForm.ShowDialog();
+            }
+
+            if (xb.autodocsid == 0 && xb.is_crystal == 0)
+            {
+              
+            }
+
+            setData(patientid);
         }
     }
 }

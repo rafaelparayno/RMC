@@ -212,7 +212,7 @@ namespace RMC.Database.Controllers
         private async Task<bool> isFound(int q)
         {
             bool isFound = false;
-            string sql = @"SELECT * FROM `doctor_queue` WHERE queue_no = @id";
+            string sql = @"SELECT * FROM `doctor_queue` WHERE queue_no = @id AND DATE(date_q) = CURDATE() ";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@id", q));
 

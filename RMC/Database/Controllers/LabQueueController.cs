@@ -58,7 +58,8 @@ namespace RMC.Database.Controllers
 
             while(await reader.ReadAsync())
             {
-                liststrings.Add(int.Parse(reader["queue_no"].ToString()));
+                liststrings.Add(string.IsNullOrEmpty(reader["queue_no"].ToString()) ? 
+                                0 :  int.Parse(reader["queue_no"].ToString()));
                  
             }
 
