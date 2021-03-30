@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +29,11 @@ namespace RMC.Xray.Panels.RepDiags
         RadioQueueController radioQueueController = new RadioQueueController();
         private int patientid = 0;
         private int xrayid = 0;
+        private int patient_xray_id = 0;
+        private bool isEdited = false;
         Dictionary<string, string> valuesInReports;
         ConsumablesXrayControllers consumablesXray = new ConsumablesXrayControllers();
-        private bool isEdited = false;
+       
         ConsumedItems consumeditems = new ConsumedItems();
         Dictionary<int, int> consumables = new Dictionary<int, int>();
 
@@ -46,15 +49,17 @@ namespace RMC.Xray.Panels.RepDiags
             loadTxts();
         }
 
-        public XrayDynamicValue(int patientid, int xrayid,bool isEdited)
+        public XrayDynamicValue(int patientid, int xrayid,int patient_xray_id )
         {
             InitializeComponent();
 
             this.patientid = patientid;
             this.xrayid = xrayid;
-            this.isEdited = isEdited;
+            this.patient_xray_id = patient_xray_id;
+            this.isEdited = true;
             loadParams();
             loadTxts();
+            loadXmlValues();
         }
 
         private async void loadParams()
@@ -84,6 +89,40 @@ namespace RMC.Xray.Panels.RepDiags
             }
         }
 
+        private async void loadXmlValues()
+        {
+
+            XmlDocument doc = new XmlDocument();
+
+            string path = patient_xray_id == 0 ?
+                await patientXrayController.getFullPath(patientid, xrayid)
+                : await patientXrayController.getFullPath(patient_xray_id);
+
+
+            if (!File.Exists(path))
+                return;
+
+
+            doc.Load(path);
+
+
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+
+                if (node.Name == "crystalautomatedid")
+                    continue;
+                if (node.Name == "dateParams")
+                    continue;
+
+                int index = textBoxParamsCrystals.FindIndex(n => n.NameLabel == node.Name);
+
+                if (index > -1)
+                    textBoxParamsCrystals[index].textbox1.Text = node.InnerText;
+
+            }
+
+        }
+
         private void loadTxts()
         {
             mainPanel.Controls.Clear();
@@ -108,45 +147,23 @@ namespace RMC.Xray.Panels.RepDiags
                 valuesInReports.Add(t.NameLabel, t.Value);
             }
 
-
-            CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id);
-            string newFilePath2 = CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id + "\\" + "XrayFiles");
-            string filePath = newFilePath2;
-            string datenow = DateTime.Now.ToString("yyyy--MM--dd");
-            string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
-            string combine = datenow + "--" + timenow;
-            await processConsumables();
-            await saveData(combine, filePath);
-        }
-
-     /*   private async Task loadXmlValues()
-        {
-
-            XmlDocument doc = new XmlDocument();
-
-            string path = await patientXrayController.getFullPath(patientid, xrayid);
-
-
-
-            if (!File.Exists(path))
-                return;
-
-
-            doc.Load(path);
-
-
-            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            if(!isEdited)
             {
-
-                if (node.Name == "crystalautomatedid")
-                    continue;
-                if (node.Name == "dateParam")
-                    continue;
-
-                roetgenological.SetParameterValue(node.Name, node.InnerText);
+                CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id);
+                string newFilePath2 = CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id + "\\" + "XrayFiles");
+                string filePath = newFilePath2;
+                string datenow = DateTime.Now.ToString("yyyy--MM--dd");
+                string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
+                string combine = datenow + "--" + timenow;
+                await processConsumables();
+                await saveData(combine, filePath);
             }
-
-        }*/
+            else
+            {
+               await editData();
+            }
+          
+        }
 
 
         private async Task processConsumables()
@@ -169,6 +186,39 @@ namespace RMC.Xray.Panels.RepDiags
             await Task.WhenAll(listTask);
 
         }
+
+        private async Task editData()
+        {
+
+            string path = patient_xray_id == 0 ?
+              await patientXrayController.getFullPath(patientid, xrayid)
+              : await patientXrayController.getFullPath(patient_xray_id);
+
+
+
+            XmlWriter xwriter = XmlWriter.Create(path);
+
+            xwriter.WriteStartElement("Labrecords");
+    /*        xwriter.WriteElementString("crystalautomatedid", crsid.ToString());*/
+            xwriter.WriteElementString("dateParam", DateTime.Now.ToString("MMMM dd, yyyy"));
+
+
+            foreach (KeyValuePair<string, string> k in valuesInReports)
+            {
+                if (string.IsNullOrWhiteSpace(k.Value))
+                    continue;
+
+
+                xwriter.WriteElementString(k.Key.Trim(), k.Value.Trim());
+
+            }
+            xwriter.WriteEndElement();
+            xwriter.Flush();
+            xwriter.Close();
+            MessageBox.Show("Succesfully Edited Data");
+            this.Close();
+        }
+
         private async Task saveData(string combine, string filePath)
         {
 

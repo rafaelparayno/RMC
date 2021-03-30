@@ -175,6 +175,7 @@
             this.editDataToolStripMenuItem.Name = "editDataToolStripMenuItem";
             this.editDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editDataToolStripMenuItem.Text = "Edit Data";
+            this.editDataToolStripMenuItem.Click += new System.EventHandler(this.editDataToolStripMenuItem_Click);
             // 
             // PanelXrayDetail
             // 

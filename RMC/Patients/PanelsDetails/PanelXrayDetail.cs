@@ -159,5 +159,37 @@ namespace RMC.Patients.PanelsDetails
                 viewImageFile.ShowDialog();*/
             }
         }
+
+        private async void editDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lvLabDetails.SelectedItems.Count == 0)
+                return;
+
+            if (lvLabDetails.Items.Count == 0)
+                return;
+
+            int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
+            xraymodel xraymodel = await xrayControllers.getxrayModelinPatientLab(selectedIds);
+
+            if (xraymodel.autodocsid > 0)
+            {
+                AddAutomatedXray addAutomatedXray = new AddAutomatedXray(xraymodel.id, id);
+                addAutomatedXray.ShowDialog();
+
+            }
+
+            if (xraymodel.is_crystal == 1)
+            {
+                XrayDynamicValue xrayDynamicValue = new XrayDynamicValue(id, xraymodel.id, selectedIds);
+                xrayDynamicValue.ShowDialog();
+            }
+
+            if (xraymodel.autodocsid == 0 && xraymodel.is_crystal == 0)
+            {
+                AddXrayUploading addXrayUploading = new AddXrayUploading(xraymodel.id, id);
+                addXrayUploading.ShowDialog();
+              
+            }
+        }
     }
 }
