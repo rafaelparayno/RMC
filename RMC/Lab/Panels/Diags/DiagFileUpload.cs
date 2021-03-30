@@ -27,6 +27,7 @@ namespace RMC.Lab.Panels.Diags
         private int labId = 0;
         private int patientid = 0;
         private bool isEdited = false;
+        private int patient_lab_id = 0;
 
         public DiagFileUpload(int labId, int patientid)
         {
@@ -35,12 +36,13 @@ namespace RMC.Lab.Panels.Diags
             this.patientid = patientid;
         }
 
-        public DiagFileUpload(int labId, int patientid,bool isEdited)
+        public DiagFileUpload(int labId, int patientid,int patient_lab_id)
         {
             InitializeComponent();
             this.labId = labId;
             this.patientid = patientid;
-            this.isEdited = isEdited;
+            this.isEdited = true;
+            this.patient_lab_id = patient_lab_id;
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -110,11 +112,14 @@ namespace RMC.Lab.Panels.Diags
             }
             else
             {
-                string path = await patientLabController.getFullPath(patientid, labId);
+                string path = patient_lab_id == 0 ?
+                      await patientLabController.getFullPath(patientid, labId)
+                      : await patientLabController.getFullPath(patient_lab_id);
+
                 saveImginPathEdited(path);
             }
 
-           
+
             MessageBox.Show("succesfully Save Data");
             this.Close();
         }

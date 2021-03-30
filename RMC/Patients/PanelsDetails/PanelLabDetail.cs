@@ -158,21 +158,21 @@ namespace RMC.Patients.PanelsDetails
 
             if (labModel.autodocsid > 0)
             {
-                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(labModel.id, id,true);
+                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(labModel.id, id,selectedIds);
                 diagWithAutomated.ShowDialog();
             }
 
             if (labModel.crystal_id_lab > 0)
             {
 
-                DynamicLabReportsValue dynform = new DynamicLabReportsValue(labModel.crystal_id_lab, id, labModel.id, true);
+                DynamicLabReportsValue dynform = new DynamicLabReportsValue(labModel.crystal_id_lab, id, labModel.id, selectedIds);
                 dynform.ShowDialog();
 
             }
 
             if (labModel.autodocsid == 0 && labModel.crystal_id_lab == 0)
             {
-                DiagFileUpload fileUpload = new DiagFileUpload(labModel.id, id,true);
+                DiagFileUpload fileUpload = new DiagFileUpload(labModel.id, id,selectedIds);
                 fileUpload.ShowDialog();
             }
            // setData(patientid);

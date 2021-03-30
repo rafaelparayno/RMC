@@ -30,7 +30,7 @@ namespace RMC.Xray.Panels.RepDiags
         private int xrayid = 0;
         Dictionary<string, string> valuesInReports;
         ConsumablesXrayControllers consumablesXray = new ConsumablesXrayControllers();
-    
+        private bool isEdited = false;
         ConsumedItems consumeditems = new ConsumedItems();
         Dictionary<int, int> consumables = new Dictionary<int, int>();
 
@@ -42,6 +42,17 @@ namespace RMC.Xray.Panels.RepDiags
 
             this.patientid = patientid;
             this.xrayid = xrayid;
+            loadParams();
+            loadTxts();
+        }
+
+        public XrayDynamicValue(int patientid, int xrayid,bool isEdited)
+        {
+            InitializeComponent();
+
+            this.patientid = patientid;
+            this.xrayid = xrayid;
+            this.isEdited = isEdited;
             loadParams();
             loadTxts();
         }
@@ -107,6 +118,35 @@ namespace RMC.Xray.Panels.RepDiags
             await processConsumables();
             await saveData(combine, filePath);
         }
+
+     /*   private async Task loadXmlValues()
+        {
+
+            XmlDocument doc = new XmlDocument();
+
+            string path = await patientXrayController.getFullPath(patientid, xrayid);
+
+
+
+            if (!File.Exists(path))
+                return;
+
+
+            doc.Load(path);
+
+
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+
+                if (node.Name == "crystalautomatedid")
+                    continue;
+                if (node.Name == "dateParam")
+                    continue;
+
+                roetgenological.SetParameterValue(node.Name, node.InnerText);
+            }
+
+        }*/
 
 
         private async Task processConsumables()

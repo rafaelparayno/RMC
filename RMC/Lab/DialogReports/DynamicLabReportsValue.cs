@@ -33,6 +33,7 @@ namespace RMC.Lab.DialogReports
         private int patientid = 0;
         private int labid = 0;
         private bool edited = false;
+        private int patient_lab_id = 0;
 
         public DynamicLabReportsValue(int crsid,int patientid,int labid)
         {
@@ -45,15 +46,18 @@ namespace RMC.Lab.DialogReports
         }
 
 
-        public DynamicLabReportsValue(int crsid, int patientid, int labid,bool edited)
+        public DynamicLabReportsValue(int crsid, int patientid, int labid,int patient_lab_id)
         {
             InitializeComponent();
             this.crsid = crsid;
             this.patientid = patientid;
             this.labid = labid;
+            this.edited = true;
+            this.patient_lab_id = patient_lab_id;
             loadValues();
             loadTxts();
-            this.edited = edited;
+        
+           /* this.edited = edited;*/
             if (edited)
             {
                 loadXmlValues();
@@ -235,8 +239,9 @@ namespace RMC.Lab.DialogReports
 
             XmlDocument doc = new XmlDocument();
 
-            string path = await patientLabController.getFullPath(patientid, labid);
-
+            string path = patient_lab_id == 0 ?
+                  await patientLabController.getFullPath(patientid, labid)
+                  : await patientLabController.getFullPath(patient_lab_id);
 
             if (!File.Exists(path))
                 return;
@@ -317,7 +322,10 @@ namespace RMC.Lab.DialogReports
 
         private async Task editData()
         {
-            string path = await patientLabController.getFullPath(patientid, labid);
+
+            string path = patient_lab_id == 0 ?
+                      await patientLabController.getFullPath(patientid, labid)
+                      : await patientLabController.getFullPath(patient_lab_id);
 
 
 
