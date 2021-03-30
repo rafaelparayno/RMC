@@ -20,9 +20,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         DoctorQueueController doctorQueueController = new DoctorQueueController();
         LabQueueController labQueueController = new LabQueueController();
         UserracountsController uc = new UserracountsController();
+        RadioQueueController radioQueueController = new RadioQueueController();
         SpeechSynthesizer _ss = new SpeechSynthesizer();
         List<DoctorQueueModel> Cdoctors;
         List<int> listQueStrings = new List<int>();
+        List<int> listQueXray = new List<int>();
 
 
         public ShowQueue()
@@ -103,22 +105,54 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         }
 
 
+        private void populateRadQueue()
+        {
+
+            panelX.Controls.Clear();
+            foreach (int s in listQueXray)
+            {
+                Label l = new Label();
+                l.Dock = DockStyle.Top;
+                l.Text = s.ToString();
+                l.Height = 50;
+                l.Width = 300;
+                l.TextAlign = ContentAlignment.TopCenter;
+                l.Font = new Font("Microsoft Sans Serif", 36);
+                panelX.Controls.Add(l);
+            }
+
+
+            Label l2 = new Label();
+            l2.Dock = DockStyle.Top;
+            l2.Text = "Currently";
+            l2.Height = 50;
+            l2.Width = 300;
+            l2.TextAlign = ContentAlignment.TopCenter;
+            l2.Font = new Font("Microsoft Sans Serif", 24);
+            panelX.Controls.Add(l2);
+
+        }
+
+
 
         private async Task refreshQue()
         {
 
             Task<List<DoctorQueueModel>> task1 = uc.listDoctorOnlinesModel();
             Task<List<int>> task2 = labQueueController.listLabQueue();
-            Task[] taskargs = new Task[] { task1, task2 };
+            Task<List<int>> task3 = radioQueueController.listRadQueue();
+            Task[] taskargs = new Task[] { task1, task2,task3 };
 
             await Task.WhenAll(taskargs);
 
             Cdoctors = task1.Result;
             listQueStrings = task2.Result;
+            listQueXray = task3.Result;
 
 
             populateDocs();
             populateLabQueue();
+            populateRadQueue();
 
          
         }
@@ -128,6 +162,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             List<int> newListLabQueue = await labQueueController.listLabQueue();
 
             if (newListLabQueue.Count == 0)
+                return;
+            if (listQueStrings.Count == 0)
                 return;
 
             int newQ = newListLabQueue.Select(s => s).Min();

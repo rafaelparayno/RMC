@@ -42,6 +42,34 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
+
+        public async Task<List<int>> listRadQueue()
+        {
+            List<int> liststrings = new List<int>();
+
+
+            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname, ' ', patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details
+                           INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
+                            WHERE customer_id in (SELECT customer_id FROM radio_queue WHERE radio_queue.is_done_x = 0) 
+                        AND DATE(customer_request_details.date_req) = CURDATE() ORDER BY queue_no DESC";
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while (await reader.ReadAsync())
+            {
+                liststrings.Add(string.IsNullOrEmpty(reader["queue_no"].ToString()) ?
+                                0 : int.Parse(reader["queue_no"].ToString()));
+
+            }
+
+
+
+            crud.CloseConnection();
+
+            return liststrings;
+
+        }
+
         public async Task<List<xraymodel>> getReqLabByPatientID(int id)
         {
             List<xraymodel> listxraymodel = new List<xraymodel>();
