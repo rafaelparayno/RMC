@@ -1,4 +1,5 @@
 ﻿using RMC.Database.Controllers;
+using RMC.Patients.PanelsDetails.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,9 @@ namespace RMC.Patients.PanelsDetails
     {
 
         int patientid = 0;
+        string idRightClick = "";
+        string idRightClick2 = "";
+
         PatientPrescriptionController ppController = new PatientPrescriptionController();
 
         public PanelPrescriptionData(int patientid)
@@ -24,15 +28,26 @@ namespace RMC.Patients.PanelsDetails
             loadData();
         }
 
-        private async void searchData()
+        private async void loadData()
         {
-            DataSet ds = await ppController.getDataset(patientid, dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            DataSet ds = await ppController.GetDataSetInfo(patientid);
             refreshGrid(ds);
         }
 
-        private async void loadData()
+        private async void loadDataItem(int resid)
         {
-            DataSet ds = await ppController.getDataset(patientid);
+            DataSet ds = await ppController.getPrescriptionByResID(resid);
+            refreshGridItem(ds);
+        }
+
+        private async void searchData(string date)
+        {
+           
+            DataSet ds = new DataSet();
+         
+            ds = await ppController.GetDataSetInfoDate(date);
+             
+
             refreshGrid(ds);
         }
 
@@ -43,20 +58,61 @@ namespace RMC.Patients.PanelsDetails
             dgItemList.AutoResizeColumns();
         }
 
+        private void refreshGridItem(DataSet ds)
+        {
+            dataGridView1.DataSource = "";
+            dataGridView1.DataSource = ds.Tables[0];
+            dataGridView1.AutoResizeColumns();
+        }
+
 
 
 
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            searchData();
-
+            searchData(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            dataGridView1.DataSource = "";
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
             loadData();
 
+        }
+
+        private void dgItemList_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+
+                int currentMouseOverRow = dgItemList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                    idRightClick = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    /* Sku = dgItemList.Rows[currentMouseOverRow].Cells[5].Value.ToString();*/
+                    int res = int.Parse(idRightClick);
+                    loadDataItem(res);
+
+                }
+
+            }
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            if (dgItemList.Rows.Count == 0)
+                return;
+
+            if (dgItemList.SelectedRows.Count == 0)
+                return;
+
+            int docresid = int.Parse(dgItemList.SelectedRows[0].Cells[0].Value.ToString());
+
+            prescriptionViewerDiag prescriptionViewer = new prescriptionViewerDiag(docresid);
+            prescriptionViewer.ShowDialog();
         }
     }
 }
