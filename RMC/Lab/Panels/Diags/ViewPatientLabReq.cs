@@ -222,7 +222,7 @@ namespace RMC.Lab.Panels.Diags
 
             if (lb.autodocsid > 0)
             {
-                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
+                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid,true);
                 diagWithAutomated.ShowDialog();
             }
 
@@ -236,7 +236,7 @@ namespace RMC.Lab.Panels.Diags
 
             if (lb.autodocsid == 0 && lb.crystal_id_lab == 0)
             {
-                DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid);
+                DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid,true);
                 fileUpload.ShowDialog();
             }
             setData(patientid);

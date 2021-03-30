@@ -26,11 +26,21 @@ namespace RMC.Lab.Panels.Diags
         Dictionary<int, int> consumables = new Dictionary<int, int>();
         private int labId = 0;
         private int patientid = 0;
+        private bool isEdited = false;
+
         public DiagFileUpload(int labId, int patientid)
         {
             InitializeComponent();
             this.labId = labId;
             this.patientid = patientid;
+        }
+
+        public DiagFileUpload(int labId, int patientid,bool isEdited)
+        {
+            InitializeComponent();
+            this.labId = labId;
+            this.patientid = patientid;
+            this.isEdited = isEdited;
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -82,19 +92,38 @@ namespace RMC.Lab.Panels.Diags
 
             patientDetails patientmod = await patientDetailsController.getPatientId(patientid);
 
-            await labQueueController.updateStatus(labId, patientmod.id);
+           
             CreateDirectory.CreateDir(patientmod.lastname + "-" + patientmod.id);
             string newFilePath2 = CreateDirectory.CreateDir(patientmod.lastname + "-" + patientmod.id + "\\" + "LabFiles");
             string filePath = newFilePath2;
             string datenow = DateTime.Now.ToString("yyyy--MM--dd");
             string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
             string combine = datenow + "--" + timenow;
-            saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + combine);
-            await patientLabController.save(patientmod.id, labId,
-                             "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".jpg", filePath);
-            await processConsumables();
+
+            if (!isEdited)
+            {
+                await labQueueController.updateStatus(labId, patientmod.id);
+                saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + combine);
+                await patientLabController.save(patientmod.id, labId,
+                                 "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".jpg", filePath);
+                await processConsumables();
+            }
+            else
+            {
+                string path = await patientLabController.getFullPath(patientid, labId);
+                saveImginPathEdited(path);
+            }
+
+           
             MessageBox.Show("succesfully Save Data");
             this.Close();
+        }
+
+        private void saveImginPathEdited(string path)
+        {
+            Image newImg = pbAutomated.Image;
+            newImg.Save(path);
+            newImg.Dispose();
         }
 
         private void saveImginPath(string path, string fileName)

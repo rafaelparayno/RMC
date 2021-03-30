@@ -172,8 +172,8 @@ namespace RMC.Patients.PanelsDetails
 
             if (labModel.autodocsid == 0 && labModel.crystal_id_lab == 0)
             {
-                /*DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid);
-                fileUpload.ShowDialog();*/
+                DiagFileUpload fileUpload = new DiagFileUpload(labModel.id, id,true);
+                fileUpload.ShowDialog();
             }
            // setData(patientid);
         }
