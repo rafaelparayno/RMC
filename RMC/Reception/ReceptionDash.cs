@@ -83,6 +83,7 @@ namespace RMC
             btnDaily.Enabled = false;
             iconButton1.Enabled = false;
             iconButton2.Enabled = false;
+            iconButton3.Enabled = false;
         }
 
         private void enableBtns()
@@ -91,6 +92,12 @@ namespace RMC
             btnDaily.Enabled = true;
             iconButton1.Enabled = true;
             iconButton2.Enabled = true;
+            iconButton3.Enabled = true;
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ViewQueueDate());
         }
     }
 }

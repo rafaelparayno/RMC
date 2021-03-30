@@ -49,6 +49,43 @@ namespace RMC.Database.Controllers
             return detailsList;
         }
 
+        public async Task<List<customerDetailsMod>> getDetailsList(string date)
+        {
+
+            string sql = @"SELECT * FROM customer_request_details 
+                            LEFT JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
+                            WHERE DATE(date_req) = Date(@date)
+                            ORDER BY queue_no ASC";
+            List<customerDetailsMod> detailsList = new List<customerDetailsMod>();
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@date", date));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                customerDetailsMod customerDetailsMod = new customerDetailsMod();
+
+                customerDetailsMod.id = int.Parse(reader["customer_id"].ToString());
+                customerDetailsMod.quueu_no = int.Parse(reader["queue_no"].ToString());
+                customerDetailsMod.fname = reader["firstname"].ToString();
+                customerDetailsMod.mname = reader["middlename"].ToString();
+                customerDetailsMod.lname = reader["lastname"].ToString();
+                customerDetailsMod.age = int.Parse(reader["age"].ToString());
+                customerDetailsMod.gender = reader["gender"].ToString();
+                customerDetailsMod.address = reader["address"].ToString();
+                customerDetailsMod.cp_no = reader["contactnumber"].ToString();
+                customerDetailsMod.address = reader["address"].ToString();
+                customerDetailsMod.isPaid = int.Parse(reader["is_paid"].ToString());
+                detailsList.Add(customerDetailsMod);
+            }
+
+            crud.CloseConnection();
+
+            return detailsList;
+        }
+
         public async Task<int> getLastQueue()
         {
             int lastq = 0;

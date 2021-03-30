@@ -33,7 +33,6 @@
             this.btnpay = new FontAwesome.Sharp.IconButton();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEdit = new FontAwesome.Sharp.IconButton();
-            this.btnNextReq = new FontAwesome.Sharp.IconButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgCustomerList = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -52,7 +51,6 @@
             this.panelMenus.Controls.Add(this.btnpay);
             this.panelMenus.Controls.Add(this.btnAddItem);
             this.panelMenus.Controls.Add(this.btnEdit);
-            this.panelMenus.Controls.Add(this.btnNextReq);
             this.panelMenus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelMenus.Location = new System.Drawing.Point(0, 465);
             this.panelMenus.Name = "panelMenus";
@@ -72,7 +70,7 @@
             this.btnpay.IconColor = System.Drawing.Color.White;
             this.btnpay.IconSize = 24;
             this.btnpay.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnpay.Location = new System.Drawing.Point(384, 0);
+            this.btnpay.Location = new System.Drawing.Point(459, 0);
             this.btnpay.Name = "btnpay";
             this.btnpay.Rotation = 0D;
             this.btnpay.Size = new System.Drawing.Size(75, 61);
@@ -95,7 +93,7 @@
             this.btnAddItem.IconColor = System.Drawing.Color.White;
             this.btnAddItem.IconSize = 24;
             this.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddItem.Location = new System.Drawing.Point(459, 0);
+            this.btnAddItem.Location = new System.Drawing.Point(534, 0);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Rotation = 0D;
             this.btnAddItem.Size = new System.Drawing.Size(75, 61);
@@ -118,7 +116,7 @@
             this.btnEdit.IconColor = System.Drawing.Color.White;
             this.btnEdit.IconSize = 24;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEdit.Location = new System.Drawing.Point(534, 0);
+            this.btnEdit.Location = new System.Drawing.Point(609, 0);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Rotation = 0D;
             this.btnEdit.Size = new System.Drawing.Size(75, 61);
@@ -127,29 +125,6 @@
             this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnNextReq
-            // 
-            this.btnNextReq.BackColor = System.Drawing.Color.Maroon;
-            this.btnNextReq.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnNextReq.FlatAppearance.BorderSize = 0;
-            this.btnNextReq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNextReq.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnNextReq.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNextReq.ForeColor = System.Drawing.Color.White;
-            this.btnNextReq.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            this.btnNextReq.IconColor = System.Drawing.Color.White;
-            this.btnNextReq.IconSize = 24;
-            this.btnNextReq.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNextReq.Location = new System.Drawing.Point(609, 0);
-            this.btnNextReq.Name = "btnNextReq";
-            this.btnNextReq.Rotation = 0D;
-            this.btnNextReq.Size = new System.Drawing.Size(75, 61);
-            this.btnNextReq.TabIndex = 8;
-            this.btnNextReq.Text = "Remove";
-            this.btnNextReq.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnNextReq.UseVisualStyleBackColor = false;
-            this.btnNextReq.Click += new System.EventHandler(this.btnNextReq_Click);
             // 
             // groupBox2
             // 
@@ -196,7 +171,7 @@
             this.goToDoctorToolStripMenuItem,
             this.addVitalToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 92);
             // 
             // goToLabToolStripMenuItem
             // 
@@ -219,7 +194,7 @@
             // addVitalToolStripMenuItem
             // 
             this.addVitalToolStripMenuItem.Name = "addVitalToolStripMenuItem";
-            this.addVitalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addVitalToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.addVitalToolStripMenuItem.Text = "Add Vital";
             this.addVitalToolStripMenuItem.Click += new System.EventHandler(this.addVitalToolStripMenuItem_Click);
             // 
@@ -247,7 +222,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panelMenus;
-        private FontAwesome.Sharp.IconButton btnNextReq;
         private System.Windows.Forms.GroupBox groupBox2;
         private FontAwesome.Sharp.IconButton btnAddItem;
         private FontAwesome.Sharp.IconButton btnEdit;

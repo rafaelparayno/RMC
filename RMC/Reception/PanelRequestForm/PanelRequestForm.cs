@@ -108,12 +108,11 @@ namespace RMC.Reception.PanelRequestForm
                     {
                         imgConsult = ImageList1.Images[2];
                     }
-                  
 
                 }
                 else
                 {
-                    imgConsult = ImageList1.Images[1];
+                    imgConsult = ImageList1.Images[3];
                 }
 
                 if (requests.Contains(xRayS))
@@ -159,12 +158,19 @@ namespace RMC.Reception.PanelRequestForm
             getData();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private async void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgCustomerList.Rows.Count == 0)
                 return;
 
             if (dgCustomerList.SelectedRows.Count == 0)
+                return;
+
+            int qno = int.Parse(dgCustomerList.SelectedRows[0].Cells[1].Value.ToString());
+
+            int isPay = await customerDetailsController.getIsPaid(qno);
+
+            if (isPay == 1)
                 return;
 
             AddEditRequestForm form = new AddEditRequestForm(dgCustomerList.SelectedRows[0].Cells[0].Value.ToString(), 
