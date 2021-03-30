@@ -184,7 +184,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             {
                 int currentq = await doctorQueueController.getCurrentDoctorQ(d.id);
 
-
+                if (currentq == 0)
+                    return;
 
                 DoctorQueueModel s = Cdoctors.Find(item => item.id == d.id);
 
