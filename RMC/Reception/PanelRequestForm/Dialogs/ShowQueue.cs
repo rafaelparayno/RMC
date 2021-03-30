@@ -39,8 +39,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             bool task1 = playSounds();
             if (task1)
-                _ss.SpeakAsync($"Currently Serving in {place} is Queue Number {queueNo}");
-
+                _ss.SpeakAsync($"Currently Serving in {place} is Q" +
+                    $"ueue Number {queueNo}");
+            System.Threading.Thread.Sleep(500);
         }
 
        private bool playSounds()
@@ -48,7 +49,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             bool _isStopped = false;
             System.Media.SoundPlayer player = new System.Media.SoundPlayer(Directory.GetCurrentDirectory() + @"\notfy.wav");
             player.PlaySync();
-            _isStopped = true;
+            _isStopped = player.IsLoadCompleted;
+           
             return _isStopped;
         }
 
@@ -176,6 +178,26 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         }
 
+
+        private async Task RadSounds()
+        {
+            List<int> newListXQueue = await radioQueueController.listRadQueue();
+
+            if (newListXQueue.Count == 0)
+                return;
+            if (listQueXray.Count == 0)
+                return;
+
+            int newQ = newListXQueue.Select(s => s).Min();
+            int lastQ = listQueXray.Select(l => l).Min();
+
+            if (newQ != lastQ)
+            {
+                speech("Radio Lab", newQ.ToString());
+            }
+
+        }
+
         private async Task doctorSounds()
         {
             List<DoctorQueueModel> newDocQue = await uc.listDoctorOnlinesModel();
@@ -202,7 +224,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
 
             await doctorSounds();
-            await LabSounds();     
+            await LabSounds();
+            await RadSounds();
             await refreshQue();
 
         }
