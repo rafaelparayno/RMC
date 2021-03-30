@@ -36,6 +36,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.insertLabDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editLabDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -91,14 +92,15 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.insertLabDataToolStripMenuItem,
-            this.viewDataToolStripMenuItem});
+            this.viewDataToolStripMenuItem,
+            this.editLabDataToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
             // 
             // insertLabDataToolStripMenuItem
             // 
             this.insertLabDataToolStripMenuItem.Name = "insertLabDataToolStripMenuItem";
-            this.insertLabDataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.insertLabDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.insertLabDataToolStripMenuItem.Text = "Insert Lab Data";
             this.insertLabDataToolStripMenuItem.Click += new System.EventHandler(this.insertLabDataToolStripMenuItem_Click);
             // 
@@ -108,6 +110,13 @@
             this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewDataToolStripMenuItem.Text = "View Data";
             this.viewDataToolStripMenuItem.Click += new System.EventHandler(this.viewDataToolStripMenuItem_Click);
+            // 
+            // editLabDataToolStripMenuItem
+            // 
+            this.editLabDataToolStripMenuItem.Name = "editLabDataToolStripMenuItem";
+            this.editLabDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editLabDataToolStripMenuItem.Text = "Edit Lab Data";
+            this.editLabDataToolStripMenuItem.Click += new System.EventHandler(this.editLabDataToolStripMenuItem_Click);
             // 
             // ViewPatientLabReq
             // 
@@ -138,5 +147,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem insertLabDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editLabDataToolStripMenuItem;
     }
 }

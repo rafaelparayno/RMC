@@ -27,7 +27,7 @@ namespace RMC.Lab.DialogReports
         public string Value
         {
             get { return _value; }
-            set { _value = value; }
+            set { _value = value; txtParam.Text = value; }
         }
 
 
@@ -36,6 +36,13 @@ namespace RMC.Lab.DialogReports
         {
             get { return _name; }
             set { _name = value; lblParamName.Text = value; }
+        }
+
+        [Category("Custom Props")]
+        public TextBox textbox1
+        {
+            get { return txtParam; }
+            
         }
 
         private void txtParam_TextChanged(object sender, EventArgs e)

@@ -203,5 +203,43 @@ namespace RMC.Lab.Panels.Diags
             setData(patientid);
 
         }
+
+        private async void editLabDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show()
+            if (lvItemLab.SelectedItems.Count == 0)
+                return;
+
+            if (lvItemLab.Items.Count == 0)
+                return;
+            if (!(lvItemLab.SelectedItems[0].SubItems[3].Text == "Done"))
+                return;
+
+
+            int selectedIds = int.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
+
+            labModel lb = await laboratoryController.getLabModelInID(selectedIds);
+
+            if (lb.autodocsid > 0)
+            {
+                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
+                diagWithAutomated.ShowDialog();
+            }
+
+            if (lb.crystal_id_lab > 0)
+            {
+
+                DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds,true);
+                dynform.ShowDialog();
+
+            }
+
+            if (lb.autodocsid == 0 && lb.crystal_id_lab == 0)
+            {
+                DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid);
+                fileUpload.ShowDialog();
+            }
+            setData(patientid);
+        }
     }
 }

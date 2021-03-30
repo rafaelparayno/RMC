@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace RMC.Lab.DialogReports
         private int crsid = 0;
         private int patientid = 0;
         private int labid = 0;
+        private bool edited = false;
+
         public DynamicLabReportsValue(int crsid,int patientid,int labid)
         {
             InitializeComponent();
@@ -39,6 +42,22 @@ namespace RMC.Lab.DialogReports
             this.labid = labid;
             loadValues();
             loadTxts();
+        }
+
+
+        public DynamicLabReportsValue(int crsid, int patientid, int labid,bool edited)
+        {
+            InitializeComponent();
+            this.crsid = crsid;
+            this.patientid = patientid;
+            this.labid = labid;
+            loadValues();
+            loadTxts();
+            this.edited = edited;
+            if (edited)
+            {
+                loadXmlValues();
+            }
         }
 
 
@@ -209,6 +228,41 @@ namespace RMC.Lab.DialogReports
             }
         }
 
+     
+
+        private async void loadXmlValues()
+        {
+
+            XmlDocument doc = new XmlDocument();
+
+            string path = await patientLabController.getFullPath(patientid, labid);
+
+
+            if (!File.Exists(path))
+                return;
+
+
+            doc.Load(path);
+
+
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+
+                if (node.Name == "crystalautomatedid")
+                    continue;
+                if (node.Name == "dateParam")
+                    continue;
+
+                int index = textBoxParamsCrystals.FindIndex(t => t.NameLabel == node.Name);
+
+                if (index > -1)
+                    textBoxParamsCrystals[index].textbox1.Text = node.InnerText;
+                
+           
+            }
+
+        }
+
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -223,15 +277,22 @@ namespace RMC.Lab.DialogReports
                 valuesInReports.Add(t.NameLabel, t.Value);
             }
 
-
-            CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id);
-            string newFilePath2 = CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id + "\\" + "LabFiles");
-            string filePath = newFilePath2;
-            string datenow = DateTime.Now.ToString("yyyy--MM--dd");
-            string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
-            string combine = datenow + "--" + timenow;
-            await processConsumables();
-            await saveData(combine, filePath);
+            if (!edited)
+            {
+                CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id);
+                string newFilePath2 = CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id + "\\" + "LabFiles");
+                string filePath = newFilePath2;
+                string datenow = DateTime.Now.ToString("yyyy--MM--dd");
+                string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
+                string combine = datenow + "--" + timenow;
+                await processConsumables();
+                await saveData(combine, filePath);
+            }
+            else
+            {
+                await editData();
+            }
+          
             
         }
 
@@ -252,6 +313,35 @@ namespace RMC.Lab.DialogReports
 
             await Task.WhenAll(listTasks);
             
+        }
+
+        private async Task editData()
+        {
+            string path = await patientLabController.getFullPath(patientid, labid);
+
+
+
+            XmlWriter xwriter = XmlWriter.Create(path);
+
+            xwriter.WriteStartElement("Labrecords");
+            xwriter.WriteElementString("crystalautomatedid", crsid.ToString());
+            xwriter.WriteElementString("dateParam", DateTime.Now.ToString("MMMM dd, yyyy"));
+
+
+            foreach (KeyValuePair<string, string> k in valuesInReports)
+            {
+                if (string.IsNullOrWhiteSpace(k.Value))
+                    continue;
+
+
+                xwriter.WriteElementString(k.Key.Trim(), k.Value.Trim());
+
+            }
+            xwriter.WriteEndElement();
+            xwriter.Flush();
+            xwriter.Close();
+            MessageBox.Show("Succesfully Edited Data");
+            this.Close();
         }
 
         private async Task saveData(string combine, string filePath)
@@ -277,7 +367,7 @@ namespace RMC.Lab.DialogReports
             {
                 if (string.IsNullOrWhiteSpace(k.Value))
                     continue;
-
+                
 
                 xwriter.WriteElementString(k.Key.Trim(), k.Value.Trim());
               
