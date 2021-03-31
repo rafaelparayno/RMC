@@ -1610,5 +1610,14 @@
   <ItemGroup>
     <None Include="Resources\emp.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tenor.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\load.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

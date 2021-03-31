@@ -109,7 +109,7 @@ namespace RMC.Patients.PanelsDetails
 
         private async Task showCrystalReportData(int resultdsid)
         {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+           
             Task<DoctorResult> task1 = Task.Run(()=>dsController.getDoctorResultsSearchId(resultdsid));
             Task<patientDetails> task2 = Task.Run(()=>patientDetailsController.getPatientId(id));
 
@@ -206,12 +206,7 @@ namespace RMC.Patients.PanelsDetails
 
             crystalReportViewer1.ReportSource = cos;
 
-            watch.Stop();
-            var elapsedMs = watch.ElapsedMilliseconds;
-
-
-            Console.WriteLine(elapsedMs.ToString());
-
+         
 
         }
 

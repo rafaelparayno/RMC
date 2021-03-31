@@ -13,6 +13,37 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
+
+        public async Task<List<patientDetails>> getPatientDetails()
+        {
+            List<patientDetails> listpatient = new List<patientDetails>();
+            string sql = @"SELECT * FROM `patientdetails`";
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            while (await reader.ReadAsync())
+            {
+                patientDetails p = new patientDetails();
+                p.id = int.Parse(reader["patient_id"].ToString());
+                p.Firstname = reader["firstname"].ToString();
+                p.middlename = reader["middlename"].ToString();
+                p.lastname = reader["lastname"].ToString();
+
+                p.age = int.Parse(reader["age"].ToString());
+                p.gender = reader["gender"].ToString();
+                p.address = reader["address"].ToString();
+                p.contact = reader["contactnumber"].ToString();
+                p.imgPath = reader["img_path"].ToString();
+
+                listpatient.Add(p);
+
+            }
+
+
+            crud.CloseConnection();
+
+            return listpatient;
+        }
+
         public async Task<List<patientDetails>> getSearchPatient(string searchkey,int cb)
         {
             List<patientDetails> listpatient = new List<patientDetails>();
@@ -22,7 +53,7 @@ namespace RMC.Database.Controllers
             switch (cb)
             {
                 case 0:
-                    sql = @"SELECT * FROM patientdetails WHERE patient_id LIKE @searchKey";
+                    sql = @"SELECT * FROM patientdetails WHERE patient_id  = @searchKey";
                     listparams.Add(new MySqlParameter("@searchKey", int.Parse(searchkey)));
                     break;
 
@@ -178,35 +209,7 @@ namespace RMC.Database.Controllers
             return patientDetails;
         }
 
-        public async Task<List<patientDetails>> getPatientDetails()
-        {
-            List<patientDetails> listpatient = new List<patientDetails>();
-            string sql = @"SELECT * FROM `patientdetails`";
-            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
-
-            while(await reader.ReadAsync())
-            {
-                patientDetails p = new patientDetails();
-                p.id = int.Parse(reader["patient_id"].ToString());
-                p.Firstname = reader["firstname"].ToString();
-                p.middlename = reader["middlename"].ToString();
-                p.lastname = reader["lastname"].ToString();
-              
-                p.age = int.Parse(reader["age"].ToString());
-                p.gender = reader["gender"].ToString();
-                p.address = reader["address"].ToString();
-                p.contact = reader["contactnumber"].ToString();
-                p.imgPath = reader["img_path"].ToString();
-
-                listpatient.Add(p);
-
-            }
-
-
-            crud.CloseConnection();
-
-            return listpatient;
-        }
+    
 
         public async void save(params string[] data)
         {

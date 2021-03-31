@@ -23,13 +23,13 @@ namespace RMC.Patients
         List<int> listAcc = new List<int>();
         int currentPage = 1;
         int rowsPerPage = 10;
-        loading load = new loading();
+   
       
         public PanelPatient()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
-            refreshListPatient();
+           
             getAccess();
         }
 
@@ -42,12 +42,7 @@ namespace RMC.Patients
             }
         }
          
-        private async Task loadPatientDetails()
-        {
-               listDetails = await patientDetailsController.getPatientDetails();
-         
-
-        }
+      
 
         private void populateitems()
         {
@@ -91,12 +86,12 @@ namespace RMC.Patients
             }
         }
 
-        private void ClickBtnView(object sender, EventArgs e)
+        private async void ClickBtnView(object sender, EventArgs e)
         {
             int id = int.Parse(((IconButton)sender).Tag.ToString());
             addEditPatient form = new addEditPatient(id);
             form.ShowDialog();
-            refreshListPatient();
+            await refreshListPatient();
         }
 
         private void showPaginate(int total)
@@ -133,36 +128,51 @@ namespace RMC.Patients
             populateitems();
         }
 
-        private void iconButton2_Click(object sender, EventArgs e)
+        private async void iconButton2_Click(object sender, EventArgs e)
         {
             addEditPatient form = new addEditPatient();
             form.ShowDialog();
-            refreshListPatient();
+            await refreshListPatient();
         }
 
-        private async void refreshListPatient()
+        private async Task loadPatientDetails()
         {
-            load.Show();
-            await loadPatientDetails();
-            populateitems();
-            showPaginate(listDetails.Count);
-            load.Close(); 
+            listDetails =  await patientDetailsController.getPatientDetails();
+         
         }
 
         private async Task loadPatientSearchDetails()
         {
             listDetails = await patientDetailsController.getSearchPatient(txtName.Text.Trim(),
                                                                         comboBox1.SelectedIndex);
+           
         }
+
+        private async Task refreshListPatient()
+        {
+            pictureBox1.Show();
+            pictureBox1.Update();
+
+            await loadPatientDetails();
+            populateitems();
+            showPaginate(listDetails.Count);
+      
+            pictureBox1.Hide();
+        }
+
+     
 
         private async Task searchListPatient()
         {
-            load.Show();
 
+  
+            pictureBox1.Visible = true;
+            pictureBox1.Update();
             await loadPatientSearchDetails();
             populateitems();
             showPaginate(listDetails.Count);
-            load.Close();
+
+            pictureBox1.Visible = false;
         }
 
         private async void iconButton1_Click(object sender, EventArgs e)
@@ -170,16 +180,21 @@ namespace RMC.Patients
             int _;
             if(comboBox1.SelectedIndex == -1)
             {
-                refreshListPatient();
+              await  refreshListPatient();
             }
             else
             {
                 if (comboBox1.SelectedIndex == 0 && !(int.TryParse(txtName.Text.Trim(), out _)))
                     return;
 
-               await searchListPatient();
+              await  searchListPatient();
                
             }
+        }
+
+        private async void PanelPatient_Load(object sender, EventArgs e)
+        {
+           await refreshListPatient();
         }
     }
 }

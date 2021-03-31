@@ -36,9 +36,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.panelPatientList = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowPage = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panelPatientList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -150,10 +153,25 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelPatientList.AutoScroll = true;
             this.panelPatientList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPatientList.Controls.Add(this.pictureBox1);
             this.panelPatientList.Location = new System.Drawing.Point(12, 112);
             this.panelPatientList.Name = "panelPatientList";
             this.panelPatientList.Size = new System.Drawing.Size(660, 367);
             this.panelPatientList.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
+            this.pictureBox1.Location = new System.Drawing.Point(211, 74);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(202, 176);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // flowPage
             // 
@@ -182,9 +200,12 @@
             this.Name = "PanelPatient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PanelPatient";
+            this.Load += new System.EventHandler(this.PanelPatient_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panelPatientList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -200,5 +221,6 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Panel panelPatientList;
         private System.Windows.Forms.FlowLayoutPanel flowPage;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

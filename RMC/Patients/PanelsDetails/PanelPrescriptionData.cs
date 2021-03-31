@@ -17,7 +17,7 @@ namespace RMC.Patients.PanelsDetails
 
         int patientid = 0;
         string idRightClick = "";
-        string idRightClick2 = "";
+    
 
         PatientPrescriptionController ppController = new PatientPrescriptionController();
 
