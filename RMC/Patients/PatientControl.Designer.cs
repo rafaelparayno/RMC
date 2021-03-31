@@ -182,12 +182,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changePhotoToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(151, 26);
             // 
             // changePhotoToolStripMenuItem
             // 
             this.changePhotoToolStripMenuItem.Name = "changePhotoToolStripMenuItem";
-            this.changePhotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changePhotoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.changePhotoToolStripMenuItem.Text = "Change Photo";
             this.changePhotoToolStripMenuItem.Click += new System.EventHandler(this.changePhotoToolStripMenuItem_Click);
             // 
@@ -197,6 +197,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(10);
             this.Name = "PatientControl";

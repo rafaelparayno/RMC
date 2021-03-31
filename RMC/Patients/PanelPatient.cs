@@ -1,4 +1,5 @@
 ﻿using FontAwesome.Sharp;
+using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
 using System;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,7 +23,8 @@ namespace RMC.Patients
         List<int> listAcc = new List<int>();
         int currentPage = 1;
         int rowsPerPage = 10;
-       
+        loading load = new loading();
+      
         public PanelPatient()
         {
             InitializeComponent();
@@ -42,8 +45,8 @@ namespace RMC.Patients
         private async Task loadPatientDetails()
         {
                listDetails = await patientDetailsController.getPatientDetails();
+         
 
-        
         }
 
         private void populateitems()
@@ -58,9 +61,10 @@ namespace RMC.Patients
 
             int rowsss = rowsPerPage;
             List<patientDetails> listDetails2 = new List<patientDetails>();
-            listDetails2 = listDetails.Count > rowsPerPage ? listDetails.GetRange(indexofFirstRow, rowsss).ToList()
+            listDetails2 = listDetails.Count > rowsPerPage ? listDetails.Skip(indexofFirstRow).Take( rowsss).ToList()
                 : listDetails;
 
+           
 
             foreach (patientDetails p in listDetails2)
             {
@@ -138,11 +142,11 @@ namespace RMC.Patients
 
         private async void refreshListPatient()
         {
+            load.Show();
             await loadPatientDetails();
             populateitems();
-            
             showPaginate(listDetails.Count);
-          
+            load.Close(); 
         }
 
         private async Task loadPatientSearchDetails()
@@ -153,10 +157,12 @@ namespace RMC.Patients
 
         private async Task searchListPatient()
         {
+            load.Show();
+
             await loadPatientSearchDetails();
             populateitems();
             showPaginate(listDetails.Count);
-
+            load.Close();
         }
 
         private async void iconButton1_Click(object sender, EventArgs e)

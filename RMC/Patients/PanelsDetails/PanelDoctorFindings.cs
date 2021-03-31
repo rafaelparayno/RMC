@@ -109,18 +109,18 @@ namespace RMC.Patients.PanelsDetails
 
         private async Task showCrystalReportData(int resultdsid)
         {
-            
-            Task<DoctorResult> task1 = dsController.getDoctorResultsSearchId(resultdsid);
-            Task<patientDetails> task2 = patientDetailsController.getPatientId(id);
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            Task<DoctorResult> task1 = Task.Run(()=>dsController.getDoctorResultsSearchId(resultdsid));
+            Task<patientDetails> task2 = Task.Run(()=>patientDetailsController.getPatientId(id));
 
-            Task<List<labModel>> task3 = 
-                doctorReqLabController.getLabModelDoctorResult(resultdsid);
-            Task<List<PatientSymptomsModel>> task4 = 
-                patientSymptomsController.getPatientSymptomsMod(resultdsid);
-            Task<List<PatientPrescriptionModel>> task5 = 
-                patientPrescriptionController.getPrescriptionModel(resultdsid);
+            Task<List<labModel>> task3 =
+                 Task.Run(()=>doctorReqLabController.getLabModelDoctorResult(resultdsid));
+            Task<List<PatientSymptomsModel>> task4 =
+                 Task.Run(()=>patientSymptomsController.getPatientSymptomsMod(resultdsid));
+            Task<List<PatientPrescriptionModel>> task5 =
+                 Task.Run(()=>patientPrescriptionController.getPrescriptionModel(resultdsid));
 
-            Task<List<xraymodel>> task6 = docReqXrayController.getXrayData(resultdsid);
+            Task<List<xraymodel>> task6 = Task.Run(()=>docReqXrayController.getXrayData(resultdsid));
             List<Task> listTask = new List<Task>() { task1,task2,task3,task4,task5,task6};
 
             await Task.WhenAll(listTask);
@@ -206,6 +206,11 @@ namespace RMC.Patients.PanelsDetails
 
             crystalReportViewer1.ReportSource = cos;
 
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+
+
+            Console.WriteLine(elapsedMs.ToString());
 
 
         }
