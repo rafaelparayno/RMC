@@ -601,8 +601,9 @@ namespace RMC.Doctor
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-            PanelViewStocks p = new PanelViewStocks();
+            PanelViewStocks p = new PanelViewStocks(1);
             p.ShowDialog();
+            cbMeds.Text = p.itemname;
         }
 
         #endregion

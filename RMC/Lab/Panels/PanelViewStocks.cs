@@ -14,9 +14,19 @@ namespace RMC.Lab.Panels
     public partial class PanelViewStocks : Form
     {
         ItemController itemz = new ItemController();
+        private int doc = 0;
+        public string itemname = "";
         public PanelViewStocks()
         {
             InitializeComponent();
+            loadData();
+        }
+
+        public PanelViewStocks(int doc)
+        {
+            InitializeComponent();
+            this.doc = doc;
+            itemname = "";
             loadData();
         }
 
@@ -124,6 +134,34 @@ namespace RMC.Lab.Panels
             {
                 SearchGrid(txtName.Text.Trim(), selectedCombobx);
             }
+        }
+
+        private void dgItemList_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (doc == 0)
+                return;
+
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgItemList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                  //  idRightClick = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
+
+                }
+
+            }
+        }
+
+        private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            itemname = dgItemList.SelectedRows[0].Cells[1].Value.ToString();
+            this.Close();
         }
     }
 }

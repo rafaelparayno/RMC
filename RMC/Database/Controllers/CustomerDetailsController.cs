@@ -207,6 +207,16 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
         }
 
+        public async Task<DataSet> getRadioQueueDone()
+        {
+            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+                         INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
+                            WHERE customer_id in (SELECT customer_id FROM radio_queue WHERE radio_queue.is_done_x = 1) 
+                        AND DATE(customer_request_details.date_req) = CURDATE()";
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
+
 
     }
 }

@@ -1043,6 +1043,12 @@
     <Compile Include="Xray\dashXray.Designer.cs">
       <DependentUpon>dashXray.cs</DependentUpon>
     </Compile>
+    <Compile Include="Xray\DoneRadioQueue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Xray\DoneRadioQueue.Designer.cs">
+      <DependentUpon>DoneRadioQueue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Xray\Panels\DiagXray.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1519,6 +1525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Xray\dashXray.resx">
       <DependentUpon>dashXray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xray\DoneRadioQueue.resx">
+      <DependentUpon>DoneRadioQueue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Xray\Panels\DiagXray.resx">
       <DependentUpon>DiagXray.cs</DependentUpon>
