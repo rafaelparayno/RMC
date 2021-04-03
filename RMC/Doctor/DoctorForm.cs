@@ -1,6 +1,7 @@
 ﻿using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Doctor.PanelDoctor.Diag;
 using RMC.Lab.Panels;
 using System;
 using System.Collections.Generic;
@@ -601,9 +602,25 @@ namespace RMC.Doctor
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-            PanelViewStocks p = new PanelViewStocks(1);
-            p.ShowDialog();
-            cbMeds.Text = p.itemname;
+            dStocks stocksMed = new dStocks();
+            stocksMed.ShowDialog();
+
+            bool isPic = int.TryParse(stocksMed.isBranded, out _);
+            if (!isPic)
+                return;
+
+            int isBranded = int.Parse(stocksMed.isBranded);
+
+            if(isBranded == 1)
+            {
+                rbBranded.Checked = true;
+            }
+            else if(isBranded == 2)
+            {
+                rbGeneric.Checked = true;
+            }
+           
+            cbMeds.Text = stocksMed.itemName;
         }
 
         #endregion

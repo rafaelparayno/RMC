@@ -52,6 +52,8 @@ namespace RMC.Database.Controllers
 
             return await crud.GetDataSetAsync(sql, null);
         }
+
+
         public async Task<DataSet> getdatasetActiveExpirationWithDate(int days)
         {
             string sql = @"SELECT item_id,item_name,SKU,Description,ExpirationDate FROM `itemlist` WHERE ExpirationDate 
@@ -124,7 +126,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataSetWithStockPharma()
         {
-            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,isBranded,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id 
@@ -135,13 +137,42 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataSetWithStockClinic()
         {
-            string sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+            string sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks , SKU, Description,isBranded,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id 
                             WHERE itemlist.is_active = 1";
 
             return await crud.GetDataSetAsync(sql, null);
+        }
+
+        public async Task<DataSet> getMedicinesActives()
+        {
+            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,category_name,isBranded
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id 
+                            WHERE itemlist.is_active = 1 AND item_type = 1";
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
+
+        public async Task<DataSet> getMedicinesActives(string searchkey)
+        {
+            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,category_name,isBranded
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id 
+                            WHERE itemlist.is_active = 1 AND item_type = 1 AND Description LIKE @key 
+                            OR item_name LIKE @key OR category_name LIKE @key";
+
+
+            List<MySqlParameter> listMySqlParameters = new List<MySqlParameter>();
+            string key = "%" + searchkey + "%";
+            listMySqlParameters.Add(new MySqlParameter("@key", searchkey));
+            
+
+            return await crud.GetDataSetAsync(sql, listMySqlParameters);
         }
 
         public async Task<DataSet> getDsSearchActivePharma(int searchType, string keySearch)

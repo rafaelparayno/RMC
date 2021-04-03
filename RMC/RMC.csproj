@@ -593,6 +593,12 @@
     <Compile Include="Doctor\PanelDoctor\Diag\addEditSymp.Designer.cs">
       <DependentUpon>addEditSymp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\PanelDoctor\Diag\dStocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor\PanelDoctor\Diag\dStocks.Designer.cs">
+      <DependentUpon>dStocks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doctor\PanelDoctor\DoctorData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1282,6 +1288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\Diag\addEditSymp.resx">
       <DependentUpon>addEditSymp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor\PanelDoctor\Diag\dStocks.resx">
+      <DependentUpon>dStocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\DoctorData.resx">
       <DependentUpon>DoctorData.cs</DependentUpon>
