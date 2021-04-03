@@ -49,6 +49,24 @@ namespace RMC.Database.Controllers
             return datas;
         }
 
+        public async Task<string> getFullNameId(int id)
+        {
+            string fullname = "";
+            string sql = @"SELECT CONCAT(firstname,' ','middlename',' ',lastname) as 'fullname' FROM useraccounts WHERE u_id = @id";
+            List<MySqlParameter> listParams = new List<MySqlParameter>() { (new MySqlParameter("@id",id)) };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
+
+            while(reader.Read())
+            {
+                fullname = reader["fullname"].ToString();
+            }
+        
+
+            crud.CloseConnection();
+            return fullname;
+        }
+
    
         public async Task<List<DoctorQueueModel>> listDoctorOnlinesModel()
         {

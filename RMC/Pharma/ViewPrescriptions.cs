@@ -176,7 +176,7 @@ namespace RMC.Pharma
             }
         }
 
-        private void iconButton2_Click(object sender, EventArgs e)
+        private async void iconButton2_Click(object sender, EventArgs e)
         {
             if (dgItemList.Rows.Count == 0)
                 return;
@@ -184,9 +184,23 @@ namespace RMC.Pharma
             if (dgItemList.SelectedRows.Count == 0)
                 return;
 
+            bool isNumber = int.TryParse(idRightClick,out _);
+
+            if (!isNumber)
+                return;
+
+            int resid = int.Parse(idRightClick);
+            pictureBox1.Visible = true;
+            pictureBox1.Update();
+
+            DataSet ds = await ppController.getPrescriptionByResID(resid);
+
+      
             int docresid = int.Parse(dgItemList.SelectedRows[0].Cells[0].Value.ToString());
 
-            prescriptionViewerDiag prescriptionViewer = new prescriptionViewerDiag(docresid);
+            prescriptionViewerDiag prescriptionViewer = new prescriptionViewerDiag(docresid,ds);
+            pictureBox1.Visible = false;
+            pictureBox1.Hide();
             prescriptionViewer.ShowDialog();
         }
     }

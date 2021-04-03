@@ -21,42 +21,60 @@ namespace RMC.Patients.PanelsDetails.Dialogs
         PatientPrescriptionController patientPrescriptionController = new PatientPrescriptionController();
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         DoctorDataController doctorDataController = new DoctorDataController();
-
+        UserracountsController userracountsController = new UserracountsController();
 
         int docresid = 0;
+        private DataSet ds = new DataSet();
 
-        public prescriptionViewerDiag(int docresid)
+        public prescriptionViewerDiag(int docresid,DataSet ds)
         {
             InitializeComponent();
             this.docresid = docresid;
+            this.ds = ds;
         }
 
         private async void prescriptionViewerDiag_Load(object sender, EventArgs e)
         {
             
             Prescription prescription = new Prescription();
+            prescription.SetDataSource(ds);
+
+
+          
+
             DoctorResult dt = await doctorResultsController.getDoctorResultsSearchId(docresid);
-            DoctorDataModel doctorDataModel = await doctorDataController.getDoctorData(dt.doctor_id);
-            patientDetails patmod = await patientDetailsController.getPatientId(dt.patient_id);
-                List <PatientPrescriptionModel> listP = 
-                await patientPrescriptionController.getPrescriptionModel(docresid);
+            Task<DoctorDataModel> task1 = doctorDataController.getDoctorData(dt.doctor_id);
+            Task<patientDetails> task2 = patientDetailsController.getPatientId(dt.patient_id);
+            Task<List<PatientPrescriptionModel>> task3 = patientPrescriptionController.getPrescriptionModel(docresid);
+            Task<string> task4 = userracountsController.getFullNameId(dt.doctor_id);
+            List<Task> listTask = new List<Task>() { task1, task2, task3,task4 };
+            /*   Task task4 = */
+
+
+            await Task.WhenAll(listTask);
+            DoctorDataModel doctorDataModel = task1.Result;
+            patientDetails patmod = task2.Result;
+            List<PatientPrescriptionModel> listP = task3.Result;
+
+            string docname = task4.Result;
+
 
             prescription.SetParameterValue("patientName", patmod.FullName);
 
             prescription.SetParameterValue("age", patmod.age.ToString());
             prescription.SetParameterValue("sex", patmod.gender);
             prescription.SetParameterValue("address", patmod.address);
-            prescription.SetParameterValue("prescriptionsStr", getStringPres(listP));
+            prescription.SetParameterValue("doctorName", docname);
             prescription.SetParameterValue("dateParam", listP[0].date.ToString().Split(' ')[0]);
             prescription.SetParameterValue("licenseNo",doctorDataModel.license);
             prescription.SetParameterValue("prNoParam", doctorDataModel.pr);
          
-                prescription.SetParameterValue("imgPath", doctorDataModel.imgPath);
+            prescription.SetParameterValue("imgPath", doctorDataModel.imgPath);
 
             crystalReportViewer1.ReportSource = prescription;
-            crystalReportViewer1.Zoom(75);
+        
 
-            //  patientDetails patmod = await patientDetailsController(listP[0].id)
+        
 
         }
 

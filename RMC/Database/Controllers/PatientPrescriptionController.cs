@@ -127,7 +127,7 @@ namespace RMC.Database.Controllers
         public async Task<DataSet> getPrescriptionByResID(int resid)
         {
             string sql = @"SELECT patient_prescription.patient_prescription_id,itemlist.item_name AS 'Medicine_Prescribe',patient_prescription.instruction,
-                        patient_prescription.dispense_no,patient_prescription.sInstruction FROM `patient_prescription`
+                        patient_prescription.dispense_no,patient_prescription.sInstruction,itemlist.Description,itemlist.isBranded FROM `patient_prescription`
                         INNER JOIN itemlist ON patient_prescription.item_id = itemlist.item_id
                         WHERE doctor_results_id = @resid";
 

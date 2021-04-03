@@ -101,7 +101,7 @@ namespace RMC.Patients.PanelsDetails
             }
         }
 
-        private void iconButton3_Click(object sender, EventArgs e)
+        private async void iconButton3_Click(object sender, EventArgs e)
         {
             if (dgItemList.Rows.Count == 0)
                 return;
@@ -109,9 +109,13 @@ namespace RMC.Patients.PanelsDetails
             if (dgItemList.SelectedRows.Count == 0)
                 return;
 
-            int docresid = int.Parse(dgItemList.SelectedRows[0].Cells[0].Value.ToString());
+            pictureBox1.Show();
+            pictureBox1.Update();
 
-            prescriptionViewerDiag prescriptionViewer = new prescriptionViewerDiag(docresid);
+            int docresid = int.Parse(dgItemList.SelectedRows[0].Cells[0].Value.ToString());
+            DataSet ds = await ppController.getPrescriptionByResID(docresid);
+            pictureBox1.Hide();
+            prescriptionViewerDiag prescriptionViewer = new prescriptionViewerDiag(docresid,ds);
             prescriptionViewer.ShowDialog();
         }
     }

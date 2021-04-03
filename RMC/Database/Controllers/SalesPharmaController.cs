@@ -60,7 +60,7 @@ namespace RMC.Database.Controllers
                             INNER JOIN itemlist ON salespharma.item_id = itemlist.item_id
                             WHERE salespharma.item_id in 
                             (SELECT itemlist.item_id FROM itemlist 
- 	                            WHERE itemlist.category_id = (SELECT category.category_id FROM category WHERE category.item_type = 1)) 
+ 	                            WHERE itemlist.category_id in (SELECT category.category_id FROM category WHERE category.item_type = 1)) 
                             AND DATE(invoice.date_invoice) = CURDATE()";
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
