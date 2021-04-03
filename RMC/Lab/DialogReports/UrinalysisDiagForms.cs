@@ -38,7 +38,8 @@ namespace RMC.Lab.DialogReports
         {
             crystalReportViewer1.ReportSource = urinalysis;
             patientDetails = await patientDetailsController.getPatientId(patientid);
-            await loadXmlValues();
+                await loadXmlValues();
+
             urinalysis.SetParameterValue("patientName", patientDetails.FullName);
 
             urinalysis.SetParameterValue("age", patientDetails.age.ToString());

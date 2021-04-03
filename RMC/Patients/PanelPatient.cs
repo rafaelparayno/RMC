@@ -137,27 +137,32 @@ namespace RMC.Patients
 
         private async Task loadPatientDetails()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             listDetails =  await patientDetailsController.getPatientDetails();
-         
+            await Task.Delay(3000);
+            pictureBox1.Hide();
         }
 
         private async Task loadPatientSearchDetails()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             listDetails = await patientDetailsController.getSearchPatient(txtName.Text.Trim(),
                                                                         comboBox1.SelectedIndex);
-           
+      
+            pictureBox1.Hide();
         }
 
         private async Task refreshListPatient()
         {
-            pictureBox1.Show();
-            pictureBox1.Update();
+            
 
             await loadPatientDetails();
             populateitems();
             showPaginate(listDetails.Count);
       
-            pictureBox1.Hide();
+           
         }
 
      
@@ -166,13 +171,12 @@ namespace RMC.Patients
         {
 
   
-            pictureBox1.Visible = true;
-            pictureBox1.Update();
+         
             await loadPatientSearchDetails();
             populateitems();
             showPaginate(listDetails.Count);
 
-            pictureBox1.Visible = false;
+         
         }
 
         private async void iconButton1_Click(object sender, EventArgs e)

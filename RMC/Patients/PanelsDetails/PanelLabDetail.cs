@@ -37,10 +37,14 @@ namespace RMC.Patients.PanelsDetails
 
         private async Task searchData()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
+
             listpatientModel = await patientLabController.getPatientLabModel(id,
                                         dateTimePicker1.Value.ToString("yyy-MM-dd"));
-
+        
             refreshListView();
+            pictureBox1.Hide();
         }
 
         private void initLvsCols()
@@ -69,7 +73,9 @@ namespace RMC.Patients.PanelsDetails
 
         private async void iconButton1_Click(object sender, EventArgs e)
         {
+         
             await searchData();
+         
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
@@ -99,9 +105,12 @@ namespace RMC.Patients.PanelsDetails
             if (lvLabDetails.Items.Count == 0)
                 return;
 
+            pictureBox1.Show();
+
+            pictureBox1.Update();
             int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
             labModel labModel = await laboratoryController.getLabModelinPatientLab(selectedIds);
-
+            pictureBox1.Hide();
          
 
             if (labModel.crystal_id_lab > 0)
@@ -153,8 +162,12 @@ namespace RMC.Patients.PanelsDetails
             if (lvLabDetails.Items.Count == 0)
                 return;
 
+            pictureBox1.Show();
+
+            pictureBox1.Update();
             int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
             labModel labModel = await laboratoryController.getLabModelinPatientLab(selectedIds);
+            pictureBox1.Hide();
 
             if (labModel.autodocsid > 0)
             {
