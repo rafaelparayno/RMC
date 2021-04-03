@@ -140,10 +140,12 @@ namespace RMC.Patients.PanelsDetails
             if (lvLabDetails.Items.Count == 0)
                 return;
 
+            pictureBox1.Show();
+            pictureBox1.Update();
             int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
             xraymodel xraymodel = await xrayControllers.getxrayModelinPatientLab(selectedIds);
+            pictureBox1.Hide();
 
-      
 
             if (xraymodel.is_crystal > 0)
             {
@@ -168,8 +170,12 @@ namespace RMC.Patients.PanelsDetails
             if (lvLabDetails.Items.Count == 0)
                 return;
 
+            pictureBox1.Show();
+            pictureBox1.Update();
             int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
             xraymodel xraymodel = await xrayControllers.getxrayModelinPatientLab(selectedIds);
+            pictureBox1.Hide();
+
 
             if (xraymodel.autodocsid > 0)
             {

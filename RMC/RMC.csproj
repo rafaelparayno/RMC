@@ -773,6 +773,12 @@
     <Compile Include="Lab\Panels\docReqLabForm.Designer.cs">
       <DependentUpon>docReqLabForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\Panels\DoneQueueLab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\Panels\DoneQueueLab.Designer.cs">
+      <DependentUpon>DoneQueueLab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\Panels\LabQueueForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1360,6 +1366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\Panels\docReqLabForm.resx">
       <DependentUpon>docReqLabForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\Panels\DoneQueueLab.resx">
+      <DependentUpon>DoneQueueLab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\Panels\LabQueueForm.resx">
       <DependentUpon>LabQueueForm.cs</DependentUpon>

@@ -50,5 +50,10 @@ namespace RMC.Lab
         {
             openChildForm(new LabQueueForm());
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new DoneQueueLab());
+        }
     }
 }
