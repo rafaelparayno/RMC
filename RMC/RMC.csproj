@@ -961,6 +961,12 @@
     <Compile Include="Reception\DailySalesRep.Designer.cs">
       <DependentUpon>DailySalesRep.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reception\Dialogs\DiagPaymentRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception\Dialogs\DiagPaymentRequest.Designer.cs">
+      <DependentUpon>DiagPaymentRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reception\PanelRequestForm\Dialogs\AddEditRequestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1494,6 +1500,9 @@
     <EmbeddedResource Include="Reception\DailySalesRep.resx">
       <DependentUpon>DailySalesRep.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reception\Dialogs\DiagPaymentRequest.resx">
+      <DependentUpon>DiagPaymentRequest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reception\PanelRequestForm\Dialogs\AddEditRequestForm.resx">
       <DependentUpon>AddEditRequestForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1655,5 +1664,6 @@
   <ItemGroup>
     <None Include="Resources\preview.gif" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
 ﻿using RMC.Database.Controllers;
+using RMC.Reception.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace RMC.Reception
     public partial class PendingRequestForms : Form
     {
         doctorResultsController doctorResultsController = new doctorResultsController();
-
+        private string idRightClick = "";
 
         public PendingRequestForms()
         {
@@ -37,6 +38,32 @@ namespace RMC.Reception
         private async void PendingRequestForms_Load(object sender, EventArgs e)
         {
            await loadGrid();
+        }
+
+        private void dgItemList_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgItemList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                    idRightClick = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
+                }
+            }
+        }
+
+        private void viewRequestsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(idRightClick);
+
+
+            DiagPaymentRequest diagPaymentRequest = new DiagPaymentRequest(id);
+            diagPaymentRequest.ShowDialog();
+
         }
     }
 }

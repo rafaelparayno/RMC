@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgItemList = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.viewRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -61,6 +65,50 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(447, 20);
             this.dateTimePicker1.TabIndex = 235;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.dgItemList);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(0, 71);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Size = new System.Drawing.Size(684, 455);
+            this.groupBox3.TabIndex = 216;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Pending Requests";
+            // 
+            // dgItemList
+            // 
+            this.dgItemList.AllowUserToAddRows = false;
+            this.dgItemList.AllowUserToDeleteRows = false;
+            this.dgItemList.AllowUserToResizeColumns = false;
+            this.dgItemList.AllowUserToResizeRows = false;
+            this.dgItemList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgItemList.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dgItemList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgItemList.Location = new System.Drawing.Point(3, 19);
+            this.dgItemList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgItemList.MultiSelect = false;
+            this.dgItemList.Name = "dgItemList";
+            this.dgItemList.ReadOnly = true;
+            this.dgItemList.RowHeadersVisible = false;
+            this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgItemList.Size = new System.Drawing.Size(678, 432);
+            this.dgItemList.StandardTab = true;
+            this.dgItemList.TabIndex = 114;
+            this.dgItemList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgItemList_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewRequestsToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
             // 
             // iconButton1
             // 
@@ -105,41 +153,12 @@
             this.iconButton3.Text = "View All";
             this.iconButton3.UseVisualStyleBackColor = false;
             // 
-            // groupBox3
+            // viewRequestsToolStripMenuItem
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.Controls.Add(this.dgItemList);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(0, 71);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(684, 455);
-            this.groupBox3.TabIndex = 216;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Pending Requests";
-            // 
-            // dgItemList
-            // 
-            this.dgItemList.AllowUserToAddRows = false;
-            this.dgItemList.AllowUserToDeleteRows = false;
-            this.dgItemList.AllowUserToResizeColumns = false;
-            this.dgItemList.AllowUserToResizeRows = false;
-            this.dgItemList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgItemList.BackgroundColor = System.Drawing.Color.FloralWhite;
-            this.dgItemList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgItemList.Location = new System.Drawing.Point(3, 19);
-            this.dgItemList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgItemList.MultiSelect = false;
-            this.dgItemList.Name = "dgItemList";
-            this.dgItemList.ReadOnly = true;
-            this.dgItemList.RowHeadersVisible = false;
-            this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemList.Size = new System.Drawing.Size(678, 432);
-            this.dgItemList.StandardTab = true;
-            this.dgItemList.TabIndex = 114;
+            this.viewRequestsToolStripMenuItem.Name = "viewRequestsToolStripMenuItem";
+            this.viewRequestsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewRequestsToolStripMenuItem.Text = "View Requests";
+            this.viewRequestsToolStripMenuItem.Click += new System.EventHandler(this.viewRequestsToolStripMenuItem_Click);
             // 
             // PendingRequestForms
             // 
@@ -156,6 +175,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -168,5 +188,7 @@
         private FontAwesome.Sharp.IconButton iconButton3;
         private System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.DataGridView dgItemList;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem viewRequestsToolStripMenuItem;
     }
 }
