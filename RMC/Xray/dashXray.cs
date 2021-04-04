@@ -52,5 +52,10 @@ namespace RMC.Xray
         {
             openChildForm(new RadioQueueForm());
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new DoneRadioQueue());
+        }
     }
 }
