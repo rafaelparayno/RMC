@@ -60,7 +60,7 @@ namespace RMC.Database.Controllers
                 xraymodelX.id = int.Parse(reader["xray_id"].ToString());
               
                 xraymodelX.name = reader["xray_name"].ToString();
-
+                xraymodelX.price = float.Parse(reader["xray_price"].ToString());
                 listXrayModel.Add(xraymodelX);
             }
 

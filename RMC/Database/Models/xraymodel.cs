@@ -15,6 +15,8 @@ namespace RMC.Database.Models
 
         public string name { get; set; }
 
+        public float price { get; set; }
+
         public int type { get; set; }
 
         public int autodocsid { get; set; }

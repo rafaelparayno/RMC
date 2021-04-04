@@ -247,7 +247,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                                    txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
                                    cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim(), id.ToString());
 
-                    customerDetailsController.save(lastQ.ToString(), id.ToString());
+                  await  customerDetailsController.save(lastQ.ToString(), id.ToString());
 
                 }
                 else
@@ -260,7 +260,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
                     int pid = patientDetailsController.getRecentPID() - 1;
 
-                    customerDetailsController.save(lastQ.ToString(), pid.ToString());
+                   await  customerDetailsController.save(lastQ.ToString(), pid.ToString());
 
                 }
 

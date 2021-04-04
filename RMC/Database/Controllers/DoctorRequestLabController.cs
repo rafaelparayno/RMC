@@ -63,6 +63,7 @@ namespace RMC.Database.Controllers
                 labModel.id = int.Parse(reader["docresreql_id"].ToString());
                 labModel.labID = int.Parse(reader["laboratory_id"].ToString());
                 labModel.name = reader["labname"].ToString();
+                labModel.price = float.Parse(reader["price_lab"].ToString());
                 listLabModel.Add(labModel);
             }
 

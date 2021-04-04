@@ -117,7 +117,7 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
-        public async void save(params string [] data)
+        public async Task save(params string [] data)
         {
             string sql = @"INSERT INTO customer_request_details (is_paid,queue_no,patient_id)
                           VALUES (0,@q,@id)";
@@ -146,6 +146,26 @@ namespace RMC.Database.Controllers
             if (await reader.ReadAsync())
             {
                 currentReq = int.Parse(reader["patient_id"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return currentReq;
+        }
+
+        public async Task<int> getCustomerIdinQueue(int qno)
+        {
+            int currentReq = 0;
+            string sql = @"SELECT * FROM customer_request_details  WHERE queue_no = @id  AND DATE(date_req) = CURDATE()";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@id", qno));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                currentReq = int.Parse(reader["customer_id"].ToString());
             }
 
             crud.CloseConnection();

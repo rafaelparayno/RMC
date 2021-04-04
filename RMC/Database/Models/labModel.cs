@@ -16,6 +16,8 @@ namespace RMC.Database.Models
 
         public int autodocsid { get; set; }
 
+        public float price { get; set; }
+
         public string labtypename { get; set; }
 
         public int crystal_id_lab { get; set; }

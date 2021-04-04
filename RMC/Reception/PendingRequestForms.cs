@@ -15,7 +15,10 @@ namespace RMC.Reception
     public partial class PendingRequestForms : Form
     {
         doctorResultsController doctorResultsController = new doctorResultsController();
+        
         private string idRightClick = "";
+        private string idRightClick2 = "";
+
 
         public PendingRequestForms()
         {
@@ -51,6 +54,7 @@ namespace RMC.Reception
                 if (currentMouseOverRow >= 0)
                 {
                     idRightClick = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    idRightClick2 = dgItemList.Rows[currentMouseOverRow].Cells[1].Value.ToString();
                     contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
                 }
             }
@@ -59,9 +63,10 @@ namespace RMC.Reception
         private void viewRequestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int id = int.Parse(idRightClick);
+            int patid = int.Parse(idRightClick2);
 
 
-            DiagPaymentRequest diagPaymentRequest = new DiagPaymentRequest(id);
+            DiagPaymentRequest diagPaymentRequest = new DiagPaymentRequest(id,patid);
             diagPaymentRequest.ShowDialog();
 
         }
