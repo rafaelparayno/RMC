@@ -165,5 +165,33 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
             
         }
+
+        public async Task<DataSet> getPatientDetailsWithReq(string date)
+        {
+            string sql = @"SELECT doctor_results.doctor_results_id AS 'ID',
+                            patientdetails.patient_id,CONCAT(firstname,' ',middlename,' ',lastname) as 'patientname' FROM `doctor_results` 
+                            INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id  
+                                WHERE  DATE(doctor_results.date_results) = @d AND (EXISTS(
+                                        SELECT 
+                                                *
+                                            FROM
+                                                doc_res_req
+                                            WHERE
+                                                doc_res_req.doctor_results_id 
+                                            = doctor_results.doctor_results_id) OR EXISTS(
+                                        SELECT 
+                                                *
+                                            FROM
+                                                doc_req_reql
+                                            WHERE
+                                                doc_req_reql.doctor_results_id   
+                                            = doctor_results.doctor_results_id))";
+
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>() { (new MySqlParameter("@d", date) ) };
+
+            return await crud.GetDataSetAsync(sql, mySqlParameters);
+
+        }
     }
 }

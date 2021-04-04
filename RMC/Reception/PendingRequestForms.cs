@@ -38,6 +38,19 @@ namespace RMC.Reception
 
         }
 
+
+        private async Task searchGrid()
+        {
+
+            DataSet ds = await doctorResultsController.getPatientDetailsWithReq(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+
+
+            dgItemList.DataSource = "";
+            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.AutoResizeColumns();
+
+        }
+
         private async void PendingRequestForms_Load(object sender, EventArgs e)
         {
            await loadGrid();
@@ -69,6 +82,16 @@ namespace RMC.Reception
             DiagPaymentRequest diagPaymentRequest = new DiagPaymentRequest(id,patid);
             diagPaymentRequest.ShowDialog();
 
+        }
+
+        private async void iconButton3_Click(object sender, EventArgs e)
+        {
+            await loadGrid();
+        }
+
+        private async void iconButton1_Click(object sender, EventArgs e)
+        {
+            await searchGrid();
         }
     }
 }
