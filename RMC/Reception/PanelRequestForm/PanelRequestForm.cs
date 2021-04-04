@@ -22,6 +22,8 @@ namespace RMC.Reception.PanelRequestForm
         List<customerDetailsMod> customerDetailsModsList;
         CustomerRequestsController customerRequestsController = new CustomerRequestsController();
         DoctorQueueController docQController = new DoctorQueueController();
+        LabQueueController labQueueController = new LabQueueController();
+        RadioQueueController radioQueueController = new RadioQueueController();
         UserracountsController uc = new UserracountsController();
         DataTable dt = new DataTable();
         ImageList ImageList1 = new ImageList();
@@ -76,16 +78,19 @@ namespace RMC.Reception.PanelRequestForm
 
         private async void getData()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             customerDetailsModsList = new List<customerDetailsMod>();
-
             customerDetailsModsList = await customerDetailsController.getDetailsList();
             RefreshGrid(customerDetailsModsList);
+            pictureBox1.Hide();
 
         }
 
         private async void RefreshGrid(List<customerDetailsMod> customers)
         {
             dt.Rows.Clear();
+
             foreach (customerDetailsMod c in customers)
             {
                 List<int> requests = new List<int>();
@@ -96,42 +101,23 @@ namespace RMC.Reception.PanelRequestForm
                 Image imgServices;
                 Image imgPaid = c.isPaid == 0 ? ImageList1.Images[1] : ImageList1.Images[0];
 
-            
 
-                if (requests.Contains(consultS))
-                {
-                    if(await docQController.isDone(c.quueu_no))
-                    {
-                        imgConsult = ImageList1.Images[0];
-                    }
-                    else
-                    {
-                        imgConsult = ImageList1.Images[2];
-                    }
+                imgConsult = requests.Contains(consultS) ? 
+                    await docQController.isDone(c.quueu_no) ? 
+                    ImageList1.Images[0] : ImageList1.Images[2] 
+                    :   ImageList1.Images[3];
 
-                }
-                else
-                {
-                    imgConsult = ImageList1.Images[3];
-                }
 
-                if (requests.Contains(xRayS))
-                {
-                    imgX = ImageList1.Images[2];
-                }
-                else
-                {
-                    imgX = ImageList1.Images[3];
-                }
+                imgX = requests.Contains(xRayS) ? await radioQueueController.isDone(c.id) ? 
+                    ImageList1.Images[0] : ImageList1.Images[2]
+                    : ImageList1.Images[3];
 
-                if (requests.Contains(labS))
-                {
-                    imgLab = ImageList1.Images[2];
-                }
-                else
-                {
-                    imgLab = ImageList1.Images[3];
-                }
+                imgLab = requests.Contains(labS) ? await labQueueController.isDone(c.id) ?
+                      ImageList1.Images[0] : ImageList1.Images[2]
+                    : ImageList1.Images[3];
+
+
+           
 
                 if (requests.Contains(otherS) || requests.Contains(medCert) || requests.Contains(packagesS))
                 {

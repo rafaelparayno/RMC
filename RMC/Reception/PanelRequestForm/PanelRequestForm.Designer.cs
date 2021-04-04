@@ -38,10 +38,12 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.goToDoctorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addVitalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenus.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomerList)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenus
@@ -167,20 +169,34 @@
             this.goToDoctorToolStripMenuItem,
             this.addVitalToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 48);
             // 
             // goToDoctorToolStripMenuItem
             // 
             this.goToDoctorToolStripMenuItem.Name = "goToDoctorToolStripMenuItem";
-            this.goToDoctorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.goToDoctorToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.goToDoctorToolStripMenuItem.Text = "Go to Doctor";
             // 
             // addVitalToolStripMenuItem
             // 
             this.addVitalToolStripMenuItem.Name = "addVitalToolStripMenuItem";
-            this.addVitalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addVitalToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.addVitalToolStripMenuItem.Text = "Add Vital";
             this.addVitalToolStripMenuItem.Click += new System.EventHandler(this.addVitalToolStripMenuItem_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
+            this.pictureBox1.Location = new System.Drawing.Point(241, 175);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(202, 176);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 229;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // PanelRequestForm
             // 
@@ -188,6 +204,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(684, 526);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panelMenus);
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -199,6 +216,7 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomerList)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -214,5 +232,6 @@
         private System.Windows.Forms.ToolStripMenuItem goToDoctorToolStripMenuItem;
         private FontAwesome.Sharp.IconButton btnpay;
         private System.Windows.Forms.ToolStripMenuItem addVitalToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
