@@ -84,6 +84,7 @@ namespace RMC
             iconButton1.Enabled = false;
             iconButton2.Enabled = false;
             iconButton3.Enabled = false;
+            iconButton4.Enabled = false;
         }
 
         private void enableBtns()
@@ -93,11 +94,17 @@ namespace RMC
             iconButton1.Enabled = true;
             iconButton2.Enabled = true;
             iconButton3.Enabled = true;
+            iconButton4.Enabled = true;
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
         {
             openChildForm(new ViewQueueDate());
+        }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PendingRequestForms());
         }
     }
 }

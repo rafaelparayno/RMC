@@ -2,6 +2,7 @@
 using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -135,6 +136,34 @@ namespace RMC.Database.Controllers
             crud.CloseConnection();
 
             return listDoctorResultmodel;
+        }
+
+        public async Task<DataSet> getPatientDetailsWithReq()
+        {
+            string sql = @"SELECT doctor_results.doctor_results_id AS 'ID',
+                            patientdetails.patient_id,CONCAT(firstname,' ',middlename,' ',lastname) as 'patientname' FROM `doctor_results` 
+                            INNER JOIN patientdetails ON doctor_results.patient_id = patientdetails.patient_id  
+                                WHERE  DATE(doctor_results.date_results) = CURDATE() AND (EXISTS(
+                                        SELECT 
+                                                *
+                                            FROM
+                                                doc_res_req
+                                            WHERE
+                                                doc_res_req.doctor_results_id 
+                                            = doctor_results.doctor_results_id) OR EXISTS(
+                                        SELECT 
+                                                *
+                                            FROM
+                                                doc_req_reql
+                                            WHERE
+                                                doc_req_reql.doctor_results_id   
+                                            = doctor_results.doctor_results_id))";
+
+            
+
+
+            return await crud.GetDataSetAsync(sql, null);
+            
         }
     }
 }

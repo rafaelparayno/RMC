@@ -991,6 +991,12 @@
     <Compile Include="Reception\PanelRequestForm\ViewQueueDate.Designer.cs">
       <DependentUpon>ViewQueueDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reception\PendingRequestForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception\PendingRequestForms.Designer.cs">
+      <DependentUpon>PendingRequestForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reception\ReceptionDash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1502,6 +1508,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reception\PanelRequestForm\ViewQueueDate.resx">
       <DependentUpon>ViewQueueDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reception\PendingRequestForms.resx">
+      <DependentUpon>PendingRequestForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reception\ReceptionDash.resx">
       <DependentUpon>ReceptionDash.cs</DependentUpon>
