@@ -32,7 +32,7 @@ namespace RMC.Database.Controllers
             return types;
         }
 
-        public async void newReq(int type)
+        public async Task newReq(int type)
         {
                 string sql = @"INSERT INTO customer_requests (request_type,customer_id)
                           VALUES (@type,(SELECT customer_id FROM customer_request_details ORDER BY customer_id DESC LIMIT 1))";

@@ -23,12 +23,15 @@ namespace RMC.Reception.Dialogs
         LabQueueController labQueueController = new LabQueueController();
         RadioQueueController radioQueueController = new RadioQueueController();
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
+        CustomerRequestsController customerRequestsController = new CustomerRequestsController();
 
         private int docres = 0;
         private float totalPrice = 0;
         private string seniorId = "";
         private int customerid = 0;
         private int patientid = 0;
+        private int labS = 3;
+        private int xRayS = 4;
         DataTable dt = new DataTable();
 
         public DiagPaymentRequest(int docres,int patientid)
@@ -178,17 +181,24 @@ namespace RMC.Reception.Dialogs
             await customerDetailsController.save(lastQ.ToString(), patientid.ToString());
             await invoiceController.Save(totalPrice);
             customerid = await customerDetailsController.getCustomerIdinQueue(lastQ);
-         
-            await customerDetailsController.setPaid(customerid);
+
+            if (hasLab())
+               await customerRequestsController.newReq(labS);
+
+            if (hasRadio())
+                await customerRequestsController.newReq(xRayS);
+
+
+        
 
             Task task1 = savesRadioLabQ();
-
+            Task task2 = customerDetailsController.setPaid(customerid);
             Task task3 = saveclinicSales();
 
-            Task[] processes = new Task[] { task1, task3 };
+            Task[] processes = new Task[] { task1,task2 ,task3 };
 
             await Task.WhenAll(processes);
-
+           
         }
 
 
@@ -203,6 +213,45 @@ namespace RMC.Reception.Dialogs
 
             }
             await Task.WhenAll(saves);
+        }
+
+
+        private bool hasRadio()
+        {
+            bool hasR = false;
+
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                string type = dr.Cells[2].Value.ToString();
+
+                if (type == "Radio")
+                {
+                    hasR = true;
+                    break;
+                }
+            }
+
+            return hasR;
+
+        }
+
+        private bool hasLab()
+        {
+            bool hasLab = false;
+
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                string type = dr.Cells[2].Value.ToString();
+
+                if (type == "Laboratory")
+                {
+                    hasLab = true;
+                    break;
+                }
+            }
+
+            return hasLab;
+
         }
 
         private async Task savesRadioLabQ()
