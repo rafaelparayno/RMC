@@ -235,7 +235,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 updateRequets();
 
                 if (currentS.Contains(consultS))
-                    docQController.Save(updateQ, textBox3.Text.Trim());
+                    docQController.Save(reqid, textBox3.Text.Trim());
             }
             else
             {
