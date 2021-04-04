@@ -53,6 +53,8 @@ namespace RMC.Database.Controllers
 
         public async void save(int id, int packageid)
         {
+            if (await isFound(packageid, id))
+                return;
             string sql = @"INSERT INTO packages_xray (xray_id,package_id) 
                            VALUES(@id,@packid)";
 
@@ -74,6 +76,30 @@ namespace RMC.Database.Controllers
 
 
             await crud.ExecuteAsync(sql, listparams);
+        }
+
+        public async Task<bool> isFound(int packid, int id)
+        {
+            bool isFound = false;
+
+            string sql = @"SELECT * FROM packages_xray WHERE xray_id = @id AND package_id = @packid";
+
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", id));
+            listparams.Add(new MySqlParameter("@packid", packid));
+
+
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (reader.HasRows)
+            {
+                isFound = true;
+            }
+            crud.CloseConnection();
+
+            return isFound;
         }
     }
 }

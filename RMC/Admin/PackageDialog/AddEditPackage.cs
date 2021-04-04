@@ -197,7 +197,7 @@ namespace RMC.Admin.PackageDialog
                 packageXray.save(id);
             }
 
-            foreach (ListViewItem lvitems in lvXray.Items)
+            foreach (ListViewItem lvitems in lvService.Items)
             {
                 int id = int.Parse(lvitems.SubItems[0].Text);
                 packageOthers.save(id);

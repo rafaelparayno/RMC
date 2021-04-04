@@ -1,5 +1,6 @@
 ﻿using RMC.Components;
 using RMC.Database.Controllers;
+using RMC.Database.Models;
 using RMC.InventoryPharma.Dialogs;
 using RMC.Reports;
 using System;
@@ -27,6 +28,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         SalesClinicController salesClinicController = new SalesClinicController();
         LabQueueController labQueueController = new LabQueueController();
         RadioQueueController radioQueueController = new RadioQueueController();
+        PackageLabController packageLabController = new PackageLabController();
+        PackageXray packageXrayController = new PackageXray();
         #endregion
 
         #region VariableState
@@ -310,7 +313,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             Task task2 = customerDetailsController.setPaid(customerid);
             Task task3 = saveclinicSales();
         
-            Task[] processes = new Task[] { task1, task2,task3 };
+            Task[] processes = new Task[] { task1, task2, task3 };
 
             await Task.WhenAll(processes);
         }
@@ -341,9 +344,35 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                     saves.Add(labQueueController.save(id, customerid));
                 if (type == "Radio")
                     saves.Add(radioQueueController.save(customerid, id));
-
+                if (type == "Packages")
+                    saves.Add(savePackageQueue(id));
 
             }
+
+            await Task.WhenAll(saves);
+        }
+
+        private async Task savePackageQueue(int id)
+        {
+            List<Task> saves = new List<Task>();
+            List<PackagesNames> listLabs = await packageLabController.getPackagesLab(id);
+            List<PackagesNames> listRadios = await packageXrayController.getPackagesNames(id);
+
+
+            foreach (PackagesNames r in listRadios)
+            {
+              
+                saves.Add(radioQueueController.save(customerid, r.id));
+            }
+
+            foreach (PackagesNames p in listLabs)
+            {
+                saves.Add(labQueueController.save(p.id, customerid));
+            }
+
+
+
+
 
             await Task.WhenAll(saves);
         }
