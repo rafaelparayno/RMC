@@ -33,6 +33,12 @@ namespace RMC.Lab.Panels
             RefreshGrid(ds);
         }
 
+        private async void searchGrid()
+        {
+            DataSet ds = await customerDetailsController.getLabQueue(txtName.Text.Trim());
+            RefreshGrid(ds);
+        }
+
 
         private void RefreshGrid(DataSet ds)
         {
@@ -90,6 +96,19 @@ namespace RMC.Lab.Panels
             loadGrid();
         }
 
-   
+        private  void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtName.Text.Trim()))
+            {
+                timer1.Start();
+               loadGrid();
+            }
+            else
+            {
+                timer1.Stop();
+                 searchGrid();
+
+            }
+        }
     }
 }

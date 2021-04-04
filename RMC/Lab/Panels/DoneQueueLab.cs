@@ -33,7 +33,7 @@ namespace RMC.Lab.Panels
             RefreshGrid(ds);
         }
 
-
+       
 
         private void RefreshGrid(DataSet ds)
         {
@@ -84,6 +84,28 @@ namespace RMC.Lab.Panels
             addEditPatient form = new addEditPatient(id);
             form.ShowDialog();
             loadGrid();
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txtName.Text.Trim()))
+            {
+            
+                loadGrid();
+            }
+            else
+            {
+              
+                searchGrid();
+
+            }
+        }
+
+        private async void searchGrid()
+        {
+            DataSet ds = await customerDetailsController.getLabQueueDone(txtName.Text.Trim());
+            RefreshGrid(ds);
         }
     }
 }

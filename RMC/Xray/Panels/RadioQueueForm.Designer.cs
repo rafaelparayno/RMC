@@ -32,9 +32,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dbServiceList = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showRadioRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,24 +96,6 @@
             this.groupBox1.TabIndex = 215;
             this.groupBox1.TabStop = false;
             // 
-            // txtName
-            // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(18, 42);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(551, 21);
-            this.txtName.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Search";
-            // 
             // iconButton1
             // 
             this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -134,6 +116,25 @@
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.Location = new System.Drawing.Point(18, 42);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(551, 21);
+            this.txtName.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Search";
             // 
             // contextMenuStrip1
             // 
@@ -141,7 +142,7 @@
             this.showRadioRequestToolStripMenuItem,
             this.viewDataToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 48);
             // 
             // showRadioRequestToolStripMenuItem
             // 

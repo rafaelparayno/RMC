@@ -116,6 +116,7 @@
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // txtName
             // 
@@ -146,7 +147,7 @@
             this.showLabRequestsToolStripMenuItem,
             this.doneToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(176, 48);
             // 
             // showLabRequestsToolStripMenuItem
             // 
@@ -158,7 +159,7 @@
             // doneToolStripMenuItem
             // 
             this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
-            this.doneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.doneToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.doneToolStripMenuItem.Text = "View Data";
             this.doneToolStripMenuItem.Click += new System.EventHandler(this.doneToolStripMenuItem_Click);
             // 

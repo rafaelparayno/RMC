@@ -31,6 +31,12 @@ namespace RMC.Xray
         }
 
 
+        private async void searchGrid()
+        {
+            DataSet ds = await customerDetailsController.getRadioQueueDone(txtName.Text.Trim());
+            RefreshGrid(ds);
+        }
+
         private void RefreshGrid(DataSet ds)
         {
             dbServiceList.DataSource = "";
@@ -78,6 +84,19 @@ namespace RMC.Xray
 
                 }
 
+            }
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtName.Text.Trim()))
+            {
+                loadGrid();
+            }
+            else
+            {
+
+                searchGrid();
             }
         }
     }
