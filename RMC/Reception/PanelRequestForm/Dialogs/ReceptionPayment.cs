@@ -371,9 +371,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
 
 
-
-
-
             await Task.WhenAll(saves);
         }
 

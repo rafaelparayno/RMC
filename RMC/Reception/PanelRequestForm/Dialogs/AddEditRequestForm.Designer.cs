@@ -41,7 +41,6 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbMedCert = new System.Windows.Forms.CheckBox();
             this.checkOthers = new System.Windows.Forms.CheckBox();
-            this.checkMeds = new System.Windows.Forms.CheckBox();
             this.checkPackage = new System.Windows.Forms.CheckBox();
             this.checkXray = new System.Windows.Forms.CheckBox();
             this.checkLab = new System.Windows.Forms.CheckBox();
@@ -216,7 +215,6 @@
             // 
             this.groupBox8.Controls.Add(this.cbMedCert);
             this.groupBox8.Controls.Add(this.checkOthers);
-            this.groupBox8.Controls.Add(this.checkMeds);
             this.groupBox8.Controls.Add(this.checkPackage);
             this.groupBox8.Controls.Add(this.checkXray);
             this.groupBox8.Controls.Add(this.checkLab);
@@ -248,17 +246,6 @@
             this.checkOthers.Text = "OTHERS";
             this.checkOthers.UseVisualStyleBackColor = true;
             this.checkOthers.Click += new System.EventHandler(this.checkOthers_Click);
-            // 
-            // checkMeds
-            // 
-            this.checkMeds.AutoSize = true;
-            this.checkMeds.Location = new System.Drawing.Point(258, 51);
-            this.checkMeds.Name = "checkMeds";
-            this.checkMeds.Size = new System.Drawing.Size(63, 21);
-            this.checkMeds.TabIndex = 5;
-            this.checkMeds.Text = "MEDS";
-            this.checkMeds.UseVisualStyleBackColor = true;
-            this.checkMeds.Click += new System.EventHandler(this.checkMeds_Click);
             // 
             // checkPackage
             // 
@@ -706,7 +693,6 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.CheckBox cbMedCert;
         private System.Windows.Forms.CheckBox checkOthers;
-        private System.Windows.Forms.CheckBox checkMeds;
         private System.Windows.Forms.CheckBox checkPackage;
         private System.Windows.Forms.CheckBox checkXray;
         private System.Windows.Forms.CheckBox checkLab;

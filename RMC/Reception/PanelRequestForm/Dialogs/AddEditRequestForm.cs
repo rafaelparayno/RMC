@@ -2,7 +2,7 @@
 using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RMC.Reception.PanelRequestForm.Dialogs
@@ -24,7 +24,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         private int labS = 3;
         private int xRayS = 4;
         private int packagesS = 5;
-        private int medS = 6;
+     
         private int otherS = 7;
         private int updateQ = 0;
         int id = 0;
@@ -45,11 +45,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             this.updateQ = int.Parse(queueno);
         }
 
-        private void saveRequests()
+        private async Task saveRequests()
         {
             foreach(int type in currentS)
             {
-                customerRequestsController.newReq(type);
+               await customerRequestsController.newReq(type);
             }
         }
 
@@ -117,62 +117,13 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             {
                 checkConsult.Checked = false;
             }
-          
-            if (typesid.Contains(medCert))
-            {
-                cbMedCert.Checked = true;
-            }
-            else
-            {
-                cbMedCert.Checked = false;
-            }
-           
-            if (typesid.Contains(labS))
-            {
-                checkLab.Checked = true;
-            }
-            else
-            {
-                checkLab.Checked = false;
-            }
-        
-            if (typesid.Contains(xRayS))
-            {
-                checkXray.Checked = true;
-            }
-            else
-            {
-                checkXray.Checked = false;
-            }
-     
 
-            if (typesid.Contains(packagesS))
-            {
-                checkPackage.Checked = true;
-            }
-            else
-            {
-                checkPackage.Checked = false;
-            }
-      
+            cbMedCert.Checked = typesid.Contains(medCert);
+            checkLab.Checked = typesid.Contains(labS);
+            checkXray.Checked = typesid.Contains(xRayS);
+            checkPackage.Checked = typesid.Contains(packagesS);
+            checkOthers.Checked = typesid.Contains(otherS);
 
-            if (typesid.Contains(medS))
-            {
-                checkMeds.Checked = true;
-            }
-            else
-            {
-                checkMeds.Checked = false;
-            }
-
-            if (typesid.Contains(otherS))
-            {
-                checkOthers.Checked = true;
-            }
-            else
-            {
-                checkOthers.Checked = false;
-            }
         }
 
         private async void setEditInitState(string queue_no)
@@ -271,7 +222,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 if (currentS.Contains(consultS))
                     docQController.Save(lastQ, textBox3.Text.Trim());
 
-                saveRequests();
+                await saveRequests();
             }
 
 
@@ -401,22 +352,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
         }
 
-        private void checkMeds_Click(object sender, EventArgs e)
-        {
-            if (checkMeds.Checked)
-            {
-                currentS.Add(medS);
-            }
-            else
-            {
-
-                int index = currentS.FindIndex(t => medS == t);
-
-                if (index > -1)
-                    currentS.RemoveAt(index);
-            }
-        }
-
+      
         private void checkOthers_Click(object sender, EventArgs e)
         {
             if (checkOthers.Checked)

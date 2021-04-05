@@ -418,8 +418,9 @@
             this.cbPackages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPackages.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbPackages.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbPackages.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbPackages.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPackages.FormattingEnabled = true;
             this.cbPackages.Location = new System.Drawing.Point(16, 39);
             this.cbPackages.Name = "cbPackages";
@@ -531,8 +532,9 @@
             this.cbOther.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbOther.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbOther.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbOther.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbOther.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOther.FormattingEnabled = true;
             this.cbOther.Location = new System.Drawing.Point(16, 39);
             this.cbOther.Name = "cbOther";
@@ -644,8 +646,9 @@
             this.cbXray.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbXray.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbXray.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbXray.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbXray.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbXray.FormattingEnabled = true;
             this.cbXray.Location = new System.Drawing.Point(16, 39);
             this.cbXray.Name = "cbXray";
@@ -757,8 +760,9 @@
             this.cbLab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbLab.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbLab.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbLab.BackColor = System.Drawing.Color.FloralWhite;
-            this.cbLab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLab.FormattingEnabled = true;
             this.cbLab.Location = new System.Drawing.Point(16, 39);
             this.cbLab.Name = "cbLab";
