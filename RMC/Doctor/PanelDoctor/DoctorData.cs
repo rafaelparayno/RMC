@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,12 +53,15 @@ namespace RMC.Doctor.PanelDoctor
 
         }
 
-        private void btnAddItem_Click(object sender, EventArgs e)
+        private async void btnAddItem_Click(object sender, EventArgs e)
         {
             if (isValid())
             {
-                doctorDataController.save(textBox1.Text.Trim(), textBox2.Text.Trim(), 
-                    txtfilepath.Text.Trim(), UserLog.getUserId().ToString());
+                string pathDir = CreateDirectory.CreateDir("Signatures");
+                Random r = new Random();
+                int genRand = r.Next(10, 50);
+                 await saveData(genRand,pathDir);
+              
 
                 MessageBox.Show("Succesfully Save Data");
             }
@@ -67,6 +71,18 @@ namespace RMC.Doctor.PanelDoctor
             }
         }
 
+        private async Task saveData(int genRand,string pathDir)
+        {
+            Image img = pictureBox1.Image;
+
+              
+            string fullPath = pathDir + "Sign-" + genRand + "-" + UserLog.getUserId() + ".jpg";
+           await doctorDataController.save(textBox1.Text.Trim(), textBox2.Text.Trim(),
+                    fullPath, UserLog.getUserId().ToString());
+            if(img != null)
+                img.Save(fullPath);
+
+        }
 
         private bool isValid()
         {
@@ -97,6 +113,12 @@ namespace RMC.Doctor.PanelDoctor
                 pictureBox1.Image = Image.FromFile(filePath);
                 txtfilepath.Text = filePath;
             }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            txtfilepath.Text = "";
+            pictureBox1.Image = null;
         }
     }
 }

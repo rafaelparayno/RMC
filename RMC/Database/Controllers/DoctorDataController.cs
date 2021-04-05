@@ -14,9 +14,10 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
+        
 
 
-        public async void save(params string [] data)
+        public async Task save(params string [] data)
         {
             int uid = int.Parse(data[3]);
 
