@@ -594,6 +594,12 @@
     <Compile Include="Doctor\PanelDoctor\Diag\addEditSymp.Designer.cs">
       <DependentUpon>addEditSymp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\PanelDoctor\Diag\DiagMedCertForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor\PanelDoctor\Diag\DiagMedCertForms.Designer.cs">
+      <DependentUpon>DiagMedCertForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doctor\PanelDoctor\Diag\dStocks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -611,6 +617,12 @@
     </Compile>
     <Compile Include="Doctor\PanelDoctor\DoctorQueue.Designer.cs">
       <DependentUpon>DoctorQueue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\PanelDoctor\medcertsRequestsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor\PanelDoctor\medcertsRequestsForm.Designer.cs">
+      <DependentUpon>medcertsRequestsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Doctor\PanelDoctor\PanelDoctorSettings.cs">
       <SubType>Form</SubType>
@@ -1028,6 +1040,12 @@
       <DependentUpon>DoctorsSample.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\medcertReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>medcertReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\Prescription.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1302,6 +1320,9 @@
     <EmbeddedResource Include="Doctor\PanelDoctor\Diag\addEditSymp.resx">
       <DependentUpon>addEditSymp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Doctor\PanelDoctor\Diag\DiagMedCertForms.resx">
+      <DependentUpon>DiagMedCertForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\Diag\dStocks.resx">
       <DependentUpon>dStocks.cs</DependentUpon>
     </EmbeddedResource>
@@ -1310,6 +1331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\DoctorQueue.resx">
       <DependentUpon>DoctorQueue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor\PanelDoctor\medcertsRequestsForm.resx">
+      <DependentUpon>medcertsRequestsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\PanelDoctorSettings.resx">
       <DependentUpon>PanelDoctorSettings.cs</DependentUpon>
@@ -1536,6 +1560,10 @@
     <EmbeddedResource Include="Reports\DoctorsSample.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DoctorsSample.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\medcertReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>medcertReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Prescription.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
