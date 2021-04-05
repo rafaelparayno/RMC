@@ -28,7 +28,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         private int otherS = 7;
         private int updateQ = 0;
         int id = 0;
-    
+        private int medCertType = 0;
+
+
 
         public AddEditRequestForm()
         {
@@ -145,7 +147,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             currentS = await customerRequestsController.getListTypeReq(reqid);
             editedS = await customerRequestsController.getListTypeReq(reqid);
             string ccEdit = await docQController.getCC(q);
-
+            medCertType = await docQController.getMedCertType(q);
             patientDetails details = await patientDetailsController.getPatientQueueNo(q);
             txtfn.Text = details.Firstname;
             txtLn.Text = details.lastname;
@@ -157,7 +159,15 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             cbGender.Text = details.gender;
             cbStatus.Text = details.civil_status;
             textBox3.Text = ccEdit;
+            radioButton4.Checked = medCertType == 1 ? true : false;
 
+            if(medCertType == 2)
+            {
+                radioButton3.Checked = true;
+                label11.Visible = true;
+          /*      txtCompanyName.Text = */
+            }
+          
             setCbsEditState(editedS);
         
 
@@ -196,7 +206,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 updateRequets();
 
                 if (currentS.Contains(consultS))
-                    docQController.Save(reqid, textBox3.Text.Trim());
+                    docQController.Save(reqid, textBox3.Text.Trim(), medCertType);
             }
             else
             {
@@ -230,7 +240,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
 
                 if (currentS.Contains(consultS))
-                    docQController.Save(lastQ, textBox3.Text.Trim());
+                    docQController.Save(lastQ, textBox3.Text.Trim(), medCertType);
 
                 await saveRequests();
             }
@@ -271,6 +281,17 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
             isValid = (currentS.Count != 0) && isValid;
             errorHandlingList(ref groupBox8, "Please Select Atleast one");
+
+            if (currentS.Contains(consultS)){
+                isValid = (textBox3.Text != "") && isValid;
+                SetErrorShowNoText(ref textBox3, "Please Input a Value");
+            }
+
+            if(currentS.Contains(medCert) && medCertType == 2)
+            {
+                isValid = (txtCompanyName.Text != "") && isValid;
+                SetErrorShowNoText(ref txtCompanyName, "Please Input a Value");
+            }
            
             return isValid;
         }
@@ -321,7 +342,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             {
                 currentS.Add(medCert);
                 groupBox9.Visible = true;
-
+                medCertType = 1;
             }
             else
             {
@@ -335,6 +356,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 radioButton4.Checked = true;
                 txtCompanyName.Text = "";
                 txtCompanyName.Visible = false;
+                medCertType = 0;
             }
         }
 
@@ -494,6 +516,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             label11.Visible = true ;
 
             txtCompanyName.Visible = true;
+            medCertType = 2;
         }
 
         private void radioButton4_Click(object sender, EventArgs e)
@@ -501,6 +524,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             label11.Visible = false;
             txtCompanyName.Text = "";
             txtCompanyName.Visible = false;
+            medCertType = 1;
         }
 
        

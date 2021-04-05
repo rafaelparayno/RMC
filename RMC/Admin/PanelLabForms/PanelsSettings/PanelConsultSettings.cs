@@ -75,8 +75,8 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             Task<float> task2 = serviceController.getPrice("Consulation");
             Task<float> task3 = serviceController.getPrice("SConsultation");
             Task<float> task4 = serviceController.getPrice("priceConsultF");
-            Task<float> task5 = serviceController.getPrice("PreEmployment");
-            List<Task> listTask = new List<Task>() { task1,task2,task3,task4,task5};
+        
+            List<Task> listTask = new List<Task>() { task1,task2,task3,task4};
 
             await Task.WhenAll(listTask);
 
@@ -86,7 +86,7 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             textBox1.Text = task1.Result.ToString();
             textBox2.Text = task3.Result.ToString();
             textBox3.Text = task4.Result.ToString();
-            textBox4.Text = task5.Result.ToString();
+         
         }
 
         private bool isValid()
@@ -109,8 +109,6 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             isValid = (textBox3.Text.Trim() != "") && isValid;
             setError(ref textBox3, "Please Input Data");
 
-            isValid = (textBox4.Text.Trim() != "") && isValid;
-            setError(ref textBox4, "Please Input Data");
 
 
             isValid = (float.TryParse(txtSellingPrice.Text.Trim(), out _)) && isValid;
@@ -121,9 +119,7 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             setNumberFormat(isValid, ref textBox2, "Please Insert A Correct Format");
             isValid = (float.TryParse(textBox3.Text.Trim(), out _)) && isValid;
             setNumberFormat(isValid, ref textBox3, "Please Insert A Correct Format");
-            isValid = (float.TryParse(textBox4.Text.Trim(), out _)) && isValid;
-            setNumberFormat(isValid, ref textBox4, "Please Insert A Correct Format");
-
+        
             return isValid;
         }
 
@@ -155,12 +151,12 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             float priceMedCert = float.Parse(textBox1.Text.Trim());
             float priceSConsulation = float.Parse(textBox2.Text.Trim());
             float priceFConsulation = float.Parse(textBox3.Text.Trim());
-            float pricePreEmployment = float.Parse(textBox4.Text.Trim());
+          
             listTask.Add(serviceController.save(priceConsulation, "Consulation"));
             listTask.Add(serviceController.save(priceMedCert, "MedCert"));
             listTask.Add(serviceController.save(priceSConsulation, "SConsultation"));
             listTask.Add(serviceController.save(priceFConsulation, "priceConsultF"));
-            listTask.Add(serviceController.save(pricePreEmployment, "PreEmployment"));
+        
 
             await Task.WhenAll(listTask);
             MessageBox.Show("Succesfully Save Data");

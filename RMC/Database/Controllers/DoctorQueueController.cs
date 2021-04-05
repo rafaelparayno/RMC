@@ -42,14 +42,17 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
-        public async void Save(int queu_no,string cc)
+        public async void Save(int queu_no,string cc,int medCertType)
         {
-            string sql = await isFound(queu_no) ? "UPDATE doctor_queue SET cc_doctor = @cc WHERE customer_id = @q" : 
-                @"INSERT INTO doctor_queue (customer_id,cc_doctor) VALUES  ((SELECT customer_id FROM customer_request_details ORDER BY customer_id DESC LIMIT 1),@cc)";
+            string sql = await isFound(queu_no) ? "UPDATE doctor_queue SET cc_doctor = @cc ,med_cert_type = @md " +
+                "                                   WHERE customer_id = @q" :
+                @"INSERT INTO doctor_queue (customer_id,cc_doctor,med_cert_type) 
+                    VALUES  ((SELECT customer_id FROM customer_request_details ORDER BY customer_id DESC LIMIT 1),@cc,@md)";
 
             List<MySqlParameter> list = new List<MySqlParameter>();
             list.Add(new MySqlParameter("@q", queu_no));
             list.Add(new MySqlParameter("@cc", cc));
+            list.Add(new MySqlParameter("@md", medCertType));
 
             await crud.ExecuteAsync(sql, list);
         }
@@ -180,6 +183,27 @@ namespace RMC.Database.Controllers
             crud.CloseConnection();
 
             return cc;
+        }
+
+        public async Task<int> getMedCertType(int queue_no)
+        {
+            int medType = 0;
+            string sql = @"SELECT * FROM `doctor_queue`  WHERE customer_id in(SELECT customer_id FROM customer_request_details 
+                          WHERE customer_request_details.queue_no = @id) AND DATE(date_q) = CURDATE()";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@id", queue_no));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                medType = int.Parse(reader["med_cert_type"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return medType;
         }
 
         public async void Remove(int req_id)

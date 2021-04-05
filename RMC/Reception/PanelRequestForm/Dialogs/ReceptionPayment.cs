@@ -139,29 +139,15 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 gbMedCert.Visible = true;
                 dt.Rows.Add(2, "MedCert", "Service", priceMedCert);
             }
+
+
+            gbLab.Visible = requests.Contains(labS);
            
+            gbXray.Visible = requests.Contains(xRayS);
 
-            if (requests.Contains(labS))
-            {
-                gbLab.Visible = true;
-            }
-         
+            gbPackages.Visible = requests.Contains(packagesS);
 
-            if (requests.Contains(xRayS))
-            {
-                gbXray.Visible = true;
-            }
-
-            if (requests.Contains(packagesS))
-            {
-                gbPackages.Visible = true;
-            }
-
-
-            if (requests.Contains(otherS))
-            {
-                gbServices.Visible = true;
-            }
+            gbServices.Visible = requests.Contains(otherS);
 
             dataGridView1.DataSource = dt;
           
