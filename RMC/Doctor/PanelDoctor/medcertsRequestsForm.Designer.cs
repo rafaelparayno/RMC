@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openMedcertFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceList)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -136,7 +137,8 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openMedcertFormToolStripMenuItem});
+            this.openMedcertFormToolStripMenuItem,
+            this.doneToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(182, 48);
             // 
@@ -146,6 +148,12 @@
             this.openMedcertFormToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.openMedcertFormToolStripMenuItem.Text = "Open Medcert Form";
             this.openMedcertFormToolStripMenuItem.Click += new System.EventHandler(this.openMedcertFormToolStripMenuItem_Click);
+            // 
+            // doneToolStripMenuItem
+            // 
+            this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
+            this.doneToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.doneToolStripMenuItem.Text = "Done";
             // 
             // medcertsRequestsForm
             // 
@@ -178,5 +186,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem openMedcertFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem doneToolStripMenuItem;
     }
 }

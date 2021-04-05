@@ -337,9 +337,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 if (type == "Packages")
                     saves.Add(savePackageQueue(id));
 
-                if (type == "Service" &&
+           /*     if (type == "Service" &&
                     dr.Cells[1].Value.ToString() == "MedCert")
-                    saves.Add(saveMedCerts());
+                    saves.Add(saveMedCerts());*/
 
             }
 

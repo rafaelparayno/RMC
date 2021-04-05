@@ -29,7 +29,7 @@ namespace RMC.Database.Controllers
 
         }
 
-        public async void save(float price,string name)
+        public async Task save(float price,string name)
         {
             string sql;
             List<MySqlParameter> listparams = new List<MySqlParameter>();
