@@ -29,6 +29,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         LabQueueController labQueueController = new LabQueueController();
         RadioQueueController radioQueueController = new RadioQueueController();
         PackageLabController packageLabController = new PackageLabController();
+        MedCertController certController = new MedCertController();
         PackageXray packageXrayController = new PackageXray();
         #endregion
 
@@ -67,22 +68,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             initGroupBoxState();
             loadFromDbtoCb();
             setTotalPrice();
-            printerSettings();
+          
         }
 
-        private void printerSettings()
-        {
-          /*  printDocument.PrintPage += new PrintPageEventHandler(printDocs);
-            printDocument.DefaultPageSettings.PaperSize = new PaperSize("custom", 200, 200);*/
-            // printDocument.showdia
-     
-        }
-/*
-        private void printDocs(object sender, PrintPageEventArgs e)
-        {
-            e.Graphics.DrawImage(Properties.Resources.rmc, new Point(0, 0));
-        }
-*/
+   
 
         #region OwnFunctions
         private void initColDg()
@@ -137,7 +126,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private void initGroupBoxState()
         {
-
+       
             if (requests.Contains(consultS))
             {
                 gpConsulation.Visible = true;
@@ -339,6 +328,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             {
                 string type = dr.Cells[2].Value.ToString();
                 int id = int.Parse(dr.Cells[0].Value.ToString());
+         
 
                 if (type == "Laboratory")
                     saves.Add(labQueueController.save(id, customerid));
@@ -347,9 +337,18 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 if (type == "Packages")
                     saves.Add(savePackageQueue(id));
 
+                if (type == "Service" &&
+                    dr.Cells[1].Value.ToString() == "MedCert")
+                    saves.Add(saveMedCerts());
+
             }
 
             await Task.WhenAll(saves);
+        }
+
+        private async Task saveMedCerts()
+        {
+            await certController.save(customerid);
         }
 
         private async Task savePackageQueue(int id)
