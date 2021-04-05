@@ -118,7 +118,17 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 checkConsult.Checked = false;
             }
 
-            cbMedCert.Checked = typesid.Contains(medCert);
+            if (typesid.Contains(medCert))
+            {
+                cbMedCert.Checked = true;
+                groupBox9.Visible = true;
+            }
+            else
+            {
+                cbMedCert.Checked = false;
+            }
+
+           /* cbMedCert.Checked = typesid.Contains(medCert);*/
             checkLab.Checked = typesid.Contains(labS);
             checkXray.Checked = typesid.Contains(xRayS);
             checkPackage.Checked = typesid.Contains(packagesS);
@@ -304,6 +314,30 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
         }
 
+
+        private void cbMedCert_Click_1(object sender, EventArgs e)
+        {
+            if (cbMedCert.Checked)
+            {
+                currentS.Add(medCert);
+                groupBox9.Visible = true;
+
+            }
+            else
+            {
+
+                int index = currentS.FindIndex(t => medCert == t);
+
+                if (index > -1)
+                    currentS.RemoveAt(index);
+                groupBox9.Visible = false;
+                txtCompanyName.Text = "";
+                radioButton4.Checked = true;
+                txtCompanyName.Text = "";
+                txtCompanyName.Visible = false;
+            }
+        }
+
         private void setErrorCbNoValue(ref ComboBox cb, string msg)
         {
             if (cb.SelectedIndex == -1)
@@ -455,20 +489,20 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             txtAge.Text = age.ToString();
         }
 
-        private void cbMedCert_Click_1(object sender, EventArgs e)
+        private void radioButton3_Click(object sender, EventArgs e)
         {
-            if (cbMedCert.Checked)
-            {
-                currentS.Add(medCert);
-            }
-            else
-            {
+            label11.Visible = true ;
 
-                int index = currentS.FindIndex(t => medCert == t);
-
-                if (index > -1)
-                    currentS.RemoveAt(index);
-            }
+            txtCompanyName.Visible = true;
         }
+
+        private void radioButton4_Click(object sender, EventArgs e)
+        {
+            label11.Visible = false;
+            txtCompanyName.Text = "";
+            txtCompanyName.Visible = false;
+        }
+
+       
     }
 }

@@ -13,17 +13,13 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
 {
     public partial class PanelConsultSettings : Form
     {
-      /*  float priceMedCert = 0;
-        float priceConsult = 0;
-        float priceConsultS = 0;
-        float priceConsultF = 0;
-        float pricePreEmployment = 0;*/
+
 
         PricesServiceController serviceController = new PricesServiceController();
         public PanelConsultSettings()
         {
             InitializeComponent();
-         /*   setInitPrice();*/
+    
         }
 
 
@@ -83,12 +79,7 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             List<Task> listTask = new List<Task>() { task1,task2,task3,task4,task5};
 
             await Task.WhenAll(listTask);
-            //listTask.Add()
-/*            priceMedCert = ;
-            priceConsult = await serviceController.getPrice("Consulation");
-            priceConsultS = await serviceController.getPrice("SConsultation");
-            priceConsultF = await serviceController.getPrice("priceConsultF");
-            pricePreEmployment = await serviceController.getPrice("PreEmployment");*/
+
 
 
             txtSellingPrice.Text = task2.Result.ToString();
