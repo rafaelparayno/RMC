@@ -29,7 +29,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         private int updateQ = 0;
         int id = 0;
         private int medCertType = 0;
-
+        string ccEdit = "";
+        string companyEdit = "";
 
 
         public AddEditRequestForm()
@@ -63,7 +64,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
         }
 
-        private void removeRequestCostumer()
+        private async Task removeRequestCostumer()
         {
 
             foreach (int id in idsToBeRemove())
@@ -72,8 +73,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                
             }
 
-            if (idsToBeRemove().Contains(consultS) && medCertType == 0)
-                docQController.Remove(reqid);
+            if (!(currentS.Contains(consultS)) && !(currentS.Contains(medCert)))
+                await docQController.Remove(reqid);
         }
 
         private List<int> idsToBeRemove()
@@ -146,8 +147,12 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             this.id = await customerDetailsController.getPatientIDinQueue(q);
             currentS = await customerRequestsController.getListTypeReq(reqid);
             editedS = await customerRequestsController.getListTypeReq(reqid);
-            string ccEdit = await docQController.getCC(q);
+            ccEdit = await docQController.getCC(q);
             medCertType = await docQController.getMedCertType(q);
+            companyEdit = await docQController.getCompanyName(q);
+
+
+
             patientDetails details = await patientDetailsController.getPatientQueueNo(q);
             txtfn.Text = details.Firstname;
             txtLn.Text = details.lastname;
@@ -159,7 +164,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             cbGender.Text = details.gender;
             cbStatus.Text = details.civil_status;
             textBox3.Text = ccEdit;
-
+            txtCompanyName.Text = companyEdit;
             MessageBox.Show(medCertType.ToString());
             radioButton4.Checked = medCertType == 1 ? true : false;
 
@@ -167,7 +172,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             {
                 radioButton3.Checked = true;
                 label11.Visible = true;
-     
+                txtCompanyName.Visible = true; 
             }
           
             setCbsEditState(editedS);
@@ -188,7 +193,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 return;
             }
 
-            
+            pictureBox1.Show();
+            pictureBox1.Update();
             int lastQ = await customerDetailsController.getCustomerIdLast();
             lastQ++;
 
@@ -199,7 +205,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
 
 
-                removeRequestCostumer();
+               await removeRequestCostumer();
                 patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
                                           txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                           txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
@@ -208,7 +214,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 updateRequets();
 
                 if (currentS.Contains(consultS) || currentS.Contains(medCert))
-                    docQController.Save(reqid, textBox3.Text.Trim(), medCertType);
+                    docQController.Save(reqid, textBox3.Text.Trim(), medCertType,txtCompanyName.Text.Trim());
             }
             else
             {
@@ -242,14 +248,14 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
 
                 if (currentS.Contains(consultS) || currentS.Contains(medCert))
-                    docQController.Save(lastQ, textBox3.Text.Trim(), medCertType);
+                    docQController.Save(lastQ, textBox3.Text.Trim(), medCertType, txtCompanyName.Text.Trim());
 
                 await saveRequests();
             }
 
 
 
-
+            pictureBox1.Hide();
             MessageBox.Show("SuccessFuly Added Request");
             this.Close();
 
@@ -322,6 +328,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                
                 currentS.Add(consultS);
                 groupBox6.Visible = true;
+                if (isEdit)
+                    textBox3.Text = ccEdit;
             }
             else
             {
@@ -332,6 +340,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                     currentS.RemoveAt(index);
 
                 groupBox6.Visible = false;
+                textBox3.Text = "";
             }
         }
 
@@ -343,6 +352,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 currentS.Add(medCert);
                 groupBox9.Visible = true;
                 medCertType = 1;
+                txtCompanyName.Visible = true;
+                if (isEdit)
+                    txtCompanyName.Text = companyEdit;
             }
             else
             {

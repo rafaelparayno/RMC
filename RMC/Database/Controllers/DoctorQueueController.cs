@@ -42,17 +42,19 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
-        public async void Save(int queu_no,string cc,int medCertType)
+        public async void Save(int queu_no,string cc,int medCertType,string compname)
         {
-            string sql = await isFound(queu_no) ? @"UPDATE doctor_queue SET cc_doctor = @cc ,med_cert_type = @md  
+            string sql = await isFound(queu_no) ? @"UPDATE doctor_queue SET cc_doctor = @cc ,
+                                                   med_cert_type = @md , company_name = @cmpname 
                                                   WHERE customer_id = @q" :
-                @"INSERT INTO doctor_queue (customer_id,cc_doctor,med_cert_type) 
-                    VALUES  (@q,@cc,@md)";
+                @"INSERT INTO doctor_queue (customer_id,cc_doctor,med_cert_type,company_name) 
+                    VALUES  (@q,@cc,@md,@cmpname)";
 
             List<MySqlParameter> list = new List<MySqlParameter>();
             list.Add(new MySqlParameter("@q", queu_no));
             list.Add(new MySqlParameter("@cc", cc));
             list.Add(new MySqlParameter("@md", medCertType));
+            list.Add(new MySqlParameter("@cmpname", compname));
 
             await crud.ExecuteAsync(sql, list);
         }
@@ -206,14 +208,43 @@ namespace RMC.Database.Controllers
             return medType;
         }
 
-        public async void Remove(int req_id)
+        public async Task<string> getCompanyName(int queue_no)
         {
+            string companyName = "";
+            string sql = @"SELECT * FROM `doctor_queue`  WHERE customer_id in(SELECT customer_id FROM customer_request_details 
+                          WHERE customer_request_details.queue_no = @id) AND DATE(date_q) = CURDATE()";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@id", queue_no));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                companyName = reader["company_name"].ToString();
+            }
+
+            crud.CloseConnection();
+
+            return companyName;
+        }
+
+        public async Task Remove(int req_id)
+        {
+            
+            string sql2 = "SELECT * FROM doctor_queue WHERE customer_id = @q AND is_done = 1";
+
             string sql = @"DELETE FROM doctor_queue WHERE customer_id = @q";
 
             List<MySqlParameter> list = new List<MySqlParameter>();
             list.Add(new MySqlParameter("@q", req_id));
 
-            await crud.ExecuteAsync(sql, list);
+            DbDataReader dbDataReader = await crud.RetrieveRecordsAsync(sql2, list);
+
+            if (dbDataReader.HasRows)
+                return;
+
+             await crud.ExecuteAsync(sql, list);
         }
 
         public async Task<bool> isDone(int queue_no)
