@@ -323,19 +323,16 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 if (type == "Packages")
                     saves.Add(savePackageQueue(id));
 
-           /*     if (type == "Service" &&
-                    dr.Cells[1].Value.ToString() == "MedCert")
-                    saves.Add(saveMedCerts());*/
 
             }
 
             await Task.WhenAll(saves);
         }
 
-        private async Task saveMedCerts()
+       /* private async Task saveMedCerts()
         {
             await certController.save(customerid);
-        }
+        }*/
 
         private async Task savePackageQueue(int id)
         {
@@ -588,6 +585,29 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         }
 
 
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                string type = dr.Cells[2].Value.ToString();
+                string name = dr.Cells[1].Value.ToString();
+                if (type == "Service" && name == "MedCert")
+                {
+                    int index = dr.Index;
+                    dt.Rows.RemoveAt(index);
+                }
+            }
+
+            if (checkBox1.Checked)
+            {
+                dt.Rows.Add(2, "MedCert", "Service", 0);
+            }
+            else
+            {
+                dt.Rows.Add(2, "MedCert", "Service", priceMedCert);
+            }
+            setTotalPrice();
+        }
 
         #endregion
 

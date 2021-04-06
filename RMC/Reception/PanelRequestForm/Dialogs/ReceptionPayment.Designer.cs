@@ -79,6 +79,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -322,7 +323,7 @@
             this.gbPackages.Controls.Add(this.iconButton10);
             this.gbPackages.Controls.Add(this.cbPackages);
             this.gbPackages.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbPackages.Location = new System.Drawing.Point(0, 561);
+            this.gbPackages.Location = new System.Drawing.Point(0, 582);
             this.gbPackages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbPackages.Name = "gbPackages";
             this.gbPackages.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -436,7 +437,7 @@
             this.gbServices.Controls.Add(this.iconButton7);
             this.gbServices.Controls.Add(this.cbOther);
             this.gbServices.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbServices.Location = new System.Drawing.Point(0, 462);
+            this.gbServices.Location = new System.Drawing.Point(0, 483);
             this.gbServices.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbServices.Name = "gbServices";
             this.gbServices.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -550,7 +551,7 @@
             this.gbXray.Controls.Add(this.iconButton4);
             this.gbXray.Controls.Add(this.cbXray);
             this.gbXray.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbXray.Location = new System.Drawing.Point(0, 363);
+            this.gbXray.Location = new System.Drawing.Point(0, 384);
             this.gbXray.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbXray.Name = "gbXray";
             this.gbXray.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -664,7 +665,7 @@
             this.gbLab.Controls.Add(this.btnAddLab);
             this.gbLab.Controls.Add(this.cbLab);
             this.gbLab.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbLab.Location = new System.Drawing.Point(0, 264);
+            this.gbLab.Location = new System.Drawing.Point(0, 285);
             this.gbLab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbLab.Name = "gbLab";
             this.gbLab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -772,6 +773,7 @@
             // 
             // gbMedCert
             // 
+            this.gbMedCert.Controls.Add(this.checkBox1);
             this.gbMedCert.Controls.Add(this.textBox1);
             this.gbMedCert.Controls.Add(this.label2);
             this.gbMedCert.Dock = System.Windows.Forms.DockStyle.Top;
@@ -779,7 +781,7 @@
             this.gbMedCert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbMedCert.Name = "gbMedCert";
             this.gbMedCert.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbMedCert.Size = new System.Drawing.Size(275, 90);
+            this.gbMedCert.Size = new System.Drawing.Size(275, 111);
             this.gbMedCert.TabIndex = 4;
             this.gbMedCert.TabStop = false;
             this.gbMedCert.Visible = false;
@@ -788,7 +790,7 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(18, 54);
+            this.textBox1.Location = new System.Drawing.Point(18, 40);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(238, 23);
             this.textBox1.TabIndex = 1;
@@ -918,6 +920,17 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(23, 69);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(53, 20);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Free";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
+            // 
             // ReceptionPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1013,5 +1026,6 @@
         internal System.Windows.Forms.TextBox textBox2;
         internal System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

@@ -165,7 +165,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             cbStatus.Text = details.civil_status;
             textBox3.Text = ccEdit;
             txtCompanyName.Text = companyEdit;
-            MessageBox.Show(medCertType.ToString());
             radioButton4.Checked = medCertType == 1 ? true : false;
 
             if(medCertType == 2)
@@ -173,6 +172,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 radioButton3.Checked = true;
                 label11.Visible = true;
                 txtCompanyName.Visible = true; 
+
             }
           
             setCbsEditState(editedS);
@@ -193,8 +193,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 return;
             }
 
-            pictureBox1.Show();
-            pictureBox1.Update();
+            SavingState();
             int lastQ = await customerDetailsController.getCustomerIdLast();
             lastQ++;
 
@@ -259,6 +258,13 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             MessageBox.Show("SuccessFuly Added Request");
             this.Close();
 
+        }
+
+        private void SavingState()
+        {
+            btnSave.Enabled = false;
+            pictureBox1.Show();
+            pictureBox1.Update();
         }
 
         private bool isValid()
@@ -352,9 +358,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 currentS.Add(medCert);
                 groupBox9.Visible = true;
                 medCertType = 1;
-                txtCompanyName.Visible = true;
-                if (isEdit)
-                    txtCompanyName.Text = companyEdit;
+             /*   txtCompanyName.Visible = true;*/
+            
             }
             else
             {
@@ -529,6 +534,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
             txtCompanyName.Visible = true;
             medCertType = 2;
+
+            if (isEdit)
+                txtCompanyName.Text = companyEdit;
         }
 
         private void radioButton4_Click(object sender, EventArgs e)
