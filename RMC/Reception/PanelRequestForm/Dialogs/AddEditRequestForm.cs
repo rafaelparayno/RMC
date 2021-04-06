@@ -69,11 +69,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             foreach (int id in idsToBeRemove())
             {
                 customerRequestsController.remove(id, reqid);
-
-                if(id == 1)
-                    docQController.Remove(reqid);
                
             }
+
+            if (idsToBeRemove().Contains(consultS) && medCertType == 0)
+                docQController.Remove(reqid);
         }
 
         private List<int> idsToBeRemove()
@@ -159,13 +159,15 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             cbGender.Text = details.gender;
             cbStatus.Text = details.civil_status;
             textBox3.Text = ccEdit;
+
+            MessageBox.Show(medCertType.ToString());
             radioButton4.Checked = medCertType == 1 ? true : false;
 
             if(medCertType == 2)
             {
                 radioButton3.Checked = true;
                 label11.Visible = true;
-          /*      txtCompanyName.Text = */
+     
             }
           
             setCbsEditState(editedS);
@@ -187,7 +189,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
 
             
-            int lastQ = await customerDetailsController.getLastQueue();
+            int lastQ = await customerDetailsController.getCustomerIdLast();
             lastQ++;
 
             if (isEdit)
@@ -205,7 +207,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
                 updateRequets();
 
-                if (currentS.Contains(consultS))
+                if (currentS.Contains(consultS) || currentS.Contains(medCert))
                     docQController.Save(reqid, textBox3.Text.Trim(), medCertType);
             }
             else
@@ -239,7 +241,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
 
 
-                if (currentS.Contains(consultS))
+                if (currentS.Contains(consultS) || currentS.Contains(medCert))
                     docQController.Save(lastQ, textBox3.Text.Trim(), medCertType);
 
                 await saveRequests();
@@ -303,8 +305,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 errorProvider1.SetError(gb, ergMsg);
             }
         }
-
-     
 
         private void txtAge_KeyPress(object sender, KeyPressEventArgs e)
         {

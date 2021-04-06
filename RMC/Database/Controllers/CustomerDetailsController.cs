@@ -105,6 +105,24 @@ namespace RMC.Database.Controllers
             return lastq;
         }
 
+        public async Task<int> getCustomerIdLast()
+        {
+            int lastq = 0;
+
+            string sql = @"SELECT * FROM `customer_request_details` ORDER BY customer_request_details.customer_id DESC";
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            if (await reader.ReadAsync())
+            {
+                lastq = int.Parse(reader["customer_id"].ToString());
+            }
+
+            crud.CloseConnection();
+
+
+            return lastq;
+        }
+
         public async Task setPaid(int customerid)
         {
             string sql = @"UPDATE customer_request_details SET is_paid = 1 WHERE customer_id  = @id";

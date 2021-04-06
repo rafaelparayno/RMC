@@ -44,10 +44,10 @@ namespace RMC.Database.Controllers
 
         public async void Save(int queu_no,string cc,int medCertType)
         {
-            string sql = await isFound(queu_no) ? "UPDATE doctor_queue SET cc_doctor = @cc ,med_cert_type = @md " +
-                "                                   WHERE customer_id = @q" :
+            string sql = await isFound(queu_no) ? @"UPDATE doctor_queue SET cc_doctor = @cc ,med_cert_type = @md  
+                                                  WHERE customer_id = @q" :
                 @"INSERT INTO doctor_queue (customer_id,cc_doctor,med_cert_type) 
-                    VALUES  ((SELECT customer_id FROM customer_request_details ORDER BY customer_id DESC LIMIT 1),@cc,@md)";
+                    VALUES  (@q,@cc,@md)";
 
             List<MySqlParameter> list = new List<MySqlParameter>();
             list.Add(new MySqlParameter("@q", queu_no));
