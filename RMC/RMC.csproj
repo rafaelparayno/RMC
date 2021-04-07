@@ -594,6 +594,12 @@
     <Compile Include="Doctor\PanelDoctor\Diag\addEditSymp.Designer.cs">
       <DependentUpon>addEditSymp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\PanelDoctor\Diag\AddMedCertDiags.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor\PanelDoctor\Diag\AddMedCertDiags.Designer.cs">
+      <DependentUpon>AddMedCertDiags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doctor\PanelDoctor\Diag\DiagMedCertForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1319,6 +1325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\Diag\addEditSymp.resx">
       <DependentUpon>addEditSymp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctor\PanelDoctor\Diag\AddMedCertDiags.resx">
+      <DependentUpon>AddMedCertDiags.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\Diag\DiagMedCertForms.resx">
       <DependentUpon>DiagMedCertForms.cs</DependentUpon>

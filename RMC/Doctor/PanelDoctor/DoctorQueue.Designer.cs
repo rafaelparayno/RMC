@@ -36,14 +36,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dbServiceList = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.viewDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.doctorFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.doneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceList)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -138,33 +134,8 @@
             // 
             // contextMenuStrip1
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewDataToolStripMenuItem,
-            this.doctorFormToolStripMenuItem,
-            this.doneToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(142, 70);
-            // 
-            // viewDataToolStripMenuItem
-            // 
-            this.viewDataToolStripMenuItem.Name = "viewDataToolStripMenuItem";
-            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.viewDataToolStripMenuItem.Text = "View Data";
-            this.viewDataToolStripMenuItem.Click += new System.EventHandler(this.viewDataToolStripMenuItem_Click);
-            // 
-            // doctorFormToolStripMenuItem
-            // 
-            this.doctorFormToolStripMenuItem.Name = "doctorFormToolStripMenuItem";
-            this.doctorFormToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.doctorFormToolStripMenuItem.Text = "Doctor Form";
-            this.doctorFormToolStripMenuItem.Click += new System.EventHandler(this.doctorFormToolStripMenuItem_Click);
-            // 
-            // doneToolStripMenuItem
-            // 
-            this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
-            this.doneToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.doneToolStripMenuItem.Text = "Done";
-            this.doneToolStripMenuItem.Click += new System.EventHandler(this.doneToolStripMenuItem_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // timer1
             // 
@@ -186,7 +157,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceList)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -200,9 +170,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.DataGridView dbServiceList;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem viewDataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem doctorFormToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem doneToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
     }
 }
