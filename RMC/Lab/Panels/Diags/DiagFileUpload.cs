@@ -93,10 +93,8 @@ namespace RMC.Lab.Panels.Diags
                 return;
 
             patientDetails patientmod = await patientDetailsController.getPatientId(patientid);
-
-           
-            CreateDirectory.CreateDir(patientmod.lastname + "-" + patientmod.id);
-            string newFilePath2 = CreateDirectory.CreateDir(patientmod.lastname + "-" + patientmod.id + "\\" + "LabFiles");
+                  
+            string newFilePath2 = filePathSaving.saveLab(patientmod.lastname + "-" + patientmod.id );
             string filePath = newFilePath2;
             string datenow = DateTime.Now.ToString("yyyy--MM--dd");
             string timenow = DateTime.Now.ToString("HH--mm--ss--tt");

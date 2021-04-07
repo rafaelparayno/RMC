@@ -76,7 +76,7 @@ namespace RMC.Database.Controllers
         public async Task<List<patientLabModel>> getPatientLabModel(int id)
         {
             List<patientLabModel> listPatientLabModel = new List<patientLabModel>();
-            string sql = @"SELECT patient_lab.patient_lab_id AS 'ID',laboratorylist.labname,
+            string sql = @"SELECT patient_lab.patient_lab_id AS 'ID',laboratorylist.labname,filename,
                             labtype.labtype_name,patient_lab.date_patient_lab AS 'DateTaken' FROM `patient_lab` 
                             INNER JOIN laboratorylist ON patient_lab.laboratory_id = laboratorylist.laboratory_id
                             INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
@@ -93,7 +93,7 @@ namespace RMC.Database.Controllers
                 patientLabModel.name = reader["labname"].ToString();
                 patientLabModel.type = reader["labtype_name"].ToString();
                 patientLabModel.date = DateTime.Parse(reader["DateTaken"].ToString());
-
+                patientLabModel.filename = reader["filename"].ToString();
                 listPatientLabModel.Add(patientLabModel);
             }
 
@@ -106,7 +106,7 @@ namespace RMC.Database.Controllers
         public async Task<List<patientLabModel>> getPatientLabModel(int id,string date)
         {
             List<patientLabModel> listPatientLabModel = new List<patientLabModel>();
-            string sql = @"SELECT patient_lab.patient_lab_id AS 'ID',laboratorylist.labname,
+            string sql = @"SELECT patient_lab.patient_lab_id AS 'ID',laboratorylist.labname,filename,
                             labtype.labtype_name,patient_lab.date_patient_lab AS 'DateTaken' FROM `patient_lab` 
                             INNER JOIN laboratorylist ON patient_lab.laboratory_id = laboratorylist.laboratory_id
                             INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 

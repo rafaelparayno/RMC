@@ -77,8 +77,8 @@ namespace RMC.Patients.PanelsDetails.Dialogs
         private async void btnSave_Click(object sender, EventArgs e)
         {
             p = await patientDetailsController.getPatientId(patient_id);
-            CreateDirectory.CreateDir(p.lastname + "-" + p.id);
-            string newFilePath2 = CreateDirectory.CreateDir(p.lastname + "-" + p.id + "\\" + "otherFiles");
+          
+            string newFilePath2 = filePathSaving.saveOthers(p.lastname + "-" + p.id + "\\" + "otherFiles");
             string filePath = newFilePath2;
             string datenow = DateTime.Now.ToString("yyyy--MM--dd");
             string timenow = DateTime.Now.ToString("HH--mm--ss--tt");

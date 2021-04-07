@@ -54,6 +54,7 @@ namespace RMC.Patients.PanelsDetails
             lvLabDetails.Columns.Add("Laboratory Name", 200, HorizontalAlignment.Left);
             lvLabDetails.Columns.Add("Lab Type", 200, HorizontalAlignment.Left);
             lvLabDetails.Columns.Add("Date Taken", 300, HorizontalAlignment.Left);
+            lvLabDetails.Columns.Add("File name", 300, HorizontalAlignment.Left);
         }
 
         private void refreshListView()
@@ -66,7 +67,7 @@ namespace RMC.Patients.PanelsDetails
                 lvitem.SubItems.Add(l.name);
                 lvitem.SubItems.Add(l.type);
                 lvitem.SubItems.Add(l.date.ToString("dddd, dd MMMM yyyy"));
-
+                lvitem.SubItems.Add(l.filename);
                 lvLabDetails.Items.Add(lvitem);
             }
         }
@@ -111,9 +112,10 @@ namespace RMC.Patients.PanelsDetails
             int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
             labModel labModel = await laboratoryController.getLabModelinPatientLab(selectedIds);
             pictureBox1.Hide();
-         
 
-            if (labModel.crystal_id_lab > 0)
+            string filenameExt = lvLabDetails.SelectedItems[0].SubItems[4].Text.Split('.')[1];
+            
+            if (labModel.crystal_id_lab > 0 && filenameExt == "xml")
             {
 
                 /* DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds);
@@ -122,24 +124,24 @@ namespace RMC.Patients.PanelsDetails
                 {
                     case 1:
                         BloodChemDiagForms bloodChemDiagForms = new BloodChemDiagForms(id, labModel.id,selectedIds);
-                        bloodChemDiagForms.ShowDialog();
+                        bloodChemDiagForms.Show();
                         break;
                     case 2:
                         FecalysisDiagForms fecalysisDiagForms = new FecalysisDiagForms(id,labModel.id,selectedIds);
-                        fecalysisDiagForms.ShowDialog();
+                        fecalysisDiagForms.Show();
                         break;
                     case 3:
                         HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(id, labModel.id, selectedIds);
-                        hematologyDiagForms.ShowDialog();
+                        hematologyDiagForms.Show();
                         break;
                     case 4:
                         SerologyDiagForms serologyDiagForms = new SerologyDiagForms(id, labModel.id, selectedIds);
-                        serologyDiagForms.ShowDialog();
+                        serologyDiagForms.Show();
 
                         break;
                     case 5:
                         UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(id, labModel.id, selectedIds);
-                        urinalysisDiagForms.ShowDialog();
+                        urinalysisDiagForms.Show();
                         break;
                 }
 
@@ -147,7 +149,7 @@ namespace RMC.Patients.PanelsDetails
             else
             {
                 ViewImageFile viewImageFile = new ViewImageFile(id, labModel.id, selectedIds,lvLabDetails.SelectedItems[0].SubItems[1].Text);
-                viewImageFile.ShowDialog();
+                viewImageFile.Show();
             }
 
            

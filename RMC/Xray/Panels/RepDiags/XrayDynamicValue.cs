@@ -149,8 +149,8 @@ namespace RMC.Xray.Panels.RepDiags
 
             if(!isEdited)
             {
-                CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id);
-                string newFilePath2 = CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id + "\\" + "XrayFiles");
+               
+                string newFilePath2 = filePathSaving.saveXray(patientDetails.lastname + "-" + patientDetails.id);
                 string filePath = newFilePath2;
                 string datenow = DateTime.Now.ToString("yyyy--MM--dd");
                 string timenow = DateTime.Now.ToString("HH--mm--ss--tt");

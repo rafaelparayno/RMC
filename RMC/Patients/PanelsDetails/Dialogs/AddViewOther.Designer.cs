@@ -34,6 +34,7 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,8 +51,8 @@
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.Maroon;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -59,10 +60,10 @@
             this.btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btnSave.IconColor = System.Drawing.Color.Black;
             this.btnSave.IconSize = 16;
-            this.btnSave.Location = new System.Drawing.Point(587, 4);
+            this.btnSave.Location = new System.Drawing.Point(0, 41);
             this.btnSave.Name = "btnSave";
             this.btnSave.Rotation = 0D;
-            this.btnSave.Size = new System.Drawing.Size(182, 27);
+            this.btnSave.Size = new System.Drawing.Size(800, 27);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -79,7 +80,7 @@
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iconButton1.IconColor = System.Drawing.Color.Black;
             this.iconButton1.IconSize = 16;
-            this.iconButton1.Location = new System.Drawing.Point(12, 5);
+            this.iconButton1.Location = new System.Drawing.Point(3, 8);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Rotation = 0D;
             this.iconButton1.Size = new System.Drawing.Size(182, 27);
@@ -90,22 +91,33 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.iconButton1);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 413);
+            this.panel1.Location = new System.Drawing.Point(0, 382);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 37);
+            this.panel1.Size = new System.Drawing.Size(800, 68);
             this.panel1.TabIndex = 2;
             // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtName.Location = new System.Drawing.Point(200, 7);
+            this.txtName.Location = new System.Drawing.Point(250, 8);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(381, 24);
+            this.txtName.Size = new System.Drawing.Size(547, 24);
             this.txtName.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.label1.Location = new System.Drawing.Point(191, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "File Name";
             // 
             // AddViewOther
             // 
@@ -131,5 +143,6 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -194,8 +194,8 @@ namespace RMC.Xray.Panels.RepDiags
             {
                 await radioQueueController.updateStatus(xid, patientDetails.id);
 
-                CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id);
-                string newFilePath2 = CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id + "\\" + "XrayFiles");
+            
+                string newFilePath2 = filePathSaving.saveXray(patientDetails.lastname + "-" + patientDetails.id);
                 string filePath = newFilePath2;
                 string datenow = DateTime.Now.ToString("yyyy--MM--dd");
                 string timenow = DateTime.Now.ToString("HH--mm--ss--tt");

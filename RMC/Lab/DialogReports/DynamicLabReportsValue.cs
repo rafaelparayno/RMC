@@ -284,9 +284,10 @@ namespace RMC.Lab.DialogReports
 
             if (!edited)
             {
-                CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id);
-                string newFilePath2 = CreateDirectory.CreateDir(patientDetails.lastname + "-" + patientDetails.id + "\\" + "LabFiles");
-                string filePath = newFilePath2;
+
+                filePathSaving.saveLab(patientDetails.lastname + "-" + patientDetails.id);
+         
+                string filePath = filePathSaving.saveLab(patientDetails.lastname + "-" + patientDetails.id); 
                 string datenow = DateTime.Now.ToString("yyyy--MM--dd");
                 string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
                 string combine = datenow + "--" + timenow;
