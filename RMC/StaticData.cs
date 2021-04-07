@@ -1,8 +1,7 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace RMC
 {
@@ -15,5 +14,21 @@ namespace RMC
         public static string[] months = {"January","February","March","April",
                                         "May","June","July","August","September","October","November",
                                         "December"};
+
+       public static ImageList listImages()
+        {
+            ImageList ImageList1 = new ImageList();
+            ImageList1.ImageSize = new Size(30, 30);
+
+
+            ImageList1.Images.Add(Properties.Resources.check);
+            ImageList1.Images.Add(Properties.Resources.x);
+            ImageList1.Images.Add(Properties.Resources.wait);
+            ImageList1.Images.Add(Properties.Resources.emp);
+
+            return ImageList1;
+
+        }
+
     }
 }

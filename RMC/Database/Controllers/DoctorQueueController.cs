@@ -19,7 +19,7 @@ namespace RMC.Database.Controllers
         public async Task<DataSet> getDataSetDocQ(int uid)
         {
             string sql = @"SELECT customer_request_details.queue_no,patientdetails.patient_id,
-                            CONCAT(patientdetails.firstname,' ',patientdetails.lastname) AS 'patientname',age,gender FROM `doctor_queue`
+                            CONCAT(patientdetails.firstname,' ',patientdetails.lastname) AS 'patientname',age,gender,med_cert_type,cc_doctor FROM `doctor_queue`
                                             INNER JOIN customer_request_details ON doctor_queue.customer_id = customer_request_details.customer_id
                                             INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id 
                                             WHERE doctor_queue.is_done = 0 AND u_id = @id AND DATE(customer_request_details.date_req) = CURDATE()";
@@ -59,7 +59,7 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, list);
         }
 
-        public async void setDone(int queu_no)
+        public async Task setDone(int queu_no)
         {
             string sql = "UPDATE doctor_queue SET is_done = 1 WHERE customer_id IN (SELECT customer_id FROM customer_request_details WHERE queue_no = @q) AND DATE(date_q) = CURDATE()";
 

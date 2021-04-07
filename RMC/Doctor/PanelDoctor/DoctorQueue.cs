@@ -20,31 +20,76 @@ namespace RMC.Doctor.PanelDoctor
 
         DoctorQueueController doctorQueueController = new DoctorQueueController();
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
+        PatientMedcertController patientMedcertController = new PatientMedcertController();
 
-
+        private ImageList imageList;
         string idRightClick = "";
-      
+        private DataTable dt = new DataTable();
    
         public DoctorQueue()
         {
             InitializeComponent();
-            loadGrid();
+            initGrid();
+            
             timer1.Start();
         }
 
-        private async void loadGrid()
+        private async Task loadGrid()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             DataSet ds = await doctorQueueController.getDataSetDocQ(UserLog.getUserId());
-            RefreshGrid(ds);
+            await RefreshGrid(ds);
+            pictureBox1.Hide();
         }
 
 
-        private void RefreshGrid(DataSet ds)
+        private async Task RefreshGrid(DataSet ds)
         {
+            DataTable lopDt = ds.Tables[0];
+          
+            dt.Rows.Clear();
+
+            foreach(DataRow row in lopDt.Rows)
+            {
+                int medType = int.Parse(row["med_cert_type"].ToString());
+                int qno = int.Parse(row["queue_no"].ToString());
+                int patid = int.Parse(row["patient_id"].ToString());
+                int age = int.Parse(row["age"].ToString());
+                int custid = await customerDetailsController.getCustomerIdinQueue(qno);
+
+                Image imgConsult;
+                Image imgmedCert;
+
+                imgmedCert = await patientMedcertController.isDoneMedCert(custid) ? imageList.Images[0] :
+                            medType == 0 ? imageList.Images[3] : imageList.Images[2];
+                imgConsult =(string.IsNullOrEmpty(row["cc_doctor"].ToString())) ? 
+                    imageList.Images[3] : imageList.Images[2];
+
+
+                dt.Rows.Add(qno, patid,
+                    row["patientname"].ToString(), age,
+                    row["gender"].ToString(), imgConsult, imgmedCert);
+            }
+
             dbServiceList.DataSource = "";
-            dbServiceList.DataSource = ds.Tables[0];
+            dbServiceList.DataSource = dt;
             dbServiceList.AutoResizeColumns();
 
+        }
+
+        private void initGrid()
+        {
+          
+            dt.Columns.Add("Queue No", typeof(int));
+            dt.Columns.Add("Patient Id", typeof(int));
+            dt.Columns.Add("Patient Name", typeof(string));
+            dt.Columns.Add("Age", typeof(int));
+            dt.Columns.Add("Gender", typeof(string));
+            dt.Columns.Add("Consult", typeof(Image));
+            dt.Columns.Add("MedCert", typeof(Image));
+
+            imageList = StaticData.listImages();
         }
 
         private async void dbServiceList_MouseClick(object sender, MouseEventArgs e)
@@ -116,7 +161,7 @@ namespace RMC.Doctor.PanelDoctor
 
             DoctorForm form = new DoctorForm(patientid, cc);
             form.ShowDialog();
-            loadGrid();
+            await  loadGrid();
             timer1.Start();
         }
 
@@ -127,7 +172,7 @@ namespace RMC.Doctor.PanelDoctor
 
             addEditPatient form = new addEditPatient(patientid);
             form.ShowDialog();
-            loadGrid();
+            await loadGrid();
             timer1.Start();
 
         }
@@ -135,12 +180,22 @@ namespace RMC.Doctor.PanelDoctor
         private async void medCert_Click(object sender, EventArgs e)
         {
             int queueno = int.Parse(idRightClick);
-      
+            int custid = await customerDetailsController.getCustomerIdinQueue(queueno);
+
+            if (await patientMedcertController.isDoneMedCert(custid))
+            {
+
+                MessageBox.Show("Already Done with Medcert", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+                
+
             AddMedCertDiags addMedCertDiags = new AddMedCertDiags(queueno);
             addMedCertDiags.Show();
+            await loadGrid();
         }
 
-        private void doneToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void doneToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
 
@@ -151,16 +206,21 @@ namespace RMC.Doctor.PanelDoctor
 
             if (dialogResult == DialogResult.OK)
             {
-                doctorQueueController.setDone(queueno);
+               await doctorQueueController.setDone(queueno);
             }
 
-            loadGrid();
+            await loadGrid();
             timer1.Start();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
-            loadGrid();
+          await  loadGrid();
+        }
+
+        private async void DoctorQueue_Load(object sender, EventArgs e)
+        {
+            await loadGrid();
         }
     }
 }

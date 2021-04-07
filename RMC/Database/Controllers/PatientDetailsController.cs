@@ -124,7 +124,7 @@ namespace RMC.Database.Controllers
         {
             patientDetails patientDetails = new patientDetails();
             string sql = @"SELECT * FROM patientdetails WHERE patient_id in 
-                    (SELECT patient_id FROM customer_request_details WHERE queue_no = @queue_no )";
+                    (SELECT patient_id FROM customer_request_details WHERE queue_no = @queue_no AND DATE(date_req) = CURDATE() )";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@queue_no", queue_no));
 

@@ -64,14 +64,7 @@ namespace RMC.Reception.PanelRequestForm
             dt.Columns.Add("Services", typeof(Image));
             dt.Columns.Add("Paid", typeof(Image));
 
-
-            ImageList1.ImageSize = new Size(30, 30);
-
-          
-            ImageList1.Images.Add(Properties.Resources.check);
-            ImageList1.Images.Add(Properties.Resources.x);
-            ImageList1.Images.Add(Properties.Resources.wait);
-            ImageList1.Images.Add(Properties.Resources.emp);
+            ImageList1 = StaticData.listImages();
 
         }
         
