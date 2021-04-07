@@ -194,7 +194,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
 
             SavingState();
-            int customerID = await customerDetailsController.getCustomerIdLast();
+            int customerID = customerDetailsController.getRecentItemID();
             int lastQ = await customerDetailsController.getLastQueue();
             lastQ++;
 
@@ -205,7 +205,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
 
 
-               await removeRequestCostumer();
+                await removeRequestCostumer();
                 patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
                                           txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                           txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
@@ -214,19 +214,19 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 updateRequets();
 
                 if (currentS.Contains(consultS) || currentS.Contains(medCert))
-                    docQController.Save(reqid, textBox3.Text.Trim(), medCertType,txtCompanyName.Text.Trim());
+                    docQController.Save(reqid, textBox3.Text.Trim(), medCertType, txtCompanyName.Text.Trim());
             }
             else
             {
-            
-                if(id> 0)
+
+                if (id > 0)
                 {
                     patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
                                    txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                    txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
                                    cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim(), id.ToString());
 
-                  await  customerDetailsController.save(lastQ.ToString(), id.ToString());
+                    await customerDetailsController.save(lastQ.ToString(), id.ToString());
 
                 }
                 else
@@ -239,7 +239,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
                     int pid = patientDetailsController.getRecentPID() - 1;
 
-                   await  customerDetailsController.save(lastQ.ToString(), pid.ToString());
+                    await customerDetailsController.save(lastQ.ToString(), pid.ToString());
 
                 }
 

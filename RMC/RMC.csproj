@@ -559,6 +559,7 @@
     <Compile Include="Database\Models\fnsaItemMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
     <Compile Include="Database\Models\labModel.cs" />
+    <Compile Include="Database\Models\MedCertModel.cs" />
     <Compile Include="Database\Models\MedsMod.cs" />
     <Compile Include="Database\Models\packages.cs" />
     <Compile Include="Database\Models\PackagesNames.cs" />
@@ -918,6 +919,12 @@
     </Compile>
     <Compile Include="Patients\PanelsDetails\PanelPatientDetails.Designer.cs">
       <DependentUpon>PanelPatientDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelPatientMedcert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\PanelPatientMedcert.Designer.cs">
+      <DependentUpon>PanelPatientMedcert.cs</DependentUpon>
     </Compile>
     <Compile Include="Patients\PanelsDetails\PanelPrescriptionData.cs">
       <SubType>Form</SubType>
@@ -1495,6 +1502,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\PanelPatientDetails.resx">
       <DependentUpon>PanelPatientDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelsDetails\PanelPatientMedcert.resx">
+      <DependentUpon>PanelPatientMedcert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\PanelPrescriptionData.resx">
       <DependentUpon>PanelPrescriptionData.cs</DependentUpon>

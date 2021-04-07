@@ -62,6 +62,7 @@ namespace RMC.Patients
             btnDoctorRecord.Visible = false;
             btnPrescription.Visible = false;
             iconButton1.Visible = false;
+            iconButton2.Visible = false;
         }
 
         private void btnVital_Click(object sender, EventArgs e)
@@ -106,6 +107,11 @@ namespace RMC.Patients
         private void iconButton1_Click(object sender, EventArgs e)
         {
             openChildForm(new PanelOtherFiles(patient_id));
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelPatientMedcert(patient_id));
         }
     }
 }

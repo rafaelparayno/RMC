@@ -83,7 +83,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
             string combine = datenow + "--" + timenow;
             string filename = "medcert-" + combine;
             saveXml(filePath, filename);
-            await patientMedcertController.save(customerid.ToString(),filePath + combine);
+            await patientMedcertController.save(customerid.ToString(),filePath + combine,"1");
 
         }
 
