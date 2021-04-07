@@ -33,7 +33,7 @@ namespace RMC.Utilities
             return newFilePath2;
         }
 
-        public static string medCert(string pathFileFolder)
+        public static string saveMedCert(string pathFileFolder)
         {
             CreateDirectory.CreateDir(pathFileFolder);
             string newFilePath2 = CreateDirectory.CreateDir(pathFileFolder + "\\" + "MedCerts");

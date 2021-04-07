@@ -518,6 +518,7 @@
     <Compile Include="Database\Controllers\PackageXray.cs" />
     <Compile Include="Database\Controllers\PatientDetailsController.cs" />
     <Compile Include="Database\Controllers\PatientLabController.cs" />
+    <Compile Include="Database\Controllers\PatientMedcertController.cs" />
     <Compile Include="Database\Controllers\PatientOthersController.cs" />
     <Compile Include="Database\Controllers\PatientPrescriptionController.cs" />
     <Compile Include="Database\Controllers\PatientSymptomsController.cs" />

@@ -203,10 +203,11 @@ namespace RMC.Reception.PanelRequestForm
             int uid = int.Parse(click.Text.Split('-')[1]);
             int id = int.Parse(idRightClick);
 
-            int qno = int.Parse(dgCustomerList.SelectedRows[0].Cells[0].Value.ToString());
-            List<int> req = await customerRequestsController.getListTypeReq(qno);
-
-            if (!req.Contains(consultS))
+            int cusid = int.Parse(dgCustomerList.SelectedRows[0].Cells[0].Value.ToString());
+            int qno = int.Parse(dgCustomerList.SelectedRows[0].Cells[1].Value.ToString());
+            List<int> req = await customerRequestsController.getListTypeReq(cusid);
+            int medType = await docQController.getMedCertType(qno);
+            if (!req.Contains(consultS) && medType == 0)
                 return;
        
 

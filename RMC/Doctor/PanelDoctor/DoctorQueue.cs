@@ -23,7 +23,7 @@ namespace RMC.Doctor.PanelDoctor
 
 
         string idRightClick = "";
-        private string patname = "";
+      
    
         public DoctorQueue()
         {
@@ -135,8 +135,8 @@ namespace RMC.Doctor.PanelDoctor
         private async void medCert_Click(object sender, EventArgs e)
         {
             int queueno = int.Parse(idRightClick);
-            int patientid = await customerDetailsController.getPatientIDinQueue(queueno);
-            AddMedCertDiags addMedCertDiags = new AddMedCertDiags(patientid);
+      
+            AddMedCertDiags addMedCertDiags = new AddMedCertDiags(queueno);
             addMedCertDiags.Show();
         }
 

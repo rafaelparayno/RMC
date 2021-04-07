@@ -194,7 +194,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
 
             SavingState();
-            int lastQ = await customerDetailsController.getCustomerIdLast();
+            int customerID = await customerDetailsController.getCustomerIdLast();
+            int lastQ = await customerDetailsController.getLastQueue();
             lastQ++;
 
             if (isEdit)
@@ -247,7 +248,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
 
                 if (currentS.Contains(consultS) || currentS.Contains(medCert))
-                    docQController.Save(lastQ, textBox3.Text.Trim(), medCertType, txtCompanyName.Text.Trim());
+                    docQController.Save(customerID, textBox3.Text.Trim(), medCertType, txtCompanyName.Text.Trim());
 
                 await saveRequests();
             }
