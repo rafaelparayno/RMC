@@ -31,6 +31,44 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, mySqlParameters);
         }
 
+        public async Task<MedCertModel> getMedcert(int id)
+        {
+            MedCertModel medCertModel = new MedCertModel();
+            string sql = @"SELECT * FROM patient_medcert WHERE patient_medcert_id = @id";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>() { (new MySqlParameter("@id", id)) };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+            if (await reader.ReadAsync())
+            {
+                medCertModel.id = int.Parse(reader["patient_medcert_id"].ToString());
+                medCertModel.customerid = int.Parse(reader["customer_id"].ToString());
+                medCertModel.path = reader["path"].ToString();
+                medCertModel.type = int.Parse(reader["med_cert_type"].ToString());
+                medCertModel.date = DateTime.Parse(reader["medcert_date"].ToString());
+            }
+            crud.CloseConnection();
+
+            return medCertModel;
+        }
+
+        public async Task<string> getPath(int patmedid)
+        {
+            string path = "";
+            string sql = @"SELECT * FROM patient_medcert WHERE patient_medcert_id = @id";
+
+              List<MySqlParameter> mySqlParameters = new List<MySqlParameter>() { (new MySqlParameter("@id", patmedid)) };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+            if(await reader.ReadAsync())
+            {
+                path = reader["path"].ToString();
+            }
+            crud.CloseConnection();
+
+            return path;
+        }
+
 
         public async Task<List<MedCertModel>> listMedCert(int patid )
         {

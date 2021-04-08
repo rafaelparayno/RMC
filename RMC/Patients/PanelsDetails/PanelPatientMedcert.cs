@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Doctor.PanelDoctor.Diag;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,6 +54,27 @@ namespace RMC.Patients.PanelsDetails
 
                 lvLabDetails.Items.Add(listViews);
             }
+        }
+
+        private void lvLabDetails_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                var focusedItem = lvLabDetails.FocusedItem;
+                if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
+                {
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+
+            }
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
+            DiagMedCertForms diagMedCertForms = new DiagMedCertForms(selectedIds,"");
+            diagMedCertForms.Show();
         }
     }
 }

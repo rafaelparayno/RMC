@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,9 @@ namespace RMC.Doctor.PanelDoctor.Diag
         private int qno = 0;
         int patid = 0;
         int customerid = 0;
+        private bool isEdit = false;
+        private int idEdit = 0;
+      
         public AddMedCertDiags(int qno)
         {
             InitializeComponent();
@@ -32,11 +36,23 @@ namespace RMC.Doctor.PanelDoctor.Diag
             this.qno = qno;
         }
 
+        public AddMedCertDiags(int idEdit,bool isEdit )
+        {
+            InitializeComponent();
+
+            this.idEdit = idEdit;
+            this.isEdit = isEdit;
+        }
+
         private async void AddMedCertDiags_Load(object sender, EventArgs e)
         {
-            patid = await customerDetailsController.getPatientIDinQueue(qno);
-            customerid = await customerDetailsController.getCustomerIdinQueue(qno);
-            patdetails = await patientDetailsController.getPatientId(patid);
+            if (!isEdit)
+            {
+                patid = await customerDetailsController.getPatientIDinQueue(qno);
+                customerid = await customerDetailsController.getCustomerIdinQueue(qno);
+                patdetails = await patientDetailsController.getPatientId(patid);
+            }
+                
         }
 
         private bool isValid()
@@ -64,7 +80,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
 
           
-            DiagMedCertForms diagMedCertForms = new DiagMedCertForms(patid, patdetails.FullName,
+            DiagMedCertForms diagMedCertForms = new DiagMedCertForms(0, patdetails.FullName,
                                         txtAdd.Text.Trim(),txtSigns.Text.Trim(),
                                         txtImpression.Text.Trim(),txtRecommendation.Text.Trim());
             diagMedCertForms.ShowDialog();
@@ -77,21 +93,35 @@ namespace RMC.Doctor.PanelDoctor.Diag
                 MessageBox.Show("Please Fill The Data Below", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            string filePath = filePathSaving.saveMedCert(patdetails.lastname + "-" + patid);
-            string datenow = DateTime.Now.ToString("yyyy--MM--dd");
-            string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
-            string combine = datenow + "--" + timenow;
-            string filename = "medcert-" + combine;
-            saveXml(filePath, filename);
-            await patientMedcertController.save(customerid.ToString(),filePath + combine,"1");
 
+            if (!isEdit)
+            {
+                string filePath = filePathSaving.saveMedCert(patdetails.lastname + "-" + patid);
+                string datenow = DateTime.Now.ToString("yyyy--MM--dd");
+                string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
+                string combine = datenow + "--" + timenow;
+                string filename = "medcert-" + combine;
+                saveXml(filePath, filename);
+                await patientMedcertController.save(customerid.ToString(), filePath + filename + ".xml", "1");
+            }
+            else
+            {
+                MedCertModel medCertModel = await patientMedcertController.getMedcert(idEdit);
+
+
+                saveXml(medCertModel.path, "");
+            }
+
+            MessageBox.Show("Succesfully Save Data");
+            this.Close();
         }
+
 
         private void saveXml(string path,string filename)
         {
-           
+            string pathSave = isEdit ? path : path + filename + ".xml";
 
-            XmlWriter xwriter = XmlWriter.Create(path + filename + ".xml");
+            XmlWriter xwriter = XmlWriter.Create(pathSave);
 
             xwriter.WriteStartElement("medCert");
 
@@ -105,8 +135,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
             xwriter.WriteEndElement();
             xwriter.Flush();
             xwriter.Close();
-            MessageBox.Show("Succesfully Edited Data");
-            this.Close();
+          
         }
     }
 }

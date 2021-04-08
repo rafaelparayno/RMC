@@ -208,6 +208,27 @@ namespace RMC.Database.Controllers
             return medType;
         }
 
+
+        public async Task<int> getDoctorID(int cusid)
+        {
+            int doctorid = 0;
+            string sql = @"SELECT * FROM `doctor_queue`  WHERE customer_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@id", cusid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                doctorid = int.Parse(reader["u_id"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return doctorid;
+        }
+
         public async Task<string> getCompanyName(int queue_no)
         {
             string companyName = "";
@@ -269,8 +290,6 @@ namespace RMC.Database.Controllers
 
             return isDone;
         }
-
-
 
 
         private async Task<bool> isFound(int q)
