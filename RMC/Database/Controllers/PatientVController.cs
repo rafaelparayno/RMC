@@ -23,13 +23,16 @@ namespace RMC.Database.Controllers
 
             if(await reader.ReadAsync())
             {
+
                 pv.id = int.Parse(reader["patient_vital_id"].ToString());
                 pv.date_vital = reader["date_vital"].ToString();
                 pv.bp = reader["BP"].ToString();
                 pv.temp = reader["TEMP"].ToString();
-                pv.wt = reader["WT"].ToString();
+                pv.wt = float.Parse(reader["WT"].ToString());
+                pv.height = float.Parse(reader["heightV"].ToString());
                 pv.lmp = reader["LMP"].ToString();
                 pv.allergies = reader["allergies"].ToString();
+                pv.heartrate = reader["heart_rate"].ToString();
             }
             crud.CloseConnection();
 
@@ -49,13 +52,16 @@ namespace RMC.Database.Controllers
 
             if (await reader.ReadAsync())
             {
+
                 pv.id = int.Parse(reader["patient_vital_id"].ToString());
                 pv.date_vital = reader["date_vital"].ToString();
                 pv.bp = reader["BP"].ToString();
                 pv.temp = reader["TEMP"].ToString();
-                pv.wt = reader["WT"].ToString();
+                pv.wt = float.Parse(reader["WT"].ToString());
+                pv.height = float.Parse(reader["heightV"].ToString());
                 pv.lmp = reader["LMP"].ToString();
                 pv.allergies = reader["allergies"].ToString();
+                pv.heartrate = reader["heart_rate"].ToString();
             }
             crud.CloseConnection();
 
@@ -76,13 +82,16 @@ namespace RMC.Database.Controllers
             {
                 patientVModel patientV = new patientVModel();
 
+
                 patientV.id = int.Parse(reader["patient_vital_id"].ToString());
                 patientV.date_vital = reader["date_vital"].ToString();
                 patientV.bp = reader["BP"].ToString();
                 patientV.temp = reader["TEMP"].ToString();
-                patientV.wt = reader["WT"].ToString();
+                patientV.wt = float.Parse(reader["WT"].ToString());
+                patientV.height = float.Parse(reader["heightV"].ToString());
                 patientV.lmp = reader["LMP"].ToString();
                 patientV.allergies = reader["allergies"].ToString();
+                patientV.heartrate = reader["heart_rate"].ToString();
                 listpatientv.Add(patientV);
             }
 
@@ -110,9 +119,11 @@ namespace RMC.Database.Controllers
                 patientV.date_vital = reader["date_vital"].ToString();
                 patientV.bp = reader["BP"].ToString();
                 patientV.temp = reader["TEMP"].ToString();
-                patientV.wt = reader["WT"].ToString();
+                patientV.wt = float.Parse(reader["WT"].ToString());
+                patientV.height = float.Parse(reader["heightV"].ToString());
                 patientV.lmp = reader["LMP"].ToString();
                 patientV.allergies = reader["allergies"].ToString();
+                patientV.heartrate = reader["heart_rate"].ToString();
                 listpatientv.Add(patientV);
             }
 
@@ -124,8 +135,8 @@ namespace RMC.Database.Controllers
         public async void save(params string[] data)
         {
             string sql = @"INSERT INTO patientvital 
-                        (patient_id,date_vital,BP,TEMP,WT,LMP,allergies) 
-                        VALUES (@patid,@date,@bp,@temp,@wt,@lmp,@allergies)";
+                        (patient_id,date_vital,BP,TEMP,WT,LMP,allergies,heightV,heart_rate) 
+                        VALUES (@patid,@date,@bp,@temp,@wt,@lmp,@allergies,@ht,@rate)";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@patid", int.Parse(data[0])));
             listparams.Add(new MySqlParameter("@date", DateTime.Parse(data[1])));
@@ -134,9 +145,11 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@wt", data[4]));
             listparams.Add(new MySqlParameter("@lmp", data[5]));
             listparams.Add(new MySqlParameter("@allergies", data[6]));
+            listparams.Add(new MySqlParameter("@ht", data[7]));
+            listparams.Add(new MySqlParameter("@rate", data[8]));
 
 
-          await crud.ExecuteAsync(sql, listparams);
+            await crud.ExecuteAsync(sql, listparams);
         }
 
 
@@ -144,7 +157,7 @@ namespace RMC.Database.Controllers
         {
             string sql = @"UPDATE patientvital 
                         SET date_vital = @date, BP = @bp, TEMP = @temp, WT = @wt,
-                        LMP = @lmp,allergies = @allergies 
+                        LMP = @lmp,allergies = @allergies,heightV = @ht,heart_rate =@rate
                         WHERE patient_vital_id = @id ";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
@@ -155,6 +168,8 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@wt", data[4]));
             listparams.Add(new MySqlParameter("@lmp", data[5]));
             listparams.Add(new MySqlParameter("@allergies", data[6]));
+            listparams.Add(new MySqlParameter("@ht", data[7]));
+            listparams.Add(new MySqlParameter("@rate", data[8]));
 
             await crud.ExecuteAsync(sql, listparams);
         }

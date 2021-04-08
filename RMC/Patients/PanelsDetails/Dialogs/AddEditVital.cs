@@ -16,8 +16,10 @@ namespace RMC.Patients.PanelsDetails.Dialogs
     {
         private int count = 0;
         PatientVController patientVController = new PatientVController();
+        PatientDetailsController patientDetailsController = new PatientDetailsController();
         int patid = 0;
         int vid = 0;
+        string lmp = "";
         public AddEditVital(int pat_id)
         {
             InitializeComponent();
@@ -37,10 +39,12 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             patientVModel pv = await patientVController.getDetailsID(vid);
 
             txtbp.Text = pv.bp;
-            txtlmp.Text = pv.lmp;
+            dateTimePicker2.Value = DateTime.Parse(pv.lmp);
             txttemp.Text = pv.temp;
-            txtwt.Text = pv.wt;
+            txtwt.Text = pv.wt.ToString();
             txtrbc.Text = pv.allergies;
+            textBox1.Text = pv.height.ToString();
+            textBox2.Text = pv.heartrate;
      
             dateTimePicker1.Value = DateTime.Parse(pv.date_vital);
         }
@@ -62,13 +66,13 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             {
                 patientVController.save(patid.ToString(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                         txtbp.Text.Trim(), txttemp.Text.Trim(), txtwt.Text.Trim(),
-                                         txtlmp.Text.Trim(), txtrbc.Text.Trim());
+                                        lmp, txtrbc.Text.Trim(),textBox1.Text.Trim(),textBox2.Text.Trim());
             }
             else
             {
                 patientVController.update(vid.ToString(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                   txtbp.Text.Trim(), txttemp.Text.Trim(), txtwt.Text.Trim(),
-                                   txtlmp.Text.Trim(), txtrbc.Text.Trim());
+                                 lmp, txtrbc.Text.Trim(), textBox1.Text.Trim(), textBox2.Text.Trim());
             }
             MessageBox.Show("Succesfully Save Data");
             this.Close();
@@ -94,19 +98,37 @@ namespace RMC.Patients.PanelsDetails.Dialogs
                 count++;
             }
 
+
             if (txtrbc.Text != "")
             {
                 count++;
             }
 
-            if (txtlmp.Text != "")
-            {
-                count++;
-            }
+            isValid = (float.TryParse(txtwt.Text.ToString(), out _)) && isValid;
+
+            isValid = (float.TryParse(textBox1.Text.ToString(), out _)) && isValid;
+
+
 
             isValid = count > 0 && isValid;
 
             return isValid;
+        }
+
+        private async void AddEditVital_Load(object sender, EventArgs e)
+        {
+            patientDetails patientDetails = await patientDetailsController.getPatientId(patid);
+
+            if(patientDetails.gender == "Male")
+            {
+                dateTimePicker2.Enabled = false;
+                lmp = "N/A";
+            }
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            lmp = dateTimePicker2.Value.ToString("yyyy-MM-dd");
         }
     }
 }

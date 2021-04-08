@@ -183,8 +183,8 @@ namespace RMC.Patients.PanelsDetails
             cos.SetParameterValue("bpParam", string.IsNullOrEmpty(patientVModelData.bp) ? "" :
                                         patientVModelData.bp);
 
-            cos.SetParameterValue("wtParam", string.IsNullOrEmpty(patientVModelData.wt) ? "" :
-                                        patientVModelData.wt);
+            cos.SetParameterValue("wtParam", patientVModelData.wt == 0 ? "" :
+                                        patientVModelData.wt.ToString());
 
             cos.SetParameterValue("lmpParam", string.IsNullOrEmpty(patientVModelData.lmp) ? "" :
                                       patientVModelData.lmp);

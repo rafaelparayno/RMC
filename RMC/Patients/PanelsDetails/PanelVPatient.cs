@@ -56,9 +56,11 @@ namespace RMC.Patients.PanelsDetails
             lvVitals.Columns.Add("Date", 100, HorizontalAlignment.Center);
             lvVitals.Columns.Add("BP", 80, HorizontalAlignment.Center);
             lvVitals.Columns.Add("TEMP", 80, HorizontalAlignment.Center);
-            lvVitals.Columns.Add("WT", 80, HorizontalAlignment.Center);
+            lvVitals.Columns.Add("Weight (KG)", 80, HorizontalAlignment.Center);
+            lvVitals.Columns.Add("Height(CM)", 80, HorizontalAlignment.Center);
             lvVitals.Columns.Add("LMP", 80, HorizontalAlignment.Center);
             lvVitals.Columns.Add("allergies", 80, HorizontalAlignment.Center);
+            lvVitals.Columns.Add("heart Rate", 80, HorizontalAlignment.Center);
         }
 
         private async void getDataFromDb()
@@ -84,10 +86,12 @@ namespace RMC.Patients.PanelsDetails
                 lvitems.SubItems.Add(p.date_vital);
                 lvitems.SubItems.Add(p.bp);
                 lvitems.SubItems.Add(p.temp);
-                lvitems.SubItems.Add(p.wt);
+                lvitems.SubItems.Add(p.wt.ToString());
+                lvitems.SubItems.Add(p.height.ToString());
                 lvitems.SubItems.Add(p.lmp);
     
                 lvitems.SubItems.Add(p.allergies);
+                lvitems.SubItems.Add(p.heartrate);
                 lvVitals.Items.Add(lvitems);
             }
         }
