@@ -24,6 +24,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
         UserracountsController userracountsController = new UserracountsController();
 /*        DoctorDataController doctorDataController = new DoctorDataController();*/
         private int patid = 0;
+        private int patmedid = 0;
         private string[] details;
         medcertReport medcertReport = new medcertReport();
         public DiagMedCertForms(int patid, params string [] details)
@@ -31,6 +32,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
             InitializeComponent();
             this.patid = patid;
             this.details = details;
+        }
+
+        public DiagMedCertForms(int patmedid,int patid, params string[] details)
+        {
+            InitializeComponent();
+            this.patid = patid;
+            this.details = details;
+            this.patmedid = patmedid;
         }
 
         private async void DiagMedCertForms_Load(object sender, EventArgs e)
@@ -69,7 +78,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
             XmlDocument doc = new XmlDocument();
 
-            MedCertModel model = await patientMedcert.getMedcert(patid);
+            MedCertModel model = await patientMedcert.getMedcert(patmedid);
        
             if (!File.Exists(model.path))
                 return;
@@ -94,7 +103,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
             int doctorid = await doctorQueue.getDoctorID(model.customerid);
             DoctorDataModel dt = await doctorDataController.getDoctorData(doctorid);
-            patientDetails patientDetails = await patientDetailsController.getPatientId(patid);
+            patientDetails patientDetails = await patientDetailsController.getPatientQueueNo(patid);
             string fullName = await userracountsController.getFullNameId(doctorid);
 
             medcertReport.SetParameterValue("licenseNo", dt.license);

@@ -72,9 +72,19 @@ namespace RMC.Patients.PanelsDetails
 
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
-            DiagMedCertForms diagMedCertForms = new DiagMedCertForms(selectedIds,"");
-            diagMedCertForms.Show();
+
+            if(lvLabDetails.SelectedItems[0].SubItems[1].Text == "MedCert")
+            {
+                DiagMedCertForms diagMedCertForms = new DiagMedCertForms(selectedIds,patid, "");
+                diagMedCertForms.Show();
+            }
+            else
+            {
+
+            }
+          
         }
     }
 }
