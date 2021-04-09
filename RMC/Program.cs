@@ -15,7 +15,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new addEditPeForm());
+            Application.Run(new splashscreen());
         }
     }
 }

@@ -142,7 +142,7 @@ namespace RMC.Doctor.PanelDoctor
                 
             else if (medType == 2)
             {
-                contextMenuStrip1.Items.Add("add Pre Employment");
+                contextMenuStrip1.Items.Add("add Pre Employment").Click += new EventHandler(preEmployment_Click);
             }
              
 
@@ -192,6 +192,24 @@ namespace RMC.Doctor.PanelDoctor
 
             AddMedCertDiags addMedCertDiags = new AddMedCertDiags(queueno);
             addMedCertDiags.Show();
+            await loadGrid();
+        }
+
+        private async void preEmployment_Click(object sender, EventArgs e)
+        {
+            int queueno = int.Parse(idRightClick);
+            int custid = await customerDetailsController.getCustomerIdinQueue(queueno);
+
+            if (await patientMedcertController.isDoneMedCert(custid))
+            {
+
+                MessageBox.Show("Already Done with Pre Employment", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+
+            addEditPeForm addEditPeForm = new addEditPeForm(queueno);
+            addEditPeForm.Show();
             await loadGrid();
         }
 

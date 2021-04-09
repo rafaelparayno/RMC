@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RMC.Database.Controllers;
+using RMC.Database.Models;
+using RMC.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace RMC.Doctor.PanelDoctor.Diag
 {
@@ -17,31 +21,39 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
         #region variables
 
-/*        private string general = "";
-        private string eyes = "";
-        private string ears = "";
-        private string nose = "";
-        private string mouth = "";
-        private string throat = "";
-        private string hematologic = "";
-        private string neurological = "";
-        private string cardio = "";
-        private string pulmonary = "";
-        private string breast = "";
-        private string skin = "";
-        private string gastro = "";
-        private string geni = "";
-        private string gyna = "";
-        private string endocrine = "";
-*/
+
+
+        PatientMedcertController patientMedcertController = new PatientMedcertController();
+        PatientDetailsController patientDetailsController = new PatientDetailsController();
+        CustomerDetailsController customerDetailsController = new CustomerDetailsController();
+        patientDetails patdetails;
+        private int qno = 0;
+        int patid = 0;
+        int customerid = 0;
+        private bool isEdit = false;
+        private int idEdit = 0;
+
+        private string pt = "N/a";
+        private string hepa = "Non-Reactive";
+        private string drugTest = "Negative";
+        private string typeTest = "Type A.Physical Fit for all types of work. No Physical Defects Noted";
         #endregion
 
 
-        public addEditPeForm()
+        public addEditPeForm(int qno)
         {
             InitializeComponent();
+            this.qno = qno;
         }
 
+
+
+        public addEditPeForm(int idEdit, bool isEdit)
+        {
+            InitializeComponent();
+            this.idEdit = idEdit;
+            this.isEdit = isEdit;
+        }
 
         private void cbCheckAllLeft_Click(object sender, EventArgs e)
         {
@@ -493,72 +505,8 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
         #endregion
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void cbCheckAllDiag_Click(object sender, EventArgs e)
-        {
-            if (cbCheckAllDiag.Checked)
-            {
-                CheckAllDiag();
-            }
-            else
-            {
-                CheckNotAllDiag();
-            }
-        }
-
-        private void CheckAllDiag()
-        {
-            cbXray.Checked = true;
-            cbCbc.Checked = true;
-            cbUrinalysis.Checked = true;
-            cbStool.Checked = true;
-            cbHepa.Checked = true;
-            cbDrug.Checked = true;
-            cbEcg.Checked = true;
-            radioButton3.Checked = true;
-
-
-            txtXray.Enabled = false;
-            txtCbc.Enabled = false;
-            txtUri.Enabled = false;
-            txtStool.Enabled = false;
-            txtHepa.Enabled = false;
-            txtDrug.Enabled = false;
-            txtEcg.Enabled = false;
-
-        }
-
-        private void CheckNotAllDiag()
-        {
-            cbXray.Checked = false;
-            cbCbc.Checked = false;
-            cbUrinalysis.Checked = false;
-            cbStool.Checked = false;
-            cbHepa.Checked = false;
-            cbDrug.Checked = false;
-            cbEcg.Checked = false;
-       
-
-
-            txtXray.Enabled = true;
-            txtCbc.Enabled = true;
-            txtUri.Enabled = true;
-            txtStool.Enabled = true;
-            txtHepa.Enabled = true;
-            txtDrug.Enabled = true;
-            txtEcg.Enabled = true;
-
-        }
-
-        private void checkAllDiagTrigger()
-        {
-            cbCheckAllDiag.Checked = cbXray.Checked && cbCbc.Checked && cbUrinalysis.Checked &&
-                cbStool.Checked && cbStool.Checked && cbHepa.Checked && cbDrug.Checked && cbEcg.Checked;
-        }
+        #region Diagnosis Events
 
         private void cbXray_Click(object sender, EventArgs e)
         {
@@ -572,7 +520,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
                 txtXray.Enabled = true;
                 txtXray.Text = "";
             }
-            checkAllDiagTrigger();
+          
         }
 
         private void cbCbc_Click(object sender, EventArgs e)
@@ -587,7 +535,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
                 txtCbc.Enabled = true;
                 txtCbc.Text = "";
             }
-            checkAllDiagTrigger();
+          
         }
 
         private void cbUrinalysis_Click(object sender, EventArgs e)
@@ -602,7 +550,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
                 txtUri.Enabled = true;
                 txtUri.Text = "";
             }
-            checkAllDiagTrigger();
+            
         }
 
         private void cbStool_Click(object sender, EventArgs e)
@@ -617,38 +565,9 @@ namespace RMC.Doctor.PanelDoctor.Diag
                 txtStool.Enabled = true;
                 txtStool.Text = "";
             }
-            checkAllDiagTrigger();
+            
         }
 
-        private void cbHepa_Click(object sender, EventArgs e)
-        {
-            if (cbHepa.Checked)
-            {
-                txtHepa.Enabled = false;
-                txtHepa.Text = "Normal";
-            }
-            else
-            {
-                txtHepa.Enabled = true;
-                txtHepa.Text = "";
-            }
-            checkAllDiagTrigger();
-        }
-
-        private void cbDrug_Click(object sender, EventArgs e)
-        {
-            if (cbDrug.Checked)
-            {
-                txtDrug.Enabled = false;
-                txtDrug.Text = "Normal";
-            }
-            else
-            {
-                txtDrug.Enabled = true;
-                txtDrug.Text = "";
-            }
-            checkAllDiagTrigger();
-        }
 
         private void cbEcg_Click(object sender, EventArgs e)
         {
@@ -662,7 +581,178 @@ namespace RMC.Doctor.PanelDoctor.Diag
                 txtEcg.Enabled = true;
                 txtEcg.Text = "";
             }
-            checkAllDiagTrigger();
+            
+        }
+
+
+        private void radioButton3_Click(object sender, EventArgs e)
+        {
+            pt = "N/a";
+          
+        }
+
+        private void radioButton2_Click(object sender, EventArgs e)
+        {
+            pt = "Negative";
+         
+        }
+
+        private void radioButton1_Click(object sender, EventArgs e)
+        {
+            pt = "Positive";
+        
+        }
+
+        private void radioButton4_Click(object sender, EventArgs e)
+        {
+            hepa = "Non-Reactive";
+        }
+
+        private void radioButton5_Click(object sender, EventArgs e)
+        {
+            hepa = "Reactive";
+        }
+
+        private void radioButton7_Click(object sender, EventArgs e)
+        {
+            drugTest = "Negative";
+        }
+
+        private void radioButton8_Click(object sender, EventArgs e)
+        {
+            drugTest = "Positive";
+        }
+
+
+        #endregion
+
+
+
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!isEdit)
+            {
+                string filePath = filePathSaving.saveMedCert(patdetails.lastname + "-" + patid);
+                string datenow = DateTime.Now.ToString("yyyy--MM--dd");
+                string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
+                string combine = datenow + "--" + timenow;
+                string filename = "preemployment-" + combine;
+                saveXml(filePath, filename);
+                await patientMedcertController.save(customerid.ToString(), filePath + filename + ".xml", "2");
+            }
+            else
+            {
+                MedCertModel medCertModel = await patientMedcertController.getMedcert(idEdit);
+
+
+                saveXml(medCertModel.path, "");
+            }
+
+            MessageBox.Show("Succesfully Save Data");
+            this.Close();
+        }
+
+
+        private void saveXml(string path, string filename)
+        {
+            string pathSave = isEdit ? path : path + filename + ".xml";
+
+            XmlWriter xwriter = XmlWriter.Create(pathSave);
+
+            xwriter.WriteStartElement("PreEmployment");
+
+            xwriter.WriteElementString("eDate", DateTime.Now.ToString("MMMM dd, yyyy"));
+
+
+            //History
+            xwriter.WriteElementString("pastDiseases", txtSignificant.Text.Trim());
+            xwriter.WriteElementString("operations", txtOperations.Text.Trim());
+            xwriter.WriteElementString("presentSymp", txtPresent.Text.Trim());
+
+            //History
+
+            //Physical Exams
+
+            //Left
+            xwriter.WriteElementString("general", txtGeneral.Text.Trim());
+            xwriter.WriteElementString("eyes", txtEyes.Text.Trim());
+            xwriter.WriteElementString("ears", txtEars.Text.Trim());
+            xwriter.WriteElementString("nose", txtNose.Text.Trim());
+            xwriter.WriteElementString("mouth", txtMouth.Text.Trim());
+            xwriter.WriteElementString("throat", txtThroat.Text.Trim());
+            xwriter.WriteElementString("hema", txtHema.Text.Trim());
+            xwriter.WriteElementString("neuro", txtNeuro.Text.Trim());
+            //Left
+
+            xwriter.WriteElementString("cardio", txtCarido.Text.Trim());
+            xwriter.WriteElementString("pulmonary", txtPulmop.Text.Trim());
+            xwriter.WriteElementString("breast", txtBreast.Text.Trim());
+            xwriter.WriteElementString("skin", txtSkin.Text.Trim());
+            xwriter.WriteElementString("gastro", txtGastro.Text.Trim());
+            xwriter.WriteElementString("geni", txtGen.Text.Trim());
+            xwriter.WriteElementString("gyna", txtGyna.Text.Trim());
+            xwriter.WriteElementString("endo", txtEndo.Text.Trim());
+
+
+            //Physical Exams
+
+            //Diagnostic
+
+            xwriter.WriteElementString("xray", txtXray.Text.Trim());
+            xwriter.WriteElementString("cbc", txtCbc.Text.Trim());
+            xwriter.WriteElementString("urinaly", txtUri.Text.Trim());
+            xwriter.WriteElementString("pt", pt);
+            xwriter.WriteElementString("others", txtOthersDiag.Text.Trim());
+            xwriter.WriteElementString("stool", txtStool.Text.Trim());
+            xwriter.WriteElementString("heba", hepa);
+            xwriter.WriteElementString("drug", drugTest);
+            xwriter.WriteElementString("ecg", txtEcg.Text.Trim());
+            //Diagnostic
+
+
+            //RecomAssClassifcation
+            xwriter.WriteElementString("recommendation", txtRecommend.Text.Trim());
+            xwriter.WriteElementString("assestment", txtAssestment.Text.Trim());
+            xwriter.WriteElementString("classification", typeTest);
+
+            //RecomAssClassifcation
+
+
+            xwriter.WriteEndElement();
+            xwriter.Flush();
+            xwriter.Close();
+
+        }
+
+        private async void addEditPeForm_Load(object sender, EventArgs e)
+        {
+            if (!isEdit)
+            {
+                patid = await customerDetailsController.getPatientIDinQueue(qno);
+                customerid = await customerDetailsController.getCustomerIdinQueue(qno);
+                patdetails = await patientDetailsController.getPatientId(patid);
+            }
+        }
+
+        private void rbTypeA_Click(object sender, EventArgs e)
+        {
+            typeTest = "Type A.Physical Fit for all types of work. No Physical Defects Noted";
+        }
+
+        private void rbTypeB_Click(object sender, EventArgs e)
+        {
+            typeTest = "Type B. Physical Fit for all types of work. Has minor Ailment/ Defect. Easily Curable or offers no Handicap to job applied for";
+        }
+
+        private void rbTypeC_Click(object sender, EventArgs e)
+        {
+            typeTest = "Type C. Generally Not Acceptable for Employment/ Pending for Futher Evaluation";
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
