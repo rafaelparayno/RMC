@@ -105,13 +105,13 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.txtPulmop = new System.Windows.Forms.TextBox();
             this.panel22 = new System.Windows.Forms.Panel();
             this.checkBox14 = new System.Windows.Forms.CheckBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.txtCarido = new System.Windows.Forms.TextBox();
             this.panel23 = new System.Windows.Forms.Panel();
-            this.checkBox15 = new System.Windows.Forms.CheckBox();
+            this.cbCheckAllRight = new System.Windows.Forms.CheckBox();
             this.checkBox16 = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.textBox17 = new System.Windows.Forms.TextBox();
@@ -121,55 +121,64 @@
             this.panel38 = new System.Windows.Forms.Panel();
             this.checkBox30 = new System.Windows.Forms.CheckBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox29 = new System.Windows.Forms.TextBox();
+            this.txtNeuro = new System.Windows.Forms.TextBox();
             this.panel17 = new System.Windows.Forms.Panel();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txtHema = new System.Windows.Forms.TextBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtThroat = new System.Windows.Forms.TextBox();
             this.panel15 = new System.Windows.Forms.Panel();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtMouth = new System.Windows.Forms.TextBox();
             this.panel13 = new System.Windows.Forms.Panel();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtNose = new System.Windows.Forms.TextBox();
             this.panel12 = new System.Windows.Forms.Panel();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtEars = new System.Windows.Forms.TextBox();
             this.panel14 = new System.Windows.Forms.Panel();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtEyes = new System.Windows.Forms.TextBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtGeneral = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbCheckAllLeft = new System.Windows.Forms.CheckBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPresent = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtOperations = new System.Windows.Forms.TextBox();
             this.panelS = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtSubjective = new System.Windows.Forms.TextBox();
+            this.txtSignificant = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel41 = new System.Windows.Forms.Panel();
+            this.panel43 = new System.Windows.Forms.Panel();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.panel42 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label33 = new System.Windows.Forms.Label();
             this.panel45 = new System.Windows.Forms.Panel();
             this.label37 = new System.Windows.Forms.Label();
             this.textBox36 = new System.Windows.Forms.TextBox();
@@ -179,15 +188,6 @@
             this.checkBox42 = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
             this.textBox42 = new System.Windows.Forms.TextBox();
-            this.panel42 = new System.Windows.Forms.Panel();
-            this.label33 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.panel43 = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.tabPage3.SuspendLayout();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
@@ -234,11 +234,11 @@
             this.tabPage6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel41.SuspendLayout();
-            this.panel45.SuspendLayout();
-            this.panel46.SuspendLayout();
+            this.panel43.SuspendLayout();
             this.panel42.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel43.SuspendLayout();
+            this.panel45.SuspendLayout();
+            this.panel46.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage3
@@ -281,7 +281,6 @@
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(944, 1033);
             this.panel28.TabIndex = 8;
-            this.panel28.Paint += new System.Windows.Forms.PaintEventHandler(this.panel28_Paint);
             // 
             // panel40
             // 
@@ -1026,7 +1025,7 @@
             this.panel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel21.Controls.Add(this.checkBox13);
             this.panel21.Controls.Add(this.label15);
-            this.panel21.Controls.Add(this.textBox14);
+            this.panel21.Controls.Add(this.txtPulmop);
             this.panel21.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel21.Location = new System.Drawing.Point(0, 159);
             this.panel21.Name = "panel21";
@@ -1052,22 +1051,22 @@
             this.label15.TabIndex = 0;
             this.label15.Text = "Pulmonary:";
             // 
-            // textBox14
+            // txtPulmop
             // 
-            this.textBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtPulmop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox14.Location = new System.Drawing.Point(15, 63);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(410, 27);
-            this.textBox14.TabIndex = 1;
+            this.txtPulmop.Location = new System.Drawing.Point(15, 63);
+            this.txtPulmop.Name = "txtPulmop";
+            this.txtPulmop.Size = new System.Drawing.Size(410, 27);
+            this.txtPulmop.TabIndex = 1;
             // 
             // panel22
             // 
             this.panel22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel22.Controls.Add(this.checkBox14);
             this.panel22.Controls.Add(this.label16);
-            this.panel22.Controls.Add(this.textBox15);
+            this.panel22.Controls.Add(this.txtCarido);
             this.panel22.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel22.Location = new System.Drawing.Point(0, 51);
             this.panel22.Name = "panel22";
@@ -1093,35 +1092,36 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "Cardio-Vascular:";
             // 
-            // textBox15
+            // txtCarido
             // 
-            this.textBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtCarido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox15.Location = new System.Drawing.Point(15, 63);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(410, 27);
-            this.textBox15.TabIndex = 1;
+            this.txtCarido.Location = new System.Drawing.Point(15, 63);
+            this.txtCarido.Name = "txtCarido";
+            this.txtCarido.Size = new System.Drawing.Size(410, 27);
+            this.txtCarido.TabIndex = 1;
+            this.txtCarido.TextChanged += new System.EventHandler(this.textBox15_TextChanged);
             // 
             // panel23
             // 
             this.panel23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel23.Controls.Add(this.checkBox15);
+            this.panel23.Controls.Add(this.cbCheckAllRight);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel23.Location = new System.Drawing.Point(0, 0);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(454, 51);
             this.panel23.TabIndex = 6;
             // 
-            // checkBox15
+            // cbCheckAllRight
             // 
-            this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(15, 21);
-            this.checkBox15.Name = "checkBox15";
-            this.checkBox15.Size = new System.Drawing.Size(94, 23);
-            this.checkBox15.TabIndex = 3;
-            this.checkBox15.Text = "Check All";
-            this.checkBox15.UseVisualStyleBackColor = true;
+            this.cbCheckAllRight.AutoSize = true;
+            this.cbCheckAllRight.Location = new System.Drawing.Point(15, 21);
+            this.cbCheckAllRight.Name = "cbCheckAllRight";
+            this.cbCheckAllRight.Size = new System.Drawing.Size(94, 23);
+            this.cbCheckAllRight.TabIndex = 3;
+            this.cbCheckAllRight.Text = "Check All";
+            this.cbCheckAllRight.UseVisualStyleBackColor = true;
             // 
             // checkBox16
             // 
@@ -1197,7 +1197,7 @@
             this.panel38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel38.Controls.Add(this.checkBox30);
             this.panel38.Controls.Add(this.label30);
-            this.panel38.Controls.Add(this.textBox29);
+            this.panel38.Controls.Add(this.txtNeuro);
             this.panel38.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel38.Location = new System.Drawing.Point(0, 648);
             this.panel38.Name = "panel38";
@@ -1223,22 +1223,22 @@
             this.label30.TabIndex = 0;
             this.label30.Text = "Neurological:";
             // 
-            // textBox29
+            // txtNeuro
             // 
-            this.textBox29.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtNeuro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox29.Location = new System.Drawing.Point(15, 63);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(418, 27);
-            this.textBox29.TabIndex = 1;
+            this.txtNeuro.Location = new System.Drawing.Point(15, 63);
+            this.txtNeuro.Name = "txtNeuro";
+            this.txtNeuro.Size = new System.Drawing.Size(418, 27);
+            this.txtNeuro.TabIndex = 1;
             // 
             // panel17
             // 
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel17.Controls.Add(this.checkBox10);
             this.panel17.Controls.Add(this.label13);
-            this.panel17.Controls.Add(this.textBox12);
+            this.panel17.Controls.Add(this.txtHema);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel17.Location = new System.Drawing.Point(0, 540);
             this.panel17.Name = "panel17";
@@ -1264,22 +1264,22 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "Hematologic:";
             // 
-            // textBox12
+            // txtHema
             // 
-            this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtHema.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.Location = new System.Drawing.Point(15, 63);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(418, 27);
-            this.textBox12.TabIndex = 1;
+            this.txtHema.Location = new System.Drawing.Point(15, 63);
+            this.txtHema.Name = "txtHema";
+            this.txtHema.Size = new System.Drawing.Size(418, 27);
+            this.txtHema.TabIndex = 1;
             // 
             // panel16
             // 
             this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel16.Controls.Add(this.checkBox9);
             this.panel16.Controls.Add(this.label12);
-            this.panel16.Controls.Add(this.textBox11);
+            this.panel16.Controls.Add(this.txtThroat);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel16.Location = new System.Drawing.Point(0, 432);
             this.panel16.Name = "panel16";
@@ -1305,22 +1305,22 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Throat/Neck:";
             // 
-            // textBox11
+            // txtThroat
             // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtThroat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Location = new System.Drawing.Point(15, 63);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(418, 27);
-            this.textBox11.TabIndex = 1;
+            this.txtThroat.Location = new System.Drawing.Point(15, 63);
+            this.txtThroat.Name = "txtThroat";
+            this.txtThroat.Size = new System.Drawing.Size(418, 27);
+            this.txtThroat.TabIndex = 1;
             // 
             // panel15
             // 
             this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel15.Controls.Add(this.checkBox8);
             this.panel15.Controls.Add(this.label11);
-            this.panel15.Controls.Add(this.textBox10);
+            this.panel15.Controls.Add(this.txtMouth);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel15.Location = new System.Drawing.Point(0, 324);
             this.panel15.Name = "panel15";
@@ -1342,26 +1342,28 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(12, 25);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 19);
+            this.label11.Size = new System.Drawing.Size(59, 19);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Mouse:";
+            this.label11.Text = "Mouth:";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
-            // textBox10
+            // txtMouth
             // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtMouth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Location = new System.Drawing.Point(15, 63);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(418, 27);
-            this.textBox10.TabIndex = 1;
+            this.txtMouth.Location = new System.Drawing.Point(15, 63);
+            this.txtMouth.Name = "txtMouth";
+            this.txtMouth.Size = new System.Drawing.Size(418, 27);
+            this.txtMouth.TabIndex = 1;
+            this.txtMouth.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
             // panel13
             // 
             this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel13.Controls.Add(this.checkBox6);
             this.panel13.Controls.Add(this.label9);
-            this.panel13.Controls.Add(this.textBox8);
+            this.panel13.Controls.Add(this.txtNose);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel13.Location = new System.Drawing.Point(0, 216);
             this.panel13.Name = "panel13";
@@ -1387,22 +1389,22 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Nose:";
             // 
-            // textBox8
+            // txtNose
             // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtNose.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(15, 63);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(418, 27);
-            this.textBox8.TabIndex = 1;
+            this.txtNose.Location = new System.Drawing.Point(15, 63);
+            this.txtNose.Name = "txtNose";
+            this.txtNose.Size = new System.Drawing.Size(418, 27);
+            this.txtNose.TabIndex = 1;
             // 
             // panel12
             // 
             this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel12.Controls.Add(this.checkBox5);
             this.panel12.Controls.Add(this.label8);
-            this.panel12.Controls.Add(this.textBox7);
+            this.panel12.Controls.Add(this.txtEars);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.Location = new System.Drawing.Point(0, 108);
             this.panel12.Name = "panel12";
@@ -1428,22 +1430,23 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Ears:";
             // 
-            // textBox7
+            // txtEars
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtEars.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Location = new System.Drawing.Point(15, 63);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(418, 27);
-            this.textBox7.TabIndex = 1;
+            this.txtEars.Location = new System.Drawing.Point(15, 63);
+            this.txtEars.Name = "txtEars";
+            this.txtEars.Size = new System.Drawing.Size(418, 27);
+            this.txtEars.TabIndex = 1;
+            this.txtEars.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // panel14
             // 
             this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel14.Controls.Add(this.checkBox7);
             this.panel14.Controls.Add(this.label10);
-            this.panel14.Controls.Add(this.textBox9);
+            this.panel14.Controls.Add(this.txtEyes);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel14.Location = new System.Drawing.Point(0, 0);
             this.panel14.Name = "panel14";
@@ -1469,15 +1472,16 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Eyes:";
             // 
-            // textBox9
+            // txtEyes
             // 
-            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtEyes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.Location = new System.Drawing.Point(15, 63);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(418, 27);
-            this.textBox9.TabIndex = 1;
+            this.txtEyes.Location = new System.Drawing.Point(15, 63);
+            this.txtEyes.Name = "txtEyes";
+            this.txtEyes.Size = new System.Drawing.Size(418, 27);
+            this.txtEyes.TabIndex = 1;
+            this.txtEyes.TextChanged += new System.EventHandler(this.txtEyes_TextChanged);
             // 
             // checkBox4
             // 
@@ -1513,7 +1517,7 @@
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.checkBox2);
             this.panel9.Controls.Add(this.label5);
-            this.panel9.Controls.Add(this.textBox4);
+            this.panel9.Controls.Add(this.txtGeneral);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(0, 51);
             this.panel9.Name = "panel9";
@@ -1539,35 +1543,36 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "General:";
             // 
-            // textBox4
+            // txtGeneral
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(15, 63);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(418, 27);
-            this.textBox4.TabIndex = 1;
+            this.txtGeneral.Location = new System.Drawing.Point(15, 63);
+            this.txtGeneral.Name = "txtGeneral";
+            this.txtGeneral.Size = new System.Drawing.Size(418, 27);
+            this.txtGeneral.TabIndex = 1;
+            this.txtGeneral.TextChanged += new System.EventHandler(this.txtGeneral_TextChanged);
             // 
             // panel8
             // 
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Controls.Add(this.checkBox1);
+            this.panel8.Controls.Add(this.cbCheckAllLeft);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(462, 51);
             this.panel8.TabIndex = 3;
             // 
-            // checkBox1
+            // cbCheckAllLeft
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(16, 22);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(94, 23);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Check All";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbCheckAllLeft.AutoSize = true;
+            this.cbCheckAllLeft.Location = new System.Drawing.Point(16, 22);
+            this.cbCheckAllLeft.Name = "cbCheckAllLeft";
+            this.cbCheckAllLeft.Size = new System.Drawing.Size(94, 23);
+            this.cbCheckAllLeft.TabIndex = 2;
+            this.cbCheckAllLeft.Text = "Check All";
+            this.cbCheckAllLeft.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -1595,7 +1600,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.textBox2);
+            this.panel4.Controls.Add(this.txtPresent);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 280);
             this.panel4.Name = "panel4";
@@ -1611,21 +1616,21 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Present Symptoms:";
             // 
-            // textBox2
+            // txtPresent
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtPresent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(15, 63);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(913, 71);
-            this.textBox2.TabIndex = 1;
+            this.txtPresent.Location = new System.Drawing.Point(15, 63);
+            this.txtPresent.Multiline = true;
+            this.txtPresent.Name = "txtPresent";
+            this.txtPresent.Size = new System.Drawing.Size(913, 71);
+            this.txtPresent.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.txtOperations);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 140);
             this.panel3.Name = "panel3";
@@ -1641,21 +1646,21 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Operations:";
             // 
-            // textBox1
+            // txtOperations
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtOperations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(15, 63);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(913, 71);
-            this.textBox1.TabIndex = 1;
+            this.txtOperations.Location = new System.Drawing.Point(15, 63);
+            this.txtOperations.Multiline = true;
+            this.txtOperations.Name = "txtOperations";
+            this.txtOperations.Size = new System.Drawing.Size(913, 71);
+            this.txtOperations.TabIndex = 1;
             // 
             // panelS
             // 
             this.panelS.Controls.Add(this.label1);
-            this.panelS.Controls.Add(this.txtSubjective);
+            this.panelS.Controls.Add(this.txtSignificant);
             this.panelS.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelS.Location = new System.Drawing.Point(0, 0);
             this.panelS.Name = "panelS";
@@ -1671,16 +1676,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Significant Past Diseases:";
             // 
-            // txtSubjective
+            // txtSignificant
             // 
-            this.txtSubjective.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtSignificant.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubjective.Location = new System.Drawing.Point(15, 63);
-            this.txtSubjective.Multiline = true;
-            this.txtSubjective.Name = "txtSubjective";
-            this.txtSubjective.Size = new System.Drawing.Size(913, 71);
-            this.txtSubjective.TabIndex = 1;
+            this.txtSignificant.Location = new System.Drawing.Point(15, 63);
+            this.txtSignificant.Multiline = true;
+            this.txtSignificant.Name = "txtSignificant";
+            this.txtSignificant.Size = new System.Drawing.Size(913, 71);
+            this.txtSignificant.TabIndex = 1;
             // 
             // tabControl1
             // 
@@ -1706,7 +1711,6 @@
             this.tabPage6.Size = new System.Drawing.Size(961, 442);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Assesstment,Recommendation & Classification";
-            this.tabPage6.Click += new System.EventHandler(this.tabPage6_Click);
             // 
             // panel1
             // 
@@ -1717,7 +1721,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(961, 442);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // panel41
             // 
@@ -1733,7 +1736,124 @@
             this.panel41.Name = "panel41";
             this.panel41.Size = new System.Drawing.Size(944, 755);
             this.panel41.TabIndex = 10;
-            this.panel41.Paint += new System.Windows.Forms.PaintEventHandler(this.panel41_Paint);
+            // 
+            // panel43
+            // 
+            this.panel43.Controls.Add(this.iconButton2);
+            this.panel43.Controls.Add(this.iconButton1);
+            this.panel43.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel43.Location = new System.Drawing.Point(0, 681);
+            this.panel43.Name = "panel43";
+            this.panel43.Size = new System.Drawing.Size(944, 59);
+            this.panel43.TabIndex = 14;
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton2.ForeColor = System.Drawing.Color.White;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconSize = 18;
+            this.iconButton2.Location = new System.Drawing.Point(254, 0);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Rotation = 0D;
+            this.iconButton2.Size = new System.Drawing.Size(345, 59);
+            this.iconButton2.TabIndex = 248;
+            this.iconButton2.Text = "View Form";
+            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton2.UseVisualStyleBackColor = false;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconSize = 18;
+            this.iconButton1.Location = new System.Drawing.Point(599, 0);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(345, 59);
+            this.iconButton1.TabIndex = 247;
+            this.iconButton1.Text = "Save";
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            // 
+            // panel42
+            // 
+            this.panel42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel42.Controls.Add(this.groupBox1);
+            this.panel42.Controls.Add(this.label33);
+            this.panel42.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel42.Location = new System.Drawing.Point(0, 390);
+            this.panel42.Name = "panel42";
+            this.panel42.Size = new System.Drawing.Size(944, 291);
+            this.panel42.TabIndex = 13;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButton3);
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Location = new System.Drawing.Point(16, 48);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(899, 218);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(16, 155);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(604, 23);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Type C. Generally Not Acceptable for Employment/ Pending for Futher Evaluation";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.Location = new System.Drawing.Point(16, 83);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(850, 49);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Type B. Physical Fit for all types of work. Has minor Ailment/ Defect. Easily Cur" +
+    "able or offers no Handicap to job applied for";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(16, 27);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(502, 23);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Type A.Physical Fit for all types of work. No Physical Defects Noted";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(12, 25);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(100, 19);
+            this.label33.TabIndex = 0;
+            this.label33.Text = "Classification";
             // 
             // panel45
             // 
@@ -1745,7 +1865,6 @@
             this.panel45.Name = "panel45";
             this.panel45.Size = new System.Drawing.Size(944, 180);
             this.panel45.TabIndex = 12;
-            this.panel45.Paint += new System.Windows.Forms.PaintEventHandler(this.panel45_Paint);
             // 
             // label37
             // 
@@ -1763,7 +1882,6 @@
             this.textBox36.Name = "textBox36";
             this.textBox36.Size = new System.Drawing.Size(900, 106);
             this.textBox36.TabIndex = 1;
-            this.textBox36.TextChanged += new System.EventHandler(this.textBox36_TextChanged);
             // 
             // panel46
             // 
@@ -1824,128 +1942,6 @@
             this.textBox42.Name = "textBox42";
             this.textBox42.Size = new System.Drawing.Size(902, 27);
             this.textBox42.TabIndex = 1;
-            // 
-            // panel42
-            // 
-            this.panel42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel42.Controls.Add(this.groupBox1);
-            this.panel42.Controls.Add(this.label33);
-            this.panel42.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel42.Location = new System.Drawing.Point(0, 390);
-            this.panel42.Name = "panel42";
-            this.panel42.Size = new System.Drawing.Size(944, 291);
-            this.panel42.TabIndex = 13;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(12, 25);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(100, 19);
-            this.label33.TabIndex = 0;
-            this.label33.Text = "Classification";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(16, 48);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(899, 218);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(16, 27);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(502, 23);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Type A.Physical Fit for all types of work. No Physical Defects Noted";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.Location = new System.Drawing.Point(16, 83);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(850, 49);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Type B. Physical Fit for all types of work. Has minor Ailment/ Defect. Easily Cur" +
-    "able or offers no Handicap to job applied for";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(16, 155);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(604, 23);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Type C. Generally Not Acceptable for Employment/ Pending for Futher Evaluation";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
-            // panel43
-            // 
-            this.panel43.Controls.Add(this.iconButton2);
-            this.panel43.Controls.Add(this.iconButton1);
-            this.panel43.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel43.Location = new System.Drawing.Point(0, 681);
-            this.panel43.Name = "panel43";
-            this.panel43.Size = new System.Drawing.Size(944, 59);
-            this.panel43.TabIndex = 14;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconSize = 18;
-            this.iconButton1.Location = new System.Drawing.Point(599, 0);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(345, 59);
-            this.iconButton1.TabIndex = 247;
-            this.iconButton1.Text = "Save";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.Color.White;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconSize = 18;
-            this.iconButton2.Location = new System.Drawing.Point(254, 0);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Rotation = 0D;
-            this.iconButton2.Size = new System.Drawing.Size(345, 59);
-            this.iconButton2.TabIndex = 248;
-            this.iconButton2.Text = "View Form";
-            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = false;
-            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // addEditPeForm
             // 
@@ -2041,15 +2037,15 @@
             this.panel1.ResumeLayout(false);
             this.panel41.ResumeLayout(false);
             this.panel41.PerformLayout();
-            this.panel45.ResumeLayout(false);
-            this.panel45.PerformLayout();
-            this.panel46.ResumeLayout(false);
-            this.panel46.PerformLayout();
+            this.panel43.ResumeLayout(false);
             this.panel42.ResumeLayout(false);
             this.panel42.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel43.ResumeLayout(false);
+            this.panel45.ResumeLayout(false);
+            this.panel45.PerformLayout();
+            this.panel46.ResumeLayout(false);
+            this.panel46.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2133,13 +2129,13 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.CheckBox checkBox13;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox txtPulmop;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.CheckBox checkBox14;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox txtCarido;
         private System.Windows.Forms.Panel panel23;
-        private System.Windows.Forms.CheckBox checkBox15;
+        private System.Windows.Forms.CheckBox cbCheckAllRight;
         private System.Windows.Forms.CheckBox checkBox16;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox17;
@@ -2149,51 +2145,51 @@
         private System.Windows.Forms.Panel panel38;
         private System.Windows.Forms.CheckBox checkBox30;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox29;
+        private System.Windows.Forms.TextBox txtNeuro;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txtHema;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.CheckBox checkBox9;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtThroat;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtMouth;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtNose;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtEars;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtEyes;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtGeneral;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbCheckAllLeft;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPresent;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtOperations;
         private System.Windows.Forms.Panel panelS;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtSubjective;
+        private System.Windows.Forms.TextBox txtSignificant;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Panel panel1;
