@@ -39,7 +39,12 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             patientVModel pv = await patientVController.getDetailsID(vid);
 
             txtbp.Text = pv.bp;
-            dateTimePicker2.Value = DateTime.Parse(pv.lmp);
+
+            if (pv.lmp != "N/A")         
+                dateTimePicker2.Value = DateTime.Parse(pv.lmp);
+            else
+                lmp = pv.lmp;
+
             txttemp.Text = pv.temp;
             txtwt.Text = pv.wt.ToString();
             txtrbc.Text = pv.allergies;

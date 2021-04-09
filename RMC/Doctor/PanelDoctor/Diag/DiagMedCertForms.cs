@@ -103,7 +103,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
             int doctorid = await doctorQueue.getDoctorID(model.customerid);
             DoctorDataModel dt = await doctorDataController.getDoctorData(doctorid);
-            patientDetails patientDetails = await patientDetailsController.getPatientQueueNo(patid);
+            patientDetails patientDetails = await patientDetailsController.getPatientId(patid);
             string fullName = await userracountsController.getFullNameId(doctorid);
 
             medcertReport.SetParameterValue("licenseNo", dt.license);

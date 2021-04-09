@@ -1,6 +1,7 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.Doctor.PanelDoctor.Diag;
+using RMC.Patients.PanelsDetails.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,8 +28,12 @@ namespace RMC.Patients.PanelsDetails
 
         private async void PanelPatientMedcert_Load(object sender, EventArgs e)
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             medCertModels = await medcertController.listMedCert(patid);
             populateLv();
+            pictureBox1.Hide();
+
         }
 
         private void initLvsCols()
@@ -82,6 +87,9 @@ namespace RMC.Patients.PanelsDetails
             }
             else
             {
+                Dictionary<string, string> values = new Dictionary<string, string>();
+                PreEmploymentViewer preEmploymentViewer = new PreEmploymentViewer(selectedIds, patid, values);
+                preEmploymentViewer.Show();
 
             }
           

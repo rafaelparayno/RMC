@@ -140,7 +140,7 @@ namespace RMC.Patients
             pictureBox1.Show();
             pictureBox1.Update();
             listDetails =  await patientDetailsController.getPatientDetails();
-            await Task.Delay(2000);
+        
             pictureBox1.Hide();
         }
 
