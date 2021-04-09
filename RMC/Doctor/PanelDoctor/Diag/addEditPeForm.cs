@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Patients.PanelsDetails.Dialogs;
 using RMC.Utilities;
 using System;
 using System.Collections.Generic;
@@ -26,13 +27,16 @@ namespace RMC.Doctor.PanelDoctor.Diag
         PatientMedcertController patientMedcertController = new PatientMedcertController();
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
+        DoctorQueueController doctorQueueController = new DoctorQueueController();
+        PatientVController patientVController = new PatientVController();
         patientDetails patdetails;
+        patientVModel patientVModel;
         private int qno = 0;
         int patid = 0;
         int customerid = 0;
         private bool isEdit = false;
         private int idEdit = 0;
-
+        private string companyName = "";
         private string pt = "N/a";
         private string hepa = "Non-Reactive";
         private string drugTest = "Negative";
@@ -731,7 +735,10 @@ namespace RMC.Doctor.PanelDoctor.Diag
             {
                 patid = await customerDetailsController.getPatientIDinQueue(qno);
                 customerid = await customerDetailsController.getCustomerIdinQueue(qno);
+                
                 patdetails = await patientDetailsController.getPatientId(patid);
+                companyName = await doctorQueueController.getCompanyName(qno);
+                patientVModel = await patientVController.getDetailsID(patid);
             }
         }
 
@@ -752,7 +759,93 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
         private void btnView_Click(object sender, EventArgs e)
         {
+            PreEmploymentViewer preEmploymentViewer = new PreEmploymentViewer(0,setDictionary());
+            preEmploymentViewer.Show();
+            
+        }
 
+
+        private Dictionary<string,string> setDictionary()
+        {
+
+            Dictionary<string, string> values = new Dictionary<string, string>();
+
+            //Personal Info
+            values.Add("patientName", patdetails.FullName);
+            values.Add("companyName", companyName);
+            values.Add("idNo", "3");
+            values.Add("civilStatus", patdetails.civil_status);
+            values.Add("Gender", patdetails.gender);
+            values.Add("bdate", patdetails.birthdate.ToString());
+            values.Add("age", patdetails.age.ToString());
+            //Personal Info
+
+            //vital
+            values.Add("bp", patientVModel.bp);
+            values.Add("weight", patientVModel.wt == 0 ? "" : patientVModel.wt + " KG");
+            values.Add("height", patientVModel.height == 0 ? "" : patientVModel.height + " cm");
+            values.Add("bmi", patientVModel.bmi + " / " + patientVModel.bmiLabel);
+            values.Add("lmp", patientVModel.lmp);
+            values.Add("hrate", patientVModel.heartrate);
+
+
+            //vital
+
+
+            //History
+            values.Add("pastDiseases", txtSignificant.Text.Trim());
+            values.Add("operations", txtOperations.Text.Trim());
+            values.Add("presentSymp", txtPresent.Text.Trim());
+
+            //History
+
+            //Physical Exams
+
+            //Left
+            values.Add("general", txtGeneral.Text.Trim());
+            values.Add("eyes", txtEyes.Text.Trim());
+            values.Add("ears", txtEars.Text.Trim());
+            values.Add("nose", txtNose.Text.Trim());
+            values.Add("mouth", txtMouth.Text.Trim());
+            values.Add("throat", txtThroat.Text.Trim());
+            values.Add("hema", txtHema.Text.Trim());
+            values.Add("neuro", txtNeuro.Text.Trim());
+            //Left
+
+            values.Add("cardio", txtCarido.Text.Trim());
+            values.Add("pulmonary", txtPulmop.Text.Trim());
+            values.Add("breast", txtBreast.Text.Trim());
+            values.Add("skin", txtSkin.Text.Trim());
+            values.Add("gastro", txtGastro.Text.Trim());
+            values.Add("geni", txtGen.Text.Trim());
+            values.Add("gyna", txtGyna.Text.Trim());
+            values.Add("endo", txtEndo.Text.Trim());
+
+
+            //Physical Exams
+
+            //Diagnostic
+
+            values.Add("xray", txtXray.Text.Trim());
+            values.Add("cbc", txtCbc.Text.Trim());
+            values.Add("urinaly", txtUri.Text.Trim());
+            values.Add("pt", pt);
+            values.Add("others", txtOthersDiag.Text.Trim());
+            values.Add("stool", txtStool.Text.Trim());
+            values.Add("heba", hepa);
+            values.Add("drug", drugTest);
+            values.Add("ecg", txtEcg.Text.Trim());
+            //Diagnostic
+
+
+            //RecomAssClassifcation
+            values.Add("recommendation", txtRecommend.Text.Trim());
+            values.Add("assestment", txtAssestment.Text.Trim());
+            values.Add("classification", typeTest);
+
+            //RecomAssClassifcation
+
+            return values;
         }
     }
 

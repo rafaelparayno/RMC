@@ -388,3 +388,4 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Doctor.PanelDoctor.D
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Doctor.PanelDoctor.Diag.AddMedCertDiags.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Patients.PanelsDetails.PanelPatientMedcert.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Doctor.PanelDoctor.Diag.addEditPeForm.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Patients.PanelsDetails.Dialogs.PreEmploymentViewer.resources

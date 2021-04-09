@@ -896,6 +896,12 @@
     <Compile Include="Patients\PanelsDetails\Dialogs\AddViewOther.Designer.cs">
       <DependentUpon>AddViewOther.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patients\PanelsDetails\Dialogs\PreEmploymentViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\PanelsDetails\Dialogs\PreEmploymentViewer.Designer.cs">
+      <DependentUpon>PreEmploymentViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\PanelsDetails\Dialogs\prescriptionViewerDiag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1502,6 +1508,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\Dialogs\AddViewOther.resx">
       <DependentUpon>AddViewOther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PanelsDetails\Dialogs\PreEmploymentViewer.resx">
+      <DependentUpon>PreEmploymentViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PanelsDetails\Dialogs\prescriptionViewerDiag.resx">
       <DependentUpon>prescriptionViewerDiag.cs</DependentUpon>
