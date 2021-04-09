@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TextBox txtBreast;
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel27 = new System.Windows.Forms.Panel();
             this.panel28 = new System.Windows.Forms.Panel();
@@ -78,36 +79,35 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.panel26 = new System.Windows.Forms.Panel();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
+            this.panelEndo = new System.Windows.Forms.Panel();
+            this.cbEndo = new System.Windows.Forms.CheckBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.checkBox18 = new System.Windows.Forms.CheckBox();
+            this.txtEndo = new System.Windows.Forms.TextBox();
+            this.panelGyna = new System.Windows.Forms.Panel();
+            this.cbGyna = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
+            this.txtGyna = new System.Windows.Forms.TextBox();
+            this.panelGen = new System.Windows.Forms.Panel();
+            this.cbGen = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.txtGen = new System.Windows.Forms.TextBox();
+            this.panelGastro = new System.Windows.Forms.Panel();
+            this.cbGastro = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.txtGastro = new System.Windows.Forms.TextBox();
+            this.panelSkin = new System.Windows.Forms.Panel();
+            this.cbSkin = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.txtSkin = new System.Windows.Forms.TextBox();
+            this.panelBreast = new System.Windows.Forms.Panel();
+            this.cbBreast = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.panelPulmo = new System.Windows.Forms.Panel();
+            this.cbPulmo = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtPulmop = new System.Windows.Forms.TextBox();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.panelCardio = new System.Windows.Forms.Panel();
+            this.cbCardio = new System.Windows.Forms.CheckBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtCarido = new System.Windows.Forms.TextBox();
             this.panel23 = new System.Windows.Forms.Panel();
@@ -118,39 +118,39 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.panel38 = new System.Windows.Forms.Panel();
-            this.checkBox30 = new System.Windows.Forms.CheckBox();
+            this.panelNeuro = new System.Windows.Forms.Panel();
+            this.cbNeuro = new System.Windows.Forms.CheckBox();
             this.label30 = new System.Windows.Forms.Label();
             this.txtNeuro = new System.Windows.Forms.TextBox();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.panelHema = new System.Windows.Forms.Panel();
+            this.cbHema = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtHema = new System.Windows.Forms.TextBox();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.panelThroat = new System.Windows.Forms.Panel();
+            this.cbThroat = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtThroat = new System.Windows.Forms.TextBox();
             this.panel15 = new System.Windows.Forms.Panel();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtMouth = new System.Windows.Forms.TextBox();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.panelNose = new System.Windows.Forms.Panel();
+            this.cbNose = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtNose = new System.Windows.Forms.TextBox();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.panelEars = new System.Windows.Forms.Panel();
+            this.cbEars = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEars = new System.Windows.Forms.TextBox();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.panelEyes = new System.Windows.Forms.Panel();
+            this.cbEyes = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtEyes = new System.Windows.Forms.TextBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.panelGeneral = new System.Windows.Forms.Panel();
+            this.cbGeneral = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtGeneral = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -188,6 +188,7 @@
             this.checkBox42 = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
             this.textBox42 = new System.Windows.Forms.TextBox();
+            txtBreast = new System.Windows.Forms.TextBox();
             this.tabPage3.SuspendLayout();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
@@ -205,25 +206,25 @@
             this.tabPage2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel10.SuspendLayout();
-            this.panel26.SuspendLayout();
-            this.panel25.SuspendLayout();
-            this.panel24.SuspendLayout();
-            this.panel18.SuspendLayout();
-            this.panel19.SuspendLayout();
-            this.panel20.SuspendLayout();
-            this.panel21.SuspendLayout();
-            this.panel22.SuspendLayout();
+            this.panelEndo.SuspendLayout();
+            this.panelGyna.SuspendLayout();
+            this.panelGen.SuspendLayout();
+            this.panelGastro.SuspendLayout();
+            this.panelSkin.SuspendLayout();
+            this.panelBreast.SuspendLayout();
+            this.panelPulmo.SuspendLayout();
+            this.panelCardio.SuspendLayout();
             this.panel23.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.panel38.SuspendLayout();
-            this.panel17.SuspendLayout();
-            this.panel16.SuspendLayout();
+            this.panelNeuro.SuspendLayout();
+            this.panelHema.SuspendLayout();
+            this.panelThroat.SuspendLayout();
             this.panel15.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel14.SuspendLayout();
-            this.panel9.SuspendLayout();
+            this.panelNose.SuspendLayout();
+            this.panelEars.SuspendLayout();
+            this.panelEyes.SuspendLayout();
+            this.panelGeneral.SuspendLayout();
             this.panel8.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -756,14 +757,14 @@
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.panel26);
-            this.panel10.Controls.Add(this.panel25);
-            this.panel10.Controls.Add(this.panel24);
-            this.panel10.Controls.Add(this.panel18);
-            this.panel10.Controls.Add(this.panel19);
-            this.panel10.Controls.Add(this.panel20);
-            this.panel10.Controls.Add(this.panel21);
-            this.panel10.Controls.Add(this.panel22);
+            this.panel10.Controls.Add(this.panelEndo);
+            this.panel10.Controls.Add(this.panelGyna);
+            this.panel10.Controls.Add(this.panelGen);
+            this.panel10.Controls.Add(this.panelGastro);
+            this.panel10.Controls.Add(this.panelSkin);
+            this.panel10.Controls.Add(this.panelBreast);
+            this.panel10.Controls.Add(this.panelPulmo);
+            this.panel10.Controls.Add(this.panelCardio);
             this.panel10.Controls.Add(this.panel23);
             this.panel10.Controls.Add(this.checkBox16);
             this.panel10.Controls.Add(this.label18);
@@ -774,27 +775,27 @@
             this.panel10.Size = new System.Drawing.Size(454, 932);
             this.panel10.TabIndex = 7;
             // 
-            // panel26
+            // panelEndo
             // 
-            this.panel26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel26.Controls.Add(this.checkBox19);
-            this.panel26.Controls.Add(this.label21);
-            this.panel26.Controls.Add(this.textBox20);
-            this.panel26.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel26.Location = new System.Drawing.Point(0, 807);
-            this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(454, 108);
-            this.panel26.TabIndex = 14;
+            this.panelEndo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelEndo.Controls.Add(this.cbEndo);
+            this.panelEndo.Controls.Add(this.label21);
+            this.panelEndo.Controls.Add(this.txtEndo);
+            this.panelEndo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEndo.Location = new System.Drawing.Point(0, 807);
+            this.panelEndo.Name = "panelEndo";
+            this.panelEndo.Size = new System.Drawing.Size(454, 108);
+            this.panelEndo.TabIndex = 14;
             // 
-            // checkBox19
+            // cbEndo
             // 
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(350, 21);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(80, 23);
-            this.checkBox19.TabIndex = 2;
-            this.checkBox19.Text = "Normal";
-            this.checkBox19.UseVisualStyleBackColor = true;
+            this.cbEndo.AutoSize = true;
+            this.cbEndo.Location = new System.Drawing.Point(350, 21);
+            this.cbEndo.Name = "cbEndo";
+            this.cbEndo.Size = new System.Drawing.Size(80, 23);
+            this.cbEndo.TabIndex = 2;
+            this.cbEndo.Text = "Normal";
+            this.cbEndo.UseVisualStyleBackColor = true;
             // 
             // label21
             // 
@@ -805,37 +806,37 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Endocrine:";
             // 
-            // textBox20
+            // txtEndo
             // 
-            this.textBox20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtEndo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox20.Location = new System.Drawing.Point(15, 63);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(410, 27);
-            this.textBox20.TabIndex = 1;
+            this.txtEndo.Location = new System.Drawing.Point(15, 63);
+            this.txtEndo.Name = "txtEndo";
+            this.txtEndo.Size = new System.Drawing.Size(410, 27);
+            this.txtEndo.TabIndex = 1;
             // 
-            // panel25
+            // panelGyna
             // 
-            this.panel25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel25.Controls.Add(this.checkBox18);
-            this.panel25.Controls.Add(this.label20);
-            this.panel25.Controls.Add(this.textBox19);
-            this.panel25.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel25.Location = new System.Drawing.Point(0, 699);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(454, 108);
-            this.panel25.TabIndex = 13;
+            this.panelGyna.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGyna.Controls.Add(this.cbGyna);
+            this.panelGyna.Controls.Add(this.label20);
+            this.panelGyna.Controls.Add(this.txtGyna);
+            this.panelGyna.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelGyna.Location = new System.Drawing.Point(0, 699);
+            this.panelGyna.Name = "panelGyna";
+            this.panelGyna.Size = new System.Drawing.Size(454, 108);
+            this.panelGyna.TabIndex = 13;
             // 
-            // checkBox18
+            // cbGyna
             // 
-            this.checkBox18.AutoSize = true;
-            this.checkBox18.Location = new System.Drawing.Point(350, 21);
-            this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(80, 23);
-            this.checkBox18.TabIndex = 2;
-            this.checkBox18.Text = "Normal";
-            this.checkBox18.UseVisualStyleBackColor = true;
+            this.cbGyna.AutoSize = true;
+            this.cbGyna.Location = new System.Drawing.Point(350, 21);
+            this.cbGyna.Name = "cbGyna";
+            this.cbGyna.Size = new System.Drawing.Size(80, 23);
+            this.cbGyna.TabIndex = 2;
+            this.cbGyna.Text = "Normal";
+            this.cbGyna.UseVisualStyleBackColor = true;
             // 
             // label20
             // 
@@ -846,37 +847,37 @@
             this.label20.TabIndex = 0;
             this.label20.Text = "Gynaecologic:";
             // 
-            // textBox19
+            // txtGyna
             // 
-            this.textBox19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtGyna.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox19.Location = new System.Drawing.Point(15, 63);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(410, 27);
-            this.textBox19.TabIndex = 1;
+            this.txtGyna.Location = new System.Drawing.Point(15, 63);
+            this.txtGyna.Name = "txtGyna";
+            this.txtGyna.Size = new System.Drawing.Size(410, 27);
+            this.txtGyna.TabIndex = 1;
             // 
-            // panel24
+            // panelGen
             // 
-            this.panel24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel24.Controls.Add(this.checkBox17);
-            this.panel24.Controls.Add(this.label19);
-            this.panel24.Controls.Add(this.textBox18);
-            this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel24.Location = new System.Drawing.Point(0, 591);
-            this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(454, 108);
-            this.panel24.TabIndex = 12;
+            this.panelGen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGen.Controls.Add(this.cbGen);
+            this.panelGen.Controls.Add(this.label19);
+            this.panelGen.Controls.Add(this.txtGen);
+            this.panelGen.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelGen.Location = new System.Drawing.Point(0, 591);
+            this.panelGen.Name = "panelGen";
+            this.panelGen.Size = new System.Drawing.Size(454, 108);
+            this.panelGen.TabIndex = 12;
             // 
-            // checkBox17
+            // cbGen
             // 
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(350, 21);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(80, 23);
-            this.checkBox17.TabIndex = 2;
-            this.checkBox17.Text = "Normal";
-            this.checkBox17.UseVisualStyleBackColor = true;
+            this.cbGen.AutoSize = true;
+            this.cbGen.Location = new System.Drawing.Point(350, 21);
+            this.cbGen.Name = "cbGen";
+            this.cbGen.Size = new System.Drawing.Size(80, 23);
+            this.cbGen.TabIndex = 2;
+            this.cbGen.Text = "Normal";
+            this.cbGen.UseVisualStyleBackColor = true;
             // 
             // label19
             // 
@@ -887,37 +888,38 @@
             this.label19.TabIndex = 0;
             this.label19.Text = "Genitourinary:";
             // 
-            // textBox18
+            // txtGen
             // 
-            this.textBox18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtGen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox18.Location = new System.Drawing.Point(15, 63);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(410, 27);
-            this.textBox18.TabIndex = 1;
+            this.txtGen.Location = new System.Drawing.Point(15, 63);
+            this.txtGen.Name = "txtGen";
+            this.txtGen.Size = new System.Drawing.Size(410, 27);
+            this.txtGen.TabIndex = 1;
+            this.txtGen.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
             // 
-            // panel18
+            // panelGastro
             // 
-            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel18.Controls.Add(this.checkBox3);
-            this.panel18.Controls.Add(this.label4);
-            this.panel18.Controls.Add(this.textBox3);
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel18.Location = new System.Drawing.Point(0, 483);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(454, 108);
-            this.panel18.TabIndex = 11;
+            this.panelGastro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGastro.Controls.Add(this.cbGastro);
+            this.panelGastro.Controls.Add(this.label4);
+            this.panelGastro.Controls.Add(this.txtGastro);
+            this.panelGastro.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelGastro.Location = new System.Drawing.Point(0, 483);
+            this.panelGastro.Name = "panelGastro";
+            this.panelGastro.Size = new System.Drawing.Size(454, 108);
+            this.panelGastro.TabIndex = 11;
             // 
-            // checkBox3
+            // cbGastro
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(350, 21);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(80, 23);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Normal";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.cbGastro.AutoSize = true;
+            this.cbGastro.Location = new System.Drawing.Point(350, 21);
+            this.cbGastro.Name = "cbGastro";
+            this.cbGastro.Size = new System.Drawing.Size(80, 23);
+            this.cbGastro.TabIndex = 2;
+            this.cbGastro.Text = "Normal";
+            this.cbGastro.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -928,37 +930,39 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Gastrolintenstinal:";
             // 
-            // textBox3
+            // txtGastro
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtGastro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(15, 63);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(410, 27);
-            this.textBox3.TabIndex = 1;
+            this.txtGastro.Location = new System.Drawing.Point(15, 63);
+            this.txtGastro.Name = "txtGastro";
+            this.txtGastro.Size = new System.Drawing.Size(410, 27);
+            this.txtGastro.TabIndex = 1;
+            this.txtGastro.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // panel19
+            // panelSkin
             // 
-            this.panel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel19.Controls.Add(this.checkBox11);
-            this.panel19.Controls.Add(this.label6);
-            this.panel19.Controls.Add(this.textBox5);
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel19.Location = new System.Drawing.Point(0, 375);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(454, 108);
-            this.panel19.TabIndex = 10;
+            this.panelSkin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelSkin.Controls.Add(this.cbSkin);
+            this.panelSkin.Controls.Add(this.label6);
+            this.panelSkin.Controls.Add(this.txtSkin);
+            this.panelSkin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSkin.Location = new System.Drawing.Point(0, 375);
+            this.panelSkin.Name = "panelSkin";
+            this.panelSkin.Size = new System.Drawing.Size(454, 108);
+            this.panelSkin.TabIndex = 10;
             // 
-            // checkBox11
+            // cbSkin
             // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(350, 21);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(80, 23);
-            this.checkBox11.TabIndex = 2;
-            this.checkBox11.Text = "Normal";
-            this.checkBox11.UseVisualStyleBackColor = true;
+            this.cbSkin.AutoSize = true;
+            this.cbSkin.Location = new System.Drawing.Point(350, 21);
+            this.cbSkin.Name = "cbSkin";
+            this.cbSkin.Size = new System.Drawing.Size(80, 23);
+            this.cbSkin.TabIndex = 2;
+            this.cbSkin.Text = "Normal";
+            this.cbSkin.UseVisualStyleBackColor = true;
+            this.cbSkin.CheckedChanged += new System.EventHandler(this.checkBox11_CheckedChanged);
             // 
             // label6
             // 
@@ -969,37 +973,38 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Skin:";
             // 
-            // textBox5
+            // txtSkin
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtSkin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(15, 63);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(410, 27);
-            this.textBox5.TabIndex = 1;
+            this.txtSkin.Location = new System.Drawing.Point(15, 63);
+            this.txtSkin.Name = "txtSkin";
+            this.txtSkin.Size = new System.Drawing.Size(410, 27);
+            this.txtSkin.TabIndex = 1;
+            this.txtSkin.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // panel20
+            // panelBreast
             // 
-            this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel20.Controls.Add(this.checkBox12);
-            this.panel20.Controls.Add(this.label14);
-            this.panel20.Controls.Add(this.textBox13);
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel20.Location = new System.Drawing.Point(0, 267);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(454, 108);
-            this.panel20.TabIndex = 9;
+            this.panelBreast.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBreast.Controls.Add(this.cbBreast);
+            this.panelBreast.Controls.Add(this.label14);
+            this.panelBreast.Controls.Add(txtBreast);
+            this.panelBreast.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelBreast.Location = new System.Drawing.Point(0, 267);
+            this.panelBreast.Name = "panelBreast";
+            this.panelBreast.Size = new System.Drawing.Size(454, 108);
+            this.panelBreast.TabIndex = 9;
             // 
-            // checkBox12
+            // cbBreast
             // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(350, 21);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(80, 23);
-            this.checkBox12.TabIndex = 2;
-            this.checkBox12.Text = "Normal";
-            this.checkBox12.UseVisualStyleBackColor = true;
+            this.cbBreast.AutoSize = true;
+            this.cbBreast.Location = new System.Drawing.Point(350, 21);
+            this.cbBreast.Name = "cbBreast";
+            this.cbBreast.Size = new System.Drawing.Size(80, 23);
+            this.cbBreast.TabIndex = 2;
+            this.cbBreast.Text = "Normal";
+            this.cbBreast.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
@@ -1010,37 +1015,38 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Breast:";
             // 
-            // textBox13
+            // txtBreast
             // 
-            this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            txtBreast.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox13.Location = new System.Drawing.Point(15, 63);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(410, 27);
-            this.textBox13.TabIndex = 1;
+            txtBreast.Location = new System.Drawing.Point(15, 63);
+            txtBreast.Name = "txtBreast";
+            txtBreast.Size = new System.Drawing.Size(410, 27);
+            txtBreast.TabIndex = 1;
             // 
-            // panel21
+            // panelPulmo
             // 
-            this.panel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel21.Controls.Add(this.checkBox13);
-            this.panel21.Controls.Add(this.label15);
-            this.panel21.Controls.Add(this.txtPulmop);
-            this.panel21.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel21.Location = new System.Drawing.Point(0, 159);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(454, 108);
-            this.panel21.TabIndex = 8;
+            this.panelPulmo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPulmo.Controls.Add(this.cbPulmo);
+            this.panelPulmo.Controls.Add(this.label15);
+            this.panelPulmo.Controls.Add(this.txtPulmop);
+            this.panelPulmo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelPulmo.Location = new System.Drawing.Point(0, 159);
+            this.panelPulmo.Name = "panelPulmo";
+            this.panelPulmo.Size = new System.Drawing.Size(454, 108);
+            this.panelPulmo.TabIndex = 8;
             // 
-            // checkBox13
+            // cbPulmo
             // 
-            this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(350, 21);
-            this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(80, 23);
-            this.checkBox13.TabIndex = 2;
-            this.checkBox13.Text = "Normal";
-            this.checkBox13.UseVisualStyleBackColor = true;
+            this.cbPulmo.AutoSize = true;
+            this.cbPulmo.Location = new System.Drawing.Point(350, 21);
+            this.cbPulmo.Name = "cbPulmo";
+            this.cbPulmo.Size = new System.Drawing.Size(80, 23);
+            this.cbPulmo.TabIndex = 2;
+            this.cbPulmo.Text = "Normal";
+            this.cbPulmo.UseVisualStyleBackColor = true;
+            this.cbPulmo.CheckedChanged += new System.EventHandler(this.checkBox13_CheckedChanged);
             // 
             // label15
             // 
@@ -1060,28 +1066,29 @@
             this.txtPulmop.Name = "txtPulmop";
             this.txtPulmop.Size = new System.Drawing.Size(410, 27);
             this.txtPulmop.TabIndex = 1;
+            this.txtPulmop.TextChanged += new System.EventHandler(this.txtPulmop_TextChanged);
             // 
-            // panel22
+            // panelCardio
             // 
-            this.panel22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel22.Controls.Add(this.checkBox14);
-            this.panel22.Controls.Add(this.label16);
-            this.panel22.Controls.Add(this.txtCarido);
-            this.panel22.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel22.Location = new System.Drawing.Point(0, 51);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(454, 108);
-            this.panel22.TabIndex = 7;
+            this.panelCardio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCardio.Controls.Add(this.cbCardio);
+            this.panelCardio.Controls.Add(this.label16);
+            this.panelCardio.Controls.Add(this.txtCarido);
+            this.panelCardio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelCardio.Location = new System.Drawing.Point(0, 51);
+            this.panelCardio.Name = "panelCardio";
+            this.panelCardio.Size = new System.Drawing.Size(454, 108);
+            this.panelCardio.TabIndex = 7;
             // 
-            // checkBox14
+            // cbCardio
             // 
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(350, 21);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(80, 23);
-            this.checkBox14.TabIndex = 2;
-            this.checkBox14.Text = "Normal";
-            this.checkBox14.UseVisualStyleBackColor = true;
+            this.cbCardio.AutoSize = true;
+            this.cbCardio.Location = new System.Drawing.Point(350, 21);
+            this.cbCardio.Name = "cbCardio";
+            this.cbCardio.Size = new System.Drawing.Size(80, 23);
+            this.cbCardio.TabIndex = 2;
+            this.cbCardio.Text = "Normal";
+            this.cbCardio.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -1166,7 +1173,7 @@
             // 
             this.panel5.AutoScroll = true;
             this.panel5.Controls.Add(this.panel11);
-            this.panel5.Controls.Add(this.panel9);
+            this.panel5.Controls.Add(this.panelGeneral);
             this.panel5.Controls.Add(this.panel8);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(3, 3);
@@ -1176,13 +1183,13 @@
             // 
             // panel11
             // 
-            this.panel11.Controls.Add(this.panel38);
-            this.panel11.Controls.Add(this.panel17);
-            this.panel11.Controls.Add(this.panel16);
+            this.panel11.Controls.Add(this.panelNeuro);
+            this.panel11.Controls.Add(this.panelHema);
+            this.panel11.Controls.Add(this.panelThroat);
             this.panel11.Controls.Add(this.panel15);
-            this.panel11.Controls.Add(this.panel13);
-            this.panel11.Controls.Add(this.panel12);
-            this.panel11.Controls.Add(this.panel14);
+            this.panel11.Controls.Add(this.panelNose);
+            this.panel11.Controls.Add(this.panelEars);
+            this.panel11.Controls.Add(this.panelEyes);
             this.panel11.Controls.Add(this.checkBox4);
             this.panel11.Controls.Add(this.label7);
             this.panel11.Controls.Add(this.textBox6);
@@ -1192,27 +1199,27 @@
             this.panel11.Size = new System.Drawing.Size(462, 780);
             this.panel11.TabIndex = 6;
             // 
-            // panel38
+            // panelNeuro
             // 
-            this.panel38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel38.Controls.Add(this.checkBox30);
-            this.panel38.Controls.Add(this.label30);
-            this.panel38.Controls.Add(this.txtNeuro);
-            this.panel38.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel38.Location = new System.Drawing.Point(0, 648);
-            this.panel38.Name = "panel38";
-            this.panel38.Size = new System.Drawing.Size(462, 108);
-            this.panel38.TabIndex = 12;
+            this.panelNeuro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelNeuro.Controls.Add(this.cbNeuro);
+            this.panelNeuro.Controls.Add(this.label30);
+            this.panelNeuro.Controls.Add(this.txtNeuro);
+            this.panelNeuro.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelNeuro.Location = new System.Drawing.Point(0, 648);
+            this.panelNeuro.Name = "panelNeuro";
+            this.panelNeuro.Size = new System.Drawing.Size(462, 108);
+            this.panelNeuro.TabIndex = 12;
             // 
-            // checkBox30
+            // cbNeuro
             // 
-            this.checkBox30.AutoSize = true;
-            this.checkBox30.Location = new System.Drawing.Point(350, 21);
-            this.checkBox30.Name = "checkBox30";
-            this.checkBox30.Size = new System.Drawing.Size(80, 23);
-            this.checkBox30.TabIndex = 2;
-            this.checkBox30.Text = "Normal";
-            this.checkBox30.UseVisualStyleBackColor = true;
+            this.cbNeuro.AutoSize = true;
+            this.cbNeuro.Location = new System.Drawing.Point(350, 21);
+            this.cbNeuro.Name = "cbNeuro";
+            this.cbNeuro.Size = new System.Drawing.Size(80, 23);
+            this.cbNeuro.TabIndex = 2;
+            this.cbNeuro.Text = "Normal";
+            this.cbNeuro.UseVisualStyleBackColor = true;
             // 
             // label30
             // 
@@ -1232,28 +1239,29 @@
             this.txtNeuro.Name = "txtNeuro";
             this.txtNeuro.Size = new System.Drawing.Size(418, 27);
             this.txtNeuro.TabIndex = 1;
+            this.txtNeuro.TextChanged += new System.EventHandler(this.txtNeuro_TextChanged);
             // 
-            // panel17
+            // panelHema
             // 
-            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel17.Controls.Add(this.checkBox10);
-            this.panel17.Controls.Add(this.label13);
-            this.panel17.Controls.Add(this.txtHema);
-            this.panel17.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel17.Location = new System.Drawing.Point(0, 540);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(462, 108);
-            this.panel17.TabIndex = 11;
+            this.panelHema.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelHema.Controls.Add(this.cbHema);
+            this.panelHema.Controls.Add(this.label13);
+            this.panelHema.Controls.Add(this.txtHema);
+            this.panelHema.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHema.Location = new System.Drawing.Point(0, 540);
+            this.panelHema.Name = "panelHema";
+            this.panelHema.Size = new System.Drawing.Size(462, 108);
+            this.panelHema.TabIndex = 11;
             // 
-            // checkBox10
+            // cbHema
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(350, 21);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(80, 23);
-            this.checkBox10.TabIndex = 2;
-            this.checkBox10.Text = "Normal";
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.cbHema.AutoSize = true;
+            this.cbHema.Location = new System.Drawing.Point(350, 21);
+            this.cbHema.Name = "cbHema";
+            this.cbHema.Size = new System.Drawing.Size(80, 23);
+            this.cbHema.TabIndex = 2;
+            this.cbHema.Text = "Normal";
+            this.cbHema.UseVisualStyleBackColor = true;
             // 
             // label13
             // 
@@ -1273,28 +1281,29 @@
             this.txtHema.Name = "txtHema";
             this.txtHema.Size = new System.Drawing.Size(418, 27);
             this.txtHema.TabIndex = 1;
+            this.txtHema.TextChanged += new System.EventHandler(this.txtHema_TextChanged);
             // 
-            // panel16
+            // panelThroat
             // 
-            this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel16.Controls.Add(this.checkBox9);
-            this.panel16.Controls.Add(this.label12);
-            this.panel16.Controls.Add(this.txtThroat);
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel16.Location = new System.Drawing.Point(0, 432);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(462, 108);
-            this.panel16.TabIndex = 10;
+            this.panelThroat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelThroat.Controls.Add(this.cbThroat);
+            this.panelThroat.Controls.Add(this.label12);
+            this.panelThroat.Controls.Add(this.txtThroat);
+            this.panelThroat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelThroat.Location = new System.Drawing.Point(0, 432);
+            this.panelThroat.Name = "panelThroat";
+            this.panelThroat.Size = new System.Drawing.Size(462, 108);
+            this.panelThroat.TabIndex = 10;
             // 
-            // checkBox9
+            // cbThroat
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(350, 21);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(80, 23);
-            this.checkBox9.TabIndex = 2;
-            this.checkBox9.Text = "Normal";
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.cbThroat.AutoSize = true;
+            this.cbThroat.Location = new System.Drawing.Point(350, 21);
+            this.cbThroat.Name = "cbThroat";
+            this.cbThroat.Size = new System.Drawing.Size(80, 23);
+            this.cbThroat.TabIndex = 2;
+            this.cbThroat.Text = "Normal";
+            this.cbThroat.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -1358,27 +1367,27 @@
             this.txtMouth.TabIndex = 1;
             this.txtMouth.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
-            // panel13
+            // panelNose
             // 
-            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel13.Controls.Add(this.checkBox6);
-            this.panel13.Controls.Add(this.label9);
-            this.panel13.Controls.Add(this.txtNose);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel13.Location = new System.Drawing.Point(0, 216);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(462, 108);
-            this.panel13.TabIndex = 8;
+            this.panelNose.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelNose.Controls.Add(this.cbNose);
+            this.panelNose.Controls.Add(this.label9);
+            this.panelNose.Controls.Add(this.txtNose);
+            this.panelNose.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelNose.Location = new System.Drawing.Point(0, 216);
+            this.panelNose.Name = "panelNose";
+            this.panelNose.Size = new System.Drawing.Size(462, 108);
+            this.panelNose.TabIndex = 8;
             // 
-            // checkBox6
+            // cbNose
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(350, 21);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(80, 23);
-            this.checkBox6.TabIndex = 2;
-            this.checkBox6.Text = "Normal";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.cbNose.AutoSize = true;
+            this.cbNose.Location = new System.Drawing.Point(350, 21);
+            this.cbNose.Name = "cbNose";
+            this.cbNose.Size = new System.Drawing.Size(80, 23);
+            this.cbNose.TabIndex = 2;
+            this.cbNose.Text = "Normal";
+            this.cbNose.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -1399,27 +1408,27 @@
             this.txtNose.Size = new System.Drawing.Size(418, 27);
             this.txtNose.TabIndex = 1;
             // 
-            // panel12
+            // panelEars
             // 
-            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel12.Controls.Add(this.checkBox5);
-            this.panel12.Controls.Add(this.label8);
-            this.panel12.Controls.Add(this.txtEars);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel12.Location = new System.Drawing.Point(0, 108);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(462, 108);
-            this.panel12.TabIndex = 7;
+            this.panelEars.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelEars.Controls.Add(this.cbEars);
+            this.panelEars.Controls.Add(this.label8);
+            this.panelEars.Controls.Add(this.txtEars);
+            this.panelEars.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEars.Location = new System.Drawing.Point(0, 108);
+            this.panelEars.Name = "panelEars";
+            this.panelEars.Size = new System.Drawing.Size(462, 108);
+            this.panelEars.TabIndex = 7;
             // 
-            // checkBox5
+            // cbEars
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(350, 21);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(80, 23);
-            this.checkBox5.TabIndex = 2;
-            this.checkBox5.Text = "Normal";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.cbEars.AutoSize = true;
+            this.cbEars.Location = new System.Drawing.Point(350, 21);
+            this.cbEars.Name = "cbEars";
+            this.cbEars.Size = new System.Drawing.Size(80, 23);
+            this.cbEars.TabIndex = 2;
+            this.cbEars.Text = "Normal";
+            this.cbEars.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -1441,27 +1450,27 @@
             this.txtEars.TabIndex = 1;
             this.txtEars.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
-            // panel14
+            // panelEyes
             // 
-            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel14.Controls.Add(this.checkBox7);
-            this.panel14.Controls.Add(this.label10);
-            this.panel14.Controls.Add(this.txtEyes);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel14.Location = new System.Drawing.Point(0, 0);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(462, 108);
-            this.panel14.TabIndex = 6;
+            this.panelEyes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelEyes.Controls.Add(this.cbEyes);
+            this.panelEyes.Controls.Add(this.label10);
+            this.panelEyes.Controls.Add(this.txtEyes);
+            this.panelEyes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEyes.Location = new System.Drawing.Point(0, 0);
+            this.panelEyes.Name = "panelEyes";
+            this.panelEyes.Size = new System.Drawing.Size(462, 108);
+            this.panelEyes.TabIndex = 6;
             // 
-            // checkBox7
+            // cbEyes
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(350, 21);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(80, 23);
-            this.checkBox7.TabIndex = 2;
-            this.checkBox7.Text = "Normal";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.cbEyes.AutoSize = true;
+            this.cbEyes.Location = new System.Drawing.Point(350, 21);
+            this.cbEyes.Name = "cbEyes";
+            this.cbEyes.Size = new System.Drawing.Size(80, 23);
+            this.cbEyes.TabIndex = 2;
+            this.cbEyes.Text = "Normal";
+            this.cbEyes.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -1512,27 +1521,27 @@
             this.textBox6.Size = new System.Drawing.Size(420, 27);
             this.textBox6.TabIndex = 1;
             // 
-            // panel9
+            // panelGeneral
             // 
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.checkBox2);
-            this.panel9.Controls.Add(this.label5);
-            this.panel9.Controls.Add(this.txtGeneral);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 51);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(462, 108);
-            this.panel9.TabIndex = 4;
+            this.panelGeneral.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGeneral.Controls.Add(this.cbGeneral);
+            this.panelGeneral.Controls.Add(this.label5);
+            this.panelGeneral.Controls.Add(this.txtGeneral);
+            this.panelGeneral.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelGeneral.Location = new System.Drawing.Point(0, 51);
+            this.panelGeneral.Name = "panelGeneral";
+            this.panelGeneral.Size = new System.Drawing.Size(462, 108);
+            this.panelGeneral.TabIndex = 4;
             // 
-            // checkBox2
+            // cbGeneral
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(350, 21);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 23);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "Normal";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cbGeneral.AutoSize = true;
+            this.cbGeneral.Location = new System.Drawing.Point(350, 21);
+            this.cbGeneral.Name = "cbGeneral";
+            this.cbGeneral.Size = new System.Drawing.Size(80, 23);
+            this.cbGeneral.TabIndex = 2;
+            this.cbGeneral.Text = "Normal";
+            this.cbGeneral.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -1985,43 +1994,43 @@
             this.panel7.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.panel26.ResumeLayout(false);
-            this.panel26.PerformLayout();
-            this.panel25.ResumeLayout(false);
-            this.panel25.PerformLayout();
-            this.panel24.ResumeLayout(false);
-            this.panel24.PerformLayout();
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
-            this.panel21.ResumeLayout(false);
-            this.panel21.PerformLayout();
-            this.panel22.ResumeLayout(false);
-            this.panel22.PerformLayout();
+            this.panelEndo.ResumeLayout(false);
+            this.panelEndo.PerformLayout();
+            this.panelGyna.ResumeLayout(false);
+            this.panelGyna.PerformLayout();
+            this.panelGen.ResumeLayout(false);
+            this.panelGen.PerformLayout();
+            this.panelGastro.ResumeLayout(false);
+            this.panelGastro.PerformLayout();
+            this.panelSkin.ResumeLayout(false);
+            this.panelSkin.PerformLayout();
+            this.panelBreast.ResumeLayout(false);
+            this.panelBreast.PerformLayout();
+            this.panelPulmo.ResumeLayout(false);
+            this.panelPulmo.PerformLayout();
+            this.panelCardio.ResumeLayout(false);
+            this.panelCardio.PerformLayout();
             this.panel23.ResumeLayout(false);
             this.panel23.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
-            this.panel38.ResumeLayout(false);
-            this.panel38.PerformLayout();
-            this.panel17.ResumeLayout(false);
-            this.panel17.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
+            this.panelNeuro.ResumeLayout(false);
+            this.panelNeuro.PerformLayout();
+            this.panelHema.ResumeLayout(false);
+            this.panelHema.PerformLayout();
+            this.panelThroat.ResumeLayout(false);
+            this.panelThroat.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
+            this.panelNose.ResumeLayout(false);
+            this.panelNose.PerformLayout();
+            this.panelEars.ResumeLayout(false);
+            this.panelEars.PerformLayout();
+            this.panelEyes.ResumeLayout(false);
+            this.panelEyes.PerformLayout();
+            this.panelGeneral.ResumeLayout(false);
+            this.panelGeneral.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -2102,36 +2111,35 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel26;
-        private System.Windows.Forms.CheckBox checkBox19;
+        private System.Windows.Forms.Panel panelEndo;
+        private System.Windows.Forms.CheckBox cbEndo;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.Panel panel25;
-        private System.Windows.Forms.CheckBox checkBox18;
+        private System.Windows.Forms.TextBox txtEndo;
+        private System.Windows.Forms.Panel panelGyna;
+        private System.Windows.Forms.CheckBox cbGyna;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.Panel panel24;
-        private System.Windows.Forms.CheckBox checkBox17;
+        private System.Windows.Forms.TextBox txtGyna;
+        private System.Windows.Forms.Panel panelGen;
+        private System.Windows.Forms.CheckBox cbGen;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.TextBox txtGen;
+        private System.Windows.Forms.Panel panelGastro;
+        private System.Windows.Forms.CheckBox cbGastro;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.TextBox txtGastro;
+        private System.Windows.Forms.Panel panelSkin;
+        private System.Windows.Forms.CheckBox cbSkin;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Panel panel20;
-        private System.Windows.Forms.CheckBox checkBox12;
+        private System.Windows.Forms.TextBox txtSkin;
+        private System.Windows.Forms.Panel panelBreast;
+        private System.Windows.Forms.CheckBox cbBreast;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Panel panel21;
-        private System.Windows.Forms.CheckBox checkBox13;
+        private System.Windows.Forms.Panel panelPulmo;
+        private System.Windows.Forms.CheckBox cbPulmo;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtPulmop;
-        private System.Windows.Forms.Panel panel22;
-        private System.Windows.Forms.CheckBox checkBox14;
+        private System.Windows.Forms.Panel panelCardio;
+        private System.Windows.Forms.CheckBox cbCardio;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtCarido;
         private System.Windows.Forms.Panel panel23;
@@ -2142,39 +2150,39 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel panel38;
-        private System.Windows.Forms.CheckBox checkBox30;
+        private System.Windows.Forms.Panel panelNeuro;
+        private System.Windows.Forms.CheckBox cbNeuro;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox txtNeuro;
-        private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.Panel panelHema;
+        private System.Windows.Forms.CheckBox cbHema;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtHema;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.Panel panelThroat;
+        private System.Windows.Forms.CheckBox cbThroat;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtThroat;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtMouth;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.Panel panelNose;
+        private System.Windows.Forms.CheckBox cbNose;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtNose;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.Panel panelEars;
+        private System.Windows.Forms.CheckBox cbEars;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtEars;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.Panel panelEyes;
+        private System.Windows.Forms.CheckBox cbEyes;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtEyes;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Panel panelGeneral;
+        private System.Windows.Forms.CheckBox cbGeneral;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtGeneral;
         private System.Windows.Forms.Panel panel8;

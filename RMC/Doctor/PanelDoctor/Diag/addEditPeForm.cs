@@ -46,5 +46,45 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
 
         }
+
+        private void txtNeuro_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHema_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPulmop_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox18_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox13_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox11_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
