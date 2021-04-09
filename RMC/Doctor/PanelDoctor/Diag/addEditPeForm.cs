@@ -741,7 +741,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
                 DateTime today = DateTime.Now;
                 patientVModel = await patientVController.getDetailsidDate(patid,today.ToString("yyyy-MM-dd"));
-                MessageBox.Show(patientVModel.bmiLabel);
+              
             
             }
         }
@@ -788,7 +788,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
             values.Add("bp", patientVModel.bp);
             values.Add("weight", patientVModel.wt == 0 ? "" : patientVModel.wt + " KG");
             values.Add("height", patientVModel.height == 0 ? "" : patientVModel.height + " cm");
-            values.Add("bmi", patientVModel.bmi + " / " + patientVModel.bmiLabel);
+            values.Add("bmi", patientVModel.bmi + " / \t" + patientVModel.bmiLabel);
             values.Add("lmp", patientVModel.lmp);
             values.Add("hrate", patientVModel.heartrate);
 

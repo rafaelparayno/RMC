@@ -28,9 +28,9 @@ namespace RMC.Database.Models
             get { return height / 100; }
         }
 
-        public float bmi
+        public double bmi
         {
-            get { return wt / (meter * meter); }
+            get { return Math.Round(wt / (meter * meter),2); }
         }
 
 
