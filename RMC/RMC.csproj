@@ -590,6 +590,12 @@
     <Compile Include="Doctor\DoctorForm.Designer.cs">
       <DependentUpon>DoctorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\PanelDoctor\Diag\addEditPeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctor\PanelDoctor\Diag\addEditPeForm.Designer.cs">
+      <DependentUpon>addEditPeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Doctor\PanelDoctor\Diag\addEditSymp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1060,6 +1066,12 @@
       <DependentUpon>medcertReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\PreEmployment.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreEmployment.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\Prescription.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1332,6 +1344,9 @@
     <EmbeddedResource Include="Doctor\DoctorForm.resx">
       <DependentUpon>DoctorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Doctor\PanelDoctor\Diag\addEditPeForm.resx">
+      <DependentUpon>addEditPeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Doctor\PanelDoctor\Diag\addEditSymp.resx">
       <DependentUpon>addEditSymp.cs</DependentUpon>
     </EmbeddedResource>
@@ -1585,6 +1600,10 @@
     <EmbeddedResource Include="Reports\medcertReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>medcertReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PreEmployment.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PreEmployment.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Prescription.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

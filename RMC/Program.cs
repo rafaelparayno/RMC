@@ -1,4 +1,5 @@
 ﻿
+using RMC.Doctor.PanelDoctor.Diag;
 using System;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new splashscreen());
+            Application.Run(new addEditPeForm());
         }
     }
 }
