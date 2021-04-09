@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TextBox txtBreast;
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel27 = new System.Windows.Forms.Panel();
             this.panel28 = new System.Windows.Forms.Panel();
@@ -130,8 +129,8 @@
             this.cbThroat = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtThroat = new System.Windows.Forms.TextBox();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.panelMouth = new System.Windows.Forms.Panel();
+            this.cbMouth = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtMouth = new System.Windows.Forms.TextBox();
             this.panelNose = new System.Windows.Forms.Panel();
@@ -188,7 +187,7 @@
             this.checkBox42 = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
             this.textBox42 = new System.Windows.Forms.TextBox();
-            txtBreast = new System.Windows.Forms.TextBox();
+            this.txtBreast = new System.Windows.Forms.TextBox();
             this.tabPage3.SuspendLayout();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
@@ -220,7 +219,7 @@
             this.panelNeuro.SuspendLayout();
             this.panelHema.SuspendLayout();
             this.panelThroat.SuspendLayout();
-            this.panel15.SuspendLayout();
+            this.panelMouth.SuspendLayout();
             this.panelNose.SuspendLayout();
             this.panelEars.SuspendLayout();
             this.panelEyes.SuspendLayout();
@@ -241,16 +240,6 @@
             this.panel45.SuspendLayout();
             this.panel46.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtBreast
-            // 
-            txtBreast.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            txtBreast.Location = new System.Drawing.Point(15, 63);
-            txtBreast.Name = "txtBreast";
-            txtBreast.Size = new System.Drawing.Size(410, 27);
-            txtBreast.TabIndex = 1;
             // 
             // tabPage3
             // 
@@ -357,7 +346,6 @@
             this.cbEcg.TabIndex = 2;
             this.cbEcg.Text = "Normal";
             this.cbEcg.UseVisualStyleBackColor = true;
-            this.cbEcg.CheckedChanged += new System.EventHandler(this.checkBox31_CheckedChanged);
             // 
             // label31
             // 
@@ -693,7 +681,6 @@
             this.txtXray.Name = "txtXray";
             this.txtXray.Size = new System.Drawing.Size(900, 27);
             this.txtXray.TabIndex = 1;
-            this.txtXray.TextChanged += new System.EventHandler(this.textBox27_TextChanged);
             // 
             // panel37
             // 
@@ -909,7 +896,6 @@
             this.txtGen.Name = "txtGen";
             this.txtGen.Size = new System.Drawing.Size(410, 27);
             this.txtGen.TabIndex = 1;
-            this.txtGen.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
             // 
             // panelGastro
             // 
@@ -951,7 +937,6 @@
             this.txtGastro.Name = "txtGastro";
             this.txtGastro.Size = new System.Drawing.Size(410, 27);
             this.txtGastro.TabIndex = 1;
-            this.txtGastro.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // panelSkin
             // 
@@ -974,7 +959,6 @@
             this.cbSkin.TabIndex = 2;
             this.cbSkin.Text = "Normal";
             this.cbSkin.UseVisualStyleBackColor = true;
-            this.cbSkin.CheckedChanged += new System.EventHandler(this.checkBox11_CheckedChanged);
             // 
             // label6
             // 
@@ -994,14 +978,13 @@
             this.txtSkin.Name = "txtSkin";
             this.txtSkin.Size = new System.Drawing.Size(410, 27);
             this.txtSkin.TabIndex = 1;
-            this.txtSkin.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // panelBreast
             // 
             this.panelBreast.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBreast.Controls.Add(this.txtBreast);
             this.panelBreast.Controls.Add(this.cbBreast);
             this.panelBreast.Controls.Add(this.label14);
-            this.panelBreast.Controls.Add(txtBreast);
             this.panelBreast.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBreast.Location = new System.Drawing.Point(0, 267);
             this.panelBreast.Name = "panelBreast";
@@ -1048,7 +1031,6 @@
             this.cbPulmo.TabIndex = 2;
             this.cbPulmo.Text = "Normal";
             this.cbPulmo.UseVisualStyleBackColor = true;
-            this.cbPulmo.CheckedChanged += new System.EventHandler(this.checkBox13_CheckedChanged);
             // 
             // label15
             // 
@@ -1068,7 +1050,6 @@
             this.txtPulmop.Name = "txtPulmop";
             this.txtPulmop.Size = new System.Drawing.Size(410, 27);
             this.txtPulmop.TabIndex = 1;
-            this.txtPulmop.TextChanged += new System.EventHandler(this.txtPulmop_TextChanged);
             // 
             // panelCardio
             // 
@@ -1110,7 +1091,6 @@
             this.txtCarido.Name = "txtCarido";
             this.txtCarido.Size = new System.Drawing.Size(410, 27);
             this.txtCarido.TabIndex = 1;
-            this.txtCarido.TextChanged += new System.EventHandler(this.textBox15_TextChanged);
             // 
             // panel23
             // 
@@ -1131,6 +1111,7 @@
             this.cbCheckAllRight.TabIndex = 3;
             this.cbCheckAllRight.Text = "Check All";
             this.cbCheckAllRight.UseVisualStyleBackColor = true;
+            this.cbCheckAllRight.Click += new System.EventHandler(this.cbCheckAllRight_Click);
             // 
             // checkBox16
             // 
@@ -1188,7 +1169,7 @@
             this.panel11.Controls.Add(this.panelNeuro);
             this.panel11.Controls.Add(this.panelHema);
             this.panel11.Controls.Add(this.panelThroat);
-            this.panel11.Controls.Add(this.panel15);
+            this.panel11.Controls.Add(this.panelMouth);
             this.panel11.Controls.Add(this.panelNose);
             this.panel11.Controls.Add(this.panelEars);
             this.panel11.Controls.Add(this.panelEyes);
@@ -1241,7 +1222,6 @@
             this.txtNeuro.Name = "txtNeuro";
             this.txtNeuro.Size = new System.Drawing.Size(418, 27);
             this.txtNeuro.TabIndex = 1;
-            this.txtNeuro.TextChanged += new System.EventHandler(this.txtNeuro_TextChanged);
             // 
             // panelHema
             // 
@@ -1283,7 +1263,6 @@
             this.txtHema.Name = "txtHema";
             this.txtHema.Size = new System.Drawing.Size(418, 27);
             this.txtHema.TabIndex = 1;
-            this.txtHema.TextChanged += new System.EventHandler(this.txtHema_TextChanged);
             // 
             // panelThroat
             // 
@@ -1326,27 +1305,27 @@
             this.txtThroat.Size = new System.Drawing.Size(418, 27);
             this.txtThroat.TabIndex = 1;
             // 
-            // panel15
+            // panelMouth
             // 
-            this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel15.Controls.Add(this.checkBox8);
-            this.panel15.Controls.Add(this.label11);
-            this.panel15.Controls.Add(this.txtMouth);
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel15.Location = new System.Drawing.Point(0, 324);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(462, 108);
-            this.panel15.TabIndex = 9;
+            this.panelMouth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMouth.Controls.Add(this.cbMouth);
+            this.panelMouth.Controls.Add(this.label11);
+            this.panelMouth.Controls.Add(this.txtMouth);
+            this.panelMouth.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelMouth.Location = new System.Drawing.Point(0, 324);
+            this.panelMouth.Name = "panelMouth";
+            this.panelMouth.Size = new System.Drawing.Size(462, 108);
+            this.panelMouth.TabIndex = 9;
             // 
-            // checkBox8
+            // cbMouth
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(350, 21);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(80, 23);
-            this.checkBox8.TabIndex = 2;
-            this.checkBox8.Text = "Normal";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.cbMouth.AutoSize = true;
+            this.cbMouth.Location = new System.Drawing.Point(350, 21);
+            this.cbMouth.Name = "cbMouth";
+            this.cbMouth.Size = new System.Drawing.Size(80, 23);
+            this.cbMouth.TabIndex = 2;
+            this.cbMouth.Text = "Normal";
+            this.cbMouth.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -1356,7 +1335,6 @@
             this.label11.Size = new System.Drawing.Size(59, 19);
             this.label11.TabIndex = 0;
             this.label11.Text = "Mouth:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // txtMouth
             // 
@@ -1367,7 +1345,6 @@
             this.txtMouth.Name = "txtMouth";
             this.txtMouth.Size = new System.Drawing.Size(418, 27);
             this.txtMouth.TabIndex = 1;
-            this.txtMouth.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
             // panelNose
             // 
@@ -1431,6 +1408,7 @@
             this.cbEars.TabIndex = 2;
             this.cbEars.Text = "Normal";
             this.cbEars.UseVisualStyleBackColor = true;
+            this.cbEars.Click += new System.EventHandler(this.cbEars_Click);
             // 
             // label8
             // 
@@ -1450,7 +1428,6 @@
             this.txtEars.Name = "txtEars";
             this.txtEars.Size = new System.Drawing.Size(418, 27);
             this.txtEars.TabIndex = 1;
-            this.txtEars.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // panelEyes
             // 
@@ -1473,6 +1450,7 @@
             this.cbEyes.TabIndex = 2;
             this.cbEyes.Text = "Normal";
             this.cbEyes.UseVisualStyleBackColor = true;
+            this.cbEyes.Click += new System.EventHandler(this.cbEyes_Click);
             // 
             // label10
             // 
@@ -1492,7 +1470,6 @@
             this.txtEyes.Name = "txtEyes";
             this.txtEyes.Size = new System.Drawing.Size(418, 27);
             this.txtEyes.TabIndex = 1;
-            this.txtEyes.TextChanged += new System.EventHandler(this.txtEyes_TextChanged);
             // 
             // checkBox4
             // 
@@ -1544,6 +1521,7 @@
             this.cbGeneral.TabIndex = 2;
             this.cbGeneral.Text = "Normal";
             this.cbGeneral.UseVisualStyleBackColor = true;
+            this.cbGeneral.Click += new System.EventHandler(this.cbGeneral_Click);
             // 
             // label5
             // 
@@ -1563,7 +1541,6 @@
             this.txtGeneral.Name = "txtGeneral";
             this.txtGeneral.Size = new System.Drawing.Size(418, 27);
             this.txtGeneral.TabIndex = 1;
-            this.txtGeneral.TextChanged += new System.EventHandler(this.txtGeneral_TextChanged);
             // 
             // panel8
             // 
@@ -1584,6 +1561,7 @@
             this.cbCheckAllLeft.TabIndex = 2;
             this.cbCheckAllLeft.Text = "Check All";
             this.cbCheckAllLeft.UseVisualStyleBackColor = true;
+            this.cbCheckAllLeft.Click += new System.EventHandler(this.cbCheckAllLeft_Click);
             // 
             // tabPage1
             // 
@@ -1834,7 +1812,6 @@
             this.rbTypeC.TabStop = true;
             this.rbTypeC.Text = "Type C. Generally Not Acceptable for Employment/ Pending for Futher Evaluation";
             this.rbTypeC.UseVisualStyleBackColor = true;
-            this.rbTypeC.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // rbTypeB
             // 
@@ -1857,7 +1834,6 @@
             this.rbTypeA.TabStop = true;
             this.rbTypeA.Text = "Type A.Physical Fit for all types of work. No Physical Defects Noted";
             this.rbTypeA.UseVisualStyleBackColor = true;
-            this.rbTypeA.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // label33
             // 
@@ -1956,6 +1932,16 @@
             this.textBox42.Size = new System.Drawing.Size(902, 27);
             this.textBox42.TabIndex = 1;
             // 
+            // txtBreast
+            // 
+            this.txtBreast.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBreast.Location = new System.Drawing.Point(16, 59);
+            this.txtBreast.Name = "txtBreast";
+            this.txtBreast.Size = new System.Drawing.Size(410, 27);
+            this.txtBreast.TabIndex = 3;
+            // 
             // addEditPeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2025,8 +2011,8 @@
             this.panelHema.PerformLayout();
             this.panelThroat.ResumeLayout(false);
             this.panelThroat.PerformLayout();
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
+            this.panelMouth.ResumeLayout(false);
+            this.panelMouth.PerformLayout();
             this.panelNose.ResumeLayout(false);
             this.panelNose.PerformLayout();
             this.panelEars.ResumeLayout(false);
@@ -2166,8 +2152,8 @@
         private System.Windows.Forms.CheckBox cbThroat;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtThroat;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.Panel panelMouth;
+        private System.Windows.Forms.CheckBox cbMouth;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtMouth;
         private System.Windows.Forms.Panel panelNose;
@@ -2224,5 +2210,6 @@
         private System.Windows.Forms.Panel panel43;
         private FontAwesome.Sharp.IconButton btnView;
         private FontAwesome.Sharp.IconButton btnSave;
+        private System.Windows.Forms.TextBox txtBreast;
     }
 }

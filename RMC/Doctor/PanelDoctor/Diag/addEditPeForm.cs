@@ -12,99 +12,239 @@ namespace RMC.Doctor.PanelDoctor.Diag
 {
     public partial class addEditPeForm : Form
     {
+
+
+
+        #region variables
+
+        private string general = "";
+        private string eyes = "";
+        private string ears = "";
+        private string nose = "";
+        private string mouth = "";
+        private string throat = "";
+        private string hematologic = "";
+        private string neurological = "";
+        private string cardio = "";
+        private string pulmonary = "";
+        private string breast = "";
+        private string skin = "";
+        private string gastro = "";
+        private string geni = "";
+        private string gyna = "";
+        private string endocrine = "";
+
+        #endregion
+
+
         public addEditPeForm()
         {
             InitializeComponent();
         }
 
-        private void textBox7_TextChanged(object sender, EventArgs e)
+        
+        private void cbCheckAllLeft_Click(object sender, EventArgs e)
         {
-
+            if (cbCheckAllLeft.Checked)
+            {
+                checkAllLeftInPE();
+             
+            }
+            else
+            {
+                checkAllNotLeft();
+            }
         }
 
-        private void txtEyes_TextChanged(object sender, EventArgs e)
-        {
 
+        private void cbCheckAllRight_Click(object sender, EventArgs e)
+        {
+            if (cbCheckAllRight.Checked)
+            {
+                checkAllRight();
+            }
+            else
+            {
+                checkNotALlRight();
+            }
         }
 
-        private void txtGeneral_TextChanged(object sender, EventArgs e)
+
+        #region CheckRightAllEvent
+
+        private void checkNotALlRight()
         {
 
+            cbCardio.Checked = false;
+            cbPulmo.Checked = false;
+            cbBreast.Checked = false;
+            cbSkin.Checked = false;
+            cbGastro.Checked = false;
+            cbGen.Checked = false;
+            cbGyna.Checked = false;
+            cbEndo.Checked = false;
+
+            txtCarido.Enabled = true;
+            txtPulmop.Enabled = true;
+            txtBreast.Enabled = true;
+            txtSkin.Enabled = true;
+            txtGastro.Enabled = true;
+            txtGen.Enabled = true;
+            txtGyna.Enabled = true;
+            txtEndo.Enabled = true;
         }
 
-        private void textBox10_TextChanged(object sender, EventArgs e)
+        private void checkAllRight()
         {
+            txtCarido.Text = "";
+            txtPulmop.Text = "";
+            txtBreast.Text = "";
+            txtSkin.Text = "";
+            txtGastro.Text = "";
+            txtGen.Text = "";
+            txtGyna.Text = "";
+            txtEndo.Text = "";
 
+            cbCardio.Checked = true;
+            cbPulmo.Checked = true;
+            cbBreast.Checked = true;
+            cbSkin.Checked = true;
+            cbGastro.Checked = true;
+            cbGen.Checked = true;
+            cbGyna.Checked = true;
+            cbEndo.Checked = true;
+
+            txtCarido.Enabled = false;
+            txtPulmop.Enabled = false;
+            txtBreast.Enabled = false;
+            txtSkin.Enabled = false;
+            txtGastro.Enabled = false;
+            txtGen.Enabled = false;
+            txtGyna.Enabled = false;
+            txtEndo.Enabled = false;
         }
 
-        private void label11_Click(object sender, EventArgs e)
+        #endregion
+
+
+        #region CheckAllLeftEvent
+        private void checkAllNotLeft()
         {
 
+
+
+
+
+            //cb
+            cbGeneral.Checked = false;
+            cbEars.Checked = false;
+            cbEyes.Checked = false;
+            cbNose.Checked = false;
+            cbMouth.Checked = false;
+            cbThroat.Checked = false;
+            cbHema.Checked = false;
+            cbNeuro.Checked = false;
+            //cb
+            txtGeneral.Enabled = true;
+            txtEars.Enabled = true;
+            txtEyes.Enabled = true;
+            txtNose.Enabled = true;
+            txtThroat.Enabled = true;
+            panelMouth.Enabled = true;
+            txtHema.Enabled = true;
+            txtNeuro.Enabled = true;
+
+
+            //cbMO
         }
 
-        private void textBox15_TextChanged(object sender, EventArgs e)
+
+        private void checkAllLeftInPE()
         {
 
+
+            //Txt
+            txtGeneral.Text = "";
+            txtEars.Text = "";
+            txtEyes.Text = "";
+            txtNose.Text = "";
+            txtMouth.Text = "";
+            txtThroat.Text = "";
+            txtHema.Text = "";
+            txtNeuro.Text = "";
+            //txt
+
+
+            //cb
+            cbGeneral.Checked = true;
+            cbEars.Checked = true;
+            cbEyes.Checked = true;
+            cbNose.Checked = true;
+            cbMouth.Checked = true;
+            cbThroat.Checked = true;
+            cbHema.Checked = true;
+            cbNeuro.Checked = true;
+            //cb
+            txtGeneral.Enabled = false;
+            txtEars.Enabled = false;
+            txtEyes.Enabled = false;
+            txtNose.Enabled = false;
+            txtThroat.Enabled = false;
+            panelMouth.Enabled = false;
+            txtHema.Enabled = false;
+            txtNeuro.Enabled = false;
+
+
+            //cbMO
+        }
+        #endregion
+
+
+
+        private void cbGeneral_Click(object sender, EventArgs e)
+        {
+            if (cbGeneral.Checked)
+            {
+                txtGeneral.Enabled = false;
+                txtGeneral.Text = "";
+                general = "Normal";
+            }
+            else
+            {
+                txtGeneral.Enabled = true;
+                general = "";
+            }
         }
 
-        private void txtNeuro_TextChanged(object sender, EventArgs e)
+        private void cbEyes_Click(object sender, EventArgs e)
         {
-
+            if (cbEyes.Checked)
+            {
+                txtEyes.Enabled = false;
+                txtEyes.Text = "";
+                eyes = "Normal";
+            }
+            else
+            {
+                eyes = "";
+     
+                txtEyes.Enabled = true;
+            }
         }
 
-        private void txtHema_TextChanged(object sender, EventArgs e)
+        private void cbEars_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void txtPulmop_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox18_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox13_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox11_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox31_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox27_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
+            if (cbEars.Checked)
+            {
+                txtEars.Enabled = false;
+                txtEars.Text = "";
+                ears = "Normal";
+            }
+            else
+            {
+                txtEars.Enabled = true;
+                ears = "";
+            }
         }
     }
 }
