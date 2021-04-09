@@ -795,6 +795,7 @@
             this.cbEndo.TabIndex = 2;
             this.cbEndo.Text = "Normal";
             this.cbEndo.UseVisualStyleBackColor = true;
+            this.cbEndo.Click += new System.EventHandler(this.cbEndo_Click);
             // 
             // label21
             // 
@@ -836,6 +837,7 @@
             this.cbGyna.TabIndex = 2;
             this.cbGyna.Text = "Normal";
             this.cbGyna.UseVisualStyleBackColor = true;
+            this.cbGyna.Click += new System.EventHandler(this.cbGyna_Click);
             // 
             // label20
             // 
@@ -877,6 +879,7 @@
             this.cbGen.TabIndex = 2;
             this.cbGen.Text = "Normal";
             this.cbGen.UseVisualStyleBackColor = true;
+            this.cbGen.Click += new System.EventHandler(this.cbGen_Click);
             // 
             // label19
             // 
@@ -918,6 +921,7 @@
             this.cbGastro.TabIndex = 2;
             this.cbGastro.Text = "Normal";
             this.cbGastro.UseVisualStyleBackColor = true;
+            this.cbGastro.Click += new System.EventHandler(this.cbGastro_Click);
             // 
             // label4
             // 
@@ -959,6 +963,7 @@
             this.cbSkin.TabIndex = 2;
             this.cbSkin.Text = "Normal";
             this.cbSkin.UseVisualStyleBackColor = true;
+            this.cbSkin.Click += new System.EventHandler(this.cbSkin_Click);
             // 
             // label6
             // 
@@ -1000,6 +1005,7 @@
             this.cbBreast.TabIndex = 2;
             this.cbBreast.Text = "Normal";
             this.cbBreast.UseVisualStyleBackColor = true;
+            this.cbBreast.Click += new System.EventHandler(this.cbBreast_Click);
             // 
             // label14
             // 
@@ -1031,6 +1037,7 @@
             this.cbPulmo.TabIndex = 2;
             this.cbPulmo.Text = "Normal";
             this.cbPulmo.UseVisualStyleBackColor = true;
+            this.cbPulmo.Click += new System.EventHandler(this.cbPulmo_Click);
             // 
             // label15
             // 
@@ -1072,6 +1079,7 @@
             this.cbCardio.TabIndex = 2;
             this.cbCardio.Text = "Normal";
             this.cbCardio.UseVisualStyleBackColor = true;
+            this.cbCardio.Click += new System.EventHandler(this.cbCardio_Click);
             // 
             // label16
             // 
@@ -1203,6 +1211,7 @@
             this.cbNeuro.TabIndex = 2;
             this.cbNeuro.Text = "Normal";
             this.cbNeuro.UseVisualStyleBackColor = true;
+            this.cbNeuro.Click += new System.EventHandler(this.cbNeuro_Click);
             // 
             // label30
             // 
@@ -1244,6 +1253,7 @@
             this.cbHema.TabIndex = 2;
             this.cbHema.Text = "Normal";
             this.cbHema.UseVisualStyleBackColor = true;
+            this.cbHema.Click += new System.EventHandler(this.cbHema_Click);
             // 
             // label13
             // 
@@ -1285,6 +1295,7 @@
             this.cbThroat.TabIndex = 2;
             this.cbThroat.Text = "Normal";
             this.cbThroat.UseVisualStyleBackColor = true;
+            this.cbThroat.Click += new System.EventHandler(this.cbThroat_Click);
             // 
             // label12
             // 
@@ -1326,6 +1337,7 @@
             this.cbMouth.TabIndex = 2;
             this.cbMouth.Text = "Normal";
             this.cbMouth.UseVisualStyleBackColor = true;
+            this.cbMouth.Click += new System.EventHandler(this.cbMouth_Click);
             // 
             // label11
             // 
@@ -1367,6 +1379,7 @@
             this.cbNose.TabIndex = 2;
             this.cbNose.Text = "Normal";
             this.cbNose.UseVisualStyleBackColor = true;
+            this.cbNose.Click += new System.EventHandler(this.cbNose_Click);
             // 
             // label9
             // 

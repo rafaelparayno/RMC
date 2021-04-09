@@ -42,13 +42,13 @@ namespace RMC.Doctor.PanelDoctor.Diag
             InitializeComponent();
         }
 
-        
+
         private void cbCheckAllLeft_Click(object sender, EventArgs e)
         {
             if (cbCheckAllLeft.Checked)
             {
                 checkAllLeftInPE();
-             
+
             }
             else
             {
@@ -126,7 +126,6 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
         #endregion
 
-
         #region CheckAllLeftEvent
         private void checkAllNotLeft()
         {
@@ -190,7 +189,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
             txtEyes.Enabled = false;
             txtNose.Enabled = false;
             txtThroat.Enabled = false;
-            panelMouth.Enabled = false;
+            txtMouth.Enabled = false;
             txtHema.Enabled = false;
             txtNeuro.Enabled = false;
 
@@ -199,7 +198,13 @@ namespace RMC.Doctor.PanelDoctor.Diag
         }
         #endregion
 
-
+        #region CbsLefts
+        private void cbcheckAllLeftTrigger()
+        {
+            cbCheckAllLeft.Checked = cbGeneral.Checked && cbEyes.Checked && cbEars.Checked &&
+                                   cbNose.Checked && cbMouth.Checked && cbThroat.Checked &&
+                                   cbHema.Checked && cbNeuro.Checked;
+        }
 
         private void cbGeneral_Click(object sender, EventArgs e)
         {
@@ -214,6 +219,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
                 txtGeneral.Enabled = true;
                 general = "";
             }
+            cbcheckAllLeftTrigger();
         }
 
         private void cbEyes_Click(object sender, EventArgs e)
@@ -227,9 +233,10 @@ namespace RMC.Doctor.PanelDoctor.Diag
             else
             {
                 eyes = "";
-     
+
                 txtEyes.Enabled = true;
             }
+            cbcheckAllLeftTrigger();
         }
 
         private void cbEars_Click(object sender, EventArgs e)
@@ -245,6 +252,232 @@ namespace RMC.Doctor.PanelDoctor.Diag
                 txtEars.Enabled = true;
                 ears = "";
             }
+            cbcheckAllLeftTrigger();
         }
+
+        private void cbNose_Click(object sender, EventArgs e)
+        {
+            if (cbNose.Checked)
+            {
+                txtNose.Text = "";
+                txtNose.Enabled = false;
+                nose = "Normal";
+            }
+            else
+            {
+                txtNose.Enabled = true;
+                nose = "";
+            }
+            cbcheckAllLeftTrigger();
+        }
+
+        private void cbMouth_Click(object sender, EventArgs e)
+        {
+            if (cbMouth.Checked)
+            {
+                txtMouth.Text = "";
+                txtMouth.Enabled = false;
+                mouth = "Normal";
+            }
+            else
+            {
+                txtMouth.Enabled = true;
+                mouth = "";
+            }
+            cbcheckAllLeftTrigger();
+        }
+
+        private void cbThroat_Click(object sender, EventArgs e)
+        {
+            if (cbThroat.Checked)
+            {
+                txtThroat.Text = "";
+                throat = "Normal";
+                txtThroat.Enabled = false;
+            }
+            else
+            {
+                throat = "";
+                txtThroat.Enabled = true;
+            }
+            cbcheckAllLeftTrigger();
+        }
+
+        private void cbHema_Click(object sender, EventArgs e)
+        {
+            if (cbHema.Checked)
+            {
+                txtHema.Text = "";
+                txtHema.Enabled = false;
+
+                hematologic = "Normal";
+            }
+            else
+            {
+                txtHema.Enabled = true;
+
+                hematologic = "";
+            }
+            cbcheckAllLeftTrigger();
+        }
+
+        private void cbNeuro_Click(object sender, EventArgs e)
+        {
+            if (cbNeuro.Checked)
+            {
+                txtNeuro.Text = "";
+                txtNeuro.Enabled = false;
+                neurological = "Normal";
+            }
+            else
+            {
+                txtNeuro.Enabled = true;
+                neurological = "";
+            }
+            cbcheckAllLeftTrigger();
+        }
+
+        #endregion
+
+        #region CbsRight
+        private void cbcheckAllRightTrigger()
+        {
+            cbCheckAllRight.Checked = cbCardio.Checked && cbPulmo.Checked && cbBreast.Checked &&
+                cbSkin.Checked && cbGastro.Checked && cbGen.Checked && cbGyna.Checked && cbEndo.Checked;
+        }
+
+        private void cbCardio_Click(object sender, EventArgs e)
+        {
+            if (cbCardio.Checked)
+            {
+                txtCarido.Text = "";
+                txtCarido.Enabled = false;
+                cardio = "Normal";
+            }
+            else
+            {
+                txtCarido.Enabled = true;
+                cardio = "";
+            }
+            cbcheckAllRightTrigger();
+        }
+
+        private void cbPulmo_Click(object sender, EventArgs e)
+        {
+            if (cbPulmo.Checked)
+            {
+                txtPulmop.Text = "";
+                txtPulmop.Enabled = false;
+                cardio = "Normal";
+            }
+            else
+            {
+                txtPulmop.Enabled = true;
+                pulmonary = "";
+            }
+            cbcheckAllRightTrigger();
+        }
+
+        private void cbBreast_Click(object sender, EventArgs e)
+        {
+            if (cbBreast.Checked)
+            {
+                txtBreast.Text = "";
+                txtBreast.Enabled = false;
+                breast = "Normal";
+            }
+            else
+            {
+                txtBreast.Enabled = true;
+                breast = "";
+            }
+            cbcheckAllRightTrigger();
+        }
+
+        private void cbSkin_Click(object sender, EventArgs e)
+        {
+            if (cbSkin.Checked)
+            {
+                txtSkin.Text = "";
+                txtSkin.Enabled = false;
+                skin = "Normal";
+            }
+            else
+            {
+                txtSkin.Enabled = true;
+                skin = "";
+            }
+            cbcheckAllRightTrigger();
+        }
+
+        private void cbEndo_Click(object sender, EventArgs e)
+        {
+            if (cbEndo.Checked)
+            {
+                txtEndo.Text = "";
+                txtEndo.Enabled = false;
+                endocrine = "Normal";
+            }
+            else
+            {
+                txtEndo.Enabled = true;
+                endocrine = "";
+            }
+            cbcheckAllRightTrigger();
+        }
+
+        private void cbGyna_Click(object sender, EventArgs e)
+        {
+            if (cbGyna.Checked)
+            {
+                txtGyna.Text = "";
+                txtGyna.Enabled = false;
+                gyna = "Normal";
+            }
+            else
+            {
+                txtGyna.Enabled = true;
+                gyna = "";
+            }
+            cbcheckAllRightTrigger();
+        }
+
+        private void cbGen_Click(object sender, EventArgs e)
+        {
+            if (cbCardio.Checked)
+            {
+                txtGen.Text = "";
+                txtGen.Enabled = false;
+                geni = "Normal";
+            }
+            else
+            {
+                txtGen.Enabled = true;
+                geni = "";
+            }
+            cbcheckAllRightTrigger();
+        }
+
+        private void cbGastro_Click(object sender, EventArgs e)
+        {
+            if (cbGastro.Checked)
+            {
+                txtGastro.Text = "";
+                txtGastro.Enabled = false;
+                gastro = "Normal";
+            }
+            else
+            {
+                txtGastro.Enabled = true;
+                gastro = "";
+            }
+            cbcheckAllRightTrigger();
+        }
+
+        #endregion
+
+
     }
+
 }
+
