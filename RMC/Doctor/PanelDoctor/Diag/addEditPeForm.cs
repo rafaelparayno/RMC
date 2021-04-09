@@ -17,7 +17,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
         #region variables
 
-        private string general = "";
+/*        private string general = "";
         private string eyes = "";
         private string ears = "";
         private string nose = "";
@@ -33,7 +33,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
         private string geni = "";
         private string gyna = "";
         private string endocrine = "";
-
+*/
         #endregion
 
 
@@ -75,6 +75,15 @@ namespace RMC.Doctor.PanelDoctor.Diag
         private void checkNotALlRight()
         {
 
+            txtCarido.Text = "";
+            txtPulmop.Text = "";
+            txtBreast.Text = "";
+            txtSkin.Text = "";
+            txtGastro.Text = "";
+            txtGen.Text = "";
+            txtGyna.Text = "";
+            txtEndo.Text = "";
+
             cbCardio.Checked = false;
             cbPulmo.Checked = false;
             cbBreast.Checked = false;
@@ -96,14 +105,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
         private void checkAllRight()
         {
-            txtCarido.Text = "";
-            txtPulmop.Text = "";
-            txtBreast.Text = "";
-            txtSkin.Text = "";
-            txtGastro.Text = "";
-            txtGen.Text = "";
-            txtGyna.Text = "";
-            txtEndo.Text = "";
+            txtCarido.Text = "Normal";
+            txtPulmop.Text = "Normal";
+            txtBreast.Text = "Normal";
+            txtSkin.Text = "Normal";
+            txtGastro.Text = "Normal";
+            txtGen.Text = "Normal";
+            txtGyna.Text = "Normal";
+            txtEndo.Text = "Normal";
 
             cbCardio.Checked = true;
             cbPulmo.Checked = true;
@@ -131,7 +140,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
 
 
-
+            txtGeneral.Text = "";
+            txtEars.Text = "";
+            txtEyes.Text = "";
+            txtNose.Text = "";
+            txtMouth.Text = "";
+            txtThroat.Text = "";
+            txtHema.Text = "";
+            txtNeuro.Text = "";
 
 
             //cb
@@ -163,14 +179,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
 
             //Txt
-            txtGeneral.Text = "";
-            txtEars.Text = "";
-            txtEyes.Text = "";
-            txtNose.Text = "";
-            txtMouth.Text = "";
-            txtThroat.Text = "";
-            txtHema.Text = "";
-            txtNeuro.Text = "";
+            txtGeneral.Text = "Normal";
+            txtEars.Text = "Normal";
+            txtEyes.Text = "Normal";
+            txtNose.Text = "Normal";
+            txtMouth.Text = "Normal";
+            txtThroat.Text = "Normal";
+            txtHema.Text = "Normal";
+            txtNeuro.Text = "Normal";
             //txt
 
 
@@ -211,13 +227,13 @@ namespace RMC.Doctor.PanelDoctor.Diag
             if (cbGeneral.Checked)
             {
                 txtGeneral.Enabled = false;
-                txtGeneral.Text = "";
-                general = "Normal";
+                txtGeneral.Text = "Normal";
+            
             }
             else
             {
                 txtGeneral.Enabled = true;
-                general = "";
+                txtGeneral.Text = "";
             }
             cbcheckAllLeftTrigger();
         }
@@ -227,12 +243,12 @@ namespace RMC.Doctor.PanelDoctor.Diag
             if (cbEyes.Checked)
             {
                 txtEyes.Enabled = false;
-                txtEyes.Text = "";
-                eyes = "Normal";
+                txtEyes.Text = "Normal";
+               
             }
             else
             {
-                eyes = "";
+                txtEyes.Text = "";
 
                 txtEyes.Enabled = true;
             }
@@ -244,13 +260,13 @@ namespace RMC.Doctor.PanelDoctor.Diag
             if (cbEars.Checked)
             {
                 txtEars.Enabled = false;
-                txtEars.Text = "";
-                ears = "Normal";
+                txtEars.Text = "Normal";
+               
             }
             else
             {
                 txtEars.Enabled = true;
-                ears = "";
+                txtEars.Text = "";
             }
             cbcheckAllLeftTrigger();
         }
@@ -259,14 +275,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbNose.Checked)
             {
-                txtNose.Text = "";
+                txtNose.Text = "Normal";
                 txtNose.Enabled = false;
-                nose = "Normal";
+             
             }
             else
             {
                 txtNose.Enabled = true;
-                nose = "";
+                txtNose.Text = "";
             }
             cbcheckAllLeftTrigger();
         }
@@ -275,14 +291,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbMouth.Checked)
             {
-                txtMouth.Text = "";
+                txtMouth.Text = "Normal";
                 txtMouth.Enabled = false;
-                mouth = "Normal";
+               
             }
             else
             {
                 txtMouth.Enabled = true;
-                mouth = "";
+                txtMouth.Text = "";
             }
             cbcheckAllLeftTrigger();
         }
@@ -291,13 +307,13 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbThroat.Checked)
             {
-                txtThroat.Text = "";
-                throat = "Normal";
+                txtThroat.Text = "Normal";
+              
                 txtThroat.Enabled = false;
             }
             else
             {
-                throat = "";
+                txtThroat.Text = "";
                 txtThroat.Enabled = true;
             }
             cbcheckAllLeftTrigger();
@@ -307,16 +323,16 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbHema.Checked)
             {
-                txtHema.Text = "";
+                txtHema.Text = "Normal";
                 txtHema.Enabled = false;
 
-                hematologic = "Normal";
+            
             }
             else
             {
                 txtHema.Enabled = true;
 
-                hematologic = "";
+                txtHema.Text = "";
             }
             cbcheckAllLeftTrigger();
         }
@@ -325,14 +341,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbNeuro.Checked)
             {
-                txtNeuro.Text = "";
+                txtNeuro.Text = "Normal";
                 txtNeuro.Enabled = false;
-                neurological = "Normal";
+         
             }
             else
             {
                 txtNeuro.Enabled = true;
-                neurological = "";
+                txtNeuro.Text = "";
             }
             cbcheckAllLeftTrigger();
         }
@@ -350,14 +366,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbCardio.Checked)
             {
-                txtCarido.Text = "";
+                txtCarido.Text = "Normal";
                 txtCarido.Enabled = false;
-                cardio = "Normal";
+                
             }
             else
             {
                 txtCarido.Enabled = true;
-                cardio = "";
+                txtCarido.Text = "";
             }
             cbcheckAllRightTrigger();
         }
@@ -366,14 +382,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbPulmo.Checked)
             {
-                txtPulmop.Text = "";
+                txtPulmop.Text = "Normal";
                 txtPulmop.Enabled = false;
-                cardio = "Normal";
+         
             }
             else
             {
                 txtPulmop.Enabled = true;
-                pulmonary = "";
+                txtPulmop.Text = "";
             }
             cbcheckAllRightTrigger();
         }
@@ -382,14 +398,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbBreast.Checked)
             {
-                txtBreast.Text = "";
+                txtBreast.Text = "Normal";
                 txtBreast.Enabled = false;
-                breast = "Normal";
+           
             }
             else
             {
                 txtBreast.Enabled = true;
-                breast = "";
+                txtBreast.Text = "";
             }
             cbcheckAllRightTrigger();
         }
@@ -398,14 +414,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbSkin.Checked)
             {
-                txtSkin.Text = "";
+                txtSkin.Text = "Normal";
                 txtSkin.Enabled = false;
-                skin = "Normal";
+          
             }
             else
             {
                 txtSkin.Enabled = true;
-                skin = "";
+                txtSkin.Text = "";
             }
             cbcheckAllRightTrigger();
         }
@@ -414,14 +430,14 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbEndo.Checked)
             {
-                txtEndo.Text = "";
+                txtEndo.Text = "Normal";
                 txtEndo.Enabled = false;
-                endocrine = "Normal";
+          
             }
             else
             {
                 txtEndo.Enabled = true;
-                endocrine = "";
+                txtEndo.Text = "";
             }
             cbcheckAllRightTrigger();
         }
@@ -430,30 +446,30 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbGyna.Checked)
             {
-                txtGyna.Text = "";
+                txtGyna.Text = "Normal";
                 txtGyna.Enabled = false;
-                gyna = "Normal";
+              
             }
             else
             {
                 txtGyna.Enabled = true;
-                gyna = "";
+                txtGyna.Text = "";
             }
             cbcheckAllRightTrigger();
         }
 
         private void cbGen_Click(object sender, EventArgs e)
         {
-            if (cbCardio.Checked)
+            if (cbGen.Checked)
             {
-                txtGen.Text = "";
+                txtGen.Text = "Normal";
                 txtGen.Enabled = false;
-                geni = "Normal";
+          
             }
             else
             {
                 txtGen.Enabled = true;
-                geni = "";
+                txtGen.Text = "";
             }
             cbcheckAllRightTrigger();
         }
@@ -462,21 +478,192 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             if (cbGastro.Checked)
             {
-                txtGastro.Text = "";
+                txtGastro.Text = "Normal";
                 txtGastro.Enabled = false;
-                gastro = "Normal";
+              
             }
             else
             {
                 txtGastro.Enabled = true;
-                gastro = "";
+                txtGastro.Text = "";
             }
             cbcheckAllRightTrigger();
         }
 
+
         #endregion
 
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void cbCheckAllDiag_Click(object sender, EventArgs e)
+        {
+            if (cbCheckAllDiag.Checked)
+            {
+                CheckAllDiag();
+            }
+            else
+            {
+                CheckNotAllDiag();
+            }
+        }
+
+        private void CheckAllDiag()
+        {
+            cbXray.Checked = true;
+            cbCbc.Checked = true;
+            cbUrinalysis.Checked = true;
+            cbStool.Checked = true;
+            cbHepa.Checked = true;
+            cbDrug.Checked = true;
+            cbEcg.Checked = true;
+            radioButton3.Checked = true;
+
+
+            txtXray.Enabled = false;
+            txtCbc.Enabled = false;
+            txtUri.Enabled = false;
+            txtStool.Enabled = false;
+            txtHepa.Enabled = false;
+            txtDrug.Enabled = false;
+            txtEcg.Enabled = false;
+
+        }
+
+        private void CheckNotAllDiag()
+        {
+            cbXray.Checked = false;
+            cbCbc.Checked = false;
+            cbUrinalysis.Checked = false;
+            cbStool.Checked = false;
+            cbHepa.Checked = false;
+            cbDrug.Checked = false;
+            cbEcg.Checked = false;
+       
+
+
+            txtXray.Enabled = true;
+            txtCbc.Enabled = true;
+            txtUri.Enabled = true;
+            txtStool.Enabled = true;
+            txtHepa.Enabled = true;
+            txtDrug.Enabled = true;
+            txtEcg.Enabled = true;
+
+        }
+
+        private void checkAllDiagTrigger()
+        {
+            cbCheckAllDiag.Checked = cbXray.Checked && cbCbc.Checked && cbUrinalysis.Checked &&
+                cbStool.Checked && cbStool.Checked && cbHepa.Checked && cbDrug.Checked && cbEcg.Checked;
+        }
+
+        private void cbXray_Click(object sender, EventArgs e)
+        {
+            if (cbXray.Checked)
+            {
+                txtXray.Enabled = false;
+                txtXray.Text = "Normal";
+            }
+            else
+            {
+                txtXray.Enabled = true;
+                txtXray.Text = "";
+            }
+            checkAllDiagTrigger();
+        }
+
+        private void cbCbc_Click(object sender, EventArgs e)
+        {
+            if (cbCbc.Checked)
+            {
+                txtCbc.Enabled = false;
+                txtCbc.Text = "Normal";
+            }
+            else
+            {
+                txtCbc.Enabled = true;
+                txtCbc.Text = "";
+            }
+            checkAllDiagTrigger();
+        }
+
+        private void cbUrinalysis_Click(object sender, EventArgs e)
+        {
+            if (cbUrinalysis.Checked)
+            {
+                txtUri.Enabled = false;
+                txtUri.Text = "Normal";
+            }
+            else
+            {
+                txtUri.Enabled = true;
+                txtUri.Text = "";
+            }
+            checkAllDiagTrigger();
+        }
+
+        private void cbStool_Click(object sender, EventArgs e)
+        {
+            if (cbStool.Checked)
+            {
+                txtStool.Enabled = false;
+                txtStool.Text = "Normal";
+            }
+            else
+            {
+                txtStool.Enabled = true;
+                txtStool.Text = "";
+            }
+            checkAllDiagTrigger();
+        }
+
+        private void cbHepa_Click(object sender, EventArgs e)
+        {
+            if (cbHepa.Checked)
+            {
+                txtHepa.Enabled = false;
+                txtHepa.Text = "Normal";
+            }
+            else
+            {
+                txtHepa.Enabled = true;
+                txtHepa.Text = "";
+            }
+            checkAllDiagTrigger();
+        }
+
+        private void cbDrug_Click(object sender, EventArgs e)
+        {
+            if (cbDrug.Checked)
+            {
+                txtDrug.Enabled = false;
+                txtDrug.Text = "Normal";
+            }
+            else
+            {
+                txtDrug.Enabled = true;
+                txtDrug.Text = "";
+            }
+            checkAllDiagTrigger();
+        }
+
+        private void cbEcg_Click(object sender, EventArgs e)
+        {
+            if (cbEcg.Checked)
+            {
+                txtEcg.Enabled = false;
+                txtEcg.Text = "Normal";
+            }
+            else
+            {
+                txtEcg.Enabled = true;
+                txtEcg.Text = "";
+            }
+            checkAllDiagTrigger();
+        }
     }
 
 }

@@ -55,13 +55,11 @@
             this.label24 = new System.Windows.Forms.Label();
             this.txtStool = new System.Windows.Forms.TextBox();
             this.panel33 = new System.Windows.Forms.Panel();
-            this.cbPt = new System.Windows.Forms.CheckBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.txtPt = new System.Windows.Forms.TextBox();
             this.panel34 = new System.Windows.Forms.Panel();
             this.cbUrinalysis = new System.Windows.Forms.CheckBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.cbUri = new System.Windows.Forms.TextBox();
+            this.txtUri = new System.Windows.Forms.TextBox();
             this.panel35 = new System.Windows.Forms.Panel();
             this.cbCbc = new System.Windows.Forms.CheckBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -188,6 +186,10 @@
             this.label43 = new System.Windows.Forms.Label();
             this.textBox42 = new System.Windows.Forms.TextBox();
             this.txtBreast = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.tabPage3.SuspendLayout();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
@@ -239,6 +241,7 @@
             this.groupBox1.SuspendLayout();
             this.panel45.SuspendLayout();
             this.panel46.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage3
@@ -346,6 +349,7 @@
             this.cbEcg.TabIndex = 2;
             this.cbEcg.Text = "Normal";
             this.cbEcg.UseVisualStyleBackColor = true;
+            this.cbEcg.Click += new System.EventHandler(this.cbEcg_Click);
             // 
             // label31
             // 
@@ -416,6 +420,7 @@
             this.cbDrug.TabIndex = 2;
             this.cbDrug.Text = "Normal";
             this.cbDrug.UseVisualStyleBackColor = true;
+            this.cbDrug.Click += new System.EventHandler(this.cbDrug_Click);
             // 
             // label22
             // 
@@ -457,6 +462,7 @@
             this.cbHepa.TabIndex = 2;
             this.cbHepa.Text = "Normal";
             this.cbHepa.UseVisualStyleBackColor = true;
+            this.cbHepa.Click += new System.EventHandler(this.cbHepa_Click);
             // 
             // label23
             // 
@@ -498,6 +504,7 @@
             this.cbStool.TabIndex = 2;
             this.cbStool.Text = "Normal";
             this.cbStool.UseVisualStyleBackColor = true;
+            this.cbStool.Click += new System.EventHandler(this.cbStool_Click);
             // 
             // label24
             // 
@@ -521,50 +528,29 @@
             // panel33
             // 
             this.panel33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel33.Controls.Add(this.cbPt);
+            this.panel33.Controls.Add(this.groupBox2);
             this.panel33.Controls.Add(this.label25);
-            this.panel33.Controls.Add(this.txtPt);
             this.panel33.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel33.Location = new System.Drawing.Point(0, 375);
             this.panel33.Name = "panel33";
             this.panel33.Size = new System.Drawing.Size(944, 108);
             this.panel33.TabIndex = 10;
             // 
-            // cbPt
-            // 
-            this.cbPt.AutoSize = true;
-            this.cbPt.Location = new System.Drawing.Point(350, 21);
-            this.cbPt.Name = "cbPt";
-            this.cbPt.Size = new System.Drawing.Size(80, 23);
-            this.cbPt.TabIndex = 2;
-            this.cbPt.Text = "Normal";
-            this.cbPt.UseVisualStyleBackColor = true;
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(12, 25);
+            this.label25.Location = new System.Drawing.Point(12, 18);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(123, 19);
             this.label25.TabIndex = 0;
             this.label25.Text = "Pregnancy Test:";
-            // 
-            // txtPt
-            // 
-            this.txtPt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPt.Location = new System.Drawing.Point(15, 63);
-            this.txtPt.Name = "txtPt";
-            this.txtPt.Size = new System.Drawing.Size(900, 27);
-            this.txtPt.TabIndex = 1;
             // 
             // panel34
             // 
             this.panel34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel34.Controls.Add(this.cbUrinalysis);
             this.panel34.Controls.Add(this.label26);
-            this.panel34.Controls.Add(this.cbUri);
+            this.panel34.Controls.Add(this.txtUri);
             this.panel34.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel34.Location = new System.Drawing.Point(0, 267);
             this.panel34.Name = "panel34";
@@ -580,6 +566,7 @@
             this.cbUrinalysis.TabIndex = 2;
             this.cbUrinalysis.Text = "Normal";
             this.cbUrinalysis.UseVisualStyleBackColor = true;
+            this.cbUrinalysis.Click += new System.EventHandler(this.cbUrinalysis_Click);
             // 
             // label26
             // 
@@ -590,15 +577,15 @@
             this.label26.TabIndex = 0;
             this.label26.Text = "Urinalysis";
             // 
-            // cbUri
+            // txtUri
             // 
-            this.cbUri.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtUri.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbUri.Location = new System.Drawing.Point(15, 63);
-            this.cbUri.Name = "cbUri";
-            this.cbUri.Size = new System.Drawing.Size(900, 27);
-            this.cbUri.TabIndex = 1;
+            this.txtUri.Location = new System.Drawing.Point(15, 63);
+            this.txtUri.Name = "txtUri";
+            this.txtUri.Size = new System.Drawing.Size(900, 27);
+            this.txtUri.TabIndex = 1;
             // 
             // panel35
             // 
@@ -621,6 +608,7 @@
             this.cbCbc.TabIndex = 2;
             this.cbCbc.Text = "Normal";
             this.cbCbc.UseVisualStyleBackColor = true;
+            this.cbCbc.Click += new System.EventHandler(this.cbCbc_Click);
             // 
             // label27
             // 
@@ -662,6 +650,7 @@
             this.cbXray.TabIndex = 2;
             this.cbXray.Text = "Normal";
             this.cbXray.UseVisualStyleBackColor = true;
+            this.cbXray.Click += new System.EventHandler(this.cbXray_Click);
             // 
             // label28
             // 
@@ -701,6 +690,7 @@
             this.cbCheckAllDiag.TabIndex = 3;
             this.cbCheckAllDiag.Text = "Check All";
             this.cbCheckAllDiag.UseVisualStyleBackColor = true;
+            this.cbCheckAllDiag.Click += new System.EventHandler(this.cbCheckAllDiag_Click);
             // 
             // checkBox29
             // 
@@ -1955,6 +1945,51 @@
             this.txtBreast.Size = new System.Drawing.Size(410, 27);
             this.txtBreast.TabIndex = 3;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.radioButton3);
+            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Location = new System.Drawing.Point(16, 40);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(899, 63);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(241, 26);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(81, 23);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.Text = "Positive";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(115, 26);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(88, 23);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "Negative";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Checked = true;
+            this.radioButton3.Location = new System.Drawing.Point(22, 26);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(52, 23);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "N/a";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
             // addEditPeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2058,6 +2093,8 @@
             this.panel45.PerformLayout();
             this.panel46.ResumeLayout(false);
             this.panel46.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2091,13 +2128,11 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox txtStool;
         private System.Windows.Forms.Panel panel33;
-        private System.Windows.Forms.CheckBox cbPt;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox txtPt;
         private System.Windows.Forms.Panel panel34;
         private System.Windows.Forms.CheckBox cbUrinalysis;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox cbUri;
+        private System.Windows.Forms.TextBox txtUri;
         private System.Windows.Forms.Panel panel35;
         private System.Windows.Forms.CheckBox cbCbc;
         private System.Windows.Forms.Label label27;
@@ -2224,5 +2259,9 @@
         private FontAwesome.Sharp.IconButton btnView;
         private FontAwesome.Sharp.IconButton btnSave;
         private System.Windows.Forms.TextBox txtBreast;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
