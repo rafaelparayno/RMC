@@ -738,7 +738,11 @@ namespace RMC.Doctor.PanelDoctor.Diag
                 
                 patdetails = await patientDetailsController.getPatientId(patid);
                 companyName = await doctorQueueController.getCompanyName(qno);
-                patientVModel = await patientVController.getDetailsID(patid);
+
+                DateTime today = DateTime.Now;
+                patientVModel = await patientVController.getDetailsidDate(patid,today.ToString("yyyy-MM-dd"));
+                MessageBox.Show(patientVModel.bmiLabel);
+            
             }
         }
 
@@ -776,7 +780,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
             values.Add("idNo", "3");
             values.Add("civilStatus", patdetails.civil_status);
             values.Add("Gender", patdetails.gender);
-            values.Add("bdate", patdetails.birthdate.ToString());
+            values.Add("bdate", patdetails.birthdate.ToString().Split(' ')[0]);
             values.Add("age", patdetails.age.ToString());
             //Personal Info
 
