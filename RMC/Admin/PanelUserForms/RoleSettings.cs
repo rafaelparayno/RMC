@@ -21,15 +21,7 @@ namespace RMC.Admin.PanelUserForms
         List<int> newAccess = new List<int>();
         int roleid = 0;
 
-        private int adminAccess = 1;
-        private int labAccess = 2;
-        private int pharmaAccess = 3;
-        private int receptionAcess = 4;
-        private int doctorAccess = 5;
-        private int inventoryAccess = 6;
-        private int xrayAccess = 7;
-
-        public RoleSettings()
+         public RoleSettings()
         {
             InitializeComponent();
             loadGrid();
@@ -37,7 +29,7 @@ namespace RMC.Admin.PanelUserForms
 
         private void dgRoles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-             roleid = roles.getRoleId(dgRoles.SelectedRows[0].Cells[0].Value.ToString());
+            roleid = roles.getRoleId(dgRoles.SelectedRows[0].Cells[0].Value.ToString());
             currentAccess = access.accesses(roleid);
             newAccess = access.accesses(roleid);
             checkAccess(currentAccess);
@@ -74,113 +66,92 @@ namespace RMC.Admin.PanelUserForms
         private void checkAccess(List<int> access)
         {
             //admin
-            if (access.Contains(adminAccess))
-            {
-                adminAccessCb.Checked = true;
-            }
-            else
-            {
-                adminAccessCb.Checked = false;
-            }
-            //admin
-
-            //lab
-            if (access.Contains(labAccess))
-            {
-                cbLab.Checked = true;
-            }
-            else
-            {
-                cbLab.Checked = false;
-            }
-            //lab
-
-            //Doctor
-            if (access.Contains(doctorAccess))
-            {
-                cbDoctor.Checked = true;
-            }
-            else
-            {
-                cbDoctor.Checked = false;
-            }
-            //Doctor
-
-
-            //Reception
-            if (access.Contains(receptionAcess))
-            {
-                cbReception.Checked = true;
-            }
-            else
-            {
-                cbReception.Checked = false;
-            }
-            //Reception
-
-            //Pharma
-            if (access.Contains(pharmaAccess))
-            {
-                cbPharma.Checked = true;
-            }
-            else
-            {
-                cbPharma.Checked = false;
-            }
-            //Pharma
-
-            if (access.Contains(inventoryAccess))
-            {
-                cbInventory.Checked = true;
-            }
-            else
-            {
-                cbInventory.Checked = false;
-            }
-
-            if (access.Contains(xrayAccess))
-            {
-                cbXray.Checked = true;
-            }
-            else
-            {
-                cbXray.Checked = false;
-            }
-
+            adminAccessCb.Checked = access.Contains(StaticData.accessValues["Admin"]);
+            cbLab.Checked = access.Contains(StaticData.accessValues["labAccess"]);
+            cbDoctor.Checked = access.Contains(StaticData.accessValues["doctorAccess"]);
+            cbReception.Checked = access.Contains(StaticData.accessValues["receptionAcess"]);
+            cbPharma.Checked = access.Contains(StaticData.accessValues["pharmaAccess"]);
+            cbInventory.Checked = access.Contains(StaticData.accessValues["inventoryAccess"]);
+            cbOthers.Checked = access.Contains(StaticData.accessValues["otherAccess"]);
+            cbXray.Checked = access.Contains(StaticData.accessValues["xrayAccess"]);
+            adminCbTriger();
         }
 
-        private void adminAccessCb_CheckedChanged(object sender, EventArgs e)
+      
+
+        private bool removeNotAdmin(int access)
         {
-          
+            return access != 1;
+        }
+
+        private void adminCbTriger()
+        {
+            
+
+            if (adminAccessCb.Checked)
+            {
+                cbDoctor.Enabled = false;
+                cbPharma.Enabled = false;
+                cbOthers.Enabled = false;
+                cbInventory.Enabled = false;
+                cbXray.Enabled = false;
+                cbLab.Enabled = false;
+                cbInventory.Enabled = false;
+                cbReception.Enabled = false;
+
+                cbDoctor.Checked = false;
+                cbPharma.Checked = false;
+                cbOthers.Checked = false;
+                cbInventory.Checked = false;
+                cbXray.Checked = false;
+                cbLab.Checked = false;
+                cbInventory.Checked = false;
+                cbReception.Checked = false;
+               
+            }
+            else
+            {
+                cbDoctor.Enabled = true;
+                cbPharma.Enabled = true;
+                cbOthers.Enabled = true;
+                cbInventory.Enabled = true;
+                cbXray.Enabled = true;
+                cbLab.Enabled = true;
+                cbInventory.Enabled = true;
+                cbReception.Enabled = true;
+
+               
+            }
         }
 
         #region CbEvents
         private void adminAccessCb_Click(object sender, EventArgs e)
         {
-            if (adminAccessCb.Checked == true)
+            if (adminAccessCb.Checked)
             {
-                newAccess.Add(adminAccess);
+                newAccess.RemoveAll(removeNotAdmin);
+                newAccess.Add(StaticData.accessValues["Admin"]);
             }
             else
             {
-
-                int index = newAccess.FindIndex(t => adminAccess == t);
+                int index = newAccess.FindIndex(t => StaticData.accessValues["Admin"] == t);
 
                 if (index > -1)
                     newAccess.RemoveAt(index);
             }
+            adminCbTriger();
         }
 
         private void cbLab_Click(object sender, EventArgs e)
         {
             if (cbLab.Checked == true)
             {
-                newAccess.Add(labAccess);
+                newAccess.Add(StaticData.accessValues["labAccess"]);
             }
             else
             {
 
-                int index = newAccess.FindIndex(t => labAccess == t);
+                int index = newAccess.FindIndex(t => StaticData.accessValues["labAccess"] == t);
 
                 if (index > -1)
                     newAccess.RemoveAt(index);
@@ -191,12 +162,12 @@ namespace RMC.Admin.PanelUserForms
         {
             if (cbPharma.Checked == true)
             {
-                newAccess.Add(pharmaAccess);
+                newAccess.Add(StaticData.accessValues["pharmaAccess"]);
             }
             else
             {
 
-                int index = newAccess.FindIndex(t => pharmaAccess == t);
+                int index = newAccess.FindIndex(t => StaticData.accessValues["pharmaAccess"] == t);
 
                 if(index>-1)
                  newAccess.RemoveAt(index);
@@ -207,12 +178,12 @@ namespace RMC.Admin.PanelUserForms
         {
             if (cbReception.Checked == true)
             {
-                newAccess.Add(receptionAcess);
+                newAccess.Add(StaticData.accessValues["receptionAcess"]);
             }
             else
             {
 
-                int index = newAccess.FindIndex(t => receptionAcess == t);
+                int index = newAccess.FindIndex(t => StaticData.accessValues["receptionAcess"] == t);
 
                 if (index > -1)
                     newAccess.RemoveAt(index);
@@ -224,12 +195,12 @@ namespace RMC.Admin.PanelUserForms
         {
             if (cbDoctor.Checked == true)
             {
-                newAccess.Add(doctorAccess);
+                newAccess.Add(StaticData.accessValues["doctorAccess"]);
             }
             else
             {
 
-                int index = newAccess.FindIndex(t => doctorAccess == t);
+                int index = newAccess.FindIndex(t => StaticData.accessValues["doctorAccess"] == t);
 
                 if (index > -1)
                     newAccess.RemoveAt(index);
@@ -240,12 +211,12 @@ namespace RMC.Admin.PanelUserForms
         {
             if (cbInventory.Checked == true)
             {
-                newAccess.Add(inventoryAccess);
+                newAccess.Add(StaticData.accessValues["inventoryAccess"]);
             }
             else
             {
 
-                int index = newAccess.FindIndex(t => inventoryAccess == t);
+                int index = newAccess.FindIndex(t => StaticData.accessValues["inventoryAccess"] == t);
 
                 if (index > -1)
                     newAccess.RemoveAt(index);
@@ -257,15 +228,30 @@ namespace RMC.Admin.PanelUserForms
         {
             if (cbXray.Checked == true)
             {
-                newAccess.Add(xrayAccess);
+                newAccess.Add(StaticData.accessValues["xrayAccess"]);
             }
             else
             {
 
-                int index = newAccess.FindIndex(t => xrayAccess == t);
+                int index = newAccess.FindIndex(t => StaticData.accessValues["xrayAccess"] == t);
 
                 if (index > -1)
                     newAccess.RemoveAt(index);
+            }
+        }
+
+        private void cbOthers_Click(object sender, EventArgs e)
+        {
+            if (cbOthers.Checked)
+            {
+                newAccess.Add(StaticData.accessValues["otherAccess"]);
+            }
+            else
+            {
+                int index = newAccess.FindIndex(t => StaticData.accessValues["otherAccess"] == t);
+                if (index > -1)
+                    newAccess.RemoveAt(index);
+                        
             }
         }
 
@@ -275,26 +261,29 @@ namespace RMC.Admin.PanelUserForms
         {
             List<int> noAccess = new List<int>();
 
-            if (!access.Contains(adminAccess))
-                noAccess.Add(adminAccess);
+            if (!access.Contains(StaticData.accessValues["Admin"]))
+                noAccess.Add(StaticData.accessValues["Admin"]);
             
-            if (!access.Contains(pharmaAccess))
-                noAccess.Add(pharmaAccess);
+            if (!access.Contains(StaticData.accessValues["pharmaAccess"]))
+                noAccess.Add(StaticData.accessValues["pharmaAccess"]);
             
-            if (!access.Contains(labAccess))    
-                noAccess.Add(labAccess);
+            if (!access.Contains(StaticData.accessValues["labAccess"]))    
+                noAccess.Add(StaticData.accessValues["labAccess"]);
             
-            if (!access.Contains(doctorAccess))    
-                noAccess.Add(doctorAccess);
+            if (!access.Contains(StaticData.accessValues["doctorAccess"]))    
+                noAccess.Add(StaticData.accessValues["doctorAccess"]);
             
-            if (!access.Contains(receptionAcess))
-                noAccess.Add(receptionAcess);
+            if (!access.Contains(StaticData.accessValues["receptionAcess"]))
+                noAccess.Add(StaticData.accessValues["receptionAcess"]);
 
-            if (!access.Contains(inventoryAccess))
-                noAccess.Add(inventoryAccess);
+            if (!access.Contains(StaticData.accessValues["inventoryAccess"]))
+                noAccess.Add(StaticData.accessValues["inventoryAccess"]);
 
-            if (!access.Contains(xrayAccess))
-                noAccess.Add(xrayAccess);
+            if (!access.Contains(StaticData.accessValues["xrayAccess"]))
+                noAccess.Add(StaticData.accessValues["xrayAccess"]);
+
+            if (!access.Contains(StaticData.accessValues["otherAccess"]))
+                noAccess.Add(StaticData.accessValues["otherAccess"]);
 
 
             return noAccess;
@@ -318,6 +307,6 @@ namespace RMC.Admin.PanelUserForms
             RefreshGrid(ds);
         }
 
-       
+      
     }
 }

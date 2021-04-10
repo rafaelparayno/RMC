@@ -15,6 +15,19 @@ namespace RMC
                                         "May","June","July","August","September","October","November",
                                         "December"};
 
+        public static Dictionary<string, int> accessValues = new Dictionary<string, int>() 
+        { 
+            { "Admin", 1 },
+            {"labAccess",2 },
+            {"pharmaAccess",3 },
+            {"receptionAcess",4 },
+            {"doctorAccess",5 },
+            {"inventoryAccess",6 },
+            {"xrayAccess",7 },
+            {"otherAccess",8 }
+
+        };
+
        public static ImageList listImages()
         {
             ImageList ImageList1 = new ImageList();
