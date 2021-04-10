@@ -94,7 +94,7 @@ namespace RMC.Database.Controllers
             if (reader.Read())
             {
                 doctoResultModel.id = int.Parse(reader["doctor_results_id"].ToString());
-                doctoResultModel.patient_id = id;
+                doctoResultModel.patient_id = int.Parse(reader["patient_id"].ToString());
                 doctoResultModel.cc = reader["cc"].ToString();
                 doctoResultModel.sfindings = reader["sfindings"].ToString();
                 doctoResultModel.assestment = reader["assestment"].ToString();

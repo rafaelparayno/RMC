@@ -77,34 +77,15 @@ namespace RMC.UserDash
 
         private void showAccess()
         {
-            if (useraccess.Contains(1))
-            {
-                AdminBtn.Visible = true;
-            }
-            if (useraccess.Contains(2))
-            {
-                LabBtn.Visible = true;
-            }
-            if (useraccess.Contains(3))
-            {
-                Pharmabtn.Visible = true;
-            }
-            if (useraccess.Contains(4))
-            {
-                ReceptionBtn.Visible = true;
-            }
-            if (useraccess.Contains(5))
-            {
-                DocBtn.Visible = true;
-            }
-            if (useraccess.Contains(6))
-            {
-                InventoryBtn.Visible = true;
-            }
-            if (useraccess.Contains(7))
-            {
-                btnXray.Visible = true;
-            }
+            AdminBtn.Visible = useraccess.Contains(StaticData.accessValues["Admin"]);
+            LabBtn.Visible = useraccess.Contains(StaticData.accessValues["labAccess"]);
+            Pharmabtn.Visible = useraccess.Contains(StaticData.accessValues["pharmaAccess"]);
+            ReceptionBtn.Visible = useraccess.Contains(StaticData.accessValues["receptionAcess"]);
+            DocBtn.Visible = useraccess.Contains(StaticData.accessValues["doctorAccess"]);
+            InventoryBtn.Visible = useraccess.Contains(StaticData.accessValues["inventoryAccess"]);
+            btnXray.Visible = useraccess.Contains(StaticData.accessValues["xrayAccess"]);
+            btnOthers.Visible = useraccess.Contains(StaticData.accessValues["otherAccess"]);
+
         }
 
         private void iconButton4_Click(object sender, EventArgs e)
@@ -138,19 +119,7 @@ namespace RMC.UserDash
             WindowState = FormWindowState.Minimized;
         }
 
-        private void iconButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconButton4_Click_1(object sender, EventArgs e)
-        {
-           /* Login log = new Login();
-            log.Show();
-            this.Hide();*/
-          
-
-        }
+      
 
         private void PharmaBtn_Click(object sender, EventArgs e)
         {
@@ -201,10 +170,7 @@ namespace RMC.UserDash
             changingLabel("Reception");
         }
 
-        private void iconButton4_Click_3(object sender, EventArgs e)
-        {
-            contextMenuStrip1.Show(iconButton4, new Point(iconButton4.Width - contextMenuStrip1.Width, iconButton4.Height));
-        }
+     
 
         private void btnXray_Click(object sender, EventArgs e)
         {
@@ -233,6 +199,11 @@ namespace RMC.UserDash
         {
             openChildForm(new DashDoc());
             changingLabel("Doctor");
+        }
+
+        private void iconButton4_Click_2(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(iconButton4, new Point(iconButton4.Width - contextMenuStrip1.Width, iconButton4.Height));
         }
     }
 }

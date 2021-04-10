@@ -74,7 +74,7 @@ namespace RMC.Admin.PanelUserForms
             cbInventory.Checked = access.Contains(StaticData.accessValues["inventoryAccess"]);
             cbOthers.Checked = access.Contains(StaticData.accessValues["otherAccess"]);
             cbXray.Checked = access.Contains(StaticData.accessValues["xrayAccess"]);
-            adminCbTriger();
+           // adminCbTriger();
         }
 
       
@@ -129,7 +129,7 @@ namespace RMC.Admin.PanelUserForms
         {
             if (adminAccessCb.Checked)
             {
-                newAccess.RemoveAll(removeNotAdmin);
+          //      newAccess.RemoveAll(removeNotAdmin);
                 newAccess.Add(StaticData.accessValues["Admin"]);
             }
             else
@@ -139,7 +139,7 @@ namespace RMC.Admin.PanelUserForms
                 if (index > -1)
                     newAccess.RemoveAt(index);
             }
-            adminCbTriger();
+       //     adminCbTriger();
         }
 
         private void cbLab_Click(object sender, EventArgs e)

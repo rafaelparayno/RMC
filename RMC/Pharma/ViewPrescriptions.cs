@@ -171,8 +171,8 @@ namespace RMC.Pharma
                     idRightClick2 = dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString();
                     contextMenuStrip1.Show(dataGridView1, new Point(e.X, e.Y));
 
-                }
 
+                }
             }
         }
 
