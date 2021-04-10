@@ -28,6 +28,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
         int customerid = 0;
         private bool isEdit = false;
         private int idEdit = 0;
+        private string dateCreated = "";
       
         public AddMedCertDiags(int qno)
         {
@@ -36,12 +37,42 @@ namespace RMC.Doctor.PanelDoctor.Diag
             this.qno = qno;
         }
 
-        public AddMedCertDiags(int idEdit,bool isEdit )
+        public AddMedCertDiags(int idEdit,int patid,bool isEdit )
         {
             InitializeComponent();
-
+            this.patid = patid;
             this.idEdit = idEdit;
             this.isEdit = isEdit;
+        }
+
+        private async Task loadXmls()
+        {
+            MedCertModel medCertModel = await patientMedcertController.getMedcert(idEdit);
+
+            XmlDocument doc = new XmlDocument();
+
+         
+
+            if (!File.Exists(medCertModel.path))
+                return;
+
+
+            doc.Load(medCertModel.path);
+
+
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+                if (node.Name == "address")
+                    txtAdd.Text = node.InnerText;
+                if (node.Name == "dateParam")
+                    dateCreated = node.InnerText;
+                if (node.Name == "impression")
+                    txtImpression.Text = node.InnerText;
+                if (node.Name == "recommendation")
+                    txtRecommendation.Text = node.InnerText;
+                if (node.Name == "signs")
+                    txtSigns.Text = node.InnerText;
+            }
         }
 
         private async void AddMedCertDiags_Load(object sender, EventArgs e)
@@ -51,6 +82,12 @@ namespace RMC.Doctor.PanelDoctor.Diag
                 patid = await customerDetailsController.getPatientIDinQueue(qno);
                 customerid = await customerDetailsController.getCustomerIdinQueue(qno);
                 patdetails = await patientDetailsController.getPatientId(patid);
+            }
+            else
+            {
+
+                patdetails = await patientDetailsController.getPatientId(patid);
+                await loadXmls();
             }
                 
         }
@@ -125,7 +162,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
             xwriter.WriteStartElement("medCert");
 
-            xwriter.WriteElementString("dateParam", DateTime.Now.ToString("MMMM dd, yyyy"));
+            xwriter.WriteElementString("dateParam", dateCreated);
 
             xwriter.WriteElementString("address", txtAdd.Text.Trim());
             xwriter.WriteElementString("signs", txtSigns.Text.Trim());

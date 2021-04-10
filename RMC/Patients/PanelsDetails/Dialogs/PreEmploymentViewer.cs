@@ -92,6 +92,7 @@ namespace RMC.Patients.PanelsDetails.Dialogs
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
+              /*  node.Attributes["textname"].Value.ToString();*/
                 preEmployment.SetParameterValue(node.Name, node.InnerText);
             }
 

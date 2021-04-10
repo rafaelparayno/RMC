@@ -94,5 +94,26 @@ namespace RMC.Patients.PanelsDetails
             }
           
         }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
+
+            if (lvLabDetails.SelectedItems[0].SubItems[1].Text == "MedCert")
+            {
+                AddMedCertDiags addMedCertDiags = new AddMedCertDiags(selectedIds,patid,true);
+                addMedCertDiags.ShowDialog();
+            }
+            else
+            {
+                addEditPeForm addEditPeForm = new addEditPeForm(selectedIds, patid, true);
+                addEditPeForm.ShowDialog();
+                /*Dictionary<string, string> values = new Dictionary<string, string>();
+                PreEmploymentViewer preEmploymentViewer = new PreEmploymentViewer(selectedIds, patid, values);
+                preEmploymentViewer.Show();*/
+
+            }
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,11 +53,12 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
 
 
-        public addEditPeForm(int idEdit, bool isEdit)
+        public addEditPeForm(int idEdit,int patid, bool isEdit)
         {
             InitializeComponent();
             this.idEdit = idEdit;
             this.isEdit = isEdit;
+            this.patid = patid;
         }
 
         private void cbCheckAllLeft_Click(object sender, EventArgs e)
@@ -662,15 +664,20 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             string pathSave = isEdit ? path : path + filename + ".xml";
 
-            XmlWriter xwriter = XmlWriter.Create(pathSave);
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+        
+            XmlWriter xwriter = XmlWriter.Create(pathSave,settings);
 
             xwriter.WriteStartElement("PreEmployment");
-
+            
             xwriter.WriteElementString("eDate", DateTime.Now.ToString("MMMM dd, yyyy"));
-
+          
 
             //History
             xwriter.WriteElementString("pastDiseases", txtSignificant.Text.Trim());
+            
+
             xwriter.WriteElementString("operations", txtOperations.Text.Trim());
             xwriter.WriteElementString("presentSymp", txtPresent.Text.Trim());
 
@@ -741,8 +748,19 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
                 DateTime today = DateTime.Now;
                 patientVModel = await patientVController.getDetailsidDate(patid,today.ToString("yyyy-MM-dd"));
-              
-            
+
+
+            }
+            else
+            {
+               
+                MedCertModel model = await patientMedcertController.getMedcert(idEdit);
+                patdetails = await patientDetailsController.getPatientId(patid);
+                companyName = await doctorQueueController.getCompanyNameByCustomeId(model.customerid);
+
+           
+                patientVModel = await patientVController.getDetailsidDate(patid, model.date.ToString("yyyy-MM-dd"));
+                await loadXml();
             }
         }
 
@@ -851,6 +869,342 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
             return values;
         }
+
+
+        private async Task loadXml()
+        {
+
+            XmlDocument doc = new XmlDocument();
+
+            MedCertModel model = await patientMedcertController.getMedcert(idEdit);
+
+            if (!File.Exists(model.path))
+                return;
+
+
+            doc.Load(model.path);
+           
+
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+
+               
+                if (node.Name == "pastDiseases")             
+                   txtSignificant.Text = node.InnerText;
+                if (node.Name == "operations")
+                    txtOperations.Text = node.InnerText;
+                if (node.Name == "presentSymp")
+                    txtPresent.Text = node.InnerText;
+
+                if (node.Name == "general")
+                {
+                    txtGeneral.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtGeneral.Enabled = false;
+                        cbGeneral.Checked = true;
+                    }
+                }
+                   
+                if (node.Name == "eyes")
+                {
+                    txtEyes.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtEyes.Enabled = false;
+                        cbEyes.Checked = true;
+                    }
+                }
+                  
+                if (node.Name == "ears")
+                {
+                    txtEars.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtEars.Enabled = false;
+                        cbEars.Checked = true;
+                    }
+                }
+               
+                if (node.Name == "nose")
+                {
+                    txtNose.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtNose.Enabled = false;
+                        cbNose.Checked = true;
+                    }
+                }
+               
+                if (node.Name == "mouth")
+                {
+                    txtMouth.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtMouth.Enabled = false;
+                        cbMouth.Checked = true;
+                    }
+                }
+             
+                if (node.Name == "throat")
+                {
+                    txtThroat.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtThroat.Enabled = false;
+                        cbThroat.Checked = true;
+                    }
+                }
+
+
+            
+                if (node.Name == "hema")
+                {
+                    txtHema.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtHema.Enabled = false;
+                        cbHema.Checked = true;
+                    }
+                }
+               
+                if (node.Name == "neuro")
+                {
+                    txtNeuro.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtNeuro.Enabled = false;
+                        cbNeuro.Checked = true;
+                    }
+                }
+         
+
+
+                if (node.Name == "cardio")
+                {
+                    txtCarido.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtCarido.Enabled = false;
+                        cbCardio.Checked = true;
+                    }
+                }
+             
+                if (node.Name == "pulmonary")
+                {
+                    txtPulmop.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtPulmop.Enabled = false;
+                        cbPulmo.Checked = true;
+                    }
+                }
+              
+                if (node.Name == "breast")
+                {
+                    txtBreast.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtBreast.Enabled = false;
+                        cbBreast.Checked = true;
+                    }
+                }
+              
+                if (node.Name == "skin")
+                {
+                    txtSkin.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtSkin.Enabled = false;
+                        cbSkin.Checked = true;
+                    }
+                }
+             
+                if (node.Name == "gastro")
+                {
+                    txtGastro.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtGastro.Enabled = false;
+                        cbGastro.Checked = true;
+                    }
+                }
+           
+                if (node.Name == "geni")
+                {
+                    txtGen.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtGen.Enabled = false;
+                        cbGen.Checked = true;
+                    }
+                }
+             
+                if (node.Name == "gyna")
+                {
+                    txtGyna.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtGyna.Enabled = false;
+                        cbGyna.Checked = true;
+                    }
+                }
+              
+                if (node.Name == "endo")
+                {
+                    txtEndo.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtEndo.Enabled = false;
+                        cbEndo.Checked = true;
+                    }
+                }
+             
+
+                if (node.Name == "xray")
+                {
+                    txtXray.Text = node.InnerText;
+                    if(node.InnerText == "Normal")
+                    {
+                        txtXray.Enabled = false;
+                        cbXray.Checked = true;
+                    }
+                }
+                  
+                if (node.Name == "cbc")
+                {
+                    txtCbc.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtCbc.Enabled = false;
+                        cbCbc.Checked = true;
+                    }
+                }
+                
+                if (node.Name == "urinaly")
+                {
+                    txtUri.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtUri.Enabled = false;
+                        cbUrinalysis.Checked = true;
+                    }
+                }
+
+
+            
+                if (node.Name == "pt")
+                {
+                    if (node.InnerText == "N/a")
+                    {
+
+                        radioButton3.Checked = true;
+                        pt = "N/a";
+
+                    }
+                    else if(node.InnerText == "Positive")
+                    {
+                        pt = "Positive";
+                        radioButton1.Checked = true;
+                    }
+                    else
+                    {
+                        radioButton2.Checked = true;
+                        pt = "Negative";
+                    }
+                }
+
+
+
+
+                if (node.Name == "others")
+                    txtOthersDiag.Text = node.InnerText;
+
+
+                if (node.Name == "stool")
+                {
+                    txtStool.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtStool.Enabled = false;
+                        cbStool.Checked = true;
+                    }
+                }
+
+                if (node.Name == "ecg")
+                {
+                    txtEcg.Text = node.InnerText;
+                    if (node.InnerText == "Normal")
+                    {
+                        txtEcg.Enabled = false;
+                        cbEcg.Checked = true;
+                    }
+                }
+
+                if (node.Name == "heba")
+                {
+                    if (node.InnerText == "N/a")
+                    {
+
+                        radioButton4.Checked = true;
+                        hepa = "Non-Reactive";
+
+
+
+                    }
+                    else
+                    {
+                        radioButton5.Checked = true;
+                        hepa = "Reactive";
+
+                    }
+                }
+
+                if (node.Name == "drug")
+                {
+                    if (node.InnerText == "Negative")
+                    {
+                        radioButton7.Checked = false;
+                        drugTest = "Negative";
+                    }
+                    else
+                    {
+                        drugTest = "Positive";
+                        radioButton7.Checked = true;
+                    }
+                }
+
+                if (node.Name == "recommedation")
+                    txtRecommend.Text = node.InnerText;
+                if (node.Name == "assestment")
+                    txtAssestment.Text = node.InnerText;
+
+                if(node.Name == "classification")
+                {
+                    if(node.InnerText.Contains("Type A"))
+                    {
+                        rbTypeA.Checked = true;
+
+                    }else if(node.InnerText.Contains("Type B"))
+                    {
+                        rbTypeB.Checked = true;
+                    }
+                    else
+                    {
+                        rbTypeC.Checked = true;
+                    }
+                }
+
+
+                cbcheckAllLeftTrigger();
+                cbcheckAllRightTrigger();
+            }
+
+
+
+        }
+
+       
     }
 
 }
