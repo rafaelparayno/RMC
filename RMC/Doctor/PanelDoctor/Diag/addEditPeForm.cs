@@ -781,6 +781,11 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
         private void btnView_Click(object sender, EventArgs e)
         {
+            if (patientVModel.id == 0)
+            {
+                MessageBox.Show("No Vital");
+                return;
+            }
             PreEmploymentViewer preEmploymentViewer = new PreEmploymentViewer(0,setDictionary());
             preEmploymentViewer.Show();
             
@@ -789,6 +794,8 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
         private Dictionary<string,string> setDictionary()
         {
+          
+
 
             Dictionary<string, string> values = new Dictionary<string, string>();
 

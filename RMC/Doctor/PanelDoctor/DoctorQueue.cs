@@ -21,6 +21,7 @@ namespace RMC.Doctor.PanelDoctor
         DoctorQueueController doctorQueueController = new DoctorQueueController();
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
         PatientMedcertController patientMedcertController = new PatientMedcertController();
+        doctorResultsController doctorResultsController = new doctorResultsController();
 
         private ImageList imageList;
         string idRightClick = "";
@@ -63,7 +64,10 @@ namespace RMC.Doctor.PanelDoctor
 
                 imgmedCert = await patientMedcertController.isDoneMedCert(custid) ? imageList.Images[0] :
                             medType == 0 ? imageList.Images[3] : imageList.Images[2];
-                imgConsult =(string.IsNullOrEmpty(row["cc_doctor"].ToString())) ? 
+
+                imgConsult = await doctorResultsController.hasDoctorResultsIdNowWithCC(row["cc_doctor"].ToString(),patid) 
+                    ? imageList.Images[0] :
+                    (string.IsNullOrEmpty(row["cc_doctor"].ToString())) ? 
                     imageList.Images[3] : imageList.Images[2];
 
 
@@ -193,6 +197,7 @@ namespace RMC.Doctor.PanelDoctor
             AddMedCertDiags addMedCertDiags = new AddMedCertDiags(queueno);
             addMedCertDiags.Show();
             await loadGrid();
+            timer1.Start();
         }
 
         private async void preEmployment_Click(object sender, EventArgs e)
@@ -211,6 +216,7 @@ namespace RMC.Doctor.PanelDoctor
             addEditPeForm addEditPeForm = new addEditPeForm(queueno);
             addEditPeForm.Show();
             await loadGrid();
+            timer1.Start();
         }
 
         private async void doneToolStripMenuItem_Click(object sender, EventArgs e)

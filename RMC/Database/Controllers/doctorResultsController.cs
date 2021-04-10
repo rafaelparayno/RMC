@@ -110,6 +110,27 @@ namespace RMC.Database.Controllers
             return doctoResultModel;
         }
 
+        public async Task<bool> hasDoctorResultsIdNowWithCC(string cc, int patid)
+        {
+            bool isFound = false;
+            string sql = @"SELECT * FROM `doctor_results` WHERE patient_id = @id AND cc = @cc AND date_results = CURDATE()";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", patid));
+            listparams.Add(new MySqlParameter("@cc", cc));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (reader.HasRows)
+            {
+                isFound = true;
+            }
+
+
+            crud.CloseConnection();
+
+            return isFound;
+        }
+
         public async Task<List<DoctorResult>> getDoctorResults(int id, string date)
         {
             List<DoctorResult> listDoctorResultmodel = new List<DoctorResult>();
