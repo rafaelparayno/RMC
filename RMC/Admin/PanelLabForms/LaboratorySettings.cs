@@ -50,5 +50,10 @@ namespace RMC.Admin.PanelLabForms
         {
             openChildForm(new ViewAutomated());
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelSignaturePersonels());
+        }
     }
 }
