@@ -760,6 +760,12 @@
     <Compile Include="Lab\DialogReports\UrinalysisDiagForms.Designer.cs">
       <DependentUpon>UrinalysisDiagForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\DialogReports\ViewDiagnosticReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\DialogReports\ViewDiagnosticReport.Designer.cs">
+      <DependentUpon>ViewDiagnosticReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\LabDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -771,6 +777,12 @@
     </Compile>
     <Compile Include="Lab\ListParams.Designer.cs">
       <DependentUpon>ListParams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lab\Panels\Diags\AddEditDiagnosticForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\Panels\Diags\AddEditDiagnosticForm.Designer.cs">
+      <DependentUpon>AddEditDiagnosticForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab\Panels\Diags\DiagFileUpload.cs">
       <SubType>Form</SubType>
@@ -836,6 +848,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BloodChem.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewReports\DiagnosticReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiagnosticReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="NewReports\Fecalysis.cs">
@@ -1460,11 +1478,17 @@
     <EmbeddedResource Include="Lab\DialogReports\UrinalysisDiagForms.resx">
       <DependentUpon>UrinalysisDiagForms.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lab\DialogReports\ViewDiagnosticReport.resx">
+      <DependentUpon>ViewDiagnosticReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab\LabDashboard.resx">
       <DependentUpon>LabDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\ListParams.resx">
       <DependentUpon>ListParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\Panels\Diags\AddEditDiagnosticForm.resx">
+      <DependentUpon>AddEditDiagnosticForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\Panels\Diags\DiagFileUpload.resx">
       <DependentUpon>DiagFileUpload.cs</DependentUpon>
@@ -1499,6 +1523,10 @@
     <EmbeddedResource Include="NewReports\BloodChem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>BloodChem.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReports\DiagnosticReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DiagnosticReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="NewReports\Fecalysis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
