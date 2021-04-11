@@ -130,12 +130,16 @@ namespace RMC.Lab.Panels.Diags
                 diagWithAutomated.ShowDialog();
             }
 
-            if(lb.crystal_id_lab > 0)
+            if(lb.crystal_id_lab == 6)
             {
+                AddEditDiagnosticForm addEditDiagnosticForm = new AddEditDiagnosticForm(patientid, selectedIds);
+                addEditDiagnosticForm.ShowDialog();
 
-                DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab,patientid,selectedIds);
+            }
+            else
+            {
+                DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds);
                 dynform.ShowDialog();
-              
             }
 
             if(lb.autodocsid == 0 && lb.crystal_id_lab == 0)
@@ -189,6 +193,11 @@ namespace RMC.Lab.Panels.Diags
                     case 5:
                         UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(patientid, selectedIds,0);
                         urinalysisDiagForms.ShowDialog();
+                        break;
+                    case 6:
+                     
+                        ViewDiagnosticReport viewDiagnosticReport = new ViewDiagnosticReport(patientid, selectedIds, 0);
+                        viewDiagnosticReport.ShowDialog();
                         break;
                 }
 

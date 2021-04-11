@@ -143,6 +143,10 @@ namespace RMC.Patients.PanelsDetails
                         UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(id, labModel.id, selectedIds);
                         urinalysisDiagForms.Show();
                         break;
+                    case 6:
+                        ViewDiagnosticReport viewDiagnosticReport = new ViewDiagnosticReport(id,labModel.id,selectedIds);
+                        viewDiagnosticReport.Show();
+                        break;
                 }
 
             }
@@ -175,6 +179,14 @@ namespace RMC.Patients.PanelsDetails
             {
                 DiagWithAutomated diagWithAutomated = new DiagWithAutomated(labModel.id, id,selectedIds);
                 diagWithAutomated.ShowDialog();
+            }
+
+            if (labModel.crystal_id_lab == 6)
+            {
+
+         /*       DynamicLabReportsValue dynform = new DynamicLabReportsValue(labModel.crystal_id_lab, id, labModel.id, selectedIds);
+                dynform.ShowDialog();
+*/
             }
 
             if (labModel.crystal_id_lab > 0)

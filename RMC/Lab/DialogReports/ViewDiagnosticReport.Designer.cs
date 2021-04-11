@@ -51,6 +51,7 @@
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "ViewDiagnosticReport";
             this.Text = "ViewDiagnosticReport";
+            this.Load += new System.EventHandler(this.ViewDiagnosticReport_Load);
             this.ResumeLayout(false);
 
         }
