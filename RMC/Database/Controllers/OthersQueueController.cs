@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -26,9 +27,9 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async Task updateStatus(int service_id, int patientid)
+        public async Task updateStatus(int service_id, int patientid,int status)
         {
-            string sql = @"UPDATE others_queue SET is_done_o = 1 
+            string sql = @"UPDATE others_queue SET is_done_o = @status
                             WHERE service_id = @serviceid AND customer_id in 
                                 (SELECT customer_id FROM customer_request_details WHERE patient_id = @pid)";
 
@@ -37,6 +38,7 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@serviceid", service_id));
 
             listparams.Add(new MySqlParameter("@pid", patientid));
+            listparams.Add(new MySqlParameter("@status", status));
 
             await crud.ExecuteAsync(sql, listparams);
         }
@@ -70,6 +72,37 @@ namespace RMC.Database.Controllers
 
             return liststrings;
 
+        }
+
+
+        public async Task<List<ServiceModel>> getReqServiceByPatientID(int id)
+        {
+            List<ServiceModel> listServiceModel = new List<ServiceModel>();
+
+            string sql = @"SELECT others_queue.customer_id,others_queue.service_id,service.service_name,others_queue.is_done_o FROM `others_queue` 
+                        INNER JOIN service ON others_queue.service_id = service.service_id 
+                        WHERE customer_id IN (SELECT customer_id  FROM customer_request_details WHERE customer_request_details.patient_id = @id
+                                                    AND  DATE(date_req) = CURDATE()) ";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@id", id));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                ServiceModel s = new ServiceModel();
+
+                s.id = int.Parse(reader["service_id"].ToString());
+                s.serviceName = reader["service_name"].ToString();
+              
+                s.isDone = int.Parse(reader["is_done_o"].ToString());
+                listServiceModel.Add(s);
+            }
+
+            crud.CloseConnection();
+            return listServiceModel;
         }
 
     }

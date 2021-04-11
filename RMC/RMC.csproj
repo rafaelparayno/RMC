@@ -575,6 +575,7 @@
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\SalesClinicTypeMod.cs" />
     <Compile Include="Database\Models\salesPharmacyModel.cs" />
+    <Compile Include="Database\Models\ServiceModel.cs" />
     <Compile Include="Database\Models\SymptomsMod.cs" />
     <Compile Include="Database\Models\useraccount.cs" />
     <Compile Include="Database\Models\UserLog.cs" />
@@ -866,6 +867,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Urinalysis.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OthersPanels\Dialogs\ViewPatientServiceReq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OthersPanels\Dialogs\ViewPatientServiceReq.Designer.cs">
+      <DependentUpon>ViewPatientServiceReq.cs</DependentUpon>
     </Compile>
     <Compile Include="OthersPanels\OthersDash.cs">
       <SubType>Form</SubType>
@@ -1506,6 +1513,9 @@
     <EmbeddedResource Include="NewReports\Urinalysis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Urinalysis.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OthersPanels\Dialogs\ViewPatientServiceReq.resx">
+      <DependentUpon>ViewPatientServiceReq.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OthersPanels\OthersDash.resx">
       <DependentUpon>OthersDash.cs</DependentUpon>

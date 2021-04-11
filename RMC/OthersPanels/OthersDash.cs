@@ -43,5 +43,10 @@ namespace RMC.OthersPanels
         {
             openChildForm(new othersQueue());
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

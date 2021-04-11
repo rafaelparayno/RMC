@@ -1,4 +1,6 @@
 ﻿using RMC.Database.Controllers;
+using RMC.OthersPanels.Dialogs;
+using RMC.Patients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -73,8 +75,34 @@ namespace RMC.OthersPanels.panels
 
             int id = int.Parse(idRightClick);
 
+            ViewPatientServiceReq viewPatientServiceReq = new ViewPatientServiceReq(id);
+            viewPatientServiceReq.ShowDialog();
 
+        }
 
+        private async void iconButton1_Click(object sender, EventArgs e)
+        {
+            if(txtName.Text.Trim() == "")
+            {
+                await loadGrid();
+            }
+            else
+            {
+                await searchGrid();
+            }
+        }
+
+        private async void doneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool isNumber = int.TryParse(idRightClick, out _);
+            if (!isNumber)
+                return;
+
+            int id = int.Parse(idRightClick);
+
+            addEditPatient form = new addEditPatient(id);
+            form.ShowDialog();
+             await loadGrid();
         }
     }
 }
