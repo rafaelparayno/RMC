@@ -12,6 +12,7 @@ using FontAwesome.Sharp;
 using RMC.Lab;
 using RMC.Xray;
 using RMC.Doctor;
+using RMC.OthersPanels;
 
 namespace RMC.UserDash
 {
@@ -204,6 +205,11 @@ namespace RMC.UserDash
         private void iconButton4_Click_2(object sender, EventArgs e)
         {
             contextMenuStrip1.Show(iconButton4, new Point(iconButton4.Width - contextMenuStrip1.Width, iconButton4.Height));
+        }
+
+        private void btnOthers_Click(object sender, EventArgs e)
+        {
+            openChildForm(new OthersDash());
         }
     }
 }

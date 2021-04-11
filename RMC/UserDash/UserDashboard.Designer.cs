@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.btnOthers = new FontAwesome.Sharp.IconButton();
             this.btnXray = new FontAwesome.Sharp.IconButton();
             this.Pharmabtn = new FontAwesome.Sharp.IconButton();
@@ -52,7 +53,6 @@
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.notificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelChildForm.SuspendLayout();
@@ -82,6 +82,25 @@
             this.panel1.Size = new System.Drawing.Size(945, 72);
             this.panel1.TabIndex = 4;
             // 
+            // iconButton4
+            // 
+            this.iconButton4.BackColor = System.Drawing.Color.Salmon;
+            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton4.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.AngleDown;
+            this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton4.IconSize = 40;
+            this.iconButton4.Location = new System.Drawing.Point(600, 0);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Rotation = 0D;
+            this.iconButton4.Size = new System.Drawing.Size(64, 72);
+            this.iconButton4.TabIndex = 233;
+            this.iconButton4.UseVisualStyleBackColor = false;
+            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click_2);
+            // 
             // btnOthers
             // 
             this.btnOthers.BackColor = System.Drawing.Color.Maroon;
@@ -100,6 +119,7 @@
             this.btnOthers.Text = "Others";
             this.btnOthers.UseVisualStyleBackColor = false;
             this.btnOthers.Visible = false;
+            this.btnOthers.Click += new System.EventHandler(this.btnOthers_Click);
             // 
             // btnXray
             // 
@@ -404,25 +424,6 @@
             this.notificationsToolStripMenuItem.Name = "notificationsToolStripMenuItem";
             this.notificationsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.notificationsToolStripMenuItem.Text = "Notifications";
-            // 
-            // iconButton4
-            // 
-            this.iconButton4.BackColor = System.Drawing.Color.Salmon;
-            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton4.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.AngleDown;
-            this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.iconButton4.IconSize = 40;
-            this.iconButton4.Location = new System.Drawing.Point(600, 0);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Rotation = 0D;
-            this.iconButton4.Size = new System.Drawing.Size(64, 72);
-            this.iconButton4.TabIndex = 233;
-            this.iconButton4.UseVisualStyleBackColor = false;
-            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click_2);
             // 
             // UserDashboard
             // 

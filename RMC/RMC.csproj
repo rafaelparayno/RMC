@@ -866,6 +866,18 @@
       <DependentUpon>Urinalysis.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="OthersPanels\OthersDash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OthersPanels\OthersDash.Designer.cs">
+      <DependentUpon>OthersDash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OthersPanels\panels\othersQueue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OthersPanels\panels\othersQueue.Designer.cs">
+      <DependentUpon>othersQueue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\addEditPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1493,6 +1505,12 @@
     <EmbeddedResource Include="NewReports\Urinalysis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Urinalysis.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OthersPanels\OthersDash.resx">
+      <DependentUpon>OthersDash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OthersPanels\panels\othersQueue.resx">
+      <DependentUpon>othersQueue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\addEditPatient.resx">
       <DependentUpon>addEditPatient.cs</DependentUpon>
