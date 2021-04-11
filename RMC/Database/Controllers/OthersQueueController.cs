@@ -105,5 +105,43 @@ namespace RMC.Database.Controllers
             return listServiceModel;
         }
 
+
+        public async Task<bool> isDone(int customerid)
+        {
+
+            bool isDone = true;
+
+            string sql = @"SELECT * FROM `others_queue` WHERE customer_id = @id";
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
+            mySqlParameters.Add(new MySqlParameter("@id", customerid));
+
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (!reader.HasRows)
+            {
+                isDone = false;
+
+            }
+
+            while (await reader.ReadAsync())
+            {
+
+
+
+                int is_done = int.Parse(reader["is_done_o"].ToString());
+
+                if (is_done == 0)
+                {
+                    isDone = false;
+                    break;
+                }
+            }
+
+            crud.CloseConnection();
+            return isDone;
+
+        }
+
     }
 }

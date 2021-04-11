@@ -2,6 +2,7 @@
 using Org.BouncyCastle.Ocsp;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.OthersPanels.panels;
 using RMC.Patients.PanelsDetails.Dialogs;
 using RMC.Reception.PanelRequestForm.Dialogs;
 using System;
@@ -24,7 +25,10 @@ namespace RMC.Reception.PanelRequestForm
         DoctorQueueController docQController = new DoctorQueueController();
         LabQueueController labQueueController = new LabQueueController();
         RadioQueueController radioQueueController = new RadioQueueController();
+        OthersQueueController othersQueueController = new OthersQueueController();
         UserracountsController uc = new UserracountsController();
+        PatientMedcertController patientMedcertController = new PatientMedcertController();
+        DoctorQueueController doctorQueueController = new DoctorQueueController();
         DataTable dt = new DataTable();
         ImageList ImageList1 = new ImageList();
 
@@ -93,7 +97,7 @@ namespace RMC.Reception.PanelRequestForm
                 Image imgLab;
                 Image imgServices;
                 Image imgPaid = c.isPaid == 0 ? ImageList1.Images[1] : ImageList1.Images[0];
-
+                bool done = false;
 
                 imgConsult = requests.Contains(consultS) ? 
                     await docQController.isDone(c.quueu_no) ? 
@@ -112,9 +116,32 @@ namespace RMC.Reception.PanelRequestForm
 
            
 
-                if (requests.Contains(otherS) || requests.Contains(medCert) || requests.Contains(packagesS))
+                if (requests.Contains(otherS) || requests.Contains(medCert))
                 {
-                    imgServices = ImageList1.Images[2];
+
+                    int medType = await docQController.getMedCertByCustomeId(c.id);
+                  
+                    if (medType == 0)
+                    {
+                        done = true;
+
+                    }
+                    else
+                    {
+                        done = await patientMedcertController.isDoneMedCert(c.id);
+                    }
+                        
+
+                    if(await othersQueueController.isDone(c.id) && done )
+                    {
+                        imgServices = ImageList1.Images[0];
+                    }
+                    else
+                    {
+                        imgServices = ImageList1.Images[2];
+                    }
+
+                  
                 }
                 else
                 {

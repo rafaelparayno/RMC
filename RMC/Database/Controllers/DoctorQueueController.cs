@@ -270,6 +270,26 @@ namespace RMC.Database.Controllers
             return companyName;
         }
 
+        public async Task<int> getMedCertByCustomeId(int customerid)
+        {
+            int medType = 0;
+            string sql = @"SELECT * FROM `doctor_queue`  WHERE customer_id = @id ";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@id", customerid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                medType = int.Parse(reader["med_cert_type"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return medType;
+        }
+
         public async Task Remove(int req_id)
         {
             

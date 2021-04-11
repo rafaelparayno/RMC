@@ -202,6 +202,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             List<DoctorQueueModel> newDocQue = await uc.listDoctorOnlinesModel();
 
+            if (newDocQue.Count == 0)
+                return;
+            if (Cdoctors.Count == 0)
+                return;
+
             foreach (DoctorQueueModel d in newDocQue)
             {
                 int currentq = await doctorQueueController.getCurrentDoctorQ(d.id);
