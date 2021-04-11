@@ -235,12 +235,18 @@ namespace RMC.Lab.Panels.Diags
                 diagWithAutomated.ShowDialog();
             }
 
-            if (lb.crystal_id_lab > 0)
+
+            if (lb.crystal_id_lab == 6)
+            {
+                AddEditDiagnosticForm addEditDiagnosticForm = new AddEditDiagnosticForm(patientid, selectedIds,0);
+                addEditDiagnosticForm.ShowDialog();
+
+            }
+            else
             {
 
-                DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds,0);
+                DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds, 0);
                 dynform.ShowDialog();
-
             }
 
             if (lb.autodocsid == 0 && lb.crystal_id_lab == 0)

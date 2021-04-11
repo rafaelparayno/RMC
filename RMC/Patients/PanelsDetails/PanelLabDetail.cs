@@ -183,20 +183,16 @@ namespace RMC.Patients.PanelsDetails
 
             if (labModel.crystal_id_lab == 6)
             {
-
-         /*       DynamicLabReportsValue dynform = new DynamicLabReportsValue(labModel.crystal_id_lab, id, labModel.id, selectedIds);
-                dynform.ShowDialog();
-*/
+                AddEditDiagnosticForm addEditDiagnosticForm = new AddEditDiagnosticForm(id, labModel.id, selectedIds);
+                addEditDiagnosticForm.ShowDialog();
             }
-
-            if (labModel.crystal_id_lab > 0)
+            else
             {
-
                 DynamicLabReportsValue dynform = new DynamicLabReportsValue(labModel.crystal_id_lab, id, labModel.id, selectedIds);
                 dynform.ShowDialog();
-
             }
 
+        
             if (labModel.autodocsid == 0 && labModel.crystal_id_lab == 0)
             {
                 DiagFileUpload fileUpload = new DiagFileUpload(labModel.id, id,selectedIds);

@@ -129,7 +129,6 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel31 = new System.Windows.Forms.Panel();
-            this.btnView = new FontAwesome.Sharp.IconButton();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.panel42 = new System.Windows.Forms.Panel();
             this.label38 = new System.Windows.Forms.Label();
@@ -1257,36 +1256,12 @@
             // 
             // panel31
             // 
-            this.panel31.Controls.Add(this.btnView);
             this.panel31.Controls.Add(this.btnSave);
             this.panel31.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel31.Location = new System.Drawing.Point(0, 864);
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(775, 59);
             this.panel31.TabIndex = 18;
-            // 
-            // btnView
-            // 
-            this.btnView.BackColor = System.Drawing.Color.Maroon;
-            this.btnView.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnView.FlatAppearance.BorderSize = 0;
-            this.btnView.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnView.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnView.ForeColor = System.Drawing.Color.White;
-            this.btnView.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.btnView.IconColor = System.Drawing.Color.White;
-            this.btnView.IconSize = 18;
-            this.btnView.Location = new System.Drawing.Point(85, 0);
-            this.btnView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnView.Name = "btnView";
-            this.btnView.Rotation = 0D;
-            this.btnView.Size = new System.Drawing.Size(345, 59);
-            this.btnView.TabIndex = 248;
-            this.btnView.Text = "View Form";
-            this.btnView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnView.UseVisualStyleBackColor = false;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // btnSave
             // 
@@ -1857,7 +1832,6 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.TextBox textBox41;
         private System.Windows.Forms.Panel panel31;
-        private FontAwesome.Sharp.IconButton btnView;
         private FontAwesome.Sharp.IconButton btnSave;
         private System.Windows.Forms.Panel panel40;
         private System.Windows.Forms.Label label32;

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,7 @@ namespace RMC.Lab.Panels.Diags
         private int labid = 0;
         private bool edited = false;
         private int patient_lab_id = 0;
+
         public AddEditDiagnosticForm(int patientid, int labid)
         {
             InitializeComponent();
@@ -40,6 +42,20 @@ namespace RMC.Lab.Panels.Diags
             this.labid = labid;
 
         }
+
+        public AddEditDiagnosticForm(int patientid, int labid,int patient_lab_id)
+        {
+            InitializeComponent();
+            this.patientid = patientid;
+            this.labid = labid;
+            this.patient_lab_id = patient_lab_id;
+            this.edited = true;
+            if (edited)
+            {
+                loadXmlValues();
+            }
+        }
+
 
 
         private void btnView_Click(object sender, EventArgs e)
@@ -147,8 +163,143 @@ namespace RMC.Lab.Panels.Diags
             }
             else
             {
-             //   await editData();
+                await editData();
             }
+        }
+
+        private async void loadXmlValues()
+        {
+
+            XmlDocument doc = new XmlDocument();
+
+            string path = patient_lab_id == 0 ?
+                  await patientLabController.getFullPath(patientid, labid)
+                  : await patientLabController.getFullPath(patient_lab_id);
+
+            if (!File.Exists(path))
+                return;
+
+
+            doc.Load(path);
+
+
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+
+                if (node.Name == "crystalautomatedid")
+                    continue;
+                if (node.Name == "dateParam")
+                    continue;
+
+                if (node.Name == "bloodTypeParam")
+                    txtBloodType.Text = node.InnerText;
+                if (node.Name == "othersParam")
+                    txtOthersHema.Text = node.InnerText;
+                if (node.Name == "reticulocyteParam")
+                    txtReticu.Text = node.InnerText;
+                if (node.Name == "plateletParam")
+                    txtPlatelet.Text = node.InnerText;
+                if (node.Name == "rbcParam")
+                    txtRbcHema.Text = node.InnerText;
+                if (node.Name == "wbcParam")
+                    txtWbc.Text = node.InnerText;
+                if (node.Name == "hematocritParam")
+                    txtHemato.Text = node.InnerText;
+                if (node.Name == "hemoGoblinParam")
+                    txtHemo.Text = node.InnerText;
+                if (node.Name == "segmentersParam")
+                    txtSegmenters.Text = node.InnerText;
+                if (node.Name == "monocytesParam")
+                    txtMono.Text = node.InnerText;
+                if (node.Name == "LympocytesParam")
+                    txtLymp.Text = node.InnerText;
+                if (node.Name == "basophilsParam")
+                    txtBasophil.Text = node.InnerText;
+                if (node.Name == "EosonophilsParam")
+                    txtEosi.Text = node.InnerText;
+                if (node.Name == "stabCellsParam")
+                    txtStab.Text = node.InnerText;
+                if (node.Name == "myelocyesParam")
+                    txtMye.Text = node.InnerText;
+
+
+                if (node.Name == "colorParam")
+                    txtColorUri.Text = node.InnerText;
+                if (node.Name == "transparencyParam")
+                    txtChar.Text = node.InnerText;
+                if (node.Name == "ph")
+                    txtph.Text = node.InnerText;
+                if (node.Name == "gravity")
+                    txtgravity.Text = node.InnerText;
+                if (node.Name == "albumin")
+                    txtalbumin.Text = node.InnerText;
+                if (node.Name == "sugar")
+                    txtsugar.Text = node.InnerText;
+                if (node.Name == "pus")
+                    txtpus.Text = node.InnerText;
+                if (node.Name == "rbc1")
+                    txtRbcUri.Text = node.InnerText;
+                if (node.Name == "eptcels")
+                    txtEpi.Text = node.InnerText;
+                if (node.Name == "urates")
+                    txtUrates.Text = node.InnerText;
+                if (node.Name == "others1")
+                    txtOthersUri.Text = node.InnerText;
+                if (node.Name == "pt")
+                    txtPregnancy.Text = node.InnerText;
+                if (node.Name == "mucus")
+                    txtMucus.Text = node.InnerText;
+
+                if (node.Name == "colorFecal")
+                    txtColorFeca.Text = node.InnerText;
+                if (node.Name == "consistency")
+                    txtConsistency.Text = node.InnerText;
+                if (node.Name == "ovaparasite")
+                    txtOva.Text = node.InnerText;
+                if (node.Name == "wbc")
+                    txtWbcFeca.Text = node.InnerText;
+                if (node.Name == "rbc2")
+                    txtRbcFeca.Text = node.InnerText;
+                if (node.Name == "others2")
+                    txtOtherFeca.Text = node.InnerText;
+                if (node.Name == "hbs")
+                    txtHbs.Text = node.InnerText;
+                if (node.Name == "others3")
+                    txtOthersSera.Text = node.InnerText;
+            }
+
+        }
+
+        private async Task editData()
+        {
+
+            string path = patient_lab_id == 0 ?
+                      await patientLabController.getFullPath(patientid, labid)
+                      : await patientLabController.getFullPath(patient_lab_id);
+
+
+
+            XmlWriter xwriter = XmlWriter.Create(path);
+
+            xwriter.WriteStartElement("Labrecords");
+            xwriter.WriteElementString("crystalautomatedid", crsid.ToString());
+            xwriter.WriteElementString("dateParam", DateTime.Now.ToString("MMMM dd, yyyy"));
+
+
+            foreach (KeyValuePair<string, string> k in getData())
+            {
+
+                xwriter.WriteElementString(k.Key.Trim(), k.Value.Trim());
+
+            }
+
+
+            xwriter.WriteEndElement();
+            xwriter.Flush();
+            xwriter.Close();
+            MessageBox.Show("Succesfully Save Data");
+     
+            this.Close();
         }
 
 
