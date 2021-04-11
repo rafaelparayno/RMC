@@ -29,8 +29,9 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         LabQueueController labQueueController = new LabQueueController();
         RadioQueueController radioQueueController = new RadioQueueController();
         PackageLabController packageLabController = new PackageLabController();
-        MedCertController certController = new MedCertController();
+        PackageOthers packageOthers = new PackageOthers();
         PackageXray packageXrayController = new PackageXray();
+        OthersQueueController othersQueueController = new OthersQueueController();
         #endregion
 
         #region VariableState
@@ -322,6 +323,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                     saves.Add(radioQueueController.save(customerid, id));
                 if (type == "Packages")
                     saves.Add(savePackageQueue(id));
+                if (type == "OtherServices")
+                    saves.Add(othersQueueController.save(id, customerid));
 
 
             }
@@ -339,6 +342,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             List<Task> saves = new List<Task>();
             List<PackagesNames> listLabs = await packageLabController.getPackagesLab(id);
             List<PackagesNames> listRadios = await packageXrayController.getPackagesNames(id);
+            List<PackagesNames> listOthers = await packageOthers.getPackagesNames(id);
 
 
             foreach (PackagesNames r in listRadios)
@@ -350,6 +354,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             foreach (PackagesNames p in listLabs)
             {
                 saves.Add(labQueueController.save(p.id, customerid));
+            }
+
+            foreach(PackagesNames o in listOthers)
+            {
+                saves.Add(othersQueueController.save(o.id, customerid));
             }
 
 

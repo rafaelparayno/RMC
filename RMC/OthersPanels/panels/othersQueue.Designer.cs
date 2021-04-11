@@ -28,15 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dbServiceList = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showLabRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceList)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -127,6 +132,28 @@
             this.dbServiceList.Size = new System.Drawing.Size(668, 466);
             this.dbServiceList.StandardTab = true;
             this.dbServiceList.TabIndex = 113;
+            this.dbServiceList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dbServiceList_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showLabRequestsToolStripMenuItem,
+            this.doneToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 70);
+            // 
+            // showLabRequestsToolStripMenuItem
+            // 
+            this.showLabRequestsToolStripMenuItem.Name = "showLabRequestsToolStripMenuItem";
+            this.showLabRequestsToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.showLabRequestsToolStripMenuItem.Text = "Show Services Requests";
+            this.showLabRequestsToolStripMenuItem.Click += new System.EventHandler(this.showLabRequestsToolStripMenuItem_Click);
+            // 
+            // doneToolStripMenuItem
+            // 
+            this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
+            this.doneToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.doneToolStripMenuItem.Text = "View Data";
             // 
             // othersQueue
             // 
@@ -139,10 +166,12 @@
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.Name = "othersQueue";
             this.Text = "othersQueue";
+            this.Load += new System.EventHandler(this.othersQueue_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceList)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -155,5 +184,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.DataGridView dbServiceList;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem showLabRequestsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem doneToolStripMenuItem;
     }
 }

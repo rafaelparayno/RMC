@@ -512,6 +512,7 @@
     <Compile Include="Database\Controllers\LabTypeController.cs" />
     <Compile Include="Database\Controllers\LoginController.cs" />
     <Compile Include="Database\Controllers\MedCertController.cs" />
+    <Compile Include="Database\Controllers\OthersQueueController.cs" />
     <Compile Include="Database\Controllers\PackageLabController.cs" />
     <Compile Include="Database\Controllers\PackageOthers.cs" />
     <Compile Include="Database\Controllers\PackagesController.cs" />
