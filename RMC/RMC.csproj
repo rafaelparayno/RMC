@@ -880,6 +880,12 @@
     <Compile Include="OthersPanels\OthersDash.Designer.cs">
       <DependentUpon>OthersDash.cs</DependentUpon>
     </Compile>
+    <Compile Include="OthersPanels\panels\DoneOthersQueue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OthersPanels\panels\DoneOthersQueue.Designer.cs">
+      <DependentUpon>DoneOthersQueue.cs</DependentUpon>
+    </Compile>
     <Compile Include="OthersPanels\panels\othersQueue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1519,6 +1525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OthersPanels\OthersDash.resx">
       <DependentUpon>OthersDash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OthersPanels\panels\DoneOthersQueue.resx">
+      <DependentUpon>DoneOthersQueue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OthersPanels\panels\othersQueue.resx">
       <DependentUpon>othersQueue.cs</DependentUpon>

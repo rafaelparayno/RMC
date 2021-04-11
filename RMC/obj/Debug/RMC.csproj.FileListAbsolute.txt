@@ -392,3 +392,4 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Patients.PanelsDetai
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.OthersPanels.OthersDash.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.OthersPanels.panels.othersQueue.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.OthersPanels.Dialogs.ViewPatientServiceReq.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.OthersPanels.panels.DoneOthersQueue.resources

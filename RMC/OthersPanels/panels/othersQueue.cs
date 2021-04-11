@@ -67,7 +67,7 @@ namespace RMC.OthersPanels.panels
             }
         }
 
-        private void showLabRequestsToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void showLabRequestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool isNumber = int.TryParse(idRightClick, out _);
             if (!isNumber)
@@ -77,7 +77,7 @@ namespace RMC.OthersPanels.panels
 
             ViewPatientServiceReq viewPatientServiceReq = new ViewPatientServiceReq(id);
             viewPatientServiceReq.ShowDialog();
-
+            await loadGrid();
         }
 
         private async void iconButton1_Click(object sender, EventArgs e)
