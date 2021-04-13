@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace RMC.Doctor.PanelDoctor
     public partial class DoctorData : Form
     {
         DoctorDataController doctorDataController = new DoctorDataController();
+        private string pathEdit = "";
         public DoctorData()
         {
             InitializeComponent();
@@ -37,14 +39,22 @@ namespace RMC.Doctor.PanelDoctor
 
             txtfilepath.Text = data.imgPath;
 
-
+            pathEdit = data.imgPath;
             if (data.imgPath == "" || data.imgPath == null)
                 return;
 
             try
-            {     
-                Image img = Image.FromFile(data.imgPath);
-                pictureBox1.Image = img;
+            {
+
+                if (!File.Exists(pathEdit))
+                    return;
+
+                FileStream fileStream = new FileStream(pathEdit, FileMode.OpenOrCreate);
+
+                pictureBox1.Image = Image.FromStream(fileStream);
+                txtfilepath.Text = pathEdit;
+                fileStream.Close();
+                
             }
             catch (System.IO.FileNotFoundException)
             {
@@ -53,14 +63,22 @@ namespace RMC.Doctor.PanelDoctor
 
         }
 
+        private string GeneratePassword(int length)
+        {
+            Random random = new Random();
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+
+        }
+
         private async void btnAddItem_Click(object sender, EventArgs e)
         {
             if (isValid())
             {
                 string pathDir = CreateDirectory.CreateDir("Signatures");
-                Random r = new Random();
-                int genRand = r.Next(10, 50);
-                 await saveData(genRand,pathDir);
+            
+                 await saveData(pathDir);
               
 
                 MessageBox.Show("Succesfully Save Data");
@@ -71,16 +89,26 @@ namespace RMC.Doctor.PanelDoctor
             }
         }
 
-        private async Task saveData(int genRand,string pathDir)
+        private async Task saveData(string pathDir)
         {
             Image img = pictureBox1.Image;
 
               
-            string fullPath = pathDir + "Sign-" + genRand + "-" + UserLog.getUserId() + ".jpg";
+            string fullPath = pathDir + "Sign-" + GeneratePassword(10) + "-" + UserLog.getUserId() + ".jpg";
            await doctorDataController.save(textBox1.Text.Trim(), textBox2.Text.Trim(),
                     fullPath, UserLog.getUserId().ToString());
             if(img != null)
+            {
+                if (File.Exists(pathEdit))
+                {
+                    File.Delete(pathEdit);
+                }
+
+
+
                 img.Save(fullPath);
+            }
+               
 
         }
 

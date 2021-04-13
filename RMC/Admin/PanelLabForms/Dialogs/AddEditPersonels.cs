@@ -71,12 +71,22 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             }
         }
 
-        private async Task saveData(int genRand, string pathDir)
+
+        private string GeneratePassword(int length)
+        {
+            Random random = new Random();
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+
+        }
+
+        private async Task saveData( string pathDir)
         {
             Image img = pictureBox1.Image;
 
 
-            string fullPath = pathDir + "Sign-" + genRand + ".jpg";
+            string fullPath = pathDir + "Sign-" + GeneratePassword(10) + ".jpg";
             await personelsController.save(cbOther.Text, textBox1.Text.Trim(), fullPath);
             if (img != null)
                 img.Save(fullPath);
@@ -116,9 +126,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             if (!isEdit)
             {
                 string pathDir = CreateDirectory.CreateDir("Signatures");
-                Random r = new Random();
-                int genRand = r.Next(10, 50);
-                await saveData(genRand, pathDir);
+               
+                await saveData(pathDir);
                
             }
             else

@@ -46,7 +46,19 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
 
         private async void button3_Click(object sender, EventArgs e)
         {
-            
+            if (dgLabTypes.SelectedRows.Count == 0)
+                return;
+
+            if (dgLabTypes.Rows.Count == 0)
+                return;
+
+
+            int id = int.Parse(dgLabTypes.SelectedRows[0].Cells[0].Value.ToString());
+            string prof = dgLabTypes.SelectedRows[0].Cells[1].Value.ToString();
+
+            await personelsController.updateStatus(id, prof);
+            MessageBox.Show("Succesfully Update Status");
+            await loadData();
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -60,8 +72,8 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
 
             int id = int.Parse(dgLabTypes.SelectedRows[0].Cells[0].Value.ToString());
             AddEditPersonels addEditPersonels = new AddEditPersonels(id,
-                                                    dgLabTypes.SelectedRows[0].Cells[1].Value.ToString(),
-                                                    dgLabTypes.SelectedRows[0].Cells[2].Value.ToString());
+                                                    dgLabTypes.SelectedRows[0].Cells[2].Value.ToString(),
+                                                    dgLabTypes.SelectedRows[0].Cells[1].Value.ToString());
             addEditPersonels.ShowDialog();
             await loadData();
         }

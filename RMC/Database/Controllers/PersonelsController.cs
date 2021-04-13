@@ -49,6 +49,38 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, mySqlParameters);
         }
 
+        public async Task updateStatus(int id,string prof)
+        {
+            string sql = @"SELECT * FROM personels WHERE profession = @prof AND is_active = 1 ";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
+            mySqlParameters.Add(new MySqlParameter("@prof", prof));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+            int idToChange = 0;
+            if(await reader.ReadAsync())
+            {
+                idToChange = int.Parse(reader["personels_id"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            List<MySqlParameter> mySqlParameters1 = new List<MySqlParameter>() { (new MySqlParameter("@toChange", idToChange)) };
+
+            string sql2 = @"UPDATE personels SET is_active = 0 WHERE personels_id = @toChange";
+
+
+            sql = @"UPDATE personels SET is_active = 1 WHERE personels_id = @id";
+
+            mySqlParameters = new List<MySqlParameter>() { (new MySqlParameter("@id", id)) };
+
+            List<Task> tasks = new List<Task>();
+            tasks.Add(crud.ExecuteAsync(sql2, mySqlParameters1));
+            tasks.Add(crud.ExecuteAsync(sql, mySqlParameters));
+
+            await Task.WhenAll(tasks);
+        }
+
         public async Task<string> imgPath(int id)
         {
             string path = "";
