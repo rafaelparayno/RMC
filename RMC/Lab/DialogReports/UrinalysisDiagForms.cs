@@ -21,6 +21,9 @@ namespace RMC.Lab.DialogReports
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         patientDetails patientDetails = new patientDetails();
         PatientLabController patientLabController = new PatientLabController();
+        PersonelsController personelsController = new PersonelsController();
+        PersonelModel personelModelMt = new PersonelModel();
+        PersonelModel personelModelPatho = new PersonelModel();
         private int patientid = 0;
         private int labid = 0;
         private int patient_lab_id = 0;
@@ -36,15 +39,25 @@ namespace RMC.Lab.DialogReports
 
         private async void UrinalysisDiagForms_Load(object sender, EventArgs e)
         {
-            crystalReportViewer1.ReportSource = urinalysis;
+           
             patientDetails = await patientDetailsController.getPatientId(patientid);
-                await loadXmlValues();
+            personelModelMt = await personelsController.getImgName("Medical Technologist");
+            personelModelPatho = await personelsController.getImgName("Pathologist");
+
+            await loadXmlValues();
 
             urinalysis.SetParameterValue("patientName", patientDetails.FullName);
 
             urinalysis.SetParameterValue("age", patientDetails.age.ToString());
             urinalysis.SetParameterValue("sex", patientDetails.gender);
             urinalysis.SetParameterValue("address", patientDetails.address);
+
+            urinalysis.SetParameterValue("mtName", personelModelMt.name);
+            urinalysis.SetParameterValue("imgPathMt", personelModelMt.imgPath);
+
+            urinalysis.SetParameterValue("pathoName", personelModelPatho.name);
+            urinalysis.SetParameterValue("imgPathPatho", personelModelPatho.imgPath);
+            crystalReportViewer1.ReportSource = urinalysis;
         }
 
         private async Task loadXmlValues()

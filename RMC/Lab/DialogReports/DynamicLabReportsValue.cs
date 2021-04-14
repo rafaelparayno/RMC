@@ -98,11 +98,14 @@ namespace RMC.Lab.DialogReports
 
         private void loadUrinalysis()
         {
+            List<string> parametersName = new List<string>();
+
+
             Urinalysis urinalysis = new Urinalysis();
 
             foreach (ParameterField parameterField in urinalysis.ParameterFields)
             {
-                TextBoxParamsCrystal textBoxParams = new TextBoxParamsCrystal();
+                
                 if (parameterField.Name == "patientName")
                     continue;
                 if (parameterField.Name == "age")
@@ -114,9 +117,33 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "dateParam")
                     continue;
 
-                textBoxParams.NameLabel = parameterField.Name;
-                textBoxParamsCrystals.Add(textBoxParams);
+
+                if (parameterField.Name == "mtName")
+                    continue;
+
+                if (parameterField.Name == "pathoName")
+                    continue;
+
+                if (parameterField.Name == "imgPathMt")
+                    continue;
+
+                if (parameterField.Name == "imgPathPatho")
+                    continue;
+
+                parametersName.Add(parameterField.Name);
+              
                 //values.Add(parameterField.Name);
+            }
+
+
+
+            parametersName.Reverse();
+
+            foreach (string name in parametersName)
+            {
+                TextBoxParamsCrystal textBoxParams = new TextBoxParamsCrystal();
+                textBoxParams.NameLabel = name;
+                textBoxParamsCrystals.Add(textBoxParams);
             }
         }
 
@@ -164,6 +191,18 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "address")
                     continue;
                 if (parameterField.Name == "dateParam")
+                    continue;
+
+                if (parameterField.Name == "mtName")
+                    continue;
+
+                if (parameterField.Name == "pathoName")
+                    continue;
+
+                if (parameterField.Name == "imgPathMt")
+                    continue;
+
+                if (parameterField.Name == "imgPathPatho")
                     continue;
 
                 textBoxParams.NameLabel = parameterField.Name;
