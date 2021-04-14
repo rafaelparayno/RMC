@@ -68,6 +68,9 @@ namespace RMC.Lab.DialogReports
                 await patientLabController.getFullPath(patientid, labid)
                 : await patientLabController.getFullPath(patient_lab_id);
 
+            int labNo = patient_lab_id == 0 ?
+               await patientLabController.getLabNo(patientid, labid) :
+               patient_lab_id;
 
             if (!File.Exists(path))
                 return;
@@ -84,6 +87,8 @@ namespace RMC.Lab.DialogReports
 
                 fecalysis.SetParameterValue(node.Name, node.InnerText);
             }
+
+            fecalysis.SetParameterValue("labno", labNo);
         }
     }
 }

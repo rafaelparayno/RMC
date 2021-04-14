@@ -134,6 +134,10 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "imgPathPatho")
                     continue;
 
+
+                if (parameterField.Name == "labno")
+                    continue;
+
                 parametersName.Add(parameterField.Name);
 
                 //values.Add(parameterField.Name);
@@ -183,6 +187,10 @@ namespace RMC.Lab.DialogReports
                     continue;
 
                 if (parameterField.Name == "imgPathPatho")
+                    continue;
+
+
+                if (parameterField.Name == "labno")
                     continue;
 
                 parametersName.Add(parameterField.Name);
@@ -235,6 +243,10 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "imgPathPatho")
                     continue;
 
+
+                if (parameterField.Name == "labno")
+                    continue;
+
                 textBoxParams.NameLabel = parameterField.Name;
                 textBoxParamsCrystals.Add(textBoxParams);
                 //values.Add(parameterField.Name);
@@ -272,6 +284,11 @@ namespace RMC.Lab.DialogReports
 
                 if (parameterField.Name == "imgPathPatho")
                     continue;
+
+
+                if (parameterField.Name == "labno")
+                    continue;
+
                 parametersName.Add(parameterField.Name);
                 //values.Add(parameterField.Name);
             }
@@ -318,6 +335,9 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "imgPathPatho")
                     continue;
 
+                if (parameterField.Name == "labno")
+                    continue;
+
                 textBoxParams.NameLabel = parameterField.Name;
                 textBoxParamsCrystals.Add(textBoxParams);
                 //values.Add(parameterField.Name);
@@ -354,6 +374,10 @@ namespace RMC.Lab.DialogReports
                     continue;
 
                 if (parameterField.Name == "imgPathPatho")
+                    continue;
+
+
+                if (parameterField.Name == "labno")
                     continue;
 
                 parametersName.Add(parameterField.Name);

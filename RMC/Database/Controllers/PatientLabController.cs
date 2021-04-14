@@ -73,6 +73,28 @@ namespace RMC.Database.Controllers
             return FullPath;
         }
 
+        public async Task<int> getLabNo(int patientid, int labid)
+        {
+            int labno = 0;
+            string sql = @"SELECT *
+                            FROM `patient_lab` WHERE patient_id = @id AND laboratory_id = @labid AND DATE(date_patient_lab) = CURDATE()";
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+            listParams.Add(new MySqlParameter("@id", patientid));
+
+            listParams.Add(new MySqlParameter("@labid", labid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
+
+            while (await reader.ReadAsync())
+            {
+                labno = int.Parse(reader["patient_lab_id"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return labno;
+        }
+
         public async Task<List<patientLabModel>> getPatientLabModel(int id)
         {
             List<patientLabModel> listPatientLabModel = new List<patientLabModel>();

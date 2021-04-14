@@ -447,6 +447,14 @@ namespace RMC.NewReports {
                 return this.DataDefinition.ParameterFields[44];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_labno {
+            get {
+                return this.DataDefinition.ParameterFields[45];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
