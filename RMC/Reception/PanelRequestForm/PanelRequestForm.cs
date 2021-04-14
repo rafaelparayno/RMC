@@ -28,7 +28,7 @@ namespace RMC.Reception.PanelRequestForm
         OthersQueueController othersQueueController = new OthersQueueController();
         UserracountsController uc = new UserracountsController();
         PatientMedcertController patientMedcertController = new PatientMedcertController();
-        DoctorQueueController doctorQueueController = new DoctorQueueController();
+
         DataTable dt = new DataTable();
         ImageList ImageList1 = new ImageList();
 
@@ -38,7 +38,7 @@ namespace RMC.Reception.PanelRequestForm
         private int medCert = 2;
         private int labS = 3;
         private int xRayS = 4;
-        private int packagesS = 5;
+
         private int otherS = 7;
         public PanelRequestForm()
         {

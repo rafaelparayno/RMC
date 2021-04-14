@@ -776,7 +776,12 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
         private void rbTypeC_Click(object sender, EventArgs e)
         {
-            typeTest = "Type C. Generally Not Acceptable for Employment/ Pending for Futher Evaluation";
+            typeTest = "Type C. Generally Not Acceptable for Employment";
+        }
+
+        private void radioButton6_Click(object sender, EventArgs e)
+        {
+            typeTest = "Pending for Futher Evaluation";
         }
 
         private void btnView_Click(object sender, EventArgs e)
@@ -896,12 +901,37 @@ namespace RMC.Doctor.PanelDoctor.Diag
             {
 
                
-                if (node.Name == "pastDiseases")             
-                   txtSignificant.Text = node.InnerText;
-                if (node.Name == "operations")
+                if (node.Name == "pastDiseases")
+                {
+                    txtSignificant.Text = node.InnerText;
+                    if (node.InnerText == "None")
+                    {
+                        cbNonePast.Checked = true;
+                        txtSignificant.Enabled = false;
+                    }
+
+                }             
+                
+                if (node.Name == "operations") {
                     txtOperations.Text = node.InnerText;
+                    if (node.InnerText == "None")
+                    {
+                        cbNoneOperation.Checked = true;
+                        txtOperations.Enabled = false;
+                    }
+
+                }
+           
                 if (node.Name == "presentSymp")
+                {
                     txtPresent.Text = node.InnerText;
+                    if(node.InnerText == "None")
+                    {
+                        cbNonePresent.Checked = true;
+                        txtPresent.Enabled = false;
+                    }
+                }
+                   
 
                 if (node.Name == "general")
                 {
@@ -1188,6 +1218,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
                 if(node.Name == "classification")
                 {
+                    typeTest = node.InnerText;
                     if(node.InnerText.Contains("Type A"))
                     {
                         rbTypeA.Checked = true;
@@ -1196,9 +1227,13 @@ namespace RMC.Doctor.PanelDoctor.Diag
                     {
                         rbTypeB.Checked = true;
                     }
-                    else
+                    else if(node.InnerText.Contains("Type C"))
                     {
                         rbTypeC.Checked = true;
+                    }
+                    else
+                    {
+                        radioButton6.Checked = true;
                     }
                 }
 
@@ -1210,6 +1245,50 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
 
         }
+
+        private void cbNonePast_Click(object sender, EventArgs e)
+        {
+            if (cbNonePast .Checked)
+            {
+                txtSignificant.Text = "None";
+                txtSignificant.Enabled = false;
+            }
+            else
+            {
+                txtSignificant.Text = "";
+                txtSignificant.Enabled = true;
+            }
+        }
+
+        private void cbNoneOperation_Click(object sender, EventArgs e)
+        {
+            if (cbNoneOperation.Checked)
+            {
+                txtOperations.Text = "None";
+                txtOperations.Enabled = false;
+            }
+            else
+            {
+                txtOperations.Text = "";
+                txtOperations.Enabled = true;
+            }
+        }
+
+        private void cbNonePresent_Click(object sender, EventArgs e)
+        {
+            if (cbNonePresent.Checked)
+            {
+                txtPresent.Text = "None";
+                txtPresent.Enabled = false;
+            }
+            else
+            {
+                txtPresent.Text = "";
+                txtPresent.Enabled = true;
+            }
+        }
+
+       
 
        
     }

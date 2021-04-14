@@ -160,12 +160,15 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.cbNonePresent = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPresent = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cbNoneOperation = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtOperations = new System.Windows.Forms.TextBox();
             this.panelS = new System.Windows.Forms.Panel();
+            this.cbNonePast = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSignificant = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -190,6 +193,7 @@
             this.checkBox42 = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
             this.textBox42 = new System.Windows.Forms.TextBox();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.tabPage3.SuspendLayout();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
@@ -1653,6 +1657,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.cbNonePresent);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.txtPresent);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1660,6 +1665,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(955, 140);
             this.panel4.TabIndex = 5;
+            // 
+            // cbNonePresent
+            // 
+            this.cbNonePresent.AutoSize = true;
+            this.cbNonePresent.Location = new System.Drawing.Point(246, 21);
+            this.cbNonePresent.Name = "cbNonePresent";
+            this.cbNonePresent.Size = new System.Drawing.Size(65, 23);
+            this.cbNonePresent.TabIndex = 4;
+            this.cbNonePresent.Text = "None";
+            this.cbNonePresent.UseVisualStyleBackColor = true;
+            this.cbNonePresent.Click += new System.EventHandler(this.cbNonePresent_Click);
             // 
             // label3
             // 
@@ -1683,6 +1699,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.cbNoneOperation);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.txtOperations);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1690,6 +1707,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(955, 140);
             this.panel3.TabIndex = 3;
+            // 
+            // cbNoneOperation
+            // 
+            this.cbNoneOperation.AutoSize = true;
+            this.cbNoneOperation.Location = new System.Drawing.Point(246, 34);
+            this.cbNoneOperation.Name = "cbNoneOperation";
+            this.cbNoneOperation.Size = new System.Drawing.Size(65, 23);
+            this.cbNoneOperation.TabIndex = 3;
+            this.cbNoneOperation.Text = "None";
+            this.cbNoneOperation.UseVisualStyleBackColor = true;
+            this.cbNoneOperation.Click += new System.EventHandler(this.cbNoneOperation_Click);
             // 
             // label2
             // 
@@ -1713,6 +1741,7 @@
             // 
             // panelS
             // 
+            this.panelS.Controls.Add(this.cbNonePast);
             this.panelS.Controls.Add(this.label1);
             this.panelS.Controls.Add(this.txtSignificant);
             this.panelS.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1720,6 +1749,17 @@
             this.panelS.Name = "panelS";
             this.panelS.Size = new System.Drawing.Size(955, 140);
             this.panelS.TabIndex = 2;
+            // 
+            // cbNonePast
+            // 
+            this.cbNonePast.AutoSize = true;
+            this.cbNonePast.Location = new System.Drawing.Point(246, 24);
+            this.cbNonePast.Name = "cbNonePast";
+            this.cbNonePast.Size = new System.Drawing.Size(65, 23);
+            this.cbNonePast.TabIndex = 3;
+            this.cbNonePast.Text = "None";
+            this.cbNonePast.UseVisualStyleBackColor = true;
+            this.cbNonePast.Click += new System.EventHandler(this.cbNonePast_Click);
             // 
             // label1
             // 
@@ -1860,6 +1900,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioButton6);
             this.groupBox1.Controls.Add(this.rbTypeC);
             this.groupBox1.Controls.Add(this.rbTypeB);
             this.groupBox1.Controls.Add(this.rbTypeA);
@@ -1872,18 +1913,18 @@
             // rbTypeC
             // 
             this.rbTypeC.AutoSize = true;
-            this.rbTypeC.Location = new System.Drawing.Point(16, 155);
+            this.rbTypeC.Location = new System.Drawing.Point(16, 111);
             this.rbTypeC.Name = "rbTypeC";
-            this.rbTypeC.Size = new System.Drawing.Size(604, 23);
+            this.rbTypeC.Size = new System.Drawing.Size(383, 23);
             this.rbTypeC.TabIndex = 2;
             this.rbTypeC.TabStop = true;
-            this.rbTypeC.Text = "Type C. Generally Not Acceptable for Employment/ Pending for Futher Evaluation";
+            this.rbTypeC.Text = "Type C. Generally Not Acceptable for Employment";
             this.rbTypeC.UseVisualStyleBackColor = true;
             this.rbTypeC.Click += new System.EventHandler(this.rbTypeC_Click);
             // 
             // rbTypeB
             // 
-            this.rbTypeB.Location = new System.Drawing.Point(16, 83);
+            this.rbTypeB.Location = new System.Drawing.Point(16, 56);
             this.rbTypeB.Name = "rbTypeB";
             this.rbTypeB.Size = new System.Drawing.Size(850, 49);
             this.rbTypeB.TabIndex = 1;
@@ -1973,7 +2014,6 @@
             this.txtAssestment.Name = "txtAssestment";
             this.txtAssestment.Size = new System.Drawing.Size(900, 129);
             this.txtAssestment.TabIndex = 1;
-          
             // 
             // checkBox42
             // 
@@ -2003,6 +2043,19 @@
             this.textBox42.Name = "textBox42";
             this.textBox42.Size = new System.Drawing.Size(902, 27);
             this.textBox42.TabIndex = 1;
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(16, 157);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(242, 23);
+            this.radioButton6.TabIndex = 3;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = " Pending for Futher Evaluation";
+            this.radioButton6.UseVisualStyleBackColor = true;
+        
+            this.radioButton6.Click += new System.EventHandler(this.radioButton6_Click);
             // 
             // addEditPeForm
             // 
@@ -2280,5 +2333,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.CheckBox cbNonePresent;
+        private System.Windows.Forms.CheckBox cbNoneOperation;
+        private System.Windows.Forms.CheckBox cbNonePast;
+        private System.Windows.Forms.RadioButton radioButton6;
     }
 }

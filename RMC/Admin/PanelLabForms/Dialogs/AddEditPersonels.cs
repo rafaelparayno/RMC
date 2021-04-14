@@ -66,7 +66,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 }
                 catch(IOException ex)
                 {
-
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
