@@ -738,6 +738,12 @@
     <Compile Include="Lab\DialogReports\BloodChemDiagForms.Designer.cs">
       <DependentUpon>BloodChemDiagForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\DialogReports\ClinicalChemistryDiagForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\DialogReports\ClinicalChemistryDiagForms.Designer.cs">
+      <DependentUpon>ClinicalChemistryDiagForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\DialogReports\DynamicLabReportsValue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1485,6 +1491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\DialogReports\BloodChemDiagForms.resx">
       <DependentUpon>BloodChemDiagForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\DialogReports\ClinicalChemistryDiagForms.resx">
+      <DependentUpon>ClinicalChemistryDiagForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\DialogReports\DynamicLabReportsValue.resx">
       <DependentUpon>DynamicLabReportsValue.cs</DependentUpon>

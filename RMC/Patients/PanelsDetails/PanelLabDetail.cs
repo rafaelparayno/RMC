@@ -147,6 +147,10 @@ namespace RMC.Patients.PanelsDetails
                         ViewDiagnosticReport viewDiagnosticReport = new ViewDiagnosticReport(id,labModel.id,selectedIds);
                         viewDiagnosticReport.Show();
                         break;
+                    case 7:
+                        ClinicalChemistryDiagForms clinicalChemistryDiagForms = new ClinicalChemistryDiagForms(id, labModel.id, selectedIds);
+                        clinicalChemistryDiagForms.Show();
+                        break;
                 }
 
             }

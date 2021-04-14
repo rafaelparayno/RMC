@@ -199,6 +199,11 @@ namespace RMC.Lab.Panels.Diags
                         ViewDiagnosticReport viewDiagnosticReport = new ViewDiagnosticReport(patientid, selectedIds, 0);
                         viewDiagnosticReport.ShowDialog();
                         break;
+
+                    case 7:
+                        ClinicalChemistryDiagForms clinicalChemistryDiagForms = new ClinicalChemistryDiagForms(patientid, selectedIds, 0);
+                        clinicalChemistryDiagForms.ShowDialog();
+                        break;
                 }
 
 

@@ -90,11 +90,66 @@ namespace RMC.Lab.DialogReports
                     label8.Text = "Add Urinalysis Values Report";
                     loadUrinalysis();
                     break;
+
+                case 7:
+                    label8.Text = "Add Clinicial Chemistry Report";
+                    loadClinicalChemistry();
+                    break;
             }
 
 
         }
 
+
+        private void loadClinicalChemistry()
+        {
+            List<string> parametersName = new List<string>();
+
+            ClinicalChemistry clinicalChemistry = new ClinicalChemistry();
+
+            foreach (ParameterField parameterField in clinicalChemistry.ParameterFields)
+            {
+
+                if (parameterField.Name == "patientName")
+                    continue;
+                if (parameterField.Name == "age")
+                    continue;
+                if (parameterField.Name == "sex")
+                    continue;
+                if (parameterField.Name == "address")
+                    continue;
+                if (parameterField.Name == "dateParam")
+                    continue;
+
+
+                if (parameterField.Name == "mtName")
+                    continue;
+
+                if (parameterField.Name == "pathoName")
+                    continue;
+
+                if (parameterField.Name == "imgPathMt")
+                    continue;
+
+                if (parameterField.Name == "imgPathPatho")
+                    continue;
+
+                parametersName.Add(parameterField.Name);
+
+                //values.Add(parameterField.Name);
+            }
+
+
+            parametersName.Reverse();
+
+            foreach (string name in parametersName)
+            {
+                TextBoxParamsCrystal textBoxParams = new TextBoxParamsCrystal();
+                textBoxParams.NameLabel = name;
+                textBoxParamsCrystals.Add(textBoxParams);
+            }
+
+        }
 
         private void loadUrinalysis()
         {
