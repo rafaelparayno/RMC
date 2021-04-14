@@ -46,6 +46,8 @@ namespace RMC.Lab.DialogReports
             await loadXmlValues();
             diagnosticReport.SetParameterValue("age", patientDetails.age.ToString());
             diagnosticReport.SetParameterValue("sex", patientDetails.gender);
+            diagnosticReport.SetParameterValue("address", patientDetails.address);
+
             diagnosticReport.SetParameterValue("mtName", personelModelMt.name);
             diagnosticReport.SetParameterValue("imgPathMt", personelModelMt.imgPath);
 

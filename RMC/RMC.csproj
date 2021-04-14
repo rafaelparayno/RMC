@@ -864,6 +864,12 @@
       <DependentUpon>BloodChem.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="NewReports\ClinicalChemistry.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicalChemistry.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NewReports\DiagnosticReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1543,6 +1549,10 @@
     <EmbeddedResource Include="NewReports\BloodChem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>BloodChem.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewReports\ClinicalChemistry.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ClinicalChemistry.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="NewReports\DiagnosticReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
