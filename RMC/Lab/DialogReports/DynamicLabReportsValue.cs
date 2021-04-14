@@ -178,10 +178,10 @@ namespace RMC.Lab.DialogReports
         private void LoadFecalysis()
         {
             Fecalysis fec = new Fecalysis();
-
+            List<string> parametersName = new List<string>();
             foreach (ParameterField parameterField in fec.ParameterFields)
             {
-                TextBoxParamsCrystal textBoxParams = new TextBoxParamsCrystal();
+               
                 if (parameterField.Name == "patientName")
                     continue;
                 if (parameterField.Name == "age")
@@ -204,10 +204,17 @@ namespace RMC.Lab.DialogReports
 
                 if (parameterField.Name == "imgPathPatho")
                     continue;
-
-                textBoxParams.NameLabel = parameterField.Name;
-                textBoxParamsCrystals.Add(textBoxParams);
+                parametersName.Add(parameterField.Name);
                 //values.Add(parameterField.Name);
+            }
+
+            parametersName.Reverse();
+
+            foreach (string name in parametersName)
+            {
+                TextBoxParamsCrystal textBoxParams = new TextBoxParamsCrystal();
+                textBoxParams.NameLabel = name;
+                textBoxParamsCrystals.Add(textBoxParams);
             }
 
         }

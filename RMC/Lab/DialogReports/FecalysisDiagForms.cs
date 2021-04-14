@@ -21,6 +21,9 @@ namespace RMC.Lab.DialogReports
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         patientDetails patientDetails = new patientDetails();
         PatientLabController patientLabController = new PatientLabController();
+        PersonelsController personelsController = new PersonelsController();
+        PersonelModel personelModelMt = new PersonelModel();
+        PersonelModel personelModelPath = new PersonelModel();
         private int patientid = 0;
         private int labid = 0;
         private int patient_lab_id = 0;
@@ -35,7 +38,10 @@ namespace RMC.Lab.DialogReports
 
         private async void FecalysisDiagForms_Load(object sender, EventArgs e)
         {
-            crystalReportViewer1.ReportSource = fecalysis;
+
+            personelModelMt = await personelsController.getImgName("Medical Technologist");
+            personelModelPath = await personelsController.getImgName("Pathologist");
+
             patientDetails = await patientDetailsController.getPatientId(patientid);
             await loadXmlValues();
             fecalysis.SetParameterValue("patientName", patientDetails.FullName);
@@ -43,6 +49,14 @@ namespace RMC.Lab.DialogReports
             fecalysis.SetParameterValue("age", patientDetails.age.ToString());
             fecalysis.SetParameterValue("sex", patientDetails.gender);
             fecalysis.SetParameterValue("address", patientDetails.address);
+
+
+            fecalysis.SetParameterValue("mtName", personelModelMt.name);
+            fecalysis.SetParameterValue("imgPathMt", personelModelMt.imgPath);
+
+            fecalysis.SetParameterValue("pathoName", personelModelPath.name);
+            fecalysis.SetParameterValue("imgPathPatho", personelModelPath.imgPath);
+            crystalReportViewer1.ReportSource = fecalysis;
         }
 
         private async Task loadXmlValues()
