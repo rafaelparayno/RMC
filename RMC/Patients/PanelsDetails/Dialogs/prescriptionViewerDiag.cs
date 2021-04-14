@@ -22,7 +22,8 @@ namespace RMC.Patients.PanelsDetails.Dialogs
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         DoctorDataController doctorDataController = new DoctorDataController();
         UserracountsController userracountsController = new UserracountsController();
-
+     
+     
         int docresid = 0;
         private DataSet ds = new DataSet();
 

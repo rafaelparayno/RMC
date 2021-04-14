@@ -142,7 +142,8 @@
             this.cbOther.Items.AddRange(new object[] {
             "Medical Technologist",
             "Pathologist",
-            "Radiologist"});
+            "Radiologist",
+            "Checker"});
             this.cbOther.Location = new System.Drawing.Point(32, 161);
             this.cbOther.Name = "cbOther";
             this.cbOther.Size = new System.Drawing.Size(647, 25);

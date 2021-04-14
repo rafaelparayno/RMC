@@ -25,6 +25,8 @@ namespace RMC.Patients.PanelsDetails.Dialogs
         UserracountsController userracountsController = new UserracountsController();
         PatientVController patientVController = new PatientVController();
         PreEmployment preEmployment = new PreEmployment();
+        PersonelsController personelsController = new PersonelsController();
+        PersonelModel personelModel = new PersonelModel();
         private int patid = 0;
         private int patmedid = 0;
       
@@ -55,11 +57,17 @@ namespace RMC.Patients.PanelsDetails.Dialogs
 
                 DoctorDataModel doctorDataModel = await doctorDataController.getDoctorData(UserLog.getUserId());
                 string fullName = await userracountsController.getFullNameId(UserLog.getUserId());
+                personelModel = await personelsController.getImgName("Checker");
                 DateTime datenow = DateTime.Today;
-                preEmployment.SetParameterValue("physician", fullName);
+                preEmployment.SetParameterValue("physician", fullName + ", MD");
                 preEmployment.SetParameterValue("imgParam", doctorDataModel.imgPath);
+                preEmployment.SetParameterValue("licenseNo", doctorDataModel.license);
+                preEmployment.SetParameterValue("prNoParam", doctorDataModel.pr);
 
                 preEmployment.SetParameterValue("eDate", datenow.ToString("dd-MM-yyyy"));
+
+                preEmployment.SetParameterValue("checkby", personelModel.name);
+                preEmployment.SetParameterValue("imgPathChecker", personelModel.imgPath);
 
                 foreach(KeyValuePair<string,string> keyValuePair in values)
                 {
@@ -105,9 +113,15 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             string companyName = await doctorQueue.getCompanyNameByCustomeId(model.customerid);
             patientVModel patientVModel = await patientVController.getDetailsidDate(patid,
                 model.date.ToString("yyyy-MM-dd"));
-        
-            preEmployment.SetParameterValue("physician", fullName);
+            personelModel = await personelsController.getImgName("Checker");
+
+            preEmployment.SetParameterValue("checkby", personelModel.name);
+            preEmployment.SetParameterValue("imgPathChecker", personelModel.imgPath);
+
+            preEmployment.SetParameterValue("physician", fullName + ", MD");
             preEmployment.SetParameterValue("imgParam", dt.imgPath);
+            preEmployment.SetParameterValue("licenseNo", dt.license);
+            preEmployment.SetParameterValue("prNoParam", dt.pr);
 
             //Personal Info
             preEmployment.SetParameterValue("patientName", patientDetails.FullName);
