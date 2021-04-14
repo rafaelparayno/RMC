@@ -167,6 +167,19 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "dateParam")
                     continue;
 
+
+                if (parameterField.Name == "mtName")
+                    continue;
+
+                if (parameterField.Name == "pathoName")
+                    continue;
+
+                if (parameterField.Name == "imgPathMt")
+                    continue;
+
+                if (parameterField.Name == "imgPathPatho")
+                    continue;
+
                 textBoxParams.NameLabel = parameterField.Name;
                 textBoxParamsCrystals.Add(textBoxParams);
                 //values.Add(parameterField.Name);
@@ -235,6 +248,19 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "address")
                     continue;
                 if (parameterField.Name == "dateParam")
+                    continue;
+
+
+                if (parameterField.Name == "mtName")
+                    continue;
+
+                if (parameterField.Name == "pathoName")
+                    continue;
+
+                if (parameterField.Name == "imgPathMt")
+                    continue;
+
+                if (parameterField.Name == "imgPathPatho")
                     continue;
 
                 textBoxParams.NameLabel = parameterField.Name;

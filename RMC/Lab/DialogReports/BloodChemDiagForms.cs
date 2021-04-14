@@ -22,6 +22,9 @@ namespace RMC.Lab.DialogReports
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         patientDetails patientDetails = new patientDetails();
         PatientLabController patientLabController = new PatientLabController();
+        PersonelsController personelsController = new PersonelsController();
+        PersonelModel personelModelMt = new PersonelModel();
+        PersonelModel personelModelPath = new PersonelModel();
         private int patientid = 0;
         private int labid = 0;
         private int patient_lab_id = 0;
@@ -38,7 +41,8 @@ namespace RMC.Lab.DialogReports
 
         private async void BloodChemDiagForms_Load(object sender, EventArgs e)
         {
-            crystalReportViewer1.ReportSource = bloodChem;
+            personelModelMt = await personelsController.getImgName("Medical Technologist");
+            personelModelPath = await personelsController.getImgName("Pathologist");
             patientDetails = await patientDetailsController.getPatientId(patientid);
             await loadXmlValues();
             bloodChem.SetParameterValue("patientName", patientDetails.FullName);
@@ -46,6 +50,14 @@ namespace RMC.Lab.DialogReports
             bloodChem.SetParameterValue("age", patientDetails.age.ToString());
             bloodChem.SetParameterValue("sex", patientDetails.gender);
             bloodChem.SetParameterValue("address", patientDetails.address);
+
+
+            bloodChem.SetParameterValue("mtName", personelModelMt.name);
+            bloodChem.SetParameterValue("imgPathMt", personelModelMt.imgPath);
+
+            bloodChem.SetParameterValue("pathoName", personelModelPath.name);
+            bloodChem.SetParameterValue("imgPathPatho", personelModelPath.imgPath);
+            crystalReportViewer1.ReportSource = bloodChem;
         }
 
         private async Task loadXmlValues()

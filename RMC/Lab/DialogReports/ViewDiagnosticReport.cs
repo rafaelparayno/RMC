@@ -22,6 +22,9 @@ namespace RMC.Lab.DialogReports
         patientDetails patientDetails = new patientDetails();
         PatientLabController patientLabController = new PatientLabController();
         DiagnosticReport diagnosticReport = new DiagnosticReport();
+        PersonelsController personelsController = new PersonelsController();
+        PersonelModel personelModelMt = new PersonelModel();
+        PersonelModel personelModelPath = new PersonelModel();
         private int patientid = 0;
         private int labid = 0;
         private int patient_lab_id = 0;
@@ -36,12 +39,18 @@ namespace RMC.Lab.DialogReports
 
         private async void ViewDiagnosticReport_Load(object sender, EventArgs e)
         {
+            personelModelMt = await personelsController.getImgName("Medical Technologist");
+            personelModelPath = await personelsController.getImgName("Pathologist");
             patientDetails = await patientDetailsController.getPatientId(patientid);
             diagnosticReport.SetParameterValue("patientName", patientDetails.FullName);
             await loadXmlValues();
             diagnosticReport.SetParameterValue("age", patientDetails.age.ToString());
             diagnosticReport.SetParameterValue("sex", patientDetails.gender);
-     /*       diagnosticReport.SetParameterValue("address", patientDetails.gender);*/
+            diagnosticReport.SetParameterValue("mtName", personelModelMt.name);
+            diagnosticReport.SetParameterValue("imgPathMt", personelModelMt.imgPath);
+
+            diagnosticReport.SetParameterValue("pathoName", personelModelPath.name);
+            diagnosticReport.SetParameterValue("imgPathPatho", personelModelPath.imgPath);
 
             crystalReportViewer1.ReportSource = diagnosticReport;
         }

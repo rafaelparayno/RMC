@@ -21,6 +21,9 @@ namespace RMC.Lab.DialogReports
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         patientDetails patientDetails = new patientDetails();
         PatientLabController patientLabController = new PatientLabController();
+        PersonelsController personelsController = new PersonelsController();
+        PersonelModel personelModelMt = new PersonelModel();
+        PersonelModel personelModelPath = new PersonelModel();
         private int patientid = 0;
         private int labid = 0;
         private int patient_lab_id = 0;
@@ -36,7 +39,8 @@ namespace RMC.Lab.DialogReports
 
         private async void SerologyDiagForms_Load(object sender, EventArgs e)
         {
-            crystalReportViewer1.ReportSource = serology;
+            personelModelMt = await personelsController.getImgName("Medical Technologist");
+            personelModelPath = await personelsController.getImgName("Pathologist");
             patientDetails = await patientDetailsController.getPatientId(patientid);
             await loadXmlValues();
             serology.SetParameterValue("patientName", patientDetails.FullName);
@@ -44,6 +48,13 @@ namespace RMC.Lab.DialogReports
             serology.SetParameterValue("age", patientDetails.age.ToString());
             serology.SetParameterValue("sex", patientDetails.gender);
             serology.SetParameterValue("address", patientDetails.gender);
+
+            serology.SetParameterValue("mtName", personelModelMt.name);
+            serology.SetParameterValue("imgPathMt", personelModelMt.imgPath);
+
+            serology.SetParameterValue("pathoName", personelModelPath.name);
+            serology.SetParameterValue("imgPathPatho", personelModelPath.imgPath);
+            crystalReportViewer1.ReportSource = serology;
         }
 
         private async Task loadXmlValues()
