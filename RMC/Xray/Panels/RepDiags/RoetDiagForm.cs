@@ -21,7 +21,9 @@ namespace RMC.Xray.Panels.RepDiags
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         patientDetails patientDetails = new patientDetails();
         PatientXrayController patientXrayController = new PatientXrayController();
-    /*    PatientLabController patientLabController = new PatientLabController();*/
+        PersonelsController personelsController = new PersonelsController();
+        PersonelModel personelModelRadio = new PersonelModel();
+    
         private int patientid = 0;
         private int labid = 0;
         private int patient_xray_id = 0;
@@ -37,7 +39,7 @@ namespace RMC.Xray.Panels.RepDiags
 
         private async void RoetDiagForm_Load(object sender, EventArgs e)
         {
-            crystalReportViewer1.ReportSource = roetgenological;
+            personelModelRadio = await personelsController.getImgName("Radiologist");
             patientDetails = await patientDetailsController.getPatientId(patientid);
             await loadXmlValues();
             roetgenological.SetParameterValue("patientName", patientDetails.FullName);
@@ -46,6 +48,10 @@ namespace RMC.Xray.Panels.RepDiags
             roetgenological.SetParameterValue("sex", patientDetails.gender);
             roetgenological.SetParameterValue("address", patientDetails.address);
             roetgenological.SetParameterValue("civil", patientDetails.civil_status);
+
+            roetgenological.SetParameterValue("imgPathRadio", personelModelRadio.imgPath);
+            roetgenological.SetParameterValue("radioName", patientDetails.civil_status);
+            crystalReportViewer1.ReportSource = roetgenological;
         }
 
         private async Task loadXmlValues()

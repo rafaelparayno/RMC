@@ -44,7 +44,6 @@
             // 
             // txtParam
             // 
-            this.txtParam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtParam.Location = new System.Drawing.Point(17, 26);
             this.txtParam.Name = "txtParam";
             this.txtParam.Size = new System.Drawing.Size(637, 20);

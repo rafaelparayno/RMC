@@ -83,6 +83,11 @@ namespace RMC.Xray.Panels.RepDiags
                 if (parameterField.Name == "civil")
                     continue;
 
+                if (parameterField.Name == "imgPathRadio")
+                    continue;
+                if (parameterField.Name == "radioName")
+                    continue;
+
                 textBoxParams.NameLabel = parameterField.Name;
                 textBoxParamsCrystals.Add(textBoxParams);
                 //values.Add(parameterField.Name);
@@ -128,6 +133,14 @@ namespace RMC.Xray.Panels.RepDiags
             mainPanel.Controls.Clear();
             foreach (TextBoxParamsCrystal t in textBoxParamsCrystals)
             {
+
+                if(t.NameLabel != "xrayno" && t.NameLabel != "examinationParam")
+                {
+                    t.Height = 150;
+                  
+                    t.textbox1.Multiline = true;
+                    t.textbox1.Height = 100;
+                }
                 t.Dock = DockStyle.Top;
                 mainPanel.Controls.Add(t);
             }
