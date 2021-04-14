@@ -83,16 +83,16 @@ namespace RMC.Patients.PanelsDetails.Dialogs
 
             MedCertModel model = await patientMedcert.getMedcert(patmedid);
 
+
             if (!File.Exists(model.path))
                 return;
-
-
-            doc.Load(model.path);
-
+            
+            
+            doc.Load(model.path);  
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-              /*  node.Attributes["textname"].Value.ToString();*/
+             
                 preEmployment.SetParameterValue(node.Name, node.InnerText);
             }
 
@@ -103,10 +103,9 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             string companyName = await doctorQueue.getCompanyNameByCustomeId(model.customerid);
             patientVModel patientVModel = await patientVController.getDetailsidDate(patid,
                 model.date.ToString("yyyy-MM-dd"));
-            /* preEmployment.SetParameterValue("licenseNo", dt.license);
-             preEmployment.SetParameterValue("prNoParam", dt.pr);
-             preEmployment.SetParameterValue("doctorName", fullName);
-             preEmployment.SetParameterValue("imgParam", dt.imgPath);*/
+        
+            preEmployment.SetParameterValue("physician", fullName);
+            preEmployment.SetParameterValue("imgParam", dt.imgPath);
 
             //Personal Info
             preEmployment.SetParameterValue("patientName", patientDetails.FullName);

@@ -664,10 +664,9 @@ namespace RMC.Doctor.PanelDoctor.Diag
         {
             string pathSave = isEdit ? path : path + filename + ".xml";
 
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
+     
         
-            XmlWriter xwriter = XmlWriter.Create(pathSave,settings);
+            XmlWriter xwriter = XmlWriter.Create(pathSave);
 
             xwriter.WriteStartElement("PreEmployment");
             
