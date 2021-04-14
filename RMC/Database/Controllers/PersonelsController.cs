@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -79,6 +80,34 @@ namespace RMC.Database.Controllers
             tasks.Add(crud.ExecuteAsync(sql, mySqlParameters));
 
             await Task.WhenAll(tasks);
+        }
+
+
+        public async Task<PersonelModel> getImgName(string prof)
+        {
+            PersonelModel personelModel = new PersonelModel();
+
+            string sql = @"SELECT * FROM personels WHERE is_active = 1 AND profession = @prof";
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
+            mySqlParameters.Add(new MySqlParameter("@prof", prof));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (await reader.ReadAsync())
+            {
+                personelModel.id = int.Parse(reader["personels_id"].ToString());
+
+                personelModel.name = reader["personel_name"].ToString();
+
+                personelModel.profession = reader["profession"].ToString();
+
+                personelModel.imgPath = reader["signature_path"].ToString();
+                
+            }
+
+            crud.CloseConnection();
+
+            return personelModel;
         }
 
         public async Task<string> imgPath(int id)

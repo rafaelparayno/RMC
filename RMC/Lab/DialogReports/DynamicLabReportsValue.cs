@@ -203,9 +203,11 @@ namespace RMC.Lab.DialogReports
 
             Hematology hema = new Hematology();
 
+            List<string> parametersName = new List<string>();
+
             foreach (ParameterField parameterField in hema.ParameterFields)
             {
-                TextBoxParamsCrystal textBoxParams = new TextBoxParamsCrystal();
+                
                 if (parameterField.Name == "patientName")
                     continue;
                 if (parameterField.Name == "age")
@@ -215,10 +217,32 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "dateParam")
                     continue;
 
-                textBoxParams.NameLabel = parameterField.Name;
-                textBoxParamsCrystals.Add(textBoxParams);
-                //values.Add(parameterField.Name);
+                if (parameterField.Name == "mtName")
+                    continue;
+
+                if (parameterField.Name == "pathoName")
+                    continue;
+
+                if (parameterField.Name == "imgPathMt")
+                    continue;
+
+                if (parameterField.Name == "imgPathPatho")
+                    continue;
+
+                parametersName.Add(parameterField.Name);
+             
             }
+
+
+            parametersName.Reverse();
+
+            foreach(string name in parametersName)
+            {
+                TextBoxParamsCrystal textBoxParams = new TextBoxParamsCrystal();
+                textBoxParams.NameLabel = name;
+                textBoxParamsCrystals.Add(textBoxParams);
+            }
+
         }
 
 

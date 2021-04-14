@@ -584,6 +584,7 @@
     <Compile Include="Database\Models\PatientSymptomsModel.cs" />
     <Compile Include="Database\Models\patientVModel.cs" />
     <Compile Include="Database\Models\patientXrayModel.cs" />
+    <Compile Include="Database\Models\PersonelModel.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\SalesClinicTypeMod.cs" />
