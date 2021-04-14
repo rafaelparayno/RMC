@@ -54,8 +54,10 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             {
 
                 DoctorDataModel doctorDataModel = await doctorDataController.getDoctorData(UserLog.getUserId());
+                string fullName = await userracountsController.getFullNameId(UserLog.getUserId());
                 DateTime datenow = DateTime.Today;
-
+                preEmployment.SetParameterValue("physician", fullName);
+                preEmployment.SetParameterValue("imgParam", doctorDataModel.imgPath);
 
                 preEmployment.SetParameterValue("eDate", datenow.ToString("dd-MM-yyyy"));
 
