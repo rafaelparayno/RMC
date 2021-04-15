@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_16C41D2AC5DF4F78BE0B6E08F96BFECD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1D1D40F4C59F64AE23C01E07F3D2A251"
         "OwnerKey" = "8:_9CCE01BBDA8A0BE77AB8DAD0AA2F4FC7"
         "MsmSig" = "8:_UNDEFINED"
@@ -165,6 +171,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7A5283547A5F4568A8BE750C2E8A1FCE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_82A2DFC538ADF3B9F3CB51DC22D07781"
         "OwnerKey" = "8:_1D1D40F4C59F64AE23C01E07F3D2A251"
         "MsmSig" = "8:_UNDEFINED"
@@ -303,6 +315,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A9BDBD1E06424C448ED572FA13651B29"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AB5CE4D7413A53D0D384160ADB538492"
         "OwnerKey" = "8:_524A4002F1534479AF85479A99E2CB8F"
         "MsmSig" = "8:_UNDEFINED"
@@ -323,6 +341,12 @@
         {
         "MsmKey" = "8:_CC721C18EBFA0A165214DFD876B84A60"
         "OwnerKey" = "8:_524A4002F1534479AF85479A99E2CB8F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D1B898D934CA4B46A81668E958099E9F"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -388,19 +412,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2480087C2B6CCE8C9F94DA9C1F68B478"
+        "OwnerKey" = "8:_77EEF3184C8CF6804097736F6CAC5708"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_524A4002F1534479AF85479A99E2CB8F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_77EEF3184C8CF6804097736F6CAC5708"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -571,6 +589,12 @@
         "OwnerKey" = "8:_B0B261632816A7E7E758FF03C732CB42"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2480087C2B6CCE8C9F94DA9C1F68B478"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -589,6 +613,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -605,6 +645,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -634,6 +682,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_16C41D2AC5DF4F78BE0B6E08F96BFECD"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\receipt.xml"
+            "TargetName" = "8:receipt.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1D1D40F4C59F64AE23C01E07F3D2A251"
             {
             "AssemblyRegister" = "3:1"
@@ -1006,6 +1074,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7A5283547A5F4568A8BE750C2E8A1FCE"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\notfy.wav"
+            "TargetName" = "8:notfy.wav"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_82A2DFC538ADF3B9F3CB51DC22D07781"
             {
             "AssemblyRegister" = "3:1"
@@ -1305,6 +1393,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A9BDBD1E06424C448ED572FA13651B29"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\prescription.xml"
+            "TargetName" = "8:prescription.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AB5CE4D7413A53D0D384160ADB538492"
             {
             "AssemblyRegister" = "3:1"
@@ -1396,6 +1504,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D1B898D934CA4B46A81668E958099E9F"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\itemrep.xml"
+            "TargetName" = "8:itemrep.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D9FD5625314EDE504633D2DD9EFE0BA9"
@@ -1660,15 +1788,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RMC system"
-        "ProductCode" = "8:{067A7EBE-9964-441C-98CA-A8877A14AA55}"
-        "PackageCode" = "8:{DD1FC80D-25B0-4A57-B750-F4B88DCE3CEC}"
+        "ProductCode" = "8:{1FD39612-3FF4-42B0-BC89-66E90F2A9AEB}"
+        "PackageCode" = "8:{619BE1A2-5415-4926-A244-D4E5CDA14B67}"
         "UpgradeCode" = "8:{CDBBB8FE-71AE-4AAF-8908-0176CEC185FE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:GhostDeveloper"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -2208,6 +2336,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_129CCBD9C5E14822AC481884A9E893AB"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Documentation"
+            "OutputProjectGuid" = "8:{E7B2996C-F0CF-4CD0-8FD2-877A8F486AF9}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_524A4002F1534479AF85479A99E2CB8F"
             {
             "SourcePath" = "8:..\\RMC\\obj\\Debug\\RMC.exe"
