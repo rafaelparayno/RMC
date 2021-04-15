@@ -16,6 +16,7 @@ namespace RMC.Patients.PanelsDetails
 {
     public partial class PanelLabDetail : Form
     {
+
         PatientLabController patientLabController = new PatientLabController();
         LaboratoryController laboratoryController = new LaboratoryController();
         List<patientLabModel> listpatientModel;

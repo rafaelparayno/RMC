@@ -27,6 +27,8 @@ namespace RMC.Patients.PanelsDetails.Dialogs
         PreEmployment preEmployment = new PreEmployment();
         PersonelsController personelsController = new PersonelsController();
         PersonelModel personelModel = new PersonelModel();
+        AccessController accessController = new AccessController();
+        List<int> listAccess = new List<int>();
         private int patid = 0;
         private int patmedid = 0;
       
@@ -59,10 +61,16 @@ namespace RMC.Patients.PanelsDetails.Dialogs
                 string fullName = await userracountsController.getFullNameId(UserLog.getUserId());
                 personelModel = await personelsController.getImgName("Checker");
                 DateTime datenow = DateTime.Today;
-                preEmployment.SetParameterValue("physician", fullName + ", MD");
-                preEmployment.SetParameterValue("imgParam", doctorDataModel.imgPath);
-                preEmployment.SetParameterValue("licenseNo", doctorDataModel.license);
-                preEmployment.SetParameterValue("prNoParam", doctorDataModel.pr);
+
+                listAccess = accessController.accesses(UserLog.getRole());
+                if (listAccess.Contains(5))
+                {
+                    preEmployment.SetParameterValue("physician", fullName + ", MD");
+                    preEmployment.SetParameterValue("imgParam", doctorDataModel.imgPath);
+                    preEmployment.SetParameterValue("licenseNo", doctorDataModel.license);
+                    preEmployment.SetParameterValue("prNoParam", doctorDataModel.pr);
+                }
+               
 
                 preEmployment.SetParameterValue("eDate", datenow.ToString("dd-MM-yyyy"));
 

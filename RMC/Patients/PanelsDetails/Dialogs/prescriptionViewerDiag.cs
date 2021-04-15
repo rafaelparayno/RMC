@@ -16,7 +16,8 @@ namespace RMC.Patients.PanelsDetails.Dialogs
 {
     public partial class prescriptionViewerDiag : Form
     {
-       
+
+        AccessController accessController = new AccessController();
         doctorResultsController doctorResultsController = new doctorResultsController();
         PatientPrescriptionController patientPrescriptionController = new PatientPrescriptionController();
         PatientDetailsController patientDetailsController = new PatientDetailsController();

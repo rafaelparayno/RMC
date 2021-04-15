@@ -17,16 +17,19 @@ namespace RMC.Doctor.PanelDoctor.Diag
 {
     public partial class DiagMedCertForms : Form
     {
+        AccessController accessController = new AccessController();
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         DoctorDataController doctorDataController = new DoctorDataController();
         PatientMedcertController patientMedcert = new PatientMedcertController();
         DoctorQueueController doctorQueue = new DoctorQueueController();
         UserracountsController userracountsController = new UserracountsController();
-/*        DoctorDataController doctorDataController = new DoctorDataController();*/
+
         private int patid = 0;
         private int patmedid = 0;
         private string[] details;
         medcertReport medcertReport = new medcertReport();
+        List<int> listAccess = new List<int>();
+
         public DiagMedCertForms(int patid, params string [] details)
         {
             InitializeComponent();
@@ -52,12 +55,18 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
             DoctorDataModel doctorDataModel = await doctorDataController.getDoctorData(UserLog.getUserId());
             DateTime datenow = DateTime.Today;
-            medcertReport.SetParameterValue("doctorName", UserLog.getFullName());
-            medcertReport.SetParameterValue("dateParam", datenow.ToString("dd-MM-yyyy"));
-            medcertReport.SetParameterValue("licenseNo", doctorDataModel.license);
-            medcertReport.SetParameterValue("prNoParam", doctorDataModel.pr);
+            listAccess = accessController.accesses(UserLog.getRole());
+            if (listAccess.Contains(5))
+            {
+                medcertReport.SetParameterValue("doctorName", UserLog.getFullName());
+                medcertReport.SetParameterValue("dateParam", datenow.ToString("dd-MM-yyyy"));
+                medcertReport.SetParameterValue("licenseNo", doctorDataModel.license);
+                medcertReport.SetParameterValue("prNoParam", doctorDataModel.pr);
+                medcertReport.SetParameterValue("imgParam", doctorDataModel.imgPath);
+            }
+           
             medcertReport.SetParameterValue("patientName", details[0]);
-            medcertReport.SetParameterValue("imgParam", doctorDataModel.imgPath);
+
             medcertReport.SetParameterValue("ofParam", details[1]);
             medcertReport.SetParameterValue("dueToParam", details[2]);
             medcertReport.SetParameterValue("impressionParam", details[3]);
