@@ -52,6 +52,8 @@ namespace RMC.Lab.DialogReports
 
             hema.SetParameterValue("age", patientDetails.age.ToString());
             hema.SetParameterValue("sex", patientDetails.gender);
+            hema.SetParameterValue("address", patientDetails.address);
+     
 
             hema.SetParameterValue("mtName", personelModelMt.name);
             hema.SetParameterValue("imgPathMt", personelModelMt.imgPath);

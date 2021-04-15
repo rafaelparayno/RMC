@@ -118,7 +118,6 @@
             // txtfilepath
             // 
             this.txtfilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtfilepath.Enabled = false;
             this.txtfilepath.Location = new System.Drawing.Point(12, 308);
             this.txtfilepath.Name = "txtfilepath";
             this.txtfilepath.Size = new System.Drawing.Size(773, 20);

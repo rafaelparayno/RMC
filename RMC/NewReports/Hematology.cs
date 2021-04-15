@@ -114,7 +114,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_physician {
+        public CrystalDecisions.Shared.IParameterField Parameter_hemoGoblinParam {
             get {
                 return this.DataDefinition.ParameterFields[3];
             }
@@ -122,7 +122,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_hemoGoblinParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_hematocritParam {
             get {
                 return this.DataDefinition.ParameterFields[4];
             }
@@ -130,7 +130,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_hematocritParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_wbcParam {
             get {
                 return this.DataDefinition.ParameterFields[5];
             }
@@ -138,7 +138,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_wbcParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_rbcParam {
             get {
                 return this.DataDefinition.ParameterFields[6];
             }
@@ -146,7 +146,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_rbcParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_plateletParam {
             get {
                 return this.DataDefinition.ParameterFields[7];
             }
@@ -154,7 +154,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_plateletParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_reticulocyteParam {
             get {
                 return this.DataDefinition.ParameterFields[8];
             }
@@ -162,7 +162,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_reticulocyteParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_othersParam {
             get {
                 return this.DataDefinition.ParameterFields[9];
             }
@@ -170,7 +170,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_othersParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_bloodTypeParam {
             get {
                 return this.DataDefinition.ParameterFields[10];
             }
@@ -178,7 +178,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_bloodTypeParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_segmentersParam {
             get {
                 return this.DataDefinition.ParameterFields[11];
             }
@@ -186,7 +186,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_segmentersParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_LympocytesParam {
             get {
                 return this.DataDefinition.ParameterFields[12];
             }
@@ -194,7 +194,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_LympocytesParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_monocytesParam {
             get {
                 return this.DataDefinition.ParameterFields[13];
             }
@@ -202,7 +202,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_monocytesParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_basophilsParam {
             get {
                 return this.DataDefinition.ParameterFields[14];
             }
@@ -210,7 +210,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_basophilsParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_EosonophilsParam {
             get {
                 return this.DataDefinition.ParameterFields[15];
             }
@@ -218,7 +218,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_EosonophilsParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_blastscellsParam {
             get {
                 return this.DataDefinition.ParameterFields[16];
             }
@@ -226,7 +226,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_blastscellsParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_myelocyesParam {
             get {
                 return this.DataDefinition.ParameterFields[17];
             }
@@ -234,7 +234,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_myelocyesParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_stabCellsParam {
             get {
                 return this.DataDefinition.ParameterFields[18];
             }
@@ -242,7 +242,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_stabCellsParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_dateParam {
             get {
                 return this.DataDefinition.ParameterFields[19];
             }
@@ -250,7 +250,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_dateParam {
+        public CrystalDecisions.Shared.IParameterField Parameter_mtName {
             get {
                 return this.DataDefinition.ParameterFields[20];
             }
@@ -258,7 +258,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_mtName {
+        public CrystalDecisions.Shared.IParameterField Parameter_pathoName {
             get {
                 return this.DataDefinition.ParameterFields[21];
             }
@@ -266,7 +266,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_pathoName {
+        public CrystalDecisions.Shared.IParameterField Parameter_imgPathMt {
             get {
                 return this.DataDefinition.ParameterFields[22];
             }
@@ -274,7 +274,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_imgPathMt {
+        public CrystalDecisions.Shared.IParameterField Parameter_imgPathPatho {
             get {
                 return this.DataDefinition.ParameterFields[23];
             }
@@ -282,7 +282,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_imgPathPatho {
+        public CrystalDecisions.Shared.IParameterField Parameter_labno {
             get {
                 return this.DataDefinition.ParameterFields[24];
             }
@@ -290,7 +290,7 @@ namespace RMC.NewReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_labno {
+        public CrystalDecisions.Shared.IParameterField Parameter_address {
             get {
                 return this.DataDefinition.ParameterFields[25];
             }
