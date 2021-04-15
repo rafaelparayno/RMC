@@ -49,11 +49,11 @@ namespace RMC.Lab.DialogReports
             serology.SetParameterValue("sex", patientDetails.gender);
             serology.SetParameterValue("address", patientDetails.gender);
 
-            serology.SetParameterValue("mtName", personelModelMt.name);
-            serology.SetParameterValue("imgPathMt", personelModelMt.imgPath);
+            serology.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" : personelModelMt.name);
+            serology.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" : personelModelMt.imgPath);
 
-            serology.SetParameterValue("pathoName", personelModelPath.name);
-            serology.SetParameterValue("imgPathPatho", personelModelPath.imgPath);
+            serology.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPath.name) ? "" : personelModelPath.name);
+            serology.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? "" : personelModelPath.imgPath);
             crystalReportViewer1.ReportSource = serology;
         }
 

@@ -52,11 +52,11 @@ namespace RMC.Lab.DialogReports
             bloodChem.SetParameterValue("address", patientDetails.address);
 
 
-            bloodChem.SetParameterValue("mtName", personelModelMt.name);
-            bloodChem.SetParameterValue("imgPathMt", personelModelMt.imgPath);
+            bloodChem.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" : personelModelMt.name );
+            bloodChem.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" : personelModelMt.imgPath);
 
-            bloodChem.SetParameterValue("pathoName", personelModelPath.name);
-            bloodChem.SetParameterValue("imgPathPatho", personelModelPath.imgPath);
+            bloodChem.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPath.name) ? "" : personelModelPath.name);
+            bloodChem.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? "" : personelModelPath.imgPath);
             crystalReportViewer1.ReportSource = bloodChem;
         }
 
@@ -89,7 +89,7 @@ namespace RMC.Lab.DialogReports
               /*  if (node.Name == "dateParam")
                     continue;*/
 
-                bloodChem.SetParameterValue(node.Name, node.InnerText);
+                bloodChem.SetParameterValue(node.Name, string.IsNullOrEmpty(node.InnerText) ? " " : node.InnerText);
             }
 
             bloodChem.SetParameterValue("labno", labNo);

@@ -48,11 +48,11 @@ namespace RMC.Lab.DialogReports
             diagnosticReport.SetParameterValue("sex", patientDetails.gender);
             diagnosticReport.SetParameterValue("address", patientDetails.address);
 
-            diagnosticReport.SetParameterValue("mtName", personelModelMt.name);
-            diagnosticReport.SetParameterValue("imgPathMt", personelModelMt.imgPath);
+            diagnosticReport.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" : personelModelMt.name);
+            diagnosticReport.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" : personelModelMt.imgPath);
 
-            diagnosticReport.SetParameterValue("pathoName", personelModelPath.name);
-            diagnosticReport.SetParameterValue("imgPathPatho", personelModelPath.imgPath);
+            diagnosticReport.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPath.name) ? "" : personelModelPath.name);
+            diagnosticReport.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? "" : personelModelPath.imgPath);
 
             crystalReportViewer1.ReportSource = diagnosticReport;
         }

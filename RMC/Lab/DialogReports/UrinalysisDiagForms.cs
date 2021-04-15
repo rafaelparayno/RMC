@@ -52,11 +52,11 @@ namespace RMC.Lab.DialogReports
             urinalysis.SetParameterValue("sex", patientDetails.gender);
             urinalysis.SetParameterValue("address", patientDetails.address);
 
-            urinalysis.SetParameterValue("mtName", personelModelMt.name);
-            urinalysis.SetParameterValue("imgPathMt", personelModelMt.imgPath);
+            urinalysis.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" : personelModelMt.name);
+            urinalysis.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" : personelModelMt.imgPath);
 
-            urinalysis.SetParameterValue("pathoName", personelModelPatho.name);
-            urinalysis.SetParameterValue("imgPathPatho", personelModelPatho.imgPath);
+            urinalysis.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPatho.name) ? "" : personelModelPatho.name);
+            urinalysis.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPatho.imgPath) ? "" : personelModelPatho.imgPath);
             crystalReportViewer1.ReportSource = urinalysis;
         }
 
