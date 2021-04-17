@@ -340,7 +340,7 @@ namespace RMC.InventoryPharma.PanelPo
             {
                 poItemController.Save(int.Parse(dr.Cells["Itemid"].Value.ToString()),
                                     int.Parse(dr.Cells["Quantity"].Value.ToString()));
-                //   poController.save( cbSupValue, int.Parse(dr.Cells["Quantity"].Value.ToString()), PONO);
+               
             }
 
             DataSet ds = new DataSet();
@@ -385,14 +385,17 @@ namespace RMC.InventoryPharma.PanelPo
 
 
 
-              /*  if (viewBo.qtyAdd == 0)
+                if (viewBo.qtyAdd == 0)
                     return;
 
-                decimal subunitcosts = viewBo.qty * unitCosts;
-                if (isFoundInDg(itemIdSelected))
+                ListViewItem lv = lvItemsSuppliers.FindItemWithText(viewBo.itemIdClickAdd + "", true, 0);
+
+                MessageBox.Show(lv.SubItems[1].Text);
+               /* if (isFoundInDg(viewBo.itemIdClickAdd))
                 {
-                    DataRow[] rows = dt.Select(String.Format(@"Itemid = {0}", itemIdSelected));
+                    DataRow[] rows = dt.Select(String.Format(@"Itemid = {0}", viewBo.itemIdClickAdd));
                     int index = dt.Rows.IndexOf(rows[0]);
+                    decimal subunitcosts = viewBo.qtyAdd * unitCosts;
                     int currentQty = CurrentQty(itemIdSelected);
                     dt.Rows[index].SetField("Quantity", currentQty + form.qty);
                     subunitcosts = (currentQty + form.qty) * unitCosts;

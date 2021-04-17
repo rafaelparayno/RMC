@@ -1,4 +1,5 @@
-﻿using RMC.Database.Controllers;
+﻿using CrystalDecisions.Shared;
+using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.InventoryPharma.Dialogs;
 using RMC.Pharma;
@@ -257,6 +258,8 @@ namespace RMC.InventoryPharma
             var dialog = new PrintDialog();
             dialog.ShowDialog();
             rec.PrintOptions.PrinterName = dialog.PrinterSettings.PrinterName;
+
+           
             rec.PrintToPrinter(1, false, 0, 0);
     
         }
