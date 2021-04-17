@@ -70,11 +70,11 @@
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
             this.iconButton1.IconColor = System.Drawing.Color.White;
             this.iconButton1.IconSize = 18;
-            this.iconButton1.Location = new System.Drawing.Point(585, 39);
+            this.iconButton1.Location = new System.Drawing.Point(585, 42);
             this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(38, 23);
+            this.iconButton1.Size = new System.Drawing.Size(38, 24);
             this.iconButton1.TabIndex = 222;
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

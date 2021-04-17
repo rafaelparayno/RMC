@@ -13,6 +13,7 @@ using RMC.Lab;
 using RMC.Xray;
 using RMC.Doctor;
 using RMC.OthersPanels;
+using System.Runtime.InteropServices;
 
 namespace RMC.UserDash
 {
@@ -22,6 +23,12 @@ namespace RMC.UserDash
         AccessController accesses = new AccessController();
         UserracountsController uc = new UserracountsController();
         Timer t1 = new Timer();
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wparam, int lPartam);
+
 
         private Form activeForm = null;
 
@@ -210,6 +217,12 @@ namespace RMC.UserDash
         private void btnOthers_Click(object sender, EventArgs e)
         {
             openChildForm(new OthersDash());
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

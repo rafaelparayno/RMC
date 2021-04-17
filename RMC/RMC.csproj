@@ -759,6 +759,12 @@
     <Compile Include="InventoryPharma\PharmaDash.Designer.cs">
       <DependentUpon>PharmaDash.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryRep\PurchaseOrder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Lab\DialogReports\BloodChemDiagForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1521,6 +1527,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PharmaDash.resx">
       <DependentUpon>PharmaDash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryRep\PurchaseOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchaseOrder.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\DialogReports\BloodChemDiagForms.resx">
       <DependentUpon>BloodChemDiagForms.cs</DependentUpon>

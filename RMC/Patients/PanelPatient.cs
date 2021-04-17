@@ -54,7 +54,7 @@ namespace RMC.Patients
             indexofFirstRow = indexofLastRow > listDetails.Count ? listDetails.Count - rowsPerPage :
                 indexofFirstRow;
 
-            int rowsss = rowsPerPage;
+            int rowsss =  rowsPerPage ;
             List<patientDetails> listDetails2 = new List<patientDetails>();
             listDetails2 = listDetails.Count > rowsPerPage ? listDetails.Skip(indexofFirstRow).Take( rowsss).ToList()
                 : listDetails;
@@ -91,7 +91,7 @@ namespace RMC.Patients
             int id = int.Parse(((IconButton)sender).Tag.ToString());
             addEditPatient form = new addEditPatient(id);
             form.ShowDialog();
-            await refreshListPatient();
+            await loadPatientDetails();
         }
 
         private void showPaginate(int total)
@@ -111,10 +111,12 @@ namespace RMC.Patients
                 Label lb = new Label();
                 lb.Tag = i;
                 lb.Text = i.ToString();
-                lb.Margin = new Padding(1);
+                lb.AutoSize = false;
+                lb.Height = 20;
+                lb.Width = 50;
+                lb.Margin = Padding.Empty;
                 lb.Padding = Padding.Empty;
                 lb.TextAlign = ContentAlignment.MiddleCenter;
-                lb.AutoSize = false;
                 lb.ForeColor = Color.White;  
                 lb.Click += new EventHandler(setNumber);
                 flowPage.Controls.Add(lb);
@@ -124,6 +126,13 @@ namespace RMC.Patients
         private void setNumber(object sender,EventArgs e)
         {  
             currentPage = int.Parse(((Label)sender).Tag.ToString());
+            Label l = (Label)sender;
+            foreach(Control c in flowPage.Controls)
+            {
+                c.Font = new Font("Tahoma", 10, FontStyle.Regular);
+            }
+            l.Font = new Font("Tahoma", 12, FontStyle.Bold|FontStyle.Underline);
+
             panelPatientList.Controls.Clear();
             populateitems();
         }
@@ -132,7 +141,7 @@ namespace RMC.Patients
         {
             addEditPatient form = new addEditPatient();
             form.ShowDialog();
-            await refreshListPatient();
+            await loadPatientDetails();
         }
 
         private async Task loadPatientDetails()
@@ -140,7 +149,10 @@ namespace RMC.Patients
             pictureBox1.Show();
             pictureBox1.Update();
             listDetails =  await patientDetailsController.getPatientDetails();
-        
+            
+            populateitems();
+            showPaginate(listDetails.Count);
+
             pictureBox1.Hide();
         }
 
@@ -150,55 +162,35 @@ namespace RMC.Patients
             pictureBox1.Update();
             listDetails = await patientDetailsController.getSearchPatient(txtName.Text.Trim(),
                                                                         comboBox1.SelectedIndex);
-      
+           
+            populateitems();
+            showPaginate(listDetails.Count);
+
+
             pictureBox1.Hide();
         }
 
-        private async Task refreshListPatient()
-        {
-            
-
-            await loadPatientDetails();
-            populateitems();
-            showPaginate(listDetails.Count);
-      
-           
-        }
-
-     
-
-        private async Task searchListPatient()
-        {
-
-  
-         
-            await loadPatientSearchDetails();
-            populateitems();
-            showPaginate(listDetails.Count);
-
-         
-        }
 
         private async void iconButton1_Click(object sender, EventArgs e)
         {
             int _;
             if(comboBox1.SelectedIndex == -1)
             {
-              await  refreshListPatient();
+              await  loadPatientDetails();
             }
             else
             {
                 if (comboBox1.SelectedIndex == 0 && !(int.TryParse(txtName.Text.Trim(), out _)))
                     return;
 
-              await  searchListPatient();
+              await loadPatientSearchDetails();
                
             }
         }
 
         private async void PanelPatient_Load(object sender, EventArgs e)
         {
-           await refreshListPatient();
+           await loadPatientDetails();
         }
     }
 }
