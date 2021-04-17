@@ -398,3 +398,12 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Lab.Panels.Diags.Add
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelLabForms.PanelsSettings.PanelSignaturePersonels.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelLabForms.Dialogs.AddEditPersonels.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Lab.DialogReports.ClinicalChemistryDiagForms.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.Imaging.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.Math.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.Video.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.xml
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.Imaging.xml
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.Math.xml
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.Video.xml
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Patients.TakePhotoForm.resources

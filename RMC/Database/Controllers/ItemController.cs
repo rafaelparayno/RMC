@@ -126,7 +126,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataSetWithStockPharma()
         {
-            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,isBranded,category_name,unit_name 
+            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,isBranded,category.item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id 
