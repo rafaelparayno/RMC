@@ -13,10 +13,18 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
     public partial class QtyDiag : Form
     {
         public int qty = 0;
+        private int optimal = 0;
         public QtyDiag()
         {
             InitializeComponent();
             qty = 0;
+        }
+
+        public QtyDiag(int optimal)
+        {
+            InitializeComponent();
+            qty = 0;
+            this.optimal = optimal;
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)
@@ -32,6 +40,18 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
 
             qty = int.Parse(numericUpDown1.Value  + "");
             this.Close();
+        }
+
+        private void cbOptimal_Click(object sender, EventArgs e)
+        {
+            if (cbOptimal.Checked)
+            {
+                numericUpDown1.Value = optimal;
+            }
+            else
+            {
+                numericUpDown1.Value = 0;
+            }
         }
     }
 }

@@ -286,7 +286,10 @@ namespace RMC.InventoryPharma.PanelPo
             int itemIdSelected = int.Parse(lvItemsSuppliers.SelectedItems[0].SubItems[0].Text);
             decimal unitCosts = decimal.Parse(lvItemsSuppliers.SelectedItems[0].SubItems[4].Text);
             string name = lvItemsSuppliers.SelectedItems[0].SubItems[1].Text;
-            QtyDiag form = new QtyDiag();
+            int optimal = int.TryParse(lvItemsSuppliers.SelectedItems[0].SubItems[1].Text, out _) ?
+                int.Parse(lvItemsSuppliers.SelectedItems[0].SubItems[9].Text) : 0;
+
+            QtyDiag form = new QtyDiag(optimal);
             form.ShowDialog();
 
             if (form.qty == 0)
@@ -370,8 +373,14 @@ namespace RMC.InventoryPharma.PanelPo
                 SearchGrid(txtName.Text.Trim(), selectedCombobx);
             }
 
-        } 
+        }
         #endregion
 
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            if (cbSuppliers.SelectedIndex > -1)
+
+                ViewBo v = new ViewBo();
+        }
     }
 }

@@ -705,6 +705,12 @@
     <Compile Include="InventoryPharma\PanelPo\Dialogs\QtyDiag.Designer.cs">
       <DependentUpon>QtyDiag.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelPo\Dialogs\ViewBo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelPo\Dialogs\ViewBo.Designer.cs">
+      <DependentUpon>ViewBo.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelPo\PanelPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1500,6 +1506,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelPo\Dialogs\QtyDiag.resx">
       <DependentUpon>QtyDiag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelPo\Dialogs\ViewBo.resx">
+      <DependentUpon>ViewBo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelPo\PanelPurchase.resx">
       <DependentUpon>PanelPurchase.cs</DependentUpon>

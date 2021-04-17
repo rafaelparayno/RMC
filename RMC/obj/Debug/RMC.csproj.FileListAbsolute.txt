@@ -405,3 +405,4 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.Video.xml
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Patients.TakePhotoForm.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.Video.DirectShow.dll
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\AForge.Video.DirectShow.xml
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.PanelPo.Dialogs.ViewBo.resources
