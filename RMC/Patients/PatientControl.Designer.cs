@@ -42,6 +42,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.changePhotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.takePhotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panelImgHolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplayPicture)).BeginInit();
@@ -180,16 +181,24 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changePhotoToolStripMenuItem});
+            this.changePhotoToolStripMenuItem,
+            this.takePhotoToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
             // changePhotoToolStripMenuItem
             // 
             this.changePhotoToolStripMenuItem.Name = "changePhotoToolStripMenuItem";
-            this.changePhotoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.changePhotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changePhotoToolStripMenuItem.Text = "Change Photo";
             this.changePhotoToolStripMenuItem.Click += new System.EventHandler(this.changePhotoToolStripMenuItem_Click);
+            // 
+            // takePhotoToolStripMenuItem
+            // 
+            this.takePhotoToolStripMenuItem.Name = "takePhotoToolStripMenuItem";
+            this.takePhotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.takePhotoToolStripMenuItem.Text = "Take Photo";
+            this.takePhotoToolStripMenuItem.Click += new System.EventHandler(this.takePhotoToolStripMenuItem_Click);
             // 
             // PatientControl
             // 
@@ -226,5 +235,6 @@
         private FontAwesome.Sharp.IconButton btnView;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem changePhotoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem takePhotoToolStripMenuItem;
     }
 }

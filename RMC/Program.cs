@@ -1,6 +1,7 @@
 ﻿
 using RMC.Doctor.PanelDoctor.Diag;
 using RMC.Lab.Panels.Diags;
+using RMC.Patients;
 using System;
 using System.Windows.Forms;
 

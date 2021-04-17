@@ -117,5 +117,11 @@ namespace RMC.Patients
             ChangePhotoDiag form = new ChangePhotoDiag(_patientId);
             form.ShowDialog();
         }
+
+        private void takePhotoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TakePhotoForm takePhotoForm = new TakePhotoForm(_patientId);
+            takePhotoForm.ShowDialog();
+        }
     }
 }

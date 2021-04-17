@@ -49,7 +49,7 @@ namespace RMC.Patients
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-             pathDir = CreateDirectory.CreateDir("PatientsImg");
+            pathDir = CreateDirectory.CreateDir("PatientsImg");
             Random r = new Random();
             int genRand = r.Next(10, 50);
             saveImgPath(genRand);
