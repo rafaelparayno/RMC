@@ -2,6 +2,7 @@
 using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.InventoryPharma.PanelPo.Dialogs;
+using RMC.InventoryRep;
 using RMC.SystemSettings;
 using System;
 using System.Collections.Generic;
@@ -330,6 +331,7 @@ namespace RMC.InventoryPharma.PanelPo
             if (dgItemList.Rows.Count == 0)
                 return;
 
+
             poController.save(cbSupValue, UserLog.getUserId());
             foreach (DataGridViewRow dr in dgItemList.Rows)
             {
@@ -337,6 +339,18 @@ namespace RMC.InventoryPharma.PanelPo
                                     int.Parse(dr.Cells["Quantity"].Value.ToString()));
                 //   poController.save( cbSupValue, int.Parse(dr.Cells["Quantity"].Value.ToString()), PONO);
             }
+
+            DataSet ds = new DataSet();
+            ds.Tables.Add(dt);
+            PurchaseOrder purchaseOrder = new PurchaseOrder();
+            DateTime dateTime = DateTime.Today;
+            purchaseOrder.SetDataSource(ds);
+            purchaseOrder.SetParameterValue("orderName", UserLog.getFullName());
+            purchaseOrder.SetParameterValue("DateParam", dateTime.ToString("MMMM dd , yyyy"));
+          
+            purchaseOrder.SetParameterValue("poNO", PONO);
+
+            purchaseOrder.PrintToPrinter(1, false, 0, 0);
 
             MessageBox.Show("Succesfully Added A Purchase Order");
             initPO();

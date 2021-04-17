@@ -210,7 +210,7 @@
             this.btnRemoveOrder.ForeColor = System.Drawing.Color.White;
             this.btnRemoveOrder.IconChar = FontAwesome.Sharp.IconChar.Trash;
             this.btnRemoveOrder.IconColor = System.Drawing.Color.White;
-            this.btnRemoveOrder.IconSize = 28;
+            this.btnRemoveOrder.IconSize = 24;
             this.btnRemoveOrder.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRemoveOrder.Location = new System.Drawing.Point(532, 0);
             this.btnRemoveOrder.Name = "btnRemoveOrder";
