@@ -98,7 +98,7 @@ namespace RMC.InventoryPharma.PanelPo
 
                 int sum = days == 0 ? 0 : await getSum(days, itemId);
                 double avgLeadInt = days == 0 ? 0 : Math.Round(await getLeadSum(itemId, days), MidpointRounding.AwayFromZero);
-                decimal avg = Math.Round(Decimal.Divide(sum, days), MidpointRounding.AwayFromZero);
+                decimal avg = days == 0 ? 0 : Math.Round(Decimal.Divide(sum, days), MidpointRounding.AwayFromZero);
                 decimal safetyStock = Math.Round(days * avg, MidpointRounding.AwayFromZero);
                 decimal ROP = computeRop(avg, avgLeadInt, safetyStock);
                 decimal percentsOptimal = safetyStock * decimal.Parse((PercentStocks + 1) + "");
@@ -378,9 +378,37 @@ namespace RMC.InventoryPharma.PanelPo
 
         private void iconButton3_Click(object sender, EventArgs e)
         {
-            if (cbSuppliers.SelectedIndex > -1)
+            if(cbSuppliers.SelectedIndex> -1)
+            {
+                ViewBo viewBo = new ViewBo(cbSupValue);
+                viewBo.ShowDialog();
 
-                ViewBo v = new ViewBo();
+
+
+              /*  if (viewBo.qtyAdd == 0)
+                    return;
+
+                decimal subunitcosts = viewBo.qty * unitCosts;
+                if (isFoundInDg(itemIdSelected))
+                {
+                    DataRow[] rows = dt.Select(String.Format(@"Itemid = {0}", itemIdSelected));
+                    int index = dt.Rows.IndexOf(rows[0]);
+                    int currentQty = CurrentQty(itemIdSelected);
+                    dt.Rows[index].SetField("Quantity", currentQty + form.qty);
+                    subunitcosts = (currentQty + form.qty) * unitCosts;
+                    dt.Rows[index].SetField("SubTotal", subunitcosts);
+                }
+                else
+                {
+                    dt.Rows.Add(itemIdSelected, name,
+                          unitCosts, form.qty, subunitcosts);
+                }*/
+
+
+                dgItemList.DataSource = dt;
+                ComputeTotalCost();
+            }
+           
         }
     }
 }

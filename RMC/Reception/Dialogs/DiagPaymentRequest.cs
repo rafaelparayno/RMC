@@ -311,7 +311,9 @@ namespace RMC.Reception.Dialogs
             rec.SetParameterValue("total", float.Parse(textBox3.Text.Trim().Split(' ')[1]));
             rec.SetParameterValue("payment", float.Parse(textBox2.Text.Trim()));
             rec.SetParameterValue("change", float.Parse(textBox4.Text.Trim().Split(' ')[1]));
-
+            var dialog = new PrintDialog();
+            dialog.ShowDialog();
+            rec.PrintOptions.PrinterName = dialog.PrinterSettings.PrinterName;
             rec.PrintToPrinter(1, false, 0, 0);
 
         }

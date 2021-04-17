@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -35,9 +36,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgInPo = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addToPurchaseOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgInPo)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -48,7 +52,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.Color.FloralWhite;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(819, 31);
             this.panel1.TabIndex = 8;
@@ -64,7 +68,7 @@
             this.btnCloseApp.IconColor = System.Drawing.Color.White;
             this.btnCloseApp.IconSize = 25;
             this.btnCloseApp.Location = new System.Drawing.Point(770, 7);
-            this.btnCloseApp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCloseApp.Margin = new System.Windows.Forms.Padding(4);
             this.btnCloseApp.Name = "btnCloseApp";
             this.btnCloseApp.Rotation = 0D;
             this.btnCloseApp.Size = new System.Drawing.Size(45, 24);
@@ -143,6 +147,21 @@
             this.dgInPo.Size = new System.Drawing.Size(581, 389);
             this.dgInPo.StandardTab = true;
             this.dgInPo.TabIndex = 232;
+            this.dgInPo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgInPo_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToPurchaseOrderToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(196, 48);
+            // 
+            // addToPurchaseOrderToolStripMenuItem
+            // 
+            this.addToPurchaseOrderToolStripMenuItem.Name = "addToPurchaseOrderToolStripMenuItem";
+            this.addToPurchaseOrderToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.addToPurchaseOrderToolStripMenuItem.Text = "Add To Purchase Order";
+            this.addToPurchaseOrderToolStripMenuItem.Click += new System.EventHandler(this.addToPurchaseOrderToolStripMenuItem_Click);
             // 
             // ViewBo
             // 
@@ -156,7 +175,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ViewBo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewBo";
@@ -165,6 +184,7 @@
             this.panel1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgInPo)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -178,5 +198,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox5;
         public System.Windows.Forms.DataGridView dgInPo;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem addToPurchaseOrderToolStripMenuItem;
     }
 }

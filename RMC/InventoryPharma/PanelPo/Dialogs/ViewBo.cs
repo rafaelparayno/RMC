@@ -14,14 +14,22 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
 {
     public partial class ViewBo : Form
     {
-        PoController poController = new PoController();
+        ItemController itemz = new ItemController();
+      
         PoItemController poItemController = new PoItemController();
         BackOrderController backOrderController = new BackOrderController();
         List<string> Po = new List<string>();
+        string idRightClick = "";
         int po_no = 0;
-        public ViewBo()
+        private int supid = 0;
+        public int qtyAdd = 0;
+        public int itemIdClickAdd;
+        public ViewBo(int supid)
         {
             InitializeComponent();
+            this.supid = supid;
+            itemIdClickAdd = 0;
+            qtyAdd = 0;
         }
 
         private async void loadPoItems(int pono)
@@ -41,6 +49,8 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
 
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
+            itemIdClickAdd = 0;
+            qtyAdd = 0;
             this.Close();
         }
 
@@ -66,6 +76,64 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
             po_no = int.Parse(listBox1.SelectedItem.ToString().Split(' ')[1]);
             loadPoItems(po_no);
            
+        }
+
+        private void dgInPo_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgInPo.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                    
+                    idRightClick = dgInPo.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+
+                  
+
+                    contextMenuStrip1.Show(dgInPo, new Point(e.X, e.Y));
+                }
+
+            }
+        }
+
+        private async void addToPurchaseOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            int id = int.Parse(idRightClick);
+            DataSet ds = await itemz.getDataWithSupplierIdTotalStocks(supid);
+
+
+            if (hasItemId(ds, id))
+            {
+                itemIdClickAdd = id;
+                this.Close();
+            }
+            else
+                MessageBox.Show("The Supplier doesn't Have This Item", "validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+
+
+        }
+
+        private bool hasItemId(DataSet ds,int id)
+        {
+            bool hasItemID = false;
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                int idInRow = int.Parse(dr[0].ToString());
+
+                if (id == idInRow)
+                {
+                    hasItemID = true;
+                    break;
+                }
+            }
+
+            return hasItemID;
         }
     }
 }
