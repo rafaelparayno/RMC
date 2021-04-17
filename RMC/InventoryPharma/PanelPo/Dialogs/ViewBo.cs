@@ -90,7 +90,7 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
                 {
                     
                     idRightClick = dgInPo.Rows[currentMouseOverRow].Cells[0].Value.ToString();
-
+                    qtyAdd = int.Parse(dgInPo.Rows[currentMouseOverRow].Cells[2].Value.ToString());
                   
 
                     contextMenuStrip1.Show(dgInPo, new Point(e.X, e.Y));

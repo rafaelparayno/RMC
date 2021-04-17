@@ -388,24 +388,31 @@ namespace RMC.InventoryPharma.PanelPo
                 if (viewBo.qtyAdd == 0)
                     return;
 
-                ListViewItem lv = lvItemsSuppliers.FindItemWithText(viewBo.itemIdClickAdd + "", true, 0);
+               
+                ListViewItem lv = lvItemsSuppliers.FindItemWithText(viewBo.itemIdClickAdd + "", false, 0);
 
-                MessageBox.Show(lv.SubItems[1].Text);
-               /* if (isFoundInDg(viewBo.itemIdClickAdd))
+                int itemIdSelected = int.Parse(lv.SubItems[0].Text);
+                decimal unitCosts = decimal.Parse(lv.SubItems[4].Text);
+                string name = lv.SubItems[1].Text;
+                int optimal = int.TryParse(lv.SubItems[1].Text, out _) ?
+                    int.Parse(lv.SubItems[9].Text) : 0;
+
+                decimal subunitcosts = viewBo.qtyAdd * unitCosts;
+                if (isFoundInDg(viewBo.itemIdClickAdd))
                 {
                     DataRow[] rows = dt.Select(String.Format(@"Itemid = {0}", viewBo.itemIdClickAdd));
                     int index = dt.Rows.IndexOf(rows[0]);
-                    decimal subunitcosts = viewBo.qtyAdd * unitCosts;
+                    subunitcosts = viewBo.qtyAdd * unitCosts;
                     int currentQty = CurrentQty(itemIdSelected);
-                    dt.Rows[index].SetField("Quantity", currentQty + form.qty);
-                    subunitcosts = (currentQty + form.qty) * unitCosts;
+                    dt.Rows[index].SetField("Quantity", currentQty + viewBo.qtyAdd);
+                    subunitcosts = (currentQty + viewBo.qtyAdd) * unitCosts;
                     dt.Rows[index].SetField("SubTotal", subunitcosts);
                 }
                 else
                 {
                     dt.Rows.Add(itemIdSelected, name,
-                          unitCosts, form.qty, subunitcosts);
-                }*/
+                          unitCosts, viewBo.qtyAdd, subunitcosts);
+                }
 
 
                 dgItemList.DataSource = dt;
