@@ -23,7 +23,7 @@ namespace RMC.InventoryPharma.PanelPo
         ItemController itemz = new ItemController();
         PoItemController poItemController = new PoItemController();
         ReceiveControllers receiveControllers = new ReceiveControllers();
-
+        Dictionary<int, List<int>> backorderlist = new Dictionary<int, List<int>>();
         bool isShowEoq = false;
         int days = 0;
         float PercentStocks = 0;
@@ -394,15 +394,27 @@ namespace RMC.InventoryPharma.PanelPo
                 int itemIdSelected = int.Parse(lv.SubItems[0].Text);
                 decimal unitCosts = decimal.Parse(lv.SubItems[4].Text);
                 string name = lv.SubItems[1].Text;
-                int optimal = int.TryParse(lv.SubItems[1].Text, out _) ?
-                    int.Parse(lv.SubItems[9].Text) : 0;
+                if (backorderlist.ContainsKey(viewBo.selectedBo))
+                {
+                    if (backorderlist[viewBo.selectedBo].Contains(viewBo.itemIdClickAdd))
+                    {
+                        return;
+                    }
+                    backorderlist[viewBo.selectedBo].Add(viewBo.itemIdClickAdd);
+                }
+                else
+                {
+                    List<int> itemsId = new List<int>();
+                    itemsId.Add(viewBo.itemIdClickAdd);
+                    backorderlist.Add(viewBo.selectedBo, itemsId);
+                }
 
                 decimal subunitcosts = viewBo.qtyAdd * unitCosts;
                 if (isFoundInDg(viewBo.itemIdClickAdd))
                 {
                     DataRow[] rows = dt.Select(String.Format(@"Itemid = {0}", viewBo.itemIdClickAdd));
                     int index = dt.Rows.IndexOf(rows[0]);
-                    subunitcosts = viewBo.qtyAdd * unitCosts;
+                   /* subunitcosts = viewBo.qtyAdd * unitCosts;*/
                     int currentQty = CurrentQty(itemIdSelected);
                     dt.Rows[index].SetField("Quantity", currentQty + viewBo.qtyAdd);
                     subunitcosts = (currentQty + viewBo.qtyAdd) * unitCosts;

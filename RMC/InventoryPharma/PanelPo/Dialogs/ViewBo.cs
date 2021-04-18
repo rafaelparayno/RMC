@@ -24,12 +24,14 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
         private int supid = 0;
         public int qtyAdd = 0;
         public int itemIdClickAdd;
+        public int selectedBo = 0;
         public ViewBo(int supid)
         {
             InitializeComponent();
             this.supid = supid;
             itemIdClickAdd = 0;
             qtyAdd = 0;
+            selectedBo = 0;
         }
 
         private async void loadPoItems(int pono)
@@ -42,8 +44,10 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
         }
         private async void loadBo()
         {
+            listBox1.Items.Clear();
             Po = await backOrderController.getBoActive();
             listBox1.Items.AddRange(Po.ToArray());
+            dgInPo.DataSource = "";
         }
 
 
@@ -51,6 +55,7 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
         {
             itemIdClickAdd = 0;
             qtyAdd = 0;
+            selectedBo = 0;
             this.Close();
         }
 
@@ -59,45 +64,6 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
             loadBo();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int _;
-
-
-            if (listBox1.Items.Count == 0)
-                return;
-
-            if (listBox1.SelectedItem == null)
-                return;
-
-            if (!(int.TryParse(listBox1.SelectedItem.ToString().Split(' ')[1], out _)))
-                return;
-
-            po_no = int.Parse(listBox1.SelectedItem.ToString().Split(' ')[1]);
-            loadPoItems(po_no);
-           
-        }
-
-        private void dgInPo_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-
-                int currentMouseOverRow = dgInPo.HitTest(e.X, e.Y).RowIndex;
-
-
-                if (currentMouseOverRow >= 0)
-                {
-                    
-                    idRightClick = dgInPo.Rows[currentMouseOverRow].Cells[0].Value.ToString();
-                    qtyAdd = int.Parse(dgInPo.Rows[currentMouseOverRow].Cells[2].Value.ToString());
-                  
-
-                    contextMenuStrip1.Show(dgInPo, new Point(e.X, e.Y));
-                }
-
-            }
-        }
 
         private async void addToPurchaseOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -134,6 +100,59 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
             }
 
             return hasItemID;
+        }
+
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            int _;
+
+
+            if (listBox1.Items.Count == 0)
+                return;
+
+            if (listBox1.SelectedItem == null)
+                return;
+
+            if (!(int.TryParse(listBox1.SelectedItem.ToString().Split(' ')[1], out _)))
+                return;
+
+            po_no = int.Parse(listBox1.SelectedItem.ToString().Split(' ')[1]);
+            selectedBo = po_no;
+            loadPoItems(po_no);
+        }
+
+        private void dgInPo_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgInPo.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+
+                    idRightClick = dgInPo.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    qtyAdd = int.Parse(dgInPo.Rows[currentMouseOverRow].Cells[2].Value.ToString());
+
+
+                    contextMenuStrip1.Show(dgInPo, new Point(e.X, e.Y));
+                }
+
+            }
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            loadBo();
+        }
+
+        private async void iconButton1_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            Po = await backOrderController.getBoActive(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            listBox1.Items.AddRange(Po.ToArray());
+            dgInPo.DataSource = "";
         }
     }
 }

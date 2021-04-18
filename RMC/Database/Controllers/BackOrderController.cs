@@ -34,6 +34,32 @@ namespace RMC.Database.Controllers
             return poActive;
         }
 
+
+        public async Task<List<string>> getBoActive(string date)
+        {
+            List<string> poActive = new List<string>();
+            string sql = @"SELECT back_order.`po_id` FROM back_order WHERE po_id in 
+                            (SELECT purchase_order.po_id 
+                            FROM purchase_order WHERE po_id In 
+                                (SELECT purchase_order_items.po_id 
+                                FROM purchase_order_items 
+                                WHERE quantity_order > 0) AND Date(date_order) = @date)";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>() { (new MySqlParameter("@date", date)) };
+
+
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while (await reader.ReadAsync())
+            {
+                poActive.Add("PO# " + reader["po_id"].ToString());
+            }
+            crud.CloseConnection();
+            return poActive;
+        }
+
+
         public async void save(int poid)
         {
             string sql = @"INSERT INTO back_order (po_id) values (@poid)";
