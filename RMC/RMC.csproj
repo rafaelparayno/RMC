@@ -284,6 +284,12 @@
     <Compile Include="Admin\PanelPharForms\Dialogs\addEditItems.Designer.cs">
       <DependentUpon>addEditItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelPharForms\Dialogs\addEditOtherPlaces.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\Dialogs\addEditOtherPlaces.Designer.cs">
+      <DependentUpon>addEditOtherPlaces.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelPharForms\Dialogs\AddEditSuppliers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -572,6 +578,7 @@
     <Compile Include="Database\Controllers\PatientXrayController.cs" />
     <Compile Include="Database\Controllers\PersonelsController.cs" />
     <Compile Include="Database\Controllers\PharmaStocksController.cs" />
+    <Compile Include="Database\Controllers\PlacesTransferController.cs" />
     <Compile Include="Database\Controllers\PoController.cs" />
     <Compile Include="Database\Controllers\PoItemController.cs" />
     <Compile Include="Database\Controllers\PricesServiceController.cs" />
@@ -1359,6 +1366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\addEditItems.resx">
       <DependentUpon>addEditItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\addEditOtherPlaces.resx">
+      <DependentUpon>addEditOtherPlaces.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Dialogs\AddEditSuppliers.resx">
       <DependentUpon>AddEditSuppliers.cs</DependentUpon>

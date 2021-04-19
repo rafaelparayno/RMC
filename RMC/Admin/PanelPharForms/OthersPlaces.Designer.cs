@@ -51,6 +51,7 @@
             this.button2.TabIndex = 241;
             this.button2.Text = "Add Places";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -66,6 +67,7 @@
             this.button1.TabIndex = 240;
             this.button1.Text = "Edit Places";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSave
             // 
@@ -81,6 +83,7 @@
             this.btnSave.TabIndex = 239;
             this.btnSave.Text = "Delete";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBox1
             // 
@@ -133,6 +136,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.Name = "OthersPlaces";
             this.Text = "OthersPlaces";
+            this.Load += new System.EventHandler(this.OthersPlaces_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCategory)).EndInit();
             this.ResumeLayout(false);
