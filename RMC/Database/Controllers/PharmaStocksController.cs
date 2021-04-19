@@ -51,7 +51,7 @@ namespace RMC.Database.Controllers
             return stocks;
         }
 
-        public async void addStocks(int id,int qty)
+        public async Task addStocks(int id,int qty)
         {
             string sql;
             List<MySqlParameter> list = new List<MySqlParameter>();

@@ -308,6 +308,12 @@
     <Compile Include="Admin\PanelPharForms\ItemList.Designer.cs">
       <DependentUpon>ItemList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\PanelPharForms\OthersPlaces.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\PanelPharForms\OthersPlaces.Designer.cs">
+      <DependentUpon>OthersPlaces.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\PanelPharForms\Parameters.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1365,6 +1371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\ItemList.resx">
       <DependentUpon>ItemList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\PanelPharForms\OthersPlaces.resx">
+      <DependentUpon>OthersPlaces.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\PanelPharForms\Parameters.resx">
       <DependentUpon>Parameters.cs</DependentUpon>

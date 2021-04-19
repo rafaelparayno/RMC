@@ -23,6 +23,7 @@ namespace RMC.InventoryPharma.PanelPo
         ItemController itemz = new ItemController();
         PoItemController poItemController = new PoItemController();
         ReceiveControllers receiveControllers = new ReceiveControllers();
+      
         Dictionary<int, List<int>> backorderlist = new Dictionary<int, List<int>>();
         bool isShowEoq = false;
         int days = 0;
@@ -225,6 +226,7 @@ namespace RMC.InventoryPharma.PanelPo
         private void ResetData()
         {
             dt.Rows.Clear();
+            backorderlist = new Dictionary<int, List<int>>();
             label7.Text = "PHP 0.00";
         }
 
@@ -329,19 +331,37 @@ namespace RMC.InventoryPharma.PanelPo
             ComputeTotalCost();
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
+        private async void btnRemove_Click(object sender, EventArgs e)
         {
             if (dgItemList.Rows.Count == 0)
                 return;
 
+            List<Task> tasks = new List<Task>();
 
-            poController.save(cbSupValue, UserLog.getUserId());
+            pictureBox1.Show();
+            pictureBox1.Update();
+            tasks.Add(poController.save(cbSupValue, UserLog.getUserId()));
             foreach (DataGridViewRow dr in dgItemList.Rows)
             {
-                poItemController.Save(int.Parse(dr.Cells["Itemid"].Value.ToString()),
-                                    int.Parse(dr.Cells["Quantity"].Value.ToString()));
+               tasks.Add(poItemController.Save(int.Parse(dr.Cells["Itemid"].Value.ToString()),
+                                    int.Parse(dr.Cells["Quantity"].Value.ToString())));
                
             }
+
+            if(backorderlist.Count> 0)
+            {
+                foreach(KeyValuePair<int,List<int>> keyPair in backorderlist)
+                {
+                    foreach(int itemId in keyPair.Value)
+                    {
+                        tasks.Add( poItemController.updateOrderQty(itemId, keyPair.Key, 0));
+                    }
+                }
+            }
+
+
+            await Task.WhenAll(tasks);
+            pictureBox1.Hide();
 
             DataSet ds = new DataSet();
             ds.Tables.Add(dt);
@@ -398,6 +418,7 @@ namespace RMC.InventoryPharma.PanelPo
                 {
                     if (backorderlist[viewBo.selectedBo].Contains(viewBo.itemIdClickAdd))
                     {
+                        MessageBox.Show("An itemid has already contains in the purchase order");
                         return;
                     }
                     backorderlist[viewBo.selectedBo].Add(viewBo.itemIdClickAdd);

@@ -4,7 +4,7 @@ using RMC.InventoryPharma.PanelRo.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Data;
-
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RMC.InventoryPharma.PanelRo
@@ -283,12 +283,12 @@ namespace RMC.InventoryPharma.PanelRo
             return 0;
         }
 
-        private void iconButton6_Click(object sender, EventArgs e)
+        private async void iconButton6_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0 && dataGridView2.Rows.Count == 0)
                 return;
 
-            save();
+            await save();
 
             listBox1.Items.Clear();
             dgInPo.DataSource = "";
@@ -314,16 +314,16 @@ namespace RMC.InventoryPharma.PanelRo
             dataGridView2.DataSource = tableClinic;
         }
 
-        private  void save()
+        private async Task save()
         {
             Dictionary<int, int> itemsRec = new Dictionary<int, int>();
-
+            List<Task> tasks = new List<Task>();
             poController.receiveUpdate(po_no);
             foreach (DataGridViewRow row in dgInPo.Rows)
             {
-                poItemController.updateOrderQty(int.Parse(row.Cells[0].Value.ToString()),
+               tasks.Add(poItemController.updateOrderQty(int.Parse(row.Cells[0].Value.ToString()),
                                                 po_no,
-                                                int.Parse(row.Cells["quantity_order"].Value.ToString()));             
+                                                int.Parse(row.Cells["quantity_order"].Value.ToString())));             
             }
 
             if(cbType.SelectedIndex == 0)
@@ -332,7 +332,7 @@ namespace RMC.InventoryPharma.PanelRo
                 {
                     if (int.Parse(row.Cells["quantity_order"].Value.ToString()) > 0)
                     {
-                        backOrderController.save(po_no);
+                      tasks.Add(backOrderController.save(po_no));
                         break;
                     }
                 }
@@ -341,17 +341,17 @@ namespace RMC.InventoryPharma.PanelRo
 
             foreach (DataRow dr in tablePharma.Rows)
             {
-                pharmaStocksController.addStocks(int.Parse(dr[0].ToString()),
-                                                 int.Parse(dr[2].ToString()));
+                 tasks.Add(pharmaStocksController.addStocks(int.Parse(dr[0].ToString()),
+                                                 int.Parse(dr[2].ToString())));
 
-                itemsRec.Add(int.Parse(dr[0].ToString()), int.Parse(dr[2].ToString()));
+                 itemsRec.Add(int.Parse(dr[0].ToString()), int.Parse(dr[2].ToString()));
 
             }
 
              foreach(DataRow dr in tableClinic.Rows)
             {
-                clinicStocksController.addStocks(int.Parse(dr[0].ToString()),
-                                                 int.Parse(dr[2].ToString()));
+                tasks.Add(clinicStocksController.addStocks(int.Parse(dr[0].ToString()),
+                                                 int.Parse(dr[2].ToString())));
                 if(!(itemsRec.ContainsKey(int.Parse(dr[0].ToString()))))
                     itemsRec.Add(int.Parse(dr[0].ToString()), 0);
                 itemsRec = updateTotal(itemsRec, int.Parse(dr[0].ToString()), int.Parse(dr[2].ToString()));
@@ -360,9 +360,11 @@ namespace RMC.InventoryPharma.PanelRo
             
              foreach(KeyValuePair<int,int> receive in itemsRec)
             {
-                receiveControllers.save(receive.Key, receive.Value, po_no);
+                tasks.Add(receiveControllers.save(receive.Key, receive.Value, po_no));
             }
 
+
+            await Task.WhenAll(tasks);
 
             MessageBox.Show("Succesfully Receive Items");
 

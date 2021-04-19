@@ -13,7 +13,7 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async void Save(int itemid,int qty)
+        public async Task Save(int itemid,int qty)
         {
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             string sql = @"INSERT INTO purchase_order_items (po_id,item_id,quantity_order) VALUES 
@@ -52,7 +52,7 @@ namespace RMC.Database.Controllers
             return purchaseOrder;
         }
 
-        public async void updateOrderQty(int itemid,int poid,int qty)
+        public async Task updateOrderQty(int itemid,int poid,int qty)
         {
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             string sql = @"UPDATE purchase_order_items SET quantity_order = @qty WHERE item_id = @itemid AND po_id = @poid";

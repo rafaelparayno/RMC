@@ -34,6 +34,7 @@
             this.btnMeasurements = new FontAwesome.Sharp.IconButton();
             this.btnCategories = new FontAwesome.Sharp.IconButton();
             this.btnSuppliers = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panelNavParam.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             // 
             // panelNavParam
             // 
+            this.panelNavParam.Controls.Add(this.iconButton1);
             this.panelNavParam.Controls.Add(this.btnMeasurements);
             this.panelNavParam.Controls.Add(this.btnCategories);
             this.panelNavParam.Controls.Add(this.btnSuppliers);
@@ -131,6 +133,28 @@
             this.btnSuppliers.UseVisualStyleBackColor = false;
             this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
             // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Store;
+            this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton1.IconSize = 25;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton1.Location = new System.Drawing.Point(342, 0);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(114, 44);
+            this.iconButton1.TabIndex = 14;
+            this.iconButton1.Text = "&Others Places";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
             // Parameters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,5 +179,6 @@
         private FontAwesome.Sharp.IconButton btnCategories;
         private System.Windows.Forms.Panel panelNavParam;
         private FontAwesome.Sharp.IconButton btnMeasurements;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

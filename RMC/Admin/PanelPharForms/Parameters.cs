@@ -56,5 +56,10 @@ namespace RMC.Admin.PanelPharForms
         {
             openChildForm(new Units());
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new OthersPlaces());
+        }
     }
 }

@@ -60,7 +60,7 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async void save(int poid)
+        public async Task save(int poid)
         {
             string sql = @"INSERT INTO back_order (po_id) values (@poid)";
             List<MySqlParameter> listparams = new List<MySqlParameter>();

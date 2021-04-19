@@ -86,13 +86,13 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
             if (isPharma)
             {
                await pharmaStocksController.Save(id, int.Parse(textBox1.Text));
-                clinicStocksController.addStocks(id, addStocks);
+               await clinicStocksController.addStocks(id, addStocks);
                 stocksHistory.Save("Transfer to Clinic", addStocks, UserLog.getUserId(), id);
             }
             else
             {
                await clinicStocksController.Save(id, int.Parse(textBox1.Text));
-                pharmaStocksController.addStocks(id, addStocks);
+               await pharmaStocksController.addStocks(id, addStocks);
                 stocksHistory.Save("Transfer to Pharmacy", addStocks, UserLog.getUserId(), id);
             }
 

@@ -75,7 +75,7 @@ namespace RMC.Database.Controllers
 
            return await crud.GetDataSetAsync(sql, listParams);
         }
-        public async void save(int supplierid, int uid)
+        public async Task save(int supplierid, int uid)
         {
             List<MySqlParameter> list = new List<MySqlParameter>();
 
