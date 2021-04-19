@@ -22,20 +22,19 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
         private int quantityStocks = 0;
         private int editId = 0;
         private int cbTransfId = 0;
+        private int startQty = 0;
         PlacesTransferController placesTransferController = new PlacesTransferController();
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
         ClinicStocksController clinicStocksController = new ClinicStocksController();
         TransferLogsController transferLogs = new TransferLogsController();
-
+        TransferLogsModel transferLogsModel = new TransferLogsModel();
 
 
         public TransferOtherForm(int editId)
         {
             InitializeComponent();
             this.editId = editId;
-         
-            getStocks();
-
+        
         }
 
         public TransferOtherForm(int id, string name, bool isPharma)
@@ -45,11 +44,11 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
             this.name = name;
             this.isPharma = isPharma;
             txtName.Text = name;
-            getStocks();
+           
           
         }
 
-        private async void getStocks()
+        private async Task getStocks()
         {
             if (isPharma)
             {
@@ -61,7 +60,10 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
                 quantityStocks = await clinicStocksController.getStocks(id);
             }
             textBox1.Text = quantityStocks + "";
-            numericUpDown2.Maximum = quantityStocks;
+            
+            numericUpDown2.Maximum = editId == 0 ?  
+                quantityStocks : startQty + quantityStocks;
+          
         }
 
         private void setLabels(string placeName)
@@ -95,9 +97,22 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
 
         }
 
+
         private async void TransferOtherForm_Load(object sender, EventArgs e)
         {
-           await loadCbs();
+            await loadCbs();
+
+            if (editId > 0)
+            {
+                transferLogsModel = await transferLogs.getModel(editId);
+                isPharma = transferLogsModel.fromTo == 0 ? true : false;
+                id = transferLogsModel.itemid;
+                txtName.Text = transferLogsModel.itemName;
+                startQty = transferLogsModel.qtyTransfer;
+                numericUpDown2.Value = transferLogsModel.qtyTransfer;
+                cbTransfId = transferLogsModel.transferid;
+                comboBox1.Text = transferLogsModel.transferName;
+            }
 
             string txt;
             if (isPharma)
@@ -112,30 +127,48 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
 
             label1.Text = txt;
             label1.Visible = true;
+            await getStocks();
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             int qty = int.Parse(numericUpDown2.Value.ToString());
-            if (qty > quantityStocks)
-                return;
+          
 
 
             if (quantityStocks > 0)
             {
-                int newQty = quantityStocks - qty;
+                if(editId == 0)
+                {
+                    if (qty > quantityStocks)
+                        return;
+                    int newQty = quantityStocks - qty;
 
-                textBox1.Text = newQty + "";
+                    textBox1.Text = newQty + "";
+                }
+                else
+                {
+                   
+                    int addQty = startQty - qty;
+                   
+                    int newQty =  quantityStocks + addQty;
+               
+                    
+                    textBox1.Text = newQty + "";
+                }
+          
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbTransfId = int.Parse((comboBox1.SelectedItem as ComboBoxItem).Value.ToString());
             string name = (comboBox1.SelectedItem as ComboBoxItem).Text.ToString();
             setLabels(name);
-            getStocks();
-            numericUpDown2.Value = 0;
+            
+            numericUpDown2.Value = startQty;
+
+            await getStocks();
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)
@@ -145,7 +178,7 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            int fromto = 0;
+            int fromto;
             int addStocks = int.Parse(numericUpDown2.Value.ToString());
             if (isPharma)
             {
@@ -159,7 +192,10 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
                 fromto = 1;
             }
 
-            await transferLogs.save(id, addStocks,cbTransfId,UserLog.getUserId(),fromto);
+            if (editId == 0)
+                await transferLogs.save(id, addStocks, cbTransfId, UserLog.getUserId(), fromto);
+            else
+                await transferLogs.update(addStocks, cbTransfId, UserLog.getUserId(), editId);
             MessageBox.Show("Succesfully Transfer");
             this.Close();
         }

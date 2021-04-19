@@ -1,4 +1,5 @@
 ﻿using RMC.Database.Controllers;
+using RMC.InventoryPharma.PanelViewStocks.Dialog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -212,7 +213,7 @@ namespace RMC.InventoryPharma.HistoryStocks
 
             if(viewState == 1)
             {
-                contextMenuStrip1.Items.Add("Edit");
+                contextMenuStrip1.Items.Add("Edit").Click += new EventHandler(editTransfer);
             }
             
             if(viewState == 3)
@@ -221,6 +222,18 @@ namespace RMC.InventoryPharma.HistoryStocks
             }
         }
 
+        private async void editTransfer(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(idRightClick))
+                return;
+
+            int id = int.Parse(idRightClick);
+
+            TransferOtherForm form = new TransferOtherForm(id);
+            form.ShowDialog();
+
+            await loadTransferLogs();
+        }
 
         private DataSet FormatDg(DataSet ds)
         {
@@ -241,16 +254,12 @@ namespace RMC.InventoryPharma.HistoryStocks
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
                 //your code here
-                string from = "";
-                if (int.Parse(dr["from_to"].ToString()) == 0)
-                {
-                    from = "Pharmacy";
-                }
-                else
-                {
-                    from = "Clinic";
-                }
-                dt.Rows.Add(dr[0], dr[1], from, dr[4], dr[3], dr[5].ToString().Split(' ')[0], dr[6], dr[7], dr[8]);
+                string from = int.Parse(dr["from_to"].ToString()) == 0 ? "Pharmacy" : "Clinic";
+                string ediDate = string.IsNullOrEmpty(dr[8].ToString()) ? 
+                    "" : dr[8].ToString().Split(' ')[0];
+
+                dt.Rows.Add(dr[0], dr[1], from, dr[4], dr[3], 
+                    dr[5].ToString().Split(' ')[0], dr[6], dr[7], ediDate);
             }
 
 
