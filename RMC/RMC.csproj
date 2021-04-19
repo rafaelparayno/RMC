@@ -766,6 +766,12 @@
     <Compile Include="InventoryPharma\PanelViewStocks\Dialog\Transfer.Designer.cs">
       <DependentUpon>Transfer.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelViewStocks\Dialog\TransferOtherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelViewStocks\Dialog\TransferOtherForm.Designer.cs">
+      <DependentUpon>TransferOtherForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelViewStocks\ViewStocks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1549,6 +1555,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelViewStocks\Dialog\Transfer.resx">
       <DependentUpon>Transfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelViewStocks\Dialog\TransferOtherForm.resx">
+      <DependentUpon>TransferOtherForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelViewStocks\ViewStocks.resx">
       <DependentUpon>ViewStocks.cs</DependentUpon>

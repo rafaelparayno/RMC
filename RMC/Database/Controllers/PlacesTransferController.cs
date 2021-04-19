@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using RMC.Components;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -75,6 +76,23 @@ namespace RMC.Database.Controllers
             };
 
             await crud.ExecuteAsync(sql, mySqlParameters);
+        }
+
+
+         public async Task<List<ComboBoxItem>> getComboDatas()
+        {
+            List<ComboBoxItem> cbItems = new List<ComboBoxItem>();
+            string sql = String.Format(@"SELECT * FROM `places_transfer`");
+         
+            
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+            while (await reader.ReadAsync())
+            {
+                cbItems.Add(new ComboBoxItem(reader["places_transfer_name"].ToString(),
+                    int.Parse(reader["places_transfer_id"].ToString())));
+            }
+            crud.CloseConnection();
+            return cbItems;
         }
     }
 }

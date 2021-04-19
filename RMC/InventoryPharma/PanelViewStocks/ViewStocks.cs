@@ -216,5 +216,27 @@ namespace RMC.InventoryPharma.PanelViewStocks
                 SearchGrid(txtName.Text.Trim(), selectedCombobx);
             }
         }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            if (dgItemList.Rows.Count == 0)
+                return;
+
+
+            int id = int.Parse(dgItemList.SelectedRows[0].Cells[0].Value.ToString());
+            string name = dgItemList.SelectedRows[0].Cells[1].Value.ToString();
+            TransferOtherForm frm = new TransferOtherForm(id, name, isPharmaList);
+            frm.ShowDialog();
+
+
+            if (!isPharmaList)
+            {
+                loadGridClinic();
+            }
+            else
+            {
+                loadGridPharma();
+            }
+        }
     }
 }

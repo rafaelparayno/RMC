@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgItemList = new System.Windows.Forms.DataGridView();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.panelMenus.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -47,6 +48,7 @@
             // 
             // panelMenus
             // 
+            this.panelMenus.Controls.Add(this.iconButton3);
             this.panelMenus.Controls.Add(this.iconButton1);
             this.panelMenus.Controls.Add(this.btnAdjust);
             this.panelMenus.Controls.Add(this.btnTransfer);
@@ -230,6 +232,29 @@
             this.dgItemList.StandardTab = true;
             this.dgItemList.TabIndex = 113;
             // 
+            // iconButton3
+            // 
+            this.iconButton3.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.iconButton3.FlatAppearance.BorderSize = 0;
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton3.ForeColor = System.Drawing.Color.White;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.ShuttleVan;
+            this.iconButton3.IconColor = System.Drawing.Color.White;
+            this.iconButton3.IconSize = 28;
+            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton3.Location = new System.Drawing.Point(384, 0);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Rotation = 0D;
+            this.iconButton3.Size = new System.Drawing.Size(75, 86);
+            this.iconButton3.TabIndex = 11;
+            this.iconButton3.Text = "Transfer Others";
+            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton3.UseVisualStyleBackColor = false;
+            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
+            // 
             // ViewStocks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -265,5 +290,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.DataGridView dgItemList;
+        private FontAwesome.Sharp.IconButton iconButton3;
     }
 }
