@@ -20,13 +20,23 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
         private string name = "";
         private bool isPharma;
         private int quantityStocks = 0;
-
+        private int editId = 0;
         private int cbTransfId = 0;
         PlacesTransferController placesTransferController = new PlacesTransferController();
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
         ClinicStocksController clinicStocksController = new ClinicStocksController();
         TransferLogsController transferLogs = new TransferLogsController();
-     
+
+
+
+        public TransferOtherForm(int editId)
+        {
+            InitializeComponent();
+            this.editId = editId;
+         
+            getStocks();
+
+        }
 
         public TransferOtherForm(int id, string name, bool isPharma)
         {
@@ -135,20 +145,21 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-
+            int fromto = 0;
             int addStocks = int.Parse(numericUpDown2.Value.ToString());
             if (isPharma)
             {
                 await pharmaStocksController.Save(id, int.Parse(textBox1.Text));
-
+                fromto = 0;
                 
             }
             else
             {
                 await clinicStocksController.Save(id, int.Parse(textBox1.Text));
+                fromto = 1;
             }
 
-            await transferLogs.save(id, addStocks,cbTransfId,UserLog.getUserId());
+            await transferLogs.save(id, addStocks,cbTransfId,UserLog.getUserId(),fromto);
             MessageBox.Show("Succesfully Transfer");
             this.Close();
         }

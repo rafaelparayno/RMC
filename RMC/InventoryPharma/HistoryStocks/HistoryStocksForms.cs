@@ -17,6 +17,8 @@ namespace RMC.InventoryPharma.HistoryStocks
         TransferLogsController transferLogs = new TransferLogsController();
         ReceiveControllers receiveControllers = new ReceiveControllers();
         PoController poController = new PoController();
+        string idRightClick = "";
+        int viewState = -1;
         public HistoryStocksForms()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace RMC.InventoryPharma.HistoryStocks
             {
                 case 0:
                     await searchInventoryHistry();
+                   
                     break;
                 case 1:
                     await searchTransferLogs();
@@ -45,6 +48,9 @@ namespace RMC.InventoryPharma.HistoryStocks
                     await searchPuchaseOrderHist();
                     break;
             }
+
+            viewState = selected;
+            groupBox3.Text = comboBox1.Text;
         }
 
         private async void iconButton3_Click(object sender, EventArgs e)
@@ -69,81 +75,188 @@ namespace RMC.InventoryPharma.HistoryStocks
                     await loadPuchaseOrderHist();
                     break;
             }
+
+            viewState = selected;
+            groupBox3.Text = comboBox1.Text;
         }
 
         private async Task loadTransferLogs()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             DataSet ds = await transferLogs.getDataset();
             dgItemList.DataSource = "";
-            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.DataSource = FormatDg(ds).Tables[0];
             dgItemList.AutoResizeColumns();
+            pictureBox1.Hide();
 
         }
 
         private async Task searchTransferLogs()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             DataSet ds = await transferLogs.getDataset(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
             dgItemList.DataSource = "";
-            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.DataSource = FormatDg(ds).Tables[0];
             dgItemList.AutoResizeColumns();
+            pictureBox1.Hide();
 
         }
 
         private async Task loadReceiveHistory()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             DataSet ds = await receiveControllers.getData();
             dgItemList.DataSource = "";
             dgItemList.DataSource = ds.Tables[0];
             dgItemList.AutoResizeColumns();
+            pictureBox1.Hide();
 
         }
 
         private async Task searchReceiveHistory()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             DataSet ds = await receiveControllers.getData(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
             dgItemList.DataSource = "";
             dgItemList.DataSource = ds.Tables[0];
             dgItemList.AutoResizeColumns();
+            pictureBox1.Hide();
 
         }
 
         private async Task loadInventoryHistry()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             DataSet ds = await stocksHistory.getStockHis();
             dgItemList.DataSource = "";
             dgItemList.DataSource = ds.Tables[0];
             dgItemList.AutoResizeColumns();
+            pictureBox1.Hide();
 
         }
 
         private async Task searchInventoryHistry()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             DataSet ds = await stocksHistory.getStockHis(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
             dgItemList.DataSource = "";
             dgItemList.DataSource = ds.Tables[0];
             dgItemList.AutoResizeColumns();
+            pictureBox1.Hide();
 
         }
 
 
         private async Task loadPuchaseOrderHist()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             DataSet ds = await poController.getDsPo();
             dgItemList.DataSource = "";
             dgItemList.DataSource = ds.Tables[0];
             dgItemList.AutoResizeColumns();
+            pictureBox1.Hide();
 
         }
 
         private async Task searchPuchaseOrderHist()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
             DataSet ds = await poController.getDsPo(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
             dgItemList.DataSource = "";
             dgItemList.DataSource = ds.Tables[0];
             dgItemList.AutoResizeColumns();
+            pictureBox1.Hide();
 
         }
 
+        private void dgItemList_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (comboBox1.SelectedIndex == -1)
+                return;
 
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgItemList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                    
+                    idRightClick = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+
+                     contextMenuFillItems();
+
+                    contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
+                }
+
+            }
+        }
+
+        private void contextMenuFillItems()
+        {
+            if (comboBox1.SelectedIndex == -1)
+                return;
+
+            int selected = comboBox1.SelectedIndex;
+
+            contextMenuStrip1.Items.Clear();
+
+            if(viewState == 1)
+            {
+                contextMenuStrip1.Items.Add("Edit");
+            }
+            
+            if(viewState == 3)
+            {
+                contextMenuStrip1.Items.Add("View Items In Po");
+            }
+        }
+
+
+        private DataSet FormatDg(DataSet ds)
+        {
+
+            DataSet newDataset = new DataSet();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID");
+            dt.Columns.Add("Item Name");
+            dt.Columns.Add("From");
+            dt.Columns.Add("Transfer To");
+            dt.Columns.Add("Quantity Transfer");
+            dt.Columns.Add("Date Transfer");
+            dt.Columns.Add("Transfer By");
+            dt.Columns.Add("Edit By");
+            dt.Columns.Add("Edit Date");
+          
+
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                //your code here
+                string from = "";
+                if (int.Parse(dr["from_to"].ToString()) == 0)
+                {
+                    from = "Pharmacy";
+                }
+                else
+                {
+                    from = "Clinic";
+                }
+                dt.Rows.Add(dr[0], dr[1], from, dr[4], dr[3], dr[5].ToString().Split(' ')[0], dr[6], dr[7], dr[8]);
+            }
+
+
+            newDataset.Tables.Add(dt);
+            return newDataset;
+
+        }
     }
 }
