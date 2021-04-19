@@ -63,11 +63,11 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(512, 71);
+            this.groupBox2.Location = new System.Drawing.Point(449, 71);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(366, 260);
+            this.groupBox2.Size = new System.Drawing.Size(429, 260);
             this.groupBox2.TabIndex = 217;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Items In Po";
@@ -89,10 +89,9 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(360, 237);
+            this.dataGridView1.Size = new System.Drawing.Size(423, 237);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 116;
-            //this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // groupBox3
             // 
@@ -105,7 +104,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(512, 260);
+            this.groupBox3.Size = new System.Drawing.Size(449, 260);
             this.groupBox3.TabIndex = 216;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Purchase Order";
@@ -127,7 +126,7 @@
             this.dgItemList.ReadOnly = true;
             this.dgItemList.RowHeadersVisible = false;
             this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemList.Size = new System.Drawing.Size(506, 199);
+            this.dgItemList.Size = new System.Drawing.Size(443, 199);
             this.dgItemList.StandardTab = true;
             this.dgItemList.TabIndex = 115;
             this.dgItemList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgItemList_CellContentClick);
@@ -149,7 +148,7 @@
             this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Rotation = 0D;
-            this.iconButton2.Size = new System.Drawing.Size(506, 38);
+            this.iconButton2.Size = new System.Drawing.Size(443, 38);
             this.iconButton2.TabIndex = 9;
             this.iconButton2.Text = "Print";
             this.iconButton2.UseVisualStyleBackColor = false;

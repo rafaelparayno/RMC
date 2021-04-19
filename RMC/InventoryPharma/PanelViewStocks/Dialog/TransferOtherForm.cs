@@ -1,5 +1,7 @@
 ﻿using RMC.Components;
 using RMC.Database.Controllers;
+using RMC.Database.Models;
+using RMC.InventoryPharma.PanelPo.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +25,7 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
         PlacesTransferController placesTransferController = new PlacesTransferController();
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
         ClinicStocksController clinicStocksController = new ClinicStocksController();
+        TransferLogsController transferLogs = new TransferLogsController();
      
 
         public TransferOtherForm(int id, string name, bool isPharma)
@@ -127,6 +130,26 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
 
         private void btnCloseApp_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+
+            int addStocks = int.Parse(numericUpDown2.Value.ToString());
+            if (isPharma)
+            {
+                await pharmaStocksController.Save(id, int.Parse(textBox1.Text));
+
+                
+            }
+            else
+            {
+                await clinicStocksController.Save(id, int.Parse(textBox1.Text));
+            }
+
+            await transferLogs.save(id, addStocks,cbTransfId,UserLog.getUserId());
+            MessageBox.Show("Succesfully Transfer");
             this.Close();
         }
     }

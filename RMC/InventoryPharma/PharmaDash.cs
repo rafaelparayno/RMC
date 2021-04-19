@@ -1,4 +1,5 @@
 ﻿using RMC.InventoryPharma.Barcodes;
+using RMC.InventoryPharma.HistoryStocks;
 using RMC.InventoryPharma.PanelPo;
 using RMC.InventoryPharma.PanelReturn;
 using RMC.InventoryPharma.PanelRo;
@@ -104,6 +105,7 @@ namespace RMC.InventoryPharma
             btnViewStocks.Enabled = false;
             iconButton1.Enabled = false;
             iconButton2.Enabled = false;
+            iconButton3.Enabled = false;
         }
 
         private void enabledButtons()
@@ -116,6 +118,12 @@ namespace RMC.InventoryPharma
             btnViewStocks.Enabled = true;
             iconButton1.Enabled = true;
             iconButton2.Enabled = true;
+            iconButton3.Enabled = true;
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            openChildForm(new HistoryStocksForms());
         }
     }
 }

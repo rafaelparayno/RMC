@@ -594,6 +594,7 @@
     <Compile Include="Database\Controllers\SupplierController.cs" />
     <Compile Include="Database\Controllers\SupplierItemsController.cs" />
     <Compile Include="Database\Controllers\SymptomsController.cs" />
+    <Compile Include="Database\Controllers\TransferLogsController.cs" />
     <Compile Include="Database\Controllers\UnitsController.cs" />
     <Compile Include="Database\Controllers\UserracountsController.cs" />
     <Compile Include="Database\Controllers\XrayControllers.cs" />
@@ -711,6 +712,12 @@
     </Compile>
     <Compile Include="InventoryPharma\Dialogs\seniorDiag.Designer.cs">
       <DependentUpon>seniorDiag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\HistoryStocks\HistoryStocksForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\HistoryStocks\HistoryStocksForms.Designer.cs">
+      <DependentUpon>HistoryStocksForms.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryPharma\PanelPo\Dialogs\QtyDiag.cs">
       <SubType>Form</SubType>
@@ -1528,6 +1535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\Dialogs\seniorDiag.resx">
       <DependentUpon>seniorDiag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\HistoryStocks\HistoryStocksForms.resx">
+      <DependentUpon>HistoryStocksForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelPo\Dialogs\QtyDiag.resx">
       <DependentUpon>QtyDiag.cs</DependentUpon>
