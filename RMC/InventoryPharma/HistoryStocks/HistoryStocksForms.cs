@@ -1,4 +1,5 @@
 ﻿using RMC.Database.Controllers;
+using RMC.InventoryPharma.HistoryStocks.Dialogs;
 using RMC.InventoryPharma.PanelViewStocks.Dialog;
 using System;
 using System.Collections.Generic;
@@ -218,8 +219,19 @@ namespace RMC.InventoryPharma.HistoryStocks
             
             if(viewState == 3)
             {
-                contextMenuStrip1.Items.Add("View Items In Po");
+                contextMenuStrip1.Items.Add("View Items In Po").Click += new EventHandler(viewPo);
             }
+        }
+
+        private void viewPo(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(idRightClick))
+                return;
+
+            int id = int.Parse(idRightClick);
+
+            ViewItemsInPo forms = new ViewItemsInPo(id);
+            forms.ShowDialog();
         }
 
         private async void editTransfer(object sender, EventArgs e)

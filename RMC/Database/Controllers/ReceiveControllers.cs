@@ -58,7 +58,8 @@ namespace RMC.Database.Controllers
                         CONCAT(useraccounts.firstname,' ',useraccounts.lastname) AS 'Receive By' 
                         FROM `receive_orders` INNER JOIN purchase_order_items ON receive_orders.po_item_id = purchase_order_items.po_item_id 
                         INNER JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id 
-                        INNER JOIN useraccounts ON receive_orders.u_id = useraccounts.u_id";
+                        INNER JOIN useraccounts ON receive_orders.u_id = useraccounts.u_id 
+                        ORDER BY ro_id ASC";
 
 
             return await crud.GetDataSetAsync(sql, null);
@@ -97,7 +98,7 @@ namespace RMC.Database.Controllers
                         FROM `receive_orders` INNER JOIN purchase_order_items ON receive_orders.po_item_id = purchase_order_items.po_item_id 
                         INNER JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id 
                         INNER JOIN useraccounts ON receive_orders.u_id = useraccounts.u_id 
-                        WHERE date_ro = @date";
+                        WHERE date_ro = @date ORDER BY ro_id ASC";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
 

@@ -20,7 +20,8 @@ namespace RMC.Database.Controllers
             string sql = @"SELECT purchase_order.po_id AS 'PO NO',suppliers.supplier_name,date_order As 'Date Ordered',
             CONCAT(useraccounts.firstname,' ',useraccounts.lastname) AS 'Order By' FROM `purchase_order`
             INNER JOIN suppliers ON purchase_order.supplier_id = suppliers.supplier_id
-            LEFT JOIN useraccounts ON purchase_order.u_id = useraccounts.u_id";
+            LEFT JOIN useraccounts ON purchase_order.u_id = useraccounts.u_id 
+                ORDER BY po_id ASC ";
 
             return await crud.GetDataSetAsync(sql, null);
         }
@@ -31,7 +32,7 @@ namespace RMC.Database.Controllers
             CONCAT(useraccounts.firstname,' ',useraccounts.lastname) AS 'Order By' FROM `purchase_order`
             INNER JOIN suppliers ON purchase_order.supplier_id = suppliers.supplier_id
             LEFT JOIN useraccounts ON purchase_order.u_id = useraccounts.u_id 
-            WHERE date_order = @date";
+            WHERE date_order = @date ORDER BY po_id ASC";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@date", date));
 

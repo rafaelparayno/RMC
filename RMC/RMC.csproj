@@ -714,6 +714,12 @@
     <Compile Include="InventoryPharma\Dialogs\seniorDiag.Designer.cs">
       <DependentUpon>seniorDiag.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\HistoryStocks\Dialogs\ViewItemsInPo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\HistoryStocks\Dialogs\ViewItemsInPo.Designer.cs">
+      <DependentUpon>ViewItemsInPo.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\HistoryStocks\HistoryStocksForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1536,6 +1542,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\Dialogs\seniorDiag.resx">
       <DependentUpon>seniorDiag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\HistoryStocks\Dialogs\ViewItemsInPo.resx">
+      <DependentUpon>ViewItemsInPo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\HistoryStocks\HistoryStocksForms.resx">
       <DependentUpon>HistoryStocksForms.cs</DependentUpon>

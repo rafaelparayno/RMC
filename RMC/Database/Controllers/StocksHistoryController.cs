@@ -17,7 +17,8 @@ namespace RMC.Database.Controllers
             string sql = @"SELECT action,quantity,item_name,date_stock_his AS 'Date',
                             Concat(firstname,' ',lastname) AS 'Name' FROM `stockshistory` 
                             LEFT JOIN itemlist on itemlist.item_id = stockshistory.item_id
-                            LEFT JOIN useraccounts ON useraccounts.u_id = stockshistory.u_id";
+                            LEFT JOIN useraccounts ON useraccounts.u_id = stockshistory.u_id 
+                            ORDER BY hist_id ASC";
      
            return await crud.GetDataSetAsync(sql, null);
         }
@@ -27,7 +28,7 @@ namespace RMC.Database.Controllers
                             Concat(firstname,' ',lastname) AS 'Name' FROM `stockshistory` 
                             LEFT JOIN itemlist on itemlist.item_id = stockshistory.item_id
                             LEFT JOIN useraccounts ON useraccounts.u_id = stockshistory.u_id 
-                            WHERE date_stock_his = @date";
+                            WHERE date_stock_his = @date ORDER BY hist_id ASC";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
             listparams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
