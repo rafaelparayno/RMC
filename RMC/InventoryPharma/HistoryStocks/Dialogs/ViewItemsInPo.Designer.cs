@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
@@ -50,18 +50,6 @@
             this.panel2.Size = new System.Drawing.Size(800, 35);
             this.panel2.TabIndex = 9;
             // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FloralWhite;
-            this.label8.Location = new System.Drawing.Point(3, 10);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(84, 16);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Items In Bo";
-            // 
             // btnCloseApp
             // 
             this.btnCloseApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -79,6 +67,17 @@
             this.btnCloseApp.TabIndex = 2;
             this.btnCloseApp.UseVisualStyleBackColor = false;
             this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FloralWhite;
+            this.label8.Location = new System.Drawing.Point(3, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(0, 16);
+            this.label8.TabIndex = 1;
             // 
             // groupBox2
             // 

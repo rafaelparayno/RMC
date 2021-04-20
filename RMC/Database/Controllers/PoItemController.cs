@@ -33,7 +33,7 @@ namespace RMC.Database.Controllers
                           FROM `purchase_order_items` LEFT JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id 
                           LEFT JOIN purchase_order ON purchase_order_items.po_id = purchase_order.po_id
                           LEFT JOIN suppliers ON purchase_order.supplier_id = suppliers.supplier_id 
-                          WHERE purchase_order_items.po_id = @po_id ";
+                          WHERE purchase_order_items.po_id = @po_id";
 
             List<MySqlParameter> listParams = new List<MySqlParameter>();
             listParams.Add(new MySqlParameter("@po_id", po_no));
@@ -45,6 +45,34 @@ namespace RMC.Database.Controllers
                 newPo.item_id = int.Parse(reader["item_id"].ToString());
                 newPo.item_name = reader["item_name"].ToString();
                 newPo.quantity_order = int.Parse(reader["quantity_order"].ToString());
+                purchaseOrder.Add(newPo);
+            }
+
+            crud.CloseConnection();
+            return purchaseOrder;
+        }
+
+
+        public async Task<List<PoModel>> getPoNoWithOrigStocks(int po_no)
+        {
+            List<PoModel> purchaseOrder = new List<PoModel>();
+
+
+            string sql = @"SELECT purchase_order_items.item_id,itemlist.item_name,COALESCE((purchase_order_items.quantity_order + receive_orders.qty_ro), purchase_order_items.quantity_order) AS 'qty' FROM `purchase_order_items`
+                            INNER JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id
+                            LEFT JOIN receive_orders ON purchase_order_items.po_item_id = receive_orders.po_item_id
+                            WHERE purchase_order_items.po_id = @po_id";
+
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+            listParams.Add(new MySqlParameter("@po_id", po_no));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
+            while (await reader.ReadAsync())
+            {
+                PoModel newPo = new PoModel();
+                newPo.item_id = int.Parse(reader["item_id"].ToString());
+                newPo.item_name = reader["item_name"].ToString();
+                newPo.quantity_order = int.Parse(reader["qty"].ToString());
                 purchaseOrder.Add(newPo);
             }
 

@@ -24,7 +24,7 @@ namespace RMC.InventoryPharma.HistoryStocks.Dialogs
 
         private async Task loadItemGrid()
         {
-            List<PoModel> plist = await poic.getPoNo(pono);
+            List<PoModel> plist = await poic.getPoNoWithOrigStocks(pono);
 
             dataGridView1.DataSource = "";
             dataGridView1.DataSource = plist;

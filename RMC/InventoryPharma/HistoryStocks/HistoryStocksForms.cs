@@ -224,6 +224,7 @@ namespace RMC.InventoryPharma.HistoryStocks
             if(viewState == 3)
             {
                 contextMenuStrip1.Items.Add("View Items In Po").Click += new EventHandler(viewPo);
+                contextMenuStrip1.Items.Add("Print Purchase Order");
             }
         }
 
@@ -289,9 +290,11 @@ namespace RMC.InventoryPharma.HistoryStocks
             if (comboBox1.SelectedIndex == -1)
                 return;
 
-            int selected = comboBox1.SelectedIndex;
+            if (dgItemList.Rows.Count == 0)
+                return;
+        
 
-            switch (selected)
+            switch (viewState)
             {
                 case 0:
                     InventoryStocksRepForm forms = new InventoryStocksRepForm(dataSetToPrint);
@@ -302,7 +305,8 @@ namespace RMC.InventoryPharma.HistoryStocks
                     forms2.ShowDialog();
                     break;
                 case 2:
-                    //dataSetToPrint.WriteXmlSchema("receiveItems.xml");
+                    ReceiveHistoryForms forms3 = new ReceiveHistoryForms(dataSetToPrint);
+                    forms3.ShowDialog();
                     break;
                 case 3:
                 

@@ -714,6 +714,12 @@
     <Compile Include="InventoryPharma\Dialogs\InventoryStocksRepForm.Designer.cs">
       <DependentUpon>InventoryStocksRepForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\Dialogs\ReceiveHistoryForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\Dialogs\ReceiveHistoryForms.Designer.cs">
+      <DependentUpon>ReceiveHistoryForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\Dialogs\seniorDiag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -820,6 +826,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InventoryRep\ReceiveHistory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceiveHistory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="InventoryRep\StockHistoryReport.cs">
@@ -1567,6 +1579,9 @@
     <EmbeddedResource Include="InventoryPharma\Dialogs\InventoryStocksRepForm.resx">
       <DependentUpon>InventoryStocksRepForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\Dialogs\ReceiveHistoryForms.resx">
+      <DependentUpon>ReceiveHistoryForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\Dialogs\seniorDiag.resx">
       <DependentUpon>seniorDiag.cs</DependentUpon>
     </EmbeddedResource>
@@ -1622,6 +1637,10 @@
     <EmbeddedResource Include="InventoryRep\PurchaseOrder.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PurchaseOrder.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryRep\ReceiveHistory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReceiveHistory.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryRep\StockHistoryReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
