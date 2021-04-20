@@ -720,6 +720,12 @@
     <Compile Include="InventoryPharma\Dialogs\seniorDiag.Designer.cs">
       <DependentUpon>seniorDiag.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\Dialogs\TransferOtherRepForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\Dialogs\TransferOtherRepForms.Designer.cs">
+      <DependentUpon>TransferOtherRepForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\HistoryStocks\Dialogs\ViewItemsInPo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -803,6 +809,12 @@
     </Compile>
     <Compile Include="InventoryPharma\PharmaDash.Designer.cs">
       <DependentUpon>PharmaDash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryRep\OtherTransferReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OtherTransferReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="InventoryRep\PurchaseOrder.cs">
       <AutoGen>True</AutoGen>
@@ -1558,6 +1570,9 @@
     <EmbeddedResource Include="InventoryPharma\Dialogs\seniorDiag.resx">
       <DependentUpon>seniorDiag.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\Dialogs\TransferOtherRepForms.resx">
+      <DependentUpon>TransferOtherRepForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\HistoryStocks\Dialogs\ViewItemsInPo.resx">
       <DependentUpon>ViewItemsInPo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1599,6 +1614,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PharmaDash.resx">
       <DependentUpon>PharmaDash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryRep\OtherTransferReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OtherTransferReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryRep\PurchaseOrder.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

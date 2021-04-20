@@ -298,7 +298,8 @@ namespace RMC.InventoryPharma.HistoryStocks
                     forms.ShowDialog();
                     break;
                 case 1:
-                    //dataSetToPrint.WriteXmlSchema("transferOthers.xml");
+                    TransferOtherRepForms forms2 = new TransferOtherRepForms(dataSetToPrint);
+                    forms2.ShowDialog();
                     break;
                 case 2:
                     //dataSetToPrint.WriteXmlSchema("receiveItems.xml");
