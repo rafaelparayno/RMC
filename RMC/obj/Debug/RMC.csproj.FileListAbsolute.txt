@@ -416,3 +416,4 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.Dial
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.Dialogs.ReceiveHistoryForms.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.Dialogs.PurchaseOrderHistoryFormscs.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.Dialogs.PurchaseOrderRepForms.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.PanelReturn.Dialog.InvoiceViewDate.resources

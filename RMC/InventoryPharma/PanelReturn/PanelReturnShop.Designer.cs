@@ -30,26 +30,27 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.panelOptions = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgItemList = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lvItemsSuppliers = new System.Windows.Forms.ListView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.iconButton5 = new FontAwesome.Sharp.IconButton();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.groupBox1.SuspendLayout();
             this.panelOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -64,6 +65,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.iconButton2);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label1);
@@ -73,45 +75,23 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(684, 77);
+            this.groupBox1.Size = new System.Drawing.Size(684, 145);
             this.groupBox1.TabIndex = 215;
             this.groupBox1.TabStop = false;
             // 
             // txtName
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(12, 48);
+            this.txtName.Location = new System.Drawing.Point(9, 46);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(613, 24);
             this.txtName.TabIndex = 1;
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton2.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton2.ForeColor = System.Drawing.Color.White;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconSize = 18;
-            this.iconButton2.Location = new System.Drawing.Point(631, 49);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Rotation = 0D;
-            this.iconButton2.Size = new System.Drawing.Size(38, 23);
-            this.iconButton2.TabIndex = 222;
-            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = false;
-            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 21);
+            this.label1.Location = new System.Drawing.Point(7, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 17);
             this.label1.TabIndex = 0;
@@ -127,11 +107,23 @@
             this.panelOptions.Controls.Add(this.label3);
             this.panelOptions.Controls.Add(this.iconButton1);
             this.panelOptions.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelOptions.Location = new System.Drawing.Point(0, 77);
+            this.panelOptions.Location = new System.Drawing.Point(0, 145);
             this.panelOptions.Name = "panelOptions";
             this.panelOptions.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panelOptions.Size = new System.Drawing.Size(336, 449);
+            this.panelOptions.Size = new System.Drawing.Size(336, 381);
             this.panelOptions.TabIndex = 216;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.textBox1.Location = new System.Drawing.Point(12, 105);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(311, 203);
+            this.textBox1.TabIndex = 231;
             // 
             // label6
             // 
@@ -176,39 +168,16 @@
             this.label3.TabIndex = 225;
             this.label3.Text = "Settings";
             // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconSize = 28;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton1.Location = new System.Drawing.Point(5, 404);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(324, 38);
-            this.iconButton1.TabIndex = 8;
-            this.iconButton1.Text = "Add to Return Items";
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(336, 77);
+            this.panel1.Location = new System.Drawing.Point(336, 145);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panel1.Size = new System.Drawing.Size(348, 449);
+            this.panel1.Size = new System.Drawing.Size(348, 381);
             this.panel1.TabIndex = 217;
             // 
             // panel3
@@ -219,7 +188,7 @@
             this.panel3.Location = new System.Drawing.Point(5, 211);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panel3.Size = new System.Drawing.Size(336, 231);
+            this.panel3.Size = new System.Drawing.Size(336, 163);
             this.panel3.TabIndex = 218;
             // 
             // groupBox2
@@ -233,7 +202,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(324, 224);
+            this.groupBox2.Size = new System.Drawing.Size(324, 156);
             this.groupBox2.TabIndex = 210;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Items To Return";
@@ -255,7 +224,7 @@
             this.dgItemList.ReadOnly = true;
             this.dgItemList.RowHeadersVisible = false;
             this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemList.Size = new System.Drawing.Size(318, 145);
+            this.dgItemList.Size = new System.Drawing.Size(318, 77);
             this.dgItemList.StandardTab = true;
             this.dgItemList.TabIndex = 231;
             // 
@@ -266,12 +235,65 @@
             this.groupBox5.Controls.Add(this.iconButton3);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox5.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.groupBox5.Location = new System.Drawing.Point(3, 164);
+            this.groupBox5.Location = new System.Drawing.Point(3, 96);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.groupBox5.Size = new System.Drawing.Size(318, 56);
             this.groupBox5.TabIndex = 230;
             this.groupBox5.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.groupBox3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(5, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.panel2.Size = new System.Drawing.Size(336, 211);
+            this.panel2.TabIndex = 217;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.lvItemsSuppliers);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(5, 0);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox3.Size = new System.Drawing.Size(324, 204);
+            this.groupBox3.TabIndex = 211;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Items in Invoice";
+            // 
+            // lvItemsSuppliers
+            // 
+            this.lvItemsSuppliers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvItemsSuppliers.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvItemsSuppliers.FullRowSelect = true;
+            this.lvItemsSuppliers.GridLines = true;
+            this.lvItemsSuppliers.HideSelection = false;
+            this.lvItemsSuppliers.Location = new System.Drawing.Point(3, 19);
+            this.lvItemsSuppliers.Name = "lvItemsSuppliers";
+            this.lvItemsSuppliers.Size = new System.Drawing.Size(318, 181);
+            this.lvItemsSuppliers.TabIndex = 0;
+            this.lvItemsSuppliers.UseCompatibleStateImageBehavior = false;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Maroon;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(10, 86);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(656, 26);
+            this.button1.TabIndex = 223;
+            this.button1.Text = "View Date";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // iconButton5
             // 
@@ -339,56 +361,50 @@
             this.iconButton3.UseVisualStyleBackColor = false;
             this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
             // 
-            // panel2
+            // iconButton1
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.groupBox3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(5, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panel2.Size = new System.Drawing.Size(336, 211);
-            this.panel2.TabIndex = 217;
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconSize = 28;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton1.Location = new System.Drawing.Point(5, 336);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(324, 38);
+            this.iconButton1.TabIndex = 8;
+            this.iconButton1.Text = "Add to Return Items";
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // groupBox3
+            // iconButton2
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.Controls.Add(this.lvItemsSuppliers);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(5, 0);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(324, 204);
-            this.groupBox3.TabIndex = 211;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Items in Invoice";
-            // 
-            // lvItemsSuppliers
-            // 
-            this.lvItemsSuppliers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvItemsSuppliers.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lvItemsSuppliers.FullRowSelect = true;
-            this.lvItemsSuppliers.GridLines = true;
-            this.lvItemsSuppliers.HideSelection = false;
-            this.lvItemsSuppliers.Location = new System.Drawing.Point(3, 19);
-            this.lvItemsSuppliers.Name = "lvItemsSuppliers";
-            this.lvItemsSuppliers.Size = new System.Drawing.Size(318, 181);
-            this.lvItemsSuppliers.TabIndex = 0;
-            this.lvItemsSuppliers.UseCompatibleStateImageBehavior = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.textBox1.Location = new System.Drawing.Point(12, 105);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(311, 271);
-            this.textBox1.TabIndex = 231;
+            this.iconButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton2.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton2.ForeColor = System.Drawing.Color.White;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconSize = 18;
+            this.iconButton2.Location = new System.Drawing.Point(628, 46);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Rotation = 0D;
+            this.iconButton2.Size = new System.Drawing.Size(38, 23);
+            this.iconButton2.TabIndex = 222;
+            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton2.UseVisualStyleBackColor = false;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // PanelReturnShop
             // 
@@ -443,5 +459,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListView lvItemsSuppliers;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

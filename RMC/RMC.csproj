@@ -775,6 +775,12 @@
     <Compile Include="InventoryPharma\PanelPo\PanelPurchase.Designer.cs">
       <DependentUpon>PanelPurchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelReturn\Dialog\InvoiceViewDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelReturn\Dialog\InvoiceViewDate.Designer.cs">
+      <DependentUpon>InvoiceViewDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelReturn\PanelR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1627,6 +1633,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelPo\PanelPurchase.resx">
       <DependentUpon>PanelPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelReturn\Dialog\InvoiceViewDate.resx">
+      <DependentUpon>InvoiceViewDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelReturn\PanelR.resx">
       <DependentUpon>PanelR.cs</DependentUpon>

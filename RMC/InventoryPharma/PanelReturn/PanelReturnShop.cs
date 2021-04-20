@@ -1,4 +1,5 @@
 ﻿using RMC.Database.Controllers;
+using RMC.InventoryPharma.PanelReturn.Dialog;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -275,6 +276,19 @@ namespace RMC.InventoryPharma.PanelReturn
 
             updateRemoveStocksInLv(indexLv, currentQty, removeQty);
             dgItemList.DataSource = dt;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InvoiceViewDate invoiceViewDate = new InvoiceViewDate();
+            invoiceViewDate.ShowDialog();
+
+            if (invoiceViewDate.invoice_id == 0)
+                return;
+
+            txtName.Text = invoiceViewDate.invoice_id + "";
+
+            iconButton2.PerformClick();
         }
     }
 }
