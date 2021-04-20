@@ -17,7 +17,42 @@ namespace RMC.Database.Controllers
         dbcrud crud = new dbcrud();
 
 
+        public async Task<float> getUnitCosts(int id)
+        {
+            float unitCost = 0;
 
+            string sql = @"SELECT * FROM itemlist WHERE item_id = @id";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>() { (new MySqlParameter("@id",id))};
+
+            DbDataReader reader =  await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while(await reader.ReadAsync())
+            {
+                unitCost = float.Parse(reader["unitPrice"].ToString());
+            }
+            crud.CloseConnection();
+
+
+
+            return unitCost;
+        }
+
+        public async Task updateUnitCost(int itemid,float price)
+        {
+            
+
+            string sql = @"UPDATE itemlist SET unitPrice = @price  WHERE item_id = @id";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>() 
+            { 
+                (new MySqlParameter("@id", itemid)),
+                 (new MySqlParameter("@price", price))
+            };
+
+
+            await crud.ExecuteAsync(sql, mySqlParameters);
+        }
        
         public async Task<DataSet> getdataSetActive()
         {

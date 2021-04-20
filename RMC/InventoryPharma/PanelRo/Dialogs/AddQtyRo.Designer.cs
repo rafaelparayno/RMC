@@ -34,6 +34,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +58,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(25, 98);
+            this.numericUpDown1.Location = new System.Drawing.Point(25, 82);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -78,7 +80,7 @@
             this.btnQty.IconChar = FontAwesome.Sharp.IconChar.Plus;
             this.btnQty.IconColor = System.Drawing.Color.White;
             this.btnQty.IconSize = 25;
-            this.btnQty.Location = new System.Drawing.Point(25, 145);
+            this.btnQty.Location = new System.Drawing.Point(25, 212);
             this.btnQty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnQty.Name = "btnQty";
             this.btnQty.Rotation = 0D;
@@ -132,12 +134,39 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Quantity Order";
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(22, 132);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 17);
+            this.label3.TabIndex = 235;
+            this.label3.Text = "Unit Costs";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.textBox1.Location = new System.Drawing.Point(25, 165);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(300, 27);
+            this.textBox1.TabIndex = 236;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
             // AddQtyRo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(345, 209);
+            this.ClientSize = new System.Drawing.Size(345, 276);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.btnQty);
@@ -148,6 +177,7 @@
             this.Name = "AddQtyRo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddQtyRo";
+            this.Load += new System.EventHandler(this.AddQtyRo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -164,5 +194,7 @@
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton btnCloseApp;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

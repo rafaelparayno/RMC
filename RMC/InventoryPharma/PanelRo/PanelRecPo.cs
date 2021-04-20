@@ -4,6 +4,7 @@ using RMC.InventoryPharma.PanelRo.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,6 +22,8 @@ namespace RMC.InventoryPharma.PanelRo
         DataTable tableClinic = new DataTable();
         DataTable tablePharma = new DataTable();
         int po_no = 0;
+      
+
         public PanelRecPo()
         {
             InitializeComponent();
@@ -34,10 +37,12 @@ namespace RMC.InventoryPharma.PanelRo
             tableClinic.Columns.Add("itemId", typeof(int));
             tableClinic.Columns.Add("ItemName", typeof(string));
             tableClinic.Columns.Add("QuantityReceive", typeof(int));
+            tableClinic.Columns.Add("Unitcost", typeof(float));
 
             tablePharma.Columns.Add("itemId", typeof(int));
             tablePharma.Columns.Add("ItemName", typeof(string));
             tablePharma.Columns.Add("QuantityReceive", typeof(int));
+            tablePharma.Columns.Add("Unitcost", typeof(float));
         }
 
         private async void loadPO()
@@ -98,6 +103,7 @@ namespace RMC.InventoryPharma.PanelRo
          
         }
 
+     
         private void iconButton1_Click(object sender, EventArgs e)
         {
             //ADD quantity transfer to pharma
@@ -105,15 +111,19 @@ namespace RMC.InventoryPharma.PanelRo
                 return;
 
             int CurrentQty = int.Parse(dgInPo.SelectedRows[0].Cells[2].Value.ToString());
-            AddQtyRo form = new AddQtyRo(CurrentQty);
+            int itemId = int.Parse(dgInPo.SelectedRows[0].Cells[0].Value.ToString());
+
+            AddQtyRo form = new AddQtyRo(CurrentQty, itemId);
             form.ShowDialog();
 
             if (form.qty == 0)
                 return;
 
             int qtyRec = form.qty;
-            int itemId = int.Parse(dgInPo.SelectedRows[0].Cells[0].Value.ToString());
+            
             string name = dgInPo.SelectedRows[0].Cells[1].Value.ToString();
+
+          
 
             if (isFoundInDgPharma(itemId))
             {
@@ -121,14 +131,15 @@ namespace RMC.InventoryPharma.PanelRo
                 int index = tablePharma.Rows.IndexOf(rows[0]);
                 int currentqty = CurrentQtyInPharmaTable(itemId);
                 tablePharma.Rows[index].SetField("QuantityReceive", currentqty + form.qty);
-               
+           
+             
             }
             else
             {
-                tablePharma.Rows.Add(itemId, name, qtyRec);
+                tablePharma.Rows.Add(itemId, name, qtyRec,form.price);
             }
 
-          
+            updatePriceInDg(itemId, form.price);
             dataGridView1.DataSource = tablePharma;
             dataGridView1.AutoResizeColumns();
             substractQtyInDgPo(qtyRec);
@@ -141,13 +152,15 @@ namespace RMC.InventoryPharma.PanelRo
                 return;
 
             int CurrentQty = int.Parse(dgInPo.SelectedRows[0].Cells[2].Value.ToString());
-            AddQtyRo form = new AddQtyRo(CurrentQty);
+            int itemId = int.Parse(dgInPo.SelectedRows[0].Cells[0].Value.ToString());
+
+            AddQtyRo form = new AddQtyRo(CurrentQty, itemId);
             form.ShowDialog();
             if (form.qty == 0)
                 return;
 
             int qtyRec = form.qty;
-            int itemId = int.Parse(dgInPo.SelectedRows[0].Cells[0].Value.ToString());
+          
             string name = dgInPo.SelectedRows[0].Cells[1].Value.ToString();
 
             if (isFoundInDgClinic(itemId))
@@ -157,16 +170,38 @@ namespace RMC.InventoryPharma.PanelRo
                 int index = tableClinic.Rows.IndexOf(rows[0]);
                 int currentqty = CurrentQtyInClinicTable(itemId);
                 tableClinic.Rows[index].SetField("QuantityReceive", currentqty + form.qty);
+              
+             
             }
             else
             {
-                tableClinic.Rows.Add(itemId, name, qtyRec);
+                tableClinic.Rows.Add(itemId, name, qtyRec, form.price);
             }
 
-           
+            updatePriceInDg(itemId, form.price);
             dataGridView2.DataSource = tableClinic;
             dataGridView2.AutoResizeColumns();
             substractQtyInDgPo(qtyRec);
+        }
+
+        private void updatePriceInDg(int id,float price)
+        {
+            if(dataGridView1.Rows.Count > 0)
+            {
+                DataRow[] rowsPh = tablePharma.Select(String.Format(@"itemId = {0}", id));
+                int indexPh = tablePharma.Rows.IndexOf(rowsPh[0]);
+                tablePharma.Rows[indexPh].SetField("Unitcost", price);
+            }
+           
+
+            if(dataGridView2.Rows.Count > 0)
+            {
+                DataRow[] rowsC = tableClinic.Select(String.Format(@"itemId = {0}", id));
+                int indexC = tableClinic.Rows.IndexOf(rowsC[0]);
+                tableClinic.Rows[indexC].SetField("Unitcost", price);
+            }
+         
+
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
