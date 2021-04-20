@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace RMC.InventoryPharma.HistoryStocks
         TransferLogsController transferLogs = new TransferLogsController();
         ReceiveControllers receiveControllers = new ReceiveControllers();
         PoController poController = new PoController();
+        DataSet dataSetToPrint = new DataSet();
         string idRightClick = "";
         int viewState = -1;
         public HistoryStocksForms()
@@ -86,9 +88,9 @@ namespace RMC.InventoryPharma.HistoryStocks
         {
             pictureBox1.Show();
             pictureBox1.Update();
-            DataSet ds = await transferLogs.getDataset();
+            dataSetToPrint = await transferLogs.getDataset();
             dgItemList.DataSource = "";
-            dgItemList.DataSource = FormatDg(ds).Tables[0];
+            dgItemList.DataSource = FormatDg(dataSetToPrint).Tables[0];
             dgItemList.AutoResizeColumns();
             pictureBox1.Hide();
 
@@ -98,9 +100,9 @@ namespace RMC.InventoryPharma.HistoryStocks
         {
             pictureBox1.Show();
             pictureBox1.Update();
-            DataSet ds = await transferLogs.getDataset(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            dataSetToPrint = await transferLogs.getDataset(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
             dgItemList.DataSource = "";
-            dgItemList.DataSource = FormatDg(ds).Tables[0];
+            dgItemList.DataSource = FormatDg(dataSetToPrint).Tables[0];
             dgItemList.AutoResizeColumns();
             pictureBox1.Hide();
 
@@ -110,9 +112,9 @@ namespace RMC.InventoryPharma.HistoryStocks
         {
             pictureBox1.Show();
             pictureBox1.Update();
-            DataSet ds = await receiveControllers.getData();
+            dataSetToPrint = await receiveControllers.getData();
             dgItemList.DataSource = "";
-            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.DataSource = dataSetToPrint.Tables[0];
             dgItemList.AutoResizeColumns();
             pictureBox1.Hide();
 
@@ -122,9 +124,9 @@ namespace RMC.InventoryPharma.HistoryStocks
         {
             pictureBox1.Show();
             pictureBox1.Update();
-            DataSet ds = await receiveControllers.getData(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            dataSetToPrint = await receiveControllers.getData(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
             dgItemList.DataSource = "";
-            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.DataSource = dataSetToPrint.Tables[0];
             dgItemList.AutoResizeColumns();
             pictureBox1.Hide();
 
@@ -134,9 +136,9 @@ namespace RMC.InventoryPharma.HistoryStocks
         {
             pictureBox1.Show();
             pictureBox1.Update();
-            DataSet ds = await stocksHistory.getStockHis();
+            dataSetToPrint = await stocksHistory.getStockHis();
             dgItemList.DataSource = "";
-            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.DataSource = dataSetToPrint.Tables[0];
             dgItemList.AutoResizeColumns();
             pictureBox1.Hide();
 
@@ -146,9 +148,10 @@ namespace RMC.InventoryPharma.HistoryStocks
         {
             pictureBox1.Show();
             pictureBox1.Update();
-            DataSet ds = await stocksHistory.getStockHis(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            dataSetToPrint = await stocksHistory.
+                getStockHis(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
             dgItemList.DataSource = "";
-            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.DataSource = dataSetToPrint.Tables[0];
             dgItemList.AutoResizeColumns();
             pictureBox1.Hide();
 
@@ -159,9 +162,9 @@ namespace RMC.InventoryPharma.HistoryStocks
         {
             pictureBox1.Show();
             pictureBox1.Update();
-            DataSet ds = await poController.getDsPo();
+            dataSetToPrint = await poController.getDsPo();
             dgItemList.DataSource = "";
-            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.DataSource = dataSetToPrint.Tables[0];
             dgItemList.AutoResizeColumns();
             pictureBox1.Hide();
 
@@ -171,9 +174,9 @@ namespace RMC.InventoryPharma.HistoryStocks
         {
             pictureBox1.Show();
             pictureBox1.Update();
-            DataSet ds = await poController.getDsPo(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            dataSetToPrint = await poController.getDsPo(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
             dgItemList.DataSource = "";
-            dgItemList.DataSource = ds.Tables[0];
+            dgItemList.DataSource = dataSetToPrint.Tables[0];
             dgItemList.AutoResizeColumns();
             pictureBox1.Hide();
 
@@ -278,6 +281,30 @@ namespace RMC.InventoryPharma.HistoryStocks
             newDataset.Tables.Add(dt);
             return newDataset;
 
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == -1)
+                return;
+
+            int selected = comboBox1.SelectedIndex;
+
+            switch (selected)
+            {
+                case 0:
+                    //dataSetToPrint.WriteXmlSchema("inventoryHistory.xml");
+                    break;
+                case 1:
+                    //dataSetToPrint.WriteXmlSchema("transferOthers.xml");
+                    break;
+                case 2:
+                    //dataSetToPrint.WriteXmlSchema("receiveItems.xml");
+                    break;
+                case 3:
+                
+                    break;
+            }
         }
     }
 }
