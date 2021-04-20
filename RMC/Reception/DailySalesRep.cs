@@ -32,13 +32,13 @@ namespace RMC.Reception
             Task<float> task1 = salesClinicController.getTotalTodayConsultation();
             Task<float> task2 = salesClinicController.getTotalTodayLaboratory();
             Task<float> task3 = salesClinicController.getTotalTodayXray();
-            Task<float> task4 = salesPharmaController.getTotalMedicineTodaySales();
+          /*  Task<float> task4 = salesPharmaController.getTotalMedicineTodaySales();*/
             Task<float> task5 = salesClinicController.getMedCertTotalToday();
             Task<float> task6 = salesClinicController.getTotalTodayPackages();
             Task<float> task7 = salesClinicController.getTotalTodayOtherServices();
 
             Task<float>[] prices = new Task<float>[] { task1, task2, 
-                                        task3, task4,task5,
+                                        task3,task5,
                                             task6, task7 };
 
             await Task.WhenAll(prices);
@@ -49,7 +49,7 @@ namespace RMC.Reception
             cos.SetParameterValue("consulatationParam", task1.Result);
             cos.SetParameterValue("laboratoryParam", task2.Result);
             cos.SetParameterValue("xrayParam", task3.Result);
-            cos.SetParameterValue("MedicineParam", task4.Result);
+       /*     cos.SetParameterValue("MedicineParam", task4.Result);*/
             cos.SetParameterValue("miscParam", totalMisc);
         /*    cos.SetParameterValue("outByParam", UserLog.getFullName());*/
 
