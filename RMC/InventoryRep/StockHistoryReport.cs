@@ -98,7 +98,7 @@ namespace RMC.InventoryRep {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_orderName {
+        public CrystalDecisions.Shared.IParameterField Parameter_prepareBy {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }

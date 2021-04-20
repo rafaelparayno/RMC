@@ -1,4 +1,5 @@
 ﻿using RMC.Database.Controllers;
+using RMC.InventoryPharma.Dialogs;
 using RMC.InventoryPharma.HistoryStocks.Dialogs;
 using RMC.InventoryPharma.PanelViewStocks.Dialog;
 using System;
@@ -293,7 +294,8 @@ namespace RMC.InventoryPharma.HistoryStocks
             switch (selected)
             {
                 case 0:
-                    //dataSetToPrint.WriteXmlSchema("inventoryHistory.xml");
+                    InventoryStocksRepForm forms = new InventoryStocksRepForm(dataSetToPrint);
+                    forms.ShowDialog();
                     break;
                 case 1:
                     //dataSetToPrint.WriteXmlSchema("transferOthers.xml");

@@ -708,6 +708,12 @@
     <Compile Include="InventoryPharma\Barcodes\PrintBarcodes.Designer.cs">
       <DependentUpon>PrintBarcodes.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\Dialogs\InventoryStocksRepForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\Dialogs\InventoryStocksRepForm.Designer.cs">
+      <DependentUpon>InventoryStocksRepForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\Dialogs\seniorDiag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -802,6 +808,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InventoryRep\StockHistoryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockHistoryReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Lab\DialogReports\BloodChemDiagForms.cs">
@@ -1540,6 +1552,9 @@
     <EmbeddedResource Include="InventoryPharma\Barcodes\PrintBarcodes.resx">
       <DependentUpon>PrintBarcodes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\Dialogs\InventoryStocksRepForm.resx">
+      <DependentUpon>InventoryStocksRepForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\Dialogs\seniorDiag.resx">
       <DependentUpon>seniorDiag.cs</DependentUpon>
     </EmbeddedResource>
@@ -1588,6 +1603,10 @@
     <EmbeddedResource Include="InventoryRep\PurchaseOrder.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PurchaseOrder.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryRep\StockHistoryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StockHistoryReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\DialogReports\BloodChemDiagForms.resx">
       <DependentUpon>BloodChemDiagForms.cs</DependentUpon>

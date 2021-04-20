@@ -411,3 +411,4 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelPharForms
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.PanelViewStocks.Dialog.TransferOtherForm.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.HistoryStocks.HistoryStocksForms.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.HistoryStocks.Dialogs.ViewItemsInPo.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.Dialogs.InventoryStocksRepForm.resources
