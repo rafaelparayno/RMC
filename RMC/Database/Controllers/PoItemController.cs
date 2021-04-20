@@ -58,7 +58,8 @@ namespace RMC.Database.Controllers
             List<PoModel> purchaseOrder = new List<PoModel>();
 
 
-            string sql = @"SELECT purchase_order_items.item_id,itemlist.item_name,COALESCE((purchase_order_items.quantity_order + receive_orders.qty_ro), purchase_order_items.quantity_order) AS 'qty' FROM `purchase_order_items`
+            string sql = @"SELECT purchase_order_items.item_id,itemlist.item_name,itemlist.UnitPrice,COALESCE((purchase_order_items.quantity_order + receive_orders.qty_ro), purchase_order_items.quantity_order) AS 'qty',
+   (itemlist.UnitPrice * COALESCE((purchase_order_items.quantity_order + receive_orders.qty_ro), purchase_order_items.quantity_order)) as 'TotalCost' FROM `purchase_order_items`
                             INNER JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id
                             LEFT JOIN receive_orders ON purchase_order_items.po_item_id = receive_orders.po_item_id
                             WHERE purchase_order_items.po_id = @po_id";
@@ -72,7 +73,9 @@ namespace RMC.Database.Controllers
                 PoModel newPo = new PoModel();
                 newPo.item_id = int.Parse(reader["item_id"].ToString());
                 newPo.item_name = reader["item_name"].ToString();
+                newPo.unitCosts = float.Parse(reader["UnitPrice"].ToString());
                 newPo.quantity_order = int.Parse(reader["qty"].ToString());
+                newPo.totalCost = float.Parse(reader["TotalCost"].ToString());
                 purchaseOrder.Add(newPo);
             }
 

@@ -627,6 +627,7 @@
     <Compile Include="Database\Models\patientXrayModel.cs" />
     <Compile Include="Database\Models\PersonelModel.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
+    <Compile Include="Database\Models\PurchasOrderModel.cs" />
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\SalesClinicTypeMod.cs" />
     <Compile Include="Database\Models\salesPharmacyModel.cs" />
@@ -713,6 +714,18 @@
     </Compile>
     <Compile Include="InventoryPharma\Dialogs\InventoryStocksRepForm.Designer.cs">
       <DependentUpon>InventoryStocksRepForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\Dialogs\PurchaseOrderHistoryFormscs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\Dialogs\PurchaseOrderHistoryFormscs.Designer.cs">
+      <DependentUpon>PurchaseOrderHistoryFormscs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\Dialogs\PurchaseOrderRepForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\Dialogs\PurchaseOrderRepForms.Designer.cs">
+      <DependentUpon>PurchaseOrderRepForms.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryPharma\Dialogs\ReceiveHistoryForms.cs">
       <SubType>Form</SubType>
@@ -826,6 +839,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PurchaseOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InventoryRep\PurchaseOrdersHistory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PurchaseOrdersHistory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="InventoryRep\ReceiveHistory.cs">
@@ -1579,6 +1598,12 @@
     <EmbeddedResource Include="InventoryPharma\Dialogs\InventoryStocksRepForm.resx">
       <DependentUpon>InventoryStocksRepForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\Dialogs\PurchaseOrderHistoryFormscs.resx">
+      <DependentUpon>PurchaseOrderHistoryFormscs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\Dialogs\PurchaseOrderRepForms.resx">
+      <DependentUpon>PurchaseOrderRepForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\Dialogs\ReceiveHistoryForms.resx">
       <DependentUpon>ReceiveHistoryForms.cs</DependentUpon>
     </EmbeddedResource>
@@ -1637,6 +1662,10 @@
     <EmbeddedResource Include="InventoryRep\PurchaseOrder.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PurchaseOrder.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryRep\PurchaseOrdersHistory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchaseOrdersHistory.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryRep\ReceiveHistory.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

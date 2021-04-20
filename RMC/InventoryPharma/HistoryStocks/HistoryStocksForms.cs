@@ -224,7 +224,7 @@ namespace RMC.InventoryPharma.HistoryStocks
             if(viewState == 3)
             {
                 contextMenuStrip1.Items.Add("View Items In Po").Click += new EventHandler(viewPo);
-                contextMenuStrip1.Items.Add("Print Purchase Order");
+              
             }
         }
 
@@ -309,7 +309,8 @@ namespace RMC.InventoryPharma.HistoryStocks
                     forms3.ShowDialog();
                     break;
                 case 3:
-                
+                    PurchaseOrderHistoryFormscs forms4 = new PurchaseOrderHistoryFormscs(dataSetToPrint);
+                    forms4.ShowDialog();
                     break;
             }
         }

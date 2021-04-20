@@ -13,8 +13,8 @@ namespace RMC.Database.Models
         public string item_name { get; set; }
 
         public int quantity_order { get; set; }
-
-       
+        public float unitCosts { get; set; }
+        public float totalCost { get; set; }
       
     }
 }

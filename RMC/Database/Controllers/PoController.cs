@@ -26,6 +26,35 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
         }
 
+
+        public async Task<PurchasOrderModel> getModel(int id)
+        {
+            PurchasOrderModel purchasOrderModel = new PurchasOrderModel();
+
+            string sql = @"SELECT purchase_order.po_id,suppliers.supplier_name,suppliers.supplier_id,date_order,useraccounts.u_id,CONCAT(useraccounts.firstname,' ',useraccounts.lastname) as 'orderbyname' FROM `purchase_order`
+                            INNER JOIN suppliers ON purchase_order.supplier_id = suppliers.supplier_id
+                            INNER JOIN useraccounts ON purchase_order.u_id = useraccounts.u_id
+                            WHERE po_id = @id";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>() { (new MySqlParameter("@id", id)) };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while(await reader.ReadAsync())
+            {
+                purchasOrderModel.id = int.Parse(reader["po_id"].ToString());
+                purchasOrderModel.supplierName = reader["supplier_name"].ToString();
+                purchasOrderModel.supplierId = int.Parse(reader["supplier_id"].ToString());
+                purchasOrderModel.dateOrder = DateTime.Parse(reader["date_order"].ToString());
+                purchasOrderModel.orderByid = int.Parse(reader["u_id"].ToString());
+                purchasOrderModel.orderbyName = reader["orderbyname"].ToString();
+            }
+
+            crud.CloseConnection();
+
+            return purchasOrderModel;
+        }
+
         public async Task<DataSet> getDsPo(string date)
         {
             string sql = @"SELECT purchase_order.po_id AS 'PO NO',suppliers.supplier_name,date_order As 'Date Ordered',

@@ -33,6 +33,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnSave = new FontAwesome.Sharp.IconButton();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -41,6 +42,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Salmon;
+            this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.btnCloseApp);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -115,6 +117,25 @@
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 116;
             // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.Color.Maroon;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnSave.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnSave.IconColor = System.Drawing.Color.Black;
+            this.btnSave.IconSize = 16;
+            this.btnSave.Location = new System.Drawing.Point(525, 5);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Rotation = 0D;
+            this.btnSave.Size = new System.Drawing.Size(236, 27);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Print";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // ViewItemsInPo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,5 +165,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private FontAwesome.Sharp.IconButton btnSave;
     }
 }
