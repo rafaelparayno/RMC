@@ -39,7 +39,7 @@ namespace RMC.Reception
 
         private async Task refreshData()
         {
-            Dictionary<string,string> data = await reportController.getData();
+            Dictionary<string,string> data = await reportController.getData(0);
             lvSales.Items.Clear();
             foreach(KeyValuePair<string,string> kp in data){
                 ListViewItem lv = new ListViewItem();
@@ -53,7 +53,7 @@ namespace RMC.Reception
         private async Task searchData()
         {
             Dictionary<string, string> data = await 
-                reportController.getData(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+                reportController.getData(dateTimePicker1.Value.ToString("yyyy-MM-dd"),0);
             lvSales.Items.Clear();
             foreach (KeyValuePair<string, string> kp in data)
             {

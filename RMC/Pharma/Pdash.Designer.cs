@@ -39,6 +39,7 @@
             this.datelabel = new System.Windows.Forms.Label();
             this.timelabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnDaily = new FontAwesome.Sharp.IconButton();
             this.panelSideMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -50,6 +51,7 @@
             // 
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.Salmon;
+            this.panelSideMenu.Controls.Add(this.btnDaily);
             this.panelSideMenu.Controls.Add(this.btnPos);
             this.panelSideMenu.Controls.Add(this.btnViewPrescription);
             this.panelSideMenu.Controls.Add(this.panelLogo);
@@ -195,6 +197,31 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnDaily
+            // 
+            this.btnDaily.BackColor = System.Drawing.Color.Salmon;
+            this.btnDaily.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDaily.FlatAppearance.BorderSize = 0;
+            this.btnDaily.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDaily.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnDaily.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDaily.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnDaily.IconChar = FontAwesome.Sharp.IconChar.CommentDollar;
+            this.btnDaily.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnDaily.IconSize = 35;
+            this.btnDaily.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDaily.Location = new System.Drawing.Point(0, 165);
+            this.btnDaily.Name = "btnDaily";
+            this.btnDaily.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnDaily.Rotation = 0D;
+            this.btnDaily.Size = new System.Drawing.Size(250, 45);
+            this.btnDaily.TabIndex = 20;
+            this.btnDaily.Text = "Daily Sales Report";
+            this.btnDaily.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDaily.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDaily.UseVisualStyleBackColor = false;
+            this.btnDaily.Click += new System.EventHandler(this.btnDaily_Click);
+            // 
             // Pdash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -229,5 +256,6 @@
         private System.Windows.Forms.Label datelabel;
         private System.Windows.Forms.Label timelabel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private FontAwesome.Sharp.IconButton btnDaily;
     }
 }

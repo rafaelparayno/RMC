@@ -307,7 +307,7 @@ namespace RMC.Reception.Dialogs
 
             if(repid == 0)
             {
-                if (await reportController.isFoundDate(dateTimePicker1.Value.ToString("yyyy-MM-dd")))
+                if (await reportController.isFoundDate(dateTimePicker1.Value.ToString("yyyy-MM-dd"),0))
                 {
                     MessageBox.Show("Already Has a Date in Database", "Validation",
                            MessageBoxButtons.OK, MessageBoxIcon.Error);

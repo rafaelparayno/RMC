@@ -37,7 +37,6 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEditItem = new FontAwesome.Sharp.IconButton();
-            this.btnRemove = new FontAwesome.Sharp.IconButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvSales = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
@@ -125,7 +124,6 @@
             this.panelMenus.Controls.Add(this.iconButton3);
             this.panelMenus.Controls.Add(this.btnAddItem);
             this.panelMenus.Controls.Add(this.btnEditItem);
-            this.panelMenus.Controls.Add(this.btnRemove);
             this.panelMenus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelMenus.Location = new System.Drawing.Point(0, 351);
             this.panelMenus.Name = "panelMenus";
@@ -145,7 +143,7 @@
             this.iconButton3.IconColor = System.Drawing.Color.White;
             this.iconButton3.IconSize = 18;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton3.Location = new System.Drawing.Point(357, 0);
+            this.iconButton3.Location = new System.Drawing.Point(452, 0);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Rotation = 0D;
             this.iconButton3.Size = new System.Drawing.Size(95, 45);
@@ -168,7 +166,7 @@
             this.btnAddItem.IconColor = System.Drawing.Color.White;
             this.btnAddItem.IconSize = 18;
             this.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddItem.Location = new System.Drawing.Point(452, 0);
+            this.btnAddItem.Location = new System.Drawing.Point(547, 0);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Rotation = 0D;
             this.btnAddItem.Size = new System.Drawing.Size(95, 45);
@@ -191,7 +189,7 @@
             this.btnEditItem.IconColor = System.Drawing.Color.White;
             this.btnEditItem.IconSize = 18;
             this.btnEditItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditItem.Location = new System.Drawing.Point(547, 0);
+            this.btnEditItem.Location = new System.Drawing.Point(642, 0);
             this.btnEditItem.Name = "btnEditItem";
             this.btnEditItem.Rotation = 0D;
             this.btnEditItem.Size = new System.Drawing.Size(95, 45);
@@ -200,29 +198,6 @@
             this.btnEditItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEditItem.UseVisualStyleBackColor = false;
             this.btnEditItem.Click += new System.EventHandler(this.btnEditItem_Click);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.BackColor = System.Drawing.Color.Maroon;
-            this.btnRemove.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnRemove.FlatAppearance.BorderSize = 0;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnRemove.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.ForeColor = System.Drawing.Color.White;
-            this.btnRemove.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            this.btnRemove.IconColor = System.Drawing.Color.White;
-            this.btnRemove.IconSize = 18;
-            this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRemove.Location = new System.Drawing.Point(642, 0);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Rotation = 0D;
-            this.btnRemove.Size = new System.Drawing.Size(95, 45);
-            this.btnRemove.TabIndex = 7;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRemove.UseVisualStyleBackColor = false;
-            this.btnRemove.Visible = false;
             // 
             // groupBox2
             // 
@@ -283,7 +258,6 @@
         private System.Windows.Forms.Panel panelMenus;
         private FontAwesome.Sharp.IconButton btnAddItem;
         private FontAwesome.Sharp.IconButton btnEditItem;
-        private FontAwesome.Sharp.IconButton btnRemove;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lvSales;
         private FontAwesome.Sharp.IconButton iconButton3;

@@ -28,13 +28,18 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async Task<Dictionary<string,string>> getData()
+        public async Task<Dictionary<string,string>> getData(int type)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
 
-            string sql = "SELECT * FROM daily_sales_report";
+            string sql = "SELECT * FROM daily_sales_report WHERE type = @type";
 
-            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                  (new MySqlParameter("@type",type))
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
 
 
             while(await reader.ReadAsync())
@@ -49,15 +54,16 @@ namespace RMC.Database.Controllers
             return data;
         }
 
-        public async Task<Dictionary<string, string>> getData(string date)
+        public async Task<Dictionary<string, string>> getData(string date, int type)
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
 
-            string sql = @"SELECT * FROM daily_sales_report WHERE Date(report_Date) = @date";
+            string sql = @"SELECT * FROM daily_sales_report WHERE Date(report_Date) = @date AND type = @type";
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
             {
-                (new MySqlParameter("@date",date))
+                (new MySqlParameter("@date",date)),
+                  (new MySqlParameter("@type",type))
             };
 
 
@@ -118,14 +124,15 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async Task<bool> isFoundDate(string date)
+        public async Task<bool> isFoundDate(string date, int type)
         {
             bool isFound = false;
-            string sql = @"SELECT * FROM daily_sales_report WHERE Date(report_Date) = @date";
+            string sql = @"SELECT * FROM daily_sales_report WHERE Date(report_Date) = @date AND type = @type";
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
             {
-                (new MySqlParameter("@date",date))
+                (new MySqlParameter("@date",date)),
+                (new MySqlParameter("@type",type))
             };
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
