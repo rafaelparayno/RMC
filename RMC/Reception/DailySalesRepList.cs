@@ -53,5 +53,16 @@ namespace RMC.Reception
         {
            await refreshData();
         }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            if (lvSales.SelectedItems.Count == 0)
+                return;
+
+            int id = int.Parse(lvSales.SelectedItems[0].SubItems[0].Text);
+
+            DailySalesRep dailySalesRep = new DailySalesRep(id);
+            dailySalesRep.ShowDialog();
+        }
     }
 }

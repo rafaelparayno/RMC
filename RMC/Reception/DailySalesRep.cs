@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace RMC.Reception
 {
@@ -18,7 +20,7 @@ namespace RMC.Reception
 
         SalesClinicController salesClinicController = new SalesClinicController();
         /* SalesPharmaController salesPharmaController = new SalesPharmaController();*/
-
+        DailySalesReportController reportController = new DailySalesReportController();
         private int repid = 0;
         DailySalesReport cos = new DailySalesReport();
         public DailySalesRep()
@@ -37,7 +39,6 @@ namespace RMC.Reception
 
             if (repid == 0)
             {
-
 
                 Task<float> task1 = salesClinicController.getTotalTodayConsultation();
                 Task<float> task2 = salesClinicController.getTotalTodayLaboratory();
@@ -64,11 +65,68 @@ namespace RMC.Reception
             }
             else
             {
+                string date = await reportController.findDate(repid);
 
+                string newdate = date.Split(' ')[0];
+
+                string newDate2 = $"{newdate.Split('/')[2]}-{newdate.Split('/')[1]}-{newdate.Split('/')[0]}";
+
+                Console.WriteLine(newDate2);
+                Task<float> task1 = salesClinicController.getTotalConsultation(newDate2);
+                Task<float> task2 = salesClinicController.getTotalLaboratory(newDate2);
+                Task<float> task3 = salesClinicController.getTotalXray(newDate2);
+
+                Task<float> task5 = salesClinicController.getMedCertTotal(newDate2);
+                Task<float> task6 = salesClinicController.getTotalPackages(newDate2);
+                Task<float> task7 = salesClinicController.getTotalOtherServices(newDate2);
+
+                Task<float>[] prices = new Task<float>[] { task1, task2,
+                                        task3,task5,
+                                            task6, task7 };
+
+                await Task.WhenAll(prices);
+
+                float totalMisc = task5.Result + task6.Result + task7.Result;
+
+                
+
+                cos.SetParameterValue("consulatationParam", task1.Result);
+                cos.SetParameterValue("laboratoryParam", task2.Result);
+                cos.SetParameterValue("xrayParam", task3.Result);
+
+                cos.SetParameterValue("miscParam", totalMisc);
+
+                await loadXmls();
             }
 
 
             crystalReportViewer1.ReportSource = cos;
+        }
+
+        private async Task loadXmls()
+        {
+            string path = await reportController.getFullPath(repid);
+
+            XmlDocument doc = new XmlDocument();
+
+
+
+            if (!File.Exists(path))
+                return;
+
+
+            doc.Load(path);
+
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+
+               
+               
+
+                cos.SetParameterValue(node.Name, string.IsNullOrEmpty(node.InnerText) ? "" : node.InnerText);
+            }
+
+           
         }
 
     }

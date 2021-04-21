@@ -49,8 +49,9 @@ namespace RMC.Reception.Dialogs
                         + dateTimePicker1.Value.ToString("yyyy-MM-dd")  + ".xml";
 
 
-           
-            XmlWriter xwriter = XmlWriter.Create(fullPath);
+            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
+            xmlWriterSettings.Indent = true;
+            XmlWriter xwriter = XmlWriter.Create(fullPath,xmlWriterSettings);
 
             xwriter.WriteStartElement("Sales");
             xwriter.WriteElementString("dateParam", DateTime.Now.ToString("MMMM dd, yyyy"));
@@ -88,7 +89,7 @@ namespace RMC.Reception.Dialogs
             xwriter.Close();
             MessageBox.Show("Succesfully Save Data");
             
-            await reportController.save(0, fullPath);
+            await reportController.save(0, fullPath,dateTimePicker1.Value.ToString("yyyy-MM-dd"));
 
             this.Close();
         }

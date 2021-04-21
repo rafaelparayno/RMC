@@ -150,7 +150,7 @@ namespace RMC.Database.Controllers
 
         public async Task<float> getTotalConsultation(string date)
         {
-
+            Console.WriteLine(date);
             float totalSalesConsulation = 0;
             string sql = @"SELECT (COUNT(sales_clinic_id) * prices_service.price_serv ) AS 'totalConsulation' FROM `salesclinic` 
                             INNER JOIN invoice on salesclinic.invoice_id = invoice.invoice_id

@@ -12,13 +12,14 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async Task save(int type,string path)
+        public async Task save(int type,string path,string date)
         {
-            string sql = @"INSERT INTO `daily_sales_report`(`type`, `path`) VALUES (@type,@path)";
+            string sql = @"INSERT INTO `daily_sales_report`(`type`, `path`,`report_Date`) VALUES (@type,@path,@date)";
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
             {
                 (new MySqlParameter("@type",type)),
-               (new MySqlParameter("@path",path))
+               (new MySqlParameter("@path",path)),
+                (new MySqlParameter("@date",DateTime.Parse(date)))
             };
 
 
@@ -46,6 +47,47 @@ namespace RMC.Database.Controllers
 
 
             return data;
+        }
+
+
+        public async Task<string> getFullPath(int id)
+        {
+            string sql = @"SELECT * FROM daily_sales_report WHERE dsp_id = @id";
+            string path = "";
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@id",id))
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (await reader.ReadAsync())
+            {
+                path = reader["path"].ToString();
+            }
+
+            crud.CloseConnection();
+            return path;
+        }
+
+        public async Task<string> findDate(int id)
+        {
+            string sql = @"SELECT * FROM daily_sales_report WHERE dsp_id = @id";
+            string date = "";
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@id",id))
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if(await reader.ReadAsync())
+            {
+                date = reader["report_date"].ToString();
+            }
+
+            crud.CloseConnection();
+            return date;
         }
 
 
