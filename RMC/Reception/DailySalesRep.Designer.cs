@@ -56,6 +56,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DailySalesRep";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DailySalesRep";
             this.Load += new System.EventHandler(this.DailySalesRep_Load);
             this.ResumeLayout(false);

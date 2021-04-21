@@ -148,6 +148,35 @@ namespace RMC.Database.Controllers
             return totalSalesConsulation;
         }
 
+        public async Task<float> getTotalConsultation(string date)
+        {
+
+            float totalSalesConsulation = 0;
+            string sql = @"SELECT (COUNT(sales_clinic_id) * prices_service.price_serv ) AS 'totalConsulation' FROM `salesclinic` 
+                            INNER JOIN invoice on salesclinic.invoice_id = invoice.invoice_id
+                            INNER JOIN prices_service ON prices_service.prices_service_id = 1
+                            WHERE type_sales = 'Service' AND type_sales_id = 1
+                            AND DATE(invoice.date_invoice) = @date";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@date",date))
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (await reader.ReadAsync())
+            {
+                totalSalesConsulation = reader["totalConsulation"].ToString() == "" ? 0 :
+                            float.Parse(reader["totalConsulation"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+            return totalSalesConsulation;
+        }
+
         public async Task<float> getMedCertTotalToday()
         {
 
@@ -160,6 +189,36 @@ namespace RMC.Database.Controllers
                             AND DATE(invoice.date_invoice) = CURDATE()";
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+            if (await reader.ReadAsync())
+            {
+                totalMedCert = reader["medCert"].ToString() == "" ? 0 :
+                            float.Parse(reader["medCert"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+            return totalMedCert;
+        }
+
+        public async Task<float> getMedCertTotal(string date)
+        {
+
+            //TODO
+            float totalMedCert = 0;
+            string sql = @"SELECT (COUNT(sales_clinic_id) * prices_service.price_serv ) AS 'medCert' FROM `salesclinic` 
+                            INNER JOIN invoice on salesclinic.invoice_id = invoice.invoice_id
+                            INNER JOIN prices_service ON prices_service.prices_service_id = 2
+                            WHERE type_sales = 'Service' AND type_sales_id = 2
+                            AND DATE(invoice.date_invoice) = @date";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@date",date))
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
 
             if (await reader.ReadAsync())
             {
@@ -198,6 +257,35 @@ namespace RMC.Database.Controllers
             return totalSalesConsulation;
         }
 
+        public async Task<float> getTotalLaboratory(string date)
+        {
+
+            float totalSalesConsulation = 0;
+            string sql = @"SELECT SUM(laboratorylist.price_lab) as totalLab FROM `salesclinic` 
+                            INNER JOIN invoice on salesclinic.invoice_id = invoice.invoice_id
+							INNER JOIN laboratorylist ON laboratorylist.laboratory_id = salesclinic.type_sales_id
+                            WHERE type_sales = 'Laboratory' 
+                            AND DATE(invoice.date_invoice) = @date";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@date",date))
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (await reader.ReadAsync())
+            {
+                totalSalesConsulation = reader["totalLab"].ToString() == "" ? 0 :
+                            float.Parse(reader["totalLab"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+            return totalSalesConsulation;
+        }
+
 
         public async Task<float> getTotalTodayPackages()
         {
@@ -222,6 +310,36 @@ namespace RMC.Database.Controllers
 
             return totalPackages;
         }
+
+        public async Task<float> getTotalPackages(string date)
+        {
+
+            float totalPackages = 0;
+            string sql = @"SELECT SUM(packages.package_price) as totalPackages FROM `salesclinic` 
+                            INNER JOIN invoice on salesclinic.invoice_id = invoice.invoice_id
+							INNER JOIN packages ON packages.package_id = salesclinic.type_sales_id
+                            WHERE type_sales = 'Packages' 
+                            AND DATE(invoice.date_invoice) = @date";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@date",date))
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (await reader.ReadAsync())
+            {
+                totalPackages = reader["totalPackages"].ToString() == "" ? 0 :
+                            float.Parse(reader["totalPackages"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+            return totalPackages;
+        }
+
 
         public async Task<float> getTotalTodayOtherServices()
         {
@@ -248,6 +366,38 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task<float> getTotalOtherServices(string date)
+        {
+
+            float totalPackages = 0;
+            string sql = @"SELECT SUM(service.price) AS totalOthers FROM `salesclinic` 
+                            INNER JOIN invoice on salesclinic.invoice_id = invoice.invoice_id
+							INNER JOIN service ON service.service_id = salesclinic.type_sales_id
+                            WHERE type_sales = 'OtherServices' 
+                            AND DATE(invoice.date_invoice) = @date";
+
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@date",date))
+            };
+
+
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (await reader.ReadAsync())
+            {
+                totalPackages = reader["totalOthers"].ToString() == "" ? 0 :
+                            float.Parse(reader["totalOthers"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+            return totalPackages;
+        }
+
         public async Task<float> getTotalTodayXray()
         {
 
@@ -257,6 +407,8 @@ namespace RMC.Database.Controllers
 							INNER JOIN xraylist ON xraylist.xray_id = salesclinic.type_sales_id
                             WHERE type_sales = 'Radio' 
                             AND DATE(invoice.date_invoice) = CURDATE()";
+
+
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
@@ -272,6 +424,37 @@ namespace RMC.Database.Controllers
             return totalSalesConsulation;
         }
 
-      
+
+        public async Task<float> getTotalXray(string date)
+        {
+
+            float totalSalesConsulation = 0;
+            string sql = @"SELECT SUM(xraylist.xray_price) as 'totalSales' FROM `salesclinic` 
+                            INNER JOIN invoice on salesclinic.invoice_id = invoice.invoice_id
+							INNER JOIN xraylist ON xraylist.xray_id = salesclinic.type_sales_id
+                            WHERE type_sales = 'Radio' 
+                            AND DATE(invoice.date_invoice) = @date";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@date",date))
+            };
+
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (await reader.ReadAsync())
+            {
+                totalSalesConsulation = reader["totalSales"].ToString() == "" ? 0 :
+                            float.Parse(reader["totalSales"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+            return totalSalesConsulation;
+        }
+
+
     }
 }

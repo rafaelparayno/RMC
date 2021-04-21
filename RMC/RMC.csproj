@@ -551,6 +551,7 @@
     <Compile Include="Database\Controllers\crystalAutomatedController.cs" />
     <Compile Include="Database\Controllers\CustomerDetailsController.cs" />
     <Compile Include="Database\Controllers\CustomerRequestsController.cs" />
+    <Compile Include="Database\Controllers\DailySalesReportController.cs" />
     <Compile Include="Database\Controllers\DoctorDataController.cs" />
     <Compile Include="Database\Controllers\DoctorQueueController.cs" />
     <Compile Include="Database\Controllers\DoctorRequestLabController.cs" />
@@ -1208,6 +1209,18 @@
     </Compile>
     <Compile Include="Reception\DailySalesRep.Designer.cs">
       <DependentUpon>DailySalesRep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reception\DailySalesRepList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception\DailySalesRepList.Designer.cs">
+      <DependentUpon>DailySalesRepList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reception\Dialogs\addEditDailySalesRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception\Dialogs\addEditDailySalesRep.Designer.cs">
+      <DependentUpon>addEditDailySalesRep.cs</DependentUpon>
     </Compile>
     <Compile Include="Reception\Dialogs\DiagPaymentRequest.cs">
       <SubType>Form</SubType>
@@ -1872,6 +1885,12 @@
     </Compile>
     <EmbeddedResource Include="Reception\DailySalesRep.resx">
       <DependentUpon>DailySalesRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reception\DailySalesRepList.resx">
+      <DependentUpon>DailySalesRepList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reception\Dialogs\addEditDailySalesRep.resx">
+      <DependentUpon>addEditDailySalesRep.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reception\Dialogs\DiagPaymentRequest.resx">
       <DependentUpon>DiagPaymentRequest.cs</DependentUpon>

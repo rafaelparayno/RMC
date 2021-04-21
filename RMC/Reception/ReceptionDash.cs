@@ -17,7 +17,7 @@ namespace RMC
     public partial class ReceptionDash : Form
     {
         private Form activeForm = null;
-        int countTimer = 0;
+        
         public ReceptionDash()
         {
             InitializeComponent();
@@ -58,43 +58,9 @@ namespace RMC
 
         private void btnDaily_Click(object sender, EventArgs e)
         {
-            countTimer = 0;
-            openChildForm(new DailySalesRep());
-            disableBtns();
-            timer1.Start();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-            countTimer++;
-
-            if(countTimer > 5)
-            {
-
-                timer1.Stop();
-                enableBtns();
-            }
-        }
-
-        private void disableBtns()
-        {
-            btnPo.Enabled = false;
-            btnDaily.Enabled = false;
-            iconButton1.Enabled = false;
-            iconButton2.Enabled = false;
-            iconButton3.Enabled = false;
-            iconButton4.Enabled = false;
-        }
-
-        private void enableBtns()
-        {
-            btnPo.Enabled = true;
-            btnDaily.Enabled = true;
-            iconButton1.Enabled = true;
-            iconButton2.Enabled = true;
-            iconButton3.Enabled = true;
-            iconButton4.Enabled = true;
+            
+            openChildForm(new DailySalesRepList());
+         
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
