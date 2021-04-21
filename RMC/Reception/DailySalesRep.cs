@@ -71,7 +71,7 @@ namespace RMC.Reception
 
                 string newDate2 = $"{newdate.Split('/')[2]}-{newdate.Split('/')[1]}-{newdate.Split('/')[0]}";
 
-                Console.WriteLine(newDate2);
+               
                 Task<float> task1 = salesClinicController.getTotalConsultation(newDate2);
                 Task<float> task2 = salesClinicController.getTotalLaboratory(newDate2);
                 Task<float> task3 = salesClinicController.getTotalXray(newDate2);
@@ -84,7 +84,7 @@ namespace RMC.Reception
                                         task3,task5,
                                             task6, task7 };
 
-                await Task.WhenAll(prices);
+           
 
                 float totalMisc = task5.Result + task6.Result + task7.Result;
 
@@ -119,10 +119,7 @@ namespace RMC.Reception
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-
-               
-               
-
+             
                 cos.SetParameterValue(node.Name, string.IsNullOrEmpty(node.InnerText) ? "" : node.InnerText);
             }
 

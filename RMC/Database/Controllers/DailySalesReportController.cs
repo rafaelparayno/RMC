@@ -49,6 +49,33 @@ namespace RMC.Database.Controllers
             return data;
         }
 
+        public async Task<Dictionary<string, string>> getData(string date)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+
+            string sql = @"SELECT * FROM daily_sales_report WHERE Date(report_Date) = @date";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@date",date))
+            };
+
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+
+            while (await reader.ReadAsync())
+            {
+                data.Add(reader["dsp_id"].ToString(),
+                    reader["report_date"].ToString());
+            }
+
+            crud.CloseConnection();
+
+
+            return data;
+        }
+
 
         public async Task<string> getFullPath(int id)
         {

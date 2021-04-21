@@ -947,6 +947,7 @@
             this.Name = "addEditDailySalesRep";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "addEditDailySalesRep";
+            this.Load += new System.EventHandler(this.addEditDailySalesRep_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabControl1.ResumeLayout(false);

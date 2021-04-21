@@ -22,8 +22,10 @@ namespace RMC.OthersPanels.Dialogs
         PatientDetailsController patD = new PatientDetailsController();
         OthersQueueController othersQueueController = new OthersQueueController();
         List<ServiceModel> serviceModels = new List<ServiceModel>();
-
-     
+        ConsumablesServController consumablesServ = new ConsumablesServController();
+        List<consumablesServMod> consumables = new List<consumablesServMod>();
+        ClinicStocksController clinicStocks = new ClinicStocksController();
+        ConsumedItems consumeditems = new ConsumedItems();
         public ViewPatientServiceReq(int patientid)
         {
             InitializeComponent();
@@ -116,8 +118,45 @@ namespace RMC.OthersPanels.Dialogs
 
             int selectedid = int.Parse(lvItemLab.SelectedItems[0].SubItems[0].Text);
 
-             await othersQueueController.updateStatus(selectedid, patientid, 1);
+            await othersQueueController.updateStatus(selectedid, patientid, 1);
+            await processConsumables(selectedid);
             await loadDataAsnyc();
+        }
+
+
+        private async Task processConsumables(int id)
+        {
+            consumables = await consumablesServ.getEditedConsumables(id);
+            List<Task> listTasks = new List<Task>();
+            foreach (consumablesServMod c in consumables)
+            {
+                int currentStocks = await clinicStocks.getStocks(c.itemid);
+                int stocktosave = currentStocks - c.qty;
+                stocktosave = stocktosave > 0 ? stocktosave : 0;
+                listTasks.Add(clinicStocks.Save(c.itemid, stocktosave));
+                listTasks.Add(consumeditems.save(c.itemid, c.qty));
+
+            }
+
+            await Task.WhenAll(listTasks);
+
+        }
+
+
+        private async Task redoConsumables(int id)
+        {
+            consumables = await consumablesServ.getEditedConsumables(id);
+            List<Task> listTasks = new List<Task>();
+            foreach (consumablesServMod c in consumables)
+            {
+                int currentStocks = await clinicStocks.getStocks(c.itemid);
+                int stocktosave = currentStocks + c.qty;
+           
+                listTasks.Add(clinicStocks.Save(c.itemid, stocktosave));
+            }
+
+            await Task.WhenAll(listTasks);
+
         }
 
         private async void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -130,6 +169,7 @@ namespace RMC.OthersPanels.Dialogs
             int selectedid = int.Parse(lvItemLab.SelectedItems[0].SubItems[0].Text);
 
             await othersQueueController.updateStatus(selectedid, patientid, 0);
+            await redoConsumables(selectedid);
             await loadDataAsnyc();
         }
     }

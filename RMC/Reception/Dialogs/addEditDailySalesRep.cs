@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,11 @@ namespace RMC.Reception.Dialogs
     {
         private bool isAddAnother = false;
         private bool isAddAnother2 = false;
+        private string nameExp2 = "";
+        private string nameExp3 = "";
+        private string editExp2 = "";
+        private string editExp3 = "";
+        private int repid = 0;
 
         DailySalesReportController reportController = new DailySalesReportController();
 
@@ -24,6 +30,13 @@ namespace RMC.Reception.Dialogs
         {
             InitializeComponent();
             dateTimePicker1.MaxDate = DateTime.Today;
+        }
+
+        public addEditDailySalesRep(int repid)
+        {
+            InitializeComponent();
+            dateTimePicker1.MaxDate = DateTime.Today;
+            this.repid = repid;
         }
 
         private void btnCloseApp_Click(object sender, EventArgs e)
@@ -42,6 +55,54 @@ namespace RMC.Reception.Dialogs
 
         }
 
+        private async Task updateData()
+        {
+
+            string fullPath = await reportController.getFullPath(repid);
+
+            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
+            xmlWriterSettings.Indent = true;
+            XmlWriter xwriter = XmlWriter.Create(fullPath, xmlWriterSettings);
+
+            xwriter.WriteStartElement("Sales");
+            xwriter.WriteElementString("dateParam", dateTimePicker1.Value.ToString("MMMM dd, yyyy"));
+            xwriter.WriteElementString("xrayExpense", txtXrayReading.Text.Trim());
+            xwriter.WriteElementString("laboutsExpense", txtLabSendout.Text.Trim());
+            xwriter.WriteElementString("outByParam", txtOutBy.Text.Trim());
+            xwriter.WriteElementString("arParam", txtAr.Text.Trim());
+            xwriter.WriteElementString("dpfParam", txtDpf.Text.Trim());
+
+            xwriter.WriteElementString("expenseOtherName1", txtName1.Text.Trim());
+            xwriter.WriteElementString("fareExpense", txtExpenseCost1.Text.Trim());
+
+            if (isAddAnother)
+            {
+                xwriter.WriteElementString("expenseOtherName2", txtName2.Text.Trim());
+                xwriter.WriteElementString("bigasExpnse", txtExpenseCost2.Text.Trim());
+            }
+
+            if (isAddAnother2)
+            {
+                xwriter.WriteElementString("expenseOtherName3", txtName3.Text.Trim());
+                xwriter.WriteElementString("snackExpense", txtExpenseCost3.Text.Trim());
+            }
+
+            xwriter.WriteElementString("ThouQtyParam", num1k.Value.ToString());
+            xwriter.WriteElementString("FiveHQtyParam", num5h.Value.ToString());
+            xwriter.WriteElementString("TwoHQtyParam", num2h.Value.ToString());
+            xwriter.WriteElementString("OneHQtyParam", num1h.Value.ToString());
+            xwriter.WriteElementString("fiftyQtyParam", numfifty.Value.ToString());
+            xwriter.WriteElementString("twentyQtyParam", numtwen.Value.ToString());
+            xwriter.WriteElementString("coinsTotal", numcoins.Value.ToString());
+
+            xwriter.WriteEndElement();
+            xwriter.Flush();
+            xwriter.Close();
+            MessageBox.Show("Succesfully Save Data");
+
+            this.Close();
+        }
+
         private async Task saveData()
         {
             string pathDir = CreateDirectory.CreateDir("DailySales");
@@ -54,7 +115,7 @@ namespace RMC.Reception.Dialogs
             XmlWriter xwriter = XmlWriter.Create(fullPath,xmlWriterSettings);
 
             xwriter.WriteStartElement("Sales");
-            xwriter.WriteElementString("dateParam", DateTime.Now.ToString("MMMM dd, yyyy"));
+            xwriter.WriteElementString("dateParam", dateTimePicker1.Value.ToString("MMMM dd, yyyy"));
             xwriter.WriteElementString("xrayExpense", txtXrayReading.Text.Trim());
             xwriter.WriteElementString("laboutsExpense", txtLabSendout.Text.Trim());
             xwriter.WriteElementString("outByParam", txtOutBy.Text.Trim());
@@ -216,8 +277,8 @@ namespace RMC.Reception.Dialogs
             isAddAnother2 = false;
             panel7.Visible = false;
             iconButton2.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            txtName2.Text = "";
-            txtExpenseCost2.Text = "";
+            txtName2.Text = nameExp2;
+            txtExpenseCost2.Text = editExp2;
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
@@ -229,8 +290,8 @@ namespace RMC.Reception.Dialogs
 
 
             panel7.Visible = isAddAnother2;
-            txtName3.Text = "";
-            txtExpenseCost3.Text = "";
+            txtName3.Text = nameExp3;
+            txtExpenseCost3.Text = editExp3;
         }
 
         private async void btnSave_Click_1(object sender, EventArgs e)
@@ -243,15 +304,126 @@ namespace RMC.Reception.Dialogs
                 return;
             }
 
-            if (await reportController.isFoundDate(dateTimePicker1.Value.ToString("yyyy-MM-dd")))
+
+            if(repid == 0)
             {
-                MessageBox.Show("Already Has a Date in Database", "Validation",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (await reportController.isFoundDate(dateTimePicker1.Value.ToString("yyyy-MM-dd")))
+                {
+                    MessageBox.Show("Already Has a Date in Database", "Validation",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                await saveData();
+            }
+            else
+            {
+
+                await updateData();
+
+            }
+            
+        }
+
+
+        private async Task loadXml()
+        {
+
+            XmlDocument doc = new XmlDocument();
+
+            string path = await reportController.getFullPath(repid);
+
+            if (!File.Exists(path))
                 return;
+
+
+            doc.Load(path);
+
+
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+
+                if (node.Name == "xrayExpense")
+                    txtXrayReading.Text = node.InnerText;
+                if (node.Name == "laboutsExpense")
+                    txtLabSendout.Text = node.InnerText;
+                if (node.Name == "outByParam")
+                    txtOutBy.Text = node.InnerText;
+                if (node.Name == "arParam")
+                    txtAr.Text = node.InnerText;
+                if (node.Name == "dpfParam")
+                    txtDpf.Text = node.InnerText;
+                if (node.Name == "expenseOtherName1")
+                    txtName1.Text = node.InnerText;
+                if (node.Name == "fareExpense")
+                    txtExpenseCost1.Text = node.InnerText;
+
+                if (node.Name == "expenseOtherName2")
+                {
+                    txtName2.Text = node.InnerText;
+                    nameExp2 = node.InnerText;
+                   
+                    isAddAnother = true;
+                    panel6.Visible = true;
+                    isAddAnother = true;
+                    iconButton1.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
+                }
+                 
+                if (node.Name == "bigasExpnse")
+                {
+                    txtExpenseCost2.Text = node.InnerText;
+                    editExp2 = node.InnerText;
+                }
+                   
+
+
+                if (node.Name == "expenseOtherName3")
+                {
+                    txtName3.Text = node.InnerText;
+                    nameExp3 = node.InnerText;
+                    isAddAnother = true;
+                    panel7.Visible = true;
+                    isAddAnother2 = true;
+                    iconButton2.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
+                }
+
+                if (node.Name == "snackExpense")
+                {
+                    txtExpenseCost3.Text = node.InnerText;
+                    editExp3 = node.InnerText;
+                }
+                   
+
+                if (node.Name == "ThouQtyParam")
+                    num1k.Value = int.Parse(node.InnerText);
+                if (node.Name == "FiveHQtyParam")
+                    num5h.Value = int.Parse(node.InnerText);
+                if (node.Name == "TwoHQtyParam")
+                    num2h.Value = int.Parse(node.InnerText);
+                if (node.Name == "OneHQtyParam")
+                    num1h.Value = int.Parse(node.InnerText);
+                if (node.Name == "fiftyQtyParam")
+                    numfifty.Value = int.Parse(node.InnerText);
+                if (node.Name == "twentyQtyParam")
+                    numtwen.Value = int.Parse(node.InnerText);
+                if (node.Name == "coinsTotal")
+                    numcoins.Value = int.Parse(node.InnerText);
+
+                if (node.Name == "dateParam")
+                {
+                    dateTimePicker1.Value = DateTime.Parse(node.InnerText);
+                    dateTimePicker1.Enabled = false;
+                }
+                   
             }
 
-            await saveData();
 
+
+        }
+
+        private async void addEditDailySalesRep_Load(object sender, EventArgs e)
+        {
+            if (repid > 0)
+               await loadXml();
         }
     }
 }

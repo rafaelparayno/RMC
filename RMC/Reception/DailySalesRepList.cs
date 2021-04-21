@@ -21,10 +21,11 @@ namespace RMC.Reception
             initColLv();
         }
 
-        private void btnAddItem_Click(object sender, EventArgs e)
+        private async void btnAddItem_Click(object sender, EventArgs e)
         {
             addEditDailySalesRep form = new addEditDailySalesRep();
             form.ShowDialog();
+            await refreshData();
         }
 
         private void initColLv()
@@ -39,8 +40,23 @@ namespace RMC.Reception
         private async Task refreshData()
         {
             Dictionary<string,string> data = await reportController.getData();
-
+            lvSales.Items.Clear();
             foreach(KeyValuePair<string,string> kp in data){
+                ListViewItem lv = new ListViewItem();
+                lv.Text = kp.Key;
+                lv.SubItems.Add(kp.Value.Split(' ')[0]);
+
+                lvSales.Items.Add(lv);
+            }
+        }
+
+        private async Task searchData()
+        {
+            Dictionary<string, string> data = await 
+                reportController.getData(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+            lvSales.Items.Clear();
+            foreach (KeyValuePair<string, string> kp in data)
+            {
                 ListViewItem lv = new ListViewItem();
                 lv.Text = kp.Key;
                 lv.SubItems.Add(kp.Value.Split(' ')[0]);
@@ -63,6 +79,29 @@ namespace RMC.Reception
 
             DailySalesRep dailySalesRep = new DailySalesRep(id);
             dailySalesRep.ShowDialog();
+
+        }
+
+        private async void btnEditItem_Click(object sender, EventArgs e)
+        {
+
+            if (lvSales.SelectedItems.Count == 0)
+                return;
+
+            int id = int.Parse(lvSales.SelectedItems[0].SubItems[0].Text);
+            addEditDailySalesRep form = new addEditDailySalesRep(id);
+            form.ShowDialog();
+            await refreshData();
+        }
+
+        private async void iconButton2_Click(object sender, EventArgs e)
+        {
+            await refreshData();
+        }
+
+        private async void iconButton1_Click(object sender, EventArgs e)
+        {
+            await searchData();
         }
     }
 }
