@@ -212,7 +212,7 @@
             this.groupBox2.Size = new System.Drawing.Size(737, 279);
             this.groupBox2.TabIndex = 211;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Daily Sales Report List";
+            this.groupBox2.Text = "Clinic Daily Sales Report List";
             // 
             // lvSales
             // 

@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_12F612907CFF4574B2A1EDC0D5735CFD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_16C41D2AC5DF4F78BE0B6E08F96BFECD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -249,6 +255,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_94E3CD1E7E024ACDB7F9860623A4C0DB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9CCE01BBDA8A0BE77AB8DAD0AA2F4FC7"
         "OwnerKey" = "8:_524A4002F1534479AF85479A99E2CB8F"
         "MsmSig" = "8:_UNDEFINED"
@@ -327,6 +339,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A6690D8A0DAE459C9F0A710D8DC8F6B7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A9BDBD1E06424C448ED572FA13651B29"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -341,6 +359,12 @@
         {
         "MsmKey" = "8:_B0B261632816A7E7E758FF03C732CB42"
         "OwnerKey" = "8:_524A4002F1534479AF85479A99E2CB8F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BC5CDD179AE04FC69DF2F00FA204617E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -377,6 +401,12 @@
         {
         "MsmKey" = "8:_DD93A12B28594EEF5E5457BA8A40605B"
         "OwnerKey" = "8:_524A4002F1534479AF85479A99E2CB8F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E252EB8959A14366B17A4E4E1A92D89B"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -738,6 +768,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_12F612907CFF4574B2A1EDC0D5735CFD"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\transferOthers.xml"
+            "TargetName" = "8:transferOthers.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_16C41D2AC5DF4F78BE0B6E08F96BFECD"
             {
             "SourcePath" = "8:..\\RMC\\bin\\Debug\\receipt.xml"
@@ -1325,6 +1375,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_94E3CD1E7E024ACDB7F9860623A4C0DB"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\inventoryHistory.xml"
+            "TargetName" = "8:inventoryHistory.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9CCE01BBDA8A0BE77AB8DAD0AA2F4FC7"
             {
             "AssemblyRegister" = "3:1"
@@ -1480,6 +1550,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A6690D8A0DAE459C9F0A710D8DC8F6B7"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\poItems.xml"
+            "TargetName" = "8:poItems.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A9BDBD1E06424C448ED572FA13651B29"
             {
             "SourcePath" = "8:..\\RMC\\bin\\Debug\\prescription.xml"
@@ -1560,6 +1650,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC5CDD179AE04FC69DF2F00FA204617E"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\receiveItems.xml"
+            "TargetName" = "8:receiveItems.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BF28D6889ECC8FB882C467653FB68DA5"
@@ -1704,6 +1814,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E252EB8959A14366B17A4E4E1A92D89B"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\purchaseHist.xml"
+            "TargetName" = "8:purchaseHist.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E56613EDCF1C50C2F73245B6ABADFD29"
@@ -1938,7 +2068,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RMC system"
         "ProductCode" = "8:{BDADD7B3-97C6-4DA6-AFEC-7ECCC0A500C1}"
-        "PackageCode" = "8:{5023A245-F525-4D12-A2AC-426643C44E55}"
+        "PackageCode" = "8:{DAEFB55D-6E49-477D-AAA0-A804B98E81CD}"
         "UpgradeCode" = "8:{CDBBB8FE-71AE-4AAF-8908-0176CEC185FE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

@@ -33,10 +33,9 @@ namespace RMC.Database.Controllers
         public async Task<DataSet> getDataset(string Date)
         {
             string sql = @"SELECT transferothers_logs.transferothers_logs_id AS 'ID',itemlist.item_name,
-                        qty_transfer,from_to,places_transfer.places_transfer_name,
+                         from_to,qty_transfer,places_transfer.places_transfer_name,
                         date_transfer,CONCAT(useraccounts.firstname,' ',useraccounts.lastname) AS 'transferBy',
-                        (SELECT CONCAT(useraccounts.firstname,' ',useraccounts.lastname) 
-                        FROM useraccounts WHERE transferothers_logs.edit_by_id = useraccounts.u_id) AS 'Edit By',
+                        (SELECT CONCAT(useraccounts.firstname,' ',useraccounts.lastname) FROM useraccounts WHERE transferothers_logs.edit_by_id = useraccounts.u_id) AS 'Edit By',
                         edit_save_date
                         FROM `transferothers_logs` 
                          INNER JOIN itemlist ON transferothers_logs.item_id = itemlist.item_id
