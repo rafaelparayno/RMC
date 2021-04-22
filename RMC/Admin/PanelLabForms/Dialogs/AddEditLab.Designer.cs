@@ -68,6 +68,11 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.txtLabCost = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -82,6 +87,8 @@
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.groupBox10.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -155,6 +162,7 @@
             this.panel1.Controls.Add(this.panelForImg);
             this.panel1.Controls.Add(this.groupBox6);
             this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBox10);
             this.panel1.Controls.Add(this.groupBox8);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox1);
@@ -170,11 +178,11 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.cbCrystal);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox4.Location = new System.Drawing.Point(0, 854);
+            this.groupBox4.Location = new System.Drawing.Point(0, 964);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(639, 212);
+            this.groupBox4.Size = new System.Drawing.Size(639, 249);
             this.groupBox4.TabIndex = 25;
             this.groupBox4.TabStop = false;
             this.groupBox4.Visible = false;
@@ -248,7 +256,7 @@
             this.panelForImg.AutoScroll = true;
             this.panelForImg.Controls.Add(this.pbAutomated);
             this.panelForImg.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelForImg.Location = new System.Drawing.Point(0, 657);
+            this.panelForImg.Location = new System.Drawing.Point(0, 767);
             this.panelForImg.Name = "panelForImg";
             this.panelForImg.Size = new System.Drawing.Size(639, 197);
             this.panelForImg.TabIndex = 24;
@@ -268,7 +276,7 @@
             this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Controls.Add(this.cbAutomated);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox6.Location = new System.Drawing.Point(0, 528);
+            this.groupBox6.Location = new System.Drawing.Point(0, 638);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -343,7 +351,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.groupBox7);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 418);
+            this.groupBox2.Location = new System.Drawing.Point(0, 528);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -595,6 +603,66 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label4);
+            this.groupBox10.Controls.Add(this.groupBox11);
+            this.groupBox10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox10.Location = new System.Drawing.Point(0, 418);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox10.Size = new System.Drawing.Size(639, 110);
+            this.groupBox10.TabIndex = 26;
+            this.groupBox10.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label4.Location = new System.Drawing.Point(15, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 17);
+            this.label4.TabIndex = 248;
+            this.label4.Text = "Lab Cost";
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.txtLabCost);
+            this.groupBox11.Controls.Add(this.label5);
+            this.groupBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox11.Location = new System.Drawing.Point(18, 37);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(602, 52);
+            this.groupBox11.TabIndex = 6;
+            this.groupBox11.TabStop = false;
+            // 
+            // txtLabCost
+            // 
+            this.txtLabCost.BackColor = System.Drawing.Color.FloralWhite;
+            this.txtLabCost.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLabCost.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtLabCost.Enabled = false;
+            this.txtLabCost.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLabCost.Location = new System.Drawing.Point(32, 16);
+            this.txtLabCost.MaxLength = 40;
+            this.txtLabCost.Name = "txtLabCost";
+            this.txtLabCost.Size = new System.Drawing.Size(562, 23);
+            this.txtLabCost.TabIndex = 5;
+            this.txtLabCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label5.Location = new System.Drawing.Point(3, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "PHP";
+            // 
             // AddEditLab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,6 +699,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -676,5 +748,10 @@
         private System.Windows.Forms.RadioButton rbWithAuto;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbAutomated;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.TextBox txtLabCost;
+        private System.Windows.Forms.Label label5;
     }
 }

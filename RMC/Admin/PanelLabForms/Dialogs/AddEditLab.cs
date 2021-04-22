@@ -36,10 +36,6 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         List<int> idstobeRemove = new List<int>();
         List<consumablesMod> consumablesModsEdit;
 
-
-      
-
-
         #endregion 
 
         public AddEditLab()
@@ -209,7 +205,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 cbAutomated.Text = datas[5];
             }
             setLvEdited();
-
+            txtLabCost.Text = await computeTotalCost() + "";
         }
 
         private void setLvEdited()
@@ -269,6 +265,21 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             }
         }
 
+
+        private async Task<float> computeTotalCost()
+        {
+            float totalLabCost = 0;
+            foreach(ListViewItem lv in lvConsumables.Items)
+            {
+                int id = int.Parse(lv.SubItems[0].Text);
+                float unitCost = await itemz.getUnitCosts(id);
+                int qty = int.Parse(lv.SubItems[2].Text);
+                totalLabCost += unitCost * qty;
+            }
+          //  Console.WriteLine(totalLabCost);
+            return totalLabCost;
+        }
+
         #endregion
 
         #region HandlerEvents
@@ -304,7 +315,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             }
         }
 
-        private void btnAddConsum_Click(object sender, EventArgs e)
+        private async void btnAddConsum_Click(object sender, EventArgs e)
         {
             if (cbConValue == 0)
                 return;
@@ -323,7 +334,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             {
                 addTolist(form.qty);
             }
-          
+            txtLabCost.Text = await computeTotalCost() + "";
         }
 
         private void cbConsumables_SelectedIndexChanged(object sender, EventArgs e)
@@ -331,7 +342,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             cbConValue = int.Parse((cbConsumables.SelectedItem as ComboBoxItem).Value.ToString());
         }
 
-        private void btnRemoveConsum_Click(object sender, EventArgs e)
+        private async void btnRemoveConsum_Click(object sender, EventArgs e)
         {
             if (lvConsumables.Items.Count == 0)
                 return;
@@ -341,6 +352,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
             int index = lvConsumables.SelectedItems[0].Index;
             lvConsumables.Items.RemoveAt(index);
+
+            txtLabCost.Text = await computeTotalCost() + "";
         }
 
         private void btnSave_Click(object sender, EventArgs e)
