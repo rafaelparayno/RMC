@@ -39,8 +39,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             bool task1 = playSounds();
             if (task1)
-                _ss.SpeakAsync($"Currently Serving in {place} is Q" +
-                    $"ueue Number {queueNo}");
+                _ss.SpeakAsync($"Currently Serving in {place} is Queue" +
+                    $" Number {queueNo}");
             System.Threading.Thread.Sleep(500);
         }
 

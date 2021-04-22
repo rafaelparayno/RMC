@@ -20,6 +20,7 @@ namespace RMC.Reception
 
         SalesClinicController salesClinicController = new SalesClinicController();
         /* SalesPharmaController salesPharmaController = new SalesPharmaController();*/
+        ConsumedItems consumedItems = new ConsumedItems();
         DailySalesReportController reportController = new DailySalesReportController();
         private int repid = 0;
         DailySalesReport cos = new DailySalesReport();
@@ -79,12 +80,14 @@ namespace RMC.Reception
                 Task<float> task5 = salesClinicController.getMedCertTotal(newDate2);
                 Task<float> task6 = salesClinicController.getTotalPackages(newDate2);
                 Task<float> task7 = salesClinicController.getTotalOtherServices(newDate2);
+                Task<float> task8 = consumedItems.getConsumedCost(newDate2);
 
                 Task<float>[] prices = new Task<float>[] { task1, task2,
                                         task3,task5,
-                                            task6, task7 };
+                                            task6, task7,task8 };
 
-           
+
+                await Task.WhenAll(prices);
 
                 float totalMisc = task5.Result + task6.Result + task7.Result;
 
@@ -95,6 +98,7 @@ namespace RMC.Reception
                 cos.SetParameterValue("xrayParam", task3.Result);
 
                 cos.SetParameterValue("miscParam", totalMisc);
+                cos.SetParameterValue("itemConsumedParam", task8.Result);
 
                 await loadXmls();
             }
