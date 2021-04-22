@@ -88,6 +88,7 @@ namespace RMC.InventoryPharma.PanelViewStocks
             dt.Columns.Add("ID");
             dt.Columns.Add("Item Name");
             dt.Columns.Add("Stocks");
+            dt.Columns.Add("Unit Cost");
             dt.Columns.Add("SKU");
             dt.Columns.Add("Description");
             dt.Columns.Add("Generic Or Branded");
@@ -102,7 +103,7 @@ namespace RMC.InventoryPharma.PanelViewStocks
                 string category = formatCategory(int.Parse(dr["item_type"].ToString()));
                 string stocks = dr[2].ToString() == "" ? "0" : dr[2].ToString();
 
-                dt.Rows.Add(dr[0], dr[1], stocks, dr[3], dr[4], isBrand,category, dr[7], dr[8]);
+                dt.Rows.Add(dr[0], dr[1], stocks, dr[3], dr[4],dr[5] ,isBrand,category, dr[8], dr[9]);
             }
 
             newDataset.Tables.Add(dt);

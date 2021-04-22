@@ -161,7 +161,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataSetWithStockPharma()
         {
-            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,isBranded,category.item_type,category_name,unit_name 
+            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks,UnitPrice , SKU, Description,isBranded,category.item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id 
@@ -172,7 +172,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getDataSetWithStockClinic()
         {
-            string sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+            string sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks,UnitPrice , SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id 
@@ -217,21 +217,21 @@ namespace RMC.Database.Controllers
             switch (searchType)
             {
                 case 0:
-                    sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+                    sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks,UnitPrice , SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id 
                             WHERE itemlist.is_active = @isactive AND item_name LIKE @key";
                     break;
                 case 1:
-                    sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+                    sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks,UnitPrice , SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id 
                                 WHERE itemlist.is_active = @isactive AND SKU LIKE @key";
                     break;
                 case 2:
-                    sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+                    sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks,UnitPrice , SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id 
@@ -373,21 +373,21 @@ namespace RMC.Database.Controllers
             switch (searchType)
             {
                 case 0:
-                    sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+                    sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks,UnitPrice , SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id 
                             WHERE itemlist.is_active = @isactive AND item_name LIKE @key";
                     break;
                 case 1:
-                    sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+                    sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks,UnitPrice , SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id 
                                 WHERE itemlist.is_active = @isactive AND SKU LIKE @key";
                     break;
                 case 2:
-                    sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks , SKU, Description,isBranded,item_type,category_name,unit_name 
+                    sql = @"SELECT itemlist.item_id,item_name,labitemstocks.clinic_stocks,UnitPrice , SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
                             LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id 
