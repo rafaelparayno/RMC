@@ -33,7 +33,7 @@ namespace RMC.Xray.Panels.RepDiags
         private bool isEdited = false;
         Dictionary<string, string> valuesInReports;
         ConsumablesXrayControllers consumablesXray = new ConsumablesXrayControllers();
-       
+        ItemController itemController = new ItemController();
         ConsumedItems consumeditems = new ConsumedItems();
         Dictionary<int, int> consumables = new Dictionary<int, int>();
 
@@ -189,9 +189,11 @@ namespace RMC.Xray.Panels.RepDiags
                 {
                     int currentStocks = await clinicStocks.getStocks(kp.Key);
                     int stocktosave = currentStocks - kp.Value;
+                    float unitCost = await itemController.getUnitCosts(kp.Key);
+                    float totalCost = unitCost * kp.Value;
                     stocktosave = stocktosave > 0 ? stocktosave : 0;
                     listTask.Add(clinicStocks.Save(kp.Key, stocktosave));
-                    listTask.Add(consumeditems.save(kp.Key, kp.Value));
+                    listTask.Add(consumeditems.save(kp.Key, kp.Value,totalCost));
 
                 }
 

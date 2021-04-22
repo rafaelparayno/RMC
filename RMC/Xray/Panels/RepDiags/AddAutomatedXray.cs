@@ -26,7 +26,7 @@ namespace RMC.Xray.Panels.RepDiags
         List<ListParams> listofListparams = new List<ListParams>();
         AutoParamController autoParamController = new AutoParamController();
         xraymodel xraymodel = new xraymodel();
-  
+        ItemController itemController = new ItemController();
         List<CoordinatesList> coordinatesAutomated = new List<CoordinatesList>();
         AutoDocsController autoDocsController = new AutoDocsController();
         RadioQueueController radioQueueController = new RadioQueueController();
@@ -170,9 +170,11 @@ namespace RMC.Xray.Panels.RepDiags
             {
                 int currentStocks = await clinicStocks.getStocks(kp.Key);
                 int stocktosave = currentStocks - kp.Value;
+                float unitCost = await itemController.getUnitCosts(kp.Key);
+                float totalCost = unitCost * kp.Value;
                 stocktosave = stocktosave > 0 ? stocktosave : 0;
                 listTasks.Add(clinicStocks.Save(kp.Key, stocktosave));
-                listTasks.Add(consumeditems.save(kp.Key, kp.Value));
+                listTasks.Add(consumeditems.save(kp.Key, kp.Value,totalCost));
 
             }
 

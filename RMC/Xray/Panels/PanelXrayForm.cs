@@ -26,7 +26,8 @@ namespace RMC.Xray.Panels
         ConsumablesXrayControllers consumablesXrayController = new ConsumablesXrayControllers();
         Dictionary<int, int> consumables = new Dictionary<int, int>();
         ClinicStocksController clinicStocksController = new ClinicStocksController();
-        ConsumedItems consumeditems = new ConsumedItems(); 
+        ConsumedItems consumeditems = new ConsumedItems();
+        ItemController itemController = new ItemController();
         #endregion
 
 
@@ -73,9 +74,11 @@ namespace RMC.Xray.Panels
                 {
                     int currentStocks = await clinicStocksController.getStocks(kp.Key);
                     int stocktosave = currentStocks - kp.Value;
+                    float unitCost = await itemController.getUnitCosts(kp.Key);
+                    float totalCosrt = unitCost * kp.Value;
                     stocktosave = stocktosave > 0 ? stocktosave : 0;
                     listTask.Add(clinicStocksController.Save(kp.Key, stocktosave));
-                    listTask.Add(consumeditems.save(kp.Key, kp.Value));
+                    listTask.Add(consumeditems.save(kp.Key, kp.Value,totalCosrt));
                    
                 }
 

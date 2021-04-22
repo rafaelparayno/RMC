@@ -423,3 +423,4 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Pharma.DailySalesPha
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Pharma.Dialogs.addEditDailySalesPharma.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\SwiftExcel.dll
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelReportsForms.PanelsClinicRep.LabCostRepForm.resources

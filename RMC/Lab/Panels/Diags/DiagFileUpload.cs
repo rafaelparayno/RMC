@@ -16,7 +16,7 @@ namespace RMC.Lab.Panels.Diags
     public partial class DiagFileUpload : Form
     {
         Image img = null;
-  
+        ItemController itemController = new ItemController();
         LabQueueController labQueueController = new LabQueueController();
         PatientLabController patientLabController = new PatientLabController();
         PatientDetailsController patientDetailsController = new PatientDetailsController();
@@ -76,9 +76,11 @@ namespace RMC.Lab.Panels.Diags
             {
                 int currentStocks = await clinicStocksController.getStocks(kp.Key);
                 int stocktosave = currentStocks - kp.Value;
+                float unitCost = await itemController.getUnitCosts(kp.Key);
+                float totalCost = unitCost * kp.Value;
                 stocktosave = stocktosave > 0 ? stocktosave : 0;
                 listTasks.Add(clinicStocksController.Save(kp.Key, stocktosave));
-                listTasks.Add(consumeditems.save(kp.Key, kp.Value));
+                listTasks.Add(consumeditems.save(kp.Key, kp.Value,totalCost));
 
             }
 

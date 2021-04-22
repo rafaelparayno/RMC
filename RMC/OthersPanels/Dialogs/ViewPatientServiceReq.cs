@@ -17,7 +17,7 @@ namespace RMC.OthersPanels.Dialogs
     public partial class ViewPatientServiceReq : Form
     {
         private int patientid = 0;
-
+        ItemController itemController = new ItemController();
         patientDetails patientmod = new patientDetails();
         PatientDetailsController patD = new PatientDetailsController();
         OthersQueueController othersQueueController = new OthersQueueController();
@@ -132,9 +132,11 @@ namespace RMC.OthersPanels.Dialogs
             {
                 int currentStocks = await clinicStocks.getStocks(c.itemid);
                 int stocktosave = currentStocks - c.qty;
+                float unitCost = await itemController.getUnitCosts(c.itemid);
+                float totalCost = unitCost * c.qty;
                 stocktosave = stocktosave > 0 ? stocktosave : 0;
                 listTasks.Add(clinicStocks.Save(c.itemid, stocktosave));
-                listTasks.Add(consumeditems.save(c.itemid, c.qty));
+                listTasks.Add(consumeditems.save(c.itemid, c.qty,totalCost));
 
             }
 

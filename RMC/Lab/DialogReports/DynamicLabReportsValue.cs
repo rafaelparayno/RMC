@@ -19,6 +19,7 @@ namespace RMC.Lab.DialogReports
 {
     public partial class DynamicLabReportsValue : Form
     {
+        ItemController itemController = new ItemController();
         List<TextBoxParamsCrystal> textBoxParamsCrystals = new List<TextBoxParamsCrystal>();
         ClinicStocksController clinicStocks = new ClinicStocksController();
         Dictionary<string, string> valuesInReports;
@@ -487,9 +488,11 @@ namespace RMC.Lab.DialogReports
                 {
                     int currentStocks = await clinicStocks.getStocks(kp.Key);
                     int stocktosave = currentStocks - kp.Value;
+                    float unitCost = await itemController.getUnitCosts(kp.Key);
+                    float totalConsumedCost = unitCost * kp.Value;
                     stocktosave = stocktosave > 0 ? stocktosave : 0;
                     listTasks.Add(clinicStocks.Save(kp.Key, stocktosave));
-                    listTasks.Add(consumeditems.save(kp.Key, kp.Value));
+                    listTasks.Add(consumeditems.save(kp.Key, kp.Value,totalConsumedCost));
                
                 }
 

@@ -28,6 +28,7 @@ namespace RMC.Lab.Panels.Diags
         ClinicStocksController clinicStocks = new ClinicStocksController();
         ConsumedItems consumeditems = new ConsumedItems();
         Dictionary<int, int> consumables = new Dictionary<int, int>();
+        ItemController itemController = new ItemController();
         Graphics graphicsImg = null;
         Image img = null;
         /*   Image noImg = null;*/
@@ -169,9 +170,11 @@ namespace RMC.Lab.Panels.Diags
             {
                 int currentStocks = await clinicStocks.getStocks(kp.Key);
                 int stocktosave = currentStocks - kp.Value;
+                float unitCost = await itemController.getUnitCosts(kp.Key);
+                float totalCost = unitCost * kp.Value;
                 stocktosave = stocktosave > 0 ? stocktosave : 0;
                 listTasks.Add(clinicStocks.Save(kp.Key, stocktosave));
-                listTasks.Add(consumeditems.save(kp.Key, kp.Value));
+                listTasks.Add(consumeditems.save(kp.Key, kp.Value,unitCost));
 
             }
 

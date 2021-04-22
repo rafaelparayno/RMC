@@ -42,5 +42,10 @@ namespace RMC.Admin.PanelReportsForms
         {
             openChildForm(new salesClinic());
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new LabCostRepForm());
+        }
     }
 }

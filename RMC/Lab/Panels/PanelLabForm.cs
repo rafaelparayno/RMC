@@ -19,6 +19,7 @@ namespace RMC.Lab.Panels
 
         #region Variables
 
+        ItemController itemController = new ItemController();
         patientDetails patientmod = new patientDetails();
         PatientDetailsController patD = new PatientDetailsController();
         PatientLabController patientLabC = new PatientLabController();
@@ -71,9 +72,11 @@ namespace RMC.Lab.Panels
                 {
                     int currentStocks = await clinicStocksController.getStocks(kp.Key);
                     int stocktosave = currentStocks - kp.Value;
+                    float unitCost = await itemController.getUnitCosts(kp.Key);
+                    float totalCost = unitCost * kp.Value;
                     stocktosave = stocktosave > 0 ? stocktosave : 0;
                     listTasks.Add(clinicStocksController.Save(kp.Key, stocktosave));
-                    listTasks.Add(consumeditems.save(kp.Key, kp.Value));       
+                    listTasks.Add(consumeditems.save(kp.Key, kp.Value,totalCost));       
                 }
 
                 await Task.WhenAll(listTasks);
