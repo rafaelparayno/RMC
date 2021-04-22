@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FontAwesome.Sharp;
 using RMC.Database.Controllers;
 using RMC.InventoryPharma.PanelViewStocks.Dialog;
+using SwiftExcel;
 
 namespace RMC.InventoryPharma.PanelViewStocks
 {
@@ -89,6 +89,7 @@ namespace RMC.InventoryPharma.PanelViewStocks
             dt.Columns.Add("Item Name");
             dt.Columns.Add("Stocks");
             dt.Columns.Add("Unit Cost");
+            dt.Columns.Add("Sub Total");
             dt.Columns.Add("SKU");
             dt.Columns.Add("Description");
             dt.Columns.Add("Generic Or Branded");
@@ -103,7 +104,11 @@ namespace RMC.InventoryPharma.PanelViewStocks
                 string category = formatCategory(int.Parse(dr["item_type"].ToString()));
                 string stocks = dr[2].ToString() == "" ? "0" : dr[2].ToString();
 
-                dt.Rows.Add(dr[0], dr[1], stocks, dr[3], dr[4],dr[5] ,isBrand,category, dr[8], dr[9]);
+                int stocksInt = int.Parse(stocks);
+                float UnitCost = float.Parse(dr[3].ToString());
+                float subTotal = stocksInt * UnitCost;
+
+                dt.Rows.Add(dr[0], dr[1], stocks, dr[3],subTotal ,dr[4],dr[5] ,isBrand,category, dr[8], dr[9]);
             }
 
             newDataset.Tables.Add(dt);
@@ -237,6 +242,83 @@ namespace RMC.InventoryPharma.PanelViewStocks
             else
             {
                 loadGridPharma();
+            }
+        }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            if(dgItemList.Rows.Count == 0)
+                return;
+
+            string path = "";
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            DialogResult result = folderBrowserDialog.ShowDialog();
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
+            {
+                path = folderBrowserDialog.SelectedPath;
+            }
+            DateTime date = DateTime.Today;
+            string label = isPharmaList ? "Pharmacy" : "Clinic";
+            path += $"/{label}_{date.ToString("yyyy-MM-dd")}.xlsx";
+
+            writeExcel(path);
+        }
+
+
+        private void writeExcel(string path)
+        {
+            var sheet = new Sheet
+            {
+                Name = "Item Stocks",
+                ColumnsWidth = new List<double> { 15, 35, 15, 15, 20, 25, 50, 25, 25, 25,25 }
+            };
+
+            ExcelWriter _excelWriter;
+
+            using (_excelWriter = new ExcelWriter(path, sheet))
+            {
+                int lastRow = 0;
+          
+                foreach (DataGridViewRow dr in dgItemList.Rows)
+                {
+                    if (dr.Index == 0)
+                    {
+                        for (int i = 0; i < dgItemList.Columns.Count; i++)
+                        {
+                            int colnumber = i + 1;
+                            string header = dgItemList.Columns[i].HeaderText;
+                            _excelWriter.Write(
+                                header,
+                                colnumber, 1,
+                                DataType.Text
+                                );
+                        }
+                    }
+
+                    for (int i = 0; i < dgItemList.Columns.Count; i++)
+                    {
+                        int colnumber = i + 1;
+                        int rownumber = dr.Index + 2;
+
+                    
+                        string cellText = dr.Cells[i].Value.ToString();
+
+
+                        _excelWriter.Write(cellText,
+                            colnumber, rownumber,
+                            float.TryParse(cellText, out _) ?
+                            DataType.Number : DataType.Text
+                            );
+                        lastRow = rownumber;
+                    }
+                 
+
+                }
+                int lastRowForFormula = lastRow + 4;
+                _excelWriter.Write("Total Quantity", 1, lastRowForFormula);
+                _excelWriter.WriteFormula(FormulaType.Sum, 2, lastRowForFormula, 3, 2, lastRow);
+                _excelWriter.Write("Total Inventory", 1, ++lastRowForFormula);
+                _excelWriter.WriteFormula(FormulaType.Sum, 2, lastRowForFormula,5,2,lastRow);
             }
         }
     }
