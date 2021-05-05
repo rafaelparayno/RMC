@@ -30,9 +30,9 @@
         {
             this.btnSuppliers = new FontAwesome.Sharp.IconButton();
             this.panelNavParam = new System.Windows.Forms.Panel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelChild = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panelNavParam.SuspendLayout();
             this.panelChild.SuspendLayout();
             this.SuspendLayout();
@@ -71,24 +71,6 @@
             this.panelNavParam.Size = new System.Drawing.Size(800, 60);
             this.panelNavParam.TabIndex = 20;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Salmon;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 5);
-            this.panel2.TabIndex = 19;
-            // 
-            // panelChild
-            // 
-            this.panelChild.Controls.Add(this.panel2);
-            this.panelChild.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChild.Location = new System.Drawing.Point(0, 60);
-            this.panelChild.Name = "panelChild";
-            this.panelChild.Size = new System.Drawing.Size(800, 390);
-            this.panelChild.TabIndex = 21;
-            // 
             // iconButton1
             // 
             this.iconButton1.BackColor = System.Drawing.Color.Maroon;
@@ -110,7 +92,26 @@
             this.iconButton1.Text = "Clinic Consume Cost";
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Visible = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Salmon;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 5);
+            this.panel2.TabIndex = 19;
+            // 
+            // panelChild
+            // 
+            this.panelChild.Controls.Add(this.panel2);
+            this.panelChild.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelChild.Location = new System.Drawing.Point(0, 60);
+            this.panelChild.Name = "panelChild";
+            this.panelChild.Size = new System.Drawing.Size(800, 390);
+            this.panelChild.TabIndex = 21;
             // 
             // LabReports
             // 

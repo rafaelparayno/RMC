@@ -1190,6 +1190,18 @@
     <Compile Include="Pharma\DailySalesPharList.Designer.cs">
       <DependentUpon>DailySalesPharList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pharma\DailySalesPharRepList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pharma\DailySalesPharRepList.Designer.cs">
+      <DependentUpon>DailySalesPharRepList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pharma\Dialogs\AddEditDailyPharSalesRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pharma\Dialogs\AddEditDailyPharSalesRep.Designer.cs">
+      <DependentUpon>AddEditDailyPharSalesRep.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pharma\Dialogs\addEditDailySalesPharma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1304,6 +1316,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DailySalesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DailySalesReportPh.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DailySalesReportPh.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\DoctorsSample.cs">
@@ -1888,6 +1906,12 @@
     <EmbeddedResource Include="Pharma\DailySalesPharList.resx">
       <DependentUpon>DailySalesPharList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pharma\DailySalesPharRepList.resx">
+      <DependentUpon>DailySalesPharRepList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pharma\Dialogs\AddEditDailyPharSalesRep.resx">
+      <DependentUpon>AddEditDailyPharSalesRep.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pharma\Dialogs\addEditDailySalesPharma.resx">
       <DependentUpon>addEditDailySalesPharma.cs</DependentUpon>
     </EmbeddedResource>
@@ -1956,6 +1980,10 @@
     <EmbeddedResource Include="Reports\DailySalesReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DailySalesReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DailySalesReportPh.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DailySalesReportPh.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\DoctorsSample.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

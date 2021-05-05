@@ -50,7 +50,7 @@ namespace RMC.Pharma
 
         private void btnDaily_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new DailySalesPharRepList());
         }
     }
 }
