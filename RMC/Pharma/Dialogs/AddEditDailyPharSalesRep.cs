@@ -33,6 +33,14 @@ namespace RMC.Pharma.Dialogs
         public AddEditDailyPharSalesRep()
         {
             InitializeComponent();
+            dateTimePicker1.MaxDate = DateTime.Today;
+        }
+
+        public AddEditDailyPharSalesRep(int repid)
+        {
+            InitializeComponent();
+            dateTimePicker1.MaxDate = DateTime.Today;
+            this.repid = repid;
         }
 
 
@@ -204,27 +212,28 @@ namespace RMC.Pharma.Dialogs
 
             xwriter.WriteStartElement("Sales");
             xwriter.WriteElementString("dateParam", dateTimePicker1.Value.ToString("MMMM dd, yyyy"));
-     
+            xwriter.WriteElementString("outByParam", txtOutBy.Text.Trim());
+            xwriter.WriteElementString("arParam", txtAr.Text.Trim());
 
             xwriter.WriteElementString("expenseOtherName1", txtName1.Text.Trim());
-            xwriter.WriteElementString("fareExpense", txtExpenseCost1.Text.Trim());
+            xwriter.WriteElementString("expenseCost1", txtExpenseCost1.Text.Trim());
 
             if (isAddAnother)
             {
                 xwriter.WriteElementString("expenseOtherName2", txtName2.Text.Trim());
-                xwriter.WriteElementString("bigasExpnse", txtExpenseCost2.Text.Trim());
+                xwriter.WriteElementString("expenseCost2", txtExpenseCost2.Text.Trim());
             }
 
             if (isAddAnother2)
             {
                 xwriter.WriteElementString("expenseOtherName3", txtName3.Text.Trim());
-                xwriter.WriteElementString("snackExpense", txtExpenseCost3.Text.Trim());
+                xwriter.WriteElementString("expenseCost3", txtExpenseCost3.Text.Trim());
             }
 
             if (isAddAnother3)
             {
-                xwriter.WriteElementString("expenseOtherName3", txtName3.Text.Trim());
-                xwriter.WriteElementString("snackExpense", txtExpenseCost3.Text.Trim());
+                xwriter.WriteElementString("expenseOtherName4", txtName3.Text.Trim());
+                xwriter.WriteElementString("expenseCost4", txtExpenseCost3.Text.Trim());
             }
 
             xwriter.WriteElementString("ThouQtyParam", num1k.Value.ToString());

@@ -1258,6 +1258,12 @@
     <Compile Include="Reception\Dialogs\addEditDailySalesRep.Designer.cs">
       <DependentUpon>addEditDailySalesRep.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reception\Dialogs\DailySalesReportPhFormDiag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception\Dialogs\DailySalesReportPhFormDiag.Designer.cs">
+      <DependentUpon>DailySalesReportPhFormDiag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reception\Dialogs\DiagPaymentRequest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1948,6 +1954,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reception\Dialogs\addEditDailySalesRep.resx">
       <DependentUpon>addEditDailySalesRep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reception\Dialogs\DailySalesReportPhFormDiag.resx">
+      <DependentUpon>DailySalesReportPhFormDiag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reception\Dialogs\DiagPaymentRequest.resx">
       <DependentUpon>DiagPaymentRequest.cs</DependentUpon>

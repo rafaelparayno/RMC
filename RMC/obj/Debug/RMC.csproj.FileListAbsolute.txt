@@ -426,3 +426,4 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\bin\Debug\System.ComponentModel.An
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelReportsForms.PanelsClinicRep.LabCostRepForm.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Pharma.DailySalesPharRepList.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Pharma.Dialogs.AddEditDailyPharSalesRep.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Reception.Dialogs.DailySalesReportPhFormDiag.resources

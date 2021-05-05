@@ -90,6 +90,12 @@
             this.label20 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtAr = new System.Windows.Forms.TextBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtOutBy = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -119,6 +125,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.num5h)).BeginInit();
             this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num1k)).BeginInit();
+            this.panel4.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -203,7 +211,7 @@
             this.panel28.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel28.Location = new System.Drawing.Point(0, 0);
             this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(778, 454);
+            this.panel28.Size = new System.Drawing.Size(778, 686);
             this.panel28.TabIndex = 9;
             // 
             // flowLayoutPanel1
@@ -212,10 +220,12 @@
             this.flowLayoutPanel1.Controls.Add(this.panel6);
             this.flowLayoutPanel1.Controls.Add(this.panel7);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
+            this.flowLayoutPanel1.Controls.Add(this.panel4);
+            this.flowLayoutPanel1.Controls.Add(this.panel18);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(778, 454);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(778, 686);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // panel5
@@ -823,6 +833,66 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Significant Past Diseases:";
             // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.txtAr);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 459);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(769, 108);
+            this.panel4.TabIndex = 21;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(12, 25);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(32, 19);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Ar:";
+            // 
+            // txtAr
+            // 
+            this.txtAr.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAr.Location = new System.Drawing.Point(15, 63);
+            this.txtAr.Name = "txtAr";
+            this.txtAr.Size = new System.Drawing.Size(725, 27);
+            this.txtAr.TabIndex = 1;
+            // 
+            // panel18
+            // 
+            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel18.Controls.Add(this.label14);
+            this.panel18.Controls.Add(this.txtOutBy);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel18.Location = new System.Drawing.Point(3, 573);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(769, 108);
+            this.panel18.TabIndex = 20;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 25);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(63, 19);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Out By:";
+            // 
+            // txtOutBy
+            // 
+            this.txtOutBy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOutBy.Location = new System.Drawing.Point(15, 63);
+            this.txtOutBy.Name = "txtOutBy";
+            this.txtOutBy.Size = new System.Drawing.Size(725, 27);
+            this.txtOutBy.TabIndex = 1;
+            // 
             // AddEditDailyPharSalesRep
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -880,6 +950,10 @@
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num1k)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -948,5 +1022,11 @@
         private System.Windows.Forms.TextBox txtExpenseCost4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName4;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtAr;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtOutBy;
     }
 }
