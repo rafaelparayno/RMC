@@ -265,8 +265,10 @@ namespace RMC.Pharma.Dialogs
 
             xwriter.WriteStartElement("Sales");
             xwriter.WriteElementString("dateParam", dateTimePicker1.Value.ToString("MMMM dd, yyyy"));
-            xwriter.WriteElementString("outByParam", txtOutBy.Text.Trim());
-            xwriter.WriteElementString("arParam", txtAr.Text.Trim());
+            xwriter.WriteElementString("outByParam", string.IsNullOrEmpty(txtOutBy.Text.Trim()) ? 0 + "" 
+                : txtOutBy.Text.Trim());
+            xwriter.WriteElementString("arParam", string.IsNullOrEmpty(txtAr.Text.Trim()) ? 
+                0 + "" : txtAr.Text.Trim());
 
             xwriter.WriteElementString("expenseOtherName1", txtName1.Text.Trim());
             xwriter.WriteElementString("expenseCost1", txtExpenseCost1.Text.Trim());
@@ -331,8 +333,7 @@ namespace RMC.Pharma.Dialogs
                     txtAr.Text = node.InnerText;
                 if (node.Name == "expenseOtherName1")
                     txtName1.Text = node.InnerText;
-                if (node.Name == "fareExpense")
-                    txtExpenseCost1.Text = node.InnerText;
+              
 
                 if (node.Name == "expenseOtherName2")
                 {

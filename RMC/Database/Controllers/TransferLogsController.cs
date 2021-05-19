@@ -14,6 +14,30 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
+
+        public async Task<float> getTotalOut(int year, int month)
+        {
+            float totalOut = 0;
+            string sql = @"SELECT SUM((UnitPrice * transferothers_logs.qty_transfer)) As 'totalOut' FROM itemlist 
+            INNER JOIN transferothers_logs ON itemlist.item_id = transferothers_logs.item_id
+            WHERE MONTH(transferothers_logs.date_transfer) = @m AND YEAR(transferothers_logs.date_transfer) = @y";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
+            mySqlParameters.Add(new MySqlParameter("@y", year));
+            mySqlParameters.Add(new MySqlParameter("@m", month));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+            
+            while(await reader.ReadAsync())
+            {
+                totalOut = string.IsNullOrEmpty(reader["totalOut"].ToString()) ? 
+                    0 : float.Parse(reader["totalOut"].ToString());
+            }
+
+            crud.CloseConnection();
+            return totalOut;
+        }
+
         public async Task<DataSet> getDataset()
         {
             string sql = @"SELECT transferothers_logs.transferothers_logs_id AS 'ID',itemlist.item_name,

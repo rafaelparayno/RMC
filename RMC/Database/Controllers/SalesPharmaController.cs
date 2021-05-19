@@ -94,6 +94,35 @@ namespace RMC.Database.Controllers
             return totalCost;
         }
 
+        public async Task<int> getTotalQtySalesID(int year,int m,int id)
+        {
+            string month = m > 9 ? m.ToString() : $"0{m}";
+            string date = $"{year}-{month}-01";
+            string sql = @"SELECT SUM(sales_qty) as 'total' FROM `salespharma` WHERE invoice_id IN 
+                    (SELECT invoice_id FROM invoice WHERE date_invoice BETWEEN @d 
+                        AND DATE_ADD(CURDATE(),INTERVAL 1 day) ) 
+                    AND item_id = @id";
+            int totalSales = 0;
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@d",date)),
+                 (new MySqlParameter("@id",id))
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while(await reader.ReadAsync())
+            {
+                totalSales = string.IsNullOrEmpty(reader["total"].ToString()) ?
+                    0 : int.Parse(reader["total"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return totalSales;
+        }
+
         public async Task<List<salesPharmacyModel>> getSearchDays(string d,string d2)
         {
             List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();

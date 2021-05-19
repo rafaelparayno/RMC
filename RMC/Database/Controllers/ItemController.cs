@@ -88,6 +88,31 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
         }
 
+        public async Task<float> getSumExpiredItems(int m,int year)
+        {
+            float totalExpired = 0;
+            string sql = @"SELECT SUM((pharmastocks.pharma_stocks * itemlist.UnitPrice)) as 'sumexp' FROM `itemlist`
+                            INNER JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                            WHERE MONTH(itemlist.ExpirationDate) = @m AND YEAR(itemlist.ExpirationDate) = @y 
+                            AND itemlist.is_active = 1";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@m",m)),
+                (new MySqlParameter("@y",year))
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while(await reader.ReadAsync())
+            {
+                totalExpired = string.IsNullOrEmpty(reader["sumexp"].ToString()) ?
+                    0 : float.Parse(reader["sumexp"].ToString());
+            }
+
+            crud.CloseConnection();
+            return totalExpired; 
+        }
 
         public async Task<DataSet> getdatasetActiveExpirationWithDate(int days)
         {

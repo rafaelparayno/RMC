@@ -82,5 +82,10 @@ namespace RMC.Admin.PanelReportsForms
             openChildForm(new RTSREPORT());
 
         }
+
+        private void iconButton9_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FinancialRep());
+        }
     }
 }

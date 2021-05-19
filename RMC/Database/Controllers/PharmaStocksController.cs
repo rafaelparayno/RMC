@@ -1,7 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-
+using System.Data.Common;
 using System.Threading.Tasks;
 
 namespace RMC.Database.Controllers
@@ -49,6 +49,25 @@ namespace RMC.Database.Controllers
             crud.CloseConnection();
 
             return stocks;
+        }
+
+        public async Task<Dictionary<int,int>> getAllStocks()
+        {
+            string sql = @"SELECT * FROM `pharmastocks` ";
+            Dictionary<int, int> itemStocks = new Dictionary<int, int>();
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
+
+
+            while (await reader.ReadAsync())
+            {
+                itemStocks.Add(int.Parse(reader["item_id"].ToString()),
+                    int.Parse(reader["pharma_stocks"].ToString()));
+            }
+
+            crud.CloseConnection();
+
+            return itemStocks;
+            
         }
 
         public async Task addStocks(int id,int qty)

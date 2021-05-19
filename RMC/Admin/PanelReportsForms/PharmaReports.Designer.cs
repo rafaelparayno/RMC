@@ -38,6 +38,7 @@
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.btnReorder = new FontAwesome.Sharp.IconButton();
+            this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.panelChild.SuspendLayout();
             this.panelNavParam.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +77,7 @@
             // 
             this.panelNavParam.AutoScroll = true;
             this.panelNavParam.BackColor = System.Drawing.Color.FloralWhite;
+            this.panelNavParam.Controls.Add(this.iconButton9);
             this.panelNavParam.Controls.Add(this.iconButton8);
             this.panelNavParam.Controls.Add(this.iconButton2);
             this.panelNavParam.Controls.Add(this.iconButton7);
@@ -307,6 +309,30 @@
             this.btnReorder.UseVisualStyleBackColor = false;
             this.btnReorder.Click += new System.EventHandler(this.btnReorder_Click);
             // 
+            // iconButton9
+            // 
+            this.iconButton9.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton9.FlatAppearance.BorderSize = 0;
+            this.iconButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton9.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.Desktop;
+            this.iconButton9.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.iconButton9.IconSize = 18;
+            this.iconButton9.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton9.Location = new System.Drawing.Point(1210, 0);
+            this.iconButton9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton9.Name = "iconButton9";
+            this.iconButton9.Rotation = 0D;
+            this.iconButton9.Size = new System.Drawing.Size(146, 57);
+            this.iconButton9.TabIndex = 32;
+            this.iconButton9.Text = "Monthly Financial Report";
+            this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton9.UseMnemonic = false;
+            this.iconButton9.UseVisualStyleBackColor = false;
+            this.iconButton9.Click += new System.EventHandler(this.iconButton9_Click);
+            // 
             // PharmaReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -338,6 +364,7 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton7;
         private FontAwesome.Sharp.IconButton iconButton8;
+        private FontAwesome.Sharp.IconButton iconButton9;
     }
 
 }

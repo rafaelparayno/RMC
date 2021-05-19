@@ -12,6 +12,32 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
+
+        public async Task<List<string>> getFilesPath(int year,int month, int type)
+        {
+            List<string> paths = new List<string>();
+            string sql = @"SELECT * FROM `daily_sales_report` 
+                            WHERE type = @type AND MONTH(report_Date) = @m AND 
+                            YEAR(report_Date) = @y";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@type",type)),
+               (new MySqlParameter("@y",year)),
+                (new MySqlParameter("@m",month))
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while(await reader.ReadAsync())
+            {
+                paths.Add(reader["path"].ToString());
+            }
+
+            crud.CloseConnection();
+            return paths;
+        }
+
         public async Task save(int type,string path,string date)
         {
             string sql = @"INSERT INTO `daily_sales_report`(`type`, `path`,`report_Date`) VALUES (@type,@path,@date)";

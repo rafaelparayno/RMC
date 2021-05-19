@@ -21,6 +21,7 @@ namespace RMC.Reception.Dialogs
         SalesPharmaController salesPharmaController = new SalesPharmaController();
 
         DailySalesReportController reportController = new DailySalesReportController();
+
         private int repid = 0;
         DailySalesReportPh cos = new DailySalesReportPh();
 
@@ -68,7 +69,7 @@ namespace RMC.Reception.Dialogs
 
                 cos.SetParameterValue(node.Name, string.IsNullOrEmpty(node.InnerText) ? "" : node.InnerText);
             }
-
+           
         }
     }
 }

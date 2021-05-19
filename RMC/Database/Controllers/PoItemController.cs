@@ -52,6 +52,40 @@ namespace RMC.Database.Controllers
             return purchaseOrder;
         }
 
+        public async Task<List<PoModel>> getPoNoWithOrigStocks(int year,int month)
+        {
+            List<PoModel> purchaseOrder = new List<PoModel>();
+
+
+            string sql = @"SELECT purchase_order_items.item_id,itemlist.item_name,itemlist.UnitPrice,COALESCE((purchase_order_items.quantity_order + receive_orders.qty_ro), purchase_order_items.quantity_order) AS 'qty',
+                (itemlist.UnitPrice * COALESCE((purchase_order_items.quantity_order + receive_orders.qty_ro),
+                purchase_order_items.quantity_order)) as 'TotalCost' FROM `purchase_order_items`
+                            INNER JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id
+                            LEFT JOIN receive_orders ON purchase_order_items.po_item_id = receive_orders.po_item_id
+                            WHERE purchase_order_items.po_id in 
+                    (SELECT purchase_order.po_id FROM purchase_order WHERE MONTH(purchase_order.date_order) = @m 
+                        AND YEAR(purchase_order.date_order) = @year)";
+
+            List<MySqlParameter> listParams = new List<MySqlParameter>();
+            listParams.Add(new MySqlParameter("@year", year));
+            listParams.Add(new MySqlParameter("@m", month));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
+            while (await reader.ReadAsync())
+            {
+                PoModel newPo = new PoModel();
+                newPo.item_id = int.Parse(reader["item_id"].ToString());
+                newPo.item_name = reader["item_name"].ToString();
+                newPo.unitCosts = float.Parse(reader["UnitPrice"].ToString());
+                newPo.quantity_order = int.Parse(reader["qty"].ToString());
+                newPo.totalCost = float.Parse(reader["TotalCost"].ToString());
+                purchaseOrder.Add(newPo);
+            }
+
+            crud.CloseConnection();
+            return purchaseOrder;
+        }
+
 
         public async Task<List<PoModel>> getPoNoWithOrigStocks(int po_no)
         {
