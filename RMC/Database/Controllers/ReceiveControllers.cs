@@ -14,16 +14,17 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async Task save(int itemid,int qty, int poid)
+        public async Task save(int itemid,int qty, int poid,int invoice_no)
         {
-            string sql = @"INSERT INTO receive_orders (po_item_id,qty_ro,u_id) VALUES 
+            string sql = @"INSERT INTO receive_orders (po_item_id,qty_ro,u_id,invoice_no) VALUES 
                            ((SELECT po_item_id FROM purchase_order_items WHERE item_id = @itemid AND po_id = @poid),
-                            @qty,@uid)";
+                            @qty,@uid,@no)";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@itemid", itemid));
             listparams.Add(new MySqlParameter("@poid", poid));
             listparams.Add(new MySqlParameter("@qty", qty));
             listparams.Add(new MySqlParameter("@uid", UserLog.getUserId()));
+            listparams.Add(new MySqlParameter("@no", invoice_no));
 
             await crud.ExecuteAsync(sql, listparams);
         }
@@ -54,7 +55,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getData()
         {
-            string sql = @"SELECT itemlist.item_name As 'Item Name',receive_orders.qty_ro AS 'quantity Receive',receive_orders.date_ro AS 'date Receive', 
+            string sql = @"SELECT itemlist.item_name As 'Item Name',receive_orders.qty_ro AS 'quantity Receive',invoice_no,receive_orders.date_ro AS 'date Receive', 
                         CONCAT(useraccounts.firstname,' ',useraccounts.lastname) AS 'Receive By' 
                         FROM `receive_orders` INNER JOIN purchase_order_items ON receive_orders.po_item_id = purchase_order_items.po_item_id 
                         INNER JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id 
@@ -120,7 +121,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getData(string date)
         {
-            string sql = @"SELECT itemlist.item_name As 'Item Name',receive_orders.qty_ro AS 'quantity Receive',receive_orders.date_ro AS 'date Receive', 
+            string sql = @"SELECT itemlist.item_name As 'Item Name',receive_orders.qty_ro AS 'quantity Receive',invoice_no,receive_orders.date_ro AS 'date Receive', 
                         CONCAT(useraccounts.firstname,' ',useraccounts.lastname) AS 'Receive By' 
                         FROM `receive_orders` INNER JOIN purchase_order_items ON receive_orders.po_item_id = purchase_order_items.po_item_id 
                         INNER JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id 

@@ -45,6 +45,8 @@ namespace RMC.InventoryPharma.PanelRo
 
         private async Task save()
         {
+            int in_no = int.Parse(textBox1.Text.Trim());
+
             Dictionary<int, int> itemsRec = new Dictionary<int, int>();
             List<Task> tasks = new List<Task>();
             poController.receiveUpdate(po_no);
@@ -89,7 +91,7 @@ namespace RMC.InventoryPharma.PanelRo
 
             foreach (KeyValuePair<int, int> receive in itemsRec)
             {
-                tasks.Add(receiveControllers.save(receive.Key, receive.Value, po_no));
+                tasks.Add(receiveControllers.save(receive.Key, receive.Value, po_no,in_no));
             }
 
 
@@ -433,6 +435,16 @@ namespace RMC.InventoryPharma.PanelRo
       
         private async void iconButton6_Click(object sender, EventArgs e)
         {
+
+
+            if (textBox1.Text.Trim() == "")
+                return;
+
+            bool isNumber = int.TryParse(textBox1.Text.Trim(), out _);
+
+            if (!isNumber)
+                return;
+
             if (dataGridView1.Rows.Count == 0 && dataGridView2.Rows.Count == 0)
                 return;
 
@@ -452,10 +464,17 @@ namespace RMC.InventoryPharma.PanelRo
 
             refreshTotalReceiveCost();
             label1.Text = "";
+            textBox1.Text = "";
         }
 
-        #endregion
 
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+
+        #endregion
 
     }
 }
