@@ -811,6 +811,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
             values.Add("Gender", patdetails.gender);
             values.Add("bdate", patdetails.birthdate.ToString().Split(' ')[0]);
             values.Add("age", patdetails.age.ToString());
+            values.Add("picParam", patdetails.imgPath);
             //Personal Info
 
             //vital

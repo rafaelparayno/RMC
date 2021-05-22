@@ -139,6 +139,8 @@ namespace RMC.Patients.PanelsDetails.Dialogs
             preEmployment.SetParameterValue("Gender", patientDetails.gender);
             preEmployment.SetParameterValue("bdate", patientDetails.birthdate.ToString().Split(' ')[0]);
             preEmployment.SetParameterValue("age", patientDetails.age.ToString());
+            preEmployment.SetParameterValue("imgPicParam", patientDetails.imgPath);
+            Console.WriteLine(patientDetails.imgPath);
             //Personal Info
 
 
