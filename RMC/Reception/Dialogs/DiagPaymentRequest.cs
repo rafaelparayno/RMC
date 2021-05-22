@@ -32,6 +32,7 @@ namespace RMC.Reception.Dialogs
         private int patientid = 0;
         private int labS = 3;
         private int xRayS = 4;
+        private int invoice_no = 0;
         DataTable dt = new DataTable();
 
         public DiagPaymentRequest(int docres,int patientid)
@@ -178,6 +179,7 @@ namespace RMC.Reception.Dialogs
         {
            
             int lastQ = await customerDetailsController.getLastQueue() + 1;
+            invoice_no = await invoiceController.getLatestNo();
             await customerDetailsController.save(lastQ.ToString(), patientid.ToString());
             await invoiceController.Save(totalPrice);
             customerid = await customerDetailsController.getCustomerIdinQueue(lastQ);
@@ -188,8 +190,6 @@ namespace RMC.Reception.Dialogs
             if (hasRadio())
                 await customerRequestsController.newReq(xRayS);
 
-
-        
 
             Task task1 = savesRadioLabQ();
             Task task2 = customerDetailsController.setPaid(customerid);
@@ -311,6 +311,7 @@ namespace RMC.Reception.Dialogs
             rec.SetParameterValue("total", float.Parse(textBox3.Text.Trim().Split(' ')[1]));
             rec.SetParameterValue("payment", float.Parse(textBox2.Text.Trim()));
             rec.SetParameterValue("change", float.Parse(textBox4.Text.Trim().Split(' ')[1]));
+            rec.SetParameterValue("in_no", invoice_no);
             var dialog = new PrintDialog();
             dialog.ShowDialog();
             rec.PrintOptions.PrinterName = dialog.PrinterSettings.PrinterName;

@@ -53,6 +53,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         float priceSConsult = 0;
         float priceFConsult = 0;
         float totalPrice = 0;
+        int invoice_no = 0;
         DataTable dt = new DataTable();
    /*     PrintDocument printDocument = new PrintDocument();
         PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();*/
@@ -276,6 +277,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             rec.SetParameterValue("total", float.Parse(textBox3.Text.Trim().Split(' ')[1]));
             rec.SetParameterValue("payment", float.Parse(textBox2.Text.Trim()));
             rec.SetParameterValue("change", float.Parse(textBox4.Text.Trim().Split(' ')[1]));
+            rec.SetParameterValue("in_no", invoice_no);
+
             var dialog = new PrintDialog();
             dialog.ShowDialog();
             rec.PrintOptions.PrinterName = dialog.PrinterSettings.PrinterName;
@@ -290,10 +293,14 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             Task task1 = savesRadioLabQ();
             Task task2 = customerDetailsController.setPaid(customerid);
             Task task3 = saveclinicSales();
-        
-            Task[] processes = new Task[] { task1, task2, task3 };
+            Task<int> task4 = invoiceController.getLatestNo();
+
+
+            Task[] processes = new Task[] { task1, task2, task3,task4 };
 
             await Task.WhenAll(processes);
+
+            invoice_no = task4.Result;
         }
 
 

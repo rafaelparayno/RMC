@@ -123,30 +123,36 @@ namespace RMC.Database.Controllers
             {
                 case 0:
                     sql = @"SELECT laboratorylist.`laboratory_id` AS 'ID',
-                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS'
+                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS',
+                        crystal_name
                         FROM `laboratorylist` 
                         INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
-                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id
-                        WHERE labname LIKE @key";
+                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id 
+                        LEFT JOIN automated_crystal ON laboratorylist.crystal_id_lab = automated_crystal.automated_crystal_id
+                        WHERE labname LIKE @key ORDER BY laboratory_id ASC";
                     break;
 
                 case 1:
                     sql = @"SELECT laboratorylist.`laboratory_id` AS 'ID',
-                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS'
+                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS',
+                        crystal_name
                         FROM `laboratorylist` 
                         INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
-                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id
-                        WHERE labtype_name LIKE @key";
+                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id 
+                        LEFT JOIN automated_crystal ON laboratorylist.crystal_id_lab = automated_crystal.automated_crystal_id
+                        WHERE labtype_name LIKE @key ORDER BY laboratory_id ASC";
                     
                     break;
 
                 case 2:
                     sql = @"SELECT laboratorylist.`laboratory_id` AS 'ID',
-                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS'
+                        labname AS 'Name',description,price_lab,labtype_name,filename AS 'DOCS',
+                        crystal_name
                         FROM `laboratorylist` 
                         INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
-                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id
-                        WHERE description LIKE @key";
+                        LEFT JOIN auto_docs ON laboratorylist.auto_docs_id = auto_docs.auto_docs_id 
+                        LEFT JOIN automated_crystal ON laboratorylist.crystal_id_lab = automated_crystal.automated_crystal_id
+                        WHERE description LIKE @key ORDER BY laboratory_id ASC";
 
                     break;
 

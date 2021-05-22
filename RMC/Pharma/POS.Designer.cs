@@ -173,7 +173,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(293, 35);
             this.btnUpdate.TabIndex = 264;
-            this.btnUpdate.Text = "Process Transaction";
+            this.btnUpdate.Text = "Process Transaction (F7)";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -188,7 +188,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(293, 33);
             this.button1.TabIndex = 265;
-            this.button1.Text = "Void All";
+            this.button1.Text = "Void All (F6)";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -203,7 +203,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(293, 33);
             this.button2.TabIndex = 266;
-            this.button2.Text = "Void";
+            this.button2.Text = "Void (F5)";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -388,7 +388,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(293, 33);
             this.button5.TabIndex = 272;
-            this.button5.Text = "Senior Discount";
+            this.button5.Text = "Senior Discount (F4)";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -411,7 +411,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(293, 33);
             this.button4.TabIndex = 274;
-            this.button4.Text = "View Prescription";
+            this.button4.Text = "View Prescription (F3)";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -426,7 +426,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(293, 33);
             this.button6.TabIndex = 275;
-            this.button6.Text = "New Transaction";
+            this.button6.Text = "New Transaction (F2)";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -441,7 +441,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(293, 33);
             this.button7.TabIndex = 276;
-            this.button7.Text = "Search";
+            this.button7.Text = "Search (F1)";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 

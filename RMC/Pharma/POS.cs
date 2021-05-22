@@ -27,6 +27,7 @@ namespace RMC.InventoryPharma
         float totalAmount = 0;
         float change = 0;
         string seniorId = "";
+        int invoice_no = 0;
 
         public POS()
         {
@@ -203,6 +204,7 @@ namespace RMC.InventoryPharma
         private async Task processTransaction()
         {
             await invoiceController.Save(totalAmount);
+            invoice_no = await invoiceController.getLatestNo();
             List<Task> listSave = new List<Task>();
            
             foreach (DataGridViewRow dr in dataGridView1.Rows)
@@ -255,6 +257,7 @@ namespace RMC.InventoryPharma
             rec.SetParameterValue("total", float.Parse(textBox3.Text.Trim().Split(' ')[1]));
             rec.SetParameterValue("payment", float.Parse(textBox2.Text.Trim()));
             rec.SetParameterValue("change", float.Parse(textBox4.Text.Trim().Split(' ')[1]));
+            rec.SetParameterValue("in_no", invoice_no);
             var dialog = new PrintDialog();
             dialog.ShowDialog();
             rec.PrintOptions.PrinterName = dialog.PrinterSettings.PrinterName;

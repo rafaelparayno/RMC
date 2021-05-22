@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,10 @@ namespace RMC.Admin.PanelLabForms
             int id = int.Parse(dgUserAccounts.SelectedRows[0].Cells[0].Value.ToString());
             string fullPath = await autod.getFullPath(id);
             Console.WriteLine(fullPath);
+
+            if (!File.Exists(fullPath))
+                return;
+
             if (fullPath != "")
             {
                 pbEdited.Image = Image.FromFile(fullPath);
