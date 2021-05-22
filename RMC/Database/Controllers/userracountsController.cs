@@ -52,7 +52,7 @@ namespace RMC.Database.Controllers
         public async Task<string> getFullNameId(int id)
         {
             string fullname = "";
-            string sql = @"SELECT CONCAT(firstname,' ','middlename',' ',lastname) as 'fullname' FROM useraccounts WHERE u_id = @id";
+            string sql = @"SELECT CONCAT(firstname,' ',middlename,' ',lastname) as 'fullname' FROM useraccounts WHERE u_id = @id";
             List<MySqlParameter> listParams = new List<MySqlParameter>() { (new MySqlParameter("@id",id)) };
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);

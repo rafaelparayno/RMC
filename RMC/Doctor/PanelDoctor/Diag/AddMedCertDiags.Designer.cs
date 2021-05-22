@@ -38,8 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSigns = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtAdd = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -54,12 +52,10 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtSigns);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtAdd);
-            this.panel1.Controls.Add(this.label7);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 526);
+            this.panel1.Size = new System.Drawing.Size(800, 515);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -67,7 +63,7 @@
             this.panel2.Controls.Add(this.iconButton2);
             this.panel2.Controls.Add(this.iconButton1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 485);
+            this.panel2.Location = new System.Drawing.Point(0, 474);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 41);
             this.panel2.TabIndex = 270;
@@ -122,7 +118,7 @@
             // 
             this.txtRecommendation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRecommendation.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRecommendation.Location = new System.Drawing.Point(15, 349);
+            this.txtRecommendation.Location = new System.Drawing.Point(15, 313);
             this.txtRecommendation.Multiline = true;
             this.txtRecommendation.Name = "txtRecommendation";
             this.txtRecommendation.Size = new System.Drawing.Size(773, 113);
@@ -135,7 +131,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(12, 317);
+            this.label3.Location = new System.Drawing.Point(12, 281);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(129, 17);
             this.label3.TabIndex = 268;
@@ -145,7 +141,7 @@
             // 
             this.txtImpression.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtImpression.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtImpression.Location = new System.Drawing.Point(15, 189);
+            this.txtImpression.Location = new System.Drawing.Point(15, 153);
             this.txtImpression.Multiline = true;
             this.txtImpression.Name = "txtImpression";
             this.txtImpression.Size = new System.Drawing.Size(773, 113);
@@ -158,7 +154,7 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(12, 157);
+            this.label2.Location = new System.Drawing.Point(12, 121);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 17);
             this.label2.TabIndex = 266;
@@ -168,7 +164,7 @@
             // 
             this.txtSigns.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSigns.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSigns.Location = new System.Drawing.Point(15, 115);
+            this.txtSigns.Location = new System.Drawing.Point(15, 79);
             this.txtSigns.Name = "txtSigns";
             this.txtSigns.Size = new System.Drawing.Size(773, 27);
             this.txtSigns.TabIndex = 265;
@@ -180,40 +176,18 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(12, 83);
+            this.label1.Location = new System.Drawing.Point(12, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(333, 17);
             this.label1.TabIndex = 264;
             this.label1.Text = "Patient Signs And Symptoms / Chief Complaint";
-            // 
-            // txtAdd
-            // 
-            this.txtAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAdd.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdd.Location = new System.Drawing.Point(15, 41);
-            this.txtAdd.Name = "txtAdd";
-            this.txtAdd.Size = new System.Drawing.Size(773, 27);
-            this.txtAdd.TabIndex = 263;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(12, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 17);
-            this.label7.TabIndex = 262;
-            this.label7.Text = "Address";
             // 
             // AddMedCertDiags
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(800, 526);
+            this.ClientSize = new System.Drawing.Size(800, 515);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -236,8 +210,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSigns;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtAdd;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtRecommendation;
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconButton iconButton2;

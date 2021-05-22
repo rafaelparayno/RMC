@@ -53,7 +53,7 @@ namespace RMC.Database.Models
 
 		public static string getFullName()
 		{
-			return FirstName + " " + MiddleName + " " + LastName;
+			return FirstName + " "  + LastName;
 		}
 
 		public static int getUserId()

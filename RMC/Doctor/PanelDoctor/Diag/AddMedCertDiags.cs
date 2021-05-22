@@ -62,8 +62,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                if (node.Name == "address")
-                    txtAdd.Text = node.InnerText;
+                
                 if (node.Name == "dateParam")
                     dateCreated = node.InnerText;
                 if (node.Name == "impression")
@@ -97,7 +96,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
             bool isValid = true;
 
 
-            isValid = (txtAdd.Text.Trim() != "") && isValid;
+       
 
             isValid = (txtSigns.Text.Trim() != "") && isValid;
 
@@ -115,10 +114,8 @@ namespace RMC.Doctor.PanelDoctor.Diag
         private void iconButton1_Click(object sender, EventArgs e)
         {
 
-
           
-            DiagMedCertForms diagMedCertForms = new DiagMedCertForms(0, patdetails.FullName,
-                                        txtAdd.Text.Trim(),txtSigns.Text.Trim(),
+            DiagMedCertForms diagMedCertForms = new DiagMedCertForms(0, patdetails.FullName,txtSigns.Text.Trim(),
                                         txtImpression.Text.Trim(),txtRecommendation.Text.Trim());
             diagMedCertForms.ShowDialog();
         }
@@ -164,7 +161,7 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
             xwriter.WriteElementString("dateParam", dateCreated);
 
-            xwriter.WriteElementString("address", txtAdd.Text.Trim());
+         
             xwriter.WriteElementString("signs", txtSigns.Text.Trim());
             xwriter.WriteElementString("impression", txtImpression.Text.Trim());
             xwriter.WriteElementString("recommendation", txtRecommendation.Text.Trim());

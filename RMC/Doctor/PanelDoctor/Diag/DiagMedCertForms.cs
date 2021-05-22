@@ -46,36 +46,34 @@ namespace RMC.Doctor.PanelDoctor.Diag
         }
 
         private async void DiagMedCertForms_Load(object sender, EventArgs e)
-        {
-            
-
+        {     
 
             if(patid == 0)
             {
 
-            DoctorDataModel doctorDataModel = await doctorDataController.getDoctorData(UserLog.getUserId());
-            DateTime datenow = DateTime.Today;
-            listAccess = accessController.accesses(UserLog.getRole());
-            if (listAccess.Contains(5))
-            {
-                medcertReport.SetParameterValue("doctorName", UserLog.getFullName());
-                medcertReport.SetParameterValue("dateParam", datenow.ToString("dd-MM-yyyy"));
-                medcertReport.SetParameterValue("licenseNo", doctorDataModel.license);
-                medcertReport.SetParameterValue("prNoParam", doctorDataModel.pr);
-                medcertReport.SetParameterValue("imgParam", doctorDataModel.imgPath);
-            }
+                DoctorDataModel doctorDataModel = await doctorDataController.getDoctorData(UserLog.getUserId());
+                DateTime datenow = DateTime.Today;
+                listAccess = accessController.accesses(UserLog.getRole());
+                if (listAccess.Contains(5))
+                {
+                    medcertReport.SetParameterValue("doctorName", UserLog.getFullName());
+                    medcertReport.SetParameterValue("dateParam", datenow.ToString("dd-MM-yyyy"));
+                    medcertReport.SetParameterValue("licenseNo", doctorDataModel.license);
+                    medcertReport.SetParameterValue("prNoParam", doctorDataModel.pr);
+                    medcertReport.SetParameterValue("imgParam", doctorDataModel.imgPath);
+                }
            
-            medcertReport.SetParameterValue("patientName", details[0]);
+                medcertReport.SetParameterValue("patientName", details[0]);
 
-            medcertReport.SetParameterValue("ofParam", details[1]);
-            medcertReport.SetParameterValue("dueToParam", details[2]);
-            medcertReport.SetParameterValue("impressionParam", details[3]);
-            medcertReport.SetParameterValue("recommendationParam", details[4]);
+       
+                medcertReport.SetParameterValue("dueToParam", details[1]);
+                medcertReport.SetParameterValue("impressionParam", details[2]);
+                medcertReport.SetParameterValue("recommendationParam", details[3]);
 
             }
             else
             {
-              await  loadXml();
+                 await  loadXml();
             }
 
 
@@ -98,10 +96,8 @@ namespace RMC.Doctor.PanelDoctor.Diag
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                if(node.Name == "address")
-                    medcertReport.SetParameterValue("ofParam", node.InnerText);
-                if(node.Name == "dateParam")
-                    medcertReport.SetParameterValue("dateParam", node.InnerText);
+                
+                
                 if (node.Name == "impression")
                     medcertReport.SetParameterValue("impressionParam", node.InnerText);
                 if (node.Name == "recommendation")
@@ -114,14 +110,12 @@ namespace RMC.Doctor.PanelDoctor.Diag
             DoctorDataModel dt = await doctorDataController.getDoctorData(doctorid);
             patientDetails patientDetails = await patientDetailsController.getPatientId(patid);
             string fullName = await userracountsController.getFullNameId(doctorid);
-
+            medcertReport.SetParameterValue("dateParam", model.date.ToString("MMMMM,dd yyyy"));
             medcertReport.SetParameterValue("licenseNo", dt.license);
             medcertReport.SetParameterValue("prNoParam", dt.pr);
             medcertReport.SetParameterValue("doctorName", fullName);
             medcertReport.SetParameterValue("imgParam", dt.imgPath);
             medcertReport.SetParameterValue("patientName", patientDetails.FullName);
-
-
         }
     }
 }

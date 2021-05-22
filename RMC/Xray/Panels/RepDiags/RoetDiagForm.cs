@@ -50,7 +50,7 @@ namespace RMC.Xray.Panels.RepDiags
             roetgenological.SetParameterValue("civil", patientDetails.civil_status);
 
             roetgenological.SetParameterValue("imgPathRadio", personelModelRadio.imgPath);
-            roetgenological.SetParameterValue("radioName", patientDetails.civil_status);
+            roetgenological.SetParameterValue("radioName", personelModelRadio.name);
             crystalReportViewer1.ReportSource = roetgenological;
         }
 
