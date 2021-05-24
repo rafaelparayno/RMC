@@ -35,6 +35,28 @@ namespace RMC.Database.Controllers
            return await crud.GetDataSetAsync(sql, null);
         }
 
+        public async Task<float> getSumInMonth(int m, int y)
+        {
+            float totalSales = 0;
+            string sql = @"SELECT SUM(sales) As 'sales' FROM invoice 
+                        WHERE invoice_id in (SELECT invoice_id FROM salesclinic) 
+                        AND month(date_invoice) = @m AND year(date_invoice) = @y";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@m", m));
+            listparams.Add(new MySqlParameter("@y", y));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            if (await reader.ReadAsync())
+            {
+                totalSales = reader["sales"].ToString() == "" ? 0 : float.Parse(reader["sales"].ToString());
+
+            }
+
+            crud.CloseConnection();
+
+            return totalSales;
+        }
+
         public async Task<float> getTotalSales()
         {
             float totalSales = 0;

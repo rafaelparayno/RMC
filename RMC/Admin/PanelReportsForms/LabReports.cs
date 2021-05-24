@@ -47,5 +47,10 @@ namespace RMC.Admin.PanelReportsForms
         {
             openChildForm(new LabCostRepForm());
         }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new FinancialReportLab());
+        }
     }
 }
