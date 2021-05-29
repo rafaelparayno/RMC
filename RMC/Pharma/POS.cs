@@ -78,6 +78,7 @@ namespace RMC.InventoryPharma
                 dataGridView1.DataSource = dt;
                 clearItems();
                 CalculateTotal();
+                textBox2.Focus();
             }
         }
 

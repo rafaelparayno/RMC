@@ -363,6 +363,8 @@ namespace RMC.Lab.DialogReports
                     continue;
                 if (parameterField.Name == "sex")
                     continue;
+                if (parameterField.Name == "address")
+                    continue;
                 if (parameterField.Name == "dateParam")
                     continue;
 

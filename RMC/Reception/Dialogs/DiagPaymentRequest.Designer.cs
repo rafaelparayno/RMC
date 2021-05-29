@@ -205,7 +205,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(597, 33);
             this.button2.TabIndex = 286;
-            this.button2.Text = "Senior Discount";
+            this.button2.Text = "Senior Discount (F2)";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -220,7 +220,7 @@
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(597, 33);
             this.btnRemove.TabIndex = 285;
-            this.btnRemove.Text = "Remove";
+            this.btnRemove.Text = "Remove  (F1)";
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
@@ -235,7 +235,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(597, 35);
             this.btnUpdate.TabIndex = 283;
-            this.btnUpdate.Text = "Process Transaction";
+            this.btnUpdate.Text = "Process Transaction (F3)";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -251,10 +251,12 @@
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnUpdate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "DiagPaymentRequest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";
             this.Load += new System.EventHandler(this.DiagPaymentRequest_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DiagPaymentRequest_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -217,7 +217,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(219, 30);
             this.button3.TabIndex = 267;
-            this.button3.Text = "&Add to Cart";
+            this.button3.Text = "&Add to Cart(Enter)";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

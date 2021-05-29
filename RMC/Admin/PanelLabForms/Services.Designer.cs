@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMenus = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dbServiceList = new System.Windows.Forms.DataGridView();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEditItem = new FontAwesome.Sharp.IconButton();
             this.btnRemove = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dbServiceList = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.panelMenus.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -57,6 +57,28 @@
             this.groupBox1.Size = new System.Drawing.Size(800, 72);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconSize = 18;
+            this.iconButton1.Location = new System.Drawing.Point(701, 39);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(38, 23);
+            this.iconButton1.TabIndex = 222;
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // txtName
             // 
@@ -86,42 +108,6 @@
             this.panelMenus.Name = "panelMenus";
             this.panelMenus.Size = new System.Drawing.Size(800, 61);
             this.panelMenus.TabIndex = 4;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.dbServiceList);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(0, 72);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(800, 317);
-            this.groupBox2.TabIndex = 210;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "List of Services";
-            // 
-            // dbServiceList
-            // 
-            this.dbServiceList.AllowUserToAddRows = false;
-            this.dbServiceList.AllowUserToDeleteRows = false;
-            this.dbServiceList.AllowUserToResizeColumns = false;
-            this.dbServiceList.AllowUserToResizeRows = false;
-            this.dbServiceList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dbServiceList.BackgroundColor = System.Drawing.Color.FloralWhite;
-            this.dbServiceList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dbServiceList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dbServiceList.Location = new System.Drawing.Point(3, 19);
-            this.dbServiceList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dbServiceList.MultiSelect = false;
-            this.dbServiceList.Name = "dbServiceList";
-            this.dbServiceList.ReadOnly = true;
-            this.dbServiceList.RowHeadersVisible = false;
-            this.dbServiceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dbServiceList.Size = new System.Drawing.Size(794, 294);
-            this.dbServiceList.StandardTab = true;
-            this.dbServiceList.TabIndex = 113;
             // 
             // btnAddItem
             // 
@@ -192,30 +178,45 @@
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // iconButton1
+            // groupBox2
             // 
-            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconSize = 18;
-            this.iconButton1.Location = new System.Drawing.Point(701, 39);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(38, 23);
-            this.iconButton1.TabIndex = 222;
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.dbServiceList);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(0, 72);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(800, 317);
+            this.groupBox2.TabIndex = 210;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "List of Services";
+            // 
+            // dbServiceList
+            // 
+            this.dbServiceList.AllowUserToAddRows = false;
+            this.dbServiceList.AllowUserToDeleteRows = false;
+            this.dbServiceList.AllowUserToResizeColumns = false;
+            this.dbServiceList.AllowUserToResizeRows = false;
+            this.dbServiceList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dbServiceList.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dbServiceList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dbServiceList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dbServiceList.Location = new System.Drawing.Point(3, 19);
+            this.dbServiceList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dbServiceList.MultiSelect = false;
+            this.dbServiceList.Name = "dbServiceList";
+            this.dbServiceList.ReadOnly = true;
+            this.dbServiceList.RowHeadersVisible = false;
+            this.dbServiceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dbServiceList.Size = new System.Drawing.Size(794, 294);
+            this.dbServiceList.StandardTab = true;
+            this.dbServiceList.TabIndex = 113;
             // 
             // Services
             // 
+            this.AcceptButton = this.iconButton1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;

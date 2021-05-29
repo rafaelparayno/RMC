@@ -32,7 +32,7 @@
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.label8 = new System.Windows.Forms.Label();
             this.btnSave = new FontAwesome.Sharp.IconButton();
-            this.mainPanel = new System.Windows.Forms.Panel();
+            this.mainPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,7 +103,6 @@
             // 
             this.mainPanel.AutoScroll = true;
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainPanel.Location = new System.Drawing.Point(0, 35);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(800, 415);
@@ -111,6 +110,7 @@
             // 
             // DynamicLabReportsValue
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
@@ -134,6 +134,6 @@
         private FontAwesome.Sharp.IconButton btnCloseApp;
         private System.Windows.Forms.Label label8;
         private FontAwesome.Sharp.IconButton btnSave;
-        private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.FlowLayoutPanel mainPanel;
     }
 }

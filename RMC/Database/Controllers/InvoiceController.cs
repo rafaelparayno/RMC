@@ -27,6 +27,7 @@ namespace RMC.Database.Controllers
                 invoice = string.IsNullOrEmpty(reader["invoice_id"].ToString()) ? 0 :
                     int.Parse(reader["invoice_id"].ToString());
             }
+            crud.CloseConnection();
 
             return invoice;
         }

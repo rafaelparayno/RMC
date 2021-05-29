@@ -627,8 +627,29 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             setTotalPrice();
         }
 
+
+
         #endregion
 
+        private void ReceptionPayment_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                btnRemove.PerformClick();
+            }
+            if (e.KeyCode == Keys.F2)
+            {
+                btnRemoveALl.PerformClick();
+            }
+            if (e.KeyCode == Keys.F3)
+            {
+                button2.PerformClick();
+            }
+            if (e.KeyCode == Keys.F4)
+            {
+                btnUpdate.PerformClick();
+            }
 
+        }
     }
 }

@@ -68,6 +68,7 @@
             this.btnAddLab = new FontAwesome.Sharp.IconButton();
             this.cbLab = new System.Windows.Forms.ComboBox();
             this.gbMedCert = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.gpConsulation = new System.Windows.Forms.GroupBox();
@@ -79,7 +80,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -256,7 +256,7 @@
             this.btnRemoveALl.Name = "btnRemoveALl";
             this.btnRemoveALl.Size = new System.Drawing.Size(163, 33);
             this.btnRemoveALl.TabIndex = 277;
-            this.btnRemoveALl.Text = "Remove All";
+            this.btnRemoveALl.Text = "Remove All (F2)";
             this.btnRemoveALl.UseVisualStyleBackColor = false;
             this.btnRemoveALl.Click += new System.EventHandler(this.btnRemoveALl_Click);
             // 
@@ -271,7 +271,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(293, 35);
             this.btnUpdate.TabIndex = 274;
-            this.btnUpdate.Text = "Process Transaction";
+            this.btnUpdate.Text = "Process Transaction (F4)";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -786,6 +786,17 @@
             this.gbMedCert.TabStop = false;
             this.gbMedCert.Visible = false;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(23, 69);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(53, 20);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Free";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
+            // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -901,7 +912,7 @@
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(128, 33);
             this.btnRemove.TabIndex = 281;
-            this.btnRemove.Text = "Remove";
+            this.btnRemove.Text = "Remove (F1)";
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
@@ -916,20 +927,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(293, 33);
             this.button2.TabIndex = 282;
-            this.button2.Text = "Senior Discount";
+            this.button2.Text = "Senior Discount (F3)";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(23, 69);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(53, 20);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Free";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
             // 
             // ReceptionPayment
             // 
@@ -948,10 +948,12 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ReceptionPayment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ReceptionPayment_KeyUp);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

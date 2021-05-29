@@ -318,5 +318,22 @@ namespace RMC.Reception.Dialogs
             rec.PrintToPrinter(1, false, 0, 0);
 
         }
+
+        private void DiagPaymentRequest_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                btnRemove.PerformClick();
+            }
+            if (e.KeyCode == Keys.F2)
+            {
+                button2.PerformClick();
+            }
+            if (e.KeyCode == Keys.F3)
+            {
+                btnUpdate.PerformClick();
+            }
+            
+        }
     }
 }

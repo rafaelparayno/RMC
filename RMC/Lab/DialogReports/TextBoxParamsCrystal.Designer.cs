@@ -39,14 +39,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 54);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(678, 10);
+            this.panel1.Size = new System.Drawing.Size(796, 10);
             this.panel1.TabIndex = 5;
             // 
             // txtParam
             // 
             this.txtParam.Location = new System.Drawing.Point(17, 26);
             this.txtParam.Name = "txtParam";
-            this.txtParam.Size = new System.Drawing.Size(637, 20);
+            this.txtParam.Size = new System.Drawing.Size(751, 20);
             this.txtParam.TabIndex = 4;
             this.txtParam.TextChanged += new System.EventHandler(this.txtParam_TextChanged);
             // 
@@ -68,7 +68,7 @@
             this.Controls.Add(this.txtParam);
             this.Controls.Add(this.lblParamName);
             this.Name = "TextBoxParamsCrystal";
-            this.Size = new System.Drawing.Size(678, 64);
+            this.Size = new System.Drawing.Size(796, 64);
             this.ResumeLayout(false);
             this.PerformLayout();
 
