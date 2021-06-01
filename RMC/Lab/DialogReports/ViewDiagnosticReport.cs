@@ -1,4 +1,5 @@
-﻿using RMC.Database.Controllers;
+﻿using RMC.Components;
+using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.NewReports;
 using System;
@@ -17,7 +18,7 @@ namespace RMC.Lab.DialogReports
 {
     public partial class ViewDiagnosticReport : Form
     {
-  
+        loading loading;
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         patientDetails patientDetails = new patientDetails();
         PatientLabController patientLabController = new PatientLabController();
@@ -30,6 +31,7 @@ namespace RMC.Lab.DialogReports
         private int patient_lab_id = 0;
         public ViewDiagnosticReport(int patientid, int labid, int patient_lab_id)
         {
+            ShowWaitForm();
             InitializeComponent();
             this.patientid = patientid;
             this.labid = labid;
@@ -86,5 +88,34 @@ namespace RMC.Lab.DialogReports
 
             diagnosticReport.SetParameterValue("labno", labNo);
         }
+
+
+        protected void ShowWaitForm()
+        {
+            // don't display more than one wait form at a time
+            if (loading != null && !loading.IsDisposed)
+            {
+                return;
+            }
+
+            loading = new loading();
+            /*  pleaseWait.SetMessage(message); // "Loading data. Please wait..."*/
+            loading.TopMost = true;
+            loading.StartPosition = FormStartPosition.CenterScreen;
+            loading.Show();
+            loading.Refresh();
+
+            // force the wait window to display for at least 700ms so it doesn't just flash on the screen
+            System.Threading.Thread.Sleep(700);
+            Application.Idle += OnLoaded;
+        }
+
+
+        private void OnLoaded(object sender, EventArgs e)
+        {
+            Application.Idle -= OnLoaded;
+            loading.Close();
+        }
+
     }
 }

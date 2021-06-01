@@ -1,4 +1,5 @@
-﻿using RMC.Database.Controllers;
+﻿using RMC.Components;
+using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.Lab.DialogReports;
 using RMC.Lab.Panels.Diags;
@@ -16,7 +17,7 @@ namespace RMC.Patients.PanelsDetails
 {
     public partial class PanelLabDetail : Form
     {
-
+     
         PatientLabController patientLabController = new PatientLabController();
         LaboratoryController laboratoryController = new LaboratoryController();
         List<patientLabModel> listpatientModel;
@@ -101,12 +102,14 @@ namespace RMC.Patients.PanelsDetails
 
         private async void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
+          
             if (lvLabDetails.SelectedItems.Count == 0)
                 return;
 
             if (lvLabDetails.Items.Count == 0)
                 return;
 
+         
             pictureBox1.Show();
 
             pictureBox1.Update();
@@ -118,9 +121,8 @@ namespace RMC.Patients.PanelsDetails
             
             if (labModel.crystal_id_lab > 0 && filenameExt == "xml")
             {
+               
 
-                /* DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds);
-                 dynform.ShowDialog();*/
                 switch (labModel.crystal_id_lab)
                 {
                     case 1:
@@ -205,5 +207,7 @@ namespace RMC.Patients.PanelsDetails
             }
            // setData(patientid);
         }
+
+      
     }
 }

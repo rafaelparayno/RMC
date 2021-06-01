@@ -19,8 +19,7 @@ namespace RMC.Components
 
         private void loading_Load(object sender, EventArgs e)
         {
-            progressBar1.Style = ProgressBarStyle.Marquee;
-            progressBar1.MarqueeAnimationSpeed = 30;
+            pictureBox1.Update();
         }
     }
 }
