@@ -1,5 +1,6 @@
 ﻿using MySql.Data;
 using Org.BouncyCastle.Ocsp;
+using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.OthersPanels.panels;
@@ -273,5 +274,13 @@ namespace RMC.Reception.PanelRequestForm
             ad.ShowDialog();
         }
 
+        private void btnVoid_Click(object sender, EventArgs e)
+        {
+            VoidForm voidForm = new VoidForm();
+            voidForm.ShowDialog();
+
+
+            Console.WriteLine(voidForm.isFound);
+        }
     }
 }

@@ -33,6 +33,8 @@
             this.btnpay = new FontAwesome.Sharp.IconButton();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.btnEdit = new FontAwesome.Sharp.IconButton();
+            this.btnDelete = new FontAwesome.Sharp.IconButton();
+            this.btnVoid = new FontAwesome.Sharp.IconButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgCustomerList = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -51,6 +53,8 @@
             this.panelMenus.Controls.Add(this.btnpay);
             this.panelMenus.Controls.Add(this.btnAddItem);
             this.panelMenus.Controls.Add(this.btnEdit);
+            this.panelMenus.Controls.Add(this.btnDelete);
+            this.panelMenus.Controls.Add(this.btnVoid);
             this.panelMenus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelMenus.Location = new System.Drawing.Point(0, 465);
             this.panelMenus.Name = "panelMenus";
@@ -70,7 +74,7 @@
             this.btnpay.IconColor = System.Drawing.Color.White;
             this.btnpay.IconSize = 24;
             this.btnpay.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnpay.Location = new System.Drawing.Point(459, 0);
+            this.btnpay.Location = new System.Drawing.Point(309, 0);
             this.btnpay.Name = "btnpay";
             this.btnpay.Rotation = 0D;
             this.btnpay.Size = new System.Drawing.Size(75, 61);
@@ -93,7 +97,7 @@
             this.btnAddItem.IconColor = System.Drawing.Color.White;
             this.btnAddItem.IconSize = 24;
             this.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddItem.Location = new System.Drawing.Point(534, 0);
+            this.btnAddItem.Location = new System.Drawing.Point(384, 0);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Rotation = 0D;
             this.btnAddItem.Size = new System.Drawing.Size(75, 61);
@@ -116,7 +120,7 @@
             this.btnEdit.IconColor = System.Drawing.Color.White;
             this.btnEdit.IconSize = 24;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEdit.Location = new System.Drawing.Point(609, 0);
+            this.btnEdit.Location = new System.Drawing.Point(459, 0);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Rotation = 0D;
             this.btnEdit.Size = new System.Drawing.Size(75, 61);
@@ -125,6 +129,51 @@
             this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Maroon;
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnDelete.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.btnDelete.IconColor = System.Drawing.Color.White;
+            this.btnDelete.IconSize = 24;
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDelete.Location = new System.Drawing.Point(534, 0);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Rotation = 0D;
+            this.btnDelete.Size = new System.Drawing.Size(75, 61);
+            this.btnDelete.TabIndex = 14;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // btnVoid
+            // 
+            this.btnVoid.BackColor = System.Drawing.Color.Maroon;
+            this.btnVoid.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnVoid.FlatAppearance.BorderSize = 0;
+            this.btnVoid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoid.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnVoid.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoid.ForeColor = System.Drawing.Color.White;
+            this.btnVoid.IconChar = FontAwesome.Sharp.IconChar.Ban;
+            this.btnVoid.IconColor = System.Drawing.Color.White;
+            this.btnVoid.IconSize = 24;
+            this.btnVoid.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVoid.Location = new System.Drawing.Point(609, 0);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.Rotation = 0D;
+            this.btnVoid.Size = new System.Drawing.Size(75, 61);
+            this.btnVoid.TabIndex = 15;
+            this.btnVoid.Text = "Void";
+            this.btnVoid.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnVoid.UseVisualStyleBackColor = false;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // groupBox2
             // 
@@ -233,5 +282,7 @@
         private FontAwesome.Sharp.IconButton btnpay;
         private System.Windows.Forms.ToolStripMenuItem addVitalToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private FontAwesome.Sharp.IconButton btnVoid;
+        private FontAwesome.Sharp.IconButton btnDelete;
     }
 }

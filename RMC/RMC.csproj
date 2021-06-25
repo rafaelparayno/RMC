@@ -567,6 +567,12 @@
     <Compile Include="Components\MarqueeLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\VoidForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\VoidForm.Designer.cs">
+      <DependentUpon>VoidForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database\BackupandRestore\csBackupAndRestore.cs" />
     <Compile Include="Database\Controllers\AccessController.cs" />
     <Compile Include="Database\Controllers\AutoDocsController.cs" />
@@ -1661,6 +1667,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\loading.resx">
       <DependentUpon>loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\VoidForm.resx">
+      <DependentUpon>VoidForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\DashDoc.resx">
       <DependentUpon>DashDoc.cs</DependentUpon>

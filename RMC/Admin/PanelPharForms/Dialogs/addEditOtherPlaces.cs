@@ -60,5 +60,9 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             this.Close();
         }
 
+        private void btnCloseApp_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -12,6 +12,42 @@ namespace RMC.Database.Controllers
     class LoginController
     {
         dbcrud crud = new dbcrud();
+
+
+        public int isAcceptVoid(string username,string pass)
+        {
+            int roleid = 0;
+            if (username == "")
+            {
+
+                return 0;
+            }
+
+            if (pass == "")
+            {
+
+                return 0;
+            }
+
+            string sql = String.Format(@"SELECT * FROM useraccounts  WHERE  Binary Username= @user and Binary Password = @pass", username, pass);
+            List<MySqlParameter> listparam = new List<MySqlParameter>();
+            listparam.Add(new MySqlParameter("@user", username));
+            listparam.Add(new MySqlParameter("@pass", pass));
+
+
+            MySqlDataReader reader = null;
+            crud.RetrieveRecords(sql, ref reader, listparam);
+            if (reader.Read())
+            {
+
+                roleid = int.Parse(reader["role_id"].ToString());
+         
+            }
+         
+
+            crud.CloseConnection();
+            return roleid;
+        }
         
 
         public int login(string username,string pass)

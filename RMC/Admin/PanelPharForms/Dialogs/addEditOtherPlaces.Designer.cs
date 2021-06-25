@@ -112,6 +112,7 @@
             this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
             this.btnCloseApp.TabIndex = 2;
             this.btnCloseApp.UseVisualStyleBackColor = false;
+            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
             // 
             // label1
             // 
