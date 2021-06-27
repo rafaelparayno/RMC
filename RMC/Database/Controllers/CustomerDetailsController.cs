@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using RMC.Database.Models;
+using RMC.Lab;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -141,17 +142,20 @@ namespace RMC.Database.Controllers
             return lastq;
         }
 
-        public async Task setPaid(int customerid)
+        public async Task setPaid(int customerid,int status)
         {
-            string sql = @"UPDATE customer_request_details SET is_paid = 1 WHERE customer_id  = @id";
+            string sql = @"UPDATE customer_request_details SET is_paid = @status WHERE customer_id  = @id";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
 
             listparams.Add(new MySqlParameter("@id", customerid));
+            listparams.Add(new MySqlParameter("@status", status));
 
 
             await crud.ExecuteAsync(sql, listparams);
         }
+
+       
 
         public async Task save(params string [] data)
         {
@@ -388,5 +392,16 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task Delete(int customerid)
+        {
+            string sql = @"DELETE FROM customer_request_details WHERE customer_id = @cid";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@cid",customerid))
+            };
+
+            await crud.ExecuteAsync(sql, mySqlParameters);
+        }
     }
 }

@@ -552,6 +552,12 @@
     <Compile Include="Components\DoctorQueueControl.Designer.cs">
       <DependentUpon>DoctorQueueControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\InputInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\InputInvoice.Designer.cs">
+      <DependentUpon>InputInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\IPConfigForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1661,6 +1667,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Components\DoctorQueueControl.resx">
       <DependentUpon>DoctorQueueControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\InputInvoice.resx">
+      <DependentUpon>InputInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\IPConfigForms.resx">
       <DependentUpon>IPConfigForms.cs</DependentUpon>

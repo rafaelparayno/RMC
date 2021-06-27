@@ -23,7 +23,16 @@ namespace RMC.Database.Controllers
                     @type, @id)";
 
             list.Add(new MySqlParameter("@type", type));
-            list.Add(new MySqlParameter("@id", id));
+            
+        }
+
+        public async Task delete(int invoiceid)
+        {
+            List<MySqlParameter> list = new List<MySqlParameter>();
+
+            string sql = @"DELETE FROM salesclinic WHERE invoice_id = @id";
+            list.Add(new MySqlParameter("@id", invoiceid));
+
             await crud.ExecuteAsync(sql, list);
         }
 

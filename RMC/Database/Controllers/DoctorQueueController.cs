@@ -59,6 +59,8 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, list);
         }
 
+       
+
         public async Task setDone(int queu_no)
         {
             string sql = "UPDATE doctor_queue SET is_done = 1 WHERE customer_id IN (SELECT customer_id FROM customer_request_details WHERE queue_no = @q) AND DATE(date_q) = CURDATE()";
@@ -303,9 +305,13 @@ namespace RMC.Database.Controllers
             DbDataReader dbDataReader = await crud.RetrieveRecordsAsync(sql2, list);
 
             if (dbDataReader.HasRows)
-                return;
+            {
+                crud.CloseConnection();
+                return;   
+            }
+            crud.CloseConnection();
 
-             await crud.ExecuteAsync(sql, list);
+            await crud.ExecuteAsync(sql, list);
         }
 
         public async Task<bool> isDone(int queue_no)

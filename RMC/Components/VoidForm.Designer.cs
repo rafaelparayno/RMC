@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.txtPlaceName = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -51,6 +51,24 @@
             this.panel1.Size = new System.Drawing.Size(365, 35);
             this.panel1.TabIndex = 7;
             // 
+            // btnCloseApp
+            // 
+            this.btnCloseApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCloseApp.BackColor = System.Drawing.Color.Transparent;
+            this.btnCloseApp.FlatAppearance.BorderSize = 0;
+            this.btnCloseApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseApp.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnCloseApp.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
+            this.btnCloseApp.IconColor = System.Drawing.Color.White;
+            this.btnCloseApp.IconSize = 25;
+            this.btnCloseApp.Location = new System.Drawing.Point(332, 5);
+            this.btnCloseApp.Name = "btnCloseApp";
+            this.btnCloseApp.Rotation = 0D;
+            this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
+            this.btnCloseApp.TabIndex = 2;
+            this.btnCloseApp.UseVisualStyleBackColor = false;
+            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -59,9 +77,9 @@
             this.label1.ForeColor = System.Drawing.Color.FloralWhite;
             this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 16);
+            this.label1.Size = new System.Drawing.Size(103, 16);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Void Form";
+            this.label1.Text = "Security Form";
             // 
             // label6
             // 
@@ -95,24 +113,6 @@
             this.label2.Text = "Password";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnCloseApp
-            // 
-            this.btnCloseApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseApp.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseApp.FlatAppearance.BorderSize = 0;
-            this.btnCloseApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseApp.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnCloseApp.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
-            this.btnCloseApp.IconColor = System.Drawing.Color.White;
-            this.btnCloseApp.IconSize = 25;
-            this.btnCloseApp.Location = new System.Drawing.Point(332, 5);
-            this.btnCloseApp.Name = "btnCloseApp";
-            this.btnCloseApp.Rotation = 0D;
-            this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
-            this.btnCloseApp.TabIndex = 2;
-            this.btnCloseApp.UseVisualStyleBackColor = false;
-            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
-            // 
             // txtPlaceName
             // 
             this.txtPlaceName.BackColor = System.Drawing.Color.FloralWhite;
@@ -122,7 +122,7 @@
             this.txtPlaceName.Location = new System.Drawing.Point(27, 80);
             this.txtPlaceName.Name = "txtPlaceName";
             this.txtPlaceName.Size = new System.Drawing.Size(303, 26);
-            this.txtPlaceName.TabIndex = 247;
+            this.txtPlaceName.TabIndex = 0;
             // 
             // btnSave
             // 
@@ -135,7 +135,7 @@
             this.btnSave.Location = new System.Drawing.Point(27, 198);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(303, 28);
-            this.btnSave.TabIndex = 249;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Enter";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -153,10 +153,11 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
             this.textBox1.Size = new System.Drawing.Size(301, 26);
-            this.textBox1.TabIndex = 250;
+            this.textBox1.TabIndex = 1;
             // 
             // VoidForm
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;

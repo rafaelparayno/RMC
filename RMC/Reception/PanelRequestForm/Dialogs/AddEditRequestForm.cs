@@ -243,10 +243,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
                 }
 
-
-
-
-
                 if (currentS.Contains(consultS) || currentS.Contains(medCert))
                     docQController.Save(customerID, textBox3.Text.Trim(), medCertType, txtCompanyName.Text.Trim());
 

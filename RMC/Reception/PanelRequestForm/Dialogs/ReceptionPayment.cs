@@ -291,7 +291,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             await invoiceController.Save(totalPrice);
             Task task1 = savesRadioLabQ();
-            Task task2 = customerDetailsController.setPaid(customerid);
+            Task task2 = customerDetailsController.setPaid(customerid,1);
             Task task3 = saveclinicSales();
             Task<int> task4 = invoiceController.getLatestNo();
 
@@ -627,10 +627,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             setTotalPrice();
         }
 
-
-
-        #endregion
-
         private void ReceptionPayment_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -651,5 +647,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             }
 
         }
+
+
+        #endregion
+
+
     }
 }

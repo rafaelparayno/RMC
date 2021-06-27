@@ -192,7 +192,7 @@ namespace RMC.Reception.Dialogs
 
 
             Task task1 = savesRadioLabQ();
-            Task task2 = customerDetailsController.setPaid(customerid);
+            Task task2 = customerDetailsController.setPaid(customerid,1);
             Task task3 = saveclinicSales();
 
             Task[] processes = new Task[] { task1,task2 ,task3 };

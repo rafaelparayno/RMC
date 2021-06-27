@@ -467,12 +467,14 @@ namespace RMC.Admin
 
         private void AdminDashboard_Load(object sender, EventArgs e)
         {
+            if (UserLog.getRole() == 13)
+            {
+                this.Opacity = 0;      //first the opacity is 0
 
-            this.Opacity = 0;      //first the opacity is 0
-
-            t1.Interval = 10;  //we'll increase the opacity every 10ms
-            t1.Tick += new EventHandler(fadeIn);  //this calls the function that changes opacity 
-            t1.Start();
+                t1.Interval = 10;  //we'll increase the opacity every 10ms
+                t1.Tick += new EventHandler(fadeIn);  //this calls the function that changes opacity 
+                t1.Start();
+            }
         }
 
         void fadeIn(object sender, EventArgs e)

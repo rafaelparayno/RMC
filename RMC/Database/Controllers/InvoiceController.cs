@@ -44,6 +44,15 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, list);
         }
 
+        public async Task Delete(int id)
+        {
+            string sql = @"DELETE FROM invoice WHERE invoice_id = @id";
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@id", id));
+
+            await crud.ExecuteAsync(sql, list);
+        }
+
         public async Task<DataSet> getInvoicePharma()
         {
             string sql = @"SELECT DISTINCT(invoice.invoice_id),sales,date_invoice FROM invoice 

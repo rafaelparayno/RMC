@@ -58,6 +58,16 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
+        public async Task remove(int customer_id)
+        {
+            string sql = @"DELETE FROM customer_requests WHERE customer_id = @id";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", customer_id));
+       
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+
         public async void remove(int type,int customer_id)
         {
             string sql = @"DELETE FROM customer_requests WHERE customer_id = @id AND request_type = @type";

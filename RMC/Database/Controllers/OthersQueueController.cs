@@ -26,6 +26,17 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
+        public async Task Delete( int customerid)
+        {
+            string sql = @"DELETE FROM others_queue WHERE customer_id = @cid";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@cid", customerid));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+
 
         public async Task updateStatus(int service_id, int patientid,int status)
         {
