@@ -92,8 +92,7 @@ namespace RMC.Database.Controllers
             string sql = @"SELECT lab_queue.customer_id,lab_queue.laboratory_id,laboratorylist.labname,labtype.labtype_name,lab_queue.is_done_l FROM `lab_queue` 
                         INNER JOIN laboratorylist ON lab_queue.laboratory_id = laboratorylist.laboratory_id 
                         INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id
-                        WHERE customer_id IN (SELECT customer_id  FROM customer_request_details WHERE customer_request_details.patient_id = @id
-                                                    AND  DATE(date_req) = CURDATE()) ";
+                        WHERE customer_id = @id";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
@@ -113,7 +112,6 @@ namespace RMC.Database.Controllers
             }
 
             
-
             crud.CloseConnection();
             return listLabModel;
         }

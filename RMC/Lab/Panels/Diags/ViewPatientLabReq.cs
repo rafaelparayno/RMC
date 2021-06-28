@@ -18,19 +18,23 @@ namespace RMC.Lab.Panels.Diags
     public partial class ViewPatientLabReq : Form
     {
         private int patientid = 0;
+        private int cid = 0;
        
         patientDetails patientmod = new patientDetails();
         PatientDetailsController patD = new PatientDetailsController();
         List<labModel> listLabModels = new List<labModel>();
         LabQueueController labQueueController = new LabQueueController();
         LaboratoryController laboratoryController = new LaboratoryController();
-        public ViewPatientLabReq(int patientid)
+
+
+        public ViewPatientLabReq(int patientid,int cid)
         {
             InitializeComponent();
             this.patientid = patientid;
+            this.cid = cid;
             initLvCols();
             setData(patientid);
-
+          
         }
 
 
@@ -38,7 +42,7 @@ namespace RMC.Lab.Panels.Diags
         {
 
             patientmod = await patD.getPatientId(id);
-            listLabModels = await labQueueController.getReqLabByPatientID(id);
+            listLabModels = await labQueueController.getReqLabByPatientID(cid);
             setLabData();
             setPatientData();
 

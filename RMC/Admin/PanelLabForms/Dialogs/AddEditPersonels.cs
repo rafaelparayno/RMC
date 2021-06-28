@@ -25,26 +25,17 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
         }
 
-        public AddEditPersonels(int id,string name,string prof)
+        public AddEditPersonels(int id,string name,string prof,string licno)
         {
             InitializeComponent();
             isEdit = true;
             this.idEdit = id;
             textBox1.Text = name;
             cbOther.Text = prof;
-           
+            textBox2.Text = licno;
         }
 
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbOther_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private async void AddEditPersonels_Load(object sender, EventArgs e)
         {
@@ -87,7 +78,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
 
             string fullPath = pathDir + "Sign-" + GeneratePassword(10) + ".jpg";
-            await personelsController.save(cbOther.Text, textBox1.Text.Trim(), fullPath);
+            await personelsController.save(cbOther.Text, textBox1.Text.Trim(), fullPath,textBox2.Text.Trim());
             if (img != null)
                 img.Save(fullPath);
            
@@ -99,7 +90,8 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         {
             Image img = pictureBox1.Image;
             
-            await personelsController.edit(cbOther.Text, textBox1.Text.Trim(), idEdit.ToString());
+            await personelsController.edit(cbOther.Text, textBox1.Text.Trim(), 
+                idEdit.ToString(),textBox2.Text.Trim());
             if (img != null)
             {
 
@@ -144,7 +136,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
 
             bool isValid = true;
 
-
+            isValid = !(cbOther.SelectedIndex == -1) && isValid;
          
             isValid = !(string.IsNullOrEmpty(cbOther.Text.Trim())) && isValid;
 

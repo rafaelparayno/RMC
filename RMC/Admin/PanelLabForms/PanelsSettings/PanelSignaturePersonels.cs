@@ -73,7 +73,8 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             int id = int.Parse(dgLabTypes.SelectedRows[0].Cells[0].Value.ToString());
             AddEditPersonels addEditPersonels = new AddEditPersonels(id,
                                                     dgLabTypes.SelectedRows[0].Cells[2].Value.ToString(),
-                                                    dgLabTypes.SelectedRows[0].Cells[1].Value.ToString());
+                                                    dgLabTypes.SelectedRows[0].Cells[1].Value.ToString(),
+                                                    dgLabTypes.SelectedRows[0].Cells[3].Value.ToString());
             addEditPersonels.ShowDialog();
             await loadData();
         }

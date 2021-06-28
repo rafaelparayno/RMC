@@ -16,20 +16,20 @@ namespace RMC.Database.Controllers
 
         public async Task save(params string [] data)
         {
-            string sql = @"INSERT INTO `personels`( `profession`, `personel_name`, `signature_path`) 
-                        VALUES (@prof,@name,@path)";
+            string sql = @"INSERT INTO `personels`( `profession`, `personel_name`, `licno`,`signature_path`) 
+                        VALUES (@prof,@name,@licno,@path)";
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
             mySqlParameters.Add(new MySqlParameter("@prof", data[0]));
             mySqlParameters.Add(new MySqlParameter("@name", data[1]));
             mySqlParameters.Add(new MySqlParameter("@path", data[2]));
-
+            mySqlParameters.Add(new MySqlParameter("@licno", data[3]));
             await crud.ExecuteAsync(sql, mySqlParameters);
         }
 
         public async Task<DataSet> getDataset()
         {
-            string sql = @"SELECT personels_id,profession,personel_name,is_active FROM personels";
+            string sql = @"SELECT personels_id,profession,personel_name,licno,is_active FROM personels";
 
 
             return await crud.GetDataSetAsync(sql, null);
@@ -38,7 +38,8 @@ namespace RMC.Database.Controllers
 
         public async Task edit(params string [] data)
         {
-            string sql = @"UPDATE personels SET profession = @prof ,personel_name = @name WHERE personels_id = @id";
+            string sql = @"UPDATE personels SET profession = @prof ,personel_name = @name,
+                       licno = @licno WHERE personels_id = @id";
 
 
             int id = int.Parse(data[2]);
@@ -46,6 +47,7 @@ namespace RMC.Database.Controllers
             mySqlParameters.Add(new MySqlParameter("@prof", data[0]));
             mySqlParameters.Add(new MySqlParameter("@name", data[1]));
             mySqlParameters.Add(new MySqlParameter("@id", id));
+            mySqlParameters.Add(new MySqlParameter("@licno", data[3]));
 
             await crud.ExecuteAsync(sql, mySqlParameters);
         }

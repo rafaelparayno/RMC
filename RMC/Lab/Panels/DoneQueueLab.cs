@@ -19,6 +19,7 @@ namespace RMC.Lab.Panels
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
 
         string idRightClick = "";
+        string cidRightClick = "";
         public DoneQueueLab()
         {
             InitializeComponent();
@@ -46,11 +47,13 @@ namespace RMC.Lab.Panels
         private void showLabRequestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool isNumber = int.TryParse(idRightClick, out _);
-            if (!isNumber)
+            bool isNumber2 = int.TryParse(cidRightClick, out _);
+            if (!isNumber || isNumber2)
                 return;
 
             int id = int.Parse(idRightClick);
-            ViewPatientLabReq v = new ViewPatientLabReq(id);
+            int cid = int.Parse(cidRightClick);
+            ViewPatientLabReq v = new ViewPatientLabReq(id, cid);
             v.ShowDialog();
         }
 
@@ -66,6 +69,7 @@ namespace RMC.Lab.Panels
                 if (currentMouseOverRow >= 0)
                 {
                     idRightClick = dbServiceList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    cidRightClick = dbServiceList.Rows[currentMouseOverRow].Cells[1].Value.ToString();
                     contextMenuStrip1.Show(dbServiceList, new Point(e.X, e.Y));
 
                 }

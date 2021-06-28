@@ -180,6 +180,10 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
         {
             int fromto;
             int addStocks = int.Parse(numericUpDown2.Value.ToString());
+
+            if (comboBox1.SelectedIndex == -1)
+                return;
+
             if (isPharma)
             {
                 await pharmaStocksController.Save(id, int.Parse(textBox1.Text));

@@ -39,6 +39,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAddItem = new FontAwesome.Sharp.IconButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +53,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(32, 280);
+            this.button2.Location = new System.Drawing.Point(32, 297);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(313, 27);
             this.button2.TabIndex = 267;
@@ -66,7 +68,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(366, 280);
+            this.button1.Location = new System.Drawing.Point(366, 297);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(313, 27);
             this.button1.TabIndex = 266;
@@ -79,19 +81,18 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(29, 215);
+            this.label4.Location = new System.Drawing.Point(29, 232);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(146, 17);
             this.label4.TabIndex = 265;
             this.label4.Text = "File Path Signature: ";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtfilepath
             // 
             this.txtfilepath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtfilepath.Enabled = false;
             this.txtfilepath.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtfilepath.Location = new System.Drawing.Point(32, 235);
+            this.txtfilepath.Location = new System.Drawing.Point(32, 252);
             this.txtfilepath.Name = "txtfilepath";
             this.txtfilepath.Size = new System.Drawing.Size(647, 27);
             this.txtfilepath.TabIndex = 264;
@@ -112,7 +113,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(29, 118);
+            this.label3.Location = new System.Drawing.Point(29, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 17);
             this.label3.TabIndex = 261;
@@ -144,11 +145,10 @@
             "Pathologist",
             "Radiologist",
             "Checker"});
-            this.cbOther.Location = new System.Drawing.Point(32, 161);
+            this.cbOther.Location = new System.Drawing.Point(32, 122);
             this.cbOther.Name = "cbOther";
             this.cbOther.Size = new System.Drawing.Size(647, 25);
             this.cbOther.TabIndex = 268;
-            this.cbOther.SelectedIndexChanged += new System.EventHandler(this.cbOther_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -192,12 +192,36 @@
             this.pictureBox1.TabIndex = 270;
             this.pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(31, 163);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 17);
+            this.label1.TabIndex = 271;
+            this.label1.Text = "License No#";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(32, 193);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(647, 27);
+            this.textBox2.TabIndex = 272;
+            // 
             // AddEditPersonels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(712, 521);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cbOther);
@@ -234,5 +258,7 @@
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton btnAddItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

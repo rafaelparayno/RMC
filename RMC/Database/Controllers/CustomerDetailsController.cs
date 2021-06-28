@@ -237,7 +237,8 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getLabQueue()
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name' ,
+                            customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM lab_queue WHERE lab_queue.is_done_l = 0) 
                         AND DATE(customer_request_details.date_req) = CURDATE()";
@@ -245,9 +246,10 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
         }
 
+
         public async Task<DataSet> getLabQueue(string search)
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM lab_queue WHERE lab_queue.is_done_l = 0) 
                         AND DATE(customer_request_details.date_req) = CURDATE() AND CONCAT(patientdetails.firstname,' ',patientdetails.lastname) LIKE @key";
@@ -259,9 +261,20 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, mySqlParameters);
         }
 
+        public async Task<DataSet> getLabPending()
+        {
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name'
+                    ,customer_request_details.queue_no,customer_request_details.date_req FROM customer_request_details 
+                         INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
+                            WHERE customer_id in (SELECT customer_id FROM lab_queue WHERE lab_queue.is_done_l = 0) 
+                        AND DATE(customer_request_details.date_req) != CURDATE()";
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
+
         public async Task<DataSet> getLabQueueDone()
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id, CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM lab_queue WHERE lab_queue.is_done_l = 1) 
                         AND DATE(customer_request_details.date_req) = CURDATE()";
@@ -272,7 +285,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getLabQueueDone(string search)
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM lab_queue WHERE lab_queue.is_done_l = 1) 
                         AND DATE(customer_request_details.date_req) = CURDATE()  

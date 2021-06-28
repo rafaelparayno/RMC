@@ -18,11 +18,13 @@ namespace RMC.Lab.Panels
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
        
         private string idRightClick;
+        private string cidRightClick;
 
         public LabQueueForm()
         {
             InitializeComponent();
-            loadGrid();
+            //loadGrid();
+            loadGridPend();
             timer1.Start();
         }
 
@@ -31,6 +33,12 @@ namespace RMC.Lab.Panels
         {
             DataSet ds = await customerDetailsController.getLabQueue();
             RefreshGrid(ds);
+        }
+
+        private async void loadGridPend()
+        {
+            DataSet ds = await customerDetailsController.getLabPending();
+            RefreshGridPending(ds);
         }
 
         private async void searchGrid()
@@ -48,6 +56,14 @@ namespace RMC.Lab.Panels
 
         }
 
+        private void RefreshGridPending(DataSet ds)
+        {
+            dataGridView1.DataSource = "";
+            dataGridView1.DataSource = ds.Tables[0];
+            dataGridView1.AutoResizeColumns();
+
+        }
+
         private void dbServiceList_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -60,6 +76,7 @@ namespace RMC.Lab.Panels
                 if (currentMouseOverRow >= 0)
                 {
                     idRightClick = dbServiceList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    cidRightClick = dbServiceList.Rows[currentMouseOverRow].Cells[1].Value.ToString();
                     contextMenuStrip1.Show(dbServiceList, new Point(e.X, e.Y));
 
                 }
@@ -75,11 +92,15 @@ namespace RMC.Lab.Panels
         private void showLabRequestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool isNumber = int.TryParse(idRightClick, out _);
-            if (!isNumber)
+
+            bool isNumber2 = int.TryParse(cidRightClick, out _);
+
+            if (!isNumber || !isNumber2)
                 return;
 
             int id = int.Parse(idRightClick);
-            ViewPatientLabReq v = new ViewPatientLabReq(id);
+            int cid = int.Parse(cidRightClick);
+            ViewPatientLabReq v = new ViewPatientLabReq(id,cid);
             v.ShowDialog();
         }
 
@@ -94,6 +115,7 @@ namespace RMC.Lab.Panels
             addEditPatient form = new addEditPatient(id);
             form.ShowDialog();
             loadGrid();
+            loadGridPend();
         }
 
         private  void iconButton1_Click(object sender, EventArgs e)
@@ -107,6 +129,25 @@ namespace RMC.Lab.Panels
             {
                 timer1.Stop();
                  searchGrid();
+
+            }
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                    idRightClick = dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    cidRightClick = dataGridView1.Rows[currentMouseOverRow].Cells[1].Value.ToString();
+                    contextMenuStrip1.Show(dataGridView1, new Point(e.X, e.Y));
+                }
 
             }
         }
