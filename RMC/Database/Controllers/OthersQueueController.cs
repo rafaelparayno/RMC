@@ -92,8 +92,7 @@ namespace RMC.Database.Controllers
 
             string sql = @"SELECT others_queue.customer_id,others_queue.service_id,service.service_name,others_queue.is_done_o FROM `others_queue` 
                         INNER JOIN service ON others_queue.service_id = service.service_id 
-                        WHERE customer_id IN (SELECT customer_id  FROM customer_request_details WHERE customer_request_details.patient_id = @id
-                                                    AND  DATE(date_req) = CURDATE()) ";
+                        WHERE customer_id = @id ";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 

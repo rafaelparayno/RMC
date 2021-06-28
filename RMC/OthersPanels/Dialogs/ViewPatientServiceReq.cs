@@ -17,6 +17,7 @@ namespace RMC.OthersPanels.Dialogs
     public partial class ViewPatientServiceReq : Form
     {
         private int patientid = 0;
+        private int cid = 0;
         ItemController itemController = new ItemController();
         patientDetails patientmod = new patientDetails();
         PatientDetailsController patD = new PatientDetailsController();
@@ -26,10 +27,13 @@ namespace RMC.OthersPanels.Dialogs
         List<consumablesServMod> consumables = new List<consumablesServMod>();
         ClinicStocksController clinicStocks = new ClinicStocksController();
         ConsumedItems consumeditems = new ConsumedItems();
-        public ViewPatientServiceReq(int patientid)
+
+
+        public ViewPatientServiceReq(int patientid,int cid)
         {
             InitializeComponent();
             this.patientid = patientid;
+            this.cid = cid;
             initLvCols();
         }
 
@@ -73,7 +77,7 @@ namespace RMC.OthersPanels.Dialogs
         private async Task loadDataAsnyc()
         {
             patientmod = await patD.getPatientId(patientid);
-            serviceModels = await othersQueueController.getReqServiceByPatientID(patientid);
+            serviceModels = await othersQueueController.getReqServiceByPatientID(cid);
 
             setPatientData();
             setServiceData();

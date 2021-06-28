@@ -22,18 +22,24 @@ namespace RMC.Xray.Panels
         public RadioQueueForm()
         {
             InitializeComponent();
-          
             timer1.Start();
+           
         }
 
-        private async void loadGrid()
+        private async Task loadGrid()
         {
             DataSet ds = await customerDetailsController.getRadioQueue();
             RefreshGrid(ds);
         }
 
 
-        private async void searchGrid()
+        private async Task loadGridPending()
+        {
+            DataSet ds = await customerDetailsController.getRadioPending();
+            RefreshGridPending(ds);
+        }
+
+        private async Task searchGrid()
         {
             DataSet ds = await customerDetailsController.getRadioQueue(txtName.Text.Trim());
             RefreshGrid(ds);
@@ -48,7 +54,67 @@ namespace RMC.Xray.Panels
 
         }
 
-        private void dbServiceList_MouseClick(object sender, MouseEventArgs e)
+        private void RefreshGridPending(DataSet ds)
+        {
+            dataGridView1.DataSource = "";
+            dataGridView1.DataSource = ds.Tables[0];
+            dataGridView1.AutoResizeColumns();
+
+        }
+
+
+
+        private async void timer1_Tick(object sender, EventArgs e)
+        {
+           await loadGrid();
+        }
+
+        private async void showRadioRequestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool isNumber = int.TryParse(idRightClick, out _);
+            bool isNumber2 = int.TryParse(cidRightClick, out _);
+            if (!isNumber || !isNumber2)
+                return;
+
+            int id = int.Parse(idRightClick);
+            int cid = int.Parse(cidRightClick);
+            ViewPatientRadioReq view = new ViewPatientRadioReq(id,cid);
+            view.ShowDialog();
+            await loadGrid();
+            await loadGridPending();
+        }
+
+        private async void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool isNumber = int.TryParse(idRightClick, out _);
+          
+            if (!isNumber)
+                return;
+
+            int id = int.Parse(idRightClick);
+         
+
+            addEditPatient form = new addEditPatient(id);
+            form.ShowDialog();
+            await loadGrid();
+            await loadGridPending();
+        }
+
+        private async void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtName.Text.Trim()))
+            {
+               await loadGrid();
+            }
+            else
+            {
+               await searchGrid();
+            }
+
+
+        }
+
+        private void dbServiceList_MouseClick_1(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -67,52 +133,28 @@ namespace RMC.Xray.Panels
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
-            loadGrid();
-        }
-
-        private void showRadioRequestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            bool isNumber = int.TryParse(idRightClick, out _);
-            bool isNumber2 = int.TryParse(cidRightClick, out _);
-            if (!isNumber || !isNumber2)
-                return;
-
-            int id = int.Parse(idRightClick);
-            int cid = int.Parse(cidRightClick);
-            ViewPatientRadioReq view = new ViewPatientRadioReq(id,cid);
-            view.ShowDialog();
-         
-        }
-
-        private void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            bool isNumber = int.TryParse(idRightClick, out _);
-          
-            if (!isNumber)
-                return;
-
-            int id = int.Parse(idRightClick);
-         
-
-            addEditPatient form = new addEditPatient(id);
-            form.ShowDialog();
-            loadGrid();
-        }
-
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtName.Text.Trim()))
+            if (e.Button == MouseButtons.Right)
             {
-                loadGrid();
-            }
-            else
-            {
-                searchGrid();
-            }
+
+                int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
 
 
+                if (currentMouseOverRow >= 0)
+                {
+                    idRightClick = dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    cidRightClick = dataGridView1.Rows[currentMouseOverRow].Cells[1].Value.ToString();
+                    contextMenuStrip1.Show(dataGridView1, new Point(e.X, e.Y));
+                }
+
+            }
+        }
+
+        private async void RadioQueueForm_Load(object sender, EventArgs e)
+        {
+           await loadGrid();
+           await loadGridPending();
         }
     }
 }

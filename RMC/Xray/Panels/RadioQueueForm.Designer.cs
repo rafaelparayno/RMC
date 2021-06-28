@@ -165,6 +165,7 @@
             this.dbServiceList.Size = new System.Drawing.Size(668, 260);
             this.dbServiceList.StandardTab = true;
             this.dbServiceList.TabIndex = 113;
+            this.dbServiceList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dbServiceList_MouseClick_1);
             // 
             // groupBox3
             // 
@@ -201,6 +202,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(668, 183);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 113;
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // RadioQueueForm
             // 
@@ -214,6 +216,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.Name = "RadioQueueForm";
             this.Text = "RadioQueueForm";
+            this.Load += new System.EventHandler(this.RadioQueueForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);

@@ -23,19 +23,18 @@ namespace RMC.Lab.Panels
         public LabQueueForm()
         {
             InitializeComponent();
-            //loadGrid();
-            loadGridPend();
+          
             timer1.Start();
         }
 
 
-        private async void loadGrid()
+        private async Task loadGrid()
         {
             DataSet ds = await customerDetailsController.getLabQueue();
             RefreshGrid(ds);
         }
 
-        private async void loadGridPend()
+        private async Task loadGridPend()
         {
             DataSet ds = await customerDetailsController.getLabPending();
             RefreshGridPending(ds);
@@ -84,12 +83,13 @@ namespace RMC.Lab.Panels
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
-            loadGrid();
+            await loadGrid();
+            await loadGridPend();
         }
 
-        private void showLabRequestsToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void showLabRequestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool isNumber = int.TryParse(idRightClick, out _);
 
@@ -102,10 +102,11 @@ namespace RMC.Lab.Panels
             int cid = int.Parse(cidRightClick);
             ViewPatientLabReq v = new ViewPatientLabReq(id,cid);
             v.ShowDialog();
-            loadGridPend();
+            await loadGrid();
+            await loadGridPend();
         }
 
-        private void doneToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void doneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool isNumber = int.TryParse(idRightClick, out _);
             if (!isNumber)
@@ -115,15 +116,16 @@ namespace RMC.Lab.Panels
 
             addEditPatient form = new addEditPatient(id);
             form.ShowDialog();
-            loadGridPend();
+            await loadGrid();
+            await loadGridPend();
         }
 
-        private  void iconButton1_Click(object sender, EventArgs e)
+        private async void iconButton1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtName.Text.Trim()))
             {
                 timer1.Start();
-               loadGrid();
+              await loadGrid();
             }
             else
             {
@@ -150,6 +152,12 @@ namespace RMC.Lab.Panels
                 }
 
             }
+        }
+
+        private async void LabQueueForm_Load(object sender, EventArgs e)
+        {
+           await loadGrid();
+           await loadGridPend();
         }
     }
 }

@@ -310,6 +310,16 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, null);
         }
 
+        public async Task<DataSet> getRadioPending()
+        {
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+                         INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
+                            WHERE customer_id in (SELECT customer_id FROM radio_queue WHERE radio_queue.is_done_x = 0) 
+                        AND DATE(customer_request_details.date_req) != CURDATE()";
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
+
         public async Task<DataSet> getRadioQueue(string search)
         {
             string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
@@ -359,6 +369,17 @@ namespace RMC.Database.Controllers
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM others_queue WHERE others_queue.is_done_o = 0) 
                         AND DATE(customer_request_details.date_req) = CURDATE()";
+
+            return await crud.GetDataSetAsync(sql, null);
+        }
+
+        public async Task<DataSet> getServicePending()
+        {
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',
+                        customer_request_details.queue_no FROM customer_request_details 
+                         INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
+                            WHERE customer_id in (SELECT customer_id FROM others_queue WHERE others_queue.is_done_o = 0) 
+                        AND DATE(customer_request_details.date_req) != CURDATE()";
 
             return await crud.GetDataSetAsync(sql, null);
         }

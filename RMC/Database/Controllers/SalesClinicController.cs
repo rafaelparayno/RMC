@@ -15,16 +15,15 @@ namespace RMC.Database.Controllers
         dbcrud crud = new dbcrud();
         public async Task Save(string type, int id)
         {
-           
+            string sql;
             List<MySqlParameter> list = new List<MySqlParameter>();
 
-             string sql = @"INSERT INTO salesclinic(invoice_id, type_sales,type_sales_id) VALUES
+            sql = @"INSERT INTO salesclinic(invoice_id, type_sales,type_sales_id) VALUES
                     ((SELECT invoice_id FROM invoice ORDER BY invoice_id DESC LIMIT 1),
                     @type, @id)";
 
             list.Add(new MySqlParameter("@type", type));
-
-
+            list.Add(new MySqlParameter("@id", id));
             await crud.ExecuteAsync(sql, list);
         }
 

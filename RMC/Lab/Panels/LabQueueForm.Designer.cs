@@ -216,6 +216,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.Name = "LabQueueForm";
             this.Text = "LabQueueForm";
+            this.Load += new System.EventHandler(this.LabQueueForm_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

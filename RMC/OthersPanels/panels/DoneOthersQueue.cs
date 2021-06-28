@@ -19,6 +19,7 @@ namespace RMC.OthersPanels.panels
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
 
         private string idRightClick;
+        private string cidRightClick;
         public DoneOthersQueue()
         {
             InitializeComponent();
@@ -84,12 +85,14 @@ namespace RMC.OthersPanels.panels
         private async void showLabRequestsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool isNumber = int.TryParse(idRightClick, out _);
-            if (!isNumber)
+            bool isNumber2 = int.TryParse(cidRightClick, out _);
+            if (!isNumber || isNumber2)
                 return;
 
             int id = int.Parse(idRightClick);
+            int cid = int.Parse(cidRightClick);
 
-            ViewPatientServiceReq viewPatientServiceReq = new ViewPatientServiceReq(id);
+            ViewPatientServiceReq viewPatientServiceReq = new ViewPatientServiceReq(id,cid);
             viewPatientServiceReq.ShowDialog();
             await loadGrid();
         }
