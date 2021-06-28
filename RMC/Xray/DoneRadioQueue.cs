@@ -18,6 +18,7 @@ namespace RMC.Xray
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
 
         private string idRightClick;
+        private string cidRightClick;
         public DoneRadioQueue()
         {
             InitializeComponent();
@@ -48,11 +49,13 @@ namespace RMC.Xray
         private void showRadioRequestToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool isNumber = int.TryParse(idRightClick, out _);
+            bool isNumber2 = int.TryParse(cidRightClick,out _);
             if (!isNumber)
                 return;
 
             int id = int.Parse(idRightClick);
-            ViewPatientRadioReq view = new ViewPatientRadioReq(id);
+            int cid = int.Parse(cidRightClick);
+            ViewPatientRadioReq view = new ViewPatientRadioReq(id,cid);
             view.ShowDialog();
         }
 
@@ -80,6 +83,7 @@ namespace RMC.Xray
                 if (currentMouseOverRow >= 0)
                 {
                     idRightClick = dbServiceList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    cidRightClick = dbServiceList.Rows[currentMouseOverRow].Cells[1].Value.ToString();
                     contextMenuStrip1.Show(dbServiceList, new Point(e.X, e.Y));
 
                 }

@@ -302,7 +302,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getRadioQueue()
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM radio_queue WHERE radio_queue.is_done_x = 0) 
                         AND DATE(customer_request_details.date_req) = CURDATE()";
@@ -312,7 +312,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getRadioQueue(string search)
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM radio_queue WHERE radio_queue.is_done_x = 0) 
                         AND DATE(customer_request_details.date_req) = CURDATE() 
@@ -327,7 +327,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getRadioQueueDone()
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM radio_queue WHERE radio_queue.is_done_x = 1) 
                         AND DATE(customer_request_details.date_req) = CURDATE()";
@@ -338,7 +338,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getRadioQueueDone(string search)
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM radio_queue WHERE radio_queue.is_done_x = 1) 
                         AND DATE(customer_request_details.date_req) = CURDATE() 
@@ -354,7 +354,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getServiceQueue()
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',
                         customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM others_queue WHERE others_queue.is_done_o = 0) 
@@ -365,7 +365,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getServiceQueue(string search)
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',
                         customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM others_queue WHERE lab_queue.is_done_o = 0) 
@@ -380,7 +380,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getServiceQueueDone()
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM others_queue WHERE others_queue.is_done_o = 1) 
                         AND DATE(customer_request_details.date_req) = CURDATE()";
@@ -391,7 +391,7 @@ namespace RMC.Database.Controllers
 
         public async Task<DataSet> getServiceQueueDone(string search)
         {
-            string sql = @"SELECT customer_request_details.patient_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
+            string sql = @"SELECT customer_request_details.patient_id,customer_request_details.customer_id,CONCAT(patientdetails.firstname,' ',patientdetails.lastname) as 'Patient_Name',customer_request_details.queue_no FROM customer_request_details 
                          INNER JOIN patientdetails ON customer_request_details.patient_id = patientdetails.patient_id
                             WHERE customer_id in (SELECT customer_id FROM others_queue WHERE others_queue.is_done_o = 1) 
                         AND DATE(customer_request_details.date_req) = CURDATE() 

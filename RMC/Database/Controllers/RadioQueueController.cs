@@ -89,8 +89,7 @@ namespace RMC.Database.Controllers
 
             string sql = @"SELECT  radio_queue.xray_id,radio_queue.is_done_x,xraylist.xray_name,xraylist.xray_type FROM `radio_queue` 
                         INNER JOIN xraylist ON radio_queue.xray_id = xraylist.xray_id 
-                        WHERE customer_id IN (SELECT customer_id  FROM customer_request_details WHERE customer_request_details.patient_id = @id
-                                                    AND  DATE(date_req) = CURDATE())";
+                        WHERE customer_id = @id";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 

@@ -23,14 +23,16 @@ namespace RMC.Xray.Panels
         PatientDetailsController patD = new PatientDetailsController();
         List<xraymodel> listModels = new List<xraymodel>();
         XrayControllers xrayControllers = new XrayControllers();
-        /*  LabQueueController labQueueController = new LabQueueController();*/
+     
         RadioQueueController radioQueueController = new RadioQueueController();
-        LaboratoryController laboratoryController = new LaboratoryController();
+      
         private int patientid = 0;
-        public ViewPatientRadioReq(int patientid)
+        private int cid = 0;
+        public ViewPatientRadioReq(int patientid,int cid)
         {
             InitializeComponent();
             this.patientid = patientid;
+            this.cid = cid;
             initLvCols();
             setData(patientid);
         }
@@ -51,7 +53,7 @@ namespace RMC.Xray.Panels
         {
 
             patientmod = await patD.getPatientId(id);
-            listModels = await radioQueueController.getReqLabByPatientID(id);
+            listModels = await radioQueueController.getReqLabByPatientID(cid);
             setLabData();
             setPatientData();
 

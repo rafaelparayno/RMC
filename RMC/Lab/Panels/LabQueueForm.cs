@@ -102,6 +102,7 @@ namespace RMC.Lab.Panels
             int cid = int.Parse(cidRightClick);
             ViewPatientLabReq v = new ViewPatientLabReq(id,cid);
             v.ShowDialog();
+            loadGridPend();
         }
 
         private void doneToolStripMenuItem_Click(object sender, EventArgs e)
@@ -114,7 +115,6 @@ namespace RMC.Lab.Panels
 
             addEditPatient form = new addEditPatient(id);
             form.ShowDialog();
-            loadGrid();
             loadGridPend();
         }
 
