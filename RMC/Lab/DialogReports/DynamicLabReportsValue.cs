@@ -139,6 +139,12 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "labno")
                     continue;
 
+                if (parameterField.Name == "mtLicNo")
+                    continue;
+
+                if (parameterField.Name == "pathLicNo")
+                    continue;
+
                 parametersName.Add(parameterField.Name);
 
                 //values.Add(parameterField.Name);
@@ -192,6 +198,12 @@ namespace RMC.Lab.DialogReports
 
 
                 if (parameterField.Name == "labno")
+                    continue;
+
+                if (parameterField.Name == "mtLicNo")
+                    continue;
+
+                if (parameterField.Name == "pathLicNo")
                     continue;
 
                 parametersName.Add(parameterField.Name);
@@ -248,6 +260,12 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "labno")
                     continue;
 
+                if (parameterField.Name == "mtLicNo")
+                    continue;
+
+                if (parameterField.Name == "pathLicNo")
+                    continue;
+
                 textBoxParams.NameLabel = parameterField.Name;
                 textBoxParamsCrystals.Add(textBoxParams);
                 //values.Add(parameterField.Name);
@@ -290,11 +308,17 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "labno")
                     continue;
 
+                if (parameterField.Name == "mtLicNo")
+                    continue;
+
+                if (parameterField.Name == "patLicNo")
+                    continue;
+
                 parametersName.Add(parameterField.Name);
                 //values.Add(parameterField.Name);
             }
 
-            parametersName.Reverse();
+          
 
             foreach (string name in parametersName)
             {
@@ -340,6 +364,12 @@ namespace RMC.Lab.DialogReports
                 if (parameterField.Name == "labno")
                     continue;
 
+                if (parameterField.Name == "mtLicNo")
+                    continue;
+
+                if (parameterField.Name == "pathLicNo")
+                    continue;
+
                 textBoxParams.NameLabel = parameterField.Name;
                 textBoxParamsCrystals.Add(textBoxParams);
                 //values.Add(parameterField.Name);
@@ -382,6 +412,12 @@ namespace RMC.Lab.DialogReports
 
 
                 if (parameterField.Name == "labno")
+                    continue;
+
+                if (parameterField.Name == "mtLicNo")
+                    continue;
+
+                if (parameterField.Name == "pathLicNo")
                     continue;
 
                 parametersName.Add(parameterField.Name);

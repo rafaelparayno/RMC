@@ -51,11 +51,20 @@ namespace RMC.Lab.DialogReports
             serology.SetParameterValue("sex", patientDetails.gender);
             serology.SetParameterValue("address", patientDetails.gender);
 
-            serology.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" : personelModelMt.name);
-            serology.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" : personelModelMt.imgPath);
+            serology.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" 
+                : personelModelMt.name);
+            serology.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" 
+                : personelModelMt.imgPath);
+            serology.SetParameterValue("mtLicNo", string.IsNullOrEmpty(personelModelMt.licno) ? ""
+               : "Lic No.: " + personelModelMt.licno);
 
-            serology.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPath.name) ? "" : personelModelPath.name);
-            serology.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? "" : personelModelPath.imgPath);
+            serology.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPath.name) ? "" 
+                : personelModelPath.name);
+            serology.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? ""
+                : personelModelPath.imgPath);
+            serology.SetParameterValue("pathLicNo", string.IsNullOrEmpty(personelModelPath.licno) ? ""
+              : "Lic No.: " + personelModelPath.licno);
+
             crystalReportViewer1.ReportSource = serology;
         }
 

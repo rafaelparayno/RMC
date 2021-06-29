@@ -50,11 +50,20 @@ namespace RMC.Lab.DialogReports
             diagnosticReport.SetParameterValue("sex", patientDetails.gender);
             diagnosticReport.SetParameterValue("address", patientDetails.address);
 
-            diagnosticReport.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" : personelModelMt.name);
-            diagnosticReport.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" : personelModelMt.imgPath);
+            diagnosticReport.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" 
+                
+                : personelModelMt.name);
+            diagnosticReport.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" 
+                : personelModelMt.imgPath);
+            diagnosticReport.SetParameterValue("mtLicNo", string.IsNullOrEmpty(personelModelMt.licno) ? ""
+              : "Lic No.: " + personelModelMt.licno);
 
-            diagnosticReport.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPath.name) ? "" : personelModelPath.name);
-            diagnosticReport.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? "" : personelModelPath.imgPath);
+            diagnosticReport.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPath.name) ? "" 
+                : personelModelPath.name);
+            diagnosticReport.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? "" 
+                : personelModelPath.imgPath);
+            diagnosticReport.SetParameterValue("pathLicNo", string.IsNullOrEmpty(personelModelMt.licno) ? ""
+              : "Lic No.: " + personelModelMt.licno);
 
             crystalReportViewer1.ReportSource = diagnosticReport;
         }

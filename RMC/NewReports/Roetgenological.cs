@@ -183,6 +183,14 @@ namespace RMC.NewReports {
                 return this.DataDefinition.ParameterFields[11];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_radLicNo {
+            get {
+                return this.DataDefinition.ParameterFields[12];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]

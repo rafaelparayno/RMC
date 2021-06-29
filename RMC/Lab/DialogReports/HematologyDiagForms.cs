@@ -57,10 +57,18 @@ namespace RMC.Lab.DialogReports
             hema.SetParameterValue("address", patientDetails.address);
 
             hema.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" : personelModelMt.name);
-            hema.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" : personelModelMt.imgPath);
+            hema.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? ""
+                : personelModelMt.imgPath);
+
+            hema.SetParameterValue("mtLicNo", string.IsNullOrEmpty(personelModelMt.licno) ? ""
+               : "Lic No.: " + personelModelMt.licno);
 
             hema.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPath.name) ? "" : personelModelPath.name);
-            hema.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? "" : personelModelPath.imgPath);
+            hema.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? ""
+                : personelModelPath.imgPath);
+
+            hema.SetParameterValue("pathLicNo", string.IsNullOrEmpty(personelModelPath.licno) ? ""
+                : "Lic No.: " + personelModelPath.licno);
 
             crystalReportViewer1.ReportSource = hema;
         }

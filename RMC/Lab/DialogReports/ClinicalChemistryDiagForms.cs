@@ -53,10 +53,19 @@ namespace RMC.Lab.DialogReports
 
 
             clinicalChemistry.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" : personelModelMt.name);
-            clinicalChemistry.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" : personelModelMt.imgPath);
+            clinicalChemistry.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? 
+                "" : personelModelMt.imgPath);
+
+            clinicalChemistry.SetParameterValue("mtLicNo", string.IsNullOrEmpty(personelModelMt.licno) ?
+               "" : "Lic No.: " + personelModelMt.licno);
 
             clinicalChemistry.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPath.name) ? "" : personelModelPath.name);
-            clinicalChemistry.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? "" : personelModelPath.imgPath);
+            clinicalChemistry.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? 
+                "" :  personelModelPath.imgPath);
+
+            clinicalChemistry.SetParameterValue("pathLicNo", string.IsNullOrEmpty(personelModelPath.licno) ?
+                "" : "Lic No.: " + personelModelPath.licno);
+
             crystalReportViewer1.ReportSource = clinicalChemistry;
         }
 

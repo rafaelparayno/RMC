@@ -53,10 +53,19 @@ namespace RMC.Lab.DialogReports
             fecalysis.SetParameterValue("address", patientDetails.address);
 
             fecalysis.SetParameterValue("mtName", string.IsNullOrEmpty(personelModelMt.name) ? "" : personelModelMt.name);
-            fecalysis.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath) ? "" : personelModelMt.imgPath);
+            fecalysis.SetParameterValue("imgPathMt", string.IsNullOrEmpty(personelModelMt.imgPath)
+                ? "" : personelModelMt.imgPath);
+
+            fecalysis.SetParameterValue("mtLicNo", string.IsNullOrEmpty(personelModelMt.licno)
+            ? "" : "Lic No.: " + personelModelMt.licno);
 
             fecalysis.SetParameterValue("pathoName", string.IsNullOrEmpty(personelModelPath.name) ? "" : personelModelPath.name);
-            fecalysis.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? "" : personelModelPath.imgPath);
+            fecalysis.SetParameterValue("imgPathPatho", string.IsNullOrEmpty(personelModelPath.imgPath) ? "" 
+                : personelModelPath.imgPath);
+
+            fecalysis.SetParameterValue("patLicNo", string.IsNullOrEmpty(personelModelPath.licno) ? ""
+                : "Lic No.: " + personelModelPath.licno);
+
             crystalReportViewer1.ReportSource = fecalysis;
         }
 

@@ -101,6 +101,8 @@ namespace RMC.Database.Controllers
 
                 personelModel.name = reader["personel_name"].ToString();
 
+                personelModel.licno = reader["licno"].ToString();
+
                 personelModel.profession = reader["profession"].ToString();
 
                 personelModel.imgPath = reader["signature_path"].ToString();

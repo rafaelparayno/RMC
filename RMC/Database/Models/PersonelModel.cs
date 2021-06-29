@@ -12,6 +12,7 @@ namespace RMC.Database.Models
 
         public string name { get; set; }
 
+        public string licno { get; set; }
 
         public string profession { get; set; }
 

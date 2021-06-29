@@ -33,7 +33,7 @@ namespace RMC.Xray.Panels.RepDiags
      //   BloodChem bloodChem = new BloodChem();
         public RoetDiagForm(int patientid,int labid,int patient_xray_id)
         {
-            ShowWaitForm();
+            //ShowWaitForm();
             InitializeComponent();
             this.patientid = patientid;
             this.labid = labid;
@@ -52,8 +52,13 @@ namespace RMC.Xray.Panels.RepDiags
             roetgenological.SetParameterValue("address", patientDetails.address);
             roetgenological.SetParameterValue("civil", patientDetails.civil_status);
 
-            roetgenological.SetParameterValue("imgPathRadio", personelModelRadio.imgPath);
+            roetgenological.SetParameterValue("imgPathRadio", string.IsNullOrEmpty(personelModelRadio.imgPath) ? "" 
+                : personelModelRadio.imgPath);
+
             roetgenological.SetParameterValue("radioName", personelModelRadio.name);
+            roetgenological.SetParameterValue("radLicNo", string.IsNullOrEmpty(personelModelRadio.licno) ? ""
+               : personelModelRadio.licno);
+
             crystalReportViewer1.ReportSource = roetgenological;
         }
 

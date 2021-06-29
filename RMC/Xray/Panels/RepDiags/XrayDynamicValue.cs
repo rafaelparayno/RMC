@@ -88,6 +88,10 @@ namespace RMC.Xray.Panels.RepDiags
                 if (parameterField.Name == "radioName")
                     continue;
 
+                if (parameterField.Name == "radLicNo")
+                    continue;
+
+
                 textBoxParams.NameLabel = parameterField.Name;
                 textBoxParamsCrystals.Add(textBoxParams);
                 //values.Add(parameterField.Name);
@@ -141,7 +145,7 @@ namespace RMC.Xray.Panels.RepDiags
                     t.textbox1.Multiline = true;
                     t.textbox1.Height = 100;
                 }
-                t.Dock = DockStyle.Top;
+               
                 mainPanel.Controls.Add(t);
             }
         }
