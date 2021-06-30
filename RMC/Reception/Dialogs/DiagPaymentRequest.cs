@@ -209,7 +209,7 @@ namespace RMC.Reception.Dialogs
             {
                 string type = dr.Cells[2].Value.ToString();
                 int id = int.Parse(dr.Cells[0].Value.ToString());
-                saves.Add(salesClinicController.Save(type, id));
+                saves.Add(salesClinicController.Save(type, id, customerid));
 
             }
             await Task.WhenAll(saves);

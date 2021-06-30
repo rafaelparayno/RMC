@@ -34,7 +34,9 @@ namespace RMC.Patients
         {
             get { return _patientId; }
             set { _patientId = value; btnView.Tag = value;
-                lblId.Text = lblId.Text + " :" + value; }
+                lblId.Text = lblId.Text + " :" + value;
+                btnDelete.Tag = value;
+            }
         }
 
 
@@ -90,7 +92,20 @@ namespace RMC.Patients
             get { return btnView; }
             set { btnView1 = value; }
         }
+        
+        public Button btnDelete1
+        {
 
+            get { return btnDelete; }
+            set { btnDelete1 = value; }
+        }
+
+
+        public Panel panel
+        {
+            get { return panel3; }
+            set { panel = value; }
+        }
 
 
 

@@ -17,7 +17,7 @@ namespace RMC.Database.Controllers
         public async Task<List<patientDetails>> getPatientDetails()
         {
             List<patientDetails> listpatient = new List<patientDetails>();
-            string sql = @"SELECT * FROM `patientdetails`";
+            string sql = @"SELECT * FROM `patientdetails` WHERE is_active_patient = 1";
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
             while (await reader.ReadAsync())
@@ -53,12 +53,12 @@ namespace RMC.Database.Controllers
             switch (cb)
             {
                 case 0:
-                    sql = @"SELECT * FROM patientdetails WHERE patient_id  = @searchKey";
+                    sql = @"SELECT * FROM patientdetails WHERE patient_id  = @searchKey And is_active_patient = 1";
                     listparams.Add(new MySqlParameter("@searchKey", int.Parse(searchkey)));
                     break;
 
                 case 1:
-                    sql = @"SELECT * FROM `patientdetails` where CONCAT(firstname,' ',lastname) LIKE @key";
+                    sql = @"SELECT * FROM `patientdetails` where CONCAT(firstname,' ',lastname) LIKE @key And is_active_patient = 1";
                     searches = "%" + searchkey + "%";
                     listparams.Add(new MySqlParameter("@key", searches));
                     break;
@@ -93,7 +93,7 @@ namespace RMC.Database.Controllers
         public async Task<patientDetails> getPatientId(int id)
         {
             patientDetails patientDetails = new patientDetails();
-            string sql = @"SELECT * FROM patientdetails WHERE patient_id = @id";
+            string sql = @"SELECT * FROM patientdetails WHERE patient_id = @id And is_active_patient = 1";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@id", id));
 
@@ -124,7 +124,7 @@ namespace RMC.Database.Controllers
         {
             patientDetails patientDetails = new patientDetails();
             string sql = @"SELECT * FROM patientdetails WHERE patient_id in 
-                    (SELECT patient_id FROM customer_request_details WHERE queue_no = @queue_no AND DATE(date_req) = CURDATE() )";
+                    (SELECT patient_id FROM customer_request_details WHERE queue_no = @queue_no AND DATE(date_req) = CURDATE() ) And is_active_patient = 1";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@queue_no", queue_no));
 
@@ -154,7 +154,7 @@ namespace RMC.Database.Controllers
         public async Task<patientDetails> getPatientFName(string fname)
         {
             patientDetails patientDetails = new patientDetails();
-            string sql = @"SELECT * FROM patientdetails WHERE firstname = @name";
+            string sql = @"SELECT * FROM patientdetails WHERE firstname = @name And is_active_patient = 1";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@name", fname));
 
@@ -183,7 +183,7 @@ namespace RMC.Database.Controllers
         public async Task<patientDetails> getPatientLName(string lname)
         {
             patientDetails patientDetails = new patientDetails();
-            string sql = @"SELECT * FROM patientdetails WHERE lastname = @name";
+            string sql = @"SELECT * FROM patientdetails WHERE lastname = @name And is_active_patient = 1";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@name", lname));
 
@@ -237,6 +237,19 @@ namespace RMC.Database.Controllers
 
             listparams.Add(new MySqlParameter("@path",path));
            
+            listparams.Add(new MySqlParameter("@id", id));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+
+        public async Task updateAcvite(int status,int id)
+        {
+            string sql = @"UPDATE patientdetails SET is_active_patient = @status WHERE patient_id = @id";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@status", status));
+
             listparams.Add(new MySqlParameter("@id", id));
 
             await crud.ExecuteAsync(sql, listparams);

@@ -33,7 +33,9 @@
             this.lblId = new System.Windows.Forms.Label();
             this.panelImgHolder = new System.Windows.Forms.Panel();
             this.pbDisplayPicture = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnView = new FontAwesome.Sharp.IconButton();
+            this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblGender = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
@@ -46,6 +48,7 @@
             this.panel1.SuspendLayout();
             this.panelImgHolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplayPicture)).BeginInit();
+            this.panel3.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +56,7 @@
             // 
             this.panel1.Controls.Add(this.lblId);
             this.panel1.Controls.Add(this.panelImgHolder);
-            this.panel1.Controls.Add(this.btnView);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.lblGender);
             this.panel1.Controls.Add(this.lblAge);
@@ -103,21 +106,58 @@
             this.pbDisplayPicture.TabStop = false;
             this.pbDisplayPicture.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbDisplayPicture_MouseClick);
             // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnView);
+            this.panel3.Controls.Add(this.btnDelete);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 122);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(659, 43);
+            this.panel3.TabIndex = 11;
+            // 
             // btnView
             // 
-            this.btnView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnView.BackColor = System.Drawing.Color.DimGray;
+            this.btnView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnView.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnView.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnView.IconColor = System.Drawing.Color.Black;
-            this.btnView.IconSize = 16;
-            this.btnView.Location = new System.Drawing.Point(0, 122);
+            this.btnView.ForeColor = System.Drawing.Color.Snow;
+            this.btnView.IconChar = FontAwesome.Sharp.IconChar.EnvelopeOpenText;
+            this.btnView.IconColor = System.Drawing.Color.White;
+            this.btnView.IconSize = 24;
+            this.btnView.Location = new System.Drawing.Point(0, 0);
             this.btnView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnView.Name = "btnView";
             this.btnView.Rotation = 0D;
-            this.btnView.Size = new System.Drawing.Size(659, 43);
+            this.btnView.Size = new System.Drawing.Size(523, 41);
             this.btnView.TabIndex = 8;
             this.btnView.Text = "View Details";
-            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnView.UseVisualStyleBackColor = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.btnDelete.IconColor = System.Drawing.Color.White;
+            this.btnDelete.IconSize = 16;
+            this.btnDelete.Location = new System.Drawing.Point(527, 0);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Rotation = 0D;
+            this.btnDelete.Size = new System.Drawing.Size(130, 41);
+            this.btnDelete.TabIndex = 9;
+            this.btnDelete.Text = "Remove";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDelete.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -184,19 +224,19 @@
             this.changePhotoToolStripMenuItem,
             this.takePhotoToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(151, 48);
             // 
             // changePhotoToolStripMenuItem
             // 
             this.changePhotoToolStripMenuItem.Name = "changePhotoToolStripMenuItem";
-            this.changePhotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changePhotoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.changePhotoToolStripMenuItem.Text = "Change Photo";
             this.changePhotoToolStripMenuItem.Click += new System.EventHandler(this.changePhotoToolStripMenuItem_Click);
             // 
             // takePhotoToolStripMenuItem
             // 
             this.takePhotoToolStripMenuItem.Name = "takePhotoToolStripMenuItem";
-            this.takePhotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.takePhotoToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.takePhotoToolStripMenuItem.Text = "Take Photo";
             this.takePhotoToolStripMenuItem.Click += new System.EventHandler(this.takePhotoToolStripMenuItem_Click);
             // 
@@ -215,6 +255,7 @@
             this.panel1.PerformLayout();
             this.panelImgHolder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplayPicture)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -232,9 +273,11 @@
         private System.Windows.Forms.PictureBox pbDisplayPicture;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblId;
-        private FontAwesome.Sharp.IconButton btnView;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem changePhotoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem takePhotoToolStripMenuItem;
+        private System.Windows.Forms.Panel panel3;
+        private FontAwesome.Sharp.IconButton btnView;
+        private FontAwesome.Sharp.IconButton btnDelete;
     }
 }

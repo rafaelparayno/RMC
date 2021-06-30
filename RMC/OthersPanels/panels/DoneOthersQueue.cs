@@ -75,6 +75,7 @@ namespace RMC.OthersPanels.panels
                 if (currentMouseOverRow >= 0)
                 {
                     idRightClick = dbServiceList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    cidRightClick = dbServiceList.Rows[currentMouseOverRow].Cells[1].Value.ToString();
                     contextMenuStrip1.Show(dbServiceList, new Point(e.X, e.Y));
 
                 }

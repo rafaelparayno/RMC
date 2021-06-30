@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -38,10 +39,13 @@
             this.panelPatientList = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowPage = new System.Windows.Forms.FlowLayoutPanel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deletePatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelPatientList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -184,6 +188,19 @@
             this.flowPage.TabIndex = 6;
             this.flowPage.WrapContents = false;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deletePatientToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // deletePatientToolStripMenuItem
+            // 
+            this.deletePatientToolStripMenuItem.Name = "deletePatientToolStripMenuItem";
+            this.deletePatientToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deletePatientToolStripMenuItem.Text = "Delete Patient";
+            // 
             // PanelPatient
             // 
             this.AcceptButton = this.iconButton1;
@@ -206,6 +223,7 @@
             this.panel1.ResumeLayout(false);
             this.panelPatientList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -222,5 +240,7 @@
         private System.Windows.Forms.Panel panelPatientList;
         private System.Windows.Forms.FlowLayoutPanel flowPage;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem deletePatientToolStripMenuItem;
     }
 }

@@ -154,7 +154,7 @@ namespace RMC.Xray.Panels
                 PatientControl patView = new PatientControl();
                 patView.PatientId = patientmod.id;
                 patView.PatientName = "Name: " + patientmod.FullName;
-                patView.btnView1.Visible = false;
+                patView.panel.Visible = false;
                 patView.Age = "Age : " + patientmod.age.ToString();
                 patView.Gender = "Gender : " + patientmod.gender;
                 patView.Address = "Address: " + patientmod.address;

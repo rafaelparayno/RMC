@@ -72,7 +72,7 @@ namespace RMC.Patients
                 patientControl.Cnumber = "Contact Number : " + p.contact;
                 patientControl.Dock = DockStyle.Top;
                 patientControl.btnView1.Click += new EventHandler(ClickBtnView);
-
+                patientControl.btnDelete1.Click += new EventHandler(ClickDelete);
 
                 if(File.Exists(p.imgPath))
                 {
@@ -93,6 +93,30 @@ namespace RMC.Patients
             form.ShowDialog();
             await loadPatientDetails();
         }
+
+        private async void ClickDelete(object sender, EventArgs e)
+        {
+            int id = int.Parse(((IconButton)sender).Tag.ToString());
+            VoidForm voidForm = new VoidForm();
+            voidForm.ShowDialog();
+
+
+            if (voidForm.isFound)
+            {
+                DialogResult dialogResult = MessageBox.Show(@"Removing this will show in the Patient Archives." +
+                                                    Environment.NewLine + @"Are you sure removing this Patient?",
+                                                    "Removing", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if(DialogResult.OK == dialogResult)
+                {
+                    await patientDetailsController.updateAcvite(0, id);
+                    MessageBox.Show("Succesfully Remove");
+                }
+            }
+
+            await loadPatientDetails();
+        }
+
 
         private void showPaginate(int total)
         {
