@@ -36,29 +36,31 @@
             this.btnDelete = new FontAwesome.Sharp.IconButton();
             this.btnVoid = new FontAwesome.Sharp.IconButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgCustomerList = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.goToDoctorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addVitalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelMenus.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomerList)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenus
             // 
+            this.panelMenus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMenus.Controls.Add(this.btnpay);
             this.panelMenus.Controls.Add(this.btnAddItem);
             this.panelMenus.Controls.Add(this.btnEdit);
             this.panelMenus.Controls.Add(this.btnDelete);
             this.panelMenus.Controls.Add(this.btnVoid);
             this.panelMenus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelMenus.Location = new System.Drawing.Point(0, 465);
+            this.panelMenus.Location = new System.Drawing.Point(0, 458);
             this.panelMenus.Name = "panelMenus";
-            this.panelMenus.Size = new System.Drawing.Size(684, 61);
+            this.panelMenus.Size = new System.Drawing.Size(684, 68);
             this.panelMenus.TabIndex = 4;
             // 
             // btnpay
@@ -74,10 +76,10 @@
             this.btnpay.IconColor = System.Drawing.Color.White;
             this.btnpay.IconSize = 24;
             this.btnpay.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnpay.Location = new System.Drawing.Point(309, 0);
+            this.btnpay.Location = new System.Drawing.Point(307, 0);
             this.btnpay.Name = "btnpay";
             this.btnpay.Rotation = 0D;
-            this.btnpay.Size = new System.Drawing.Size(75, 61);
+            this.btnpay.Size = new System.Drawing.Size(75, 66);
             this.btnpay.TabIndex = 13;
             this.btnpay.Text = "Payment";
             this.btnpay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -97,10 +99,10 @@
             this.btnAddItem.IconColor = System.Drawing.Color.White;
             this.btnAddItem.IconSize = 24;
             this.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddItem.Location = new System.Drawing.Point(384, 0);
+            this.btnAddItem.Location = new System.Drawing.Point(382, 0);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Rotation = 0D;
-            this.btnAddItem.Size = new System.Drawing.Size(75, 61);
+            this.btnAddItem.Size = new System.Drawing.Size(75, 66);
             this.btnAddItem.TabIndex = 11;
             this.btnAddItem.Text = "Add Request";
             this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -120,10 +122,10 @@
             this.btnEdit.IconColor = System.Drawing.Color.White;
             this.btnEdit.IconSize = 24;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEdit.Location = new System.Drawing.Point(459, 0);
+            this.btnEdit.Location = new System.Drawing.Point(457, 0);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Rotation = 0D;
-            this.btnEdit.Size = new System.Drawing.Size(75, 61);
+            this.btnEdit.Size = new System.Drawing.Size(75, 66);
             this.btnEdit.TabIndex = 10;
             this.btnEdit.Text = "Edit Request";
             this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -143,10 +145,10 @@
             this.btnDelete.IconColor = System.Drawing.Color.White;
             this.btnDelete.IconSize = 24;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDelete.Location = new System.Drawing.Point(534, 0);
+            this.btnDelete.Location = new System.Drawing.Point(532, 0);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Rotation = 0D;
-            this.btnDelete.Size = new System.Drawing.Size(75, 61);
+            this.btnDelete.Size = new System.Drawing.Size(75, 66);
             this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -166,10 +168,10 @@
             this.btnVoid.IconColor = System.Drawing.Color.White;
             this.btnVoid.IconSize = 24;
             this.btnVoid.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnVoid.Location = new System.Drawing.Point(609, 0);
+            this.btnVoid.Location = new System.Drawing.Point(607, 0);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.Rotation = 0D;
-            this.btnVoid.Size = new System.Drawing.Size(75, 61);
+            this.btnVoid.Size = new System.Drawing.Size(75, 66);
             this.btnVoid.TabIndex = 15;
             this.btnVoid.Text = "Void";
             this.btnVoid.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -186,10 +188,25 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(684, 465);
+            this.groupBox2.Size = new System.Drawing.Size(684, 458);
             this.groupBox2.TabIndex = 210;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "List of Queue Request";
+            this.groupBox2.Resize += new System.EventHandler(this.groupBox2_Resize);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
+            this.pictureBox1.Location = new System.Drawing.Point(190, 137);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(254, 176);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 229;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // dgCustomerList
             // 
@@ -208,7 +225,7 @@
             this.dgCustomerList.ReadOnly = true;
             this.dgCustomerList.RowHeadersVisible = false;
             this.dgCustomerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomerList.Size = new System.Drawing.Size(678, 442);
+            this.dgCustomerList.Size = new System.Drawing.Size(678, 435);
             this.dgCustomerList.StandardTab = true;
             this.dgCustomerList.TabIndex = 117;
             this.dgCustomerList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgCustomerList_MouseClick);
@@ -234,19 +251,15 @@
             this.addVitalToolStripMenuItem.Text = "Add Vital";
             this.addVitalToolStripMenuItem.Click += new System.EventHandler(this.addVitalToolStripMenuItem_Click);
             // 
-            // pictureBox1
+            // panel1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
-            this.pictureBox1.Location = new System.Drawing.Point(241, 175);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(202, 176);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 229;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(241, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(443, 458);
+            this.panel1.TabIndex = 230;
+            this.panel1.Visible = false;
             // 
             // PanelRequestForm
             // 
@@ -255,6 +268,7 @@
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(684, 526);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panelMenus);
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -264,9 +278,9 @@
             this.Text = "PanelRequestForm";
             this.panelMenus.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomerList)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -285,5 +299,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private FontAwesome.Sharp.IconButton btnVoid;
         private FontAwesome.Sharp.IconButton btnDelete;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -20,6 +20,7 @@ namespace RMC.Reception.PanelRequestForm
 {
     public partial class PanelRequestForm : Form
     {
+        PatientDetailsController patientDetailsController = new PatientDetailsController();
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();      
         CustomerRequestsController customerRequestsController = new CustomerRequestsController();
         DoctorQueueController docQController = new DoctorQueueController();
@@ -35,6 +36,7 @@ namespace RMC.Reception.PanelRequestForm
         ImageList ImageList1 = new ImageList();
         List<customerDetailsMod> customerDetailsModsList;
         string idRightClick = "";
+        string idLeftClick = "";
         string queNoClick = "";
         private int consultS = 1;
         private int medCert = 2;
@@ -157,7 +159,7 @@ namespace RMC.Reception.PanelRequestForm
 
             dgCustomerList.DataSource = "";
             dgCustomerList.DataSource = dt;
-            dgCustomerList.Columns[2].Width = 250;
+            dgCustomerList.Columns[2].Width = 300;
          
         }
 
@@ -183,7 +185,7 @@ namespace RMC.Reception.PanelRequestForm
             getData();
         }
 
-        private void dgCustomerList_MouseClick(object sender, MouseEventArgs e)
+        private async void dgCustomerList_MouseClick(object sender, MouseEventArgs e)
         {
    
             if (e.Button == MouseButtons.Right)
@@ -200,6 +202,87 @@ namespace RMC.Reception.PanelRequestForm
                 }
 
             }
+
+
+            if(e.Button == MouseButtons.Left)
+            {
+                int currentMouseOverRow = dgCustomerList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                    idLeftClick = dgCustomerList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    int cid = int.Parse(idLeftClick);
+                    await showRequestDetails(cid);
+                }
+            }
+        }
+
+        private async Task showRequestDetails(int cid)
+        {
+            panel1.Controls.Clear();
+
+            float price = await invoiceController.getInvoiceSale(cid);
+
+            int qno = int.Parse(dgCustomerList.SelectedRows[0].Cells[1].Value.ToString());
+
+            int isPay = await customerDetailsController.getIsPaid(qno);
+
+            Task<List<labModel>> task1 = labQueueController.getReqLabByPatientID(cid);
+            Task<List<xraymodel>> task2 = radioQueueController.getReqLabByPatientID(cid);
+            Task<List<ServiceModel>> task3 = othersQueueController.getReqServiceByPatientID(cid);
+
+            Task[] processes = new Task[] { task1, task2, task3 };
+
+            await Task.WhenAll(processes);
+
+            List<labModel> labModels = task1.Result;
+            List<xraymodel> xraymodels = task2.Result;
+            List<ServiceModel> serviceModels = task3.Result;
+
+            RequestDetailsControl requestDetailsControl = new RequestDetailsControl();
+
+            requestDetailsControl.Dock = DockStyle.Fill;
+
+            requestDetailsControl.labelPrice.Text = isPay == 0 ? "Total Sales : Not Paid" : $"Total Sales : ₱{price}";
+
+            requestDetailsControl.listViewLab.View = View.Details;
+            requestDetailsControl.listViewLab.Columns.Add("Laboratory Name", 250, HorizontalAlignment.Center);
+            requestDetailsControl.listViewLab.Columns.Add("Is Done", 120, HorizontalAlignment.Center);
+            foreach (labModel l in labModels)
+            {
+                ListViewItem lvItems = new ListViewItem();
+                lvItems.Text = l.name;
+                lvItems.SubItems.Add(l.is_done == 0 ? "Not Done" : "Done");
+                requestDetailsControl.listViewLab.Items.Add(lvItems);
+            }
+
+
+            requestDetailsControl.listViewRad.View = View.Details;
+            requestDetailsControl.listViewRad.Columns.Add("Radio Name", 250, HorizontalAlignment.Center);
+            requestDetailsControl.listViewRad.Columns.Add("Is Done", 120, HorizontalAlignment.Center);
+            foreach (xraymodel l in xraymodels)
+            {
+                ListViewItem lvItems = new ListViewItem();
+                lvItems.Text = l.name;
+                lvItems.SubItems.Add(l.is_done == 0 ? "Not Done" : "Done");
+                requestDetailsControl.listViewRad.Items.Add(lvItems);
+            }
+
+            requestDetailsControl.listViewService.View = View.Details;
+            requestDetailsControl.listViewService.Columns.Add("Service Name", 250, HorizontalAlignment.Center);
+            requestDetailsControl.listViewService.Columns.Add("Is Done", 120, HorizontalAlignment.Center);
+            foreach (ServiceModel l in serviceModels)
+            {
+                ListViewItem lvItems = new ListViewItem();
+                lvItems.Text = l.serviceName;
+                lvItems.SubItems.Add(l.isDone == 0 ? "Not Done" : "Done");
+                requestDetailsControl.listViewService.Items.Add(lvItems);
+            }
+
+            panel1.Controls.Add(requestDetailsControl);
+
+
         }
 
         private async void loadOnlineDoctors()
@@ -248,7 +331,10 @@ namespace RMC.Reception.PanelRequestForm
             int isPay = await customerDetailsController.getIsPaid(qno);
 
             if (isPay == 1)
+            {
+
                 return;
+            }
 
             int req = int.Parse(dgCustomerList.SelectedRows[0].Cells[0].Value.ToString());
             ReceptionPayment form = new ReceptionPayment(req);
@@ -291,34 +377,19 @@ namespace RMC.Reception.PanelRequestForm
             if (!voidForm.isFound)
                 return;
 
-            InputInvoice inputInvoice = new InputInvoice("Invoice No#", "Enter invoice No");
-            inputInvoice.ShowDialog();
-
-            if (string.IsNullOrEmpty(inputInvoice.input))
-                return;
-
-            string inputName = inputInvoice.input;
-
-            bool isNo = int.TryParse(inputName, out _);
-
-            if (!isNo)
-            {
-                MessageBox.Show("Input is incorrect");
-                return;
-            }
-
-            int invoiceNo = int.Parse(inputName);
 
             List<Task> tasks = new List<Task>();
 
-            tasks.Add(invoiceController.Delete(invoiceNo));
+            tasks.Add(invoiceController.Delete(cusid));
             tasks.Add(labQueueController.Delete(cusid));
             tasks.Add(radioQueueController.Delete(cusid));
             tasks.Add(othersQueueController.Delete(cusid));
             tasks.Add(customerDetailsController.setPaid(cusid, 0));
-            tasks.Add(salesClinicController.delete(invoiceNo));
+            tasks.Add(salesClinicController.delete(cusid));
 
             await Task.WhenAll(tasks);
+
+            MessageBox.Show("Succesfully Void");
 
             getData();
         }
@@ -336,7 +407,11 @@ namespace RMC.Reception.PanelRequestForm
             int isPay = await customerDetailsController.getIsPaid(qno);
 
             if (isPay == 1)
+            {
+                MessageBox.Show("To Delete Request. You Need to void the process.");
                 return;
+            }
+
 
             VoidForm voidForm = new VoidForm();
             voidForm.ShowDialog();
@@ -366,6 +441,23 @@ namespace RMC.Reception.PanelRequestForm
 
             getData();
 
+        }
+
+        private void groupBox2_Resize(object sender, EventArgs e)
+        {
+            Control control = (Control)sender;
+
+          
+
+            if (control.Size.Width < 700)
+            {
+                panel1.Visible = false;
+            }
+            else
+            {
+
+                panel1.Visible = true;
+            }
         }
     }
 }

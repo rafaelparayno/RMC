@@ -120,7 +120,7 @@
             // btnView
             // 
             this.btnView.BackColor = System.Drawing.Color.DimGray;
-            this.btnView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnView.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnView.ForeColor = System.Drawing.Color.Snow;
@@ -131,7 +131,7 @@
             this.btnView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnView.Name = "btnView";
             this.btnView.Rotation = 0D;
-            this.btnView.Size = new System.Drawing.Size(523, 41);
+            this.btnView.Size = new System.Drawing.Size(527, 41);
             this.btnView.TabIndex = 8;
             this.btnView.Text = "View Details";
             this.btnView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

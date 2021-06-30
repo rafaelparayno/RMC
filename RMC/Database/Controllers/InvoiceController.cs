@@ -14,6 +14,28 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
+        public async Task<float> getInvoiceSale(int cusid)
+        {
+            float sales = 0;
+
+            string sql = @"SELECT * FROM invoice WHERE invoice_id IN 
+                            (SELECT invoice_id FROM salesclinic WHERE customer_id = @cid)";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
+            mySqlParameters.Add(new MySqlParameter("@cid", cusid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while(await reader.ReadAsync())
+            {
+                sales = reader["sales"].ToString() == "" ? 0 : float.Parse(reader["sales"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return sales;
+        }
+
 
         public async Task<int> getLatestNo()
         {
@@ -46,7 +68,8 @@ namespace RMC.Database.Controllers
 
         public async Task Delete(int id)
         {
-            string sql = @"DELETE FROM invoice WHERE invoice_id = @id";
+            string sql = @"DELETE FROM invoice WHERE invoice_id in 
+                                (SELECT invoice_id FROM salesclinic WHERE customer_id = @id)";
             List<MySqlParameter> list = new List<MySqlParameter>();
             list.Add(new MySqlParameter("@id", id));
 

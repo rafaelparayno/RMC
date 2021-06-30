@@ -1342,6 +1342,12 @@
     <Compile Include="Reception\ReceptionDash.Designer.cs">
       <DependentUpon>ReceptionDash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reception\RequestDetailsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reception\RequestDetailsControl.Designer.cs">
+      <DependentUpon>RequestDetailsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\barcode.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2032,6 +2038,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reception\ReceptionDash.resx">
       <DependentUpon>ReceptionDash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reception\RequestDetailsControl.resx">
+      <DependentUpon>RequestDetailsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\barcode.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
