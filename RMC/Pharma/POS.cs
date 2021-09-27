@@ -88,7 +88,7 @@ namespace RMC.InventoryPharma
             txtName.Clear();
             txtStock.Clear();
             txtrue.Text = "";
-            
+            numericUpDown1.Value = 0;
             txtDis.Visible = false;
             label11.Visible = false;
         }

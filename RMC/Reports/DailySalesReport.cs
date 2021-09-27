@@ -287,6 +287,14 @@ namespace RMC.Reports {
                 return this.DataDefinition.ParameterFields[24];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_tSalesParam {
+            get {
+                return this.DataDefinition.ParameterFields[25];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]

@@ -99,9 +99,9 @@ namespace RMC.Database.Controllers
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
 
-            while(await reader.ReadAsync())
+            while (await reader.ReadAsync())
             {
-                totalSales = reader["sales"].ToString() == "" ? 0 : 
+                totalSales = reader["sales"].ToString() == "" ? 0 :
                             float.Parse(reader["sales"].ToString());
             }
 

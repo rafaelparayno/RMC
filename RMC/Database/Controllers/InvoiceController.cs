@@ -62,6 +62,7 @@ namespace RMC.Database.Controllers
             sql = @"INSERT INTO invoice (sales) VALUES (@sales)";
 
             list.Add(new MySqlParameter("@sales", sales));
+         
 
             await crud.ExecuteAsync(sql, list);
         }
@@ -95,6 +96,31 @@ namespace RMC.Database.Controllers
 
             return await crud.GetDataSetAsync(sql, mySqlParameters);
         }
+
+        public async Task<float> getSalesDate(string date)
+        {
+            float sales = 0;
+
+            string sql = @"SELECT SUM(sales) as 'totalSales' FROM `invoice` 
+                        WHERE invoice_id in 
+                            (SELECT invoice_id FROM salesclinic) 
+                                AND Date(date_invoice) = @date";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>() { (new MySqlParameter("@date", date)) };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while(await reader.ReadAsync())
+            {
+                sales = string.IsNullOrEmpty(reader["totalSales"].ToString()) ?
+                    0 : float.Parse(reader["totalSales"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return sales;
+        }
+
 
       
     }

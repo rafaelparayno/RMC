@@ -31,10 +31,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -80,19 +80,6 @@
             this.label8.Size = new System.Drawing.Size(94, 16);
             this.label8.TabIndex = 1;
             this.label8.Text = "Adjust Stock";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(34, 122);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(303, 36);
-            this.numericUpDown1.TabIndex = 9;
             // 
             // btnSave
             // 
@@ -142,6 +129,19 @@
             this.txtName.Size = new System.Drawing.Size(303, 26);
             this.txtName.TabIndex = 245;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.Location = new System.Drawing.Point(34, 122);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(303, 36);
+            this.numericUpDown1.TabIndex = 9;
+            // 
             // AdjustStocks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -172,9 +172,9 @@
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconButton btnCloseApp;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private FontAwesome.Sharp.IconButton btnSave;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

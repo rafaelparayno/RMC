@@ -19,7 +19,7 @@ namespace RMC.Reception
     {
 
         SalesClinicController salesClinicController = new SalesClinicController();
-        /* SalesPharmaController salesPharmaController = new SalesPharmaController();*/
+        InvoiceController invoiceController = new InvoiceController();
         ConsumedItems consumedItems = new ConsumedItems();
         DailySalesReportController reportController = new DailySalesReportController();
         private int repid = 0;
@@ -69,28 +69,29 @@ namespace RMC.Reception
                 string date = await reportController.findDate(repid);
 
                 string newdate = date.Split(' ')[0];
-
+              
                 string newDate2 = $"{newdate.Split('/')[2]}-{newdate.Split('/')[1]}-{newdate.Split('/')[0]}";
+                Console.WriteLine(newDate2);
 
-               
                 Task<float> task1 = salesClinicController.getTotalConsultation(newDate2);
                 Task<float> task2 = salesClinicController.getTotalLaboratory(newDate2);
                 Task<float> task3 = salesClinicController.getTotalXray(newDate2);
-
+                
                 Task<float> task5 = salesClinicController.getMedCertTotal(newDate2);
                 Task<float> task6 = salesClinicController.getTotalPackages(newDate2);
                 Task<float> task7 = salesClinicController.getTotalOtherServices(newDate2);
                 Task<float> task8 = consumedItems.getConsumedCost(newDate2);
+                Task<float> task9 = invoiceController.getSalesDate(newDate2);
 
                 Task<float>[] prices = new Task<float>[] { task1, task2,
                                         task3,task5,
-                                            task6, task7,task8 };
+                                            task6, task7,task8,task9 };
 
 
                 await Task.WhenAll(prices);
 
                 float totalMisc = task5.Result + task6.Result + task7.Result;
-
+                float totalSales = task9.Result;
                 
 
                 cos.SetParameterValue("consulatationParam", task1.Result);
@@ -99,7 +100,7 @@ namespace RMC.Reception
 
                 cos.SetParameterValue("miscParam", totalMisc);
                 cos.SetParameterValue("itemConsumedParam", task8.Result);
-
+                cos.SetParameterValue("tSalesParam", totalSales);
                 await loadXmls();
             }
 

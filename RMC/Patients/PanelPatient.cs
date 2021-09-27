@@ -29,7 +29,6 @@ namespace RMC.Patients
         {
             InitializeComponent();
             this.DoubleBuffered = true;
-           
             getAccess();
         }
 

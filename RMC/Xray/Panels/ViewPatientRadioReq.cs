@@ -70,6 +70,8 @@ namespace RMC.Xray.Panels
             patView.Address = "Address: " + patientmod.address;
             patView.Cnumber = "Contact Number : " + patientmod.contact;
             patView.Dock = DockStyle.Fill;
+            patView.btnView1.Visible = false;
+            patView.btnDelete1.Visible = false;
             panelPatient.BackColor = Color.FloralWhite;
             if (File.Exists(patientmod.imgPath))
             {

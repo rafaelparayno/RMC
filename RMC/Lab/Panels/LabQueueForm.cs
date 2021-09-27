@@ -142,7 +142,7 @@ namespace RMC.Lab.Panels
             {
 
                 int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-
+              
 
                 if (currentMouseOverRow >= 0)
                 {

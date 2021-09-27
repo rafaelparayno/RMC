@@ -69,6 +69,8 @@ namespace RMC.Lab.Panels.Diags
             patView.Address = "Address: " + patientmod.address;
             patView.Cnumber = "Contact Number : " + patientmod.contact;
             patView.Dock = DockStyle.Fill;
+            patView.btnView1.Visible = false;
+            patView.btnDelete1.Visible = false;
             panelPatient.BackColor = Color.FloralWhite;
             if (File.Exists(patientmod.imgPath))
             {
@@ -129,19 +131,19 @@ namespace RMC.Lab.Panels.Diags
 
             labModel lb = await laboratoryController.getLabModelInID(selectedIds);
 
-            if(lb.autodocsid > 0)
+            if(lb.autodocsid != 0)
             {
                 DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
                 diagWithAutomated.ShowDialog();
             }
 
-            if(lb.crystal_id_lab == 6)
+            if(lb.crystal_id_lab == 6 && lb.autodocsid == 0)
             {
                 AddEditDiagnosticForm addEditDiagnosticForm = new AddEditDiagnosticForm(patientid, selectedIds);
                 addEditDiagnosticForm.ShowDialog();
 
             }
-            else
+            else if(lb.crystal_id_lab > 0 && lb.autodocsid == 0)
             {
                 DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds);
                 dynform.ShowDialog();
@@ -152,6 +154,7 @@ namespace RMC.Lab.Panels.Diags
                 DiagFileUpload fileUpload = new DiagFileUpload(selectedIds,patientid);
                 fileUpload.ShowDialog();
             }
+
             setData(patientid);
         }
 
@@ -181,33 +184,33 @@ namespace RMC.Lab.Panels.Diags
                 {
                     case 1:
                         BloodChemDiagForms bloodChemDiagForms = new BloodChemDiagForms(patientid,selectedIds,0);
-                        bloodChemDiagForms.ShowDialog();
+                        bloodChemDiagForms.Show();
                         break;
                     case 2:
                         FecalysisDiagForms fecalysisDiagForms = new FecalysisDiagForms(patientid, selectedIds, 0);
-                        fecalysisDiagForms.ShowDialog();
+                        fecalysisDiagForms.Show();
                         break;
                     case 3:
                         HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(patientid, selectedIds,0);
-                        hematologyDiagForms.ShowDialog();
+                        hematologyDiagForms.Show();
                         break;
                     case 4:
                         SerologyDiagForms serologyDiagForms = new SerologyDiagForms(patientid, selectedIds, 0);
-                        serologyDiagForms.ShowDialog();
+                        serologyDiagForms.Show();
                         break;
                     case 5:
                         UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(patientid, selectedIds,0);
-                        urinalysisDiagForms.ShowDialog();
+                        urinalysisDiagForms.Show();
                         break;
                     case 6:
                      
                         ViewDiagnosticReport viewDiagnosticReport = new ViewDiagnosticReport(patientid, selectedIds, 0);
-                        viewDiagnosticReport.ShowDialog();
+                        viewDiagnosticReport.Show();
                         break;
 
                     case 7:
                         ClinicalChemistryDiagForms clinicalChemistryDiagForms = new ClinicalChemistryDiagForms(patientid, selectedIds, 0);
-                        clinicalChemistryDiagForms.ShowDialog();
+                        clinicalChemistryDiagForms.Show();
                         break;
                 }
 

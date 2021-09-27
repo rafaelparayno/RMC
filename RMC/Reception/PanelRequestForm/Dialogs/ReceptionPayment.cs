@@ -76,6 +76,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
    
 
         #region OwnFunctions
+
         private void initColDg()
         {
             dt.Columns.Add("id", typeof(int));
@@ -311,6 +312,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             {
                 string type = dr.Cells[2].Value.ToString();
                 int id = int.Parse(dr.Cells[0].Value.ToString());
+                
                 saves.Add(salesClinicController.Save(type, id, customerid));
             
             }

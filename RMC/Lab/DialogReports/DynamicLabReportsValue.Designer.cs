@@ -76,9 +76,9 @@
             this.label8.ForeColor = System.Drawing.Color.FloralWhite;
             this.label8.Location = new System.Drawing.Point(3, 10);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 16);
+            this.label8.Size = new System.Drawing.Size(20, 16);
             this.label8.TabIndex = 4;
-            this.label8.Text = "Add Xray Report";
+            this.label8.Text = "\"\"";
             // 
             // btnSave
             // 

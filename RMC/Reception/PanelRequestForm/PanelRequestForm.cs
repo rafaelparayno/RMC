@@ -443,11 +443,13 @@ namespace RMC.Reception.PanelRequestForm
 
         }
 
-        private void groupBox2_Resize(object sender, EventArgs e)
+        
+
+        private void PanelRequestForm_Resize(object sender, EventArgs e)
         {
             Control control = (Control)sender;
 
-          
+
 
             if (control.Size.Width < 700)
             {

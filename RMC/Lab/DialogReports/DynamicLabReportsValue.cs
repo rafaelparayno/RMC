@@ -425,7 +425,7 @@ namespace RMC.Lab.DialogReports
             }
 
 
-            parametersName.Reverse();
+      
 
             foreach(string name in parametersName)
             {

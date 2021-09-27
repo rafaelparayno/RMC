@@ -24,10 +24,13 @@ namespace RMC.InventoryPharma.PanelViewStocks.Dialog
         public AdjustStocks(int id,string name,bool isPharma)
         {
             InitializeComponent();
+            numericUpDown1.Maximum = decimal.MaxValue;
+            numericUpDown1.Minimum = decimal.MinValue;
             this.id = id;
             txtName.Text = name;
             getStocks(isPharma);
             this.isPhar = isPharma;
+          
         }
 
 
