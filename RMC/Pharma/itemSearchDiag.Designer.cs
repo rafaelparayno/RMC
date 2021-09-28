@@ -201,17 +201,18 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addThisItemToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(148, 26);
             // 
             // addThisItemToolStripMenuItem
             // 
             this.addThisItemToolStripMenuItem.Name = "addThisItemToolStripMenuItem";
-            this.addThisItemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addThisItemToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.addThisItemToolStripMenuItem.Text = "Add This Item";
             this.addThisItemToolStripMenuItem.Click += new System.EventHandler(this.addThisItemToolStripMenuItem_Click);
             // 
             // itemSearchDiag
             // 
+            this.AcceptButton = this.iconButton1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;

@@ -75,7 +75,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             disableBrands(cbItem);
 
             if(!isEdit)
-            setUpSKU(cbItem, Catid);
+            setUpSKU();
 
             
         }
@@ -201,7 +201,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         {
             Catid = int.Parse((cbCategory.SelectedItem as ComboBoxItem).Value.ToString());
             if (!isEdit)
-                setUpSKU(cbItem, Catid);
+                setUpSKU();
         }
 
 
@@ -439,7 +439,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
             }
         }
 
-        private async void setUpSKU(int itemType,int catId)
+        private async void setUpSKU()
         {
             string sku = "";
             List<int> myValues = new List<int>(new int[] { 1, 2, 8, 4, 5, 6 });
