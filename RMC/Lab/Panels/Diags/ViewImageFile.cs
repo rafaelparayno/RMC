@@ -28,6 +28,21 @@ namespace RMC.Lab.Panels.Diags
             label1.Text = labname;
         }
 
+        private void loadPdf(string path)
+        {
+          
+
+            if (File.Exists(path))
+            {
+                axAcroPDF1.src = path;
+            }
+            else
+            {
+                MessageBox.Show("No file found");
+            }
+
+        }
+
         private async void ViewImageFile_Load(object sender, EventArgs e)
         {
             string path = patient_lab_id == 0 ?
@@ -36,10 +51,11 @@ namespace RMC.Lab.Panels.Diags
 
             try
             {
-             /*   if (!File.Exists(path))
-                    return;*/
-                pbAutomated.Image = Image.FromFile(path);
-                pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;
+                /*   if (!File.Exists(path))
+                       return;*/
+                /*pbAutomated.Image = Image.FromFile(path);
+                pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;*/
+                loadPdf(path);
             }
             catch (System.IO.FileNotFoundException)
             {

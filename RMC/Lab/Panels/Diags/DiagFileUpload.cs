@@ -13,7 +13,7 @@ namespace RMC.Lab.Panels.Diags
 {
     public partial class DiagFileUpload : Form
     {
-        Image img = null;
+       
         ItemController itemController = new ItemController();
         LabQueueController labQueueController = new LabQueueController();
         PatientLabController patientLabController = new PatientLabController();
@@ -46,19 +46,6 @@ namespace RMC.Lab.Panels.Diags
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            /* OpenFileDialog openFileDialog = new OpenFileDialog();
-             openFileDialog.Filter = "Files|*.jpg;*.jpeg;*.png;";
-             string filePath = "";
-
-             if (openFileDialog.ShowDialog() == DialogResult.OK)
-             {
-
-                 filePath = openFileDialog.FileName;
-                 pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;
-                 pbAutomated.Image = Image.FromFile(filePath);
-                 img = Image.FromFile(filePath);
-
-             }*/
             OpenFileDialog fd = new OpenFileDialog();
             fd.Filter = "Files|*.pdf;";
 
@@ -102,7 +89,7 @@ namespace RMC.Lab.Panels.Diags
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (img == null)
+            if (fileSource == null)
                 return;
 
             patientDetails patientmod = await patientDetailsController.getPatientId(patientid);
@@ -116,8 +103,8 @@ namespace RMC.Lab.Panels.Diags
             if (!isEdited)
             {
                 await labQueueController.updateStatus(labId, patientmod.id);
-                //saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + combine);
-                File.Copy(fileSource, filePath + "Lab-" + patientmod.id + "-" + labId + "-" + combine, true);
+       
+                File.Copy(fileSource, filePath + "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".pdf", true);
                 await patientLabController.save(patientmod.id, labId,
                                  "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".pdf", filePath);
                 await processConsumables();

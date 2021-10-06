@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewImageFile));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pbAutomated = new System.Windows.Forms.PictureBox();
+            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
             this.groupBox3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -78,6 +81,7 @@
             // panel4
             // 
             this.panel4.AutoScroll = true;
+            this.panel4.Controls.Add(this.axAcroPDF1);
             this.panel4.Controls.Add(this.pbAutomated);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 90);
@@ -93,6 +97,17 @@
             this.pbAutomated.Size = new System.Drawing.Size(191, 123);
             this.pbAutomated.TabIndex = 1;
             this.pbAutomated.TabStop = false;
+            this.pbAutomated.Visible = false;
+            // 
+            // axAcroPDF1
+            // 
+            this.axAcroPDF1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axAcroPDF1.Enabled = true;
+            this.axAcroPDF1.Location = new System.Drawing.Point(0, 0);
+            this.axAcroPDF1.Name = "axAcroPDF1";
+            this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
+            this.axAcroPDF1.Size = new System.Drawing.Size(800, 360);
+            this.axAcroPDF1.TabIndex = 2;
             // 
             // ViewImageFile
             // 
@@ -112,6 +127,7 @@
             this.groupBox3.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -123,5 +139,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pbAutomated;
+        private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
     }
 }
