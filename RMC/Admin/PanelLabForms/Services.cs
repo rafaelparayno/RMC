@@ -50,7 +50,8 @@ namespace RMC.Admin.PanelLabForms
             AddEditService form = new AddEditService(dbServiceList.SelectedRows[0].Cells[0].Value.ToString(),
                                                      dbServiceList.SelectedRows[0].Cells[1].Value.ToString(),
                                                      dbServiceList.SelectedRows[0].Cells[2].Value.ToString(),
-                                                     dbServiceList.SelectedRows[0].Cells[3].Value.ToString());
+                                                     dbServiceList.SelectedRows[0].Cells[3].Value.ToString(),
+                                                     dbServiceList.SelectedRows[0].Cells[4].Value.ToString());
             form.ShowDialog();
             loadGrid();
         }

@@ -37,16 +37,19 @@ namespace RMC.Lab.Panels.Diags
         int labId = 0;
         private bool isEdited = false;
         private int patient_lab_id = 0;
+        int cid = 0;
 
-
-        public  DiagWithAutomated(int labId,int patientid)
+        public  DiagWithAutomated(int labId,int patientid,int customerid)
         {
             InitializeComponent();
             this.labId = labId;
             this.patientid = patientid;
             getLabmodel();
+            cid = customerid;
         }
-        public DiagWithAutomated(int labId, int patientid,int patient_lab_id)
+
+
+        public DiagWithAutomated(int labId, int patientid,int patient_lab_id,int xtra)
         {
             InitializeComponent();
             this.labId = labId;
@@ -201,7 +204,7 @@ namespace RMC.Lab.Panels.Diags
             saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + combine);
             await patientLabController.save(patientmod.id,labId,
                              "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".jpg", filePath);
-            await labQueueController.updateStatus(labId, patientmod.id);
+            await labQueueController.updateStatus(labId, cid);
             await processConsumables();
             }
             else

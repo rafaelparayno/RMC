@@ -29,27 +29,30 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, listparams);
         }
 
-        public async void save(string name,string desc,float price)
+        public async void save(string name,string desc,float price,int fileAttach)
         {
-            string sql = @"INSERT INTO service (service_name,service_desc,price) VALUES (@name,@desc,@price)";
+            string sql = @"INSERT INTO service (service_name,service_desc,price,with_file) 
+                                    VALUES (@name,@desc,@price,@fileA)";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
             listparams.Add(new MySqlParameter("@name", name));
             listparams.Add(new MySqlParameter("@desc", desc));
             listparams.Add(new MySqlParameter("@price", price));
+            listparams.Add(new MySqlParameter("@fileA", fileAttach));
 
             await crud.ExecuteAsync(sql, listparams);
         }
 
-        public async void update(int id,string name, string desc, float price)
+        public async void update(int id,string name, string desc, float price,int  fileAttach)
         {
             string sql = @"UPDATE service SET service_name = @name, service_desc = @desc,
-                           price = @price WHERE service_id = @id";
+                           price = @price, with_file = @fileA WHERE service_id = @id";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
             listparams.Add(new MySqlParameter("@name", name));
             listparams.Add(new MySqlParameter("@desc", desc));
             listparams.Add(new MySqlParameter("@price", price));
+            listparams.Add(new MySqlParameter("@fileA", fileAttach));
             listparams.Add(new MySqlParameter("@id", id));
 
             await crud.ExecuteAsync(sql, listparams);

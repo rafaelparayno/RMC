@@ -18,6 +18,7 @@ namespace RMC.OthersPanels.Dialogs
     {
         private int patientid = 0;
         private int cid = 0;
+       
         ItemController itemController = new ItemController();
         patientDetails patientmod = new patientDetails();
         PatientDetailsController patD = new PatientDetailsController();
@@ -44,6 +45,7 @@ namespace RMC.OthersPanels.Dialogs
 
             lvItemLab.Columns.Add("Service ID", 100, HorizontalAlignment.Center);
             lvItemLab.Columns.Add("Service Name", 400, HorizontalAlignment.Center);
+            lvItemLab.Columns.Add("Has Attachment", 70, HorizontalAlignment.Center);
             lvItemLab.Columns.Add("Is Done", 100, HorizontalAlignment.Center);
         }
 
@@ -94,9 +96,37 @@ namespace RMC.OthersPanels.Dialogs
                 lvs.Text = s.id.ToString();
                 lvs.SubItems.Add(s.serviceName); 
                 string isDone = s.isDone == 0 ? "No Data" : "Done";
+                string hasAttach = s.hasFileAttach == 0 ? "None" : "Yes";
+                lvs.SubItems.Add(hasAttach);
                 lvs.SubItems.Add(isDone);
                 lvItemLab.Items.Add(lvs);
             }
+        }
+
+
+        private void contextMenuFillItems()
+        {
+
+            contextMenuStrip1.Items.Clear();
+
+            contextMenuStrip1.Items.Add("Done").Click
+                += new EventHandler(insertLabDataToolStripMenuItem_Click);
+
+            contextMenuStrip1.Items.Add("Undone").Click
+                += new EventHandler(viewDataToolStripMenuItem_Click);
+
+
+        
+
+            string hasAttach = lvItemLab.SelectedItems[0].SubItems[2].Text;
+
+            if (hasAttach == "Yes")
+            {
+              contextMenuStrip1.Items.Add("Add File").Click
+                += new EventHandler(attachFileUpload);
+            }
+
+
         }
 
         private void lvItemLab_MouseClick(object sender, MouseEventArgs e)
@@ -107,11 +137,37 @@ namespace RMC.OthersPanels.Dialogs
                 var focusedItem = lvItemLab.FocusedItem;
                 if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
                 {
+                    contextMenuFillItems();
 
                     contextMenuStrip1.Show(Cursor.Position);
                 }
 
             }
+        }
+
+
+        private async void attachFileUpload(object sender, EventArgs e)
+        {
+            if (lvItemLab.SelectedItems.Count == 0)
+                return;
+            if (lvItemLab.Items.Count == 0)
+                return;
+
+            string hasAttach = lvItemLab.SelectedItems[0].SubItems[2].Text;
+            string isDone = lvItemLab.SelectedItems[0].SubItems[3].Text;
+
+            if (hasAttach == "Yes")
+            {
+                if (isDone == "Done")
+                    return;
+
+                UploadFileOthers frm = new UploadFileOthers(patientmod.id);
+                frm.ShowDialog();
+
+                await loadDataAsnyc();
+            }
+           
+
         }
 
         private async void insertLabDataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,11 +177,26 @@ namespace RMC.OthersPanels.Dialogs
             if (lvItemLab.Items.Count == 0)
                 return;
 
-            int selectedid = int.Parse(lvItemLab.SelectedItems[0].SubItems[0].Text);
+            string hasAttach = lvItemLab.SelectedItems[0].SubItems[2].Text;
+            string isDone = lvItemLab.SelectedItems[0].SubItems[3].Text;
 
-            await othersQueueController.updateStatus(selectedid, patientid, 1);
-            await processConsumables(selectedid);
-            await loadDataAsnyc();
+            if(hasAttach == "None")
+            {
+                if (isDone == "Done")
+                    return;
+
+                int selectedid = int.Parse(lvItemLab.SelectedItems[0].SubItems[0].Text);
+
+                await othersQueueController.updateStatus(selectedid, patientid, 1);
+                await processConsumables(selectedid);
+                await loadDataAsnyc();
+            }
+            else
+            {
+                MessageBox.Show("Cannot set Done. Needed to upload file attachment");
+            }
+
+           
         }
 
 
@@ -171,6 +242,11 @@ namespace RMC.OthersPanels.Dialogs
             if (lvItemLab.SelectedItems.Count == 0)
                 return;
             if (lvItemLab.Items.Count == 0)
+                return;
+
+            string isDone = lvItemLab.SelectedItems[0].SubItems[3].Text;
+
+            if (isDone != "Done")
                 return;
 
             int selectedid = int.Parse(lvItemLab.SelectedItems[0].SubItems[0].Text);

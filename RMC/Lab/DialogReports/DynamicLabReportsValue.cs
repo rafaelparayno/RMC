@@ -35,19 +35,21 @@ namespace RMC.Lab.DialogReports
         private int labid = 0;
         private bool edited = false;
         private int patient_lab_id = 0;
+        private int cid = 0;
 
-        public DynamicLabReportsValue(int crsid,int patientid,int labid)
+        public DynamicLabReportsValue(int crsid,int patientid,int labid,int cid)
         {
             InitializeComponent();
             this.crsid = crsid;
             this.patientid = patientid;
             this.labid = labid;
+            this.cid = cid;
             loadValues();
             loadTxts();
         }
 
 
-        public DynamicLabReportsValue(int crsid, int patientid, int labid,int patient_lab_id)
+        public DynamicLabReportsValue(int crsid, int patientid, int labid,int patient_lab_id,int xtra)
         {
             InitializeComponent();
             this.crsid = crsid;
@@ -580,7 +582,7 @@ namespace RMC.Lab.DialogReports
             await patientLabController.save(patientDetails.id, labid,
                               "Lab-" + patientDetails.id + "-" + labid + "-" + combine + ".xml", path);
 
-            await labQueueController.updateStatus(labid, patientDetails.id);
+            await labQueueController.updateStatus(labid, cid);
 
             XmlWriter xwriter = XmlWriter.Create(path + filename + ".xml");
 

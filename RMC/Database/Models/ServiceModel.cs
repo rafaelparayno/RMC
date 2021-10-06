@@ -17,6 +17,8 @@ namespace RMC.Database.Models
 
         public string desc { get; set; }
 
+        public int hasFileAttach { get; set; }
+
         public int isDone { get; set; }
        
     }

@@ -38,12 +38,10 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pbAutomated = new System.Windows.Forms.PictureBox();
             this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -172,23 +170,11 @@
             // 
             this.panel4.AutoScroll = true;
             this.panel4.Controls.Add(this.axAcroPDF1);
-            this.panel4.Controls.Add(this.pbAutomated);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 116);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(800, 334);
             this.panel4.TabIndex = 24;
-            // 
-            // pbAutomated
-            // 
-            this.pbAutomated.Image = global::RMC.Properties.Resources.noimg;
-            this.pbAutomated.Location = new System.Drawing.Point(12, 6);
-            this.pbAutomated.Name = "pbAutomated";
-            this.pbAutomated.Size = new System.Drawing.Size(191, 123);
-            this.pbAutomated.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAutomated.TabIndex = 1;
-            this.pbAutomated.TabStop = false;
-            this.pbAutomated.Visible = false;
             // 
             // axAcroPDF1
             // 
@@ -219,7 +205,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             this.ResumeLayout(false);
 
@@ -236,7 +221,6 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pbAutomated;
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
     }
 }

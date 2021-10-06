@@ -1088,6 +1088,12 @@
       <DependentUpon>Urinalysis.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="OthersPanels\Dialogs\UploadFileOthers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OthersPanels\Dialogs\UploadFileOthers.Designer.cs">
+      <DependentUpon>UploadFileOthers.cs</DependentUpon>
+    </Compile>
     <Compile Include="OthersPanels\Dialogs\ViewPatientServiceReq.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1905,6 +1911,9 @@
     <EmbeddedResource Include="NewReports\Urinalysis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Urinalysis.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OthersPanels\Dialogs\UploadFileOthers.resx">
+      <DependentUpon>UploadFileOthers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OthersPanels\Dialogs\ViewPatientServiceReq.resx">
       <DependentUpon>ViewPatientServiceReq.cs</DependentUpon>

@@ -27,15 +27,17 @@ namespace RMC.Lab.Panels.Diags
         private bool isEdited = false;
         private int patient_lab_id = 0;
         string fileSource = "";
+        private int cid = 0;
 
-        public DiagFileUpload(int labId, int patientid)
+        public DiagFileUpload(int labId, int patientid,int cid)
         {
             InitializeComponent();
             this.labId = labId;
             this.patientid = patientid;
+            this.cid = cid;
         }
 
-        public DiagFileUpload(int labId, int patientid,int patient_lab_id)
+        public DiagFileUpload(int labId, int patientid,int patient_lab_id, int xtra)
         {
             InitializeComponent();
             this.labId = labId;
@@ -102,7 +104,7 @@ namespace RMC.Lab.Panels.Diags
 
             if (!isEdited)
             {
-                await labQueueController.updateStatus(labId, patientmod.id);
+                await labQueueController.updateStatus(labId, cid);
        
                 File.Copy(fileSource, filePath + "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".pdf", true);
                 await patientLabController.save(patientmod.id, labId,

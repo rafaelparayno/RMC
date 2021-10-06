@@ -25,7 +25,7 @@ namespace RMC.Admin.PanelLabForms.Dialogs
         int idService = 0;
         List<int> idstobeRemove = new List<int>();
         List<consumablesServMod> consumablesModsEdit;
-
+        bool isWithFileAttach = false;
         #endregion
 
         public AddEditService()
@@ -55,6 +55,17 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             txtName.Text = datas[1];
             txtDesc.Text = datas[2];
             txtsSellingPrice.Text = datas[3];
+
+            if(int.Parse(datas[4]) == 1)
+            {
+                radioButton1.Checked = true;
+                isWithFileAttach = true;
+            }
+            else
+            {
+                isWithFileAttach = false;
+            }
+
             consumablesModsEdit = new List<consumablesServMod>();
             consumablesModsEdit = await consumablesServController.getEditedConsumables(idService);
 
@@ -282,18 +293,23 @@ namespace RMC.Admin.PanelLabForms.Dialogs
                 return;
             }
 
+            int fileAttach = isWithFileAttach ? 1 : 0;
+
             if (isEdit)
             {
                 idstobeRemove = getRemoveId();
                 removeConsumables(idstobeRemove);
                 updateConsumables();
+
+              
+
                 serviceController.update(idService, txtName.Text.ToString(),
-                        txtDesc.Text.ToString(), float.Parse(txtsSellingPrice.Text));
+                        txtDesc.Text.ToString(), float.Parse(txtsSellingPrice.Text), fileAttach);
             }
             else
             {
                 serviceController.save(txtName.Text.Trim(), 
-                    txtDesc.Text.Trim(), float.Parse(txtsSellingPrice.Text));
+                    txtDesc.Text.Trim(), float.Parse(txtsSellingPrice.Text), fileAttach);
                 saveConsumables();
             }
 
@@ -311,8 +327,18 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             }
         }
 
+
         #endregion
 
+        private void radioButton1_Click(object sender, EventArgs e)
+        {
+            isWithFileAttach = true;
 
+        }
+
+        private void radioButton2_Click(object sender, EventArgs e)
+        {
+            isWithFileAttach = false;
+        }
     }
 }

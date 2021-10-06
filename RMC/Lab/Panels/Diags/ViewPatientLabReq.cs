@@ -132,25 +132,25 @@ namespace RMC.Lab.Panels.Diags
 
             if(lb.autodocsid != 0)
             {
-                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
+                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid,cid);
                 diagWithAutomated.ShowDialog();
             }
 
             if(lb.crystal_id_lab == 6 && lb.autodocsid == 0)
             {
-                AddEditDiagnosticForm addEditDiagnosticForm = new AddEditDiagnosticForm(patientid, selectedIds);
+                AddEditDiagnosticForm addEditDiagnosticForm = new AddEditDiagnosticForm(patientid, selectedIds,cid);
                 addEditDiagnosticForm.ShowDialog();
 
             }
             else if(lb.crystal_id_lab > 0 && lb.autodocsid == 0)
             {
-                DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds);
+                DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds,cid);
                 dynform.ShowDialog();
             }
 
             if(lb.autodocsid == 0 && lb.crystal_id_lab == 0)
             {
-                DiagFileUpload fileUpload = new DiagFileUpload(selectedIds,patientid);
+                DiagFileUpload fileUpload = new DiagFileUpload(selectedIds,patientid,cid);
                 fileUpload.ShowDialog();
             }
 

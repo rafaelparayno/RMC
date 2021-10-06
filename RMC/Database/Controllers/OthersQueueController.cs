@@ -103,7 +103,7 @@ namespace RMC.Database.Controllers
         {
             List<ServiceModel> listServiceModel = new List<ServiceModel>();
 
-            string sql = @"SELECT others_queue.customer_id,others_queue.service_id,service.service_name,others_queue.is_done_o FROM `others_queue` 
+            string sql = @"SELECT others_queue.customer_id,others_queue.service_id,service.service_name,others_queue.is_done_o,with_file FROM `others_queue` 
                         INNER JOIN service ON others_queue.service_id = service.service_id 
                         WHERE customer_id = @id ";
 
@@ -121,6 +121,7 @@ namespace RMC.Database.Controllers
                 s.serviceName = reader["service_name"].ToString();
               
                 s.isDone = int.Parse(reader["is_done_o"].ToString());
+                s.hasFileAttach = int.Parse(reader["with_file"].ToString());
                 listServiceModel.Add(s);
             }
 

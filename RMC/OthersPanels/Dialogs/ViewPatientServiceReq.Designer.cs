@@ -34,10 +34,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelPatient = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.insertLabDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -89,25 +86,8 @@
             // 
             // contextMenuStrip1
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.insertLabDataToolStripMenuItem,
-            this.viewDataToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
-            // 
-            // insertLabDataToolStripMenuItem
-            // 
-            this.insertLabDataToolStripMenuItem.Name = "insertLabDataToolStripMenuItem";
-            this.insertLabDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.insertLabDataToolStripMenuItem.Text = "Set Done";
-            this.insertLabDataToolStripMenuItem.Click += new System.EventHandler(this.insertLabDataToolStripMenuItem_Click);
-            // 
-            // viewDataToolStripMenuItem
-            // 
-            this.viewDataToolStripMenuItem.Name = "viewDataToolStripMenuItem";
-            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.viewDataToolStripMenuItem.Text = "Set Not Done";
-            this.viewDataToolStripMenuItem.Click += new System.EventHandler(this.viewDataToolStripMenuItem_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 26);
             // 
             // ViewPatientServiceReq
             // 
@@ -125,7 +105,6 @@
             this.Text = "View Service";
             this.Load += new System.EventHandler(this.ViewPatientServiceReq_Load);
             this.groupBox2.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -137,7 +116,5 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panelPatient;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem insertLabDataToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewDataToolStripMenuItem;
     }
 }
