@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace RMC.Xray.Panels.RepDiags
         private int xid = 0;
         private int patient_xray_id = 0;
         PatientXrayController patientXrayController = new PatientXrayController();
-       /* PatientLabController patientLabController = new PatientLabController();*/
+    
 
         public ViewImageXray(int patientid, int xid, int patient_xray_id, string xname)
         {
@@ -28,6 +29,21 @@ namespace RMC.Xray.Panels.RepDiags
             label1.Text = xname;
         }
 
+        private void loadPdf(string path)
+        {
+
+
+            if (File.Exists(path))
+            {
+                axAcroPDF1.src = path;
+            }
+            else
+            {
+                MessageBox.Show("No file found");
+            }
+
+        }
+
         private async void ViewImageXray_Load(object sender, EventArgs e)
         {
             string path = patient_xray_id == 0 ?
@@ -36,10 +52,8 @@ namespace RMC.Xray.Panels.RepDiags
 
             try
             {
-                /*   if (!File.Exists(path))
-                       return;*/
-                pbAutomated.Image = Image.FromFile(path);
-                pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;
+             
+                loadPdf(path);
             }
             catch (System.IO.FileNotFoundException)
             {
