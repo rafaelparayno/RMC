@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,7 @@ namespace RMC.Xray.Panels.RepDiags
 {
     public partial class AddXrayUploading : Form
     {
-        Image img = null;
-
+      
         RadioQueueController radioQueueController = new RadioQueueController();
         PatientXrayController patientXrayController = new PatientXrayController();
         ItemController itemController = new ItemController();
@@ -30,6 +30,8 @@ namespace RMC.Xray.Panels.RepDiags
         private int patient_xray_id = 0;
         private bool isEdited = false;
         private int countTimer = 0;
+        private string fileSource = "";
+
 
         public AddXrayUploading(int xid, int patientid)
         {
@@ -50,20 +52,19 @@ namespace RMC.Xray.Panels.RepDiags
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Files|*.jpg;*.jpeg;*.png;";
-            string filePath = "";
+           
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Filter = "Files|*.pdf;";
+
+            if (fd.ShowDialog() == DialogResult.OK)
             {
-
-                filePath = openFileDialog.FileName;
-                pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;
-                pbAutomated.Image = Image.FromFile(filePath);
-                img = Image.FromFile(filePath);
-                timer1.Start();
-                countTimer = 0;
-                btnSave.Enabled = false;
+                axAcroPDF1.src = fd.FileName;
+                fileSource = fd.FileName;
+            }
+            else
+            {
+                MessageBox.Show("Please select a Pdf");
             }
         }
 
@@ -94,7 +95,7 @@ namespace RMC.Xray.Panels.RepDiags
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (img == null)
+            if (fileSource == null)
                 return;
 
             patientDetails patientmod = await patientDetailsController.getPatientId(patientid);
@@ -109,8 +110,7 @@ namespace RMC.Xray.Panels.RepDiags
                 string datenow = DateTime.Now.ToString("yyyy--MM--dd");
                 string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
                 string combine = datenow + "--" + timenow;
-                saveImginPath(filePath, "Xray-" + patientmod.id + "-" + xid + "-" + combine);
-
+                File.Copy(fileSource, filePath +  "Xray-" + patientmod.id + "-" + xid + "-" + combine + ".pdf", true);
                 await patientXrayController.save(patientmod.id, xid,
                                  "Xray-" + patientmod.id + "-" + xid + "-" + combine + ".jpg", filePath);
                 await processConsumables();
@@ -122,7 +122,7 @@ namespace RMC.Xray.Panels.RepDiags
                  await patientXrayController.getFullPath(patientmod.id, xid)
                 : await patientXrayController.getFullPath(patient_xray_id);
 
-                saveImginPathEdited(path);
+                savePdfinPathEdited(path);
             }
         
 
@@ -130,19 +130,27 @@ namespace RMC.Xray.Panels.RepDiags
             this.Close();
         }
 
-        private void saveImginPathEdited(string path)
+        private void savePdfinPathEdited(string path)
+        {
+            File.Copy(fileSource, path, true);
+            /* Image newImg = pbAutomated.Image;
+             newImg.Save(path);
+             newImg.Dispose();*/
+        }
+
+        /*private void saveImginPathEdited(string path)
         {
             Image newImg = pbAutomated.Image;
             newImg.Save(path);
             newImg.Dispose();
-        }
+        }*/
 
-        private void saveImginPath(string path, string fileName)
+       /* private void saveImginPath(string path, string fileName)
         {
             Image newImg = pbAutomated.Image;
             newImg.Save(path + fileName + ".jpg");
             newImg.Dispose();
-        }
+        }*/
 
         private void timer1_Tick(object sender, EventArgs e)
         {

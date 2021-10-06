@@ -40,12 +40,17 @@
             this.dbServiceList = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showServiceRequestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePendingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceList)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -188,7 +193,6 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 19);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -197,6 +201,36 @@
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 113;
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showServiceRequestToolStripMenuItem,
+            this.viewDataToolStripMenuItem,
+            this.removePendingToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(189, 70);
+            // 
+            // showServiceRequestToolStripMenuItem
+            // 
+            this.showServiceRequestToolStripMenuItem.Name = "showServiceRequestToolStripMenuItem";
+            this.showServiceRequestToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.showServiceRequestToolStripMenuItem.Text = "Show Service Request";
+            this.showServiceRequestToolStripMenuItem.Click += new System.EventHandler(this.showServiceRequestToolStripMenuItem_Click);
+            // 
+            // viewDataToolStripMenuItem
+            // 
+            this.viewDataToolStripMenuItem.Name = "viewDataToolStripMenuItem";
+            this.viewDataToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.viewDataToolStripMenuItem.Text = "View Data";
+            this.viewDataToolStripMenuItem.Click += new System.EventHandler(this.viewDataToolStripMenuItem_Click);
+            // 
+            // removePendingToolStripMenuItem
+            // 
+            this.removePendingToolStripMenuItem.Name = "removePendingToolStripMenuItem";
+            this.removePendingToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.removePendingToolStripMenuItem.Text = "Remove Pending";
+            this.removePendingToolStripMenuItem.Click += new System.EventHandler(this.removePendingToolStripMenuItem_Click);
             // 
             // othersQueue
             // 
@@ -218,6 +252,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceList)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -235,5 +270,9 @@
         public System.Windows.Forms.DataGridView dbServiceList;
         private System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem showServiceRequestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removePendingToolStripMenuItem;
     }
 }

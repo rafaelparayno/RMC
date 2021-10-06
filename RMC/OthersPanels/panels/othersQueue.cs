@@ -16,7 +16,7 @@ namespace RMC.OthersPanels.panels
     public partial class othersQueue : Form
     {
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
-
+        OthersQueueController OthersQueueController = new OthersQueueController();
         private string idRightClick;
         private string cidRightClick;
         public othersQueue()
@@ -141,11 +141,59 @@ namespace RMC.OthersPanels.panels
                 {
                     idRightClick = dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString();
                     cidRightClick = dataGridView1.Rows[currentMouseOverRow].Cells[1].Value.ToString();
-                    contextMenuStrip1.Show(dataGridView1, new Point(e.X, e.Y));
+                    contextMenuStrip2.Show(dataGridView1, new Point(e.X, e.Y));
 
                 }
 
             }
         }
+
+        private async void showServiceRequestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool isNumber = int.TryParse(idRightClick, out _);
+            bool isNumber2 = int.TryParse(cidRightClick, out _);
+            if (!isNumber || !isNumber2)
+                return;
+
+            int id = int.Parse(idRightClick);
+            int cid = int.Parse(cidRightClick);
+            ViewPatientServiceReq viewPatientServiceReq = new ViewPatientServiceReq(id, cid);
+            viewPatientServiceReq.ShowDialog();
+            await loadGrid();
+        }
+
+        private async void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool isNumber = int.TryParse(idRightClick, out _);
+            if (!isNumber)
+                return;
+
+            int id = int.Parse(idRightClick);
+
+            addEditPatient form = new addEditPatient(id);
+            form.ShowDialog();
+            await loadGrid();
+        }
+
+        private async void removePendingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+                return;
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure to remove this Selected Pending Request?", "Validation",
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    await OthersQueueController.updateStatus(int.Parse(row.Cells[1].Value.ToString()),1);
+                }
+                MessageBox.Show("Succesfully Remove Pending Customer");
+                await loadGridPending();
+            }
+        }
+
+       
     }
 }

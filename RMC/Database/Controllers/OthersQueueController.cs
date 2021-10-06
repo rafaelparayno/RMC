@@ -54,6 +54,19 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
+        public async Task updateStatus(int customerid, int status)
+        {
+            string sql = @"UPDATE others_queue SET is_done_o = @status
+                            WHERE customer_id = @cid";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@cid", customerid));        
+            listparams.Add(new MySqlParameter("@status", status));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
+
 
 
         public async Task<List<int>> listServiceQueue()

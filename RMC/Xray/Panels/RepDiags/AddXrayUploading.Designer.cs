@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddXrayUploading));
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSave = new FontAwesome.Sharp.IconButton();
             this.btnCloseApp = new FontAwesome.Sharp.IconButton();
@@ -40,10 +41,12 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.pbAutomated = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -171,6 +174,7 @@
             // 
             this.panel4.AutoScroll = true;
             this.panel4.BackColor = System.Drawing.Color.FloralWhite;
+            this.panel4.Controls.Add(this.axAcroPDF1);
             this.panel4.Controls.Add(this.pbAutomated);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -188,11 +192,22 @@
             this.pbAutomated.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAutomated.TabIndex = 1;
             this.pbAutomated.TabStop = false;
+            this.pbAutomated.Visible = false;
             // 
             // timer1
             // 
             this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // axAcroPDF1
+            // 
+            this.axAcroPDF1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axAcroPDF1.Enabled = true;
+            this.axAcroPDF1.Location = new System.Drawing.Point(0, 0);
+            this.axAcroPDF1.Name = "axAcroPDF1";
+            this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
+            this.axAcroPDF1.Size = new System.Drawing.Size(800, 334);
+            this.axAcroPDF1.TabIndex = 3;
             // 
             // AddXrayUploading
             // 
@@ -214,6 +229,7 @@
             this.groupBox1.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAutomated)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,5 +247,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pbAutomated;
         private System.Windows.Forms.Timer timer1;
+        private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
     }
 }
