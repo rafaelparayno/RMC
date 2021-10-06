@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelMenus = new System.Windows.Forms.Panel();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnAdjust = new FontAwesome.Sharp.IconButton();
@@ -40,7 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgItemList = new System.Windows.Forms.DataGridView();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.panelMenus.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -59,6 +59,29 @@
             this.panelMenus.Name = "panelMenus";
             this.panelMenus.Size = new System.Drawing.Size(684, 86);
             this.panelMenus.TabIndex = 209;
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton4.ForeColor = System.Drawing.Color.White;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.ExternalLinkAlt;
+            this.iconButton4.IconColor = System.Drawing.Color.White;
+            this.iconButton4.IconSize = 28;
+            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton4.Location = new System.Drawing.Point(309, 0);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Rotation = 0D;
+            this.iconButton4.Size = new System.Drawing.Size(75, 86);
+            this.iconButton4.TabIndex = 12;
+            this.iconButton4.Text = "Export Excel";
+            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton4.UseVisualStyleBackColor = false;
+            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
             // 
             // iconButton3
             // 
@@ -257,31 +280,9 @@
             this.dgItemList.StandardTab = true;
             this.dgItemList.TabIndex = 113;
             // 
-            // iconButton4
-            // 
-            this.iconButton4.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton4.ForeColor = System.Drawing.Color.White;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.ExternalLinkAlt;
-            this.iconButton4.IconColor = System.Drawing.Color.White;
-            this.iconButton4.IconSize = 28;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton4.Location = new System.Drawing.Point(309, 0);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Rotation = 0D;
-            this.iconButton4.Size = new System.Drawing.Size(75, 86);
-            this.iconButton4.TabIndex = 12;
-            this.iconButton4.Text = "Export Excel";
-            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton4.UseVisualStyleBackColor = false;
-            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
-            // 
             // ViewStocks
             // 
+            this.AcceptButton = this.iconButton2;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;

@@ -41,12 +41,22 @@
             this.dbServiceList = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showRadioRequestsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewDataToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePendingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceList)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -140,7 +150,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(674, 283);
+            this.groupBox2.Size = new System.Drawing.Size(674, 211);
             this.groupBox2.TabIndex = 216;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Queue Today";
@@ -162,7 +172,7 @@
             this.dbServiceList.ReadOnly = true;
             this.dbServiceList.RowHeadersVisible = false;
             this.dbServiceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dbServiceList.Size = new System.Drawing.Size(668, 260);
+            this.dbServiceList.Size = new System.Drawing.Size(668, 188);
             this.dbServiceList.StandardTab = true;
             this.dbServiceList.TabIndex = 113;
             this.dbServiceList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dbServiceList_MouseClick_1);
@@ -194,7 +204,6 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 19);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -204,6 +213,89 @@
             this.dataGridView1.TabIndex = 113;
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.iconButton2);
+            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox4.Location = new System.Drawing.Point(0, 283);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox4.Size = new System.Drawing.Size(674, 72);
+            this.groupBox4.TabIndex = 216;
+            this.groupBox4.TabStop = false;
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton2.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton2.ForeColor = System.Drawing.Color.White;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconSize = 18;
+            this.iconButton2.Location = new System.Drawing.Point(575, 39);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Rotation = 0D;
+            this.iconButton2.Size = new System.Drawing.Size(38, 23);
+            this.iconButton2.TabIndex = 222;
+            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton2.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(18, 42);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(551, 21);
+            this.textBox1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Search";
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showRadioRequestsToolStripMenuItem,
+            this.viewDataToolStripMenuItem1,
+            this.removePendingToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(187, 70);
+            // 
+            // showRadioRequestsToolStripMenuItem
+            // 
+            this.showRadioRequestsToolStripMenuItem.Name = "showRadioRequestsToolStripMenuItem";
+            this.showRadioRequestsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.showRadioRequestsToolStripMenuItem.Text = "Show Radio Requests";
+            this.showRadioRequestsToolStripMenuItem.Click += new System.EventHandler(this.showRadioRequestsToolStripMenuItem_Click);
+            // 
+            // viewDataToolStripMenuItem1
+            // 
+            this.viewDataToolStripMenuItem1.Name = "viewDataToolStripMenuItem1";
+            this.viewDataToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
+            this.viewDataToolStripMenuItem1.Text = "View Data";
+            this.viewDataToolStripMenuItem1.Click += new System.EventHandler(this.viewDataToolStripMenuItem1_Click);
+            // 
+            // removePendingToolStripMenuItem
+            // 
+            this.removePendingToolStripMenuItem.Name = "removePendingToolStripMenuItem";
+            this.removePendingToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.removePendingToolStripMenuItem.Text = "Remove Pending";
+            this.removePendingToolStripMenuItem.Click += new System.EventHandler(this.removePendingToolStripMenuItem_Click);
+            // 
             // RadioQueueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -211,6 +303,7 @@
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(674, 561);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -224,6 +317,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dbServiceList)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -241,5 +337,13 @@
         public System.Windows.Forms.DataGridView dbServiceList;
         private System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem showRadioRequestsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewDataToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem removePendingToolStripMenuItem;
     }
 }

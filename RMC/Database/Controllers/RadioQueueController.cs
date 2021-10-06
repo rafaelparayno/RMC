@@ -54,6 +54,20 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, listparams);
         }
+        
+        
+            public async Task updateStatus(int customerid)
+        {
+            string sql = @"UPDATE radio_queue SET is_done_x = 1 
+                            WHERE customer_id = @cid";
+
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+
+            listparams.Add(new MySqlParameter("@cid", customerid));
+
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
 
 
         public async Task<List<int>> listRadQueue()

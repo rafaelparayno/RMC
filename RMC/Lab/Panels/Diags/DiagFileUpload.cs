@@ -3,13 +3,11 @@ using RMC.Database.Models;
 using RMC.Utilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using System.Threading.Tasks;
+using System.IO;
 
 namespace RMC.Lab.Panels.Diags
 {
@@ -28,6 +26,7 @@ namespace RMC.Lab.Panels.Diags
         private int patientid = 0;
         private bool isEdited = false;
         private int patient_lab_id = 0;
+        string fileSource = "";
 
         public DiagFileUpload(int labId, int patientid)
         {
@@ -47,18 +46,30 @@ namespace RMC.Lab.Panels.Diags
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Files|*.jpg;*.jpeg;*.png;";
-            string filePath = "";
+            /* OpenFileDialog openFileDialog = new OpenFileDialog();
+             openFileDialog.Filter = "Files|*.jpg;*.jpeg;*.png;";
+             string filePath = "";
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+             if (openFileDialog.ShowDialog() == DialogResult.OK)
+             {
+
+                 filePath = openFileDialog.FileName;
+                 pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;
+                 pbAutomated.Image = Image.FromFile(filePath);
+                 img = Image.FromFile(filePath);
+
+             }*/
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Filter = "Files|*.pdf;";
+
+            if (fd.ShowDialog() == DialogResult.OK)
             {
-
-                filePath = openFileDialog.FileName;
-                pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;
-                pbAutomated.Image = Image.FromFile(filePath);
-                img = Image.FromFile(filePath);
-               
+                axAcroPDF1.src = fd.FileName;
+                fileSource = fd.FileName;
+            }
+            else
+            {
+                MessageBox.Show("Please select a Pdf");
             }
         }
 
@@ -105,9 +116,10 @@ namespace RMC.Lab.Panels.Diags
             if (!isEdited)
             {
                 await labQueueController.updateStatus(labId, patientmod.id);
-                saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + combine);
+                //saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + combine);
+                File.Copy(fileSource, filePath + "Lab-" + patientmod.id + "-" + labId + "-" + combine, true);
                 await patientLabController.save(patientmod.id, labId,
-                                 "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".jpg", filePath);
+                                 "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".pdf", filePath);
                 await processConsumables();
             }
             else
@@ -116,7 +128,7 @@ namespace RMC.Lab.Panels.Diags
                       await patientLabController.getFullPath(patientid, labId)
                       : await patientLabController.getFullPath(patient_lab_id);
 
-                saveImginPathEdited(path);
+                savePdfinPathEdited(path);
             }
 
 
@@ -124,18 +136,27 @@ namespace RMC.Lab.Panels.Diags
             this.Close();
         }
 
-        private void saveImginPathEdited(string path)
+    /*    private void saveImginPathEdited(string path)
         {
-            Image newImg = pbAutomated.Image;
+            File.Copy(fileSource, path, true);
+           *//* Image newImg = pbAutomated.Image;
             newImg.Save(path);
-            newImg.Dispose();
+            newImg.Dispose();*//*
+        }*/
+
+        private void savePdfinPathEdited(string path)
+        {
+            File.Copy(fileSource, path, true);
+            /* Image newImg = pbAutomated.Image;
+             newImg.Save(path);
+             newImg.Dispose();*/
         }
 
-        private void saveImginPath(string path, string fileName)
-        {
-            Image newImg = pbAutomated.Image;
-            newImg.Save(path + fileName + ".jpg");
-            newImg.Dispose();
-        }
+        /* private void saveImginPath(string path, string fileName)
+         {
+             Image newImg = pbAutomated.Image;
+             newImg.Save(path + fileName + ".jpg");
+             newImg.Dispose();
+         }*/
     }
 }

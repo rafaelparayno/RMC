@@ -299,7 +299,7 @@ namespace RMC.InventoryPharma
             CalculateTotal();
             textBox4.Text = "0.00";
             textBox2.Text = "0.00";
-
+            txtCode.Focus();
         }
 
         private void button5_Click(object sender, EventArgs e)

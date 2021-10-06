@@ -16,7 +16,7 @@ namespace RMC.Lab.Panels
     public partial class LabQueueForm : Form
     {
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();
-       
+        LabQueueController labQueueController = new LabQueueController();
         private string idRightClick;
         private string cidRightClick;
 
@@ -44,6 +44,12 @@ namespace RMC.Lab.Panels
         {
             DataSet ds = await customerDetailsController.getLabQueue(txtName.Text.Trim());
             RefreshGrid(ds);
+        }
+
+        private async void searchPendGrid()
+        {
+            DataSet ds = await customerDetailsController.getLabPending(textBox1.Text.Trim());
+            RefreshGridPending(ds);
         }
 
 
@@ -86,7 +92,7 @@ namespace RMC.Lab.Panels
         private async void timer1_Tick(object sender, EventArgs e)
         {
             await loadGrid();
-            await loadGridPend();
+            //await loadGridPend();
         }
 
         private async void showLabRequestsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -148,7 +154,7 @@ namespace RMC.Lab.Panels
                 {
                     idRightClick = dataGridView1.Rows[currentMouseOverRow].Cells[0].Value.ToString();
                     cidRightClick = dataGridView1.Rows[currentMouseOverRow].Cells[1].Value.ToString();
-                    contextMenuStrip1.Show(dataGridView1, new Point(e.X, e.Y));
+                    contextMenuStrip2.Show(dataGridView1, new Point(e.X, e.Y));
                 }
 
             }
@@ -158,6 +164,73 @@ namespace RMC.Lab.Panels
         {
            await loadGrid();
            await loadGridPend();
+        }
+
+        private async void iconButton2_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox1.Text.Trim()))
+            {
+                timer1.Start();
+                await loadGridPend();
+            }
+            else
+            {
+                timer1.Stop();
+                searchPendGrid();
+
+            }
+        }
+
+        private async void showLabRequestsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            bool isNumber = int.TryParse(idRightClick, out _);
+
+            bool isNumber2 = int.TryParse(cidRightClick, out _);
+
+            if (!isNumber || !isNumber2)
+                return;
+
+            int id = int.Parse(idRightClick);
+            int cid = int.Parse(cidRightClick);
+            ViewPatientLabReq v = new ViewPatientLabReq(id, cid);
+            v.ShowDialog();
+            await loadGrid();
+            await loadGridPend();
+        }
+
+        private async void viewDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool isNumber = int.TryParse(idRightClick, out _);
+            if (!isNumber)
+                return;
+
+            int id = int.Parse(idRightClick);
+
+            addEditPatient form = new addEditPatient(id);
+            form.ShowDialog();
+            await loadGrid();
+            await loadGridPend();
+        }
+
+        private async void removeFromPendingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+         
+
+            if (dataGridView1.SelectedRows.Count == 0)
+                return;
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure to remove this Selected Pending Request?", "Validation",
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+            if(dialogResult == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    await labQueueController.updateStatus(int.Parse(row.Cells[1].Value.ToString()));
+                }
+                MessageBox.Show("Succesfully Remove Pending Customer");
+                await loadGridPend();
+            }
         }
     }
 }

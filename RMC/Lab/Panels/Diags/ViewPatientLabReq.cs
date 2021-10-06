@@ -116,8 +116,7 @@ namespace RMC.Lab.Panels.Diags
         }
 
         private async void insertLabDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show()
+        {     
             if (lvItemLab.SelectedItems.Count == 0)
                 return;
 
