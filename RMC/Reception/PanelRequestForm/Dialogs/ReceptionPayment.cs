@@ -52,6 +52,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         float priceConsult = 0;
         float priceSConsult = 0;
         float priceFConsult = 0;
+        float priceS2Consult = 0;
+        float priceOnline = 0;
         float totalPrice = 0;
         int invoice_no = 0;
         DataTable dt = new DataTable();
@@ -115,8 +117,12 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                     dt.Rows.Add(1, "Consultation", "Service", priceConsult);
                 else if(radioButton2.Checked)
                     dt.Rows.Add(1, "Consultation", "Service", priceSConsult);
-                else
+                else if(radioButton3.Checked)
                     dt.Rows.Add(1, "Consultation", "Service", priceFConsult);
+                else if (radioButton4.Checked)
+                    dt.Rows.Add(1, "Consultation", "Service", priceS2Consult);
+                else if (radioButton5.Checked)
+                    dt.Rows.Add(1, "Consultation", "Service", priceOnline);
             }
 
         }
@@ -201,8 +207,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             Task<float> price2 = pricesService.getPrice("Consulation");
             Task<float> price3 = pricesService.getPrice("SConsultation");
             Task<float> price4 = pricesService.getPrice("priceConsultF");
-         
-            Task<float>[] prices = new Task<float>[] {price1,price2,price3,price4 };
+            Task<float> task5 = pricesService.getPrice("onlineConsult");
+            Task<float> task6 = pricesService.getPrice("S2Consultation");
+
+            Task<float>[] prices = new Task<float>[] {price1,price2,price3,price4, task5, task6 };
 
             await Task.WhenAll(prices);
 
@@ -210,6 +218,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             priceConsult = price2.Result;
             priceSConsult = price3.Result;
             priceFConsult = price4.Result;
+            priceOnline = task5.Result;
+            priceS2Consult = task6.Result;
 
             txtPriceConsult.Text = priceConsult.ToString();
             textBox1.Text = priceMedCert.ToString();
@@ -343,10 +353,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             await Task.WhenAll(saves);
         }
 
-       /* private async Task saveMedCerts()
-        {
-            await certController.save(customerid);
-        }*/
 
         private async Task savePackageQueue(int id)
         {
@@ -651,8 +657,21 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         }
 
 
+
         #endregion
 
+        private void radioButton5_Click(object sender, EventArgs e)
+        {
+            trigerCb();
+            txtPriceConsult.Text = priceOnline.ToString();
+            setTotalPrice();
+        }
 
+        private void radioButton4_Click(object sender, EventArgs e)
+        {
+            trigerCb();
+            txtPriceConsult.Text = priceS2Consult.ToString();
+            setTotalPrice();
+        }
     }
 }

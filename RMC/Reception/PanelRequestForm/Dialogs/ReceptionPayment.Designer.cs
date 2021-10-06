@@ -72,6 +72,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.gpConsulation = new System.Windows.Forms.GroupBox();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -323,7 +325,7 @@
             this.gbPackages.Controls.Add(this.iconButton10);
             this.gbPackages.Controls.Add(this.cbPackages);
             this.gbPackages.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbPackages.Location = new System.Drawing.Point(0, 582);
+            this.gbPackages.Location = new System.Drawing.Point(0, 598);
             this.gbPackages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbPackages.Name = "gbPackages";
             this.gbPackages.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -437,7 +439,7 @@
             this.gbServices.Controls.Add(this.iconButton7);
             this.gbServices.Controls.Add(this.cbOther);
             this.gbServices.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbServices.Location = new System.Drawing.Point(0, 483);
+            this.gbServices.Location = new System.Drawing.Point(0, 499);
             this.gbServices.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbServices.Name = "gbServices";
             this.gbServices.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -551,7 +553,7 @@
             this.gbXray.Controls.Add(this.iconButton4);
             this.gbXray.Controls.Add(this.cbXray);
             this.gbXray.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbXray.Location = new System.Drawing.Point(0, 384);
+            this.gbXray.Location = new System.Drawing.Point(0, 400);
             this.gbXray.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbXray.Name = "gbXray";
             this.gbXray.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -665,7 +667,7 @@
             this.gbLab.Controls.Add(this.btnAddLab);
             this.gbLab.Controls.Add(this.cbLab);
             this.gbLab.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbLab.Location = new System.Drawing.Point(0, 285);
+            this.gbLab.Location = new System.Drawing.Point(0, 301);
             this.gbLab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbLab.Name = "gbLab";
             this.gbLab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -777,7 +779,7 @@
             this.gbMedCert.Controls.Add(this.textBox1);
             this.gbMedCert.Controls.Add(this.label2);
             this.gbMedCert.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbMedCert.Location = new System.Drawing.Point(0, 174);
+            this.gbMedCert.Location = new System.Drawing.Point(0, 190);
             this.gbMedCert.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbMedCert.Name = "gbMedCert";
             this.gbMedCert.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -819,6 +821,8 @@
             // 
             // gpConsulation
             // 
+            this.gpConsulation.Controls.Add(this.radioButton5);
+            this.gpConsulation.Controls.Add(this.radioButton4);
             this.gpConsulation.Controls.Add(this.radioButton3);
             this.gpConsulation.Controls.Add(this.radioButton2);
             this.gpConsulation.Controls.Add(this.radioButton1);
@@ -830,15 +834,37 @@
             this.gpConsulation.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gpConsulation.Name = "gpConsulation";
             this.gpConsulation.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gpConsulation.Size = new System.Drawing.Size(275, 174);
+            this.gpConsulation.Size = new System.Drawing.Size(275, 190);
             this.gpConsulation.TabIndex = 3;
             this.gpConsulation.TabStop = false;
             this.gpConsulation.Visible = false;
             // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(139, 130);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(62, 20);
+            this.radioButton5.TabIndex = 7;
+            this.radioButton5.Text = "Online";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.Click += new System.EventHandler(this.radioButton5_Click);
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(22, 154);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(87, 20);
+            this.radioButton4.TabIndex = 6;
+            this.radioButton4.Text = "Specialist2";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.Click += new System.EventHandler(this.radioButton4_Click);
+            // 
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(23, 149);
+            this.radioButton3.Location = new System.Drawing.Point(139, 104);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(81, 20);
             this.radioButton3.TabIndex = 5;
@@ -885,7 +911,7 @@
             // 
             this.txtPriceConsult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPriceConsult.Enabled = false;
-            this.txtPriceConsult.Location = new System.Drawing.Point(18, 47);
+            this.txtPriceConsult.Location = new System.Drawing.Point(18, 42);
             this.txtPriceConsult.Name = "txtPriceConsult";
             this.txtPriceConsult.Size = new System.Drawing.Size(238, 23);
             this.txtPriceConsult.TabIndex = 1;
@@ -1029,5 +1055,7 @@
         internal System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton4;
     }
 }

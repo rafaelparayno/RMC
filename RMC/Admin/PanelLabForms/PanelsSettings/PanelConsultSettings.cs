@@ -67,6 +67,23 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
                 e.Handled = true;
             }
         }
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox4_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
         private async Task setInitPrice()
         {
@@ -75,8 +92,10 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             Task<float> task2 = serviceController.getPrice("Consulation");
             Task<float> task3 = serviceController.getPrice("SConsultation");
             Task<float> task4 = serviceController.getPrice("priceConsultF");
-        
-            List<Task> listTask = new List<Task>() { task1,task2,task3,task4};
+            Task<float> task5 = serviceController.getPrice("onlineConsult");
+            Task<float> task6 = serviceController.getPrice("S2Consultation");
+
+            List<Task> listTask = new List<Task>() { task1,task2,task3,task4,task5,task6};
 
             await Task.WhenAll(listTask);
 
@@ -86,7 +105,9 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             textBox1.Text = task1.Result.ToString();
             textBox2.Text = task3.Result.ToString();
             textBox3.Text = task4.Result.ToString();
-         
+            textBox5.Text = task5.Result.ToString();
+            textBox4.Text = task6.Result.ToString();
+
         }
 
         private bool isValid()
@@ -110,6 +131,13 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             setError(ref textBox3, "Please Input Data");
 
 
+            isValid = (textBox4.Text.Trim() != "") && isValid;
+            setError(ref textBox4, "Please Input Data");
+
+
+            isValid = (textBox5.Text.Trim() != "") && isValid;
+            setError(ref textBox5, "Please Input Data");
+
 
             isValid = (float.TryParse(txtSellingPrice.Text.Trim(), out _)) && isValid;
             setNumberFormat(isValid,ref txtSellingPrice, "Please Insert A Correct Format");
@@ -119,7 +147,13 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             setNumberFormat(isValid, ref textBox2, "Please Insert A Correct Format");
             isValid = (float.TryParse(textBox3.Text.Trim(), out _)) && isValid;
             setNumberFormat(isValid, ref textBox3, "Please Insert A Correct Format");
-        
+
+            isValid = (float.TryParse(textBox4.Text.Trim(), out _)) && isValid;
+            setNumberFormat(isValid, ref textBox4, "Please Insert A Correct Format");
+
+            isValid = (float.TryParse(textBox5.Text.Trim(), out _)) && isValid;
+            setNumberFormat(isValid, ref textBox5, "Please Insert A Correct Format");
+
             return isValid;
         }
 
@@ -151,12 +185,17 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             float priceMedCert = float.Parse(textBox1.Text.Trim());
             float priceSConsulation = float.Parse(textBox2.Text.Trim());
             float priceFConsulation = float.Parse(textBox3.Text.Trim());
-          
+
+            float priceS2Consultation = float.Parse(textBox4.Text.Trim());
+            float onlineConsultation = float.Parse(textBox5.Text.Trim());
+
             listTask.Add(serviceController.save(priceConsulation, "Consulation"));
             listTask.Add(serviceController.save(priceMedCert, "MedCert"));
             listTask.Add(serviceController.save(priceSConsulation, "SConsultation"));
             listTask.Add(serviceController.save(priceFConsulation, "priceConsultF"));
-        
+            listTask.Add(serviceController.save(onlineConsultation, "onlineConsult"));
+            listTask.Add(serviceController.save(priceS2Consultation, "S2Consultation"));
+
 
             await Task.WhenAll(listTask);
             MessageBox.Show("Succesfully Save Data");
@@ -166,5 +205,7 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
         {
             await setInitPrice();
         }
+
+      
     }
 }
