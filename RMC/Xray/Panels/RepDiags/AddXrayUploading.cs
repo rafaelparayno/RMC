@@ -31,17 +31,19 @@ namespace RMC.Xray.Panels.RepDiags
         private bool isEdited = false;
         private int countTimer = 0;
         private string fileSource = "";
+        private int cusid = 0;
 
 
-        public AddXrayUploading(int xid, int patientid)
+        public AddXrayUploading(int xid, int patientid,int cusid)
         {
             InitializeComponent();
             this.xid = xid;
             this.patientid = patientid;
+            this.cusid = cusid;
         }
 
 
-        public AddXrayUploading(int xid, int patientid,int patient_xray_id)
+        public AddXrayUploading(int xid, int patientid,int patient_xray_id, int xtra)
         {
             InitializeComponent();
             this.xid = xid;
@@ -103,7 +105,7 @@ namespace RMC.Xray.Panels.RepDiags
             if (!isEdited)
             {
                 
-                await radioQueueController.updateStatus(xid, patientmod.id);
+                await radioQueueController.updateStatus(xid, cusid);
               
                 string newFilePath2 = filePathSaving.saveXray(patientmod.lastname + "-" + patientmod.id);
                 string filePath = newFilePath2;

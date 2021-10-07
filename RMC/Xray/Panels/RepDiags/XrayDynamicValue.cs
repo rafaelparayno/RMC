@@ -31,6 +31,7 @@ namespace RMC.Xray.Panels.RepDiags
         private int xrayid = 0;
         private int patient_xray_id = 0;
         private bool isEdited = false;
+        private int cusid = 0;
         Dictionary<string, string> valuesInReports;
         ConsumablesXrayControllers consumablesXray = new ConsumablesXrayControllers();
         ItemController itemController = new ItemController();
@@ -39,17 +40,18 @@ namespace RMC.Xray.Panels.RepDiags
 
 
 
-        public XrayDynamicValue(int patientid,int xrayid)
+        public XrayDynamicValue(int patientid,int xrayid,int cusid)
         {
             InitializeComponent();
 
             this.patientid = patientid;
             this.xrayid = xrayid;
+            this.cusid = cusid;
             loadParams();
             loadTxts();
         }
 
-        public XrayDynamicValue(int patientid, int xrayid,int patient_xray_id )
+        public XrayDynamicValue(int patientid, int xrayid,int patient_xray_id,int xtra )
         {
             InitializeComponent();
 
@@ -248,7 +250,7 @@ namespace RMC.Xray.Panels.RepDiags
             await patientXrayController.save(patientDetails.id, xrayid,
                               "Xray-" + patientDetails.id + "-" + xrayid + "-" + combine + ".xml", path);
 
-            await radioQueueController.updateStatus(xrayid, patientDetails.id);
+            await radioQueueController.updateStatus(xrayid, cusid);
 
             XmlWriter xwriter = XmlWriter.Create(path + filename + ".xml");
 

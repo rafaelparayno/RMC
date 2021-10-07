@@ -5,13 +5,10 @@ using RMC.Patients;
 using RMC.Xray.Panels.RepDiags;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace RMC.Xray.Panels
@@ -147,24 +144,22 @@ namespace RMC.Xray.Panels
 
             if (xb.autodocsid > 0)
             {
-                AddAutomatedXray addAutomatedXray = new AddAutomatedXray(selectedIds, patientid);
+                AddAutomatedXray addAutomatedXray = new AddAutomatedXray(selectedIds, patientid,cid);
                 addAutomatedXray.ShowDialog();
-                /*DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
-                diagWithAutomated.ShowDialog();*/
+              
             }
 
             if(xb.is_crystal == 1)
             {
-                XrayDynamicValue xrayDynamicValue = new XrayDynamicValue(patientid,selectedIds);
+                XrayDynamicValue xrayDynamicValue = new XrayDynamicValue(patientid,selectedIds,cid);
                 xrayDynamicValue.ShowDialog();
             }
 
             if (xb.autodocsid == 0 && xb.is_crystal == 0)
             {
-                AddXrayUploading addXrayUploading = new AddXrayUploading(selectedIds,patientid);
+                AddXrayUploading addXrayUploading = new AddXrayUploading(selectedIds,patientid,cid);
                 addXrayUploading.ShowDialog();
-               /* DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid);
-                fileUpload.ShowDialog();*/
+           
             }
 
             setData(patientid);
@@ -221,7 +216,7 @@ namespace RMC.Xray.Panels
 
             if (xb.autodocsid > 0)
             {
-                AddAutomatedXray addAutomatedXray = new AddAutomatedXray(selectedIds, patientid);
+                AddAutomatedXray addAutomatedXray = new AddAutomatedXray(selectedIds, patientid,0,0);
                 addAutomatedXray.ShowDialog();
                 /*DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
                 diagWithAutomated.ShowDialog();*/
@@ -229,13 +224,13 @@ namespace RMC.Xray.Panels
 
             if (xb.is_crystal == 1)
             {
-                XrayDynamicValue xrayDynamicValue = new XrayDynamicValue(patientid, selectedIds,0);
+                XrayDynamicValue xrayDynamicValue = new XrayDynamicValue(patientid, selectedIds,0,0);
                 xrayDynamicValue.ShowDialog();
             }
 
             if (xb.autodocsid == 0 && xb.is_crystal == 0)
             {
-                AddXrayUploading addXrayUploading = new AddXrayUploading(selectedIds, patientid,0);
+                AddXrayUploading addXrayUploading = new AddXrayUploading(selectedIds, patientid,0,0);
                 addXrayUploading.ShowDialog();
                 /* DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid);
                  fileUpload.ShowDialog();*/

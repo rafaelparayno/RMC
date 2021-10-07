@@ -179,20 +179,20 @@ namespace RMC.Patients.PanelsDetails
 
             if (xraymodel.autodocsid > 0)
             {
-                AddAutomatedXray addAutomatedXray = new AddAutomatedXray(xraymodel.id, id);
+                AddAutomatedXray addAutomatedXray = new AddAutomatedXray(xraymodel.id, id, selectedIds, 0);
                 addAutomatedXray.ShowDialog();
 
             }
 
             if (xraymodel.is_crystal == 1)
             {
-                XrayDynamicValue xrayDynamicValue = new XrayDynamicValue(id, xraymodel.id, selectedIds);
+                XrayDynamicValue xrayDynamicValue = new XrayDynamicValue(id, xraymodel.id, selectedIds,0);
                 xrayDynamicValue.ShowDialog();
             }
 
             if (xraymodel.autodocsid == 0 && xraymodel.is_crystal == 0)
             {
-                AddXrayUploading addXrayUploading = new AddXrayUploading(xraymodel.id, id,selectedIds);
+                AddXrayUploading addXrayUploading = new AddXrayUploading(xraymodel.id, id,selectedIds,0);
                 addXrayUploading.ShowDialog();
               
             }
