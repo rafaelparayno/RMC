@@ -14,7 +14,7 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async Task save(int itemid,int qty, int poid,int invoice_no)
+        public async Task save(int itemid,int qty, int poid,string invoice_no)
         {
             string sql = @"INSERT INTO receive_orders (po_item_id,qty_ro,u_id,invoice_no) VALUES 
                            ((SELECT po_item_id FROM purchase_order_items WHERE item_id = @itemid AND po_id = @poid),

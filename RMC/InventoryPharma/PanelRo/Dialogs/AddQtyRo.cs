@@ -25,6 +25,7 @@ namespace RMC.InventoryPharma.PanelRo.Dialogs
             price = 0;
             numericUpDown1.Maximum = maxQty;
             this.itemid = itemid;
+            textBox1.Focus();
         }
 
         private async void btnQty_Click(object sender, EventArgs e)

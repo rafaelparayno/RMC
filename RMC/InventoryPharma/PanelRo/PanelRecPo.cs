@@ -45,7 +45,7 @@ namespace RMC.InventoryPharma.PanelRo
 
         private async Task save()
         {
-            int in_no = int.Parse(textBox1.Text.Trim());
+            string in_no = textBox1.Text.Trim();
 
             Dictionary<int, int> itemsRec = new Dictionary<int, int>();
             List<Task> tasks = new List<Task>();
@@ -435,14 +435,11 @@ namespace RMC.InventoryPharma.PanelRo
       
         private async void iconButton6_Click(object sender, EventArgs e)
         {
+            pictureBox1.Show();
 
+            pictureBox1.Update();
 
             if (textBox1.Text.Trim() == "")
-                return;
-
-            bool isNumber = int.TryParse(textBox1.Text.Trim(), out _);
-
-            if (!isNumber)
                 return;
 
             if (dataGridView1.Rows.Count == 0 && dataGridView2.Rows.Count == 0)
@@ -465,6 +462,8 @@ namespace RMC.InventoryPharma.PanelRo
             refreshTotalReceiveCost();
             label1.Text = "";
             textBox1.Text = "";
+
+            pictureBox1.Hide();
         }
 
 
