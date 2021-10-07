@@ -22,7 +22,8 @@ namespace RMC.InventoryPharma
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
         SalesPharmaController salesPharmaController = new SalesPharmaController();
         InvoiceController invoiceController = new InvoiceController();
-        ItemList items;
+        //ItemList items;
+        itemModel itemModel = new itemModel();
         DataTable dt = new DataTable();
         float totalAmount = 0;
         float change = 0;
@@ -38,40 +39,41 @@ namespace RMC.InventoryPharma
             dt.Columns.Add("Price", typeof(decimal));
         }
 
-        private void txtCode_TextChanged(object sender, EventArgs e)
+        private async void txtCode_TextChanged(object sender, EventArgs e)
         {
             if (txtCode.Text == "")
             {
                 txtName.Text = "";
                 txtStock.Text = "";
                 txtrue.Text = "";
-               
+
                 return;
             }
-            searchPharmItem(txtCode.Text.Trim());
-            txtName.Text = items == null ? "" : items.name;
-            txtStock.Text = items == null ? "" :   dataGridView1.Rows.Count > 0 ? 
-                checkstocks(items.sku,items.stocks) + ""  : items.stocks + "";
-            txtrue.Text = String.Format("PHP {0:0.##}", items == null ? 0 : items.sellingPrice);
-            numericUpDown1.Maximum = items == null ? 0: dataGridView1.Rows.Count > 0 ?
-                checkstocks(items.sku, items.stocks) : items.stocks;
+            await searchPharmItem(txtCode.Text.Trim());
+            txtName.Text = itemModel == null ? "" : itemModel.name;
+            txtStock.Text = itemModel == null ? "" : dataGridView1.Rows.Count > 0 ?
+                checkstocks(itemModel.sku, itemModel.stocks) + "" : itemModel.stocks + "";
+            txtrue.Text = String.Format("PHP {0:0.##}", itemModel == null ? 0 : itemModel.sellingPrice);
+            numericUpDown1.Maximum = itemModel == null ? 0 : dataGridView1.Rows.Count > 0 ?
+                checkstocks(itemModel.sku, itemModel.stocks) : itemModel.stocks;
         }
 
-        private void searchPharmItem(string searchKey)
+
+
+        private async Task searchPharmItem(string searchKey)
         {
-            
-            items = itemz.Details(searchKey).Count > 0 ? itemz.Details(searchKey)[0] : null ;
+            itemModel = await itemz.getDataModel(searchKey);
         }
 
         //Button Add to Cart
         private void button3_Click(object sender, EventArgs e)
         {
-            if (items == null)
+            if (itemModel == null)
                 return;
             if (numericUpDown1.Value == 0)
                 return;
 
-            if(items.sku == txtCode.Text.Trim())
+            if(itemModel.sku == txtCode.Text.Trim())
             {
                 float itemTotalPrice = float.Parse(numericUpDown1.Value.ToString()) * float.Parse(txtrue.Text.Trim().Split(' ')[1]);
                 dt.Rows.Add(txtCode.Text, txtName.Text,numericUpDown1.Value, itemTotalPrice);
@@ -394,6 +396,7 @@ namespace RMC.InventoryPharma
                 btnUpdate.PerformClick();
             }
         }
+
     }
 }
 

@@ -18,10 +18,11 @@ namespace RMC.OthersPanels.Dialogs
     {
 
         private int patient_id = 0;
-     
+        private int labid = 0;
+        private int cusid = 0; 
         patientDetails p = new patientDetails();
         PatientOthersController patientOthersController = new PatientOthersController();
-
+        ItemController itemController = new ItemController();
         PatientDetailsController patientDetailsController = new PatientDetailsController();
         ConsumablesServController consumablesServ = new ConsumablesServController();
         List<consumablesServMod> consumables = new List<consumablesServMod>();
@@ -31,10 +32,12 @@ namespace RMC.OthersPanels.Dialogs
 
         string fileSource = "";
 
-        public UploadFileOthers(int patient_id)
+        public UploadFileOthers(int labid,int patient_id,int cusid)
         {
             InitializeComponent();
             this.patient_id = patient_id;
+            this.labid = labid;
+            this.cusid = cusid;
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -53,6 +56,27 @@ namespace RMC.OthersPanels.Dialogs
             }
         }
 
+
+        private async Task processConsumables(int id)
+        {
+            consumables = await consumablesServ.getEditedConsumables(id);
+            List<Task> listTasks = new List<Task>();
+            foreach (consumablesServMod c in consumables)
+            {
+                int currentStocks = await clinicStocks.getStocks(c.itemid);
+                int stocktosave = currentStocks - c.qty;
+                float unitCost = await itemController.getUnitCosts(c.itemid);
+                float totalCost = unitCost * c.qty;
+                stocktosave = stocktosave > 0 ? stocktosave : 0;
+                listTasks.Add(clinicStocks.Save(c.itemid, stocktosave));
+                listTasks.Add(consumeditems.save(c.itemid, c.qty, totalCost));
+
+            }
+
+            await Task.WhenAll(listTasks);
+
+        }
+
         private async void btnSave_Click(object sender, EventArgs e)
         {
             p = await patientDetailsController.getPatientId(patient_id);
@@ -63,9 +87,10 @@ namespace RMC.OthersPanels.Dialogs
             string timenow = DateTime.Now.ToString("HH--mm--ss--tt");
             string combine = datenow + "--" + timenow;
         
-            File.Copy(fileSource, p.FullName + " " + combine + ".pdf", true);
-
-            await patientOthersController.save(filePath, patient_id, p.FullName + " " + combine + ".pdf");
+            File.Copy(fileSource, filePath +  p.lastname + "--" + combine + ".pdf", true);
+            await processConsumables(labid);
+            await patientOthersController.save(filePath, patient_id, p.lastname + "--" + combine + ".pdf");
+            await othersQueueController.updateStatus(labid,cusid, 1);
 
             this.Close();
         }

@@ -155,13 +155,14 @@ namespace RMC.OthersPanels.Dialogs
 
             string hasAttach = lvItemLab.SelectedItems[0].SubItems[2].Text;
             string isDone = lvItemLab.SelectedItems[0].SubItems[3].Text;
+            int selectedid = int.Parse(lvItemLab.SelectedItems[0].SubItems[0].Text);
 
             if (hasAttach == "Yes")
             {
                 if (isDone == "Done")
                     return;
 
-                UploadFileOthers frm = new UploadFileOthers(patientmod.id);
+                UploadFileOthers frm = new UploadFileOthers(selectedid,patientmod.id,cid);
                 frm.ShowDialog();
 
                 await loadDataAsnyc();

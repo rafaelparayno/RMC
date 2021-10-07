@@ -656,6 +656,7 @@
     <Compile Include="Database\Models\DoctorResult.cs" />
     <Compile Include="Database\Models\fnsaItemMod.cs" />
     <Compile Include="Database\Models\ItemList.cs" />
+    <Compile Include="Database\Models\itemModel.cs" />
     <Compile Include="Database\Models\labModel.cs" />
     <Compile Include="Database\Models\MedCertModel.cs" />
     <Compile Include="Database\Models\MedsMod.cs" />

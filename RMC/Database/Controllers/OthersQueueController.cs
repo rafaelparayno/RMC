@@ -38,17 +38,16 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async Task updateStatus(int service_id, int patientid,int status)
+        public async Task updateStatus(int service_id, int cusid,int status)
         {
             string sql = @"UPDATE others_queue SET is_done_o = @status
-                            WHERE service_id = @serviceid AND customer_id in 
-                                (SELECT customer_id FROM customer_request_details WHERE patient_id = @pid)";
+                            WHERE service_id = @serviceid AND customer_id = @cid";
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
             listparams.Add(new MySqlParameter("@serviceid", service_id));
 
-            listparams.Add(new MySqlParameter("@pid", patientid));
+            listparams.Add(new MySqlParameter("@cid", cusid));
             listparams.Add(new MySqlParameter("@status", status));
 
             await crud.ExecuteAsync(sql, listparams);

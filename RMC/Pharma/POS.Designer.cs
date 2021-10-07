@@ -161,6 +161,7 @@
             this.txtCode.Size = new System.Drawing.Size(219, 25);
             this.txtCode.TabIndex = 252;
             this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
+        
             // 
             // btnUpdate
             // 

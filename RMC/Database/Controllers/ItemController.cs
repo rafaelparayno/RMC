@@ -613,25 +613,53 @@ namespace RMC.Database.Controllers
             return catid;
         }
 
-        public List<ItemList> Details(string keySearch)
+
+        public async Task<itemModel> getDataModel(string sku)
+        {
+            itemModel item = new itemModel();
+            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks, SKU, Description,
+                            isBranded,UnitPrice,MarkupPrice,SellingPrice
+                            FROM itemlist 
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                          WHERE itemlist.is_active = 1 AND SKU = @sku";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+     
+            listparams.Add(new MySqlParameter("@sku", sku));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams); 
+           
+            if (reader.Read())
+            {
+                item.id = int.Parse(reader["item_id"].ToString());
+                item.name = reader["item_name"].ToString();
+                item.stocks = reader["pharma_stocks"].ToString() == "" ? 0 : 
+                    int.Parse(reader["pharma_stocks"].ToString());
+                item.sellingPrice = float.Parse(reader["SellingPrice"].ToString());
+                item.sku = reader["SKU"].ToString();
+
+            }
+            crud.CloseConnection();
+            return item;
+        }
+
+        /*public List<ItemList> Details(string sku)
         {
             List<ItemList> items = new List<ItemList>();
             string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks, SKU, Description,
-                            isBranded,item_type,category_name,unit_name,UnitPrice,MarkupPrice,SellingPrice
-                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
-                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            isBranded,UnitPrice,MarkupPrice,SellingPrice
+                            FROM itemlist 
                             LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
-                            WHERE itemlist.is_active = @isactive AND SKU LIKE @key";
+                            WHERE itemlist.is_active = @isactive AND SKU = @sku ";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@isactive", 1));
-            string searches = "%" + keySearch + "%";
-            listparams.Add(new MySqlParameter("@key", searches));
+            listparams.Add(new MySqlParameter("@sku", sku));
+
             MySqlDataReader reader = null;
             crud.RetrieveRecords(sql, ref reader, listparams);
             if (reader.Read())
             {
                 items.Add(new ItemList(reader["item_id"].ToString(), reader["item_name"].ToString(),
-                    reader["pharma_stocks"].ToString() == null ? "": reader["pharma_stocks"].ToString()
+                    reader["pharma_stocks"].ToString() == null ? "" : reader["pharma_stocks"].ToString()
                     , reader["item_type"].ToString(),
                     reader["category_name"].ToString(), reader["isBranded"].ToString(),
                     reader["unit_name"].ToString(), reader["UnitPrice"].ToString(),
@@ -640,7 +668,7 @@ namespace RMC.Database.Controllers
             }
             crud.CloseConnection();
             return items;
-        }
+        }*/
 
         public async Task<List<ComboBoxItem>> getComboDatas()
         {
