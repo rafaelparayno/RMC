@@ -301,13 +301,14 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         private async Task processTransaction()
         {
             await invoiceController.Save(totalPrice);
-            Task task1 = savesRadioLabQ();
+            await savesRadioLabQ();
+
             Task task2 = customerDetailsController.setPaid(customerid,1);
             Task task3 = saveclinicSales();
             Task<int> task4 = invoiceController.getLatestNo();
 
 
-            Task[] processes = new Task[] { task1, task2, task3,task4 };
+            Task[] processes = new Task[] {  task2, task3,task4 };
 
             await Task.WhenAll(processes);
 
@@ -346,8 +347,6 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                     saves.Add(savePackageQueue(id));
                 if (type == "OtherServices")
                     saves.Add(othersQueueController.save(id, customerid));
-
-
             }
 
             await Task.WhenAll(saves);
