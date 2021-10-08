@@ -17,14 +17,16 @@ namespace RMC.Lab.Panels.Diags
         private int patientid = 0;
         private int labid = 0;
         private int patient_lab_id = 0;
+        private string ext = "";
         PatientLabController patientLabController = new PatientLabController();
 
-        public ViewImageFile(int patientid, int labid, int patient_lab_id,string labname)
+        public ViewImageFile(int patientid, int labid, int patient_lab_id,string labname,string ext)
         {
             InitializeComponent();
             this.patientid = patientid;
             this.labid = labid;
             this.patient_lab_id = patient_lab_id;
+            this.ext = ext;
             label1.Text = labname;
         }
 
@@ -49,13 +51,24 @@ namespace RMC.Lab.Panels.Diags
             await patientLabController.getFullPath(patientid, labid)
             : await patientLabController.getFullPath(patient_lab_id);
 
+            Console.WriteLine(ext);
             try
             {
-                /*   if (!File.Exists(path))
-                       return;*/
-                /*pbAutomated.Image = Image.FromFile(path);
-                pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;*/
-                loadPdf(path);
+                if (ext == "jpg" || ext == "png" || ext == "jpeg")
+                {
+                    pbAutomated.Image = Image.FromFile(path);
+                    pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;
+                    pbAutomated.Visible = true;
+                    axAcroPDF1.Visible = false;
+                }
+                else
+                {
+                    loadPdf(path);
+                    pbAutomated.Visible = false;
+                }
+               
+             
+              
             }
             catch (System.IO.FileNotFoundException)
             {

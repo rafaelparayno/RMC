@@ -232,5 +232,15 @@ namespace RMC.Admin.PanelLabForms.PanelsSettings
             coordinatesAutomated.Clear();
             lbParams.Items.Clear();
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

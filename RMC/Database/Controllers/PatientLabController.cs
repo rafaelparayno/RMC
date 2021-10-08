@@ -125,6 +125,33 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task<patientLabModel> getPatientLabPatLab(int patid, int labid)
+        {
+            patientLabModel PatientLabModel = new patientLabModel();
+            string sql = @"SELECT patient_lab.patient_lab_id AS 'ID',laboratorylist.labname,filename,
+                            labtype.labtype_name,patient_lab.date_patient_lab AS 'DateTaken' FROM `patient_lab` 
+                            INNER JOIN laboratorylist ON patient_lab.laboratory_id = laboratorylist.laboratory_id
+                            INNER JOIN labtype ON laboratorylist.labtype_id = labtype.labtype_id 
+                            WHERE patient_lab.patient_id = @id AND date_patient_lab = @date";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@id", patid));
+            listparams.Add(new MySqlParameter("@lab", labid));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+
+
+            PatientLabModel.id = int.Parse(reader["ID"].ToString());
+            PatientLabModel.name = reader["labname"].ToString();
+            PatientLabModel.type = reader["labtype_name"].ToString();
+            PatientLabModel.date = DateTime.Parse(reader["DateTaken"].ToString());
+          
+            crud.CloseConnection();
+
+            return PatientLabModel;
+        }
+
+
         public async Task<List<patientLabModel>> getPatientLabModel(int id,string date)
         {
             List<patientLabModel> listPatientLabModel = new List<patientLabModel>();

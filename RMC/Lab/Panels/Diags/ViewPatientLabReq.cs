@@ -25,6 +25,7 @@ namespace RMC.Lab.Panels.Diags
         List<labModel> listLabModels = new List<labModel>();
         LabQueueController labQueueController = new LabQueueController();
         LaboratoryController laboratoryController = new LaboratoryController();
+        PatientLabController patientLabController = new PatientLabController();
 
 
         public ViewPatientLabReq(int patientid,int cid)
@@ -217,7 +218,10 @@ namespace RMC.Lab.Panels.Diags
             }
             else
             {
-                ViewImageFile viewImageFile = new ViewImageFile(patientid, selectedIds, 0, lvItemLab.SelectedItems[0].SubItems[1].Text);
+                patientLabModel patientLab = await patientLabController.getPatientLabPatLab(patientid, selectedIds);
+                string ext = patientLab.filename.Split('.')[1];
+
+                ViewImageFile viewImageFile = new ViewImageFile(patientid, selectedIds, 0, lvItemLab.SelectedItems[0].SubItems[1].Text,ext);
                 viewImageFile.ShowDialog();
             }
 
