@@ -106,7 +106,7 @@ namespace RMC.Lab.Panels.Diags
             values.Add("eptcels", txtEpi.Text.Trim());
             values.Add("urates", txtUrates.Text.Trim());
             values.Add("others1", txtOthersUri.Text.Trim());
-            values.Add("pt", txtBasophil.Text.Trim());
+            values.Add("pt", txtPregnancy.Text.Trim());
             values.Add("mucus", txtMucus.Text.Trim());
 
 
