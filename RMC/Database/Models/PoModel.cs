@@ -15,6 +15,7 @@ namespace RMC.Database.Models
         public int quantity_order { get; set; }
         public float unitCosts { get; set; }
         public float totalCost { get; set; }
+        public string desc { get; set; }
       
     }
 }

@@ -29,7 +29,8 @@ namespace RMC.Database.Controllers
             List<PoModel> purchaseOrder = new List<PoModel>();
 
 
-            string sql = @"SELECT itemlist.item_id,itemlist.item_name,quantity_order,suppliers.supplier_name 
+            string sql = @"SELECT itemlist.item_id,itemlist.item_name,quantity_order,
+					suppliers.supplier_name ,itemlist.Description,itemlist.UnitPrice
                           FROM `purchase_order_items` LEFT JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id 
                           LEFT JOIN purchase_order ON purchase_order_items.po_id = purchase_order.po_id
                           LEFT JOIN suppliers ON purchase_order.supplier_id = suppliers.supplier_id 
@@ -45,6 +46,8 @@ namespace RMC.Database.Controllers
                 newPo.item_id = int.Parse(reader["item_id"].ToString());
                 newPo.item_name = reader["item_name"].ToString();
                 newPo.quantity_order = int.Parse(reader["quantity_order"].ToString());
+                newPo.desc = reader["Description"].ToString();
+                newPo.unitCosts = float.Parse(reader["UnitPrice"].ToString());
                 purchaseOrder.Add(newPo);
             }
 

@@ -50,7 +50,7 @@ namespace RMC.InventoryPharma
 
         private void btnRec_Click(object sender, EventArgs e)
         {
-            openChildForm(new PanelRecPo());
+            openChildForm(new PanelNewRec());
         }
 
         private void btnPos_Click_1(object sender, EventArgs e)
@@ -106,6 +106,8 @@ namespace RMC.InventoryPharma
             iconButton1.Enabled = false;
             iconButton2.Enabled = false;
             iconButton3.Enabled = false;
+            iconButton4.Enabled = false;
+            iconButton5.Enabled = false;
         }
 
         private void enabledButtons()
@@ -119,6 +121,8 @@ namespace RMC.InventoryPharma
             iconButton1.Enabled = true;
             iconButton2.Enabled = true;
             iconButton3.Enabled = true;
+            iconButton4.Enabled = true;
+            iconButton5.Enabled = true;
         }
 
         private void iconButton3_Click(object sender, EventArgs e)

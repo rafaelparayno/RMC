@@ -843,6 +843,12 @@
     <Compile Include="InventoryPharma\PanelRo\Dialogs\AddQtyRo.Designer.cs">
       <DependentUpon>AddQtyRo.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelRo\PanelNewRec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelRo\PanelNewRec.Designer.cs">
+      <DependentUpon>PanelNewRec.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelRo\PanelRecPo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1776,6 +1782,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\Dialogs\AddQtyRo.resx">
       <DependentUpon>AddQtyRo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelRo\PanelNewRec.resx">
+      <DependentUpon>PanelNewRec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\PanelRecPo.resx">
       <DependentUpon>PanelRecPo.cs</DependentUpon>
