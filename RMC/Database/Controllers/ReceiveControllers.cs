@@ -14,17 +14,26 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async Task save(int itemid,int qty, int poid,string invoice_no)
+        public async Task save(int itemid,int qty, int poid,string invoice_no,int isCash,string checkNo,string dateCheck)
         {
-            string sql = @"INSERT INTO receive_orders (po_item_id,qty_ro,u_id,invoice_no) VALUES 
+            string sql = @"INSERT INTO receive_orders (po_item_id,qty_ro,u_id,invoice_no,isCash,check_no,date_check) VALUES 
                            ((SELECT po_item_id FROM purchase_order_items WHERE item_id = @itemid AND po_id = @poid),
-                            @qty,@uid,@no)";
+                            @qty,@uid,@no,@isCash,@chno,@date_check)";
+
+            if (dateCheck == "")
+            {
+
+            }
+
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@itemid", itemid));
             listparams.Add(new MySqlParameter("@poid", poid));
             listparams.Add(new MySqlParameter("@qty", qty));
             listparams.Add(new MySqlParameter("@uid", UserLog.getUserId()));
             listparams.Add(new MySqlParameter("@no", invoice_no));
+            listparams.Add(new MySqlParameter("@isCash", isCash));
+            listparams.Add(new MySqlParameter("@chno", checkNo));
+            listparams.Add(new MySqlParameter("@date_check", dateCheck));
 
             await crud.ExecuteAsync(sql, listparams);
         }

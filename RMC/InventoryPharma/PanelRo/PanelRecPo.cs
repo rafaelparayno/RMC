@@ -91,7 +91,7 @@ namespace RMC.InventoryPharma.PanelRo
 
             foreach (KeyValuePair<int, int> receive in itemsRec)
             {
-                tasks.Add(receiveControllers.save(receive.Key, receive.Value, po_no,in_no));
+              // tasks.Add(receiveControllers.save(receive.Key, receive.Value, po_no,in_no));
             }
 
 
@@ -99,7 +99,7 @@ namespace RMC.InventoryPharma.PanelRo
 
             MessageBox.Show("Succesfully Receive Items");
 
-
+            textBox1.Text = "";
         }
 
 

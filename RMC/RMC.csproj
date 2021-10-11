@@ -619,6 +619,7 @@
     <Compile Include="Database\Controllers\PatientSymptomsController.cs" />
     <Compile Include="Database\Controllers\PatientVController.cs" />
     <Compile Include="Database\Controllers\PatientXrayController.cs" />
+    <Compile Include="Database\Controllers\PayablesController.cs" />
     <Compile Include="Database\Controllers\PersonelsController.cs" />
     <Compile Include="Database\Controllers\PharmaStocksController.cs" />
     <Compile Include="Database\Controllers\PlacesTransferController.cs" />
@@ -837,11 +838,23 @@
     <Compile Include="InventoryPharma\PanelReturn\PanelReturnShop.Designer.cs">
       <DependentUpon>PanelReturnShop.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelRo\Dialogs\addQtyNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelRo\Dialogs\addQtyNew.Designer.cs">
+      <DependentUpon>addQtyNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelRo\Dialogs\AddQtyRo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InventoryPharma\PanelRo\Dialogs\AddQtyRo.Designer.cs">
       <DependentUpon>AddQtyRo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelRo\Dialogs\addSubTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelRo\Dialogs\addSubTotal.Designer.cs">
+      <DependentUpon>addSubTotal.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryPharma\PanelRo\PanelNewRec.cs">
       <SubType>Form</SubType>
@@ -1780,8 +1793,14 @@
     <EmbeddedResource Include="InventoryPharma\PanelReturn\PanelReturnShop.resx">
       <DependentUpon>PanelReturnShop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelRo\Dialogs\addQtyNew.resx">
+      <DependentUpon>addQtyNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\Dialogs\AddQtyRo.resx">
       <DependentUpon>AddQtyRo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelRo\Dialogs\addSubTotal.resx">
+      <DependentUpon>addSubTotal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\PanelNewRec.resx">
       <DependentUpon>PanelNewRec.cs</DependentUpon>

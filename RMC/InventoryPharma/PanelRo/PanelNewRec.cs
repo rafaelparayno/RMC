@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.InventoryPharma.PanelRo.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,12 +19,14 @@ namespace RMC.InventoryPharma.PanelRo
         PoController poController = new PoController();
         PoItemController poItemController = new PoItemController();
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
-        ClinicStocksController clinicStocksController = new ClinicStocksController();
+    
         ReceiveControllers receiveControllers = new ReceiveControllers();
         BackOrderController backOrderController = new BackOrderController();
+        PurchasOrderModel purchasOrderModel = new PurchasOrderModel();
+        PayablesController payablesController = new PayablesController();
         List<string> Po = new List<string>();
-        DataTable tableClinic = new DataTable();
-        DataTable tablePharma = new DataTable();
+    
+        List<PoModel> pomodels = new List<PoModel>();
         int po_no = 0;
         private float totalCost = 0;
         public PanelNewRec()
@@ -44,10 +47,11 @@ namespace RMC.InventoryPharma.PanelRo
         private void initLvCols()
         {
             lvItemLab.View = View.Details;
-            lvItemLab.Columns.Add("Qty", 70, HorizontalAlignment.Right);
+    
             lvItemLab.Columns.Add("Item Name", 250, HorizontalAlignment.Center);
             lvItemLab.Columns.Add("Desc", 150, HorizontalAlignment.Center);
             lvItemLab.Columns.Add("last Unit", 100, HorizontalAlignment.Right);
+            lvItemLab.Columns.Add("Qty", 70, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Amount", 100, HorizontalAlignment.Right);
         }
 
@@ -70,9 +74,10 @@ namespace RMC.InventoryPharma.PanelRo
                 return;
 
             po_no = int.Parse(cbPo.SelectedItem.ToString().Split(' ')[1]);
-            PurchasOrderModel purchasOrderModel = await poController.getModel(po_no);
+            purchasOrderModel = await poController.getModel(po_no);
          
            await loadPoItems(po_no);
+            
          
         }
 
@@ -80,25 +85,39 @@ namespace RMC.InventoryPharma.PanelRo
         {
 
             lvItemLab.Items.Clear();
-            List<PoModel> pomodels = new List<PoModel>();
+            
             pomodels = await poItemController.getPoNo(pono);
             totalCost = 0;
             foreach(PoModel p in pomodels)
             {
                 ListViewItem lvs = new ListViewItem();
-                lvs.Text = p.quantity_order.ToString();
-                lvs.SubItems.Add(p.item_name);
+                lvs.Tag = p.item_id;
+                lvs.Text = p.item_name;              
                 lvs.SubItems.Add(p.desc);
                 float subTotal = p.unitCosts * p.quantity_order;
-                totalCost += subTotal;
+                totalCost += subTotal; 
                 lvs.SubItems.Add(p.unitCosts.ToString());
+                lvs.SubItems.Add(p.quantity_order.ToString()); ;
                 lvs.SubItems.Add(subTotal.ToString());
                 lvItemLab.Items.Add(lvs);
             }
 
-            
+
             txtTolalCost.Text = "PHP " + String.Format("{0:0.##}", totalCost);
-           
+
+        }
+
+        private float computeTotalCost()
+        {
+            float totalCost = 0;
+            foreach(ListViewItem lvItems in lvItemLab.Items)
+            {
+
+               float unit =  float.Parse(lvItems.SubItems[2].Text);
+                int qty = int.Parse(lvItems.SubItems[3].Text);
+                totalCost += unit * qty;
+            }
+            return totalCost;
         }
 
         private void PanelNewRec_Resize(object sender, EventArgs e)
@@ -107,18 +126,18 @@ namespace RMC.InventoryPharma.PanelRo
 
             if (control.Size.Width < 700)
             {
-                lvItemLab.Columns[0].Width = 70;
-                lvItemLab.Columns[1].Width = 250;
-                lvItemLab.Columns[2].Width = 150;
-                lvItemLab.Columns[3].Width = 100;
+                lvItemLab.Columns[0].Width = 250;
+                lvItemLab.Columns[1].Width = 150;
+                lvItemLab.Columns[2].Width = 100;
+                lvItemLab.Columns[3].Width = 70;
                 lvItemLab.Columns[4].Width = 100;
             }
             else
             {
-                lvItemLab.Columns[0].Width = 120;
+                lvItemLab.Columns[0].Width = 600;
                 lvItemLab.Columns[1].Width = 600;
-                lvItemLab.Columns[2].Width = 600;
-                lvItemLab.Columns[3].Width = 180;
+                lvItemLab.Columns[2].Width = 180;
+                lvItemLab.Columns[3].Width = 100;
                 lvItemLab.Columns[4].Width = 160;
             }
         }
@@ -159,6 +178,7 @@ namespace RMC.InventoryPharma.PanelRo
             lblCNo.Visible = show;
             dateTimePicker2.Visible = show;
             txtCNo.Visible = show;
+
         }
 
         private void radioButton3_Click(object sender, EventArgs e)
@@ -181,6 +201,132 @@ namespace RMC.InventoryPharma.PanelRo
             groupBox2.Enabled = false;
             showCheck(false);
             radioButton3.Checked = true;
+        }
+
+        private void lvItemLab_DoubleClick(object sender, EventArgs e)
+        {
+            Point mousePosition = lvItemLab.PointToClient(Control.MousePosition);
+            ListViewHitTestInfo hit = lvItemLab.HitTest(mousePosition);
+            int columnindex = hit.Item.SubItems.IndexOf(hit.SubItem);
+
+            if (lvItemLab.Items.Count > 0)
+            {
+                switch (columnindex)
+                {
+                    case 3:
+                        int qty = int.Parse(lvItemLab.SelectedItems[0].SubItems[3].Text);
+
+                        addQtyNew frm = new addQtyNew(qty);
+                        frm.ShowDialog();
+                        int newQty = frm.qty;
+                        lvItemLab.SelectedItems[0].SubItems[3].Text = newQty.ToString();
+                        float unitCost = float.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
+                        float newSubTotal = unitCost * newQty;
+                        lvItemLab.SelectedItems[0].SubItems[4].Text = newSubTotal.ToString();
+              
+                        break;
+                    case 4:
+                        float subTotal = float.Parse(lvItemLab.SelectedItems[0].SubItems[4].Text);
+                        addSubTotal frmSub = new addSubTotal(subTotal);
+                        frmSub.ShowDialog();
+                        float newSub = frmSub.subTotal;
+                        lvItemLab.SelectedItems[0].SubItems[4].Text = newSub.ToString();
+                        int qtySub = int.Parse(lvItemLab.SelectedItems[0].SubItems[3].Text);
+                        float newUnitCost = newSub / qtySub;
+                        lvItemLab.SelectedItems[0].SubItems[2].Text = newUnitCost.ToString();
+
+
+                        break;
+                    default:
+                        //     MessageBox.Show("time");
+                        break;
+                }
+
+
+                txtTolalCost.Text = "PHP " + String.Format("{0:0.##}", computeTotalCost());
+            }
+        }
+
+        private async void iconButton6_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Trim() == "")
+                return;
+
+            await save();
+
+            cbPo.SelectedIndex = -1;
+            textBox1.Text = "";
+            numericUpDown1.Value = 0;
+            txtTolalCost.Text = "";
+            totalCost = 0;
+            lvItemLab.Items.Clear();
+            cbPo.Items.Clear();
+            txtCNo.Text = "";
+            dateTimePicker2.Value = DateTime.Now;
+            showCheck(false);
+            await loadPoCbs();
+        }
+
+        private async Task save()
+        {
+            string in_no = textBox1.Text.Trim();
+            Dictionary<int, int> itemsRec = new Dictionary<int, int>();
+            List<Task> tasks = new List<Task>();
+            poController.receiveUpdate(po_no);
+            bool noBo = false;
+            int isCash = 0;
+            string checkNO = txtCNo.Text.Trim();
+            string checkDate = dateTimePicker2.Value.ToString("yyy-MM-dd");
+
+            foreach (ListViewItem lvItems in lvItemLab.Items)
+            {
+                int itemID = int.Parse(lvItems.Tag.ToString());
+                PoModel poFound = pomodels.Find(p => p.item_id == itemID);
+
+                int qtyUpdate = poFound.quantity_order - int.Parse(lvItems.SubItems[3].Text);
+
+                if(qtyUpdate > 0)
+                {
+                    noBo = true;
+                }
+
+                if (radioButton3.Checked)
+                {
+                    isCash = 1;
+                    checkNO = "";
+                    checkDate = "";
+                }
+                
+
+                tasks.Add(poItemController.updateOrderQty(itemID,
+                                           po_no,
+                                           qtyUpdate));
+
+                tasks.Add(pharmaStocksController.addStocks(itemID,
+                                                int.Parse(lvItems.SubItems[3].Text)));
+
+                itemsRec.Add(itemID, int.Parse(lvItems.SubItems[3].Text));
+
+                tasks.Add(receiveControllers.save(itemID, int.Parse(lvItems.SubItems[3].Text), po_no,
+                    in_no,isCash, checkNO, checkDate));
+            }
+
+            if (noBo)
+            {
+                tasks.Add(backOrderController.save(po_no));
+            }
+
+
+            if (radioButton2.Checked)
+            {
+                float total = float.Parse(txtTolalCost.Text.Trim().Split(' ')[1]);
+                tasks.Add(payablesController.Save(total, textBox1.Text.Trim(),
+                    dateTimePicker3.Value.ToString("yyy-MM-dd"), purchasOrderModel.supplierId));
+            }
+
+            await Task.WhenAll(tasks);
+
+            MessageBox.Show("Succesfully Receive Items");
         }
     }
 }
