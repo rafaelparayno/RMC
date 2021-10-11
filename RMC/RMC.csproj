@@ -868,6 +868,18 @@
     <Compile Include="InventoryPharma\PanelRo\PanelRecPo.Designer.cs">
       <DependentUpon>PanelRecPo.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelTransfer\Dialog\ViewItemsTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelTransfer\Dialog\ViewItemsTransfer.Designer.cs">
+      <DependentUpon>ViewItemsTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelTransfer\PanelTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelTransfer\PanelTransfer.Designer.cs">
+      <DependentUpon>PanelTransfer.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelViewStocks\Dialog\AdjustStocks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1807,6 +1819,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\PanelRecPo.resx">
       <DependentUpon>PanelRecPo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelTransfer\Dialog\ViewItemsTransfer.resx">
+      <DependentUpon>ViewItemsTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelTransfer\PanelTransfer.resx">
+      <DependentUpon>PanelTransfer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelViewStocks\Dialog\AdjustStocks.resx">
       <DependentUpon>AdjustStocks.cs</DependentUpon>

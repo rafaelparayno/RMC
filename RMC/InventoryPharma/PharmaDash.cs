@@ -4,14 +4,9 @@ using RMC.InventoryPharma.PanelPo;
 using RMC.InventoryPharma.PanelReturn;
 using RMC.InventoryPharma.PanelRo;
 using RMC.InventoryPharma.PanelViewStocks;
+using RMC.InventoryPharma.PanelTransfer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace RMC.InventoryPharma
@@ -128,6 +123,13 @@ namespace RMC.InventoryPharma
         private void iconButton3_Click(object sender, EventArgs e)
         {
             openChildForm(new HistoryStocksForms());
+        }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+          
+
+            openChildForm(new PanelTransfer.PanelTransfer());
         }
     }
 }

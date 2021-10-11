@@ -396,7 +396,6 @@
         private System.Windows.Forms.ComboBox cbPo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ListView lvItemLab;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtTolalCost;
         private System.Windows.Forms.Label label7;
@@ -413,5 +412,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.ListView lvItemLab;
     }
 }
