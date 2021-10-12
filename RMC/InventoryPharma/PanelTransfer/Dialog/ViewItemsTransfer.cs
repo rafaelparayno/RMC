@@ -1,4 +1,5 @@
 ﻿using RMC.Database.Controllers;
+using RMC.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,13 +16,14 @@ namespace RMC.InventoryPharma.PanelTransfer.Dialog
     {
 
         ItemController itemz = new ItemController();
-
-        public string Sku = "";
+        public List<itemModel> listItem;
+      
 
 
         public ViewItemsTransfer()
         {
             InitializeComponent();
+            listItem = new List<itemModel>();
         }
 
         private async Task loadGrid()
@@ -51,7 +53,7 @@ namespace RMC.InventoryPharma.PanelTransfer.Dialog
 
             DataSet newDataset = new DataSet();
             DataTable dt = new DataTable();
-            dt.Columns.Add("Add",typeof(bool));
+        
             dt.Columns.Add("ID");
             dt.Columns.Add("Item Name");
             dt.Columns.Add("Unit Price");
@@ -69,15 +71,15 @@ namespace RMC.InventoryPharma.PanelTransfer.Dialog
                 //your code here
                 if (int.Parse(dr["isBranded"].ToString()) == 1)
                 {
-                    dt.Rows.Add(false,dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "Branded", dr[8], dr[9], dr[10]);
+                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "Branded", dr[8], dr[9], dr[10]);
                 }
                 else if (int.Parse(dr["isBranded"].ToString()) == 2)
                 {
-                    dt.Rows.Add(false,dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "Generic", dr[8], dr[9], dr[10]);
+                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "Generic", dr[8], dr[9], dr[10]);
                 }
                 else
                 {
-                    dt.Rows.Add(false,dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "N/A", dr[8], dr[9], dr[10]);
+                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "N/A", dr[8], dr[9], dr[10]);
                 }
 
             }
@@ -107,6 +109,40 @@ namespace RMC.InventoryPharma.PanelTransfer.Dialog
             {
                 await SearchGrid(txtName.Text.Trim(), selectedCombobx);
             }
+        }
+
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+            foreach(DataGridViewRow dataGridViewRow in dgItemList.SelectedRows)
+            {
+               
+                itemModel itemModel = new itemModel();
+                itemModel.id = int.Parse(dataGridViewRow.Cells[0].Value.ToString());
+                itemModel.name = dataGridViewRow.Cells[1].Value.ToString();
+                itemModel.description = dataGridViewRow.Cells[6].Value.ToString();
+                itemModel.unitPrice = float.Parse(dataGridViewRow.Cells[2].Value.ToString());
+
+                listItem.Add(itemModel);
+            }
+
+
+            this.Close();
+        }
+
+
+  
+
+
+
+        private void ViewItemsTransfer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+            if(dgItemList.SelectedRows.Count == 0)
+            {
+                listItem = null;
+            }
+            
+
         }
     }
 }

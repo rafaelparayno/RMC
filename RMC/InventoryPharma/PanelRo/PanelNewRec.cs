@@ -19,7 +19,7 @@ namespace RMC.InventoryPharma.PanelRo
         PoController poController = new PoController();
         PoItemController poItemController = new PoItemController();
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
-    
+        ItemController itemController = new ItemController();
         ReceiveControllers receiveControllers = new ReceiveControllers();
         BackOrderController backOrderController = new BackOrderController();
         PurchasOrderModel purchasOrderModel = new PurchasOrderModel();
@@ -249,6 +249,12 @@ namespace RMC.InventoryPharma.PanelRo
 
         private async void iconButton6_Click(object sender, EventArgs e)
         {
+            if (cbPo.SelectedIndex == -1)
+                return;
+
+            if (lvItemLab.Items.Count == 0)
+                return;
+
             if (textBox1.Text.Trim() == "")
                 return;
 
@@ -281,6 +287,7 @@ namespace RMC.InventoryPharma.PanelRo
             foreach (ListViewItem lvItems in lvItemLab.Items)
             {
                 int itemID = int.Parse(lvItems.Tag.ToString());
+                float unitCosts = float.Parse(lvItems.SubItems[2].Text);
                 PoModel poFound = pomodels.Find(p => p.item_id == itemID);
 
                 int qtyUpdate = poFound.quantity_order - int.Parse(lvItems.SubItems[3].Text);
@@ -296,7 +303,14 @@ namespace RMC.InventoryPharma.PanelRo
                     checkNO = "";
                     checkDate = "";
                 }
-                
+
+                if (unitCosts > poFound.unitCosts)
+                {
+                    tasks.Add(itemController.updateUnitCost(itemID, unitCosts));
+                }
+                  
+               
+
 
                 tasks.Add(poItemController.updateOrderQty(itemID,
                                            po_no,

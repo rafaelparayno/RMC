@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RMC.Database.Models
 {
-    class itemModel
+   public class itemModel
     {
         public long id { get; set; }
         public string name { get; set; }

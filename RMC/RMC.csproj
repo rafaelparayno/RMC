@@ -868,6 +868,12 @@
     <Compile Include="InventoryPharma\PanelRo\PanelRecPo.Designer.cs">
       <DependentUpon>PanelRecPo.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelTransfer\Dialog\AddQtyTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelTransfer\Dialog\AddQtyTransfer.Designer.cs">
+      <DependentUpon>AddQtyTransfer.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelTransfer\Dialog\ViewItemsTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1819,6 +1825,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\PanelRecPo.resx">
       <DependentUpon>PanelRecPo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelTransfer\Dialog\AddQtyTransfer.resx">
+      <DependentUpon>AddQtyTransfer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelTransfer\Dialog\ViewItemsTransfer.resx">
       <DependentUpon>ViewItemsTransfer.cs</DependentUpon>

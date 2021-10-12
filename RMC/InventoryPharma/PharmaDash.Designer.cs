@@ -59,13 +59,13 @@
             // 
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.Salmon;
-            this.panelSideMenu.Controls.Add(this.iconButton5);
-            this.panelSideMenu.Controls.Add(this.iconButton4);
             this.panelSideMenu.Controls.Add(this.iconButton3);
+            this.panelSideMenu.Controls.Add(this.iconButton5);
             this.panelSideMenu.Controls.Add(this.iconButton2);
             this.panelSideMenu.Controls.Add(this.iconButton1);
             this.panelSideMenu.Controls.Add(this.btnViewStocks);
             this.panelSideMenu.Controls.Add(this.btnReturn);
+            this.panelSideMenu.Controls.Add(this.iconButton4);
             this.panelSideMenu.Controls.Add(this.btnRec);
             this.panelSideMenu.Controls.Add(this.btnPo);
             this.panelSideMenu.Controls.Add(this.panelLogo);
@@ -88,7 +88,7 @@
             this.iconButton5.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton5.IconSize = 35;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.Location = new System.Drawing.Point(0, 435);
+            this.iconButton5.Location = new System.Drawing.Point(0, 390);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton5.Rotation = 0D;
@@ -112,7 +112,7 @@
             this.iconButton4.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton4.IconSize = 35;
             this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 390);
+            this.iconButton4.Location = new System.Drawing.Point(0, 165);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton4.Rotation = 0D;
@@ -137,7 +137,7 @@
             this.iconButton3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton3.IconSize = 35;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.Location = new System.Drawing.Point(0, 345);
+            this.iconButton3.Location = new System.Drawing.Point(0, 435);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton3.Rotation = 0D;
@@ -162,7 +162,7 @@
             this.iconButton2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton2.IconSize = 35;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(0, 300);
+            this.iconButton2.Location = new System.Drawing.Point(0, 345);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton2.Rotation = 0D;
@@ -187,7 +187,7 @@
             this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.iconButton1.IconSize = 35;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 255);
+            this.iconButton1.Location = new System.Drawing.Point(0, 300);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.iconButton1.Rotation = 0D;
@@ -212,7 +212,7 @@
             this.btnViewStocks.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnViewStocks.IconSize = 35;
             this.btnViewStocks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnViewStocks.Location = new System.Drawing.Point(0, 210);
+            this.btnViewStocks.Location = new System.Drawing.Point(0, 255);
             this.btnViewStocks.Name = "btnViewStocks";
             this.btnViewStocks.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnViewStocks.Rotation = 0D;
@@ -237,7 +237,7 @@
             this.btnReturn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnReturn.IconSize = 35;
             this.btnReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReturn.Location = new System.Drawing.Point(0, 165);
+            this.btnReturn.Location = new System.Drawing.Point(0, 210);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnReturn.Rotation = 0D;

@@ -134,10 +134,11 @@
             this.dgItemList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgItemList.BackgroundColor = System.Drawing.Color.FloralWhite;
             this.dgItemList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgItemList.Location = new System.Drawing.Point(10, 19);
             this.dgItemList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgItemList.Name = "dgItemList";
+            this.dgItemList.ReadOnly = true;
             this.dgItemList.RowHeadersVisible = false;
             this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgItemList.Size = new System.Drawing.Size(689, 222);
@@ -165,6 +166,7 @@
             this.iconButton6.Text = "Enter Items";
             this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton6.UseVisualStyleBackColor = false;
+            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
             // 
             // ViewItemsTransfer
             // 
@@ -181,6 +183,7 @@
             this.Name = "ViewItemsTransfer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ViewItemsTransfer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewItemsTransfer_FormClosed);
             this.Load += new System.EventHandler(this.ViewItemsTransfer_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
