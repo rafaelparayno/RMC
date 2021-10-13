@@ -201,11 +201,18 @@ namespace RMC.InventoryPharma.PanelTransfer
             int isPaid = radioButton2.Checked ? 0 : 1;
             string checkNo = radioButton4.Checked ? txtCNo.Text.Trim() : "";
             string checkDate = radioButton4.Checked ? dateTimePicker2.Value.ToString("yyyy-MM-dd") : "";
+
             string dueDate = radioButton1.Checked ? "" : 
-                DateTime.Now.AddDays(double.Parse(numericUpDown1.Value.ToString())).ToString("yyyy-MM-DD");
+                DateTime.Now.AddDays(double.Parse(numericUpDown1.Value.ToString())).ToString("yyyy-MM-dd");
+
+          
+            if (radioButton5.Checked)
+            {
+                cbTransfId = 0;
+            }
 
             await transferController.saveData(computeTotalCost(), textBox1.Text.Trim(), dateTimePicker1.Value.ToString("yyyy-MM-dd"),
-                isPaid, checkNo, checkDate, dueDate);
+                isPaid, checkNo, checkDate, dueDate, cbTransfId);
 
             List<Task> list = new List<Task>();
             foreach(ListViewItem lvItem in lvItemLab.Items)
@@ -225,7 +232,7 @@ namespace RMC.InventoryPharma.PanelTransfer
 
                 if(radioButton5.Checked)
                 {
-                    cbTransfId = 0;
+              
                     list.Add(clinicStocksController.addStocks(id, int.Parse(lvItem.SubItems[3].Text)));
                 }
 

@@ -12,11 +12,12 @@ namespace RMC.Database.Controllers
         dbcrud crud = new dbcrud();
 
         public async Task saveData(float totalAmount, string invo,string dateT,
-                                int isPaid, string checkNo,string checkDate,string dueDate)
+                                int isPaid, string checkNo,string checkDate,string dueDate,int tid)
         {
             string sql = @"INSERT INTO `receivable_details_transfer`(`totalamount_rdt`, 
-                            `invoice_no`, `date_transfer`, `isPaid`, `check_no_rdt`, `check_date`, `due_date`) 
-                            VALUES (@total,@invo,@dateTransfer,@ispaid,@checkno,@cDate,@dDate)";
+                            `invoice_no`, `date_transfer`, `isPaid`, `check_no_rdt`, 
+                                    `check_date`, `due_date`, `places_transfer_id`) 
+                            VALUES (@total,@invo,@dateTransfer,@ispaid,@checkno,@cDate,@dDate,@tid)";
 
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
@@ -27,6 +28,7 @@ namespace RMC.Database.Controllers
             mySqlParameters.Add(new MySqlParameter("@checkno", checkNo));
             mySqlParameters.Add(new MySqlParameter("@cDate", checkDate));
             mySqlParameters.Add(new MySqlParameter("@dDate", dueDate));
+            mySqlParameters.Add(new MySqlParameter("@tid", tid));
 
 
             await crud.ExecuteAsync(sql, mySqlParameters);
