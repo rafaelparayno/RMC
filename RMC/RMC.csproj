@@ -671,6 +671,7 @@
     <Compile Include="Database\Models\PatientSymptomsModel.cs" />
     <Compile Include="Database\Models\patientVModel.cs" />
     <Compile Include="Database\Models\patientXrayModel.cs" />
+    <Compile Include="Database\Models\PayableModel.cs" />
     <Compile Include="Database\Models\PersonelModel.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\PurchasOrderModel.cs" />
@@ -910,6 +911,18 @@
     </Compile>
     <Compile Include="InventoryPharma\PanelViewStocks\ViewStocks.Designer.cs">
       <DependentUpon>ViewStocks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\PayRec\PanelPayRec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PayRec\PanelPayRec.Designer.cs">
+      <DependentUpon>PanelPayRec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\PayRec\Panels\PanelPayables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PayRec\Panels\PanelPayables.Designer.cs">
+      <DependentUpon>PanelPayables.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryPharma\PharmaDash.cs">
       <SubType>Form</SubType>
@@ -1848,6 +1861,12 @@
     <EmbeddedResource Include="InventoryPharma\PanelViewStocks\ViewStocks.resx">
       <DependentUpon>ViewStocks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PayRec\PanelPayRec.resx">
+      <DependentUpon>PanelPayRec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PayRec\Panels\PanelPayables.resx">
+      <DependentUpon>PanelPayables.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PharmaDash.resx">
       <DependentUpon>PharmaDash.cs</DependentUpon>
     </EmbeddedResource>
@@ -2282,6 +2301,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="InventoryPharma\PayRec\Dialog\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

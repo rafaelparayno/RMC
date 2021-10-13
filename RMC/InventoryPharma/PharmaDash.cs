@@ -8,6 +8,7 @@ using RMC.InventoryPharma.PanelTransfer;
 using System;
 
 using System.Windows.Forms;
+using RMC.InventoryPharma.PayRec;
 
 namespace RMC.InventoryPharma
 {
@@ -130,6 +131,11 @@ namespace RMC.InventoryPharma
           
 
             openChildForm(new PanelTransfer.PanelTransfer());
+        }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelPayRec());
         }
     }
 }
