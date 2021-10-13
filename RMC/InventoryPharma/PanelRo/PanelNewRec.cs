@@ -271,10 +271,15 @@ namespace RMC.InventoryPharma.PanelRo
             dateTimePicker2.Value = DateTime.Now;
             showCheck(false);
             await loadPoCbs();
+
+            MessageBox.Show("Succesfully Received Items");
         }
 
         private async Task save()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
+
             string in_no = textBox1.Text.Trim();
             Dictionary<int, int> itemsRec = new Dictionary<int, int>();
             List<Task> tasks = new List<Task>();
@@ -282,7 +287,7 @@ namespace RMC.InventoryPharma.PanelRo
             bool noBo = false;
             int isCash = 0;
             string checkNO = txtCNo.Text.Trim();
-            string checkDate = dateTimePicker2.Value.ToString("yyy-MM-dd");
+            string checkDate = dateTimePicker2.Value.ToString("yyyy-MM-dd");
 
             foreach (ListViewItem lvItems in lvItemLab.Items)
             {
@@ -335,12 +340,12 @@ namespace RMC.InventoryPharma.PanelRo
             {
                 float total = float.Parse(txtTolalCost.Text.Trim().Split(' ')[1]);
                 tasks.Add(payablesController.Save(total, textBox1.Text.Trim(),
-                    dateTimePicker3.Value.ToString("yyy-MM-dd"), purchasOrderModel.supplierId));
+                    dateTimePicker3.Value.ToString("yyyy-MM-dd"), purchasOrderModel.supplierId));
             }
 
             await Task.WhenAll(tasks);
 
-            MessageBox.Show("Succesfully Receive Items");
+            pictureBox1.Hide();
         }
     }
 }

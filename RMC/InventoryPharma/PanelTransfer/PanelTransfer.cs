@@ -14,23 +14,21 @@ namespace RMC.InventoryPharma.PanelTransfer
     {
 
         private int id = 0;
-        private string name = "";
-        private bool isPharma;
-        private int quantityStocks = 0;
-        private int editId = 0;
+  
         private int cbTransfId = 0;
-        private int startQty = 0;
-        private float totalCost = 0;
         PlacesTransferController placesTransferController = new PlacesTransferController();
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
         ClinicStocksController clinicStocksController = new ClinicStocksController();
         TransferLogsController transferLogs = new TransferLogsController();
         TransferLogsModel transferLogsModel = new TransferLogsModel();
+        ReceivableTransferController transferController = new ReceivableTransferController();
 
         public PanelTransfer()
         {
             InitializeComponent();
             initLvCols();
+            showCheck(false);
+            showTerms(false);
         }
 
         private async Task loadPoCbs()
@@ -155,9 +153,87 @@ namespace RMC.InventoryPharma.PanelTransfer
             txtTolalCost.Text = "PHP " + String.Format("{0:0.##}", computeTotalCost());
         }
 
-        private void iconButton6_Click(object sender, EventArgs e)
+        private void showCheck(bool show)
         {
+            lblCDate.Visible = show;
+            lblCNo.Visible = show;
+            dateTimePicker2.Visible = show;
+            txtCNo.Visible = show;
 
+        }
+
+        private async void iconButton6_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Trim() == "")
+                return;
+
+
+            if (lvItemLab.Items.Count == 0)
+                return;
+
+            if (radioButton4.Checked)
+            {
+                if (txtCNo.Text.Trim() == "")
+                    return;
+            }
+
+
+            await saveData();
+
+            clearData();
+            MessageBox.Show("Succesfully Transfer Items");
+        }
+
+        private void clearData()
+        {
+            lvItemLab.Items.Clear();
+            textBox1.Text = "";
+            txtCNo.Text = "";
+            txtTolalCost.Text = "";
+            numericUpDown1.Value = 0;
+
+        }
+
+
+        private async Task saveData()
+        {
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
+            int isPaid = radioButton2.Checked ? 0 : 1;
+            string checkNo = radioButton4.Checked ? txtCNo.Text.Trim() : "";
+            string checkDate = radioButton4.Checked ? dateTimePicker2.Value.ToString("yyyy-MM-dd") : "";
+            string dueDate = radioButton1.Checked ? "" : 
+                DateTime.Now.AddDays(double.Parse(numericUpDown1.Value.ToString())).ToString("yyyy-MM-DD");
+
+            await transferController.saveData(computeTotalCost(), textBox1.Text.Trim(), dateTimePicker1.Value.ToString("yyyy-MM-dd"),
+                isPaid, checkNo, checkDate, dueDate);
+
+            List<Task> list = new List<Task>();
+            foreach(ListViewItem lvItem in lvItemLab.Items)
+            {
+
+                if (int.Parse(lvItem.SubItems[3].Text) == 0)
+                    continue;
+
+                int id = int.Parse(lvItem.Tag.ToString());
+
+                int currentQty = await pharmaStocksController.getStocks(id);
+
+                int newStock = currentQty - int.Parse(lvItem.SubItems[3].Text);
+
+                list.Add(pharmaStocksController.Save(id, newStock));
+
+
+                if(radioButton5.Checked)
+                {
+                    cbTransfId = 0;
+                    list.Add(clinicStocksController.addStocks(id, int.Parse(lvItem.SubItems[3].Text)));
+                }
+
+                list.Add( transferLogs.save(id, int.Parse(lvItem.SubItems[3].Text), 
+                    cbTransfId, UserLog.getUserId(), 0));              
+            }
+
+            await Task.WhenAll(list);
         }
 
         private void radioButton5_Click(object sender, EventArgs e)
@@ -168,6 +244,38 @@ namespace RMC.InventoryPharma.PanelTransfer
         private void radioButton6_Click(object sender, EventArgs e)
         {
             cbPo.Enabled = true;
+        }
+
+        private void radioButton3_Click(object sender, EventArgs e)
+        {
+            showCheck(false);
+        }
+
+        private void radioButton4_Click(object sender, EventArgs e)
+        {
+            showCheck(true);
+        }
+
+        private void showTerms(bool show)
+        {
+            label4.Visible = show;
+            numericUpDown1.Visible = show;
+            groupBox2.Visible = !show;
+        }
+
+        private void radioButton2_Click(object sender, EventArgs e)
+        {
+            showTerms(true);
+        }
+
+        private void radioButton1_Click(object sender, EventArgs e)
+        {
+            showTerms(false);
+        }
+
+        private void cbPo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbTransfId = int.Parse((cbPo.SelectedItem as ComboBoxItem).Value.ToString());
         }
     }
 }

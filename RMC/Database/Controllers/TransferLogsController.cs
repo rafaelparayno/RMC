@@ -113,8 +113,9 @@ namespace RMC.Database.Controllers
         {
             string sql = @"INSERT INTO `transferothers_logs`( 
                     `item_id`, `qty_transfer`, `places_transfer_id`, 
-                    `save_by_id`,from_to)  VALUES 
-                    (@itemid,@qty,@place,@userid,@from)";
+                    `save_by_id`,from_to,td_id)  VALUES 
+                    (@itemid,@qty,@place,@userid,@from,(SELECT rdt_id FROM receivable_details_transfer
+                            ORDER BY rdt_id DESC LIMIT 1))";
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
             mySqlParameters.Add(new MySqlParameter("@itemid", data[0]));
