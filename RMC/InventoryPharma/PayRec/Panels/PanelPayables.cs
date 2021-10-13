@@ -91,5 +91,20 @@ namespace RMC.InventoryPharma.PayRec.Panels
         {
             cbTransfId = int.Parse((cbPo.SelectedItem as ComboBoxItem).Value.ToString());
         }
+
+        private async void dgItemList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 3)
+            {
+                DataGridViewRow row = dgItemList.Rows[e.RowIndex];
+            
+                row.Cells[3].Value = !Convert.ToBoolean(row.Cells[3].EditedFormattedValue);
+
+                await payablesController.updatePaid(row.Cells[0].Value.ToString(),
+                                   Convert.ToBoolean(row.Cells[3].Value));
+
+                MessageBox.Show("Succesfully Update Data");
+            }
+        }
     }
 }

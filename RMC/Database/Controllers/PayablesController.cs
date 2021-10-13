@@ -14,6 +14,18 @@ namespace RMC.Database.Controllers
         dbcrud crud = new dbcrud();
 
 
+        public async Task updatePaid(string invoice_no, bool ispaid)
+        {
+            int paid = ispaid ? 1 : 0;
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            string sql = @"UPDATE payables SET is_paid = @paid WHERE invoice_no = @invo";
+
+            list.Add(new MySqlParameter("@paid", paid));
+            list.Add(new MySqlParameter("@invo", invoice_no));
+
+            await crud.ExecuteAsync(sql, list);
+        }
+
         public async Task<List<PayableModel>> listModel()
         {
             List<PayableModel> payableModels = new List<PayableModel>();

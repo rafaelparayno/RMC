@@ -66,6 +66,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(430, 50);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(217, 24);
@@ -84,6 +85,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Enabled = false;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(360, 50);
             this.label1.Name = "label1";
@@ -160,11 +162,14 @@
             this.dgItemList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgItemList.MultiSelect = false;
             this.dgItemList.Name = "dgItemList";
+            this.dgItemList.ReadOnly = true;
             this.dgItemList.RowHeadersVisible = false;
+            this.dgItemList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgItemList.Size = new System.Drawing.Size(659, 228);
             this.dgItemList.StandardTab = true;
             this.dgItemList.TabIndex = 256;
+            this.dgItemList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgItemList_CellClick);
             // 
             // PanelPayables
             // 
