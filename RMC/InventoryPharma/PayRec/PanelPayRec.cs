@@ -41,5 +41,10 @@ namespace RMC.InventoryPharma.PayRec
         {
             openChildForm(new PanelPayables());
         }
+
+        private void btnAutomated_Click(object sender, EventArgs e)
+        {
+            openChildForm(new PanelReceivables());
+        }
     }
 }

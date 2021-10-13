@@ -675,6 +675,7 @@
     <Compile Include="Database\Models\PersonelModel.cs" />
     <Compile Include="Database\Models\PoModel.cs" />
     <Compile Include="Database\Models\PurchasOrderModel.cs" />
+    <Compile Include="Database\Models\ReceivableTransferModel.cs" />
     <Compile Include="Database\Models\role.cs" />
     <Compile Include="Database\Models\SalesClinicTypeMod.cs" />
     <Compile Include="Database\Models\salesPharmacyModel.cs" />
@@ -923,6 +924,12 @@
     </Compile>
     <Compile Include="InventoryPharma\PayRec\Panels\PanelPayables.Designer.cs">
       <DependentUpon>PanelPayables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\PayRec\Panels\PanelReceivables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PayRec\Panels\PanelReceivables.Designer.cs">
+      <DependentUpon>PanelReceivables.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryPharma\PharmaDash.cs">
       <SubType>Form</SubType>
@@ -1866,6 +1873,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PayRec\Panels\PanelPayables.resx">
       <DependentUpon>PanelPayables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PayRec\Panels\PanelReceivables.resx">
+      <DependentUpon>PanelReceivables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PharmaDash.resx">
       <DependentUpon>PharmaDash.cs</DependentUpon>

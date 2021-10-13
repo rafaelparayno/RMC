@@ -26,15 +26,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
             //initLvCols();
         }
 
-       /* private void initLvCols()
-        {
-            lvItemLab.View = View.Details;
-            lvItemLab.CheckBoxes = true;
-            lvItemLab.Columns.Add("Invoice #", 250, HorizontalAlignment.Center);
-            lvItemLab.Columns.Add("Date Due", 200, HorizontalAlignment.Center);
-            lvItemLab.Columns.Add("Amount", 100, HorizontalAlignment.Right);
-            lvItemLab.Columns.Add("Paid", 100, HorizontalAlignment.Right);
-        }*/
+     
 
 
         private async Task loadPoCbs()

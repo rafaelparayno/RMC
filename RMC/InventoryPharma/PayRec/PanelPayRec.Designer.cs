@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panelNavParam = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panelChild = new System.Windows.Forms.Panel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.btnAutomated = new FontAwesome.Sharp.IconButton();
             this.btnSuppliers = new FontAwesome.Sharp.IconButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelChild = new System.Windows.Forms.Panel();
             this.panelNavParam.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,23 +50,6 @@
             this.panelNavParam.Name = "panelNavParam";
             this.panelNavParam.Size = new System.Drawing.Size(675, 44);
             this.panelNavParam.TabIndex = 18;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Salmon;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 44);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(675, 5);
-            this.panel2.TabIndex = 19;
-            // 
-            // panelChild
-            // 
-            this.panelChild.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChild.Location = new System.Drawing.Point(0, 49);
-            this.panelChild.Name = "panelChild";
-            this.panelChild.Size = new System.Drawing.Size(675, 401);
-            this.panelChild.TabIndex = 20;
             // 
             // iconButton1
             // 
@@ -125,7 +108,7 @@
             this.btnAutomated.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnAutomated.Font = new System.Drawing.Font("Tahoma", 8F);
             this.btnAutomated.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnAutomated.IconChar = FontAwesome.Sharp.IconChar.File;
+            this.btnAutomated.IconChar = FontAwesome.Sharp.IconChar.CommentDots;
             this.btnAutomated.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
             this.btnAutomated.IconSize = 18;
             this.btnAutomated.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -134,10 +117,10 @@
             this.btnAutomated.Rotation = 0D;
             this.btnAutomated.Size = new System.Drawing.Size(114, 44);
             this.btnAutomated.TabIndex = 12;
-            this.btnAutomated.Text = "&Automated";
+            this.btnAutomated.Text = "&Receivables";
             this.btnAutomated.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAutomated.UseVisualStyleBackColor = false;
-            this.btnAutomated.Visible = false;
+            this.btnAutomated.Click += new System.EventHandler(this.btnAutomated_Click);
             // 
             // btnSuppliers
             // 
@@ -161,6 +144,23 @@
             this.btnSuppliers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSuppliers.UseVisualStyleBackColor = false;
             this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Salmon;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 44);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(675, 5);
+            this.panel2.TabIndex = 19;
+            // 
+            // panelChild
+            // 
+            this.panelChild.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelChild.Location = new System.Drawing.Point(0, 49);
+            this.panelChild.Name = "panelChild";
+            this.panelChild.Size = new System.Drawing.Size(675, 401);
+            this.panelChild.TabIndex = 20;
             // 
             // PanelPayRec
             // 
