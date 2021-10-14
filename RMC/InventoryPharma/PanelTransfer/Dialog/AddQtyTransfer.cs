@@ -48,6 +48,12 @@ namespace RMC.InventoryPharma.PanelTransfer.Dialog
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
+            int _;
+
+            if (!(int.TryParse(numericUpDown1.Value.ToString(), out _)))
+                return;
+           
+
             int qty = int.Parse(numericUpDown1.Value.ToString());
             if (qty > quantityStocks)
                 return;
@@ -63,6 +69,11 @@ namespace RMC.InventoryPharma.PanelTransfer.Dialog
 
         private void btnQty_Click(object sender, EventArgs e)
         {
+
+            int _;
+
+            if (!(int.TryParse(numericUpDown1.Value.ToString(), out _)))
+                return;
 
             qty = int.Parse(numericUpDown1.Value.ToString());
             this.Close();

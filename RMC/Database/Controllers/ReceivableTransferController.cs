@@ -47,6 +47,28 @@ namespace RMC.Database.Controllers
 
         }
 
+        public async Task<bool> foundInvoice(string invoiceno)
+        {
+            bool isFound = false;
+            string sql = @"SELECT * FROM receivable_details_transfer WHERE invoice_no = @invo";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@invo",invoiceno)
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (reader.HasRows)
+            {
+                isFound = true;
+            }
+
+            crud.CloseConnection();
+
+            return isFound;
+        }
+
         public async Task saveData(float totalAmount, string invo,string dateT,
                                 int isPaid, string checkNo,string checkDate,string dueDate,int tid)
         {

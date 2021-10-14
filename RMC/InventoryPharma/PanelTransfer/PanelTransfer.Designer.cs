@@ -62,6 +62,8 @@
             this.addQuantityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.setSellingPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setPercentageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -307,6 +309,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(430, 50);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(189, 21);
@@ -421,21 +424,23 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addQuantityToolStripMenuItem,
+            this.setSellingPriceToolStripMenuItem,
+            this.setPercentageToolStripMenuItem,
             this.removeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(146, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
             // 
             // addQuantityToolStripMenuItem
             // 
             this.addQuantityToolStripMenuItem.Name = "addQuantityToolStripMenuItem";
-            this.addQuantityToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.addQuantityToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.addQuantityToolStripMenuItem.Text = "Add Quantity";
             this.addQuantityToolStripMenuItem.Click += new System.EventHandler(this.addQuantityToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -452,6 +457,20 @@
             this.pictureBox1.TabIndex = 257;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
+            // 
+            // setSellingPriceToolStripMenuItem
+            // 
+            this.setSellingPriceToolStripMenuItem.Name = "setSellingPriceToolStripMenuItem";
+            this.setSellingPriceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setSellingPriceToolStripMenuItem.Text = "Set Selling Price";
+            this.setSellingPriceToolStripMenuItem.Click += new System.EventHandler(this.setSellingPriceToolStripMenuItem_Click);
+            // 
+            // setPercentageToolStripMenuItem
+            // 
+            this.setPercentageToolStripMenuItem.Name = "setPercentageToolStripMenuItem";
+            this.setPercentageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setPercentageToolStripMenuItem.Text = "Set Percentage";
+            this.setPercentageToolStripMenuItem.Click += new System.EventHandler(this.setPercentageToolStripMenuItem_Click);
             // 
             // PanelTransfer
             // 
@@ -519,5 +538,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem setSellingPriceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setPercentageToolStripMenuItem;
     }
 }

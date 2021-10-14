@@ -121,7 +121,8 @@ namespace RMC.InventoryPharma.PanelTransfer.Dialog
                 itemModel.name = dataGridViewRow.Cells[1].Value.ToString();
                 itemModel.description = dataGridViewRow.Cells[6].Value.ToString();
                 itemModel.unitPrice = float.Parse(dataGridViewRow.Cells[2].Value.ToString());
-
+                itemModel.sellingPrice = float.Parse(dataGridViewRow.Cells[4].Value.ToString());
+                itemModel.markupPrice = float.Parse(dataGridViewRow.Cells[3].Value.ToString());
                 listItem.Add(itemModel);
             }
 

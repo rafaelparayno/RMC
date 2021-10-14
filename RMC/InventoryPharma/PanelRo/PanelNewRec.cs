@@ -278,7 +278,7 @@ namespace RMC.InventoryPharma.PanelRo
                         frm.ShowDialog();
                         int newQty = frm.qty;
                         lvItemLab.SelectedItems[0].SubItems[5].Text = newQty.ToString();
-                        float newSubTotal = unitCost * newQty;
+                        float newSubTotal = float.Parse(Math.Round((unitCost * newQty),2).ToString());
                         lvItemLab.SelectedItems[0].SubItems[6].Text = newSubTotal.ToString();
               
                         break;
