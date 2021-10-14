@@ -1,4 +1,5 @@
-﻿using RMC.Database.Controllers;
+﻿using RMC.Components;
+using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.InventoryPharma.PayRec.Dialog;
 using System;
@@ -17,13 +18,27 @@ namespace RMC.InventoryPharma.PayRec.Panels
     {
 
         ReceivableTransferController receivableTransferController = new ReceivableTransferController();
+        PlacesTransferController placesTransferController = new PlacesTransferController();
         string id = "";
+        int cbTransfId = 0;
 
         public PanelReceivables()
         {
             InitializeComponent();
-        }      
-        
+            foreach (string months in StaticData.months)
+            {
+                comboBox1.Items.Add(months);
+            }
+        }
+
+
+        private async Task loadPoCbs()
+        {
+            List<ComboBoxItem> cbs = await placesTransferController.getComboDatas();
+
+            cbPo.Items.AddRange(cbs.ToArray());
+        }
+
         private async Task loadGrid()
         {
             List<ReceivableTransferModel> receivableTransferModels = 
@@ -51,7 +66,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
             foreach (ReceivableTransferModel p in receivableTransferModels)
             {
-                dt.Rows.Add(p.id, p.namep, p.invoice,p.dateTransfer.Split(' ')[0] ,String.Format("₱{0:n}", p.amount), p.isPaid == 1 ? true: false);
+                dt.Rows.Add(p.id, p.namep, p.invoice,p.dueDate.Split(' ')[0] ,String.Format("₱{0:n}", p.amount), p.isPaid == 1 ? true: false);
             }
 
             newDataset.Tables.Add(dt);
@@ -59,9 +74,9 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
         }
 
-        private async void PanelReceivables_Load(object sender, EventArgs e)
+        private async  void PanelReceivables_Load(object sender, EventArgs e)
         {
-            await loadGrid();
+            await loadPoCbs();
         }
 
         private void dgItemList_MouseClick(object sender, MouseEventArgs e)
@@ -89,6 +104,45 @@ namespace RMC.InventoryPharma.PayRec.Panels
         {
             ReceiveArDiag frm = new ReceiveArDiag();
             frm.ShowDialog();
+        }
+
+        private async void checkBox1_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                await loadGrid();
+            }
+            else
+            {
+                dgItemList.DataSource = "";
+            }
+        }
+
+        public async Task searchGrid()
+        {
+           
+            List<ReceivableTransferModel> receivableTransferModels = radioButton2.Checked ?
+                await receivableTransferController.getModel(cbTransfId) :
+                await receivableTransferController.getModel(cbTransfId,
+                comboBox1.SelectedIndex + 1,
+                dateTimePicker1.Value.Year);
+
+            dgItemList.DataSource = "";
+            dgItemList.DataSource = FormatDg(receivableTransferModels).Tables[0];
+        }
+
+        private async void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (cbTransfId == -1)
+                return;
+
+            await searchGrid();
+            checkBox1.Checked = false;
+        }
+
+        private void cbPo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbTransfId = int.Parse((cbPo.SelectedItem as ComboBoxItem).Value.ToString());
         }
     }
 }

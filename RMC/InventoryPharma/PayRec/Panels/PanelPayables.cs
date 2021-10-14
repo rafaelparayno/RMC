@@ -43,7 +43,10 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
         private async void iconButton1_Click(object sender, EventArgs e)
         {
+            if (cbTransfId == -1)
+                return;
             await loadGrid();
+            checkBox1.Checked = false;
         }
 
         private async Task loadGrid()
