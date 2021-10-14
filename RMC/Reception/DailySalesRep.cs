@@ -80,6 +80,7 @@ namespace RMC.Reception
                 Task<float> task5 = salesClinicController.getMedCertTotal(newDate2);
                 Task<float> task6 = salesClinicController.getTotalPackages(newDate2);
                 Task<float> task7 = salesClinicController.getTotalOtherServices(newDate2);
+
                 Task<float> task8 = consumedItems.getConsumedCost(newDate2);
                 Task<float> task9 = invoiceController.getSalesDate(newDate2);
 

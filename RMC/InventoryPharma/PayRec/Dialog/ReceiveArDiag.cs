@@ -16,5 +16,10 @@ namespace RMC.InventoryPharma.PayRec.Dialog
         {
             InitializeComponent();
         }
+
+        private void btnCloseApp_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -51,6 +51,8 @@ namespace RMC.InventoryPharma.PanelRo
             lvItemLab.Columns.Add("Item Name", 250, HorizontalAlignment.Center);
             lvItemLab.Columns.Add("Desc", 150, HorizontalAlignment.Center);
             lvItemLab.Columns.Add("last Unit", 100, HorizontalAlignment.Right);
+            lvItemLab.Columns.Add("Percentage", 100, HorizontalAlignment.Right);
+            lvItemLab.Columns.Add("Selling Price", 100, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Qty", 70, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Amount", 100, HorizontalAlignment.Right);
         }
@@ -95,9 +97,12 @@ namespace RMC.InventoryPharma.PanelRo
                 lvs.Text = p.item_name;              
                 lvs.SubItems.Add(p.desc);
                 float subTotal = p.unitCosts * p.quantity_order;
-                totalCost += subTotal; 
+                totalCost += subTotal;
+              
                 lvs.SubItems.Add(p.unitCosts.ToString());
-                lvs.SubItems.Add(p.quantity_order.ToString()); ;
+                lvs.SubItems.Add(computeMarkup(p.unitCosts,p.sellingPrice).ToString());
+                lvs.SubItems.Add(p.sellingPrice.ToString());
+                lvs.SubItems.Add(p.quantity_order.ToString());
                 lvs.SubItems.Add(subTotal.ToString());
                 lvItemLab.Items.Add(lvs);
             }
@@ -107,6 +112,19 @@ namespace RMC.InventoryPharma.PanelRo
 
         }
 
+        private float computeMarkup(float unit,float sellingP)
+        {
+             return ((sellingP / unit) - 1) * 100;
+        }
+
+        private float computeSellingPrice(float perc,float unit)
+        {
+            float AdditionPrice = unit * perc;
+
+
+            return unit + AdditionPrice;
+        }
+
         private float computeTotalCost()
         {
             float totalCost = 0;
@@ -114,7 +132,7 @@ namespace RMC.InventoryPharma.PanelRo
             {
 
                float unit =  float.Parse(lvItems.SubItems[2].Text);
-                int qty = int.Parse(lvItems.SubItems[3].Text);
+                int qty = int.Parse(lvItems.SubItems[5].Text);
                 totalCost += unit * qty;
             }
             return totalCost;
@@ -129,8 +147,10 @@ namespace RMC.InventoryPharma.PanelRo
                 lvItemLab.Columns[0].Width = 250;
                 lvItemLab.Columns[1].Width = 150;
                 lvItemLab.Columns[2].Width = 100;
-                lvItemLab.Columns[3].Width = 70;
+                lvItemLab.Columns[3].Width = 100;
                 lvItemLab.Columns[4].Width = 100;
+                lvItemLab.Columns[5].Width = 70;
+                lvItemLab.Columns[6].Width = 100;
             }
             else
             {
@@ -138,7 +158,9 @@ namespace RMC.InventoryPharma.PanelRo
                 lvItemLab.Columns[1].Width = 600;
                 lvItemLab.Columns[2].Width = 180;
                 lvItemLab.Columns[3].Width = 100;
-                lvItemLab.Columns[4].Width = 160;
+                lvItemLab.Columns[4].Width = 100;
+                lvItemLab.Columns[5].Width = 100;
+                lvItemLab.Columns[6].Width = 160;
             }
         }
 
@@ -211,28 +233,43 @@ namespace RMC.InventoryPharma.PanelRo
 
             if (lvItemLab.Items.Count > 0)
             {
+                float perc = float.Parse(lvItemLab.SelectedItems[0].SubItems[3].Text);
+                float unitCost = float.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
+                int qty = int.Parse(lvItemLab.SelectedItems[0].SubItems[5].Text);
+                int id = int.Parse(lvItemLab.SelectedItems[0].Tag.ToString());
+                float subTotal = float.Parse(lvItemLab.SelectedItems[0].SubItems[6].Text);
+
                 switch (columnindex)
                 {
                     case 3:
-                        int qty = int.Parse(lvItemLab.SelectedItems[0].SubItems[3].Text);
+                     
+                        addPercRec frmPerc = new addPercRec(perc);
+                        frmPerc.ShowDialog();
+                        float percD = frmPerc.percentage;
+                        float percS = percD / 100;
+                        lvItemLab.SelectedItems[0].SubItems[3].Text = percD.ToString();
+                        lvItemLab.SelectedItems[0].SubItems[4].Text = computeSellingPrice(percS, unitCost).ToString();
+                       
 
-                        addQtyNew frm = new addQtyNew(qty);
+                        break;
+                    case 5:       
+                        PoModel p = pomodels.Find(pm => pm.item_id == id);
+                        addQtyNew frm = new addQtyNew(qty,p.quantity_order);
                         frm.ShowDialog();
                         int newQty = frm.qty;
-                        lvItemLab.SelectedItems[0].SubItems[3].Text = newQty.ToString();
-                        float unitCost = float.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
+                        lvItemLab.SelectedItems[0].SubItems[5].Text = newQty.ToString();
                         float newSubTotal = unitCost * newQty;
-                        lvItemLab.SelectedItems[0].SubItems[4].Text = newSubTotal.ToString();
+                        lvItemLab.SelectedItems[0].SubItems[6].Text = newSubTotal.ToString();
               
                         break;
-                    case 4:
-                        float subTotal = float.Parse(lvItemLab.SelectedItems[0].SubItems[4].Text);
+                    case 6:
+            
                         addSubTotal frmSub = new addSubTotal(subTotal);
                         frmSub.ShowDialog();
                         float newSub = frmSub.subTotal;
-                        lvItemLab.SelectedItems[0].SubItems[4].Text = newSub.ToString();
-                        int qtySub = int.Parse(lvItemLab.SelectedItems[0].SubItems[3].Text);
-                        float newUnitCost = newSub / qtySub;
+                        lvItemLab.SelectedItems[0].SubItems[6].Text = newSub.ToString();
+                   
+                        float newUnitCost = float.Parse(Math.Round(newSub / qty,2).ToString());
                         lvItemLab.SelectedItems[0].SubItems[2].Text = newUnitCost.ToString();
 
 
@@ -260,6 +297,15 @@ namespace RMC.InventoryPharma.PanelRo
 
             await save();
 
+            clearData();
+            showCheck(false);
+            await loadPoCbs();
+
+            MessageBox.Show("Succesfully Received Items");
+        }
+
+        private void clearData()
+        {
             cbPo.SelectedIndex = -1;
             textBox1.Text = "";
             numericUpDown1.Value = 0;
@@ -269,10 +315,6 @@ namespace RMC.InventoryPharma.PanelRo
             cbPo.Items.Clear();
             txtCNo.Text = "";
             dateTimePicker2.Value = DateTime.Now;
-            showCheck(false);
-            await loadPoCbs();
-
-            MessageBox.Show("Succesfully Received Items");
         }
 
         private async Task save()
@@ -293,6 +335,8 @@ namespace RMC.InventoryPharma.PanelRo
             {
                 int itemID = int.Parse(lvItems.Tag.ToString());
                 float unitCosts = float.Parse(lvItems.SubItems[2].Text);
+                float sellingP = float.Parse(lvItems.SubItems[4].Text);
+                float markUp = float.Parse(lvItems.SubItems[3].Text);
                 PoModel poFound = pomodels.Find(p => p.item_id == itemID);
 
                 int qtyUpdate = poFound.quantity_order - int.Parse(lvItems.SubItems[3].Text);
@@ -313,9 +357,11 @@ namespace RMC.InventoryPharma.PanelRo
                 {
                     tasks.Add(itemController.updateUnitCost(itemID, unitCosts));
                 }
-                  
-               
 
+                if(sellingP > poFound.sellingPrice)
+                {
+                    tasks.Add(itemController.updateSellingAndMarkup(sellingP, markUp, itemID));
+                }
 
                 tasks.Add(poItemController.updateOrderQty(itemID,
                                            po_no,

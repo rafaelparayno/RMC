@@ -67,19 +67,21 @@
             this.dgItemList.Size = new System.Drawing.Size(659, 352);
             this.dgItemList.StandardTab = true;
             this.dgItemList.TabIndex = 257;
+            this.dgItemList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgItemList_MouseClick);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.receiveARToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(133, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
             // 
             // receiveARToolStripMenuItem
             // 
             this.receiveARToolStripMenuItem.Name = "receiveARToolStripMenuItem";
-            this.receiveARToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.receiveARToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.receiveARToolStripMenuItem.Text = "Receive AR";
+            this.receiveARToolStripMenuItem.Click += new System.EventHandler(this.receiveARToolStripMenuItem_Click);
             // 
             // PanelReceivables
             // 

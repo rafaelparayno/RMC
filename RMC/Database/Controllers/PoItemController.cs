@@ -30,7 +30,7 @@ namespace RMC.Database.Controllers
 
 
             string sql = @"SELECT itemlist.item_id,itemlist.item_name,quantity_order,
-					suppliers.supplier_name ,itemlist.Description,itemlist.UnitPrice
+					suppliers.supplier_name ,itemlist.Description,itemlist.UnitPrice,itemlist.SellingPrice
                           FROM `purchase_order_items` LEFT JOIN itemlist ON purchase_order_items.item_id = itemlist.item_id 
                           LEFT JOIN purchase_order ON purchase_order_items.po_id = purchase_order.po_id
                           LEFT JOIN suppliers ON purchase_order.supplier_id = suppliers.supplier_id 
@@ -48,6 +48,7 @@ namespace RMC.Database.Controllers
                 newPo.quantity_order = int.Parse(reader["quantity_order"].ToString());
                 newPo.desc = reader["Description"].ToString();
                 newPo.unitCosts = float.Parse(reader["UnitPrice"].ToString());
+                newPo.sellingPrice = float.Parse(reader["SellingPrice"].ToString());
                 purchaseOrder.Add(newPo);
             }
 

@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.InventoryPharma.PayRec.Dialog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
     {
 
         ReceivableTransferController receivableTransferController = new ReceivableTransferController();
-
+        string id = "";
 
         public PanelReceivables()
         {
@@ -61,6 +62,33 @@ namespace RMC.InventoryPharma.PayRec.Panels
         private async void PanelReceivables_Load(object sender, EventArgs e)
         {
             await loadGrid();
+        }
+
+        private void dgItemList_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgItemList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+
+                    id = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+
+                
+
+                    contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
+                }
+
+            }
+        }
+
+        private void receiveARToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReceiveArDiag frm = new ReceiveArDiag();
+            frm.ShowDialog();
         }
     }
 }

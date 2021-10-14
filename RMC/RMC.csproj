@@ -841,6 +841,12 @@
     <Compile Include="InventoryPharma\PanelReturn\PanelReturnShop.Designer.cs">
       <DependentUpon>PanelReturnShop.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelRo\Dialogs\addPercRec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelRo\Dialogs\addPercRec.Designer.cs">
+      <DependentUpon>addPercRec.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelRo\Dialogs\addQtyNew.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -912,6 +918,12 @@
     </Compile>
     <Compile Include="InventoryPharma\PanelViewStocks\ViewStocks.Designer.cs">
       <DependentUpon>ViewStocks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPharma\PayRec\Dialog\ReceiveArDiag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PayRec\Dialog\ReceiveArDiag.Designer.cs">
+      <DependentUpon>ReceiveArDiag.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryPharma\PayRec\PanelPayRec.cs">
       <SubType>Form</SubType>
@@ -1832,6 +1844,9 @@
     <EmbeddedResource Include="InventoryPharma\PanelReturn\PanelReturnShop.resx">
       <DependentUpon>PanelReturnShop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelRo\Dialogs\addPercRec.resx">
+      <DependentUpon>addPercRec.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\Dialogs\addQtyNew.resx">
       <DependentUpon>addQtyNew.cs</DependentUpon>
     </EmbeddedResource>
@@ -1867,6 +1882,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelViewStocks\ViewStocks.resx">
       <DependentUpon>ViewStocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PayRec\Dialog\ReceiveArDiag.resx">
+      <DependentUpon>ReceiveArDiag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PayRec\PanelPayRec.resx">
       <DependentUpon>PanelPayRec.cs</DependentUpon>
@@ -2311,8 +2329,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="InventoryPharma\PayRec\Dialog\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,12 +13,12 @@ namespace RMC.InventoryPharma.PanelRo.Dialogs
     public partial class addQtyNew : Form
     {
         public int qty = 0;
-        public addQtyNew(int qty)
+        public addQtyNew(int qty,int maxQty)
         {
             InitializeComponent();
             this.qty = qty;
             numericUpDown1.Value = qty;
-            numericUpDown1.Maximum = qty;
+            numericUpDown1.Maximum = maxQty;
             numericUpDown1.Focus();
 
         }

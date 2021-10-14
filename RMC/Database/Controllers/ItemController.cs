@@ -53,7 +53,25 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, mySqlParameters);
         }
-       
+
+
+        public async Task updateSellingAndMarkup(float Selling,float Markup,int id)
+        {
+
+
+            string sql = @"UPDATE itemlist SET sellingPrice = @price,MarkupPrice = @mark  WHERE item_id = @id";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@price", Selling)),
+                 (new MySqlParameter("@Markup", Markup)),
+                 (new MySqlParameter("@id", id)),
+            };
+
+
+            await crud.ExecuteAsync(sql, mySqlParameters);
+        }
+
         public async Task<DataSet> getdataSetActive()
         {
             string sql = @"SELECT item_id,item_name ,UnitPrice , MarkupPrice ,
