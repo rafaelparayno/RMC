@@ -53,6 +53,37 @@ namespace RMC.Database.Controllers
             return payableModels;
         }
 
+        public async Task<PayableModel> getModel(string invoice)
+        {
+            PayableModel p = new PayableModel();
+
+            string sql = @"SELECT payables.payables_id,invoice_no,payables_amount,payable_due,is_paid,suppliers.supplier_name FROM `payables` 
+                                    INNER JOIN suppliers ON payables.supplier_id = suppliers.supplier_id 
+                                    WHERE invoice_no = @ino";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@ino",invoice),
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (await reader.ReadAsync())
+            {
+                
+                p.id = int.Parse(reader["payables_id"].ToString());
+                p.invoice_no = reader["invoice_no"].ToString();
+                p.amount = float.Parse(reader["payables_amount"].ToString());
+
+                p.isPaid = int.Parse(reader["is_paid"].ToString()) == 0 ? false : true;
+                p.payableDue = reader["payable_due"].ToString();
+                p.supplierName = reader["supplier_name"].ToString();
+            }
+
+            crud.CloseConnection();
+
+            return p;
+        }
 
 
         public async Task<List<PayableModel>> listModel(int id)
@@ -88,8 +119,46 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task<List<PayableModel>> listModel(int id,int m,int y )
+        {
+            List<PayableModel> payableModels = new List<PayableModel>();
 
-        public async Task Save(float amount,string in_no,string payable_due,int s_id)
+            string sql = @"SELECT * FROM `payables` WHERE supplier_id = @id 
+                                AND month(payable_due) = @m AND year(payable_due) = @y 
+                            ORDER BY payable_due DESC";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@id",id),                
+                new MySqlParameter("@y",y),
+                new MySqlParameter("@m",m),
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while (await reader.ReadAsync())
+            {
+                PayableModel p = new PayableModel();
+                p.id = int.Parse(reader["payables_id"].ToString());
+                p.invoice_no = reader["invoice_no"].ToString();
+                p.amount = float.Parse(reader["payables_amount"].ToString());
+
+                p.isPaid = int.Parse(reader["is_paid"].ToString()) == 0 ? false : true;
+                p.payableDue = reader["payable_due"].ToString();
+
+
+                payableModels.Add(p);
+            }
+
+            crud.CloseConnection();
+
+            return payableModels;
+        }
+
+
+
+        public async Task Save(float amount,string in_no,string payable_due,
+            int s_id)
         {
             string sql;
             List<MySqlParameter> list = new List<MySqlParameter>();

@@ -1,6 +1,7 @@
 ﻿using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.InventoryPharma.PayRec.Dialog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,13 +18,17 @@ namespace RMC.InventoryPharma.PayRec.Panels
     {
         SupplierController supplierController = new SupplierController();
         PayablesController payablesController = new PayablesController();
-    
+        string id = "";
 
         int cbTransfId = 0;
         public PanelPayables()
         {
             InitializeComponent();
             //initLvCols();
+            foreach (string months in StaticData.months)
+            {
+                comboBox1.Items.Add(months);
+            }
         }
 
      
@@ -43,8 +48,13 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
         private async Task loadGrid()
         {
+          
+            List<PayableModel> payableModels = radioButton2.Checked ?
+                await payablesController.listModel(cbTransfId) : 
+                await payablesController.listModel(cbTransfId,
+                comboBox1.SelectedIndex + 1,
+                dateTimePicker1.Value.Year);
 
-            List<PayableModel> payableModels = await payablesController.listModel(cbTransfId);
             dgItemList.DataSource = "";
             dgItemList.DataSource = FormatDg(payableModels).Tables[0];
         
@@ -97,6 +107,48 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
                 MessageBox.Show("Succesfully Update Data");
             }
+        }
+
+        private async void checkBox1_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                List<PayableModel> payableModels = await payablesController.listModel();
+
+                dgItemList.DataSource = "";
+                dgItemList.DataSource = FormatDg(payableModels).Tables[0];
+            }
+            else
+            {
+                dgItemList.DataSource = "";
+            }
+        }
+
+        private void dgItemList_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgItemList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+
+                    id = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+
+
+
+                    contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
+                }
+
+            }
+        }
+
+        private void viewDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DetailsPayable frm = new DetailsPayable(id);
+            frm.ShowDialog();
         }
     }
 }

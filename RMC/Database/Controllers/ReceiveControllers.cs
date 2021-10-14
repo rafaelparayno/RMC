@@ -20,10 +20,6 @@ namespace RMC.Database.Controllers
                            ((SELECT po_item_id FROM purchase_order_items WHERE item_id = @itemid AND po_id = @poid),
                             @qty,@uid,@no,@isCash,@chno,@date_check)";
 
-            if (dateCheck == "")
-            {
-
-            }
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             listparams.Add(new MySqlParameter("@itemid", itemid));
@@ -33,7 +29,7 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@no", invoice_no));
             listparams.Add(new MySqlParameter("@isCash", isCash));
             listparams.Add(new MySqlParameter("@chno", checkNo));
-            listparams.Add(new MySqlParameter("@date_check", dateCheck));
+            listparams.Add(new MySqlParameter("@date_check", dateCheck == "" ? null : dateCheck));
 
             await crud.ExecuteAsync(sql, listparams);
         }
@@ -140,6 +136,46 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@date", DateTime.Parse(date)));
 
             return await crud.GetDataSetAsync(sql, listparams);
+        }
+
+
+        public async Task<List<ReceivableModel>> getReceiveModel(string invoiceNo)
+        {
+            List<ReceivableModel> receivableModels = new List<ReceivableModel>();
+
+
+            string sql = @"SELECT ro_id,itemlist.item_name,itemlist.UnitPrice,
+                            itemlist.Description,receive_orders.qty_ro, 
+                            receive_orders.invoice_no,qty_ro 
+                            FROM receive_orders 
+                            INNER JOIN purchase_order_items 
+                                    ON receive_orders.po_item_id = purchase_order_items.po_item_id 
+                       		INNER JOIN itemlist 
+                                    ON purchase_order_items.item_id = itemlist.item_id  
+                            WHERE invoice_no = @ino";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
+
+            mySqlParameters.Add(new MySqlParameter("@ino", invoiceNo));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while(await reader.ReadAsync())
+            {
+                ReceivableModel m = new ReceivableModel();
+                m.id = int.Parse(reader["ro_id"].ToString());
+                m.qty_rect = int.Parse(reader["qty_ro"].ToString());
+                m.itemName = reader["item_name"].ToString();
+                m.invoiceNo = reader["invoice_no"].ToString();
+                m.unitPrice = float.Parse(reader["UnitPrice"].ToString());
+                m.description = reader["Description"].ToString();
+
+                receivableModels.Add(m);
+            }
+
+            crud.CloseConnection();
+
+            return receivableModels;
         }
 
     }

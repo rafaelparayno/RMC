@@ -78,7 +78,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 125);
+            this.panel1.Size = new System.Drawing.Size(654, 125);
             this.panel1.TabIndex = 252;
             // 
             // dateTimePicker3
@@ -187,7 +187,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 306);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 144);
+            this.panel2.Size = new System.Drawing.Size(654, 144);
             this.panel2.TabIndex = 253;
             // 
             // iconButton6
@@ -206,7 +206,7 @@
             this.iconButton6.Location = new System.Drawing.Point(0, 103);
             this.iconButton6.Name = "iconButton6";
             this.iconButton6.Rotation = 0D;
-            this.iconButton6.Size = new System.Drawing.Size(800, 41);
+            this.iconButton6.Size = new System.Drawing.Size(654, 41);
             this.iconButton6.TabIndex = 8;
             this.iconButton6.Text = "Save Receive";
             this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -228,7 +228,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 103);
+            this.groupBox1.Size = new System.Drawing.Size(654, 103);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -356,7 +356,7 @@
             this.lvItemLab.HideSelection = false;
             this.lvItemLab.Location = new System.Drawing.Point(0, 125);
             this.lvItemLab.Name = "lvItemLab";
-            this.lvItemLab.Size = new System.Drawing.Size(800, 181);
+            this.lvItemLab.Size = new System.Drawing.Size(654, 181);
             this.lvItemLab.TabIndex = 254;
             this.lvItemLab.UseCompatibleStateImageBehavior = false;
             this.lvItemLab.DoubleClick += new System.EventHandler(this.lvItemLab_DoubleClick);
@@ -367,9 +367,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
-            this.pictureBox1.Location = new System.Drawing.Point(289, 125);
+            this.pictureBox1.Location = new System.Drawing.Point(268, 149);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(202, 176);
+            this.pictureBox1.Size = new System.Drawing.Size(125, 122);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 255;
             this.pictureBox1.TabStop = false;
@@ -380,7 +380,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(654, 450);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lvItemLab);
             this.Controls.Add(this.panel2);

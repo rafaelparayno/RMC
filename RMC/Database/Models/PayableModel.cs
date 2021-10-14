@@ -14,6 +14,7 @@ namespace RMC.Database.Models
         public string payableDue { get; set; }
       
         public bool isPaid { get; set; }
+        public string supplierName { get; set; }
 
     }
 }

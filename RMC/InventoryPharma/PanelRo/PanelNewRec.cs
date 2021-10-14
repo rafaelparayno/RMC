@@ -347,11 +347,9 @@ namespace RMC.InventoryPharma.PanelRo
             List<Task> tasks = new List<Task>();
             poController.receiveUpdate(po_no);
             bool noBo = false;
-            int isCash = 0;
-            string checkNO = txtCNo.Text.Trim();
-            string checkDate = dateTimePicker2.Value.ToString("yyyy-MM-dd");
-
-
+            int isCash = radioButton3.Checked ? 1 : 0;
+            string checkNO = radioButton3.Checked ? "" : txtCNo.Text.Trim();
+            string checkDate = radioButton3.Checked ? "" : dateTimePicker2.Value.ToString("yyyy-MM-dd");
 
 
             foreach (ListViewItem lvItems in lvItemLab.Items)
@@ -366,16 +364,12 @@ namespace RMC.InventoryPharma.PanelRo
 
                 int qtyUpdate = poFound.quantity_order - qtyCurrent;
 
+                if (qtyCurrent == 0)
+                    continue;
+
                 if (qtyUpdate > 0)
                 {
                     noBo = true;
-                }
-
-                if (radioButton3.Checked)
-                {
-                    isCash = 1;
-                    checkNO = "";
-                    checkDate = "";
                 }
 
                 if (unitCosts > poFound.unitCosts)
@@ -398,7 +392,7 @@ namespace RMC.InventoryPharma.PanelRo
                 itemsRec.Add(itemID, qtyCurrent);
 
                 tasks.Add(receiveControllers.save(itemID, qtyCurrent, po_no,
-                    in_no, isCash, checkNO, checkDate));
+                in_no,isCash,checkNO, checkDate));
             }
 
             if (noBo)
@@ -411,7 +405,8 @@ namespace RMC.InventoryPharma.PanelRo
             {
                 float total = float.Parse(txtTolalCost.Text.Trim().Split(' ')[1]);
                 tasks.Add(payablesController.Save(total, textBox1.Text.Trim(),
-                    dateTimePicker3.Value.ToString("yyyy-MM-dd"), purchasOrderModel.supplierId));
+                    dateTimePicker3.Value.ToString("yyyy-MM-dd"), 
+                    purchasOrderModel.supplierId));
             }
 
             await Task.WhenAll(tasks);
