@@ -59,12 +59,12 @@ namespace RMC.Database.Controllers
         {
 
 
-            string sql = @"UPDATE itemlist SET sellingPrice = @price,MarkupPrice = @mark  WHERE item_id = @id";
+            string sql = @"UPDATE itemlist SET SellingPrice = @price,MarkupPrice = @mark  WHERE item_id = @id";
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
             {
                 (new MySqlParameter("@price", Selling)),
-                 (new MySqlParameter("@Markup", Markup)),
+                 (new MySqlParameter("@mark", Markup)),
                  (new MySqlParameter("@id", id)),
             };
 

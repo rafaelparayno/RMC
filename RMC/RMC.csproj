@@ -865,6 +865,12 @@
     <Compile Include="InventoryPharma\PanelRo\Dialogs\addSubTotal.Designer.cs">
       <DependentUpon>addSubTotal.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PanelRo\Dialogs\setSellingPriceDiag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PanelRo\Dialogs\setSellingPriceDiag.Designer.cs">
+      <DependentUpon>setSellingPriceDiag.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PanelRo\PanelNewRec.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1855,6 +1861,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\Dialogs\addSubTotal.resx">
       <DependentUpon>addSubTotal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PanelRo\Dialogs\setSellingPriceDiag.resx">
+      <DependentUpon>setSellingPriceDiag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PanelRo\PanelNewRec.resx">
       <DependentUpon>PanelNewRec.cs</DependentUpon>

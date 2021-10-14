@@ -36,9 +36,9 @@ namespace RMC.InventoryPharma.PanelRo.Dialogs
 
         private void btnQty_Click(object sender, EventArgs e)
         {
-            int _;
+            float _;
 
-            if (!(int.TryParse(textBox1.Text.Trim(), out _)))
+            if (!(float.TryParse(textBox1.Text.Trim(), out _)))
                 return;
 
             percentage = float.Parse(textBox1.Text.Trim());

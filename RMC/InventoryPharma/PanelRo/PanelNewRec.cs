@@ -216,12 +216,21 @@ namespace RMC.InventoryPharma.PanelRo
         private void radioButton1_Click(object sender, EventArgs e)
         {
             groupBox2.Enabled = true;
+            isunPaid(false);
+
+        }
+
+        private void isunPaid(bool ispaid)
+        {
+            numericUpDown1.Enabled = ispaid;
+            dateTimePicker3.Enabled = ispaid;
         }
 
         private void radioButton2_Click(object sender, EventArgs e)
         {
             groupBox2.Enabled = false;
             showCheck(false);
+            isunPaid(true);
             radioButton3.Checked = true;
         }
 
@@ -233,10 +242,12 @@ namespace RMC.InventoryPharma.PanelRo
 
             if (lvItemLab.Items.Count > 0)
             {
-                float perc = float.Parse(lvItemLab.SelectedItems[0].SubItems[3].Text);
-                float unitCost = float.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
-                int qty = int.Parse(lvItemLab.SelectedItems[0].SubItems[5].Text);
                 int id = int.Parse(lvItemLab.SelectedItems[0].Tag.ToString());
+                float unitCost = float.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
+                float perc = float.Parse(lvItemLab.SelectedItems[0].SubItems[3].Text);
+                float sellingPrice = float.Parse(lvItemLab.SelectedItems[0].SubItems[4].Text);
+                int qty = int.Parse(lvItemLab.SelectedItems[0].SubItems[5].Text);
+             
                 float subTotal = float.Parse(lvItemLab.SelectedItems[0].SubItems[6].Text);
 
                 switch (columnindex)
@@ -251,6 +262,15 @@ namespace RMC.InventoryPharma.PanelRo
                         lvItemLab.SelectedItems[0].SubItems[4].Text = computeSellingPrice(percS, unitCost).ToString();
                        
 
+                        break;
+
+                    case 4:
+                        setSellingPriceDiag frmSell = new setSellingPriceDiag(sellingPrice);
+                        frmSell.ShowDialog();
+                        float newSellingPrice = frmSell.sellingPrice;
+
+                        lvItemLab.SelectedItems[0].SubItems[3].Text = computeMarkup(unitCost, newSellingPrice).ToString();
+                        lvItemLab.SelectedItems[0].SubItems[4].Text = newSellingPrice.ToString();
                         break;
                     case 5:       
                         PoModel p = pomodels.Find(pm => pm.item_id == id);
@@ -331,17 +351,22 @@ namespace RMC.InventoryPharma.PanelRo
             string checkNO = txtCNo.Text.Trim();
             string checkDate = dateTimePicker2.Value.ToString("yyyy-MM-dd");
 
+
+
+
             foreach (ListViewItem lvItems in lvItemLab.Items)
             {
                 int itemID = int.Parse(lvItems.Tag.ToString());
                 float unitCosts = float.Parse(lvItems.SubItems[2].Text);
-                float sellingP = float.Parse(lvItems.SubItems[4].Text);
+              
                 float markUp = float.Parse(lvItems.SubItems[3].Text);
+                float sellingP = float.Parse(lvItems.SubItems[4].Text);
+                int qtyCurrent = int.Parse(lvItems.SubItems[5].Text);
                 PoModel poFound = pomodels.Find(p => p.item_id == itemID);
 
-                int qtyUpdate = poFound.quantity_order - int.Parse(lvItems.SubItems[3].Text);
+                int qtyUpdate = poFound.quantity_order - qtyCurrent;
 
-                if(qtyUpdate > 0)
+                if (qtyUpdate > 0)
                 {
                     noBo = true;
                 }
@@ -358,7 +383,7 @@ namespace RMC.InventoryPharma.PanelRo
                     tasks.Add(itemController.updateUnitCost(itemID, unitCosts));
                 }
 
-                if(sellingP > poFound.sellingPrice)
+                if (sellingP > poFound.sellingPrice)
                 {
                     tasks.Add(itemController.updateSellingAndMarkup(sellingP, markUp, itemID));
                 }
@@ -368,12 +393,12 @@ namespace RMC.InventoryPharma.PanelRo
                                            qtyUpdate));
 
                 tasks.Add(pharmaStocksController.addStocks(itemID,
-                                                int.Parse(lvItems.SubItems[3].Text)));
+                                                qtyCurrent));
 
-                itemsRec.Add(itemID, int.Parse(lvItems.SubItems[3].Text));
+                itemsRec.Add(itemID, qtyCurrent);
 
-                tasks.Add(receiveControllers.save(itemID, int.Parse(lvItems.SubItems[3].Text), po_no,
-                    in_no,isCash, checkNO, checkDate));
+                tasks.Add(receiveControllers.save(itemID, qtyCurrent, po_no,
+                    in_no, isCash, checkNO, checkDate));
             }
 
             if (noBo)
