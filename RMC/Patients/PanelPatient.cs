@@ -23,8 +23,7 @@ namespace RMC.Patients
         List<int> listAcc = new List<int>();
         int currentPage = 1;
         int rowsPerPage = 10;
-   
-      
+         
         public PanelPatient()
         {
             InitializeComponent();
@@ -169,28 +168,21 @@ namespace RMC.Patients
 
         private async Task loadPatientDetails()
         {
-            pictureBox1.Show();
-            pictureBox1.Update();
             listDetails =  await patientDetailsController.getPatientDetails();
             
             populateitems();
             showPaginate(listDetails.Count);
-
-            pictureBox1.Hide();
         }
 
         private async Task loadPatientSearchDetails()
         {
-            pictureBox1.Show();
-            pictureBox1.Update();
+           
             listDetails = await patientDetailsController.getSearchPatient(txtName.Text.Trim(),
                                                                         comboBox1.SelectedIndex);
            
             populateitems();
             showPaginate(listDetails.Count);
-
-
-            pictureBox1.Hide();
+         
         }
 
 
@@ -213,7 +205,19 @@ namespace RMC.Patients
 
         private async void PanelPatient_Load(object sender, EventArgs e)
         {
-           await loadPatientDetails();
+         
+            pictureBox1.Show();
+            pictureBox1.Update();
+            await loadPatientDetails();
+       
+         
+            panelPatientList.Visible = true;
+
+            pictureBox1.Hide();
+
+          
+
+          
         }
     }
 }

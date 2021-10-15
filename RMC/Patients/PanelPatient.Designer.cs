@@ -162,6 +162,7 @@
             this.panelPatientList.Name = "panelPatientList";
             this.panelPatientList.Size = new System.Drawing.Size(660, 367);
             this.panelPatientList.TabIndex = 5;
+            this.panelPatientList.Visible = false;
             // 
             // pictureBox1
             // 
@@ -193,12 +194,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deletePatientToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(148, 26);
             // 
             // deletePatientToolStripMenuItem
             // 
             this.deletePatientToolStripMenuItem.Name = "deletePatientToolStripMenuItem";
-            this.deletePatientToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deletePatientToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.deletePatientToolStripMenuItem.Text = "Delete Patient";
             // 
             // PanelPatient
