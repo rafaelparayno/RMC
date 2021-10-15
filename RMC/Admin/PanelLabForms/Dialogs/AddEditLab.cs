@@ -436,9 +436,17 @@ namespace RMC.Admin.PanelLabForms.Dialogs
             label3.Visible = false;
         }
 
+        private void txtLabCost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
         #endregion
 
-     
+
     }
 }

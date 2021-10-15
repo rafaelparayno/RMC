@@ -61,12 +61,14 @@ namespace RMC.InventoryPharma.PayRec.Panels
             dt.Columns.Add("Customer name", typeof(string));
             dt.Columns.Add("Invoice No", typeof(string));
             dt.Columns.Add("Date", typeof(string));
-            dt.Columns.Add("Total", typeof(string));
+            dt.Columns.Add("Amount", typeof(string));
+            dt.Columns.Add("Amount Paid", typeof(string));
             dt.Columns.Add("Paid", typeof(bool));
 
             foreach (ReceivableTransferModel p in receivableTransferModels)
             {
-                dt.Rows.Add(p.id, p.namep, p.invoice,p.dueDate.Split(' ')[0] ,String.Format("₱{0:n}", p.amount), p.isPaid == 1 ? true: false);
+                dt.Rows.Add(p.id, p.namep, p.invoice,p.dueDate.Split(' ')[0] ,String.Format("₱{0:n}", p.amount),
+                    String.Format("₱{0:n}", p.amountPaid), p.isPaid == 1 ? true: false);
             }
 
             newDataset.Tables.Add(dt);
@@ -90,7 +92,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
                 if (currentMouseOverRow >= 0)
                 {
 
-                    id = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    id = dgItemList.Rows[currentMouseOverRow].Cells[2].Value.ToString();
 
                 
 
@@ -100,10 +102,19 @@ namespace RMC.InventoryPharma.PayRec.Panels
             }
         }
 
-        private void receiveARToolStripMenuItem_Click(object sender, EventArgs e)
+        private async  void receiveARToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReceiveArDiag frm = new ReceiveArDiag();
+            ReceiveArDiag frm = new ReceiveArDiag(id);
             frm.ShowDialog();
+            if (checkBox1.Checked)
+            {
+                await loadGrid();
+            }
+            else
+            {
+                await searchGrid();
+            }
+
         }
 
         private async void checkBox1_Click(object sender, EventArgs e)

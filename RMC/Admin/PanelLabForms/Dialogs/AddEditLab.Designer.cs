@@ -53,6 +53,11 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.txtSellingPrice = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.txtLabCost = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.lvConsumables = new System.Windows.Forms.ListView();
             this.label9 = new System.Windows.Forms.Label();
@@ -68,11 +73,6 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.txtLabCost = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -83,12 +83,12 @@
             this.groupBox9.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.groupBox10.SuspendLayout();
-            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -406,6 +406,67 @@
             this.label6.TabIndex = 4;
             this.label6.Text = "PHP";
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label4);
+            this.groupBox10.Controls.Add(this.groupBox11);
+            this.groupBox10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox10.Location = new System.Drawing.Point(0, 418);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox10.Size = new System.Drawing.Size(639, 110);
+            this.groupBox10.TabIndex = 26;
+            this.groupBox10.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label4.Location = new System.Drawing.Point(15, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 17);
+            this.label4.TabIndex = 248;
+            this.label4.Text = "Lab Cost";
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.txtLabCost);
+            this.groupBox11.Controls.Add(this.label5);
+            this.groupBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox11.Location = new System.Drawing.Point(18, 37);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(602, 52);
+            this.groupBox11.TabIndex = 6;
+            this.groupBox11.TabStop = false;
+            // 
+            // txtLabCost
+            // 
+            this.txtLabCost.BackColor = System.Drawing.Color.FloralWhite;
+            this.txtLabCost.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLabCost.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtLabCost.Enabled = false;
+            this.txtLabCost.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLabCost.Location = new System.Drawing.Point(32, 16);
+            this.txtLabCost.MaxLength = 40;
+            this.txtLabCost.Name = "txtLabCost";
+            this.txtLabCost.Size = new System.Drawing.Size(562, 23);
+            this.txtLabCost.TabIndex = 5;
+            this.txtLabCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtLabCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLabCost_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label5.Location = new System.Drawing.Point(3, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "PHP";
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.lvConsumables);
@@ -603,66 +664,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.label4);
-            this.groupBox10.Controls.Add(this.groupBox11);
-            this.groupBox10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox10.Location = new System.Drawing.Point(0, 418);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox10.Size = new System.Drawing.Size(639, 110);
-            this.groupBox10.TabIndex = 26;
-            this.groupBox10.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(15, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 17);
-            this.label4.TabIndex = 248;
-            this.label4.Text = "Lab Cost";
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.txtLabCost);
-            this.groupBox11.Controls.Add(this.label5);
-            this.groupBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox11.Location = new System.Drawing.Point(18, 37);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(602, 52);
-            this.groupBox11.TabIndex = 6;
-            this.groupBox11.TabStop = false;
-            // 
-            // txtLabCost
-            // 
-            this.txtLabCost.BackColor = System.Drawing.Color.FloralWhite;
-            this.txtLabCost.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtLabCost.Dock = System.Windows.Forms.DockStyle.Left;
-            this.txtLabCost.Enabled = false;
-            this.txtLabCost.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLabCost.Location = new System.Drawing.Point(32, 16);
-            this.txtLabCost.MaxLength = 40;
-            this.txtLabCost.Name = "txtLabCost";
-            this.txtLabCost.Size = new System.Drawing.Size(562, 23);
-            this.txtLabCost.TabIndex = 5;
-            this.txtLabCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label5.Location = new System.Drawing.Point(3, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "PHP";
-            // 
             // AddEditLab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -692,6 +693,10 @@
             this.groupBox2.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -699,10 +704,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
             this.ResumeLayout(false);
 
         }

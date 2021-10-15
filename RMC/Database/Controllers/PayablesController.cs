@@ -30,7 +30,7 @@ namespace RMC.Database.Controllers
         {
             List<PayableModel> payableModels = new List<PayableModel>();
 
-            string sql = @"SELECT * FROM `payables` ORDER BY payable_due DESC";
+            string sql = @"SELECT * FROM `payables` ORDER BY payable_due ASC";
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
@@ -90,7 +90,7 @@ namespace RMC.Database.Controllers
         {
             List<PayableModel> payableModels = new List<PayableModel>();
 
-            string sql = @"SELECT * FROM `payables` WHERE supplier_id = @id ORDER BY payable_due DESC";
+            string sql = @"SELECT * FROM `payables` WHERE supplier_id = @id ORDER BY payable_due ASC";
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
             {
@@ -125,7 +125,7 @@ namespace RMC.Database.Controllers
 
             string sql = @"SELECT * FROM `payables` WHERE supplier_id = @id 
                                 AND month(payable_due) = @m AND year(payable_due) = @y 
-                            ORDER BY payable_due DESC";
+                            ORDER BY payable_due ASC";
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
             {

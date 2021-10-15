@@ -28,5 +28,7 @@ namespace RMC.Database.Models
 
         public string namep { get; set; }
 
+        public float amountPaid { get; set; }
+
     }
 }

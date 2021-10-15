@@ -14,13 +14,52 @@ namespace RMC.Database.Controllers
         dbcrud crud = new dbcrud();
 
 
+        public async Task<ReceivableTransferModel> getModelSingle(string invoice)
+        {
+
+            ReceivableTransferModel receivableTransferModel = new ReceivableTransferModel();
+            string sql = @"SELECT rdt_id,totalamount_rdt,invoice_no,date_transfer,isPaid,check_no_rdt,
+                            check_date,due_date,receivable_details_transfer.places_transfer_id,places_transfer.places_transfer_name ,totalAmount_paid
+                            FROM `receivable_details_transfer`
+                            LEFT JOIN places_transfer ON receivable_details_transfer.places_transfer_id = places_transfer.places_transfer_id
+                            WHERE invoice_no = @ino";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
+            mySqlParameters.Add(new MySqlParameter("@ino", invoice));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (await reader.ReadAsync())
+            {
+
+                receivableTransferModel.id = int.Parse(reader["rdt_id"].ToString());
+                receivableTransferModel.amount = float.Parse(reader["totalamount_rdt"].ToString());
+                receivableTransferModel.invoice = reader["invoice_no"].ToString();
+                receivableTransferModel.dateTransfer = reader["date_transfer"].ToString();
+                receivableTransferModel.isPaid = int.Parse(reader["isPaid"].ToString());
+                receivableTransferModel.checkNo = reader["check_no_rdt"].ToString();
+                receivableTransferModel.checkDate = reader["check_date"].ToString();
+                receivableTransferModel.dueDate = reader["due_date"].ToString();
+                receivableTransferModel.pid = int.Parse(reader["places_transfer_id"].ToString());
+                receivableTransferModel.namep = reader["places_transfer_name"].ToString();
+                receivableTransferModel.amountPaid = float.Parse(reader["totalAmount_paid"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return receivableTransferModel;
+
+        }
+
         public async Task<List<ReceivableTransferModel>> getModel()
         {
 
             List<ReceivableTransferModel> receivableTransferModels = new List<ReceivableTransferModel>();
-            string sql = @"SELECT rdt_id,totalamount_rdt,invoice_no,date_transfer,isPaid,check_no_rdt,check_date,due_date,receivable_details_transfer.places_transfer_id,places_transfer.places_transfer_name FROM `receivable_details_transfer`
+            string sql = @"SELECT rdt_id,totalamount_rdt,invoice_no,date_transfer,isPaid,check_no_rdt,check_date,due_date,
+                        receivable_details_transfer.places_transfer_id,
+                        places_transfer.places_transfer_name ,totalAmount_paid FROM `receivable_details_transfer`
                             LEFT JOIN places_transfer ON receivable_details_transfer.places_transfer_id = places_transfer.places_transfer_id
-                            WHERE receivable_details_transfer.places_transfer_id !=0 ORDER BY due_date DESC ";
+                            WHERE receivable_details_transfer.places_transfer_id !=0 ORDER BY due_date ASC ";
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
@@ -37,7 +76,7 @@ namespace RMC.Database.Controllers
                 r.dueDate = reader["due_date"].ToString();
                 r.pid = int.Parse(reader["places_transfer_id"].ToString());
                 r.namep = reader["places_transfer_name"].ToString();
-
+                r.amountPaid = float.Parse(reader["totalAmount_paid"].ToString());
                 receivableTransferModels.Add(r);
             }
 
@@ -52,11 +91,11 @@ namespace RMC.Database.Controllers
 
             List<ReceivableTransferModel> receivableTransferModels = new List<ReceivableTransferModel>();
             string sql = @"SELECT rdt_id,totalamount_rdt,invoice_no,date_transfer,isPaid,check_no_rdt,
-                            check_date,due_date,receivable_details_transfer.places_transfer_id,places_transfer.places_transfer_name 
+                            check_date,due_date,receivable_details_transfer.places_transfer_id,places_transfer.places_transfer_name,totalAmount_paid
                             FROM `receivable_details_transfer`
                             LEFT JOIN places_transfer ON receivable_details_transfer.places_transfer_id = places_transfer.places_transfer_id
                             WHERE receivable_details_transfer.places_transfer_id = @id 
-                            ORDER BY due_date DESC";
+                            ORDER BY due_date ASC";
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
             mySqlParameters.Add(new MySqlParameter("@id", id));
@@ -76,7 +115,7 @@ namespace RMC.Database.Controllers
                 r.dueDate = reader["due_date"].ToString();
                 r.pid = int.Parse(reader["places_transfer_id"].ToString());
                 r.namep = reader["places_transfer_name"].ToString();
-
+                r.amountPaid = float.Parse(reader["totalAmount_paid"].ToString());
                 receivableTransferModels.Add(r);
             }
 
@@ -91,11 +130,13 @@ namespace RMC.Database.Controllers
         {
 
             List<ReceivableTransferModel> receivableTransferModels = new List<ReceivableTransferModel>();
-            string sql = @"SELECT rdt_id,totalamount_rdt,invoice_no,date_transfer,isPaid,check_no_rdt,check_date,due_date,receivable_details_transfer.places_transfer_id,places_transfer.places_transfer_name FROM `receivable_details_transfer`
+            string sql = @"SELECT rdt_id,totalamount_rdt,invoice_no,date_transfer,isPaid,check_no_rdt,check_date,due_date,
+                        receivable_details_transfer.places_transfer_id,
+                        places_transfer.places_transfer_name,totalAmount_paid FROM `receivable_details_transfer`
                             LEFT JOIN places_transfer ON receivable_details_transfer.places_transfer_id = places_transfer.places_transfer_id
                             WHERE receivable_details_transfer.places_transfer_id = @id 
                             AND month(due_date) = @m AND year(due_date) = @y
-                            ORDER BY due_date DESC ";
+                            ORDER BY due_date ASC ";
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
             mySqlParameters.Add(new MySqlParameter("@id", id));
@@ -118,7 +159,7 @@ namespace RMC.Database.Controllers
                 r.dueDate = reader["due_date"].ToString();
                 r.pid = int.Parse(reader["places_transfer_id"].ToString());
                 r.namep = reader["places_transfer_name"].ToString();
-
+                r.amountPaid = float.Parse(reader["totalAmount_paid"].ToString());
                 receivableTransferModels.Add(r);
             }
 
@@ -169,6 +210,27 @@ namespace RMC.Database.Controllers
             mySqlParameters.Add(new MySqlParameter("@cDate", checkDate == "" ? null : checkDate));
             mySqlParameters.Add(new MySqlParameter("@dDate", dueDate == "" ? null : dueDate));
             mySqlParameters.Add(new MySqlParameter("@tid", tid));
+
+
+            await crud.ExecuteAsync(sql, mySqlParameters);
+        }
+
+
+        public async Task updateData(float totalAmount,float totalAmountPaid,string checkno,string checkDate,string ino)
+        {
+            int isPaid = totalAmount == totalAmountPaid ? 1 :  0;
+           
+            string sql = @"UPDATE `receivable_details_transfer` SET check_no_rdt = @checkno, check_date = @cDate, 
+                           totalAmount_paid = @total, isPaid = @ispaid WHERE invoice_no = @ino ";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
+
+            mySqlParameters.Add(new MySqlParameter("@checkno", checkno));
+            mySqlParameters.Add(new MySqlParameter("@cDate", checkDate == "" ? null : checkDate));
+            mySqlParameters.Add(new MySqlParameter("@total", totalAmountPaid));
+        
+            mySqlParameters.Add(new MySqlParameter("@ispaid", isPaid));
+            mySqlParameters.Add(new MySqlParameter("@ino", ino));
 
 
             await crud.ExecuteAsync(sql, mySqlParameters);
