@@ -52,7 +52,7 @@ namespace RMC.Patients.PanelsDetails
                 lvitem.SubItems.Add(pmodel.name);
                 lvitem.SubItems.Add(getType(pmodel.type));
                 lvitem.SubItems.Add(pmodel.date.ToString("dddd, dd MMMM yyyy"));
-
+                lvitem.SubItems.Add(pmodel.fileName);
                 lvLabDetails.Items.Add(lvitem);
             }
         }
@@ -81,6 +81,7 @@ namespace RMC.Patients.PanelsDetails
             lvLabDetails.Columns.Add("Name", 200, HorizontalAlignment.Left);
             lvLabDetails.Columns.Add("Type", 100, HorizontalAlignment.Left);
             lvLabDetails.Columns.Add("Date", 300, HorizontalAlignment.Left);
+            lvLabDetails.Columns.Add("File name", 300, HorizontalAlignment.Left);
         }
 
         private  void lvLabDetails_SelectedIndexChanged(object sender, EventArgs e)
@@ -145,17 +146,17 @@ namespace RMC.Patients.PanelsDetails
             int selectedIds = int.Parse(lvLabDetails.SelectedItems[0].SubItems[0].Text);
             xraymodel xraymodel = await xrayControllers.getxrayModelinPatientLab(selectedIds);
             pictureBox1.Hide();
-
+            string filenameExt = lvLabDetails.SelectedItems[0].SubItems[4].Text.Split('.')[1];
 
             if (xraymodel.is_crystal > 0)
             {
 
-                RoetDiagForm roetDiagForm = new RoetDiagForm(id,xraymodel.id,selectedIds);
+                RoetDiagForm roetDiagForm = new RoetDiagForm(id,xraymodel.id,selectedIds,0);
                 roetDiagForm.ShowDialog();
             }
             else
             {
-                ViewImageXray viewImageXray = new ViewImageXray(id,xraymodel.id,selectedIds,xraymodel.name);
+                ViewImageXray viewImageXray = new ViewImageXray(id,xraymodel.id,selectedIds,xraymodel.name,filenameExt,0);
                 viewImageXray.ShowDialog();
                /* ViewImageFile viewImageFile = new ViewImageFile(id, labModel.id, selectedIds, lvLabDetails.SelectedItems[0].SubItems[1].Text);
                 viewImageFile.ShowDialog();*/

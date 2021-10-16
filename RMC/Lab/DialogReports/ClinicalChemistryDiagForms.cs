@@ -84,11 +84,18 @@ namespace RMC.Lab.DialogReports
               patient_lab_id;
 
 
+            try
+            {
+
+           
             if (!File.Exists(path))
                 return;
 
 
             doc.Load(path);
+
+            if (doc.ChildNodes.Count == 0)
+                return;
 
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
@@ -100,7 +107,11 @@ namespace RMC.Lab.DialogReports
                 clinicalChemistry.SetParameterValue(node.Name, node.InnerText);
             }
             clinicalChemistry.SetParameterValue("labno", labNo);
-
+            }catch(XmlException er)
+            {
+                Console.WriteLine(er);
+                MessageBox.Show("Invalid File");
+            }
         }
 
 

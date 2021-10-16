@@ -85,8 +85,14 @@ namespace RMC.Lab.DialogReports
                 return;
 
 
+            try
+            {
+
+            
             doc.Load(path);
 
+            if (doc.ChildNodes.Count == 0)
+                return;
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
@@ -98,6 +104,12 @@ namespace RMC.Lab.DialogReports
             }
 
             diagnosticReport.SetParameterValue("labno", labNo);
+
+            }catch(XmlException exc)
+            {
+                Console.WriteLine(exc);
+                MessageBox.Show("Invalid File");
+            }
         }
 
 

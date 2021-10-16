@@ -28,6 +28,7 @@ namespace RMC.Xray.Panels
         ClinicStocksController clinicStocksController = new ClinicStocksController();
         ConsumedItems consumeditems = new ConsumedItems();
         ItemController itemController = new ItemController();
+        private int cid = 0;
         #endregion
 
 
@@ -94,7 +95,7 @@ namespace RMC.Xray.Panels
                 Image im = listImg[lv.Index];
                 saveImginPath(im, path, "Xray-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
                  await  patientLabX.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
-                                "Xray-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow + ".jpg", path);
+                                "Xray-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow + ".jpg", path,cid);
 
             }
         }

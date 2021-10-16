@@ -83,6 +83,8 @@ namespace RMC.Lab.DialogReports
                 await patientLabController.getLabNo(patientid,labid,cid) :
                 patient_lab_id;
 
+            try
+            {
 
             if (!File.Exists(path))
                 return;
@@ -90,6 +92,8 @@ namespace RMC.Lab.DialogReports
 
             doc.Load(path);
 
+            if (doc.ChildNodes.Count == 0)
+                return;
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
@@ -103,6 +107,12 @@ namespace RMC.Lab.DialogReports
             }
 
             bloodChem.SetParameterValue("labno", labNo);
+
+            }catch(Exception er)
+            {
+                Console.WriteLine(er);
+                MessageBox.Show("Invalid File");
+            }
         }
 
         protected void ShowWaitForm()

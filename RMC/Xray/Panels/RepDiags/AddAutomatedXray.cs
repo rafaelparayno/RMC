@@ -44,6 +44,7 @@ namespace RMC.Xray.Panels.RepDiags
         private int patient_xray_id = 0;
         private bool isEdited = false;
         private int cusid = 0;
+        
 
         public AddAutomatedXray(int xid, int patientid,int cusid)
         {
@@ -61,6 +62,7 @@ namespace RMC.Xray.Panels.RepDiags
             this.patientid = patientid;
             isEdited = true;
             this.patient_xray_id = patient_xray_id;
+            this.cusid = xtra;
             getXrayModel();
         }
 
@@ -207,13 +209,13 @@ namespace RMC.Xray.Panels.RepDiags
 
                 saveImginPath(filePath, "Xray-" + patientDetails.id + "-" + xid + "-" + combine);
                 await patientXrayController.save(patientDetails.id, xid,
-                                 "Xray-" + patientDetails.id + "-" + xid + "-" + combine + ".jpg", filePath);
+                                 "Xray-" + patientDetails.id + "-" + xid + "-" + combine + ".jpg", filePath, cusid);
                 await processConsumables();
             }
             else
             {
                 string path = patient_xray_id == 0 ?
-                await patientXrayController.getFullPath(patientDetails.id, xid)
+                await patientXrayController.getFullPath(patientDetails.id, xid, cusid)
                : await patientXrayController.getFullPath(patient_xray_id);
 
                 saveImginPathEdited(path);

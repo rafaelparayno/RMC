@@ -18,15 +18,19 @@ namespace RMC.Xray.Panels.RepDiags
         private int xid = 0;
         private int patient_xray_id = 0;
         PatientXrayController patientXrayController = new PatientXrayController();
+        private int cusid = 0;
+        private string ext = "";
     
 
-        public ViewImageXray(int patientid, int xid, int patient_xray_id, string xname)
+        public ViewImageXray(int patientid, int xid, int patient_xray_id, string xname,string ext,int cusid)
         {
             InitializeComponent();
             this.patientid = patientid;
             this.xid = xid;
             this.patient_xray_id = patient_xray_id;
             label1.Text = xname;
+            this.cusid = cusid;
+            this.ext = ext;
         }
 
         private void loadPdf(string path)
@@ -47,13 +51,26 @@ namespace RMC.Xray.Panels.RepDiags
         private async void ViewImageXray_Load(object sender, EventArgs e)
         {
             string path = patient_xray_id == 0 ?
-            await patientXrayController.getFullPath(patientid, xid)
+            await patientXrayController.getFullPath(patientid, xid, cusid)
            : await patientXrayController.getFullPath(patient_xray_id);
 
             try
             {
-             
-                loadPdf(path);
+                if (ext == "jpg" || ext == "png" || ext == "jpeg")
+                {
+                    pbAutomated.Image = Image.FromFile(path);
+                    pbAutomated.SizeMode = PictureBoxSizeMode.AutoSize;
+                    pbAutomated.Visible = true;
+                    axAcroPDF1.Visible = false;
+                }
+                else
+                {
+                    loadPdf(path);
+                    pbAutomated.Visible = false;
+                }
+
+
+
             }
             catch (System.IO.FileNotFoundException)
             {

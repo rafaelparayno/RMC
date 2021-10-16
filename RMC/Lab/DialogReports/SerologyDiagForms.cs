@@ -85,9 +85,11 @@ namespace RMC.Lab.DialogReports
             if (!File.Exists(path))
                 return;
 
+            try { 
 
             doc.Load(path);
-
+            if (doc.ChildNodes.Count == 0)
+                return;
 
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
@@ -98,7 +100,11 @@ namespace RMC.Lab.DialogReports
                 serology.SetParameterValue(node.Name, node.InnerText);
             }
             serology.SetParameterValue("labno", labNo);
-
+            }catch(XmlException er)
+            {
+                Console.WriteLine(er);
+                MessageBox.Show("Invalid File");
+            }
         }
 
 

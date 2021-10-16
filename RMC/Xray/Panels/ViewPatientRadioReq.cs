@@ -20,6 +20,7 @@ namespace RMC.Xray.Panels
         PatientDetailsController patD = new PatientDetailsController();
         List<xraymodel> listModels = new List<xraymodel>();
         XrayControllers xrayControllers = new XrayControllers();
+        PatientXrayController patientXray = new PatientXrayController();
      
         RadioQueueController radioQueueController = new RadioQueueController();
       
@@ -184,12 +185,16 @@ namespace RMC.Xray.Panels
 
             if (xb.is_crystal == 1)
             {
-                RoetDiagForm roetDiagForm = new RoetDiagForm(patientid,xb.id,0);
+                RoetDiagForm roetDiagForm = new RoetDiagForm(patientid,xb.id,0, cid);
                 roetDiagForm.ShowDialog();
             }
             else
             {
-                ViewImageXray viewImageXray = new ViewImageXray(patientid, xb.id, 0, xb.name);
+                patientXrayModel patientXrayModel = await patientXray.getPatientXray(patientid, xb.id);
+                string ext = patientXrayModel.fileName.Split('.')[1];
+             
+
+                ViewImageXray viewImageXray = new ViewImageXray(patientid, xb.id, 0, xb.name,ext,cid);
                 viewImageXray.ShowDialog();
 
             }
@@ -218,8 +223,7 @@ namespace RMC.Xray.Panels
             {
                 AddAutomatedXray addAutomatedXray = new AddAutomatedXray(selectedIds, patientid,0,0);
                 addAutomatedXray.ShowDialog();
-                /*DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid);
-                diagWithAutomated.ShowDialog();*/
+              
             }
 
             if (xb.is_crystal == 1)
@@ -232,8 +236,7 @@ namespace RMC.Xray.Panels
             {
                 AddXrayUploading addXrayUploading = new AddXrayUploading(selectedIds, patientid,0,0);
                 addXrayUploading.ShowDialog();
-                /* DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid);
-                 fileUpload.ShowDialog();*/
+                
             }
 
             setData(patientid);

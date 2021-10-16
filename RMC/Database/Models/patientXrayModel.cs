@@ -15,5 +15,7 @@ namespace RMC.Database.Models
         public int type { get; set; }
 
         public DateTime date { get; set; }
+
+        public string fileName { get; set; }
     }
 }

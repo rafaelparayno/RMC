@@ -148,7 +148,9 @@ namespace RMC.Database.Controllers
             PatientLabModel.name = reader["labname"].ToString();
             PatientLabModel.type = reader["labtype_name"].ToString();
             PatientLabModel.date = DateTime.Parse(reader["DateTaken"].ToString());
-          
+            PatientLabModel.filename = reader["filename"].ToString();
+
+
             crud.CloseConnection();
 
             return PatientLabModel;

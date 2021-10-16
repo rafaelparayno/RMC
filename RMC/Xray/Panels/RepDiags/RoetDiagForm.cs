@@ -29,15 +29,17 @@ namespace RMC.Xray.Panels.RepDiags
         private int patientid = 0;
         private int labid = 0;
         private int patient_xray_id = 0;
+        private int cusid = 0;
         Roetgenological roetgenological = new Roetgenological();
      //   BloodChem bloodChem = new BloodChem();
-        public RoetDiagForm(int patientid,int labid,int patient_xray_id)
+        public RoetDiagForm(int patientid,int labid,int patient_xray_id,int cusid)
         {
             //ShowWaitForm();
             InitializeComponent();
             this.patientid = patientid;
             this.labid = labid;
             this.patient_xray_id = patient_xray_id;
+            this.cusid = cusid;
         }
 
         private async void RoetDiagForm_Load(object sender, EventArgs e)
@@ -68,7 +70,7 @@ namespace RMC.Xray.Panels.RepDiags
             XmlDocument doc = new XmlDocument();
 
             string path = patient_xray_id == 0 ?
-                await patientXrayController.getFullPath(patientid, labid)
+                await patientXrayController.getFullPath(patientid, labid, cusid)
                 : await patientXrayController.getFullPath(patient_xray_id);
 
 

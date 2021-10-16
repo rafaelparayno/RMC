@@ -53,7 +53,7 @@ namespace RMC.Lab.Panels.Diags
             await patientLabController.getFullPath(patientid, labid,cid)
             : await patientLabController.getFullPath(patient_lab_id);
 
-            Console.WriteLine(ext);
+          
             try
             {
                 if (ext == "jpg" || ext == "png" || ext == "jpeg")

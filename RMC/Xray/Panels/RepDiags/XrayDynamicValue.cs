@@ -106,7 +106,7 @@ namespace RMC.Xray.Panels.RepDiags
             XmlDocument doc = new XmlDocument();
 
             string path = patient_xray_id == 0 ?
-                await patientXrayController.getFullPath(patientid, xrayid)
+                await patientXrayController.getFullPath(patientid, xrayid, cusid)
                 : await patientXrayController.getFullPath(patient_xray_id);
 
 
@@ -212,7 +212,7 @@ namespace RMC.Xray.Panels.RepDiags
         {
 
             string path = patient_xray_id == 0 ?
-              await patientXrayController.getFullPath(patientid, xrayid)
+              await patientXrayController.getFullPath(patientid, xrayid, cusid)
               : await patientXrayController.getFullPath(patient_xray_id);
 
 
@@ -248,7 +248,7 @@ namespace RMC.Xray.Panels.RepDiags
             string filename = "Xray-" + patientDetails.id + "-" + xrayid + "-" + combine;
 
             await patientXrayController.save(patientDetails.id, xrayid,
-                              "Xray-" + patientDetails.id + "-" + xrayid + "-" + combine + ".xml", path);
+                              "Xray-" + patientDetails.id + "-" + xrayid + "-" + combine + ".xml", path, cusid);
 
             await radioQueueController.updateStatus(xrayid, cusid);
 

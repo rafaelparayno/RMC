@@ -114,14 +114,14 @@ namespace RMC.Xray.Panels.RepDiags
                 string combine = datenow + "--" + timenow;
                 File.Copy(fileSource, filePath +  "Xray-" + patientmod.id + "-" + xid + "-" + combine + ".pdf", true);
                 await patientXrayController.save(patientmod.id, xid,
-                                 "Xray-" + patientmod.id + "-" + xid + "-" + combine + ".pdf", filePath);
+                                 "Xray-" + patientmod.id + "-" + xid + "-" + combine + ".pdf", filePath, cusid);
                 await processConsumables();
             }
             else
             {
 
                 string path = patient_xray_id == 0 ?
-                 await patientXrayController.getFullPath(patientmod.id, xid)
+                 await patientXrayController.getFullPath(patientmod.id, xid, cusid)
                 : await patientXrayController.getFullPath(patient_xray_id);
 
                 savePdfinPathEdited(path);
