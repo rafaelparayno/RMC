@@ -57,6 +57,7 @@ namespace RMC.Lab.DialogReports
             this.labid = labid;
             this.edited = true;
             this.patient_lab_id = patient_lab_id;
+            this.cid = xtra;
             loadValues();
             loadTxts();
         
@@ -457,7 +458,7 @@ namespace RMC.Lab.DialogReports
             XmlDocument doc = new XmlDocument();
 
             string path = patient_lab_id == 0 ?
-                  await patientLabController.getFullPath(patientid, labid)
+                  await patientLabController.getFullPath(patientid, labid,cid)
                   : await patientLabController.getFullPath(patient_lab_id);
 
             if (!File.Exists(path))
@@ -544,7 +545,7 @@ namespace RMC.Lab.DialogReports
         {
 
             string path = patient_lab_id == 0 ?
-                      await patientLabController.getFullPath(patientid, labid)
+                      await patientLabController.getFullPath(patientid, labid,cid)
                       : await patientLabController.getFullPath(patient_lab_id);
 
 
@@ -580,7 +581,7 @@ namespace RMC.Lab.DialogReports
             string filename = "Lab-" + patientDetails.id + "-" + labid + "-" + combine;
 
             await patientLabController.save(patientDetails.id, labid,
-                              "Lab-" + patientDetails.id + "-" + labid + "-" + combine + ".xml", path);
+                              "Lab-" + patientDetails.id + "-" + labid + "-" + combine + ".xml", path,cid);
 
             await labQueueController.updateStatus(labid, cid);
 

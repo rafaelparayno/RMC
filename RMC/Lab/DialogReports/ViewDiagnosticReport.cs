@@ -29,14 +29,16 @@ namespace RMC.Lab.DialogReports
         private int patientid = 0;
         private int labid = 0;
         private int patient_lab_id = 0;
-        public ViewDiagnosticReport(int patientid, int labid, int patient_lab_id)
+        private int cid = 0;
+
+        public ViewDiagnosticReport(int patientid, int labid, int patient_lab_id,int cid)
         {
             ShowWaitForm();
             InitializeComponent();
             this.patientid = patientid;
             this.labid = labid;
             this.patient_lab_id = patient_lab_id;
-
+            this.cid = cid;
         }
 
         private async void ViewDiagnosticReport_Load(object sender, EventArgs e)
@@ -72,11 +74,11 @@ namespace RMC.Lab.DialogReports
         {
             XmlDocument doc = new XmlDocument();
             string path = patient_lab_id == 0 ?
-               await patientLabController.getFullPath(patientid, labid)
+               await patientLabController.getFullPath(patientid, labid,0)
                : await patientLabController.getFullPath(patient_lab_id);
 
             int labNo = patient_lab_id == 0 ?
-                 await patientLabController.getLabNo(patientid, labid) :
+                 await patientLabController.getLabNo(patientid, labid,cid) :
                  patient_lab_id;
 
             if (!File.Exists(path))

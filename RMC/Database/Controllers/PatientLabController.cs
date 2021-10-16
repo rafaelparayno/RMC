@@ -14,17 +14,17 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async Task save(int pid,int lid,string filename,string path)
+        public async Task save(int pid,int lid,string filename,string path,int cid)
         {
-            string sql = @"INSERT INTO patient_lab (patient_id,laboratory_id,filename,path) 
-                          VALUES (@id,@lid,@fname,@path)";
+            string sql = @"INSERT INTO patient_lab (patient_id,laboratory_id,filename,path,customer_id) 
+                          VALUES (@id,@lid,@fname,@path,@cid)";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
 
             listparams.Add(new MySqlParameter("@id", pid));
             listparams.Add(new MySqlParameter("@lid", lid));
             listparams.Add(new MySqlParameter("@fname", filename));
             listparams.Add(new MySqlParameter("@path", path));
-
+            listparams.Add(new MySqlParameter("@cid", cid));
 
             await crud.ExecuteAsync(sql, listparams);
 
@@ -51,15 +51,17 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async Task<string> getFullPath(int patientid,int labid)
+        public async Task<string> getFullPath(int patientid,int labid,int cid)
         {
             string FullPath = "";
             string sql = @"SELECT CONCAT(path,filename) AS 'FullPath' 
-                            FROM `patient_lab` WHERE patient_id = @id AND laboratory_id = @labid AND DATE(date_patient_lab) = CURDATE()";
+                            FROM `patient_lab` WHERE patient_id = @id AND laboratory_id = @labid 
+                                AND customer_id = @cid";
             List<MySqlParameter> listParams = new List<MySqlParameter>();
             listParams.Add(new MySqlParameter("@id", patientid));
 
             listParams.Add(new MySqlParameter("@labid", labid));
+            listParams.Add(new MySqlParameter("@cid", cid));
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
 
@@ -73,15 +75,16 @@ namespace RMC.Database.Controllers
             return FullPath;
         }
 
-        public async Task<int> getLabNo(int patientid, int labid)
+        public async Task<int> getLabNo(int patientid, int labid,int cid)
         {
             int labno = 0;
             string sql = @"SELECT *
-                            FROM `patient_lab` WHERE patient_id = @id AND laboratory_id = @labid AND DATE(date_patient_lab) = CURDATE()";
+                            FROM `patient_lab` WHERE patient_id = @id AND laboratory_id = @labid AND customer_id = @cid";
             List<MySqlParameter> listParams = new List<MySqlParameter>();
             listParams.Add(new MySqlParameter("@id", patientid));
 
             listParams.Add(new MySqlParameter("@labid", labid));
+            listParams.Add(new MySqlParameter("@cid", cid));
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
 

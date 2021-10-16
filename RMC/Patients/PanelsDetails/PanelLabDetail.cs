@@ -126,32 +126,32 @@ namespace RMC.Patients.PanelsDetails
                 switch (labModel.crystal_id_lab)
                 {
                     case 1:
-                        BloodChemDiagForms bloodChemDiagForms = new BloodChemDiagForms(id, labModel.id,selectedIds);
+                        BloodChemDiagForms bloodChemDiagForms = new BloodChemDiagForms(id, labModel.id,selectedIds,0);
                         bloodChemDiagForms.Show();
                         break;
                     case 2:
-                        FecalysisDiagForms fecalysisDiagForms = new FecalysisDiagForms(id,labModel.id,selectedIds);
+                        FecalysisDiagForms fecalysisDiagForms = new FecalysisDiagForms(id,labModel.id,selectedIds,0);
                         fecalysisDiagForms.Show();
                         break;
                     case 3:
-                        HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(id, labModel.id, selectedIds);
+                        HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(id, labModel.id, selectedIds,0);
                         hematologyDiagForms.Show();
                         break;
                     case 4:
-                        SerologyDiagForms serologyDiagForms = new SerologyDiagForms(id, labModel.id, selectedIds);
+                        SerologyDiagForms serologyDiagForms = new SerologyDiagForms(id, labModel.id, selectedIds,0);
                         serologyDiagForms.Show();
 
                         break;
                     case 5:
-                        UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(id, labModel.id, selectedIds);
+                        UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(id, labModel.id, selectedIds,0);
                         urinalysisDiagForms.Show();
                         break;
                     case 6:
-                        ViewDiagnosticReport viewDiagnosticReport = new ViewDiagnosticReport(id,labModel.id,selectedIds);
+                        ViewDiagnosticReport viewDiagnosticReport = new ViewDiagnosticReport(id,labModel.id,selectedIds,0);
                         viewDiagnosticReport.Show();
                         break;
                     case 7:
-                        ClinicalChemistryDiagForms clinicalChemistryDiagForms = new ClinicalChemistryDiagForms(id, labModel.id, selectedIds);
+                        ClinicalChemistryDiagForms clinicalChemistryDiagForms = new ClinicalChemistryDiagForms(id, labModel.id, selectedIds,0);
                         clinicalChemistryDiagForms.Show();
                         break;
                 }
@@ -159,7 +159,8 @@ namespace RMC.Patients.PanelsDetails
             }
             else
             {
-                ViewImageFile viewImageFile = new ViewImageFile(id, labModel.id, selectedIds,lvLabDetails.SelectedItems[0].SubItems[1].Text, filenameExt);
+                ViewImageFile viewImageFile = new ViewImageFile(id, labModel.id, selectedIds,
+                    lvLabDetails.SelectedItems[0].SubItems[1].Text, filenameExt,0);
                 viewImageFile.Show();
             }
 

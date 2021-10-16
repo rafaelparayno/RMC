@@ -183,33 +183,33 @@ namespace RMC.Lab.Panels.Diags
                 switch (lb.crystal_id_lab)
                 {
                     case 1:
-                        BloodChemDiagForms bloodChemDiagForms = new BloodChemDiagForms(patientid,selectedIds,0);
+                        BloodChemDiagForms bloodChemDiagForms = new BloodChemDiagForms(patientid,selectedIds,0,cid);
                         bloodChemDiagForms.Show();
                         break;
                     case 2:
-                        FecalysisDiagForms fecalysisDiagForms = new FecalysisDiagForms(patientid, selectedIds, 0);
+                        FecalysisDiagForms fecalysisDiagForms = new FecalysisDiagForms(patientid, selectedIds, 0,cid);
                         fecalysisDiagForms.Show();
                         break;
                     case 3:
-                        HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(patientid, selectedIds,0);
+                        HematologyDiagForms hematologyDiagForms = new HematologyDiagForms(patientid, selectedIds,0,cid);
                         hematologyDiagForms.Show();
                         break;
                     case 4:
-                        SerologyDiagForms serologyDiagForms = new SerologyDiagForms(patientid, selectedIds, 0);
+                        SerologyDiagForms serologyDiagForms = new SerologyDiagForms(patientid, selectedIds, 0,cid);
                         serologyDiagForms.Show();
                         break;
                     case 5:
-                        UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(patientid, selectedIds,0);
+                        UrinalysisDiagForms urinalysisDiagForms = new UrinalysisDiagForms(patientid, selectedIds,0,cid);
                         urinalysisDiagForms.Show();
                         break;
                     case 6:
                      
-                        ViewDiagnosticReport viewDiagnosticReport = new ViewDiagnosticReport(patientid, selectedIds, 0);
+                        ViewDiagnosticReport viewDiagnosticReport = new ViewDiagnosticReport(patientid, selectedIds, 0,cid);
                         viewDiagnosticReport.Show();
                         break;
 
                     case 7:
-                        ClinicalChemistryDiagForms clinicalChemistryDiagForms = new ClinicalChemistryDiagForms(patientid, selectedIds, 0);
+                        ClinicalChemistryDiagForms clinicalChemistryDiagForms = new ClinicalChemistryDiagForms(patientid, selectedIds, 0,cid);
                         clinicalChemistryDiagForms.Show();
                         break;
                 }
@@ -221,7 +221,7 @@ namespace RMC.Lab.Panels.Diags
                 patientLabModel patientLab = await patientLabController.getPatientLabPatLab(patientid, selectedIds);
                 string ext = patientLab.filename.Split('.')[1];
 
-                ViewImageFile viewImageFile = new ViewImageFile(patientid, selectedIds, 0, lvItemLab.SelectedItems[0].SubItems[1].Text,ext);
+                ViewImageFile viewImageFile = new ViewImageFile(patientid, selectedIds, 0, lvItemLab.SelectedItems[0].SubItems[1].Text,ext,cid);
                 viewImageFile.ShowDialog();
             }
 
@@ -247,27 +247,27 @@ namespace RMC.Lab.Panels.Diags
 
             if (lb.autodocsid > 0)
             {
-                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid,0,0);
+                DiagWithAutomated diagWithAutomated = new DiagWithAutomated(selectedIds, patientid,0,cid);
                 diagWithAutomated.ShowDialog();
             }
 
 
             if (lb.crystal_id_lab == 6)
             {
-                AddEditDiagnosticForm addEditDiagnosticForm = new AddEditDiagnosticForm(patientid, selectedIds,0,0);
+                AddEditDiagnosticForm addEditDiagnosticForm = new AddEditDiagnosticForm(patientid, selectedIds,0, cid);
                 addEditDiagnosticForm.ShowDialog();
 
             }
             else if (lb.crystal_id_lab > 0 && lb.autodocsid == 0)
             {
 
-                DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds, 0,0);
+                DynamicLabReportsValue dynform = new DynamicLabReportsValue(lb.crystal_id_lab, patientid, selectedIds, 0, cid);
                 dynform.ShowDialog();
             }
 
             if (lb.autodocsid == 0 && lb.crystal_id_lab == 0)
             {
-                DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid,0,0);
+                DiagFileUpload fileUpload = new DiagFileUpload(selectedIds, patientid,0, cid);
                 fileUpload.ShowDialog();
             }
 

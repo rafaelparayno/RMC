@@ -27,7 +27,8 @@ namespace RMC.Lab.Panels
         List<Image> listImg = new List<Image>();
         Dictionary<int, int> consumables = new Dictionary<int, int>();
         ClinicStocksController clinicStocksController = new ClinicStocksController();
-        ConsumedItems consumeditems = new ConsumedItems(); 
+        ConsumedItems consumeditems = new ConsumedItems();
+        private int cid = 0;
         #endregion
 
         public PanelLabForm()
@@ -90,7 +91,7 @@ namespace RMC.Lab.Panels
                 Image im = listImg[lv.Index];
                 saveImginPath(im, path, "Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow);
                await patientLabC.save(patientmod.id, int.Parse(lv.SubItems[2].Text),
-                                "Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow + ".jpg", path);
+                                "Lab-" + patientmod.id + "-" + lv.SubItems[2].Text + "-" + datenow + ".jpg", path,cid);
 
             }
         }

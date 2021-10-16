@@ -52,6 +52,7 @@ namespace RMC.Lab.Panels.Diags
             this.labid = labid;
             this.patient_lab_id = patient_lab_id;
             this.edited = true;
+            this.cid = xtra;
             if (edited)
             {
                 loadXmlValues();
@@ -177,7 +178,7 @@ namespace RMC.Lab.Panels.Diags
             XmlDocument doc = new XmlDocument();
 
             string path = patient_lab_id == 0 ?
-                  await patientLabController.getFullPath(patientid, labid)
+                  await patientLabController.getFullPath(patientid, labid,cid)
                   : await patientLabController.getFullPath(patient_lab_id);
 
             if (!File.Exists(path))
@@ -278,7 +279,7 @@ namespace RMC.Lab.Panels.Diags
         {
 
             string path = patient_lab_id == 0 ?
-                      await patientLabController.getFullPath(patientid, labid)
+                      await patientLabController.getFullPath(patientid, labid,cid)
                       : await patientLabController.getFullPath(patient_lab_id);
 
 
@@ -315,7 +316,7 @@ namespace RMC.Lab.Panels.Diags
             string filename = "Lab-" + patientDetails.id + "-" + labid + "-" + combine;
 
             await patientLabController.save(patientDetails.id, labid,
-                              "Lab-" + patientDetails.id + "-" + labid + "-" + combine + ".xml", path);
+                              "Lab-" + patientDetails.id + "-" + labid + "-" + combine + ".xml", path,cid);
 
             await labQueueController.updateStatus(labid, cid);
 

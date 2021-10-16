@@ -56,6 +56,7 @@ namespace RMC.Lab.Panels.Diags
             this.patientid = patientid;
             this.isEdited = true;
             this.patient_lab_id = patient_lab_id;
+            this.cid = xtra;
             getLabmodel();
          
         }
@@ -203,14 +204,14 @@ namespace RMC.Lab.Panels.Diags
             string combine = datenow + "--" + timenow;
             saveImginPath(filePath, "Lab-" + patientmod.id + "-" + labId + "-" + combine);
             await patientLabController.save(patientmod.id,labId,
-                             "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".jpg", filePath);
+                             "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".jpg", filePath,cid);
             await labQueueController.updateStatus(labId, cid);
             await processConsumables();
             }
             else
             {
                 string path = patient_lab_id == 0 ?
-                        await patientLabController.getFullPath(patientid, labId)
+                        await patientLabController.getFullPath(patientid, labId,cid)
                         : await patientLabController.getFullPath(patient_lab_id);
                 saveImginPathEdited(path);
             }

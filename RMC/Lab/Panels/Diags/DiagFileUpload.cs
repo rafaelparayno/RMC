@@ -44,6 +44,7 @@ namespace RMC.Lab.Panels.Diags
             this.patientid = patientid;
             this.isEdited = true;
             this.patient_lab_id = patient_lab_id;
+            this.cid = xtra;
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -108,13 +109,13 @@ namespace RMC.Lab.Panels.Diags
        
                 File.Copy(fileSource, filePath + "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".pdf", true);
                 await patientLabController.save(patientmod.id, labId,
-                                 "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".pdf", filePath);
+                                 "Lab-" + patientmod.id + "-" + labId + "-" + combine + ".pdf", filePath,cid);
                 await processConsumables();
             }
             else
             {
                 string path = patient_lab_id == 0 ?
-                      await patientLabController.getFullPath(patientid, labId)
+                      await patientLabController.getFullPath(patientid, labId,cid)
                       : await patientLabController.getFullPath(patient_lab_id);
 
                 savePdfinPathEdited(path);

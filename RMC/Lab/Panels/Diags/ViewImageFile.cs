@@ -18,9 +18,10 @@ namespace RMC.Lab.Panels.Diags
         private int labid = 0;
         private int patient_lab_id = 0;
         private string ext = "";
+        private int cid = 0;
         PatientLabController patientLabController = new PatientLabController();
 
-        public ViewImageFile(int patientid, int labid, int patient_lab_id,string labname,string ext)
+        public ViewImageFile(int patientid, int labid, int patient_lab_id,string labname,string ext,int cid)
         {
             InitializeComponent();
             this.patientid = patientid;
@@ -28,6 +29,7 @@ namespace RMC.Lab.Panels.Diags
             this.patient_lab_id = patient_lab_id;
             this.ext = ext;
             label1.Text = labname;
+            this.cid = cid;
         }
 
         private void loadPdf(string path)
@@ -48,7 +50,7 @@ namespace RMC.Lab.Panels.Diags
         private async void ViewImageFile_Load(object sender, EventArgs e)
         {
             string path = patient_lab_id == 0 ?
-            await patientLabController.getFullPath(patientid, labid)
+            await patientLabController.getFullPath(patientid, labid,cid)
             : await patientLabController.getFullPath(patient_lab_id);
 
             Console.WriteLine(ext);
