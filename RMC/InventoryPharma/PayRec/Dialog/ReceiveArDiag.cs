@@ -38,10 +38,10 @@ namespace RMC.InventoryPharma.PayRec.Dialog
                                 "" : receivableTransferModel.checkNo;
             dateTimePicker1.Value = receivableTransferModel.checkDate == "" || receivableTransferModel.checkDate == null ?
                  DateTime.Now : DateTime.Parse(receivableTransferModel.checkDate.Split(' ')[1]);
-            textBox3.Text = receivableTransferModel.amountPaid.ToString();
 
             checkBox1.Checked = receivableTransferModel.amount == receivableTransferModel.amountPaid ? true : false;
             textBox3.Enabled = receivableTransferModel.amount == receivableTransferModel.amountPaid ? false : true;
+            textBox3.Text = receivableTransferModel.amountPaid == 0 ? 0+ "" : receivableTransferModel.amountPaid.ToString();
 
             bool isCheck = false;
             if(receivableTransferModel.checkNo != "" )

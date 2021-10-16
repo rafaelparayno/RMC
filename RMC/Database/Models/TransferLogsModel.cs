@@ -11,7 +11,9 @@ namespace RMC.Database.Models
         public int id { get; set; }
         public int itemid { get; set; }
         public string itemName { get; set; }
+        public string description { get; set; }
         public int qtyTransfer { get; set; }
+        public float sellingPrice { get; set; }
         public int fromTo { get; set; }
         public int transferid { get; set; }
         public string transferName { get; set; }

@@ -108,6 +108,44 @@ namespace RMC.Database.Controllers
             return transferLogsModel;
 
         }
+        public async Task<List<TransferLogsModel>> getModelTid(int id)
+        {
+            List<TransferLogsModel> transferLogsModels = new List<TransferLogsModel>();
+
+            string sql = @"SELECT transferothers_logs.transferothers_logs_id,transferothers_logs.item_id,
+                        transferothers_logs.from_to,qty_transfer,transferothers_logs.places_transfer_id,date_transfer,
+                        save_by_id,itemlist.item_name,itemlist.SellingPrice,itemlist.Description,places_transfer.places_transfer_name FROM transferothers_logs
+                        INNER JOIN itemlist ON transferothers_logs.item_id = itemlist.item_id
+                        INNER JOIN places_transfer ON transferothers_logs.places_transfer_id = places_transfer.places_transfer_id
+                         WHERE td_id = @id";
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            { (new MySqlParameter("@id", id)) };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while (await reader.ReadAsync())
+            {
+                TransferLogsModel transferLogsModel = new TransferLogsModel();
+                transferLogsModel.id = int.Parse(reader["transferothers_logs_id"].ToString());
+                transferLogsModel.itemid = int.Parse(reader["item_id"].ToString());
+                transferLogsModel.itemName = reader["item_name"].ToString();
+                transferLogsModel.description = reader["Description"].ToString();
+                transferLogsModel.fromTo = int.Parse(reader["from_to"].ToString());
+                transferLogsModel.qtyTransfer = int.Parse(reader["qty_transfer"].ToString());
+                transferLogsModel.sellingPrice = float.Parse(reader["SellingPrice"].ToString());
+                transferLogsModel.transferid = int.Parse(reader["places_transfer_id"].ToString());
+                transferLogsModel.transferName = reader["places_transfer_name"].ToString();
+                transferLogsModel.date_transfer = DateTime.Parse(reader["date_transfer"].ToString());
+                transferLogsModel.transferBy = int.Parse(reader["save_by_id"].ToString());
+                transferLogsModels.Add(transferLogsModel);
+            }
+
+            crud.CloseConnection();
+
+            return transferLogsModels;
+
+        }
+
 
         public async Task save(params int [] data)
         {

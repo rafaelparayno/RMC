@@ -51,6 +51,44 @@ namespace RMC.Database.Controllers
 
         }
 
+
+        public async Task<ReceivableTransferModel> getModelSingle(int id)
+        {
+
+            ReceivableTransferModel receivableTransferModel = new ReceivableTransferModel();
+            string sql = @"SELECT rdt_id,totalamount_rdt,invoice_no,date_transfer,isPaid,check_no_rdt,
+                            check_date,due_date,receivable_details_transfer.places_transfer_id,places_transfer.places_transfer_name ,totalAmount_paid
+                            FROM `receivable_details_transfer`
+                            LEFT JOIN places_transfer ON receivable_details_transfer.places_transfer_id = places_transfer.places_transfer_id
+                            WHERE rdt_id = @id";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
+            mySqlParameters.Add(new MySqlParameter("@id", id));
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (await reader.ReadAsync())
+            {
+
+                receivableTransferModel.id = int.Parse(reader["rdt_id"].ToString());
+                receivableTransferModel.amount = float.Parse(reader["totalamount_rdt"].ToString());
+                receivableTransferModel.invoice = reader["invoice_no"].ToString();
+                receivableTransferModel.dateTransfer = reader["date_transfer"].ToString();
+                receivableTransferModel.isPaid = int.Parse(reader["isPaid"].ToString());
+                receivableTransferModel.checkNo = reader["check_no_rdt"].ToString();
+                receivableTransferModel.checkDate = reader["check_date"].ToString();
+                receivableTransferModel.dueDate = reader["due_date"].ToString();
+                receivableTransferModel.pid = int.Parse(reader["places_transfer_id"].ToString());
+                receivableTransferModel.namep = reader["places_transfer_name"].ToString();
+                receivableTransferModel.amountPaid = float.Parse(reader["totalAmount_paid"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return receivableTransferModel;
+
+        }
+
         public async Task<List<ReceivableTransferModel>> getModel()
         {
 

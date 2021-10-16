@@ -16,10 +16,11 @@ namespace RMC.InventoryPharma.PayRec.Panels
 {
     public partial class PanelReceivables : Form
     {
-
+        
         ReceivableTransferController receivableTransferController = new ReceivableTransferController();
         PlacesTransferController placesTransferController = new PlacesTransferController();
         string id = "";
+        private string ino = "";
         int cbTransfId = 0;
 
         public PanelReceivables()
@@ -57,7 +58,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
             DataTable dt = new DataTable();
 
 
-            dt.Columns.Add("Customer ID", typeof(int));
+            dt.Columns.Add("ID", typeof(int));
             dt.Columns.Add("Customer name", typeof(string));
             dt.Columns.Add("Invoice No", typeof(string));
             dt.Columns.Add("Date", typeof(string));
@@ -67,6 +68,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
             foreach (ReceivableTransferModel p in receivableTransferModels)
             {
+                
                 dt.Rows.Add(p.id, p.namep, p.invoice,p.dueDate.Split(' ')[0] ,String.Format("₱{0:n}", p.amount),
                     String.Format("₱{0:n}", p.amountPaid), p.isPaid == 1 ? true: false);
             }
@@ -92,9 +94,10 @@ namespace RMC.InventoryPharma.PayRec.Panels
                 if (currentMouseOverRow >= 0)
                 {
 
-                    id = dgItemList.Rows[currentMouseOverRow].Cells[2].Value.ToString();
+                    id = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    ino = dgItemList.Rows[currentMouseOverRow].Cells[2].Value.ToString();
 
-                
+
 
                     contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
                 }
@@ -104,7 +107,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
         private async  void receiveARToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReceiveArDiag frm = new ReceiveArDiag(id);
+            ReceiveArDiag frm = new ReceiveArDiag(ino);
             frm.ShowDialog();
             if (checkBox1.Checked)
             {
@@ -154,6 +157,13 @@ namespace RMC.InventoryPharma.PayRec.Panels
         private void cbPo_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbTransfId = int.Parse((cbPo.SelectedItem as ComboBoxItem).Value.ToString());
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int rtid = int.Parse(id);
+            DetailsReceivable frm = new DetailsReceivable(rtid);
+            frm.ShowDialog();
         }
     }
 }
