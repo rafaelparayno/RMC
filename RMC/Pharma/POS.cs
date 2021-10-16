@@ -206,7 +206,7 @@ namespace RMC.InventoryPharma
 
         private async Task processTransaction()
         {
-            await invoiceController.Save(totalAmount);
+            await invoiceController.Save(totalAmount, float.Parse(txtDis.Text.Trim()));
             invoice_no = await invoiceController.getLatestNo();
             List<Task> listSave = new List<Task>();
            

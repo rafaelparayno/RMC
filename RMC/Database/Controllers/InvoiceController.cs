@@ -54,15 +54,16 @@ namespace RMC.Database.Controllers
             return invoice;
         }
 
-        public async Task Save(float sales)
+        public async Task Save(float sales,float discount)
         {
             string sql;
             List<MySqlParameter> list = new List<MySqlParameter>();
            
-            sql = @"INSERT INTO invoice (sales) VALUES (@sales)";
+            sql = @"INSERT INTO invoice (sales,discount) VALUES (@sales,@dis)";
 
             list.Add(new MySqlParameter("@sales", sales));
-         
+            list.Add(new MySqlParameter("@dis", discount));
+
 
             await crud.ExecuteAsync(sql, list);
         }
@@ -104,7 +105,7 @@ namespace RMC.Database.Controllers
             string sql = @"SELECT SUM(sales) as 'totalSales' FROM `invoice` 
                         WHERE invoice_id in 
                             (SELECT invoice_id FROM salesclinic) 
-                                AND Date(date_invoice) = @date";
+                                AND Date(date_invoice) = DATE(@date)";
 
             List<MySqlParameter> mySqlParameters = new List<MySqlParameter>() { (new MySqlParameter("@date", date)) };
 
@@ -121,7 +122,31 @@ namespace RMC.Database.Controllers
             return sales;
         }
 
+        public async Task<float> getDiscount(string date)
+        {
+            float sales = 0;
 
-      
+            string sql = @"SELECT SUM(discount) as 'totalSales' FROM `invoice` 
+                        WHERE invoice_id in 
+                            (SELECT invoice_id FROM salesclinic) 
+                                AND Date(date_invoice) = DATE(@date)";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>() { (new MySqlParameter("@date", date)) };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while (await reader.ReadAsync())
+            {
+                sales = string.IsNullOrEmpty(reader["totalSales"].ToString()) ?
+                    0 : float.Parse(reader["totalSales"].ToString());
+            }
+
+            crud.CloseConnection();
+
+            return sales;
+        }
+
+
+
     }
 }

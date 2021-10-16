@@ -73,6 +73,7 @@ namespace RMC.Reception
                 string newDate2 = $"{newdate.Split('/')[2]}-{newdate.Split('/')[1]}-{newdate.Split('/')[0]}";
                 Console.WriteLine(newDate2);
 
+                
                 Task<float> task1 = salesClinicController.getTotalConsultation(newDate2);
                 Task<float> task2 = salesClinicController.getTotalLaboratory(newDate2);
                 Task<float> task3 = salesClinicController.getTotalXray(newDate2);
@@ -83,10 +84,11 @@ namespace RMC.Reception
 
                 Task<float> task8 = consumedItems.getConsumedCost(newDate2);
                 Task<float> task9 = invoiceController.getSalesDate(newDate2);
+                Task<float> task10 = invoiceController.getDiscount(newDate2);
 
                 Task<float>[] prices = new Task<float>[] { task1, task2,
                                         task3,task5,
-                                            task6, task7,task8,task9 };
+                                            task6, task7,task8,task9,task10 };
 
 
                 await Task.WhenAll(prices);
@@ -102,6 +104,8 @@ namespace RMC.Reception
                 cos.SetParameterValue("miscParam", totalMisc);
                 cos.SetParameterValue("itemConsumedParam", task8.Result);
                 cos.SetParameterValue("tSalesParam", totalSales);
+                cos.SetParameterValue("totalDis", task10.Result);
+              
                 await loadXmls();
             }
 

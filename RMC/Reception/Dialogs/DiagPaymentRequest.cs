@@ -181,7 +181,7 @@ namespace RMC.Reception.Dialogs
             int lastQ = await customerDetailsController.getLastQueue() + 1;
             invoice_no = await invoiceController.getLatestNo();
             await customerDetailsController.save(lastQ.ToString(), patientid.ToString());
-            await invoiceController.Save(totalPrice);
+            await invoiceController.Save(totalPrice, float.Parse(txtDis.Text.Trim()));
             customerid = await customerDetailsController.getCustomerIdinQueue(lastQ);
 
             if (hasLab())
@@ -207,10 +207,11 @@ namespace RMC.Reception.Dialogs
             List<Task> saves = new List<Task>();
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
+                float amt = float.Parse(dr.Cells[3].Value.ToString());
                 string type = dr.Cells[2].Value.ToString();
                 int id = int.Parse(dr.Cells[0].Value.ToString());
          
-                saves.Add(salesClinicController.Save(type, id, customerid));
+                saves.Add(salesClinicController.Save(type, id, customerid, amt));
 
             }
             await Task.WhenAll(saves);

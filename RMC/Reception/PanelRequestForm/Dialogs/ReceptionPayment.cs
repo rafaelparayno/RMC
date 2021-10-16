@@ -300,7 +300,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private async Task processTransaction()
         {
-            await invoiceController.Save(totalPrice);
+            await invoiceController.Save(totalPrice, float.Parse(txtDis.Text.Trim()));
             await savesRadioLabQ();
 
             Task task2 = customerDetailsController.setPaid(customerid,1);
@@ -321,10 +321,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             List<Task> saves = new List<Task>();
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
+                float amt = float.Parse(dr.Cells[3].Value.ToString());
                 string type = dr.Cells[2].Value.ToString();
                 int id = int.Parse(dr.Cells[0].Value.ToString());
                 
-                saves.Add(salesClinicController.Save(type, id, customerid));
+                saves.Add(salesClinicController.Save(type, id, customerid,amt));
             
             }
             await Task.WhenAll(saves);
