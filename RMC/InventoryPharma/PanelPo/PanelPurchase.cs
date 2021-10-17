@@ -74,7 +74,7 @@ namespace RMC.InventoryPharma.PanelPo
             pictureBox1.Show();
             pictureBox1.Update();
             itemModels = await itemz.getDataWithSupplierIdTotalStocks(id);
-           // DataSet ds = await itemz.getDataWithSupplierIdTotalStocks(id);
+         
             await RefreshGrid();
             pictureBox1.Hide();
         }
@@ -257,8 +257,8 @@ namespace RMC.InventoryPharma.PanelPo
 
         private async Task SearchGrid(string searchkey, int cbSelect)
         {
-            /*DataSet ds = await itemz.getDataWithSupplierIdTotalStocksWithSearch(cbSupValue, cbSelect, searchkey);
-            RefreshGrid(ds);*/
+            itemModels = await itemz.getDataWithSupplierIdTotalStocksWithSearch(cbSupValue, cbSelect, searchkey);
+            await RefreshGrid();
         }
         #endregion
 

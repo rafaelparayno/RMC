@@ -387,14 +387,15 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, listparams);
         }
 
-        public async Task<DataSet> getDataWithSupplierIdTotalStocksWithSearch(int id, int searchType, string keySearch)
+        public async Task<List<itemModel>> getDataWithSupplierIdTotalStocksWithSearch(int id, int searchType, string keySearch)
         {
+            List<itemModel> itemModels = new List<itemModel>();
             string sql = "";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             switch (searchType)
             {
                 case 0:
-                    sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
+                    sql = @"SELECT itemlist.item_id,item_name,COALESCE((labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`),pharmastocks.`pharma_stocks`) AS total , 
                             UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
@@ -408,7 +409,7 @@ namespace RMC.Database.Controllers
                             AND itemlist.is_active = 1 AND item_name LIKE @key";
                     break;
                 case 1:
-                    sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
+                    sql = @"SELECT itemlist.item_id,item_name,COALESCE((labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`),pharmastocks.`pharma_stocks`) AS total , 
                             UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
@@ -426,11 +427,34 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@id", id));
             string searches = "%" + keySearch + "%";
             listparams.Add(new MySqlParameter("@key", searches));
-            return await crud.GetDataSetAsync(sql, listparams);
+         
+            
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                itemModel itemModel = new itemModel();
+                itemModel.id = int.Parse(reader["item_id"].ToString());
+                itemModel.name = reader["item_name"].ToString();
+                itemModel.stocks = reader["total"].ToString() == "" ? 0 : int.Parse(reader["total"].ToString());
+                itemModel.unitPrice = float.Parse(reader["UnitPrice"].ToString());
+                itemModel.sku = reader["SKU"].ToString();
+                itemModel.description = reader["Description"].ToString();
+                itemModel.isBrand = int.Parse(reader["isBranded"].ToString());
+                itemModel.subCategory = int.Parse(reader["item_type"].ToString());
+                itemModel.Category = reader["category_name"].ToString();
+                itemModel.UnitName = reader["unit_name"].ToString();
+                itemModels.Add(itemModel);
+            }
+
+            crud.CloseConnection();
+            return itemModels;
         }
 
         public async Task<DataSet> getDsSearchActiveClinic(int searchType, string keySearch)
         {
+
+            
             string sql = "";
             List<MySqlParameter> listparams = new List<MySqlParameter>();
             switch (searchType)
