@@ -205,7 +205,7 @@ namespace RMC.Admin.PanelPharForms.Dialogs
         }
 
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (!isValid())
             {
@@ -215,22 +215,22 @@ namespace RMC.Admin.PanelPharForms.Dialogs
 
             if (isEdit)
             {
-                supplierItems.Delete(ITEM_ID, getSuppliersid());
-                items.Edit(ITEM_ID.ToString(), txtName.Text.Trim(), txtUnitPrice.Text.Trim(),
+               await supplierItems.Delete(ITEM_ID, getSuppliersid());
+               await items.Edit(ITEM_ID.ToString(), txtName.Text.Trim(), txtUnitPrice.Text.Trim(),
                            txtMarkup.Text.Trim(), txtSellingPrice.Text.Trim(),
                            dateExpiration.Value.ToString(), txtSku.Text.Trim(), 
                            txtDesc.Text.Trim(), isBranded.ToString(),
                            Catid.ToString(), unitID.ToString(), isExpiration.ToString());
-                supplierItems.Save(ITEM_ID, getSuppliersid());
+               await supplierItems.Save(ITEM_ID, getSuppliersid());
             }
             else
             {
-                items.Save(txtName.Text.Trim(), txtUnitPrice.Text.Trim(),
+               await items.Save(txtName.Text.Trim(), txtUnitPrice.Text.Trim(),
                            txtMarkup.Text.Trim(), txtSellingPrice.Text.Trim(),
                            dateExpiration.Value.ToString(), DateTime.Today.ToString(),
                            txtSku.Text.Trim(),txtDesc.Text.Trim(), isBranded.ToString(),
                            Catid.ToString(),unitID.ToString(), isExpiration.ToString());
-                supplierItems.Save(items.recentAddID(), getSuppliersid());
+              await  supplierItems.Save(items.recentAddID(), getSuppliersid());
 
             }
 

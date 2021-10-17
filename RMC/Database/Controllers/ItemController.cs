@@ -541,7 +541,7 @@ namespace RMC.Database.Controllers
             return last_id;
         }
 
-        public async void Save(params string [] datas)
+        public async Task Save(params string [] datas)
         {
             string sql = String.Format(@"INSERT INTO itemlist (item_name,UnitPrice,MarkupPrice,
                                                                 SellingPrice,ExpirationDate,DateAdded,
@@ -585,7 +585,7 @@ namespace RMC.Database.Controllers
 
         }
 
-        public async void Edit(params string[] datas)
+        public async Task Edit(params string[] datas)
         {
             string sql = @"UPDATE itemlist SET item_name = @name, UnitPrice = @unitp, MarkupPrice = @markup,
                             SellingPrice = @selllprice, ExpirationDate = @exp, SKU = @sku, 
