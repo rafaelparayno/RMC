@@ -44,6 +44,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lvItemsSuppliers = new System.Windows.Forms.ListView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgItemList = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,23 +59,24 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.groupBox1.SuspendLayout();
             this.panelMenus.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.panelOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.iconButton4);
             this.groupBox1.Controls.Add(this.iconButton3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cbSuppliers);
@@ -104,11 +106,11 @@
             this.iconButton3.IconColor = System.Drawing.Color.White;
             this.iconButton3.IconSize = 28;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton3.Location = new System.Drawing.Point(237, 42);
+            this.iconButton3.Location = new System.Drawing.Point(237, 35);
             this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Rotation = 0D;
-            this.iconButton3.Size = new System.Drawing.Size(245, 27);
+            this.iconButton3.Size = new System.Drawing.Size(162, 27);
             this.iconButton3.TabIndex = 225;
             this.iconButton3.Text = "View Back Orders";
             this.iconButton3.UseVisualStyleBackColor = false;
@@ -313,7 +315,6 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.dgItemList);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -326,6 +327,19 @@
             this.groupBox2.TabIndex = 209;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Purchase Order #";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
+            this.pictureBox1.Location = new System.Drawing.Point(237, 169);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(217, 224);
+            this.pictureBox1.TabIndex = 229;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // dgItemList
             // 
@@ -344,7 +358,7 @@
             this.dgItemList.ReadOnly = true;
             this.dgItemList.RowHeadersVisible = false;
             this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemList.Size = new System.Drawing.Size(487, 128);
+            this.dgItemList.Size = new System.Drawing.Size(487, 152);
             this.dgItemList.StandardTab = true;
             this.dgItemList.TabIndex = 231;
             // 
@@ -353,24 +367,25 @@
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox5.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.groupBox5.Location = new System.Drawing.Point(3, 147);
+            this.groupBox5.Location = new System.Drawing.Point(3, 171);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox5.Size = new System.Drawing.Size(487, 73);
+            this.groupBox5.Size = new System.Drawing.Size(487, 49);
             this.groupBox5.TabIndex = 230;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Total Cost";
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(403, 33);
+            this.label7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(432, 23);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 19);
+            this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label7.Size = new System.Drawing.Size(52, 23);
             this.label7.TabIndex = 227;
-            this.label7.Text = "PHP 0.00";
+            this.label7.Text = "0.00";
             // 
             // panelOptions
             // 
@@ -517,19 +532,27 @@
             this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // pictureBox1
+            // iconButton4
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
-            this.pictureBox1.Location = new System.Drawing.Point(78, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(240, 186);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 229;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
+            this.iconButton4.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton4.ForeColor = System.Drawing.Color.White;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton4.IconColor = System.Drawing.Color.White;
+            this.iconButton4.IconSize = 28;
+            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton4.Location = new System.Drawing.Point(427, 35);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Rotation = 0D;
+            this.iconButton4.Size = new System.Drawing.Size(162, 27);
+            this.iconButton4.TabIndex = 226;
+            this.iconButton4.Text = "New Item Supplier";
+            this.iconButton4.UseVisualStyleBackColor = false;
+            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
             // 
             // PanelPurchase
             // 
@@ -537,6 +560,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(684, 526);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelMenus);
             this.Controls.Add(this.groupBox1);
@@ -550,6 +574,7 @@
             this.panelMain.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -559,7 +584,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -597,5 +621,6 @@
         private System.Windows.Forms.Label label7;
         private FontAwesome.Sharp.IconButton iconButton3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private FontAwesome.Sharp.IconButton iconButton4;
     }
 }

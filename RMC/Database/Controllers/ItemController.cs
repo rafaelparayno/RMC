@@ -144,9 +144,10 @@ namespace RMC.Database.Controllers
             return await crud.GetDataSetAsync(sql, listparams);
         }
 
-        public async Task<DataSet> getDataWithSupplierIdTotalStocks(int id)
+        public async Task<List<itemModel>> getDataWithSupplierIdTotalStocks(int id)
         {
-            string sql = @"SELECT itemlist.item_id,item_name,COALESCE((labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`),labitemstocks.`clinic_stocks`) AS total , 
+            List<itemModel> itemModels = new List<itemModel>();
+            string sql = @"SELECT itemlist.item_id,item_name,COALESCE((labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`),pharmastocks.`pharma_stocks`) AS total , 
                             UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
                             FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
                             LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
@@ -160,8 +161,27 @@ namespace RMC.Database.Controllers
                             AND itemlist.is_active = 1";
             List<MySqlParameter> listParams = new List<MySqlParameter>();
             listParams.Add(new MySqlParameter("@id", id));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listParams);
 
-            return await crud.GetDataSetAsync(sql, listParams);
+            while(await reader.ReadAsync())
+            {
+                itemModel itemModel = new itemModel();
+                itemModel.id = int.Parse(reader["item_id"].ToString());
+                itemModel.name = reader["item_name"].ToString();
+                itemModel.stocks = reader["total"].ToString() == "" ? 0 : int.Parse(reader["total"].ToString());
+                itemModel.unitPrice = float.Parse(reader["UnitPrice"].ToString());
+                itemModel.sku = reader["SKU"].ToString();
+                itemModel.description = reader["Description"].ToString();
+                itemModel.isBrand = int.Parse(reader["isBranded"].ToString());
+                itemModel.subCategory = int.Parse(reader["item_type"].ToString());
+                itemModel.Category = reader["category_name"].ToString();
+                itemModel.UnitName = reader["unit_name"].ToString();
+                itemModels.Add(itemModel);
+            }
+
+            crud.CloseConnection();
+            return itemModels;
+        //    return await crud.GetDataSetAsync(sql, listParams);
         }
 
         public async Task<DataSet> getDataWithSupplierIdPharmaStocks(int id)

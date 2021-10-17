@@ -2,6 +2,7 @@
 using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.InventoryPharma.PanelPo.Dialogs;
+using RMC.InventoryPharma.PanelTransfer.Dialog;
 using RMC.InventoryRep;
 using RMC.SystemSettings;
 using System;
@@ -17,13 +18,17 @@ namespace RMC.InventoryPharma.PanelPo
     {
         #region Vars
 
+        SupplierItemsController supplierItemsController = new SupplierItemsController();
         SupplierController supplierController = new SupplierController();
+        PharmaStocksController pharmaStocks = new PharmaStocksController();
+        ClinicStocksController clinicStocks = new ClinicStocksController();
         SalesPharmaController salesPharmaController = new SalesPharmaController();
         PoController poController = new PoController();
         ItemController itemz = new ItemController();
         PoItemController poItemController = new PoItemController();
         ReceiveControllers receiveControllers = new ReceiveControllers();
-      
+        List<itemModel> itemModels = new List<itemModel>();
+
         Dictionary<int, List<int>> backorderlist = new Dictionary<int, List<int>>();
         bool isShowEoq = false;
         int days = 0;
@@ -64,10 +69,14 @@ namespace RMC.InventoryPharma.PanelPo
             cbSuppliers.Items.AddRange(task1.Result.ToArray());
         }
 
-        private async void loadGrid(int id)
+        private async Task loadGrid(int id)
         {
-            DataSet ds = await itemz.getDataWithSupplierIdTotalStocks(id);
-            RefreshGrid(ds);
+            pictureBox1.Show();
+            pictureBox1.Update();
+            itemModels = await itemz.getDataWithSupplierIdTotalStocks(id);
+           // DataSet ds = await itemz.getDataWithSupplierIdTotalStocks(id);
+            await RefreshGrid();
+            pictureBox1.Hide();
         }
 
 
@@ -88,28 +97,40 @@ namespace RMC.InventoryPharma.PanelPo
             if (rbEoqShow.Checked) lvItemsSuppliers.Columns.Add("EOQ", 80, HorizontalAlignment.Left);
         }
 
-        private async void RefreshGrid(DataSet ds)
+        private async Task RefreshGrid()
         {
             initColumns();
 
             lvItemsSuppliers.Items.Clear();
-            foreach (DataRow dr in ds.Tables[0].Rows)
+            foreach (itemModel i in itemModels)
             {
-                int itemId = int.Parse(dr[0].ToString());
 
-                int sum = days == 0 ? 0 : await getSum(days, itemId);
-                double avgLeadInt = days == 0 ? 0 : Math.Round(await getLeadSum(itemId, days), MidpointRounding.AwayFromZero);
+            
+                int itemId = int.Parse(i.id.ToString());
+
+                List<Task> tasks = new List<Task>();
+
+                Task<int> taskSumDays =  getSum(days, itemId);
+                Task<float> avgLeadIntTask =  getLeadSum(itemId, days);
+
+                tasks.Add(taskSumDays);
+                tasks.Add(avgLeadIntTask);
+
+                await Task.WhenAll(tasks);
+
+                int sum = days == 0 ? 0 : taskSumDays.Result;
+                double avgLeadInt = days == 0 ? 0 : Math.Round(avgLeadIntTask.Result, MidpointRounding.AwayFromZero);
                 decimal avg = days == 0 ? 0 : Math.Round(Decimal.Divide(sum, days), MidpointRounding.AwayFromZero);
                 decimal safetyStock = Math.Round(days * avg, MidpointRounding.AwayFromZero);
                 decimal ROP = computeRop(avg, avgLeadInt, safetyStock);
                 decimal percentsOptimal = safetyStock * decimal.Parse((PercentStocks + 1) + "");
                 ListViewItem items = new ListViewItem();
-                items.Text = dr[0].ToString();
-                items.SubItems.Add(dr[1].ToString());
-                items.SubItems.Add(dr[4].ToString());
-                string currentStocks = dr[2].ToString() == "" ? "0" : dr[2].ToString();
+                items.Text = i.id.ToString();
+                items.SubItems.Add(i.name.ToString());
+                items.SubItems.Add(i.sku.ToString());
+                string currentStocks = i.stocks.ToString();
                 items.SubItems.Add(currentStocks);
-                items.SubItems.Add(dr[3].ToString());
+                items.SubItems.Add(i.unitPrice.ToString());
                 items.SubItems.Add(avg == 0 ? "no data" : avg + "");
                 items.SubItems.Add(avgLeadInt == 0 ? "no data" : avgLeadInt + "");
                 items.SubItems.Add(safetyStock == 0 ? "no data" : safetyStock + "");
@@ -214,7 +235,7 @@ namespace RMC.InventoryPharma.PanelPo
                 totalCost += decimal.Parse(dr.Cells["SubTotal"].Value.ToString());
             }
 
-            label7.Text = "PHP " + String.Format("{0:0.##}", totalCost);
+            label7.Text = String.Format("₱ {0:n}", totalCost);
         }
 
         private void initPO()
@@ -225,31 +246,36 @@ namespace RMC.InventoryPharma.PanelPo
 
         private void ResetData()
         {
+
+            dt = new DataTable();
+            initDg();
             dt.Rows.Clear();
+            dgItemList.DataSource = dt;
             backorderlist = new Dictionary<int, List<int>>();
-            label7.Text = "PHP 0.00";
+            label7.Text = "₱ 0.00";
         }
 
-        private async void SearchGrid(string searchkey, int cbSelect)
+        private async Task SearchGrid(string searchkey, int cbSelect)
         {
-            DataSet ds = await itemz.getDataWithSupplierIdTotalStocksWithSearch(cbSupValue, cbSelect, searchkey);
-            RefreshGrid(ds);
+            /*DataSet ds = await itemz.getDataWithSupplierIdTotalStocksWithSearch(cbSupValue, cbSelect, searchkey);
+            RefreshGrid(ds);*/
         }
         #endregion
 
 
         #region Handler Events
 
-        private void cbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbSupValue = int.Parse((cbSuppliers.SelectedItem as ComboBoxItem).Value.ToString());
 
-            loadGrid(cbSupValue);
+            await loadGrid(cbSupValue);
             ResetData();
+            
         }
 
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private async void iconButton1_Click(object sender, EventArgs e)
         {
             if (numericUpDown1.Value == 0)
                 return;
@@ -262,7 +288,7 @@ namespace RMC.InventoryPharma.PanelPo
             file.Close();
 
             initSettings();
-            loadGrid(cbSupValue);
+            await loadGrid(cbSupValue);
         }
 
         private void rbEoqShow_CheckedChanged(object sender, EventArgs e)
@@ -345,8 +371,11 @@ namespace RMC.InventoryPharma.PanelPo
             {
                tasks.Add(poItemController.Save(int.Parse(dr.Cells["Itemid"].Value.ToString()),
                                     int.Parse(dr.Cells["Quantity"].Value.ToString())));
-               
+
+                tasks.Add(supplierItemsController.Save(int.Parse(dr.Cells["Itemid"].Value.ToString()), cbSupValue));
             }
+
+        
 
             if(backorderlist.Count> 0)
             {
@@ -380,17 +409,17 @@ namespace RMC.InventoryPharma.PanelPo
             ResetData();
 
         }
-        private void iconButton2_Click(object sender, EventArgs e)
+        private async void iconButton2_Click(object sender, EventArgs e)
         {
             int selectedCombobx = comboBox1.SelectedIndex;
             if (selectedCombobx == -1)
             {
-                loadGrid(cbSupValue);
+               await loadGrid(cbSupValue);
 
             }
             else
             {
-                SearchGrid(txtName.Text.Trim(), selectedCombobx);
+               await  SearchGrid(txtName.Text.Trim(), selectedCombobx);
             }
 
         }
@@ -452,6 +481,88 @@ namespace RMC.InventoryPharma.PanelPo
                 ComputeTotalCost();
             }
            
+        }
+
+        private async void iconButton4_Click(object sender, EventArgs e)
+        {
+
+            if (cbSuppliers.SelectedIndex == -1)
+                return;
+            
+            ViewItemsTransfer frm = new ViewItemsTransfer();
+            frm.ShowDialog();
+
+            if (frm.listItem == null)
+                return;
+
+            setAddNewModels(frm.listItem);
+
+
+            foreach(itemModel i in itemModels)
+            {
+                if (isFoundinLv(i.id))
+                    continue;
+
+                ListViewItem items = new ListViewItem();
+                items.Text = i.id.ToString();
+                items.SubItems.Add(i.name.ToString());
+                items.SubItems.Add(i.sku.ToString());
+
+                int qty = await pharmaStocks.getStocks(int.Parse(i.id.ToString()));
+
+                qty += await clinicStocks.getStocks(int.Parse(i.id.ToString()));
+         
+                items.SubItems.Add(qty.ToString());
+                items.SubItems.Add(i.unitPrice.ToString());
+                items.SubItems.Add("No Data") ;
+                items.SubItems.Add("No Data");
+                items.SubItems.Add("No Data");
+                items.SubItems.Add("No Data");
+                items.SubItems.Add("No Data");
+                if (rbEoqShow.Checked) items.SubItems.Add("NONE");
+
+                lvItemsSuppliers.Items.Add(items);
+            }
+        }
+
+        private void setAddNewModels(List<itemModel> itemModels2)
+        {
+            List<itemModel> listModels = new List<itemModel>();
+
+            foreach (itemModel item in itemModels2)
+            {
+                if (isFoundinLv(item.id))
+                    continue;
+
+                itemModel i = new itemModel();
+                i.id = item.id;
+                i.name = item.name;
+                i.sku = item.sku;
+                i.description = item.description;
+                i.unitPrice = item.unitPrice;
+                i.markupPrice = item.markupPrice;
+                i.sellingPrice = item.sellingPrice;
+
+                listModels.Add(i);
+            }
+            itemModels.AddRange(listModels);
+        }
+
+        private bool isFoundinLv(long id)
+        {
+            bool isFound = false;
+
+            foreach (ListViewItem lv in lvItemsSuppliers.Items)
+            {
+                if (long.Parse(lv.SubItems[0].Text) == id)
+                {
+                    isFound = true;
+                    break;
+                }
+            }
+
+
+            return isFound;
         }
     }
 }

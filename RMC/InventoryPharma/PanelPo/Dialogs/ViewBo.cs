@@ -69,16 +69,16 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
         {
 
             int id = int.Parse(idRightClick);
-            DataSet ds = await itemz.getDataWithSupplierIdTotalStocks(supid);
+            //DataSet ds = await itemz.getDataWithSupplierIdTotalStocks(supid);
 
 
-            if (hasItemId(ds, id))
+         /*   if (hasItemId(ds, id))
             {
                 itemIdClickAdd = id;
                 this.Close();
             }
             else
-                MessageBox.Show("The Supplier doesn't Have This Item", "validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The Supplier doesn't Have This Item", "validation", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
 
 
 

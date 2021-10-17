@@ -35,7 +35,21 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async void Save(int item_id,List<int> suppliers_id)
+        public async Task Save(int item_id,int supplier_id)
+        {
+           
+            if (hasAlreadyTheSupplier(item_id, supplier_id))
+                return;
+
+            string sql = String.Format(@"INSERT INTO supplier_items (item_id,supplier_id) VALUES (@itemid,@supid)");
+            List<MySqlParameter> list = new List<MySqlParameter>();
+            list.Add(new MySqlParameter("@itemid", item_id));
+            list.Add(new MySqlParameter("@supid", supplier_id));
+            await crud.ExecuteAsync(sql, list);
+        }
+
+
+        public async Task Save(int item_id,List<int> suppliers_id)
         {
             string sql = String.Format(@"INSERT INTO supplier_items (item_id,supplier_id) VALUES (@itemid,@supid)");
 
@@ -50,6 +64,8 @@ namespace RMC.Database.Controllers
                 await crud.ExecuteAsync(sql, list);
             }
         }
+
+
 
         public async void Delete(int itemid, List<int> suppliersId)
         {
