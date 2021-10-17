@@ -42,9 +42,9 @@ namespace RMC.Patients
          
       
 
-        private void populateitems()
+        private async Task populateitems()
         {
-         
+           
             panelPatientList.Controls.Clear();
             int indexofLastRow = currentPage * rowsPerPage;
             int indexofFirstRow = indexofLastRow - rowsPerPage;
@@ -57,31 +57,44 @@ namespace RMC.Patients
             listDetails2 = listDetails.Count > rowsPerPage ? listDetails.Skip(indexofFirstRow).Take( rowsss).ToList()
                 : listDetails;
 
-           
-
-            foreach (patientDetails p in listDetails2)
-            {
-                PatientControl patientControl = new PatientControl();
-                patientControl.Age = "Age : " + p.age.ToString();
-                patientControl.PatientId = p.id;
-                patientControl.PatientName = "Name: " + p.FullName;
-                patientControl.Address = "Address: " + p.address;
-                patientControl.Gender = "Gender : " + p.gender;
-                patientControl.Cnumber = "Contact Number : " + p.contact;
-                patientControl.Dock = DockStyle.Top;
-                patientControl.btnView1.Click += new EventHandler(ClickBtnView);
-                patientControl.btnDelete1.Click += new EventHandler(ClickDelete);
-
-                if(File.Exists(p.imgPath))
-                {
-                    Image img = Image.FromFile(p.imgPath);
-
-                    patientControl.Icon = img;
-                }
+            List<PatientControl> s =  await setPatientControlls(listDetails2);
             
 
-                panelPatientList.Controls.Add(patientControl);
-            }
+            panelPatientList.Controls.AddRange(s.ToArray());
+        }
+
+        private async Task<List<PatientControl>> setPatientControlls(List<patientDetails> listDetails2)
+        {
+            List<PatientControl> patientControls = new List<PatientControl>();
+
+            await Task.Run(() =>
+           {
+               foreach (patientDetails p in listDetails2)
+               {
+                   PatientControl patientControl = new PatientControl();
+                   patientControl.Age = "Age : " + p.ComputeAge();
+                   patientControl.PatientId = p.id;
+                   patientControl.PatientName = "Name: " + p.FullName;
+                   patientControl.Address = "Address: " + p.address;
+                   patientControl.Gender = "Gender : " + p.gender;
+                   patientControl.Cnumber = "Contact Number : " + p.contact;
+                   patientControl.Dock = DockStyle.Top;
+                   patientControl.btnView1.Click += new EventHandler(ClickBtnView);
+                   patientControl.btnDelete1.Click += new EventHandler(ClickDelete);
+
+                   if (File.Exists(p.imgPath))
+                   {
+                       Image img = Image.FromFile(p.imgPath);
+
+                       patientControl.Icon = img;
+                   }
+
+
+                   patientControls.Add(patientControl);
+               }
+           });
+
+            return patientControls;
         }
 
         private async void ClickBtnView(object sender, EventArgs e)
@@ -118,6 +131,7 @@ namespace RMC.Patients
 
         private void showPaginate(int total)
         {
+            
             List<int> pagenumbers = new List<int>();
             decimal xyz = decimal.Parse((Decimal.Divide(total, rowsPerPage) + ""));
             decimal totalPagess = Math.Ceiling(xyz);
@@ -143,9 +157,10 @@ namespace RMC.Patients
                 lb.Click += new EventHandler(setNumber);
                 flowPage.Controls.Add(lb);
             }
+
         }
 
-        private void setNumber(object sender,EventArgs e)
+        private async void setNumber(object sender,EventArgs e)
         {  
             currentPage = int.Parse(((Label)sender).Tag.ToString());
             Label l = (Label)sender;
@@ -156,7 +171,7 @@ namespace RMC.Patients
             l.Font = new Font("Tahoma", 12, FontStyle.Bold|FontStyle.Underline);
 
             panelPatientList.Controls.Clear();
-            populateitems();
+          await  populateitems();
         }
 
         private async void iconButton2_Click(object sender, EventArgs e)
@@ -168,10 +183,14 @@ namespace RMC.Patients
 
         private async Task loadPatientDetails()
         {
+            pictureBox1.Show();
+            pictureBox1.Update();
+
             listDetails =  await patientDetailsController.getPatientDetails();
-            
-            populateitems();
+
+            await populateitems();
             showPaginate(listDetails.Count);
+            pictureBox1.Hide();
         }
 
         private async Task loadPatientSearchDetails()
@@ -180,7 +199,7 @@ namespace RMC.Patients
             listDetails = await patientDetailsController.getSearchPatient(txtName.Text.Trim(),
                                                                         comboBox1.SelectedIndex);
            
-            populateitems();
+            await populateitems();
             showPaginate(listDetails.Count);
          
         }
@@ -206,18 +225,13 @@ namespace RMC.Patients
         private async void PanelPatient_Load(object sender, EventArgs e)
         {
          
-            pictureBox1.Show();
-            pictureBox1.Update();
+        
             await loadPatientDetails();
-       
-         
-            panelPatientList.Visible = true;
-
-            pictureBox1.Hide();
-
-          
-
+            
+     
           
         }
+
+      
     }
 }

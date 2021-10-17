@@ -27,7 +27,7 @@ namespace RMC.Database.Controllers
                 p.Firstname = reader["firstname"].ToString();
                 p.middlename = reader["middlename"].ToString();
                 p.lastname = reader["lastname"].ToString();
-
+                p.birthdate = reader["birthdate"].ToString();
                 p.age = int.Parse(reader["age"].ToString());
                 p.gender = reader["gender"].ToString();
                 p.address = reader["address"].ToString();
@@ -74,7 +74,7 @@ namespace RMC.Database.Controllers
                 p.Firstname = reader["firstname"].ToString();
                 p.middlename = reader["middlename"].ToString();
                 p.lastname = reader["lastname"].ToString();
-
+                p.birthdate = reader["birthdate"].ToString();
                 p.age = int.Parse(reader["age"].ToString());
                 p.gender = reader["gender"].ToString();
                 p.address = reader["address"].ToString();

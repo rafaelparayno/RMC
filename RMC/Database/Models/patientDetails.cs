@@ -37,5 +37,36 @@ namespace RMC.Database.Models
         public string civil_status { get; set; }
 
         public string imgPath { get; set; }
+
+        public string ComputeAge()
+        {
+            string ageStr;
+            DateTime now = DateTime.Now;
+            DateTime dateTime = DateTime.Parse(birthdate);
+
+            if ( age == 0)
+            {
+                int months = now.Month- dateTime.Month;
+
+                if (months > 1)
+                    ageStr = $"{months} Months Old";
+                else
+                {
+                    
+
+                    ageStr = "New Born";
+                }
+            }
+            else
+            {
+                int year = now.Year - dateTime.Year;
+
+                ageStr = year.ToString() +  " years Old";
+            }
+
+            return ageStr;
+        }
+
+     
     }
 }

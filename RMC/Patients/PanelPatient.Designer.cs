@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -37,15 +36,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.panelPatientList = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowPage = new System.Windows.Forms.FlowLayoutPanel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deletePatientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panelPatientList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -157,12 +152,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelPatientList.AutoScroll = true;
             this.panelPatientList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelPatientList.Controls.Add(this.pictureBox1);
             this.panelPatientList.Location = new System.Drawing.Point(12, 112);
             this.panelPatientList.Name = "panelPatientList";
-            this.panelPatientList.Size = new System.Drawing.Size(660, 367);
+            this.panelPatientList.Size = new System.Drawing.Size(660, 398);
             this.panelPatientList.TabIndex = 5;
-            this.panelPatientList.Visible = false;
+            // 
+            // flowPage
+            // 
+            this.flowPage.AutoScroll = true;
+            this.flowPage.BackColor = System.Drawing.Color.Firebrick;
+            this.flowPage.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowPage.Location = new System.Drawing.Point(0, 516);
+            this.flowPage.Name = "flowPage";
+            this.flowPage.Size = new System.Drawing.Size(684, 41);
+            this.flowPage.TabIndex = 6;
+            this.flowPage.WrapContents = false;
             // 
             // pictureBox1
             // 
@@ -170,44 +174,20 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
-            this.pictureBox1.Location = new System.Drawing.Point(211, 74);
+            this.pictureBox1.Location = new System.Drawing.Point(228, 215);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(202, 176);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.Size = new System.Drawing.Size(222, 231);
+            this.pictureBox1.TabIndex = 229;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
-            // 
-            // flowPage
-            // 
-            this.flowPage.AutoScroll = true;
-            this.flowPage.BackColor = System.Drawing.Color.Firebrick;
-            this.flowPage.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowPage.Location = new System.Drawing.Point(0, 485);
-            this.flowPage.Name = "flowPage";
-            this.flowPage.Size = new System.Drawing.Size(684, 41);
-            this.flowPage.TabIndex = 6;
-            this.flowPage.WrapContents = false;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deletePatientToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(148, 26);
-            // 
-            // deletePatientToolStripMenuItem
-            // 
-            this.deletePatientToolStripMenuItem.Name = "deletePatientToolStripMenuItem";
-            this.deletePatientToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.deletePatientToolStripMenuItem.Text = "Delete Patient";
             // 
             // PanelPatient
             // 
             this.AcceptButton = this.iconButton1;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(684, 526);
+            this.ClientSize = new System.Drawing.Size(684, 557);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.flowPage);
             this.Controls.Add(this.panelPatientList);
             this.Controls.Add(this.panel1);
@@ -222,9 +202,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panelPatientList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -241,7 +219,5 @@
         private System.Windows.Forms.Panel panelPatientList;
         private System.Windows.Forms.FlowLayoutPanel flowPage;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem deletePatientToolStripMenuItem;
     }
 }
