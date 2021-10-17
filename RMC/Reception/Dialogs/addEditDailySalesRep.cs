@@ -172,8 +172,7 @@ namespace RMC.Reception.Dialogs
             isValid = float.TryParse(txtOutBy.Text.Trim(), out _) && isValid;
             isValid = !(txtAr.Text.Trim() == "") && isValid;
             isValid = float.TryParse(txtAr.Text.Trim(), out _) && isValid;
-            isValid = !(txtAr.Text.Trim() == "") && isValid;
-            isValid = float.TryParse(txtXrayReading.Text.Trim(), out _) && isValid;
+     
 
             isValid = !(string.IsNullOrEmpty(txtName1.Text.Trim())) && isValid;
             isValid = float.TryParse(txtExpenseCost1.Text.Trim(), out _) && isValid;

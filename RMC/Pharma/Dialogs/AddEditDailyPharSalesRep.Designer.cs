@@ -59,6 +59,12 @@
             this.txtExpenseCost4 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtName4 = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtAr = new System.Windows.Forms.TextBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtOutBy = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -90,12 +96,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtAr = new System.Windows.Forms.TextBox();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtOutBy = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -106,6 +106,8 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -125,8 +127,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.num5h)).BeginInit();
             this.panel17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num1k)).BeginInit();
-            this.panel4.SuspendLayout();
-            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -496,6 +496,68 @@
             this.txtName4.Size = new System.Drawing.Size(333, 27);
             this.txtName4.TabIndex = 1;
             // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.txtAr);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 459);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(769, 108);
+            this.panel4.TabIndex = 21;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(12, 25);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(32, 19);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Ar:";
+            // 
+            // txtAr
+            // 
+            this.txtAr.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAr.Location = new System.Drawing.Point(15, 63);
+            this.txtAr.Name = "txtAr";
+            this.txtAr.Size = new System.Drawing.Size(725, 27);
+            this.txtAr.TabIndex = 1;
+            this.txtAr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAr_KeyPress);
+            // 
+            // panel18
+            // 
+            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel18.Controls.Add(this.label14);
+            this.panel18.Controls.Add(this.txtOutBy);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel18.Location = new System.Drawing.Point(3, 573);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(769, 108);
+            this.panel18.TabIndex = 20;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(12, 25);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(46, 19);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Out :";
+            // 
+            // txtOutBy
+            // 
+            this.txtOutBy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOutBy.Location = new System.Drawing.Point(15, 63);
+            this.txtOutBy.Name = "txtOutBy";
+            this.txtOutBy.Size = new System.Drawing.Size(725, 27);
+            this.txtOutBy.TabIndex = 1;
+            this.txtOutBy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOutBy_KeyPress);
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FloralWhite;
@@ -833,66 +895,6 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Significant Past Diseases:";
             // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.txtAr);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(3, 459);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(769, 108);
-            this.panel4.TabIndex = 21;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 25);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(32, 19);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Ar:";
-            // 
-            // txtAr
-            // 
-            this.txtAr.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAr.Location = new System.Drawing.Point(15, 63);
-            this.txtAr.Name = "txtAr";
-            this.txtAr.Size = new System.Drawing.Size(725, 27);
-            this.txtAr.TabIndex = 1;
-            // 
-            // panel18
-            // 
-            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel18.Controls.Add(this.label14);
-            this.panel18.Controls.Add(this.txtOutBy);
-            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel18.Location = new System.Drawing.Point(3, 573);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(769, 108);
-            this.panel18.TabIndex = 20;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(12, 25);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 19);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Out By:";
-            // 
-            // txtOutBy
-            // 
-            this.txtOutBy.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOutBy.Location = new System.Drawing.Point(15, 63);
-            this.txtOutBy.Name = "txtOutBy";
-            this.txtOutBy.Size = new System.Drawing.Size(725, 27);
-            this.txtOutBy.TabIndex = 1;
-            // 
             // AddEditDailyPharSalesRep
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -922,6 +924,10 @@
             this.panel7.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -950,10 +956,6 @@
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num1k)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
             this.ResumeLayout(false);
 
         }

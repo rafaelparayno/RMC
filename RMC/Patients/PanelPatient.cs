@@ -52,9 +52,8 @@ namespace RMC.Patients
             indexofFirstRow = indexofLastRow > listDetails.Count ? listDetails.Count - rowsPerPage :
                 indexofFirstRow;
 
-            int rowsss =  rowsPerPage ;
-            List<patientDetails> listDetails2 = new List<patientDetails>();
-            listDetails2 = listDetails.Count > rowsPerPage ? listDetails.Skip(indexofFirstRow).Take( rowsss).ToList()
+            int rowsss =  rowsPerPage;
+            List<patientDetails> listDetails2 = listDetails.Count > rowsPerPage ? listDetails.Skip(indexofFirstRow).Take( rowsss).ToList()
                 : listDetails;
 
             List<PatientControl> s =  await setPatientControlls(listDetails2);

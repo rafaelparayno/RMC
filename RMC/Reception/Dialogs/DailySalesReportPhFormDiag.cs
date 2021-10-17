@@ -39,7 +39,7 @@ namespace RMC.Reception.Dialogs
 
             string newDate2 = $"{newdate.Split('/')[2]}-{newdate.Split('/')[1]}-{newdate.Split('/')[0]}";
 
-            List<salesPharmacyModel> listsales = await salesPharmaController.getSearchDays(newDate2, newDate2);
+            List<salesPharmacyModel> listsales = await salesPharmaController.getSearchDay(newDate2);
 
             float totalSales = listsales.Sum(S => S.sales);
 

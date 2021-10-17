@@ -49,7 +49,10 @@ namespace RMC.Pharma.Dialogs
         {
             bool isValid = true;
 
-          
+            isValid = !(txtOutBy.Text.Trim() == "") && isValid;
+            isValid = float.TryParse(txtOutBy.Text.Trim(), out _) && isValid;
+            isValid = !(txtAr.Text.Trim() == "") && isValid;
+            isValid = float.TryParse(txtAr.Text.Trim(), out _) && isValid;
 
             isValid = !(string.IsNullOrEmpty(txtName1.Text.Trim())) && isValid;
             isValid = float.TryParse(txtExpenseCost1.Text.Trim(), out _) && isValid;
@@ -417,6 +420,22 @@ namespace RMC.Pharma.Dialogs
              await loadXml();
         }
 
-    
+        private void txtOutBy_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtAr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string validKeys = "0123456789.";
+            if (validKeys.IndexOf(e.KeyChar) < 0 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

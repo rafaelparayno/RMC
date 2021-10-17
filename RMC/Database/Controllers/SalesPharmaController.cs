@@ -123,6 +123,36 @@ namespace RMC.Database.Controllers
             return totalSales;
         }
 
+
+        public async Task<List<salesPharmacyModel>> getSearchDay(string d)
+        {
+            List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();
+            string sql;
+
+            sql = @"SELECT * FROM `invoice` 
+                        INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
+                        WHERE DATE(invoice.date_invoice) = DATE(@dt1)"; 
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@dt1", DateTime.Parse(d)));
+
+            
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            while (await reader.ReadAsync())
+            {
+                salesPharmacyModel s = new salesPharmacyModel();
+                s.id = int.Parse(reader["invoice_id"].ToString());
+                s.sales = float.Parse(reader["sales"].ToString());
+                s.dateInvoice = DateTime.Parse(reader["date_invoice"].ToString());
+                salesPharmas.Add(s);
+            }
+
+            crud.CloseConnection();
+
+            return salesPharmas;
+        }
+
         public async Task<List<salesPharmacyModel>> getSearchDays(string d,string d2)
         {
             List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();
