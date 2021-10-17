@@ -20,7 +20,7 @@ namespace RMC.Reception.PanelRequestForm
 {
     public partial class PanelRequestForm : Form
     {
-        PatientDetailsController patientDetailsController = new PatientDetailsController();
+        //PatientDetailsController patientDetailsController = new PatientDetailsController();
         CustomerDetailsController customerDetailsController = new CustomerDetailsController();      
         CustomerRequestsController customerRequestsController = new CustomerRequestsController();
         DoctorQueueController docQController = new DoctorQueueController();

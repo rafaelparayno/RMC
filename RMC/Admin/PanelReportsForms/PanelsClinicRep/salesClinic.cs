@@ -19,6 +19,9 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
         DataTable dtDays = new DataTable();
         DataTable dtMonths = new DataTable();
         DataTable dtyears = new DataTable();
+        bool isDaysSearch = false;
+        string date = "";
+
         public salesClinic()
         {
             InitializeComponent();
@@ -61,7 +64,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
             dgItemList.DataSource = "";
             dgItemList.DataSource = dtDays;
             lblReve.Text = "Total Sales  \n" + "PHP " + TotalSalesDays;
-
+            isDaysSearch = true;
         }
 
         private async void iconButton1_Click(object sender, EventArgs e)
@@ -111,6 +114,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
             dgItemList.DataSource = "";
             dgItemList.DataSource = dtMonths;
             lblReve.Text = "Total Sales  \n" + "PHP " + totalSalesInMonth;
+            isDaysSearch = false;
         }
 
         private async void iconButton2_Click(object sender, EventArgs e)
@@ -160,6 +164,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
             dgItemList.DataSource = dtyears;
 
             lblReve.Text = "Total Sales  \n" + "PHP " + totalSalesInYear;
+            isDaysSearch = false;
         }
 
         private async void iconButton4_Click(object sender, EventArgs e)
@@ -196,5 +201,30 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
             chart1.Visible = false;
         }
 
+        private void dgItemList_MouseClick(object sender, MouseEventArgs e)
+        {
+             if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgItemList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+
+                    date = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    
+                         if(isDaysSearch)
+                            contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
+                }
+
+            }
+        }
+
+        private void viewDetailsSaleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SalesClinicDetails frm = new SalesClinicDetails(date);
+            frm.ShowDialog();
+        }
     }
 }
