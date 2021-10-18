@@ -804,5 +804,50 @@ namespace RMC.Database.Controllers
 
             return isFound;
         }
+
+
+        public async Task<itemModel> getModel(int id)
+        {
+            itemModel m = new itemModel();
+
+
+            string sql = @"SELECT itemlist.item_id,item_name,COALESCE((labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`),pharmastocks.`pharma_stocks`) AS total , 
+                            UnitPrice,SKU, Description,isBranded,item_type,category_name,unit_name 
+                            FROM itemlist LEFT JOIN category ON `category`.category_id = `itemlist`.category_id 
+                            LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                            LEFT JOIN labitemstocks ON itemlist.item_id = labitemstocks.item_id
+                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id 
+                            WHERE itemlist.item_id = @id  AND itemlist.is_active = 1";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@id",id)
+            };
+
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+
+            if(await reader.ReadAsync())
+            {
+                m.id = int.Parse(reader["item_id"].ToString());
+                m.name = reader["item_name"].ToString();
+                m.stocks = reader["total"].ToString() == "" ? 0 : int.Parse(reader["total"].ToString());
+                m.unitPrice = float.Parse(reader["UnitPrice"].ToString());
+                m.sku = reader["SKU"].ToString();
+                m.description = reader["Description"].ToString();
+                m.isBrand = int.Parse(reader["isBranded"].ToString());
+                m.subCategory = int.Parse(reader["item_type"].ToString());
+                m.Category = reader["category_name"].ToString();
+                m.UnitName = reader["unit_name"].ToString();
+
+            }
+
+            crud.CloseConnection();
+
+
+            return m;
+
+        }
     }
 }

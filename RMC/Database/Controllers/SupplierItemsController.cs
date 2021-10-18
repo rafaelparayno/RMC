@@ -67,7 +67,7 @@ namespace RMC.Database.Controllers
 
 
 
-        public async void Delete(int itemid, List<int> suppliersId)
+        public async Task Delete(int itemid, List<int> suppliersId)
         {
             string sql = String.Format(@"DELETE FROM supplier_items WHERE item_id = @itemid 
                                         AND  supplier_id = @supplierid");

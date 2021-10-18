@@ -65,43 +65,17 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
         }
 
 
-        private async void addToPurchaseOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addToPurchaseOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             int id = int.Parse(idRightClick);
-            //DataSet ds = await itemz.getDataWithSupplierIdTotalStocks(supid);
-
-
-         /*   if (hasItemId(ds, id))
-            {
-                itemIdClickAdd = id;
-                this.Close();
-            }
-            else
-                MessageBox.Show("The Supplier doesn't Have This Item", "validation", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
-
-
-
-
+          
+            itemIdClickAdd = id;
+            this.Close();
+       
         }
 
-        private bool hasItemId(DataSet ds,int id)
-        {
-            bool hasItemID = false;
-            foreach (DataRow dr in ds.Tables[0].Rows)
-            {
-                int idInRow = int.Parse(dr[0].ToString());
-
-                if (id == idInRow)
-                {
-                    hasItemID = true;
-                    break;
-                }
-            }
-
-            return hasItemID;
-        }
-
+       
         private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             int _;

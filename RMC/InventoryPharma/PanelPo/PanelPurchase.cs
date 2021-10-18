@@ -425,7 +425,7 @@ namespace RMC.InventoryPharma.PanelPo
         }
         #endregion
 
-        private void iconButton3_Click(object sender, EventArgs e)
+        private async void iconButton3_Click(object sender, EventArgs e)
         {
             if(cbSuppliers.SelectedIndex> -1)
             {
@@ -433,16 +433,42 @@ namespace RMC.InventoryPharma.PanelPo
                 viewBo.ShowDialog();
 
 
-
                 if (viewBo.qtyAdd == 0)
                     return;
 
-               
-                ListViewItem lv = lvItemsSuppliers.FindItemWithText(viewBo.itemIdClickAdd + "", false, 0);
+                
 
-                int itemIdSelected = int.Parse(lv.SubItems[0].Text);
-                decimal unitCosts = decimal.Parse(lv.SubItems[4].Text);
-                string name = lv.SubItems[1].Text;
+                int idclick = viewBo.itemIdClickAdd;
+
+                itemModel item = await itemz.getModel(idclick);
+
+                if (!(isFoundinLv(item.id)))
+                {
+                    ListViewItem items = new ListViewItem();
+                    items.Text = item.id.ToString();
+                    items.SubItems.Add(item.name.ToString());
+                    items.SubItems.Add(item.sku.ToString());
+
+                    int qty = await pharmaStocks.getStocks(int.Parse(item.id.ToString()));
+
+                    qty += await clinicStocks.getStocks(int.Parse(item.id.ToString()));
+
+                    items.SubItems.Add(qty.ToString());
+                    items.SubItems.Add(item.unitPrice.ToString());
+                    items.SubItems.Add("No Data");
+                    items.SubItems.Add("No Data");
+                    items.SubItems.Add("No Data");
+                    items.SubItems.Add("No Data");
+                    items.SubItems.Add("No Data");
+                    if (rbEoqShow.Checked) items.SubItems.Add("NONE");
+
+                    lvItemsSuppliers.Items.Add(items);
+                }
+
+                int itemIdSelected = int.Parse(item.id.ToString());
+                decimal unitCosts = decimal.Parse(item.unitPrice.ToString());
+                string name = item.name;
+
                 if (backorderlist.ContainsKey(viewBo.selectedBo))
                 {
                     if (backorderlist[viewBo.selectedBo].Contains(viewBo.itemIdClickAdd))
@@ -464,7 +490,7 @@ namespace RMC.InventoryPharma.PanelPo
                 {
                     DataRow[] rows = dt.Select(String.Format(@"Itemid = {0}", viewBo.itemIdClickAdd));
                     int index = dt.Rows.IndexOf(rows[0]);
-                   /* subunitcosts = viewBo.qtyAdd * unitCosts;*/
+                 
                     int currentQty = CurrentQty(itemIdSelected);
                     dt.Rows[index].SetField("Quantity", currentQty + viewBo.qtyAdd);
                     subunitcosts = (currentQty + viewBo.qtyAdd) * unitCosts;
