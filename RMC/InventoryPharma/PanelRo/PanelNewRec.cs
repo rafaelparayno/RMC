@@ -100,7 +100,7 @@ namespace RMC.InventoryPharma.PanelRo
                 totalCost += subTotal;
               
                 lvs.SubItems.Add(p.unitCosts.ToString());
-                lvs.SubItems.Add(computeMarkup(p.unitCosts,p.sellingPrice).ToString());
+                lvs.SubItems.Add(p.sellingPrice == 0 ? 0.ToString() : computeMarkup(p.unitCosts,p.sellingPrice).ToString());
                 lvs.SubItems.Add(p.sellingPrice.ToString());
                 lvs.SubItems.Add(p.quantity_order.ToString());
                 lvs.SubItems.Add(subTotal.ToString());

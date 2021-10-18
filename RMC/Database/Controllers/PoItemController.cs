@@ -131,5 +131,15 @@ namespace RMC.Database.Controllers
 
             await crud.ExecuteAsync(sql, listparams);
         }
+
+
+        public async Task removeBackOrder( int poid)
+        {
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            string sql = @"UPDATE purchase_order_items SET quantity_order = 0 WHERE po_id = @poid";
+            listparams.Add(new MySqlParameter("@poid", poid));
+
+            await crud.ExecuteAsync(sql, listparams);
+        }
     }
 }

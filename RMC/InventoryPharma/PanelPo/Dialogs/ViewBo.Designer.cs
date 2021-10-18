@@ -42,11 +42,14 @@
             this.dgInPo = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteBackOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgInPo)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,7 +102,7 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToPurchaseOrderToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(196, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(196, 26);
             // 
             // addToPurchaseOrderToolStripMenuItem
             // 
@@ -231,7 +234,22 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(227, 376);
             this.listBox1.TabIndex = 229;
+            this.listBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseClick);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteBackOrderToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(181, 48);
+            // 
+            // deleteBackOrderToolStripMenuItem
+            // 
+            this.deleteBackOrderToolStripMenuItem.Name = "deleteBackOrderToolStripMenuItem";
+            this.deleteBackOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteBackOrderToolStripMenuItem.Text = "Delete Back Order";
+            this.deleteBackOrderToolStripMenuItem.Click += new System.EventHandler(this.deleteBackOrderToolStripMenuItem_Click);
             // 
             // ViewBo
             // 
@@ -257,6 +275,7 @@
             this.panel2.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgInPo)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -276,5 +295,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem deleteBackOrderToolStripMenuItem;
     }
 }

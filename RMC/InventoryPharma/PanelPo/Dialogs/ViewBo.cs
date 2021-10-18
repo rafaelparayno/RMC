@@ -36,8 +36,8 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
 
         private async void loadPoItems(int pono)
         {
-            List<PoModel> pomodels = new List<PoModel>();
-            pomodels = await poItemController.getPoNo(pono);
+         
+            List<PoModel> pomodels = await poItemController.getPoNo(pono);
 
             dgInPo.DataSource = pomodels;
             dgInPo.AutoResizeColumns();
@@ -127,6 +127,38 @@ namespace RMC.InventoryPharma.PanelPo.Dialogs
             Po = await backOrderController.getBoActive(dateTimePicker1.Value.ToString("yyyy-MM-dd"));
             listBox1.Items.AddRange(Po.ToArray());
             dgInPo.DataSource = "";
+        }
+
+        private void listBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+
+                listBox1.SelectedIndex = listBox1.IndexFromPoint(e.Location);
+                if (listBox1.SelectedIndex != -1)
+                {
+                    contextMenuStrip2.Show(listBox1, new Point(e.X, e.Y));
+                }
+            }
+        }
+
+        private async void deleteBackOrderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex == -1)
+                return;
+
+            po_no = int.Parse(listBox1.SelectedItem.ToString().Split(' ')[1]);
+
+            DialogResult dialogResult = MessageBox.Show("Are you want to remove this Back Order", "Valid",
+                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if(DialogResult.Yes == DialogResult)
+            {
+                await poItemController.removeBackOrder(po_no);
+                MessageBox.Show("Succesfully Remove Backorder");
+            }
+            
+            loadBo();
         }
     }
 }
