@@ -1486,6 +1486,12 @@
       <DependentUpon>medcertReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\PayableReports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PayableReports.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\PreEmployment.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2218,6 +2224,10 @@
     <EmbeddedResource Include="Reports\medcertReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>medcertReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PayableReports.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PayableReports.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\PreEmployment.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

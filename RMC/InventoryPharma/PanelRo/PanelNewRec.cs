@@ -135,7 +135,7 @@ namespace RMC.InventoryPharma.PanelRo
                 int qty = int.Parse(lvItems.SubItems[5].Text);
                 totalCost += unit * qty;
             }
-            return totalCost;
+            return float.Parse(Math.Round((totalCost), 2).ToString());
         }
 
         private void PanelNewRec_Resize(object sender, EventArgs e)
@@ -287,6 +287,7 @@ namespace RMC.InventoryPharma.PanelRo
                         addSubTotal frmSub = new addSubTotal(subTotal);
                         frmSub.ShowDialog();
                         float newSub = frmSub.subTotal;
+
                         lvItemLab.SelectedItems[0].SubItems[6].Text = newSub.ToString();
                    
                         float newUnitCost = float.Parse(Math.Round(newSub / qty,2).ToString());
@@ -295,7 +296,7 @@ namespace RMC.InventoryPharma.PanelRo
 
                         break;
                     default:
-                        //     MessageBox.Show("time");
+            
                         break;
                 }
 

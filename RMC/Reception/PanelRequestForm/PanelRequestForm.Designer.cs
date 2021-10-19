@@ -192,7 +192,6 @@
             this.groupBox2.TabIndex = 210;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "List of Queue Request";
-        
             // 
             // dgCustomerList
             // 
@@ -222,10 +221,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
-            this.pictureBox1.Location = new System.Drawing.Point(190, 137);
+            this.pictureBox1.Location = new System.Drawing.Point(243, 137);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(254, 176);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(214, 230);
             this.pictureBox1.TabIndex = 229;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;

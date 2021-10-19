@@ -81,7 +81,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsClinicRep
 
             int qno = int.Parse(dgCustomerList.SelectedRows[0].Cells[1].Value.ToString());
 
-            int isPay = await customerDetailsController.getIsPaid(qno);
+            int isPay = await customerDetailsController.getIsPaid(qno, formattedDate);
 
             Task<List<labModel>> task1 = labQueueController.getReqLabByPatientID(cid);
             Task<List<xraymodel>> task2 = radioQueueController.getReqLabByPatientID(cid);

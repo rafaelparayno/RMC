@@ -82,6 +82,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -91,6 +92,7 @@
             this.gbLab.SuspendLayout();
             this.gbMedCert.SuspendLayout();
             this.gpConsulation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -117,11 +119,11 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.Color.Snow;
-            this.textBox4.Location = new System.Drawing.Point(0, 283);
+            this.textBox4.Location = new System.Drawing.Point(0, 277);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(280, 33);
+            this.textBox4.Size = new System.Drawing.Size(280, 31);
             this.textBox4.TabIndex = 287;
             this.textBox4.Text = "0.00";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -130,9 +132,9 @@
             // 
             this.label6.BackColor = System.Drawing.Color.Salmon;
             this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(0, 237);
+            this.label6.Location = new System.Drawing.Point(0, 231);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(280, 46);
             this.label6.TabIndex = 286;
@@ -145,11 +147,11 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox2.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(0, 204);
+            this.textBox2.Location = new System.Drawing.Point(0, 200);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(280, 33);
+            this.textBox2.Size = new System.Drawing.Size(280, 31);
             this.textBox2.TabIndex = 285;
             this.textBox2.Text = "0.00";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -159,9 +161,9 @@
             // 
             this.label5.BackColor = System.Drawing.Color.Salmon;
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(0, 158);
+            this.label5.Location = new System.Drawing.Point(0, 154);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(280, 46);
             this.label5.TabIndex = 284;
@@ -173,11 +175,11 @@
             this.txtDis.BackColor = System.Drawing.Color.Black;
             this.txtDis.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDis.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtDis.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDis.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDis.ForeColor = System.Drawing.Color.Snow;
-            this.txtDis.Location = new System.Drawing.Point(0, 125);
+            this.txtDis.Location = new System.Drawing.Point(0, 123);
             this.txtDis.Name = "txtDis";
-            this.txtDis.Size = new System.Drawing.Size(280, 33);
+            this.txtDis.Size = new System.Drawing.Size(280, 31);
             this.txtDis.TabIndex = 281;
             this.txtDis.Text = "0.00";
             this.txtDis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -189,9 +191,9 @@
             // 
             this.label11.BackColor = System.Drawing.Color.Salmon;
             this.label11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label11.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(0, 79);
+            this.label11.Location = new System.Drawing.Point(0, 77);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(280, 46);
             this.label11.TabIndex = 280;
@@ -205,11 +207,11 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.ForeColor = System.Drawing.Color.Snow;
             this.textBox3.Location = new System.Drawing.Point(0, 46);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(280, 33);
+            this.textBox3.Size = new System.Drawing.Size(280, 31);
             this.textBox3.TabIndex = 275;
             this.textBox3.Text = "0.00";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -218,7 +220,7 @@
             // 
             this.label8.BackColor = System.Drawing.Color.Salmon;
             this.label8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label8.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
@@ -252,7 +254,7 @@
             this.btnRemoveALl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRemoveALl.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnRemoveALl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnRemoveALl.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveALl.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveALl.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnRemoveALl.Location = new System.Drawing.Point(142, 388);
             this.btnRemoveALl.Name = "btnRemoveALl";
@@ -267,7 +269,7 @@
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnUpdate.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnUpdate.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnUpdate.Location = new System.Drawing.Point(12, 462);
             this.btnUpdate.Name = "btnUpdate";
@@ -932,7 +934,7 @@
             this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRemove.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnRemove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnRemove.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemove.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnRemove.Location = new System.Drawing.Point(12, 387);
             this.btnRemove.Name = "btnRemove";
@@ -947,7 +949,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button2.Location = new System.Drawing.Point(12, 425);
             this.button2.Name = "button2";
@@ -957,12 +959,26 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
+            this.pictureBox1.Location = new System.Drawing.Point(209, 172);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(214, 230);
+            this.pictureBox1.TabIndex = 283;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
             // ReceptionPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(621, 512);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.panel2);
@@ -996,6 +1012,7 @@
             this.gbMedCert.PerformLayout();
             this.gpConsulation.ResumeLayout(false);
             this.gpConsulation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1057,5 +1074,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -74,7 +74,7 @@ namespace RMC.Lab.DialogReports
         {
             XmlDocument doc = new XmlDocument();
             string path = patient_lab_id == 0 ?
-               await patientLabController.getFullPath(patientid, labid,0)
+               await patientLabController.getFullPath(patientid, labid,cid)
                : await patientLabController.getFullPath(patient_lab_id);
 
             int labNo = patient_lab_id == 0 ?

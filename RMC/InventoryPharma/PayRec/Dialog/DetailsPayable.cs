@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace RMC.InventoryPharma.PayRec.Dialog
         ReceiveControllers receiveControllers = new ReceiveControllers();
         PayablesController payablesController = new PayablesController();
         private string invoice = "";
+        PayableModel p = new PayableModel();
         public DetailsPayable(string invoiceno)
         {
             InitializeComponent();
@@ -38,7 +40,7 @@ namespace RMC.InventoryPharma.PayRec.Dialog
 
         private async Task loadDetails()
         {
-            PayableModel p = await payablesController.getModel(invoice);
+            p = await payablesController.getModel(invoice);
 
             label1.Text += " " + p.invoice_no;
             label2.Text += " " + p.supplierName;
@@ -79,6 +81,42 @@ namespace RMC.InventoryPharma.PayRec.Dialog
             await loadPoItems();
             await loadDetails();
             pictureBox1.Hide();
+        }
+
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+            DataSet dataSet = new DataSet();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Item Name", typeof(string));
+            dt.Columns.Add("Description", typeof(string));
+            dt.Columns.Add("Last Unit", typeof(float));
+            dt.Columns.Add("Qty", typeof(int));
+            dt.Columns.Add("Sub Total", typeof(float));
+
+            foreach(ListViewItem lvItem in lvItemLab.Items)
+            {
+                dt.Rows.Add(lvItem.SubItems[0].Text, 
+                    lvItem.SubItems[1].Text, 
+                    float.Parse(lvItem.SubItems[2].Text), 
+                    int.Parse(lvItem.SubItems[3].Text), 
+                    float.Parse(lvItem.SubItems[4].Text));
+            }
+
+
+            dataSet.Tables.Add(dt);
+            /*     dataSet.WriteXmlSchema("payableRep.xml");*/
+
+            PayableReports payableReports = new PayableReports();
+
+
+            payableReports.SetDataSource(dataSet);
+            payableReports.SetParameterValue("InvoiceNo", invoice);
+            payableReports.SetParameterValue("supplierParam", p.supplierName);
+            payableReports.SetParameterValue("DateParam", p.payableDue.Split(' ')[0]);
+            var dialog = new PrintDialog();
+            dialog.ShowDialog();
+            payableReports.PrintOptions.PrinterName = dialog.PrinterSettings.PrinterName;
+            payableReports.PrintToPrinter(1, false, 0, 0);
         }
     }
 }

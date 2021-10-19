@@ -187,17 +187,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                     totalPrice -= dis;
                 }
             }
-
-            //Senior discount automatically
-
-            /* if (seniorId != "")
-             {
-                 removeVat = Math.Round(totalPrice / 1.12, 2);
-                 totalPrice = float.Parse(removeVat + "");
-                 float discount = totalPrice * .20f;
-                 totalPrice -= discount;
-             }*/
-
+  
             textBox3.Text = String.Format("PHP {0:0.##}", totalPrice);
         }
 
@@ -302,17 +292,19 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             await invoiceController.Save(totalPrice, float.Parse(txtDis.Text.Trim()));
             await savesRadioLabQ();
+            await customerDetailsController.setPaid(customerid, 1);
+            await saveclinicSales();
+            
+           /* Task task3 = await saveclinicSales();*/
 
-            Task task2 = customerDetailsController.setPaid(customerid,1);
-            Task task3 = saveclinicSales();
-            Task<int> task4 = invoiceController.getLatestNo();
+            int task4 = await invoiceController.getLatestNo();
 
 
-            Task[] processes = new Task[] {  task2, task3,task4 };
+            //Task[] processes = new Task[] {  task2,task4 };
 
-            await Task.WhenAll(processes);
+         /*   await Task.WhenAll(processes);*/
 
-            invoice_no = task4.Result;
+            invoice_no = task4;
         }
 
 
@@ -503,8 +495,14 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 MessageBox.Show("Payment is Not enough", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            pictureBox1.BringToFront();
+            pictureBox1.Show();
+            pictureBox1.Update();
 
             await processTransaction();
+
+
+            pictureBox1.Hide();
             finishTransaction(payment);
            
             //show OR
