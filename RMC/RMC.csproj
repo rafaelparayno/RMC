@@ -992,6 +992,12 @@
       <DependentUpon>PurchaseOrdersHistory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="InventoryRep\ReceivableDetails.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceivableDetails.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="InventoryRep\ReceiveHistory.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1952,6 +1958,10 @@
     <EmbeddedResource Include="InventoryRep\PurchaseOrdersHistory.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PurchaseOrdersHistory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryRep\ReceivableDetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReceivableDetails.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryRep\ReceiveHistory.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

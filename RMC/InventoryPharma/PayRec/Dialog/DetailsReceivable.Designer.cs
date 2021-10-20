@@ -46,7 +46,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -235,7 +234,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.iconButton1);
             this.panel3.Controls.Add(this.iconButton6);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 389);
@@ -246,7 +244,7 @@
             // iconButton6
             // 
             this.iconButton6.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.iconButton6.FlatAppearance.BorderSize = 0;
             this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -259,33 +257,12 @@
             this.iconButton6.Location = new System.Drawing.Point(0, 0);
             this.iconButton6.Name = "iconButton6";
             this.iconButton6.Rotation = 0D;
-            this.iconButton6.Size = new System.Drawing.Size(314, 39);
+            this.iconButton6.Size = new System.Drawing.Size(656, 39);
             this.iconButton6.TabIndex = 9;
             this.iconButton6.Text = "Print";
             this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton6.UseVisualStyleBackColor = false;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.IndianRed;
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Edit;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconSize = 28;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton1.Location = new System.Drawing.Point(314, 0);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(342, 39);
-            this.iconButton1.TabIndex = 263;
-            this.iconButton1.Text = "View Payment Details";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
             // 
             // DetailsReceivable
             // 
@@ -335,6 +312,5 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panel3;
         private FontAwesome.Sharp.IconButton iconButton6;
-        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

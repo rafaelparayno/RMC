@@ -230,12 +230,12 @@ namespace RMC.Database.Controllers
         }
 
         public async Task saveData(float totalAmount, string invo,string dateT,
-                                int isPaid, string checkNo,string checkDate,string dueDate,int tid)
+                                int isPaid, string checkNo,string checkDate,string dueDate,int tid,float tpd)
         {
             string sql = @"INSERT INTO `receivable_details_transfer`(`totalamount_rdt`, 
                             `invoice_no`, `date_transfer`, `isPaid`, `check_no_rdt`, 
-                                    `check_date`, `due_date`, `places_transfer_id`) 
-                            VALUES (@total,@invo,@dateTransfer,@ispaid,@checkno,@cDate,@dDate,@tid)";
+                                    `check_date`, `due_date`, `places_transfer_id`,`totalAmount_paid`) 
+                            VALUES (@total,@invo,@dateTransfer,@ispaid,@checkno,@cDate,@dDate,@tid,@tpd)";
 
 
 
@@ -248,6 +248,7 @@ namespace RMC.Database.Controllers
             mySqlParameters.Add(new MySqlParameter("@cDate", checkDate == "" ? null : checkDate));
             mySqlParameters.Add(new MySqlParameter("@dDate", dueDate == "" ? null : dueDate));
             mySqlParameters.Add(new MySqlParameter("@tid", tid));
+            mySqlParameters.Add(new MySqlParameter("@tpd", tpd));
 
 
             await crud.ExecuteAsync(sql, mySqlParameters);

@@ -60,10 +60,11 @@
             this.lvItemLab = new System.Windows.Forms.ListView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addQuantityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.setSellingPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPercentageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.viewLastUnitCostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -426,21 +427,36 @@
             this.addQuantityToolStripMenuItem,
             this.setSellingPriceToolStripMenuItem,
             this.setPercentageToolStripMenuItem,
+            this.viewLastUnitCostToolStripMenuItem,
             this.removeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(176, 114);
             // 
             // addQuantityToolStripMenuItem
             // 
             this.addQuantityToolStripMenuItem.Name = "addQuantityToolStripMenuItem";
-            this.addQuantityToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.addQuantityToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.addQuantityToolStripMenuItem.Text = "Add Quantity";
             this.addQuantityToolStripMenuItem.Click += new System.EventHandler(this.addQuantityToolStripMenuItem_Click);
+            // 
+            // setSellingPriceToolStripMenuItem
+            // 
+            this.setSellingPriceToolStripMenuItem.Name = "setSellingPriceToolStripMenuItem";
+            this.setSellingPriceToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.setSellingPriceToolStripMenuItem.Text = "Set Selling Price";
+            this.setSellingPriceToolStripMenuItem.Click += new System.EventHandler(this.setSellingPriceToolStripMenuItem_Click);
+            // 
+            // setPercentageToolStripMenuItem
+            // 
+            this.setPercentageToolStripMenuItem.Name = "setPercentageToolStripMenuItem";
+            this.setPercentageToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.setPercentageToolStripMenuItem.Text = "Set Percentage";
+            this.setPercentageToolStripMenuItem.Click += new System.EventHandler(this.setPercentageToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -458,19 +474,11 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
             // 
-            // setSellingPriceToolStripMenuItem
+            // viewLastUnitCostToolStripMenuItem
             // 
-            this.setSellingPriceToolStripMenuItem.Name = "setSellingPriceToolStripMenuItem";
-            this.setSellingPriceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.setSellingPriceToolStripMenuItem.Text = "Set Selling Price";
-            this.setSellingPriceToolStripMenuItem.Click += new System.EventHandler(this.setSellingPriceToolStripMenuItem_Click);
-            // 
-            // setPercentageToolStripMenuItem
-            // 
-            this.setPercentageToolStripMenuItem.Name = "setPercentageToolStripMenuItem";
-            this.setPercentageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.setPercentageToolStripMenuItem.Text = "Set Percentage";
-            this.setPercentageToolStripMenuItem.Click += new System.EventHandler(this.setPercentageToolStripMenuItem_Click);
+            this.viewLastUnitCostToolStripMenuItem.Name = "viewLastUnitCostToolStripMenuItem";
+            this.viewLastUnitCostToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.viewLastUnitCostToolStripMenuItem.Text = "View Last Unit Cost";
             // 
             // PanelTransfer
             // 
@@ -540,5 +548,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem setSellingPriceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setPercentageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewLastUnitCostToolStripMenuItem;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.InventoryRep;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace RMC.InventoryPharma.PayRec.Dialog
        
         TransferLogsController transferLogsController = new TransferLogsController();
         ReceivableTransferController receivableTransferController = new ReceivableTransferController();
-
+        ReceivableTransferModel receivableTransferModel = new ReceivableTransferModel();
         public DetailsReceivable(int rtid)
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace RMC.InventoryPharma.PayRec.Dialog
 
         private async Task getDetails()
         {
-            ReceivableTransferModel receivableTransferModel = await receivableTransferController.getModelSingle(rtid);
+            receivableTransferModel = await receivableTransferController.getModelSingle(rtid);
 
             checkBox1.Checked = receivableTransferModel.amount == receivableTransferModel.amountPaid ? true : false;
             label1.Text += $" {receivableTransferModel.invoice}";
@@ -92,6 +93,45 @@ namespace RMC.InventoryPharma.PayRec.Dialog
             await getDetailsList();
         }
 
-      
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+            DataSet dataSet = new DataSet();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Item Name", typeof(string));
+            dt.Columns.Add("Description", typeof(string));
+            dt.Columns.Add("SellingPrice.", typeof(float));
+            dt.Columns.Add("Qty", typeof(int));
+            dt.Columns.Add("Sub Total", typeof(float));
+
+            foreach (ListViewItem lvItem in lvItemLab.Items)
+            {
+                dt.Rows.Add(lvItem.SubItems[0].Text,
+                    lvItem.SubItems[1].Text,
+                    float.Parse(lvItem.SubItems[2].Text),
+                    int.Parse(lvItem.SubItems[3].Text),
+                    float.Parse(lvItem.SubItems[4].Text));
+            }
+
+
+            dataSet.Tables.Add(dt);
+
+            dataSet.WriteXmlSchema("receivablesRep.xml");
+
+            ReceivableDetails receivableDetails = new ReceivableDetails();
+
+            receivableDetails.SetDataSource(dataSet);
+            receivableDetails.SetParameterValue("Invoice", receivableTransferModel.invoice);
+            receivableDetails.SetParameterValue("customerName", receivableTransferModel.namep);
+            receivableDetails.SetParameterValue("dateTransfer", receivableTransferModel.dateTransfer.Split(' ')[0]);
+            receivableDetails.SetParameterValue("dueDate", receivableTransferModel.dueDate.Split(' ')[0]);
+            receivableDetails.SetParameterValue("modParam", receivableTransferModel.checkNo == "" ? "Cash" : "Check");
+            receivableDetails.SetParameterValue("checkNo", receivableTransferModel.checkNo);
+            receivableDetails.SetParameterValue("checkDate", receivableTransferModel.checkDate);
+            var dialog = new PrintDialog();
+            dialog.ShowDialog();
+            receivableDetails.PrintOptions.PrinterName = dialog.PrinterSettings.PrinterName;
+            receivableDetails.PrintToPrinter(1, false, 0, 0);
+
+        }
     }
 }
