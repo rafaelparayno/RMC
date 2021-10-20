@@ -105,6 +105,9 @@ namespace RMC.InventoryPharma.PayRec.Dialog
 
             foreach (ListViewItem lvItem in lvItemLab.Items)
             {
+                if (int.Parse(lvItem.SubItems[3].Text) == 0)
+                    continue;
+
                 dt.Rows.Add(lvItem.SubItems[0].Text,
                     lvItem.SubItems[1].Text,
                     float.Parse(lvItem.SubItems[2].Text),

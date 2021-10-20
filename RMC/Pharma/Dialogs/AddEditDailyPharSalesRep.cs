@@ -177,7 +177,7 @@ namespace RMC.Pharma.Dialogs
 
             if (repid == 0)
             {
-                if (await reportController.isFoundDate(dateTimePicker1.Value.ToString("yyyy-MM-dd"), 0))
+                if (await reportController.isFoundDate(dateTimePicker1.Value.ToString("yyyy-MM-dd"), 1))
                 {
                     MessageBox.Show("Already Has a Date in Database", "Validation",
                            MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -62,9 +62,12 @@
             this.addQuantityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setSellingPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPercentageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewLastUnitCostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.viewLastUnitCostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -74,6 +77,7 @@
             this.panel3.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -311,9 +315,10 @@
             // textBox1
             // 
             this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(430, 50);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(189, 21);
+            this.textBox1.Size = new System.Drawing.Size(189, 27);
             this.textBox1.TabIndex = 258;
             // 
             // dateTimePicker1
@@ -361,6 +366,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.textBox1);
@@ -371,7 +377,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(675, 125);
+            this.panel1.Size = new System.Drawing.Size(675, 145);
             this.panel1.TabIndex = 253;
             // 
             // panel3
@@ -379,7 +385,7 @@
             this.panel3.BackColor = System.Drawing.Color.Salmon;
             this.panel3.Controls.Add(this.iconButton2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 125);
+            this.panel3.Location = new System.Drawing.Point(0, 145);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(675, 26);
             this.panel3.TabIndex = 255;
@@ -414,9 +420,9 @@
             this.lvItemLab.FullRowSelect = true;
             this.lvItemLab.GridLines = true;
             this.lvItemLab.HideSelection = false;
-            this.lvItemLab.Location = new System.Drawing.Point(0, 151);
+            this.lvItemLab.Location = new System.Drawing.Point(0, 171);
             this.lvItemLab.Name = "lvItemLab";
-            this.lvItemLab.Size = new System.Drawing.Size(675, 155);
+            this.lvItemLab.Size = new System.Drawing.Size(675, 135);
             this.lvItemLab.TabIndex = 256;
             this.lvItemLab.UseCompatibleStateImageBehavior = false;
             this.lvItemLab.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvItemLab_MouseClick);
@@ -453,6 +459,12 @@
             this.setPercentageToolStripMenuItem.Text = "Set Percentage";
             this.setPercentageToolStripMenuItem.Click += new System.EventHandler(this.setPercentageToolStripMenuItem_Click);
             // 
+            // viewLastUnitCostToolStripMenuItem
+            // 
+            this.viewLastUnitCostToolStripMenuItem.Name = "viewLastUnitCostToolStripMenuItem";
+            this.viewLastUnitCostToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.viewLastUnitCostToolStripMenuItem.Text = "View Last Unit Cost";
+            // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
@@ -466,7 +478,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
-            this.pictureBox1.Location = new System.Drawing.Point(222, 131);
+            this.pictureBox1.Location = new System.Drawing.Point(224, 131);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(202, 176);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -474,11 +486,39 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
             // 
-            // viewLastUnitCostToolStripMenuItem
+            // groupBox4
             // 
-            this.viewLastUnitCostToolStripMenuItem.Name = "viewLastUnitCostToolStripMenuItem";
-            this.viewLastUnitCostToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.viewLastUnitCostToolStripMenuItem.Text = "View Last Unit Cost";
+            this.groupBox4.Controls.Add(this.radioButton8);
+            this.groupBox4.Controls.Add(this.radioButton7);
+            this.groupBox4.Location = new System.Drawing.Point(365, 84);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(254, 44);
+            this.groupBox4.TabIndex = 264;
+            this.groupBox4.TabStop = false;
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Checked = true;
+            this.radioButton7.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.radioButton7.Location = new System.Drawing.Point(113, 13);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(54, 21);
+            this.radioButton7.TabIndex = 1;
+            this.radioButton7.TabStop = true;
+            this.radioButton7.Text = "Print";
+            this.radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.radioButton8.Location = new System.Drawing.Point(173, 13);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(75, 21);
+            this.radioButton8.TabIndex = 2;
+            this.radioButton8.Text = "No Print";
+            this.radioButton8.UseVisualStyleBackColor = true;
             // 
             // PanelTransfer
             // 
@@ -508,6 +548,8 @@
             this.panel3.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -549,5 +591,8 @@
         private System.Windows.Forms.ToolStripMenuItem setSellingPriceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setPercentageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewLastUnitCostToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton radioButton7;
     }
 }

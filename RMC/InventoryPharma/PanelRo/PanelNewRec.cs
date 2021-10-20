@@ -51,7 +51,7 @@ namespace RMC.InventoryPharma.PanelRo
     
             lvItemLab.Columns.Add("Item Name", 250, HorizontalAlignment.Center);
             lvItemLab.Columns.Add("Desc", 150, HorizontalAlignment.Center);
-            lvItemLab.Columns.Add("last Unit", 100, HorizontalAlignment.Right);
+            lvItemLab.Columns.Add("Last Unit", 100, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Percentage", 100, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Selling Price", 100, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Qty", 70, HorizontalAlignment.Right);

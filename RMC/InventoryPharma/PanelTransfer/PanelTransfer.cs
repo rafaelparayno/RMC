@@ -3,8 +3,10 @@ using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.InventoryPharma.PanelRo.Dialogs;
 using RMC.InventoryPharma.PanelTransfer.Dialog;
+using RMC.InventoryRep;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
@@ -94,7 +96,7 @@ namespace RMC.InventoryPharma.PanelTransfer
 
             lvItemLab.Columns.Add("Item Name", 250, HorizontalAlignment.Center);
             lvItemLab.Columns.Add("Desc", 150, HorizontalAlignment.Center);
-            lvItemLab.Columns.Add("last Unit", 100, HorizontalAlignment.Right);
+            lvItemLab.Columns.Add("Last Unit", 100, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Percentage", 100, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Selling Price", 100, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Qty", 70, HorizontalAlignment.Right);
@@ -252,16 +254,22 @@ namespace RMC.InventoryPharma.PanelTransfer
 
                 if(dialogResult == DialogResult.Yes)
                     isUpdate = true;
-                
+                    
             }
 
 
 
+           
+
+            if (radioButton7.Checked && cbTransfId > -1)
+                print();
+
             await saveData(isUpdate);
 
-            //TODO print receipt
-
             await clearData();
+
+       
+
             MessageBox.Show("Succesfully Transfer Items");
         }
 
@@ -443,6 +451,54 @@ namespace RMC.InventoryPharma.PanelTransfer
             lvItemLab.SelectedItems[0].SubItems[4].Text = computeSellingPrice(percS, unitCost).ToString();
             lvItemLab.SelectedItems[0].SubItems[6].Text = (qty * computeSellingPrice(percS, unitCost)).ToString();
             txtTolalCost.Text = "PHP " + String.Format("{0:0.##}", computeTotalCost());
+        }
+
+        private void print()
+        {
+            
+            string checkNo = radioButton4.Checked ? txtCNo.Text.Trim() : "";
+            string checkDate = radioButton4.Checked ? dateTimePicker2.Value.ToString("yyyy-MM-dd") : "";
+           
+            string dueDate = radioButton1.Checked ? "" :
+                DateTime.Now.AddDays(double.Parse(numericUpDown1.Value.ToString())).ToString("yyyy-MM-dd");
+
+            DataSet dataSet = new DataSet();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Item Name", typeof(string));
+            dt.Columns.Add("Description", typeof(string));
+            dt.Columns.Add("SellingPrice.", typeof(float));
+            dt.Columns.Add("Qty", typeof(int));
+            dt.Columns.Add("Sub Total", typeof(float));
+
+            foreach (ListViewItem lvItem in lvItemLab.Items)
+            {
+                dt.Rows.Add(lvItem.SubItems[0].Text,
+                    lvItem.SubItems[1].Text,
+                    float.Parse(lvItem.SubItems[4].Text),
+                    int.Parse(lvItem.SubItems[5].Text),
+                    float.Parse(lvItem.SubItems[6].Text));
+            }
+
+
+            dataSet.Tables.Add(dt);
+
+     
+
+            ReceivableDetails receivableDetails = new ReceivableDetails();
+
+            receivableDetails.SetDataSource(dataSet);
+            receivableDetails.SetParameterValue("Invoice", textBox1.Text.Trim());
+            receivableDetails.SetParameterValue("customerName", cbPo.Text);
+            receivableDetails.SetParameterValue("dateTransfer", DateTime.Now.ToString("yyyy-MM-dd"));
+            receivableDetails.SetParameterValue("dueDate", dueDate);
+            receivableDetails.SetParameterValue("modParam", radioButton1.Checked ? "Cash" : "Check");
+            receivableDetails.SetParameterValue("checkNo", checkNo);
+            receivableDetails.SetParameterValue("checkDate", checkDate);
+            var dialog = new PrintDialog();
+            dialog.ShowDialog();
+            receivableDetails.PrintOptions.PrinterName = dialog.PrinterSettings.PrinterName;
+            receivableDetails.PrintToPrinter(1, false, 0, 0);
+
         }
 
         private float computeMarkup(float unit, float sellingP)
