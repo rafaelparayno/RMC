@@ -295,32 +295,24 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             await customerDetailsController.setPaid(customerid, 1);
             await saveclinicSales();
             
-           /* Task task3 = await saveclinicSales();*/
-
             int task4 = await invoiceController.getLatestNo();
-
-
-            //Task[] processes = new Task[] {  task2,task4 };
-
-         /*   await Task.WhenAll(processes);*/
-
+          
             invoice_no = task4;
         }
 
 
         private async Task saveclinicSales()
         {
-            List<Task> saves = new List<Task>();
+       
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
-                float amt = float.Parse(dr.Cells[3].Value.ToString());
-                string type = dr.Cells[2].Value.ToString();
                 int id = int.Parse(dr.Cells[0].Value.ToString());
-                
-                saves.Add(salesClinicController.Save(type, id, customerid,amt));
+                string type = dr.Cells[2].Value.ToString();
+                float amt = float.Parse(dr.Cells[3].Value.ToString());
+                await salesClinicController.Save(type, id, customerid,amt);
             
             }
-            await Task.WhenAll(saves);
+          
         }
 
         private async Task savesRadioLabQ()
@@ -495,6 +487,8 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 MessageBox.Show("Payment is Not enough", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+
             pictureBox1.BringToFront();
             pictureBox1.Show();
             pictureBox1.Update();

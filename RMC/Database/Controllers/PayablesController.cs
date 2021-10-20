@@ -157,7 +157,7 @@ namespace RMC.Database.Controllers
 
 
 
-        public async Task Save(float amount,string in_no,string payable_due,
+        public async Task Save(double amount,string in_no,string payable_due,
             int s_id)
         {
             string sql;

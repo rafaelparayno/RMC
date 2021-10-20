@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -240,7 +241,7 @@ namespace RMC.InventoryPharma.PanelRo
             ListViewHitTestInfo hit = lvItemLab.HitTest(mousePosition);
             int columnindex = hit.Item.SubItems.IndexOf(hit.SubItem);
 
-            if (lvItemLab.Items.Count > 0)
+            if (lvItemLab.SelectedItems.Count > 0)
             {
                 int id = int.Parse(lvItemLab.SelectedItems[0].Tag.ToString());
                 float unitCost = float.Parse(lvItemLab.SelectedItems[0].SubItems[2].Text);
@@ -278,7 +279,7 @@ namespace RMC.InventoryPharma.PanelRo
                         frm.ShowDialog();
                         int newQty = frm.qty;
                         lvItemLab.SelectedItems[0].SubItems[5].Text = newQty.ToString();
-                        float newSubTotal = float.Parse(Math.Round((unitCost * newQty),2).ToString());
+                        float newSubTotal = unitCost * newQty;
                         lvItemLab.SelectedItems[0].SubItems[6].Text = newSubTotal.ToString();
               
                         break;
@@ -286,12 +287,15 @@ namespace RMC.InventoryPharma.PanelRo
             
                         addSubTotal frmSub = new addSubTotal(subTotal);
                         frmSub.ShowDialog();
-                        float newSub = frmSub.subTotal;
+
+                        float newSubinFrm = frmSub.subTotal;
+                        decimal newSub = decimal.Parse(newSubinFrm.ToString());
 
                         lvItemLab.SelectedItems[0].SubItems[6].Text = newSub.ToString();
-                   
-                        float newUnitCost = float.Parse(Math.Round(newSub / qty,2).ToString());
-                        lvItemLab.SelectedItems[0].SubItems[2].Text = newUnitCost.ToString();
+                            
+                        decimal newUnitCost = decimal.Parse((newSub / qty).ToString());
+                       
+                        lvItemLab.SelectedItems[0].SubItems[2].Text = newUnitCost.ToString("N6");
 
 
                         break;
@@ -301,7 +305,7 @@ namespace RMC.InventoryPharma.PanelRo
                 }
 
 
-                txtTolalCost.Text = "PHP " + String.Format("{0:0.##}", computeTotalCost());
+                txtTolalCost.Text = "PHP " +  computeTotalCost().ToString("n");
             }
         }
 

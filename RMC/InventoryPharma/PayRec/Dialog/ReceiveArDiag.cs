@@ -116,6 +116,7 @@ namespace RMC.InventoryPharma.PayRec.Dialog
                 if (textBox1.Text.Trim() == "")
                     return;
             }
+
             string checkNo = radioButton2.Checked ? textBox1.Text.Trim() : "";
 
             string checkDate = radioButton2.Checked ? dateTimePicker1.Value.ToString("yyyy-MM-dd") : "";

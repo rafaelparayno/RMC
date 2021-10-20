@@ -38,7 +38,7 @@ namespace RMC.Database.Controllers
             return unitCost;
         }
 
-        public async Task updateUnitCost(int itemid,float price)
+        public async Task updateUnitCost(int itemid, double price)
         {
             
 
@@ -55,7 +55,7 @@ namespace RMC.Database.Controllers
         }
 
 
-        public async Task updateSellingAndMarkup(float Selling,float Markup,int id)
+        public async Task updateSellingAndMarkup(double Selling, double Markup,int id)
         {
 
 
