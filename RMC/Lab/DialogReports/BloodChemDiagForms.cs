@@ -53,7 +53,7 @@ namespace RMC.Lab.DialogReports
             await loadXmlValues();
             bloodChem.SetParameterValue("patientName", patientDetails.FullName);
 
-            bloodChem.SetParameterValue("age", patientDetails.age.ToString());
+            bloodChem.SetParameterValue("age", patientDetails.ComputeAge());
             bloodChem.SetParameterValue("sex", patientDetails.gender);
             bloodChem.SetParameterValue("address", patientDetails.address);
 

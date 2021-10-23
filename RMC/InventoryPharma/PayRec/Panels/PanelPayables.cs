@@ -64,6 +64,29 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
         }
 
+        private DataSet FormatDgWithSupplier(List<PayableModel> payableModels)
+        {
+
+
+            DataSet newDataset = new DataSet();
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Supplier Name", typeof(string));
+            dt.Columns.Add("Invoice #", typeof(string));
+            dt.Columns.Add("Date Due", typeof(string));
+            dt.Columns.Add("Amount", typeof(string));
+            dt.Columns.Add("Paid", typeof(bool));
+
+            foreach (PayableModel p in payableModels)
+            {
+                dt.Rows.Add(p.supplierName,p.invoice_no, p.payableDue.Split(' ')[0], String.Format("₱{0:n}", p.amount), p.isPaid);
+            }
+
+            newDataset.Tables.Add(dt);
+            return newDataset;
+
+        }
+
         private DataSet FormatDg(List<PayableModel> payableModels)
         {
            
@@ -97,19 +120,37 @@ namespace RMC.InventoryPharma.PayRec.Panels
             cbTransfId = int.Parse((cbPo.SelectedItem as ComboBoxItem).Value.ToString());
         }
 
-        private async void dgItemList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private  void dgItemList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 3)
+
+
+          /*  if (checkBox1.Checked)
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+                {
+                    DataGridViewRow row = dgItemList.Rows[e.RowIndex];
+
+                    row.Cells[4].Value = !Convert.ToBoolean(row.Cells[4].EditedFormattedValue);
+
+                    await payablesController.updatePaid(row.Cells[1].Value.ToString(),
+                                           Convert.ToBoolean(row.Cells[4].Value));
+                    
+                   
+
+
+                }
+            }
+            else
             {
                 DataGridViewRow row = dgItemList.Rows[e.RowIndex];
-            
                 row.Cells[3].Value = !Convert.ToBoolean(row.Cells[3].EditedFormattedValue);
 
                 await payablesController.updatePaid(row.Cells[0].Value.ToString(),
                                    Convert.ToBoolean(row.Cells[3].Value));
-
-                MessageBox.Show("Succesfully Update Data");
             }
+
+
+            MessageBox.Show("Succesfully Update Data");*/
         }
 
         private async void checkBox1_Click(object sender, EventArgs e)
@@ -119,7 +160,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
                 List<PayableModel> payableModels = await payablesController.listModel();
 
                 dgItemList.DataSource = "";
-                dgItemList.DataSource = FormatDg(payableModels).Tables[0];
+                dgItemList.DataSource = FormatDgWithSupplier(payableModels).Tables[0];
             }
             else
             {
@@ -137,8 +178,9 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
                 if (currentMouseOverRow >= 0)
                 {
-
-                    id = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
+                    
+                        id = checkBox1.Checked ? dgItemList.Rows[currentMouseOverRow].Cells[1].Value.ToString() 
+                        :  dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();
 
 
 

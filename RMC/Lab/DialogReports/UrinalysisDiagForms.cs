@@ -52,7 +52,7 @@ namespace RMC.Lab.DialogReports
 
             urinalysis.SetParameterValue("patientName", patientDetails.FullName);
 
-            urinalysis.SetParameterValue("age", patientDetails.age.ToString());
+            urinalysis.SetParameterValue("age", patientDetails.ComputeAge());
             urinalysis.SetParameterValue("sex", patientDetails.gender);
             urinalysis.SetParameterValue("address", patientDetails.address);
 

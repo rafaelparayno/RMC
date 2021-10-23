@@ -130,10 +130,10 @@ namespace RMC.Database.Controllers
             string sql;
 
             sql = @"SELECT * FROM `invoice` 
-                        INNER JOIN salespharma ON invoice.invoice_id = salespharma.invoice_id 
-                        WHERE DATE(invoice.date_invoice) = DATE(@dt1)"; 
+                        WHERE DATE(invoice.date_invoice) = DATE(@dt1) 
+                    AND invoice_id IN (SELECT invoice_id FROM salespharma)"; 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
-            listparams.Add(new MySqlParameter("@dt1", DateTime.Parse(d)));
+            listparams.Add(new MySqlParameter("@dt1", d));
 
             
 

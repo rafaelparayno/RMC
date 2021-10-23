@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,28 +45,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.gbPackages = new System.Windows.Forms.GroupBox();
-            this.btnAddPackages = new FontAwesome.Sharp.IconButton();
             this.label10 = new System.Windows.Forms.Label();
-            this.iconButton9 = new FontAwesome.Sharp.IconButton();
-            this.iconButton10 = new FontAwesome.Sharp.IconButton();
             this.cbPackages = new System.Windows.Forms.ComboBox();
             this.gbServices = new System.Windows.Forms.GroupBox();
-            this.btnAddServices = new FontAwesome.Sharp.IconButton();
             this.label7 = new System.Windows.Forms.Label();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.cbOther = new System.Windows.Forms.ComboBox();
             this.gbXray = new System.Windows.Forms.GroupBox();
-            this.btnXrayAdd = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.cbXray = new System.Windows.Forms.ComboBox();
             this.gbLab = new System.Windows.Forms.GroupBox();
-            this.btnLabAdd = new FontAwesome.Sharp.IconButton();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnRemoveLab = new FontAwesome.Sharp.IconButton();
-            this.btnAddLab = new FontAwesome.Sharp.IconButton();
             this.cbLab = new System.Windows.Forms.ComboBox();
             this.gbMedCert = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -83,6 +72,20 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAddPackages = new FontAwesome.Sharp.IconButton();
+            this.iconButton9 = new FontAwesome.Sharp.IconButton();
+            this.iconButton10 = new FontAwesome.Sharp.IconButton();
+            this.btnAddServices = new FontAwesome.Sharp.IconButton();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.iconButton7 = new FontAwesome.Sharp.IconButton();
+            this.btnXrayAdd = new FontAwesome.Sharp.IconButton();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
+            this.btnLabAdd = new FontAwesome.Sharp.IconButton();
+            this.btnRemoveLab = new FontAwesome.Sharp.IconButton();
+            this.btnAddLab = new FontAwesome.Sharp.IconButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addDiscountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -93,6 +96,7 @@
             this.gbMedCert.SuspendLayout();
             this.gpConsulation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -119,11 +123,11 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.Color.Snow;
-            this.textBox4.Location = new System.Drawing.Point(0, 277);
+            this.textBox4.Location = new System.Drawing.Point(0, 271);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(280, 31);
+            this.textBox4.Size = new System.Drawing.Size(280, 29);
             this.textBox4.TabIndex = 287;
             this.textBox4.Text = "0.00";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -132,9 +136,9 @@
             // 
             this.label6.BackColor = System.Drawing.Color.Salmon;
             this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(0, 231);
+            this.label6.Location = new System.Drawing.Point(0, 225);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(280, 46);
             this.label6.TabIndex = 286;
@@ -147,11 +151,11 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(0, 200);
+            this.textBox2.Location = new System.Drawing.Point(0, 196);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(280, 31);
+            this.textBox2.Size = new System.Drawing.Size(280, 29);
             this.textBox2.TabIndex = 285;
             this.textBox2.Text = "0.00";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -161,9 +165,9 @@
             // 
             this.label5.BackColor = System.Drawing.Color.Salmon;
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(0, 154);
+            this.label5.Location = new System.Drawing.Point(0, 150);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(280, 46);
             this.label5.TabIndex = 284;
@@ -175,15 +179,15 @@
             this.txtDis.BackColor = System.Drawing.Color.Black;
             this.txtDis.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDis.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtDis.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDis.Enabled = false;
+            this.txtDis.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDis.ForeColor = System.Drawing.Color.Snow;
-            this.txtDis.Location = new System.Drawing.Point(0, 123);
+            this.txtDis.Location = new System.Drawing.Point(0, 121);
             this.txtDis.Name = "txtDis";
-            this.txtDis.Size = new System.Drawing.Size(280, 31);
+            this.txtDis.Size = new System.Drawing.Size(280, 29);
             this.txtDis.TabIndex = 281;
             this.txtDis.Text = "0.00";
             this.txtDis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtDis.Visible = false;
             this.txtDis.TextChanged += new System.EventHandler(this.txtDis_TextChanged);
             this.txtDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDis_KeyPress);
             // 
@@ -191,15 +195,14 @@
             // 
             this.label11.BackColor = System.Drawing.Color.Salmon;
             this.label11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label11.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(0, 77);
+            this.label11.Location = new System.Drawing.Point(0, 75);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(280, 46);
             this.label11.TabIndex = 280;
-            this.label11.Text = "Discount";
+            this.label11.Text = "Total Discount";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label11.Visible = false;
             // 
             // textBox3
             // 
@@ -207,11 +210,11 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.ForeColor = System.Drawing.Color.Snow;
             this.textBox3.Location = new System.Drawing.Point(0, 46);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(280, 31);
+            this.textBox3.Size = new System.Drawing.Size(280, 29);
             this.textBox3.TabIndex = 275;
             this.textBox3.Text = "0.00";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -220,7 +223,7 @@
             // 
             this.label8.BackColor = System.Drawing.Color.Salmon;
             this.label8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
@@ -248,6 +251,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(297, 207);
             this.dataGridView1.TabIndex = 273;
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // btnRemoveALl
             // 
@@ -336,30 +340,6 @@
             this.gbPackages.TabStop = false;
             this.gbPackages.Visible = false;
             // 
-            // btnAddPackages
-            // 
-            this.btnAddPackages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPackages.BackColor = System.Drawing.Color.Maroon;
-            this.btnAddPackages.FlatAppearance.BorderSize = 0;
-            this.btnAddPackages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPackages.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnAddPackages.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPackages.ForeColor = System.Drawing.Color.White;
-            this.btnAddPackages.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.btnAddPackages.IconColor = System.Drawing.Color.White;
-            this.btnAddPackages.IconSize = 18;
-            this.btnAddPackages.Location = new System.Drawing.Point(18, 68);
-            this.btnAddPackages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAddPackages.Name = "btnAddPackages";
-            this.btnAddPackages.Rotation = 0D;
-            this.btnAddPackages.Size = new System.Drawing.Size(238, 23);
-            this.btnAddPackages.TabIndex = 250;
-            this.btnAddPackages.Text = "Add";
-            this.btnAddPackages.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddPackages.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddPackages.UseVisualStyleBackColor = false;
-            this.btnAddPackages.Click += new System.EventHandler(this.btnAddPackages_Click);
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -371,52 +351,6 @@
             this.label10.Size = new System.Drawing.Size(65, 17);
             this.label10.TabIndex = 249;
             this.label10.Text = "Packages";
-            // 
-            // iconButton9
-            // 
-            this.iconButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton9.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton9.FlatAppearance.BorderSize = 0;
-            this.iconButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton9.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton9.ForeColor = System.Drawing.Color.White;
-            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
-            this.iconButton9.IconColor = System.Drawing.Color.White;
-            this.iconButton9.IconSize = 18;
-            this.iconButton9.Location = new System.Drawing.Point(330, 99);
-            this.iconButton9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Rotation = 0D;
-            this.iconButton9.Size = new System.Drawing.Size(0, 31);
-            this.iconButton9.TabIndex = 245;
-            this.iconButton9.Text = "Remove ";
-            this.iconButton9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton9.UseVisualStyleBackColor = false;
-            // 
-            // iconButton10
-            // 
-            this.iconButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton10.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton10.FlatAppearance.BorderSize = 0;
-            this.iconButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton10.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton10.ForeColor = System.Drawing.Color.White;
-            this.iconButton10.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.iconButton10.IconColor = System.Drawing.Color.White;
-            this.iconButton10.IconSize = 18;
-            this.iconButton10.Location = new System.Drawing.Point(18, 99);
-            this.iconButton10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton10.Name = "iconButton10";
-            this.iconButton10.Rotation = 0D;
-            this.iconButton10.Size = new System.Drawing.Size(0, 31);
-            this.iconButton10.TabIndex = 243;
-            this.iconButton10.Text = "Add";
-            this.iconButton10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton10.UseVisualStyleBackColor = false;
             // 
             // cbPackages
             // 
@@ -450,30 +384,6 @@
             this.gbServices.TabStop = false;
             this.gbServices.Visible = false;
             // 
-            // btnAddServices
-            // 
-            this.btnAddServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddServices.BackColor = System.Drawing.Color.Maroon;
-            this.btnAddServices.FlatAppearance.BorderSize = 0;
-            this.btnAddServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddServices.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnAddServices.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddServices.ForeColor = System.Drawing.Color.White;
-            this.btnAddServices.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.btnAddServices.IconColor = System.Drawing.Color.White;
-            this.btnAddServices.IconSize = 18;
-            this.btnAddServices.Location = new System.Drawing.Point(18, 68);
-            this.btnAddServices.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAddServices.Name = "btnAddServices";
-            this.btnAddServices.Rotation = 0D;
-            this.btnAddServices.Size = new System.Drawing.Size(238, 23);
-            this.btnAddServices.TabIndex = 250;
-            this.btnAddServices.Text = "Add";
-            this.btnAddServices.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddServices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddServices.UseVisualStyleBackColor = false;
-            this.btnAddServices.Click += new System.EventHandler(this.btnAddServices_Click);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -485,52 +395,6 @@
             this.label7.Size = new System.Drawing.Size(97, 17);
             this.label7.TabIndex = 249;
             this.label7.Text = "Other Services";
-            // 
-            // iconButton6
-            // 
-            this.iconButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton6.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton6.ForeColor = System.Drawing.Color.White;
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
-            this.iconButton6.IconColor = System.Drawing.Color.White;
-            this.iconButton6.IconSize = 18;
-            this.iconButton6.Location = new System.Drawing.Point(330, 99);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Rotation = 0D;
-            this.iconButton6.Size = new System.Drawing.Size(0, 31);
-            this.iconButton6.TabIndex = 245;
-            this.iconButton6.Text = "Remove ";
-            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton6.UseVisualStyleBackColor = false;
-            // 
-            // iconButton7
-            // 
-            this.iconButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton7.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton7.FlatAppearance.BorderSize = 0;
-            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton7.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton7.ForeColor = System.Drawing.Color.White;
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.iconButton7.IconColor = System.Drawing.Color.White;
-            this.iconButton7.IconSize = 18;
-            this.iconButton7.Location = new System.Drawing.Point(18, 99);
-            this.iconButton7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Rotation = 0D;
-            this.iconButton7.Size = new System.Drawing.Size(0, 31);
-            this.iconButton7.TabIndex = 243;
-            this.iconButton7.Text = "Add";
-            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton7.UseVisualStyleBackColor = false;
             // 
             // cbOther
             // 
@@ -564,30 +428,6 @@
             this.gbXray.TabStop = false;
             this.gbXray.Visible = false;
             // 
-            // btnXrayAdd
-            // 
-            this.btnXrayAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnXrayAdd.BackColor = System.Drawing.Color.Maroon;
-            this.btnXrayAdd.FlatAppearance.BorderSize = 0;
-            this.btnXrayAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXrayAdd.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnXrayAdd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXrayAdd.ForeColor = System.Drawing.Color.White;
-            this.btnXrayAdd.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.btnXrayAdd.IconColor = System.Drawing.Color.White;
-            this.btnXrayAdd.IconSize = 18;
-            this.btnXrayAdd.Location = new System.Drawing.Point(18, 68);
-            this.btnXrayAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnXrayAdd.Name = "btnXrayAdd";
-            this.btnXrayAdd.Rotation = 0D;
-            this.btnXrayAdd.Size = new System.Drawing.Size(238, 23);
-            this.btnXrayAdd.TabIndex = 250;
-            this.btnXrayAdd.Text = "Add";
-            this.btnXrayAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXrayAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnXrayAdd.UseVisualStyleBackColor = false;
-            this.btnXrayAdd.Click += new System.EventHandler(this.btnXrayAdd_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -599,52 +439,6 @@
             this.label4.Size = new System.Drawing.Size(51, 17);
             this.label4.TabIndex = 249;
             this.label4.Text = "Radio\'s";
-            // 
-            // iconButton3
-            // 
-            this.iconButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton3.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton3.FlatAppearance.BorderSize = 0;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton3.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton3.ForeColor = System.Drawing.Color.White;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
-            this.iconButton3.IconColor = System.Drawing.Color.White;
-            this.iconButton3.IconSize = 18;
-            this.iconButton3.Location = new System.Drawing.Point(330, 99);
-            this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Rotation = 0D;
-            this.iconButton3.Size = new System.Drawing.Size(0, 31);
-            this.iconButton3.TabIndex = 245;
-            this.iconButton3.Text = "Remove ";
-            this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton3.UseVisualStyleBackColor = false;
-            // 
-            // iconButton4
-            // 
-            this.iconButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton4.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton4.ForeColor = System.Drawing.Color.White;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.iconButton4.IconColor = System.Drawing.Color.White;
-            this.iconButton4.IconSize = 18;
-            this.iconButton4.Location = new System.Drawing.Point(18, 99);
-            this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Rotation = 0D;
-            this.iconButton4.Size = new System.Drawing.Size(0, 31);
-            this.iconButton4.TabIndex = 243;
-            this.iconButton4.Text = "Add";
-            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton4.UseVisualStyleBackColor = false;
             // 
             // cbXray
             // 
@@ -678,30 +472,6 @@
             this.gbLab.TabStop = false;
             this.gbLab.Visible = false;
             // 
-            // btnLabAdd
-            // 
-            this.btnLabAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLabAdd.BackColor = System.Drawing.Color.Maroon;
-            this.btnLabAdd.FlatAppearance.BorderSize = 0;
-            this.btnLabAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLabAdd.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnLabAdd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLabAdd.ForeColor = System.Drawing.Color.White;
-            this.btnLabAdd.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.btnLabAdd.IconColor = System.Drawing.Color.White;
-            this.btnLabAdd.IconSize = 18;
-            this.btnLabAdd.Location = new System.Drawing.Point(18, 68);
-            this.btnLabAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnLabAdd.Name = "btnLabAdd";
-            this.btnLabAdd.Rotation = 0D;
-            this.btnLabAdd.Size = new System.Drawing.Size(238, 23);
-            this.btnLabAdd.TabIndex = 250;
-            this.btnLabAdd.Text = "Add";
-            this.btnLabAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLabAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLabAdd.UseVisualStyleBackColor = false;
-            this.btnLabAdd.Click += new System.EventHandler(this.btnLabAdd_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -713,52 +483,6 @@
             this.label9.Size = new System.Drawing.Size(100, 17);
             this.label9.TabIndex = 249;
             this.label9.Text = "Laboratory List";
-            // 
-            // btnRemoveLab
-            // 
-            this.btnRemoveLab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveLab.BackColor = System.Drawing.Color.Maroon;
-            this.btnRemoveLab.FlatAppearance.BorderSize = 0;
-            this.btnRemoveLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveLab.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnRemoveLab.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveLab.ForeColor = System.Drawing.Color.White;
-            this.btnRemoveLab.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
-            this.btnRemoveLab.IconColor = System.Drawing.Color.White;
-            this.btnRemoveLab.IconSize = 18;
-            this.btnRemoveLab.Location = new System.Drawing.Point(330, 99);
-            this.btnRemoveLab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnRemoveLab.Name = "btnRemoveLab";
-            this.btnRemoveLab.Rotation = 0D;
-            this.btnRemoveLab.Size = new System.Drawing.Size(0, 31);
-            this.btnRemoveLab.TabIndex = 245;
-            this.btnRemoveLab.Text = "Remove ";
-            this.btnRemoveLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRemoveLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRemoveLab.UseVisualStyleBackColor = false;
-            // 
-            // btnAddLab
-            // 
-            this.btnAddLab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddLab.BackColor = System.Drawing.Color.Maroon;
-            this.btnAddLab.FlatAppearance.BorderSize = 0;
-            this.btnAddLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddLab.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnAddLab.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddLab.ForeColor = System.Drawing.Color.White;
-            this.btnAddLab.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
-            this.btnAddLab.IconColor = System.Drawing.Color.White;
-            this.btnAddLab.IconSize = 18;
-            this.btnAddLab.Location = new System.Drawing.Point(18, 99);
-            this.btnAddLab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAddLab.Name = "btnAddLab";
-            this.btnAddLab.Rotation = 0D;
-            this.btnAddLab.Size = new System.Drawing.Size(0, 31);
-            this.btnAddLab.TabIndex = 243;
-            this.btnAddLab.Text = "Add";
-            this.btnAddLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAddLab.UseVisualStyleBackColor = false;
             // 
             // cbLab
             // 
@@ -972,6 +696,300 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
             // 
+            // btnAddPackages
+            // 
+            this.btnAddPackages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddPackages.BackColor = System.Drawing.Color.Maroon;
+            this.btnAddPackages.FlatAppearance.BorderSize = 0;
+            this.btnAddPackages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPackages.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAddPackages.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPackages.ForeColor = System.Drawing.Color.White;
+            this.btnAddPackages.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.btnAddPackages.IconColor = System.Drawing.Color.White;
+            this.btnAddPackages.IconSize = 18;
+            this.btnAddPackages.Location = new System.Drawing.Point(18, 68);
+            this.btnAddPackages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAddPackages.Name = "btnAddPackages";
+            this.btnAddPackages.Rotation = 0D;
+            this.btnAddPackages.Size = new System.Drawing.Size(238, 23);
+            this.btnAddPackages.TabIndex = 250;
+            this.btnAddPackages.Text = "Add";
+            this.btnAddPackages.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddPackages.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddPackages.UseVisualStyleBackColor = false;
+            this.btnAddPackages.Click += new System.EventHandler(this.btnAddPackages_Click);
+            // 
+            // iconButton9
+            // 
+            this.iconButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton9.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton9.FlatAppearance.BorderSize = 0;
+            this.iconButton9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton9.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton9.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton9.ForeColor = System.Drawing.Color.White;
+            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
+            this.iconButton9.IconColor = System.Drawing.Color.White;
+            this.iconButton9.IconSize = 18;
+            this.iconButton9.Location = new System.Drawing.Point(330, 99);
+            this.iconButton9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton9.Name = "iconButton9";
+            this.iconButton9.Rotation = 0D;
+            this.iconButton9.Size = new System.Drawing.Size(0, 31);
+            this.iconButton9.TabIndex = 245;
+            this.iconButton9.Text = "Remove ";
+            this.iconButton9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton9.UseVisualStyleBackColor = false;
+            // 
+            // iconButton10
+            // 
+            this.iconButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton10.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton10.FlatAppearance.BorderSize = 0;
+            this.iconButton10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton10.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton10.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton10.ForeColor = System.Drawing.Color.White;
+            this.iconButton10.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.iconButton10.IconColor = System.Drawing.Color.White;
+            this.iconButton10.IconSize = 18;
+            this.iconButton10.Location = new System.Drawing.Point(18, 99);
+            this.iconButton10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton10.Name = "iconButton10";
+            this.iconButton10.Rotation = 0D;
+            this.iconButton10.Size = new System.Drawing.Size(0, 31);
+            this.iconButton10.TabIndex = 243;
+            this.iconButton10.Text = "Add";
+            this.iconButton10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton10.UseVisualStyleBackColor = false;
+            // 
+            // btnAddServices
+            // 
+            this.btnAddServices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddServices.BackColor = System.Drawing.Color.Maroon;
+            this.btnAddServices.FlatAppearance.BorderSize = 0;
+            this.btnAddServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddServices.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAddServices.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddServices.ForeColor = System.Drawing.Color.White;
+            this.btnAddServices.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.btnAddServices.IconColor = System.Drawing.Color.White;
+            this.btnAddServices.IconSize = 18;
+            this.btnAddServices.Location = new System.Drawing.Point(18, 68);
+            this.btnAddServices.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAddServices.Name = "btnAddServices";
+            this.btnAddServices.Rotation = 0D;
+            this.btnAddServices.Size = new System.Drawing.Size(238, 23);
+            this.btnAddServices.TabIndex = 250;
+            this.btnAddServices.Text = "Add";
+            this.btnAddServices.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddServices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddServices.UseVisualStyleBackColor = false;
+            this.btnAddServices.Click += new System.EventHandler(this.btnAddServices_Click);
+            // 
+            // iconButton6
+            // 
+            this.iconButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton6.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton6.ForeColor = System.Drawing.Color.White;
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
+            this.iconButton6.IconColor = System.Drawing.Color.White;
+            this.iconButton6.IconSize = 18;
+            this.iconButton6.Location = new System.Drawing.Point(330, 99);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.Rotation = 0D;
+            this.iconButton6.Size = new System.Drawing.Size(0, 31);
+            this.iconButton6.TabIndex = 245;
+            this.iconButton6.Text = "Remove ";
+            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton6.UseVisualStyleBackColor = false;
+            // 
+            // iconButton7
+            // 
+            this.iconButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton7.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton7.FlatAppearance.BorderSize = 0;
+            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton7.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton7.ForeColor = System.Drawing.Color.White;
+            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.iconButton7.IconColor = System.Drawing.Color.White;
+            this.iconButton7.IconSize = 18;
+            this.iconButton7.Location = new System.Drawing.Point(18, 99);
+            this.iconButton7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton7.Name = "iconButton7";
+            this.iconButton7.Rotation = 0D;
+            this.iconButton7.Size = new System.Drawing.Size(0, 31);
+            this.iconButton7.TabIndex = 243;
+            this.iconButton7.Text = "Add";
+            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton7.UseVisualStyleBackColor = false;
+            // 
+            // btnXrayAdd
+            // 
+            this.btnXrayAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnXrayAdd.BackColor = System.Drawing.Color.Maroon;
+            this.btnXrayAdd.FlatAppearance.BorderSize = 0;
+            this.btnXrayAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXrayAdd.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnXrayAdd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXrayAdd.ForeColor = System.Drawing.Color.White;
+            this.btnXrayAdd.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.btnXrayAdd.IconColor = System.Drawing.Color.White;
+            this.btnXrayAdd.IconSize = 18;
+            this.btnXrayAdd.Location = new System.Drawing.Point(18, 68);
+            this.btnXrayAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnXrayAdd.Name = "btnXrayAdd";
+            this.btnXrayAdd.Rotation = 0D;
+            this.btnXrayAdd.Size = new System.Drawing.Size(238, 23);
+            this.btnXrayAdd.TabIndex = 250;
+            this.btnXrayAdd.Text = "Add";
+            this.btnXrayAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnXrayAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnXrayAdd.UseVisualStyleBackColor = false;
+            this.btnXrayAdd.Click += new System.EventHandler(this.btnXrayAdd_Click);
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton3.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton3.FlatAppearance.BorderSize = 0;
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton3.ForeColor = System.Drawing.Color.White;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
+            this.iconButton3.IconColor = System.Drawing.Color.White;
+            this.iconButton3.IconSize = 18;
+            this.iconButton3.Location = new System.Drawing.Point(330, 99);
+            this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Rotation = 0D;
+            this.iconButton3.Size = new System.Drawing.Size(0, 31);
+            this.iconButton3.TabIndex = 245;
+            this.iconButton3.Text = "Remove ";
+            this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton3.UseVisualStyleBackColor = false;
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton4.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton4.ForeColor = System.Drawing.Color.White;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.iconButton4.IconColor = System.Drawing.Color.White;
+            this.iconButton4.IconSize = 18;
+            this.iconButton4.Location = new System.Drawing.Point(18, 99);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Rotation = 0D;
+            this.iconButton4.Size = new System.Drawing.Size(0, 31);
+            this.iconButton4.TabIndex = 243;
+            this.iconButton4.Text = "Add";
+            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton4.UseVisualStyleBackColor = false;
+            // 
+            // btnLabAdd
+            // 
+            this.btnLabAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLabAdd.BackColor = System.Drawing.Color.Maroon;
+            this.btnLabAdd.FlatAppearance.BorderSize = 0;
+            this.btnLabAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLabAdd.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnLabAdd.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLabAdd.ForeColor = System.Drawing.Color.White;
+            this.btnLabAdd.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.btnLabAdd.IconColor = System.Drawing.Color.White;
+            this.btnLabAdd.IconSize = 18;
+            this.btnLabAdd.Location = new System.Drawing.Point(18, 68);
+            this.btnLabAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnLabAdd.Name = "btnLabAdd";
+            this.btnLabAdd.Rotation = 0D;
+            this.btnLabAdd.Size = new System.Drawing.Size(238, 23);
+            this.btnLabAdd.TabIndex = 250;
+            this.btnLabAdd.Text = "Add";
+            this.btnLabAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLabAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLabAdd.UseVisualStyleBackColor = false;
+            this.btnLabAdd.Click += new System.EventHandler(this.btnLabAdd_Click);
+            // 
+            // btnRemoveLab
+            // 
+            this.btnRemoveLab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveLab.BackColor = System.Drawing.Color.Maroon;
+            this.btnRemoveLab.FlatAppearance.BorderSize = 0;
+            this.btnRemoveLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveLab.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnRemoveLab.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveLab.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveLab.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
+            this.btnRemoveLab.IconColor = System.Drawing.Color.White;
+            this.btnRemoveLab.IconSize = 18;
+            this.btnRemoveLab.Location = new System.Drawing.Point(330, 99);
+            this.btnRemoveLab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRemoveLab.Name = "btnRemoveLab";
+            this.btnRemoveLab.Rotation = 0D;
+            this.btnRemoveLab.Size = new System.Drawing.Size(0, 31);
+            this.btnRemoveLab.TabIndex = 245;
+            this.btnRemoveLab.Text = "Remove ";
+            this.btnRemoveLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRemoveLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRemoveLab.UseVisualStyleBackColor = false;
+            // 
+            // btnAddLab
+            // 
+            this.btnAddLab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddLab.BackColor = System.Drawing.Color.Maroon;
+            this.btnAddLab.FlatAppearance.BorderSize = 0;
+            this.btnAddLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddLab.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnAddLab.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddLab.ForeColor = System.Drawing.Color.White;
+            this.btnAddLab.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.btnAddLab.IconColor = System.Drawing.Color.White;
+            this.btnAddLab.IconSize = 18;
+            this.btnAddLab.Location = new System.Drawing.Point(18, 99);
+            this.btnAddLab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAddLab.Name = "btnAddLab";
+            this.btnAddLab.Rotation = 0D;
+            this.btnAddLab.Size = new System.Drawing.Size(0, 31);
+            this.btnAddLab.TabIndex = 243;
+            this.btnAddLab.Text = "Add";
+            this.btnAddLab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddLab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddLab.UseVisualStyleBackColor = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addDiscountToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 26);
+            // 
+            // addDiscountToolStripMenuItem
+            // 
+            this.addDiscountToolStripMenuItem.Name = "addDiscountToolStripMenuItem";
+            this.addDiscountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addDiscountToolStripMenuItem.Text = "Add Discount";
+            this.addDiscountToolStripMenuItem.Click += new System.EventHandler(this.addDiscountToolStripMenuItem_Click);
+            // 
             // ReceptionPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1013,6 +1031,7 @@
             this.gpConsulation.ResumeLayout(false);
             this.gpConsulation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1075,5 +1094,7 @@
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem addDiscountToolStripMenuItem;
     }
 }

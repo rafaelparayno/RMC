@@ -54,7 +54,7 @@ namespace RMC.Lab.DialogReports
             await loadXmlValues();
             hema.SetParameterValue("patientName", patientDetails.FullName);
 
-            hema.SetParameterValue("age", patientDetails.age.ToString());
+            hema.SetParameterValue("age", patientDetails.ComputeAge());
             hema.SetParameterValue("sex", patientDetails.gender);
             hema.SetParameterValue("address", patientDetails.address);
 

@@ -50,7 +50,7 @@ namespace RMC.Lab.DialogReports
             await loadXmlValues();
             fecalysis.SetParameterValue("patientName", patientDetails.FullName);
 
-            fecalysis.SetParameterValue("age", patientDetails.age.ToString());
+            fecalysis.SetParameterValue("age", patientDetails.ComputeAge());
             fecalysis.SetParameterValue("sex", patientDetails.gender);
             fecalysis.SetParameterValue("address", patientDetails.address);
 

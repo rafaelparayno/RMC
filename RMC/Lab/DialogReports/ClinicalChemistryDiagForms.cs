@@ -49,7 +49,7 @@ namespace RMC.Lab.DialogReports
             await loadXmlValues();
             clinicalChemistry.SetParameterValue("patientName", patientDetails.FullName);
 
-            clinicalChemistry.SetParameterValue("age", patientDetails.age.ToString());
+            clinicalChemistry.SetParameterValue("age", patientDetails.ComputeAge());
             clinicalChemistry.SetParameterValue("sex", patientDetails.gender);
             clinicalChemistry.SetParameterValue("address", patientDetails.address);
 

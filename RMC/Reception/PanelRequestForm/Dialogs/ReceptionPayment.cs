@@ -36,6 +36,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         #region VariableState
         List<int> requests = new List<int>();
+        private int indexInDg = 0;
         private int consultS = 1;
         private int medCert = 2;
         private int labS = 3;
@@ -85,6 +86,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Type", typeof(string));
             dt.Columns.Add("Price", typeof(decimal));
+            dt.Columns.Add("Discount", typeof(decimal));
         }
 
         private async void InitRequests()
@@ -109,20 +111,20 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
             if (cbFree.Checked)
             {
-                dt.Rows.Add(1, "Consultation", "Service", 0);
+                dt.Rows.Add(1, "Consultation", "Service", 0,0);
             }
             else
             {
                 if (radioButton1.Checked)
-                    dt.Rows.Add(1, "Consultation", "Service", priceConsult);
+                    dt.Rows.Add(1, "Consultation", "Service", priceConsult,0);
                 else if(radioButton2.Checked)
-                    dt.Rows.Add(1, "Consultation", "Service", priceSConsult);
+                    dt.Rows.Add(1, "Consultation", "Service", priceSConsult,0);
                 else if(radioButton3.Checked)
-                    dt.Rows.Add(1, "Consultation", "Service", priceFConsult);
+                    dt.Rows.Add(1, "Consultation", "Service", priceFConsult,0);
                 else if (radioButton4.Checked)
-                    dt.Rows.Add(1, "Consultation", "Service", priceS2Consult);
+                    dt.Rows.Add(1, "Consultation", "Service", priceS2Consult,0);
                 else if (radioButton5.Checked)
-                    dt.Rows.Add(1, "Consultation", "Service", priceOnline);
+                    dt.Rows.Add(1, "Consultation", "Service", priceOnline,0);
             }
 
         }
@@ -139,14 +141,14 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             if (requests.Contains(consultS))
             {
                 gpConsulation.Visible = true;
-                dt.Rows.Add(1, "Consultation", "Service", priceConsult);
+                dt.Rows.Add(1, "Consultation", "Service", priceConsult,0);
             }
           
 
             if (requests.Contains(medCert))
             {
                 gbMedCert.Visible = true;
-                dt.Rows.Add(2, "MedCert", "Service", priceMedCert);
+                dt.Rows.Add(2, "MedCert", "Service", priceMedCert,0);
             }
 
 
@@ -162,32 +164,24 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
           
         }
 
+
         private void setTotalPrice()
         {
             totalPrice = 0;
             //    double removeVat = 0;
-            float dis = 0;
+            float totalDisc = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 float price = float.Parse(row.Cells["Price"].Value.ToString());
-          
+                float dis = float.Parse(row.Cells["Discount"].Value.ToString());
                 totalPrice += price;
+                totalDisc += dis;
             }
 
-         
+            totalPrice -= totalDisc;
+       
+            txtDis.Text = String.Format("PHP {0:0.##}", totalDisc);
 
-            if(seniorId != "")
-            {
-                bool isValidDis = float.TryParse(txtDis.Text.Trim(), out _);
-
-                dis = isValidDis ? float.Parse(txtDis.Text.Trim()) : 0;
-
-                if (totalPrice >= dis)
-                {
-                    totalPrice -= dis;
-                }
-            }
-  
             textBox3.Text = String.Format("PHP {0:0.##}", totalPrice);
         }
 
@@ -235,9 +229,14 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
 
             printReceipt(payment);
+            DataTable dt = new DataTable();
             dt.Rows.Clear();
             dataGridView1.DataSource = dt;
-
+            gbLab.Enabled = false;
+            gbMedCert.Enabled = false;
+            gbPackages.Enabled = false;
+            gbServices.Enabled = false;
+            gbXray.Enabled = false;
             button2.Enabled = false;
             btnUpdate.Enabled = false;
         }
@@ -274,7 +273,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             receipts rec = new receipts();
             rec.SetDataSource(ds);
             rec.SetParameterValue("subTotal", subtotal);
-            rec.SetParameterValue("discount", float.Parse(txtDis.Text.Trim()));
+            rec.SetParameterValue("discount", float.Parse(txtDis.Text.Trim().Split(' ')[1]));
             rec.SetParameterValue("total", float.Parse(textBox3.Text.Trim().Split(' ')[1]));
             rec.SetParameterValue("payment", float.Parse(textBox2.Text.Trim()));
             rec.SetParameterValue("change", float.Parse(textBox4.Text.Trim().Split(' ')[1]));
@@ -290,7 +289,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private async Task processTransaction()
         {
-            await invoiceController.Save(totalPrice, float.Parse(txtDis.Text.Trim()));
+            await invoiceController.Save(totalPrice, float.Parse(txtDis.Text.Trim().Split(' ')[1]));
             await savesRadioLabQ();
             await customerDetailsController.setPaid(customerid, 1);
             await saveclinicSales();
@@ -414,7 +413,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             if (!isFoundGrid("Laboratory", cbValueLab))
             {
                 float price = await laboratoryController.getPrice(cbValueLab);
-                dt.Rows.Add(cbValueLab,cbLab.Text, "Laboratory", price);
+                dt.Rows.Add(cbValueLab,cbLab.Text, "Laboratory", price,0);
 
                 dataGridView1.DataSource = dt;
                 setTotalPrice();
@@ -431,7 +430,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             if (!isFoundGrid("Radio", cbValueXray))
             {
                 float price = await xrayControllers.getPrice(cbValueXray);
-                dt.Rows.Add(cbValueXray,cbXray.Text, "Radio", price);
+                dt.Rows.Add(cbValueXray,cbXray.Text, "Radio", price,0);
 
                 dataGridView1.DataSource = dt;
                 setTotalPrice();
@@ -447,7 +446,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             if (!isFoundGrid("OtherServices", cbValueService))
             {
                 float price = await serviceController.getPrice(cbValueService);
-                dt.Rows.Add(cbValueService, cbOther.Text, "OtherServices", price);
+                dt.Rows.Add(cbValueService, cbOther.Text, "OtherServices", price,0);
 
                 dataGridView1.DataSource = dt;
                 setTotalPrice();
@@ -463,7 +462,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             if (!isFoundGrid("Packages", cbValuePackages))
             {
                 float price = await packagesController.getPrice(cbValuePackages);
-                dt.Rows.Add(cbValuePackages, cbPackages.Text, "Packages", price);
+                dt.Rows.Add(cbValuePackages, cbPackages.Text, "Packages", price,0);
 
                 dataGridView1.DataSource = dt;
                 setTotalPrice();
@@ -523,7 +522,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             if (dataGridView1.SelectedRows.Count == 0)
                 return;
 
-
+         /*   dt = new DataTable();*/
             dt.Rows.Clear();
             dataGridView1.DataSource = dt;
             setTotalPrice();
@@ -618,11 +617,11 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
             if (checkBox1.Checked)
             {
-                dt.Rows.Add(2, "MedCert", "Service", 0);
+                dt.Rows.Add(2, "MedCert", "Service", 0,0);
             }
             else
             {
-                dt.Rows.Add(2, "MedCert", "Service", priceMedCert);
+                dt.Rows.Add(2, "MedCert", "Service", priceMedCert,0);
             }
             setTotalPrice();
         }
@@ -663,6 +662,41 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
         {
             trigerCb();
             txtPriceConsult.Text = priceS2Consult.ToString();
+            setTotalPrice();
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {                   
+                    contextMenuStrip1.Show(dataGridView1, new Point(e.X, e.Y));
+                    indexInDg = currentMouseOverRow;
+                }
+
+            }
+        }
+
+        private void addDiscountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            float sellingPrice = float.Parse(dataGridView1.Rows[indexInDg].Cells[3].Value.ToString());
+
+            addDiscPay frmDisc = new addDiscPay(sellingPrice);
+
+            frmDisc.ShowDialog();
+
+            if (frmDisc.Percentage == 0)
+                return;
+
+            float setPerc = frmDisc.Percentage;
+
+            dataGridView1.Rows[indexInDg].Cells[4].Value = setPerc;
             setTotalPrice();
         }
     }

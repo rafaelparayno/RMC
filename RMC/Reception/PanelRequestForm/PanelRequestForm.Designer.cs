@@ -274,6 +274,7 @@
             this.Name = "PanelRequestForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PanelRequestForm";
+            this.Load += new System.EventHandler(this.PanelRequestForm_Load);
             this.Resize += new System.EventHandler(this.PanelRequestForm_Resize);
             this.panelMenus.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

@@ -461,14 +461,20 @@ namespace RMC.Lab.DialogReports
                   await patientLabController.getFullPath(patientid, labid,cid)
                   : await patientLabController.getFullPath(patient_lab_id);
 
+            try { 
+
+           
             if (!File.Exists(path))
                 return;
 
 
             doc.Load(path);
 
+            if (doc.ChildNodes.Count == 0)
+                return;
 
-            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+
+                foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
 
                 if (node.Name == "crystalautomatedid")
@@ -482,6 +488,12 @@ namespace RMC.Lab.DialogReports
                     textBoxParamsCrystals[index].textbox1.Text = node.InnerText;
                 
            
+            }
+
+            }catch(Exception e)
+            {
+                Console.WriteLine(e);
+                MessageBox.Show("Invalid File");
             }
 
         }

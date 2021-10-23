@@ -30,7 +30,10 @@ namespace RMC.Database.Controllers
         {
             List<PayableModel> payableModels = new List<PayableModel>();
 
-            string sql = @"SELECT * FROM `payables` ORDER BY payable_due ASC";
+            string sql = @"SELECT payables.payables_id,invoice_no, 
+                        payables_amount,is_paid,payable_due,supplier_name
+                        FROM `payables` INNER JOIN suppliers ON
+                        payables.supplier_id = suppliers.supplier_id ORDER BY payable_due ASC";
 
             DbDataReader reader = await crud.RetrieveRecordsAsync(sql, null);
 
@@ -43,7 +46,7 @@ namespace RMC.Database.Controllers
               
                 p.isPaid = int.Parse(reader["is_paid"].ToString()) == 0 ? false : true;
                 p.payableDue = reader["payable_due"].ToString();
-
+                p.supplierName = reader["supplier_name"].ToString();
 
                 payableModels.Add(p);
             }

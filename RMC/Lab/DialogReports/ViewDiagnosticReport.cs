@@ -48,7 +48,7 @@ namespace RMC.Lab.DialogReports
             patientDetails = await patientDetailsController.getPatientId(patientid);
             diagnosticReport.SetParameterValue("patientName", patientDetails.FullName);
             await loadXmlValues();
-            diagnosticReport.SetParameterValue("age", patientDetails.age.ToString());
+            diagnosticReport.SetParameterValue("age", patientDetails.ComputeAge());
             diagnosticReport.SetParameterValue("sex", patientDetails.gender);
             diagnosticReport.SetParameterValue("address", patientDetails.address);
 

@@ -49,7 +49,7 @@ namespace RMC.Lab.DialogReports
             await loadXmlValues();
             serology.SetParameterValue("patientName", patientDetails.FullName);
 
-            serology.SetParameterValue("age", patientDetails.age.ToString());
+            serology.SetParameterValue("age", patientDetails.ComputeAge());
             serology.SetParameterValue("sex", patientDetails.gender);
             serology.SetParameterValue("address", patientDetails.gender);
 

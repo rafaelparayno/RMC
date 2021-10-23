@@ -48,16 +48,16 @@ namespace RMC.Reception.PanelRequestForm
         {
             InitializeComponent();
             initLvCol();
-            getData();
+            
 
             loadOnlineDoctors();
         }
 
-        private void btnAddItem_Click(object sender, EventArgs e)
+        private async void btnAddItem_Click(object sender, EventArgs e)
         {
             AddEditRequestForm form = new AddEditRequestForm();
             form.ShowDialog();
-            getData();
+            await getData();
         }
 
         private void initLvCol()
@@ -77,18 +77,18 @@ namespace RMC.Reception.PanelRequestForm
         }
         
 
-        private async void getData()
+        private async Task getData()
         {
             pictureBox1.Show();
             pictureBox1.Update();
             customerDetailsModsList = new List<customerDetailsMod>();
             customerDetailsModsList = await customerDetailsController.getDetailsList();
-            RefreshGrid(customerDetailsModsList);
+            await RefreshGrid(customerDetailsModsList);
             pictureBox1.Hide();
 
         }
 
-        private async void RefreshGrid(List<customerDetailsMod> customers)
+        private async Task RefreshGrid(List<customerDetailsMod> customers)
         {
             dt.Rows.Clear();
 
@@ -182,7 +182,7 @@ namespace RMC.Reception.PanelRequestForm
             AddEditRequestForm form = new AddEditRequestForm(dgCustomerList.SelectedRows[0].Cells[0].Value.ToString(), 
                 dgCustomerList.SelectedRows[0].Cells[1].Value.ToString());
             form.ShowDialog();
-            getData();
+            await getData();
         }
 
         private async void dgCustomerList_MouseClick(object sender, MouseEventArgs e)
@@ -339,7 +339,7 @@ namespace RMC.Reception.PanelRequestForm
             int req = int.Parse(dgCustomerList.SelectedRows[0].Cells[0].Value.ToString());
             ReceptionPayment form = new ReceptionPayment(req);
             form.ShowDialog();
-            getData();
+            await getData();
         }
 
      
@@ -391,7 +391,7 @@ namespace RMC.Reception.PanelRequestForm
 
             MessageBox.Show("Succesfully Void");
 
-            getData();
+            await getData();
         }
 
         private async void btnDelete_Click(object sender, EventArgs e)
@@ -439,7 +439,7 @@ namespace RMC.Reception.PanelRequestForm
 
             MessageBox.Show("Successfully Delete Request");
 
-            getData();
+            await getData();
 
         }
 
@@ -460,6 +460,11 @@ namespace RMC.Reception.PanelRequestForm
 
                 panel1.Visible = true;
             }
+        }
+
+        private async void PanelRequestForm_Load(object sender, EventArgs e)
+        {
+           await getData();
         }
     }
 }
