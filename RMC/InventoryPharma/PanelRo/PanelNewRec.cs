@@ -224,7 +224,7 @@ namespace RMC.InventoryPharma.PanelRo
         private void isunPaid(bool ispaid)
         {
             numericUpDown1.Enabled = ispaid;
-            dateTimePicker3.Enabled = ispaid;
+      
         }
 
         private void radioButton2_Click(object sender, EventArgs e)
@@ -320,6 +320,13 @@ namespace RMC.InventoryPharma.PanelRo
             if (textBox1.Text.Trim() == "")
                 return;
 
+            if (await receiveControllers.isFound(textBox1.Text.Trim()))
+            {
+                MessageBox.Show("The invoice you will save has already has the same in database");
+                return;
+            }
+               
+
             await save();
 
             clearData();
@@ -397,7 +404,7 @@ namespace RMC.InventoryPharma.PanelRo
                 itemsRec.Add(itemID, qtyCurrent);
 
                 tasks.Add(receiveControllers.save(itemID, qtyCurrent, po_no,
-                in_no,isCash,checkNO, checkDate));
+                in_no,checkNO,checkDate));
             }
 
             if (noBo)
@@ -405,15 +412,14 @@ namespace RMC.InventoryPharma.PanelRo
                 tasks.Add(backOrderController.save(po_no));
             }
 
-
             if (radioButton2.Checked)
             {
                 float total = float.Parse(txtTolalCost.Text.Trim().Split(' ')[1]);
                 tasks.Add(payablesController.Save(total, textBox1.Text.Trim(),
-                    dateTimePicker3.Value.ToString("yyyy-MM-dd"), 
+                    dateTimePicker3.Value.ToString("yyyy-MM-dd"),
                     purchasOrderModel.supplierId));
             }
-
+           
             await Task.WhenAll(tasks);
 
             pictureBox1.Hide();

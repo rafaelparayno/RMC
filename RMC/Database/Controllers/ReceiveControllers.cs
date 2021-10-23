@@ -14,11 +14,11 @@ namespace RMC.Database.Controllers
     {
         dbcrud crud = new dbcrud();
 
-        public async Task save(int itemid,int qty, int poid,string invoice_no,int isCash,string checkNo,string dateCheck)
+        public async Task save(int itemid,int qty, int poid,string invoice_no,string cno,string checkdate)
         {
-            string sql = @"INSERT INTO receive_orders (po_item_id,qty_ro,u_id,invoice_no,isCash,check_no,date_check) VALUES 
+            string sql = @"INSERT INTO receive_orders (po_item_id,qty_ro,u_id,invoice_no,check_no,check_date_rec) VALUES 
                            ((SELECT po_item_id FROM purchase_order_items WHERE item_id = @itemid AND po_id = @poid),
-                            @qty,@uid,@no,@isCash,@chno,@date_check)";
+                            @qty,@uid,@no,@cno,@chdate)";
 
 
             List<MySqlParameter> listparams = new List<MySqlParameter>();
@@ -27,9 +27,8 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@qty", qty));
             listparams.Add(new MySqlParameter("@uid", UserLog.getUserId()));
             listparams.Add(new MySqlParameter("@no", invoice_no));
-            listparams.Add(new MySqlParameter("@isCash", isCash));
-            listparams.Add(new MySqlParameter("@chno", checkNo));
-            listparams.Add(new MySqlParameter("@date_check", dateCheck == "" ? null : dateCheck));
+            listparams.Add(new MySqlParameter("@cno", cno));
+            listparams.Add(new MySqlParameter("@chdate", checkdate));
 
             await crud.ExecuteAsync(sql, listparams);
         }
@@ -176,6 +175,28 @@ namespace RMC.Database.Controllers
             crud.CloseConnection();
 
             return receivableModels;
+        }
+
+
+        public async Task<bool> isFound(string invo)
+        {
+            string sql = @"SELECT * FROM `receive_orders`  WHERE invoice_no = @ino";
+            bool isFound = false;
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>();
+
+            mySqlParameters.Add(new MySqlParameter("@ino", invo));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            if (reader.HasRows)
+            {
+                isFound = true;
+            }
+
+
+            crud.CloseConnection();
+
+            return isFound;
         }
 
     }

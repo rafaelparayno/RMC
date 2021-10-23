@@ -120,37 +120,69 @@ namespace RMC.InventoryPharma.PayRec.Panels
             cbTransfId = int.Parse((cbPo.SelectedItem as ComboBoxItem).Value.ToString());
         }
 
-        private  void dgItemList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgItemList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
 
-          /*  if (checkBox1.Checked)
+            if (checkBox1.Checked)
             {
                 if (e.RowIndex >= 0 && e.ColumnIndex == 4)
                 {
                     DataGridViewRow row = dgItemList.Rows[e.RowIndex];
 
+
+                    if (!Convert.ToBoolean(row.Cells[4].EditedFormattedValue))
+                        return;
+
                     row.Cells[4].Value = !Convert.ToBoolean(row.Cells[4].EditedFormattedValue);
-
-                    await payablesController.updatePaid(row.Cells[1].Value.ToString(),
-                                           Convert.ToBoolean(row.Cells[4].Value));
-                    
-                   
-
-
+         
+                    MessageBox.Show("Succesfully Update Data");
+                    await payablesController.UpdatePaid(row.Cells[1].Value.ToString(), 0, "", "");
+                    await refreshGrid();
                 }
             }
             else
             {
                 DataGridViewRow row = dgItemList.Rows[e.RowIndex];
+
+
+                if (!Convert.ToBoolean(row.Cells[3].EditedFormattedValue))
+                    return;
+
                 row.Cells[3].Value = !Convert.ToBoolean(row.Cells[3].EditedFormattedValue);
 
-                await payablesController.updatePaid(row.Cells[0].Value.ToString(),
-                                   Convert.ToBoolean(row.Cells[3].Value));
+         
+                MessageBox.Show("Succesfully Update Data");
+
+                await payablesController.UpdatePaid(row.Cells[0].Value.ToString(), 0, "", "");
+                await refreshGrid();
             }
 
 
-            MessageBox.Show("Succesfully Update Data");*/
+         
+        }
+
+
+        private async Task refreshGrid()
+        {
+            if (checkBox1.Checked)
+            {
+                List<PayableModel> payableModels = await payablesController.listModel();
+
+                dgItemList.DataSource = "";
+                dgItemList.DataSource = FormatDgWithSupplier(payableModels).Tables[0];
+            }
+            else
+            {
+                List<PayableModel> payableModels = radioButton2.Checked ?
+               await payablesController.listModel(cbTransfId) :
+               await payablesController.listModel(cbTransfId,
+               comboBox1.SelectedIndex + 1,
+               dateTimePicker1.Value.Year);
+
+                dgItemList.DataSource = "";
+                dgItemList.DataSource = FormatDg(payableModels).Tables[0];
+            }
         }
 
         private async void checkBox1_Click(object sender, EventArgs e)
@@ -190,10 +222,18 @@ namespace RMC.InventoryPharma.PayRec.Panels
             }
         }
 
-        private void viewDToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void viewDToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DetailsPayable frm = new DetailsPayable(id);
             frm.ShowDialog();
+            await refreshGrid();
+        }
+
+        private async void paidToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PayPayableDiag frm = new PayPayableDiag(id);
+            frm.ShowDialog();
+            await refreshGrid();
         }
     }
 }

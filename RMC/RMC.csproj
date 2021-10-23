@@ -944,6 +944,12 @@
     <Compile Include="InventoryPharma\PayRec\Dialog\DetailsReceivable.Designer.cs">
       <DependentUpon>DetailsReceivable.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryPharma\PayRec\Dialog\PayPayableDiag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPharma\PayRec\Dialog\PayPayableDiag.Designer.cs">
+      <DependentUpon>PayPayableDiag.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryPharma\PayRec\Dialog\ReceiveArDiag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1937,6 +1943,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PayRec\Dialog\DetailsReceivable.resx">
       <DependentUpon>DetailsReceivable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPharma\PayRec\Dialog\PayPayableDiag.resx">
+      <DependentUpon>PayPayableDiag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryPharma\PayRec\Dialog\ReceiveArDiag.resx">
       <DependentUpon>ReceiveArDiag.cs</DependentUpon>

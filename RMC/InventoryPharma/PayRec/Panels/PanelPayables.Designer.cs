@@ -38,14 +38,14 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.cbPo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgItemList = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.viewDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
@@ -152,30 +152,6 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Click += new System.EventHandler(this.checkBox1_Click);
             // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Searchengin;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconSize = 28;
-            this.iconButton1.Location = new System.Drawing.Point(0, 87);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(659, 29);
-            this.iconButton1.TabIndex = 263;
-            this.iconButton1.Text = "Search";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
-            // 
             // cbPo
             // 
             this.cbPo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -217,7 +193,6 @@
             this.dgItemList.BackgroundColor = System.Drawing.Color.FloralWhite;
             this.dgItemList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgItemList.Enabled = false;
             this.dgItemList.Location = new System.Drawing.Point(0, 126);
             this.dgItemList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgItemList.MultiSelect = false;
@@ -238,20 +213,45 @@
             this.paidToolStripMenuItem,
             this.viewDToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(165, 48);
-            // 
-            // viewDToolStripMenuItem
-            // 
-            this.viewDToolStripMenuItem.Name = "viewDToolStripMenuItem";
-            this.viewDToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.viewDToolStripMenuItem.Text = "View Details";
-            this.viewDToolStripMenuItem.Click += new System.EventHandler(this.viewDToolStripMenuItem_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
             // paidToolStripMenuItem
             // 
             this.paidToolStripMenuItem.Name = "paidToolStripMenuItem";
-            this.paidToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.paidToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.paidToolStripMenuItem.Text = "Pay The Payables";
+            this.paidToolStripMenuItem.Click += new System.EventHandler(this.paidToolStripMenuItem_Click);
+            // 
+            // viewDToolStripMenuItem
+            // 
+            this.viewDToolStripMenuItem.Name = "viewDToolStripMenuItem";
+            this.viewDToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewDToolStripMenuItem.Text = "View Details";
+            this.viewDToolStripMenuItem.Click += new System.EventHandler(this.viewDToolStripMenuItem_Click);
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Searchengin;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconSize = 28;
+            this.iconButton1.Location = new System.Drawing.Point(0, 87);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 3, 5, 3);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Rotation = 0D;
+            this.iconButton1.Size = new System.Drawing.Size(659, 29);
+            this.iconButton1.TabIndex = 263;
+            this.iconButton1.Text = "Search";
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // PanelPayables
             // 

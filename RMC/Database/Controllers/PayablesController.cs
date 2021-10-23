@@ -60,7 +60,8 @@ namespace RMC.Database.Controllers
         {
             PayableModel p = new PayableModel();
 
-            string sql = @"SELECT payables.payables_id,invoice_no,payables_amount,payable_due,is_paid,suppliers.supplier_name FROM `payables` 
+            string sql = @"SELECT payables.payables_id,invoice_no,payables_amount,payable_due,is_paid,check_no,
+                                    check_date_pay,suppliers.supplier_name FROM `payables` 
                                     INNER JOIN suppliers ON payables.supplier_id = suppliers.supplier_id 
                                     WHERE invoice_no = @ino";
 
@@ -81,6 +82,8 @@ namespace RMC.Database.Controllers
                 p.isPaid = int.Parse(reader["is_paid"].ToString()) == 0 ? false : true;
                 p.payableDue = reader["payable_due"].ToString();
                 p.supplierName = reader["supplier_name"].ToString();
+                p.checkNo = reader["check_no"].ToString();
+                p.checkDate = reader["check_date_pay"].ToString();
             }
 
             crud.CloseConnection();
@@ -171,9 +174,27 @@ namespace RMC.Database.Controllers
 
             list.Add(new MySqlParameter("@amount", amount));
             list.Add(new MySqlParameter("@inno", in_no));
-            list.Add(new MySqlParameter("@payable_due", DateTime.Parse(payable_due)));
+            list.Add(new MySqlParameter("@payable_due", payable_due));
             list.Add(new MySqlParameter("@s_id", s_id));
 
+            await crud.ExecuteAsync(sql, list);
+        }
+
+
+        public async Task UpdatePaid(string in_no,
+           int s_id,string checkno,string checkDate)
+        {
+            string sql;
+            List<MySqlParameter> list = new List<MySqlParameter>();
+
+            sql = @"UPDATE `payables` SET is_paid = @s_id,check_no = @cno ,check_date_pay = @cd   WHERE `invoice_no` = @inno ";
+
+       
+            list.Add(new MySqlParameter("@inno", in_no));
+           
+            list.Add(new MySqlParameter("@s_id", s_id));
+            list.Add(new MySqlParameter("@cno", checkno));
+            list.Add(new MySqlParameter("@cd", checkDate == "" ? null : checkDate));
 
             await crud.ExecuteAsync(sql, list);
         }

@@ -39,6 +39,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -48,6 +51,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FloralWhite;
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -56,14 +62,14 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(753, 85);
+            this.panel1.Size = new System.Drawing.Size(753, 120);
             this.panel1.TabIndex = 253;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(444, 9);
+            this.label4.Location = new System.Drawing.Point(26, 100);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 17);
             this.label4.TabIndex = 257;
@@ -126,9 +132,9 @@
             this.lvItemLab.FullRowSelect = true;
             this.lvItemLab.GridLines = true;
             this.lvItemLab.HideSelection = false;
-            this.lvItemLab.Location = new System.Drawing.Point(0, 85);
+            this.lvItemLab.Location = new System.Drawing.Point(0, 120);
             this.lvItemLab.Name = "lvItemLab";
-            this.lvItemLab.Size = new System.Drawing.Size(753, 285);
+            this.lvItemLab.Size = new System.Drawing.Size(753, 250);
             this.lvItemLab.TabIndex = 255;
             this.lvItemLab.UseCompatibleStateImageBehavior = false;
             // 
@@ -140,7 +146,7 @@
             this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
             this.pictureBox1.Location = new System.Drawing.Point(267, 127);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(208, 227);
+            this.pictureBox1.Size = new System.Drawing.Size(208, 237);
             this.pictureBox1.TabIndex = 256;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
@@ -176,6 +182,36 @@
             this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton6.UseVisualStyleBackColor = false;
             this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(371, 54);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 17);
+            this.label8.TabIndex = 265;
+            this.label8.Text = "Check No:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(371, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(121, 17);
+            this.label6.TabIndex = 264;
+            this.label6.Text = "Mode of Payment:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(371, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 17);
+            this.label5.TabIndex = 263;
+            this.label5.Text = "Check Date:";
             // 
             // DetailsPayable
             // 
@@ -218,5 +254,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private FontAwesome.Sharp.IconButton iconButton6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
