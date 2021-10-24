@@ -56,6 +56,155 @@ namespace RMC.Database.Controllers
             return payableModels;
         }
 
+        public async Task<List<PayableModel>> listModelYear(int yr1)
+        {
+            List<PayableModel> payableModels = new List<PayableModel>();
+
+            string sql = @"SELECT payables.payables_id,invoice_no, 
+                        payables_amount,is_paid,payable_due,supplier_name
+                        FROM `payables` INNER JOIN suppliers ON
+                        payables.supplier_id = suppliers.supplier_id 
+                        WHERE YEAR(payable_due) = @yr1  ORDER BY payable_due ASC";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@yr1",yr1)
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while (await reader.ReadAsync())
+            {
+                PayableModel p = new PayableModel();
+                p.id = int.Parse(reader["payables_id"].ToString());
+                p.invoice_no = reader["invoice_no"].ToString();
+                p.amount = float.Parse(reader["payables_amount"].ToString());
+
+                p.isPaid = int.Parse(reader["is_paid"].ToString()) == 0 ? false : true;
+                p.payableDue = reader["payable_due"].ToString();
+                p.supplierName = reader["supplier_name"].ToString();
+
+                payableModels.Add(p);
+            }
+
+            crud.CloseConnection();
+
+            return payableModels;
+        }
+
+        public async Task<List<PayableModel>> listModelYear(int yr1, int isPaid)
+        {
+            List<PayableModel> payableModels = new List<PayableModel>();
+
+            string sql = @"SELECT payables.payables_id,invoice_no, 
+                        payables_amount,is_paid,payable_due,supplier_name
+                        FROM `payables` INNER JOIN suppliers ON
+                        payables.supplier_id = suppliers.supplier_id 
+                        WHERE YEAR(payable_due) = @yr1 AND is_paid = @paid ORDER BY payable_due ASC";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@yr1",yr1),
+                   new MySqlParameter("@paid",isPaid)
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while (await reader.ReadAsync())
+            {
+                PayableModel p = new PayableModel();
+                p.id = int.Parse(reader["payables_id"].ToString());
+                p.invoice_no = reader["invoice_no"].ToString();
+                p.amount = float.Parse(reader["payables_amount"].ToString());
+
+                p.isPaid = int.Parse(reader["is_paid"].ToString()) == 0 ? false : true;
+                p.payableDue = reader["payable_due"].ToString();
+                p.supplierName = reader["supplier_name"].ToString();
+
+                payableModels.Add(p);
+            }
+
+            crud.CloseConnection();
+
+            return payableModels;
+        }
+
+        public async Task<List<PayableModel>> listModelMonth(int yr,int m)
+        {
+            List<PayableModel> payableModels = new List<PayableModel>();
+
+            string sql = @"SELECT payables.payables_id,invoice_no, 
+                        payables_amount,is_paid,payable_due,supplier_name
+                        FROM `payables` INNER JOIN suppliers ON
+                        payables.supplier_id = suppliers.supplier_id 
+                        WHERE YEAR(payable_due) = @yr1 AND MONTH(payable_due) = @m ORDER BY payable_due ASC";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@yr1",yr),
+                new MySqlParameter("@m",m)
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while (await reader.ReadAsync())
+            {
+                PayableModel p = new PayableModel();
+                p.id = int.Parse(reader["payables_id"].ToString());
+                p.invoice_no = reader["invoice_no"].ToString();
+                p.amount = float.Parse(reader["payables_amount"].ToString());
+
+                p.isPaid = int.Parse(reader["is_paid"].ToString()) == 0 ? false : true;
+                p.payableDue = reader["payable_due"].ToString();
+                p.supplierName = reader["supplier_name"].ToString();
+
+                payableModels.Add(p);
+            }
+
+            crud.CloseConnection();
+
+            return payableModels;
+        }
+
+        public async Task<List<PayableModel>> listModelMonth(int yr, int m,int paid)
+        {
+            List<PayableModel> payableModels = new List<PayableModel>();
+
+            string sql = @"SELECT payables.payables_id,invoice_no, 
+                        payables_amount,is_paid,payable_due,supplier_name
+                        FROM `payables` INNER JOIN suppliers ON
+                        payables.supplier_id = suppliers.supplier_id 
+                        WHERE YEAR(payable_due) = @yr1 AND MONTH(payable_due) = @m AND is_paid = @paid ORDER BY payable_due ASC";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                new MySqlParameter("@yr1",yr),
+                new MySqlParameter("@m",m),
+                  new MySqlParameter("@paid",paid)
+            };
+
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, mySqlParameters);
+
+            while (await reader.ReadAsync())
+            {
+                PayableModel p = new PayableModel();
+                p.id = int.Parse(reader["payables_id"].ToString());
+                p.invoice_no = reader["invoice_no"].ToString();
+                p.amount = float.Parse(reader["payables_amount"].ToString());
+
+                p.isPaid = int.Parse(reader["is_paid"].ToString()) == 0 ? false : true;
+                p.payableDue = reader["payable_due"].ToString();
+                p.supplierName = reader["supplier_name"].ToString();
+
+                payableModels.Add(p);
+            }
+
+            crud.CloseConnection();
+
+            return payableModels;
+        }
+
+
         public async Task<PayableModel> getModel(string invoice)
         {
             PayableModel p = new PayableModel();

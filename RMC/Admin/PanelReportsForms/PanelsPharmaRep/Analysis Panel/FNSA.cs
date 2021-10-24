@@ -20,6 +20,8 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
         ItemController itemz = new ItemController();
         PharmaStocksController pharmaStocksController = new PharmaStocksController();
         Dictionary<int, List<fnsaItemMod>> datasDic;
+        List<averageStayFns> ListAvgStayFns = new List<averageStayFns>();
+        List<ConsumationRateFns> listConsumtionRate = new List<ConsumationRateFns>();
         public FNSA()
         {
             InitializeComponent();
@@ -107,48 +109,59 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep.Analysis_Panel
             return f;
         }
 
-        private async void iconButton1_Click(object sender, EventArgs e)
+        private async Task setDisc()
         {
             DataSet ds = await itemz.getdataSetActive();
-            datasDic = new Dictionary<int, List<fnsaItemMod>>();
-            List<averageStayFns> ListAvgStayFns = new List<averageStayFns>();
-            List<ConsumationRateFns> listConsumtionRate = new List<ConsumationRateFns>();
-            foreach (DataRow dr in ds.Tables[0].Rows)
+            await Task.Run(async () =>
             {
-                int id = int.Parse(dr[0].ToString());
-                datasDic.Add(id, await getItemData(id));
-            }
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    int id = int.Parse(dr[0].ToString());
+                    datasDic.Add(id, await getItemData(id));
+                }
 
+                foreach (KeyValuePair<int, List<fnsaItemMod>> d in datasDic)
+                {
+                    averageStayFns avgSStayFns = new averageStayFns();
+                    ConsumationRateFns conSsFns = new ConsumationRateFns();
+                    int CurrentStocks = await pharmaStocksController.getStocks(d.Key);
+                    int Balance = await salesPharmaController.getOpeningBalance(d.Key,
+                                                        dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+                    int openingBalance = CurrentStocks + Balance;
+                    float avgStay = (float)d.Value.LastOrDefault().holdingDays /
+                                                            (openingBalance +
+                                                                 d.Value.Sum(x => x.recQty));
+                    float ConsumationRate = (float)d.Value.Sum(x => x.salesQty) / d.Value.Count;
+                    avgSStayFns.itemcode = d.Key;
+                    avgSStayFns.avgStay = avgStay;
+
+                    conSsFns.itemcode = d.Key;
+                    conSsFns.consumtionRate = ConsumationRate;
+
+                    ListAvgStayFns.Add(avgSStayFns);
+                    listConsumtionRate.Add(conSsFns);
+                }
+            });
+        }
+
+        private async void iconButton1_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Show();
+            pictureBox1.Update();
+            datasDic = new Dictionary<int, List<fnsaItemMod>>();
+            ListAvgStayFns = new List<averageStayFns>();
+            listConsumtionRate = new List<ConsumationRateFns>();
             lvsAnalysis.Items.Clear();
             lvAnalysis2.Items.Clear();
-
-            foreach (KeyValuePair<int, List<fnsaItemMod>> d in datasDic)
-            {
-                averageStayFns avgSStayFns = new averageStayFns();
-                ConsumationRateFns conSsFns = new ConsumationRateFns();
-                int CurrentStocks = await pharmaStocksController.getStocks(d.Key);
-                int Balance = await salesPharmaController.getOpeningBalance(d.Key,
-                                                    dateTimePicker1.Value.ToString("yyyy-MM-dd"));
-                int openingBalance = CurrentStocks + Balance;
-                float avgStay = (float)d.Value.LastOrDefault().holdingDays /
-                                                        (openingBalance + 
-                                                             d.Value.Sum(x => x.recQty));
-                float ConsumationRate = (float)d.Value.Sum(x => x.salesQty) / d.Value.Count;
-                avgSStayFns.itemcode = d.Key;
-                avgSStayFns.avgStay = avgStay;
-
-                conSsFns.itemcode = d.Key;
-                conSsFns.consumtionRate = ConsumationRate;
-
-                ListAvgStayFns.Add(avgSStayFns);
-                listConsumtionRate.Add(conSsFns);
-            }
+            await setDisc();
 
 
+            pictureBox1.Hide();
             ListAvgStayFns = ListAvgStayFns.OrderByDescending(x => x.avgStay).ToList();
             listConsumtionRate = listConsumtionRate.OrderByDescending(x => x.consumtionRate).ToList();
             settingLvAvgStay(ListAvgStayFns);
             settingLvConsumtionRate(listConsumtionRate);
+            
 
         }
 

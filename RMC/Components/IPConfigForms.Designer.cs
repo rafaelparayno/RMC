@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCloseApp = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtServer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,8 +41,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnCloseApp = new FontAwesome.Sharp.IconButton();
-            this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +59,24 @@
             this.panel1.TabIndex = 5;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
+            // btnCloseApp
+            // 
+            this.btnCloseApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCloseApp.BackColor = System.Drawing.Color.Transparent;
+            this.btnCloseApp.FlatAppearance.BorderSize = 0;
+            this.btnCloseApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseApp.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnCloseApp.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
+            this.btnCloseApp.IconColor = System.Drawing.Color.White;
+            this.btnCloseApp.IconSize = 25;
+            this.btnCloseApp.Location = new System.Drawing.Point(349, 5);
+            this.btnCloseApp.Name = "btnCloseApp";
+            this.btnCloseApp.Rotation = 0D;
+            this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
+            this.btnCloseApp.TabIndex = 2;
+            this.btnCloseApp.UseVisualStyleBackColor = false;
+            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -70,6 +88,20 @@
             this.label1.Size = new System.Drawing.Size(117, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "IP Configuration";
+            // 
+            // iconCurrentChildForm
+            // 
+            this.iconCurrentChildForm.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.iconCurrentChildForm.BackColor = System.Drawing.Color.Salmon;
+            this.iconCurrentChildForm.ForeColor = System.Drawing.Color.Maroon;
+            this.iconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.Server;
+            this.iconCurrentChildForm.IconColor = System.Drawing.Color.Maroon;
+            this.iconCurrentChildForm.IconSize = 27;
+            this.iconCurrentChildForm.Location = new System.Drawing.Point(3, 7);
+            this.iconCurrentChildForm.Name = "iconCurrentChildForm";
+            this.iconCurrentChildForm.Size = new System.Drawing.Size(32, 27);
+            this.iconCurrentChildForm.TabIndex = 0;
+            this.iconCurrentChildForm.TabStop = false;
             // 
             // label6
             // 
@@ -204,40 +236,9 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnCloseApp
-            // 
-            this.btnCloseApp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCloseApp.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseApp.FlatAppearance.BorderSize = 0;
-            this.btnCloseApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseApp.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnCloseApp.IconChar = FontAwesome.Sharp.IconChar.WindowClose;
-            this.btnCloseApp.IconColor = System.Drawing.Color.White;
-            this.btnCloseApp.IconSize = 25;
-            this.btnCloseApp.Location = new System.Drawing.Point(349, 5);
-            this.btnCloseApp.Name = "btnCloseApp";
-            this.btnCloseApp.Rotation = 0D;
-            this.btnCloseApp.Size = new System.Drawing.Size(33, 26);
-            this.btnCloseApp.TabIndex = 2;
-            this.btnCloseApp.UseVisualStyleBackColor = false;
-            this.btnCloseApp.Click += new System.EventHandler(this.btnCloseApp_Click);
-            // 
-            // iconCurrentChildForm
-            // 
-            this.iconCurrentChildForm.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.iconCurrentChildForm.BackColor = System.Drawing.Color.Salmon;
-            this.iconCurrentChildForm.ForeColor = System.Drawing.Color.Maroon;
-            this.iconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.Server;
-            this.iconCurrentChildForm.IconColor = System.Drawing.Color.Maroon;
-            this.iconCurrentChildForm.IconSize = 27;
-            this.iconCurrentChildForm.Location = new System.Drawing.Point(3, 7);
-            this.iconCurrentChildForm.Name = "iconCurrentChildForm";
-            this.iconCurrentChildForm.Size = new System.Drawing.Size(32, 27);
-            this.iconCurrentChildForm.TabIndex = 0;
-            this.iconCurrentChildForm.TabStop = false;
-            // 
             // IPConfigForms
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;

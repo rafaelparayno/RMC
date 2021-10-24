@@ -60,7 +60,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
             dgItemList.DataSource = "";
             dgItemList.DataSource = FormatDg(payableModels).Tables[0];
-        
+            dgItemList.AutoResizeColumns();
 
         }
 
@@ -171,6 +171,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
                 dgItemList.DataSource = "";
                 dgItemList.DataSource = FormatDgWithSupplier(payableModels).Tables[0];
+                dgItemList.AutoResizeColumns();
             }
             else
             {
@@ -182,6 +183,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
                 dgItemList.DataSource = "";
                 dgItemList.DataSource = FormatDg(payableModels).Tables[0];
+                dgItemList.AutoResizeColumns();
             }
         }
 
@@ -193,6 +195,7 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
                 dgItemList.DataSource = "";
                 dgItemList.DataSource = FormatDgWithSupplier(payableModels).Tables[0];
+                dgItemList.AutoResizeColumns();
             }
             else
             {

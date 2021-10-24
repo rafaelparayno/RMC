@@ -49,6 +49,10 @@ namespace RMC.Components
 
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Incorrect password or username or The user you enter doesnt have the right access");;
+            }
 
           
         }

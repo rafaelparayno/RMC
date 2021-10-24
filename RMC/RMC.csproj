@@ -585,11 +585,23 @@
     <Compile Include="Components\MarqueeLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\MonthsDiagComp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\MonthsDiagComp.Designer.cs">
+      <DependentUpon>MonthsDiagComp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\VoidForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Components\VoidForm.Designer.cs">
       <DependentUpon>VoidForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\YearDiagComp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\YearDiagComp.Designer.cs">
+      <DependentUpon>YearDiagComp.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\BackupandRestore\csBackupAndRestore.cs" />
     <Compile Include="Database\Controllers\AccessController.cs" />
@@ -1824,8 +1836,14 @@
     <EmbeddedResource Include="Components\loading.resx">
       <DependentUpon>loading.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\MonthsDiagComp.resx">
+      <DependentUpon>MonthsDiagComp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\VoidForm.resx">
       <DependentUpon>VoidForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\YearDiagComp.resx">
+      <DependentUpon>YearDiagComp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Doctor\DashDoc.resx">
       <DependentUpon>DashDoc.cs</DependentUpon>
