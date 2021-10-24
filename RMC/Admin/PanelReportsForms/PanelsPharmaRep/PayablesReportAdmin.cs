@@ -2,6 +2,7 @@
 using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,8 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
     {
 
         PayablesController payablesController = new PayablesController();
-        string id = "";
+        List<PayableModel> payableModels = new List<PayableModel>();
+     
 
         public PayablesReportAdmin()
         {
@@ -29,7 +31,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
         private async Task loadGrid()
         {
 
-            List<PayableModel> payableModels = await payablesController.listModel();
+           payableModels = await payablesController.listModel();
 
             dgItemList.DataSource = "";
             dgItemList.DataSource = FormatDgWithSupplier(payableModels).Tables[0];
@@ -37,7 +39,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
 
         }
 
-        private DataSet FormatDgWithSupplier(List<PayableModel> payableModels)
+        private DataSet FormatDgWithSupplier(List<PayableModel> payableModelsFormat)
         {
 
 
@@ -50,7 +52,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             dt.Columns.Add("Amount", typeof(string));
             dt.Columns.Add("Paid", typeof(bool));
 
-            foreach (PayableModel p in payableModels)
+            foreach (PayableModel p in payableModelsFormat)
             {
                 dt.Rows.Add(p.supplierName, p.invoice_no, p.payableDue.Split(' ')[0], String.Format("₱ {0:n}", p.amount), p.isPaid);
             }
@@ -77,6 +79,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
         private async void iconButton3_Click(object sender, EventArgs e)
         {
            await loadGrid();
+           computeTotalAmt();
         }
 
         private async void iconButton2_Click(object sender, EventArgs e)
@@ -108,7 +111,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
         public async Task loadDatasInMonth(int m,int yr)
         {
             int isPaid = radioButton8.Checked ? 1 : 0;
-            List<PayableModel> payableModels =  radioButton1.Checked ? 
+            payableModels =  radioButton1.Checked ? 
                 await payablesController.listModelMonth(yr,m) : await payablesController.listModelMonth(yr, m,isPaid);
 
             dgItemList.DataSource = "";
@@ -119,12 +122,42 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
         public async Task loadDatasInYear(int yr)
         {
             int isPaid = radioButton8.Checked ? 1 : 0;
-            List<PayableModel> payableModels = radioButton1.Checked ? 
+            payableModels = radioButton1.Checked ? 
                 await payablesController.listModelYear(yr) : await payablesController.listModelYear(yr,isPaid);
 
             dgItemList.DataSource = "";
             dgItemList.DataSource = FormatDgWithSupplier(payableModels).Tables[0];
             dgItemList.AutoResizeColumns();
+        }
+
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+            if (dgItemList.Rows.Count == 0)
+                return;
+
+            DataSet newDataset = new DataSet();
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Supplier Name", typeof(string));
+            dt.Columns.Add("Invoice #", typeof(string));
+            dt.Columns.Add("Date Due", typeof(string));
+            dt.Columns.Add("Amount", typeof(float));
+            dt.Columns.Add("Paid", typeof(bool));
+
+            foreach (PayableModel p in payableModels)
+            {
+                dt.Rows.Add(p.supplierName, p.invoice_no, p.payableDue.Split(' ')[0], p.amount, p.isPaid);
+            }
+
+            newDataset.Tables.Add(dt);
+
+            PayableReportAdmin cos = new PayableReportAdmin();
+            cos.SetDataSource(newDataset);
+
+            var dialog = new PrintDialog();
+            dialog.ShowDialog();
+            cos.PrintOptions.PrinterName = dialog.PrinterSettings.PrinterName;
+            cos.PrintToPrinter(1, false, 0, 0);
         }
     }
 }

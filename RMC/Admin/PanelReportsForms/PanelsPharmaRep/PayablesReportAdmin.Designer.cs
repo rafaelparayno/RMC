@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dgItemList = new System.Windows.Forms.DataGridView();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dgItemList = new System.Windows.Forms.DataGridView();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
@@ -64,63 +64,44 @@
             this.groupBox1.TabIndex = 217;
             this.groupBox1.TabStop = false;
             // 
-            // groupBox3
+            // radioButton1
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox3.Controls.Add(this.dgItemList);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(0, 65);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.groupBox3.Size = new System.Drawing.Size(878, 170);
-            this.groupBox3.TabIndex = 218;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Payables";
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.radioButton1.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.radioButton1.Location = new System.Drawing.Point(692, 18);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(55, 42);
+            this.radioButton1.TabIndex = 268;
+            this.radioButton1.Text = "Both";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // dgItemList
+            // radioButton8
             // 
-            this.dgItemList.AllowUserToAddRows = false;
-            this.dgItemList.AllowUserToDeleteRows = false;
-            this.dgItemList.AllowUserToResizeColumns = false;
-            this.dgItemList.AllowUserToResizeRows = false;
-            this.dgItemList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgItemList.BackgroundColor = System.Drawing.Color.FloralWhite;
-            this.dgItemList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgItemList.Location = new System.Drawing.Point(3, 20);
-            this.dgItemList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgItemList.MultiSelect = false;
-            this.dgItemList.Name = "dgItemList";
-            this.dgItemList.ReadOnly = true;
-            this.dgItemList.RowHeadersVisible = false;
-            this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgItemList.Size = new System.Drawing.Size(872, 145);
-            this.dgItemList.StandardTab = true;
-            this.dgItemList.TabIndex = 116;
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.radioButton8.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.radioButton8.Location = new System.Drawing.Point(747, 18);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(51, 42);
+            this.radioButton8.TabIndex = 267;
+            this.radioButton8.Text = "Paid";
+            this.radioButton8.UseVisualStyleBackColor = true;
             // 
-            // iconButton6
+            // radioButton7
             // 
-            this.iconButton6.BackColor = System.Drawing.Color.Maroon;
-            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton6.ForeColor = System.Drawing.Color.White;
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton6.IconColor = System.Drawing.Color.White;
-            this.iconButton6.IconSize = 28;
-            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton6.Location = new System.Drawing.Point(0, 284);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Rotation = 0D;
-            this.iconButton6.Size = new System.Drawing.Size(878, 47);
-            this.iconButton6.TabIndex = 9;
-            this.iconButton6.Text = "Print";
-            this.iconButton6.UseVisualStyleBackColor = false;
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Checked = true;
+            this.radioButton7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.radioButton7.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.radioButton7.Location = new System.Drawing.Point(798, 18);
+            this.radioButton7.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(77, 42);
+            this.radioButton7.TabIndex = 266;
+            this.radioButton7.TabStop = true;
+            this.radioButton7.Text = "Not Paid";
+            this.radioButton7.UseVisualStyleBackColor = true;
             // 
             // iconButton3
             // 
@@ -188,6 +169,65 @@
             this.iconButton2.UseVisualStyleBackColor = false;
             this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.dgItemList);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(0, 65);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.groupBox3.Size = new System.Drawing.Size(878, 170);
+            this.groupBox3.TabIndex = 218;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Payables";
+            // 
+            // dgItemList
+            // 
+            this.dgItemList.AllowUserToAddRows = false;
+            this.dgItemList.AllowUserToDeleteRows = false;
+            this.dgItemList.AllowUserToResizeColumns = false;
+            this.dgItemList.AllowUserToResizeRows = false;
+            this.dgItemList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgItemList.BackgroundColor = System.Drawing.Color.FloralWhite;
+            this.dgItemList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgItemList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgItemList.Location = new System.Drawing.Point(3, 20);
+            this.dgItemList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgItemList.MultiSelect = false;
+            this.dgItemList.Name = "dgItemList";
+            this.dgItemList.ReadOnly = true;
+            this.dgItemList.RowHeadersVisible = false;
+            this.dgItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgItemList.Size = new System.Drawing.Size(872, 145);
+            this.dgItemList.StandardTab = true;
+            this.dgItemList.TabIndex = 116;
+            // 
+            // iconButton6
+            // 
+            this.iconButton6.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton6.ForeColor = System.Drawing.Color.White;
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton6.IconColor = System.Drawing.Color.White;
+            this.iconButton6.IconSize = 28;
+            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton6.Location = new System.Drawing.Point(0, 284);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 2, 6, 2);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.Rotation = 0D;
+            this.iconButton6.Size = new System.Drawing.Size(878, 47);
+            this.iconButton6.TabIndex = 9;
+            this.iconButton6.Text = "Print";
+            this.iconButton6.UseVisualStyleBackColor = false;
+            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label7);
@@ -213,45 +253,6 @@
             this.label7.TabIndex = 227;
             this.label7.Text = "0.00";
             // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.radioButton8.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.radioButton8.Location = new System.Drawing.Point(747, 18);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(51, 42);
-            this.radioButton8.TabIndex = 267;
-            this.radioButton8.Text = "Paid";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Checked = true;
-            this.radioButton7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.radioButton7.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.radioButton7.Location = new System.Drawing.Point(798, 18);
-            this.radioButton7.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(77, 42);
-            this.radioButton7.TabIndex = 266;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Not Paid";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.radioButton1.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.radioButton1.Location = new System.Drawing.Point(692, 18);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(55, 42);
-            this.radioButton1.TabIndex = 268;
-            this.radioButton1.Text = "Both";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // PayablesReportAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -263,7 +264,7 @@
             this.Controls.Add(this.iconButton6);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PayablesReportAdmin";
             this.Text = "PayablesReportAdmin";
             this.groupBox1.ResumeLayout(false);

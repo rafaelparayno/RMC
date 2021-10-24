@@ -159,6 +159,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_50A07B7BD7F0475C9A7886DDF7B30200"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_524A4002F1534479AF85479A99E2CB8F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -437,6 +443,12 @@
         {
         "MsmKey" = "8:_CC721C18EBFA0A165214DFD876B84A60"
         "OwnerKey" = "8:_524A4002F1534479AF85479A99E2CB8F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CDB00ECE60FA4A718A69E01EC48D0672"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1265,6 +1277,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_50A07B7BD7F0475C9A7886DDF7B30200"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\payablesSupplierRep.xml"
+            "TargetName" = "8:payablesSupplierRep.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_58DE7B51BA2D9BB2706ECC5E6493C36B"
             {
             "AssemblyRegister" = "3:1"
@@ -2034,6 +2066,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CDB00ECE60FA4A718A69E01EC48D0672"
+            {
+            "SourcePath" = "8:..\\RMC\\bin\\Debug\\receivablesRep.xml"
+            "TargetName" = "8:receivablesRep.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_206953E152AE4D57A48F0A7DF51FC5A3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CE5DFD21DED28A9353D3FD3D3B559BC9"
