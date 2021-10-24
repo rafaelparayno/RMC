@@ -45,6 +45,10 @@ namespace RMC.InventoryPharma.PayRec.Dialog
             label1.Text += " " + p.invoice_no;
             label2.Text += " " + p.supplierName;
             label4.Text += " " + p.payableDue.Split(' ')[0];
+            label6.Text += " " + (p.isPaid ? p.checkNo == "" || p.checkNo == null ? "Cash" : "Check"  : "Not Paid");
+
+            label8.Text += " " + p.checkNo;
+            label5.Text += " " + p.checkNo == "" ? "" : p.checkDate.Split(' ')[0];
         }
 
         private async Task loadPoItems()

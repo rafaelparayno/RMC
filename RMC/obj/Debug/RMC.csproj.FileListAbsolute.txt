@@ -452,3 +452,4 @@ C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.pdb
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.csprojAssemblyReference.cache
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Reception.PanelRequestForm.Dialogs.addDiscPay.resources
 C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.InventoryPharma.PayRec.Dialog.PayPayableDiag.resources
+C:\Users\Xorn\Desktop\C#\RMCFIles\RMCProj\RMC\obj\Debug\RMC.Admin.PanelReportsForms.PanelsPharmaRep.PayablesReportAdmin.resources
