@@ -3,6 +3,7 @@ using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.InventoryPharma.Dialogs;
 using RMC.Pharma;
+using RMC.Reception.PanelRequestForm.Dialogs;
 using RMC.Reports;
 using System;
 using System.Collections.Generic;
@@ -29,14 +30,17 @@ namespace RMC.InventoryPharma
         float change = 0;
         string seniorId = "";
         int invoice_no = 0;
+        private int indexInDg = 0;
 
         public POS()
         {
             InitializeComponent();
             dt.Columns.Add("SKU", typeof(string));
             dt.Columns.Add("Product Name", typeof(string));
-            dt.Columns.Add("Quantity", typeof(int));
-            dt.Columns.Add("Price", typeof(decimal));
+            dt.Columns.Add("Selling Price", typeof(int));
+            dt.Columns.Add("Qty", typeof(int));
+            dt.Columns.Add("Total Price", typeof(decimal));
+            dt.Columns.Add("Discount", typeof(decimal));
         }
 
         private async void txtCode_TextChanged(object sender, EventArgs e)
@@ -76,7 +80,7 @@ namespace RMC.InventoryPharma
             if(itemModel.sku == txtCode.Text.Trim())
             {
                 float itemTotalPrice = float.Parse(numericUpDown1.Value.ToString()) * float.Parse(txtrue.Text.Trim().Split(' ')[1]);
-                dt.Rows.Add(txtCode.Text, txtName.Text,numericUpDown1.Value, itemTotalPrice);
+                dt.Rows.Add(txtCode.Text, txtName.Text, float.Parse(txtrue.Text.Trim().Split(' ')[1]), numericUpDown1.Value, itemTotalPrice,0);
                 dataGridView1.DataSource = dt;
                 clearItems();
                 CalculateTotal();
@@ -91,8 +95,7 @@ namespace RMC.InventoryPharma
             txtStock.Clear();
             txtrue.Text = "";
             numericUpDown1.Value = 0;
-            txtDis.Visible = false;
-            label11.Visible = false;
+      
         }
 
         private int checkstocks(string sku,int stocks)
@@ -105,7 +108,7 @@ namespace RMC.InventoryPharma
             {
                 if (dr.Cells["SKU"].Value.ToString() == sku)
                 {
-                     currentStocks -= int.Parse(dr.Cells["Quantity"].Value.ToString());
+                     currentStocks -= int.Parse(dr.Cells["Qty"].Value.ToString());
                 }
             }
 
@@ -119,7 +122,7 @@ namespace RMC.InventoryPharma
             float dis = 0;
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
-                totalAmount += float.Parse(dr.Cells["Price"].Value.ToString());
+                totalAmount += float.Parse(dr.Cells["Total Price"].Value.ToString());
             }
 
             /*if( seniorId != "")
@@ -213,10 +216,10 @@ namespace RMC.InventoryPharma
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
                 listSave.Add(pharmaStocksController.SaveSKU(dr.Cells["SKU"].Value.ToString(),
-                                                     int.Parse(dr.Cells["Quantity"].Value.ToString())));
+                                                     int.Parse(dr.Cells["Qty"].Value.ToString())));
                 
                 listSave.Add(salesPharmaController.Save(dr.Cells["SKU"].Value.ToString(),
-                                    int.Parse(dr.Cells["Quantity"].Value.ToString())));
+                                    int.Parse(dr.Cells["Qty"].Value.ToString())));
                
             }
 
@@ -243,7 +246,7 @@ namespace RMC.InventoryPharma
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
                 string name = dr.Cells["Product Name"].Value.ToString();
-                int qty = int.Parse(dr.Cells["Quantity"].Value.ToString());
+                int qty = int.Parse(dr.Cells["Qty"].Value.ToString());
                 float Tprice = float.Parse(dr.Cells["Price"].Value.ToString());
                 float sPrice = Tprice / qty;
                 subtotal += Tprice;
@@ -281,8 +284,7 @@ namespace RMC.InventoryPharma
             button3.Enabled = false;
             txtCode.Enabled = false;
           
-            txtDis.Visible = false;
-            label11.Visible = false;
+            
             
             seniorId = "";
             CalculateTotal();
@@ -301,13 +303,14 @@ namespace RMC.InventoryPharma
             CalculateTotal();
             textBox4.Text = "0.00";
             textBox2.Text = "0.00";
+            txtDis.Text = "0.00";
             txtCode.Focus();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             //Senior Discount
-            seniorDiag form = new seniorDiag();
+          /*  seniorDiag form = new seniorDiag();
             form.ShowDialog();
 
             seniorId = form.seniorId;
@@ -316,7 +319,7 @@ namespace RMC.InventoryPharma
             {
                 txtDis.Visible = true;
                 label11.Visible = true;
-            }
+            }*/
 
         }
 
@@ -397,6 +400,39 @@ namespace RMC.InventoryPharma
             }
         }
 
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+                    contextMenuStrip1.Show(dataGridView1, new Point(e.X, e.Y));
+                    indexInDg = currentMouseOverRow;
+                }
+
+            }
+        }
+
+        private void addDiscountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            float sellingPrice = float.Parse(dataGridView1.Rows[indexInDg].Cells[4].Value.ToString());
+
+            addDiscPay frmDisc = new addDiscPay(sellingPrice);
+
+
+            frmDisc.ShowDialog();
+
+            if (frmDisc.Percentage == 0)
+                return;
+
+            float setPerc = frmDisc.Percentage;
+            dataGridView1.Rows[indexInDg].Cells[5].Value = setPerc;
+            CalculateTotal();
+        }
     }
 }
 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,30 +56,15 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addDiscountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewItemDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(330, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(342, 246);
-            this.dataGridView1.TabIndex = 1;
             // 
             // label2
             // 
@@ -161,7 +146,6 @@
             this.txtCode.Size = new System.Drawing.Size(219, 25);
             this.txtCode.TabIndex = 252;
             this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
-        
             // 
             // btnUpdate
             // 
@@ -324,6 +308,7 @@
             this.txtDis.BackColor = System.Drawing.Color.Black;
             this.txtDis.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDis.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtDis.Enabled = false;
             this.txtDis.Font = new System.Drawing.Font("Palatino Linotype", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDis.ForeColor = System.Drawing.Color.Snow;
             this.txtDis.Location = new System.Drawing.Point(0, 125);
@@ -332,7 +317,6 @@
             this.txtDis.TabIndex = 283;
             this.txtDis.Text = "0.00";
             this.txtDis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtDis.Visible = false;
             this.txtDis.TextChanged += new System.EventHandler(this.txtDis_TextChanged);
             this.txtDis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDis_KeyPress);
             // 
@@ -348,7 +332,6 @@
             this.label11.TabIndex = 282;
             this.label11.Text = "Discount";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label11.Visible = false;
             // 
             // textBox3
             // 
@@ -451,6 +434,48 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addDiscountToolStripMenuItem,
+            this.viewItemDetailsToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(194, 48);
+            // 
+            // addDiscountToolStripMenuItem
+            // 
+            this.addDiscountToolStripMenuItem.Name = "addDiscountToolStripMenuItem";
+            this.addDiscountToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.addDiscountToolStripMenuItem.Text = "Add Discount Amount";
+            this.addDiscountToolStripMenuItem.Click += new System.EventHandler(this.addDiscountToolStripMenuItem_Click);
+            // 
+            // viewItemDetailsToolStripMenuItem
+            // 
+            this.viewItemDetailsToolStripMenuItem.Name = "viewItemDetailsToolStripMenuItem";
+            this.viewItemDetailsToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.viewItemDetailsToolStripMenuItem.Text = "View Item Details";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(330, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(342, 246);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
+            // 
             // POS
             // 
             this.AcceptButton = this.button3;
@@ -484,18 +509,17 @@
             this.Name = "POS";
             this.Text = "POS";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.POS_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -523,5 +547,9 @@
         internal System.Windows.Forms.TextBox textBox2;
         internal System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem addDiscountToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewItemDetailsToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

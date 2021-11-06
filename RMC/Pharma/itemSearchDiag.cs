@@ -33,14 +33,14 @@ namespace RMC.Pharma
 
         private async void loadGrid()
         {
-            DataSet ds = await itemz.getdataSetActive();
+            DataSet ds = await itemz.getdataSetPharma();
             RefreshGrid(ds);
         }
 
         private async void SearchGrid(string searchkey, int cbSelect)
         {
 
-            DataSet ds = await itemz.getDsSearchActive(cbSelect, searchkey);
+            DataSet ds = await itemz.getDsSearchPharmaActive(cbSelect, searchkey);
             RefreshGrid(ds);
         }
 
@@ -60,9 +60,8 @@ namespace RMC.Pharma
             DataTable dt = new DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("Item Name");
-            dt.Columns.Add("Unit Price");
-            dt.Columns.Add("Markup Price");
             dt.Columns.Add("Selling Price");
+            dt.Columns.Add("Stocks");
             dt.Columns.Add("SKU");
             dt.Columns.Add("Description");
             dt.Columns.Add("Generic Or Branded");
@@ -72,18 +71,19 @@ namespace RMC.Pharma
 
             foreach (DataRow dr in ds.Tables[0].Rows)
             {
+                int _;
                 //your code here
                 if (int.Parse(dr["isBranded"].ToString()) == 1)
                 {
-                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "Branded", dr[8], dr[9], dr[10]);
+                    dt.Rows.Add(dr[0], dr[1], dr[2], int.TryParse(dr[3].ToString(),out _) ? dr[3] : "0", dr[4], dr[5], "Branded", dr[7], dr[8], dr[9]);
                 }
                 else if (int.Parse(dr["isBranded"].ToString()) == 2)
                 {
-                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "Generic", dr[8], dr[9], dr[10]);
+                    dt.Rows.Add(dr[0], dr[1],  dr[2], int.TryParse(dr[3].ToString(), out _) ? dr[3] : "0", dr[4], dr[5], "Generic", dr[7], dr[8], dr[9]);
                 }
                 else
                 {
-                    dt.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6], "N/A", dr[8], dr[9], dr[10]);
+                    dt.Rows.Add(dr[0], dr[1], dr[2], int.TryParse(dr[3].ToString(), out _) ? dr[3] : "0", dr[4],dr[5] ,"N/A", dr[7], dr[8], dr[9]);
                 }
 
             }
@@ -119,7 +119,7 @@ namespace RMC.Pharma
                 if (currentMouseOverRow >= 0)
                 {
                     /*  idRightClick = dgItemList.Rows[currentMouseOverRow].Cells[0].Value.ToString();*/
-                    Sku = dgItemList.Rows[currentMouseOverRow].Cells[5].Value.ToString(); 
+                    Sku = dgItemList.Rows[currentMouseOverRow].Cells[4].Value.ToString(); 
                     contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
                    
                 }

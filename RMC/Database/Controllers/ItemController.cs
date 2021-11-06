@@ -83,6 +83,58 @@ namespace RMC.Database.Controllers
             return dgSuppliers = await crud.GetDataSetAsync(sql, null);
         }
 
+        public async Task<DataSet> getdataSetPharma()
+        {
+            string sql = @"SELECT itemlist.item_id,item_name,
+                                SellingPrice, pharmastocks.`pharma_stocks`,SKU, Description,isBranded,category_name,unit_name,                               
+                                Convert(ExpirationDate,varchar(50)),DateAdded FROM itemlist 
+                                LEFT JOIN category ON `category`.category_id  = `itemlist`.category_id 
+                                LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                                LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                                WHERE itemlist.is_active = 1";
+            DataSet dgSuppliers = new DataSet();
+            return dgSuppliers = await crud.GetDataSetAsync(sql, null);
+        }
+
+        public async Task<DataSet> getDsSearchPharmaActive(int searchType, string keySearch)
+        {
+            string sql = "";
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            switch (searchType)
+            {
+                case 0:
+                    sql = @"SELECT itemlist.item_id,item_name,
+                                SellingPrice, pharmastocks.`pharma_stocks`,SKU, Description,isBranded,category_name,unit_name,                               
+                                Convert(ExpirationDate,varchar(50)),DateAdded FROM itemlist 
+                                LEFT JOIN category ON `category`.category_id  = `itemlist`.category_id 
+                                LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                                LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                                WHERE itemlist.is_active = 1 AND item_name LIKE @key";
+                    break;
+                case 1:
+                    sql = @"SELECT itemlist.item_id,item_name,
+                                SellingPrice, pharmastocks.`pharma_stocks`,SKU, Description,isBranded,category_name,unit_name,                               
+                                Convert(ExpirationDate,varchar(50)),DateAdded FROM itemlist 
+                                LEFT JOIN category ON `category`.category_id  = `itemlist`.category_id 
+                                LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                                LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                                WHERE itemlist.is_active = 1 SKU LIKE @key";
+                    break;
+                case 2:
+                    sql = @"SELECT itemlist.item_id,item_name,
+                                SellingPrice, pharmastocks.`pharma_stocks`,SKU, Description,isBranded,category_name,unit_name,                               
+                                Convert(ExpirationDate,varchar(50)),DateAdded FROM itemlist 
+                                LEFT JOIN category ON `category`.category_id  = `itemlist`.category_id 
+                                LEFT JOIN unitofmeasurement ON unitofmeasurement.unit_id = itemlist.unit_id 
+                                LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
+                                WHERE itemlist.is_active = 1 AND Description LIKE @key";
+                    break;
+            }
+            string searches = "%" + keySearch + "%";
+            listparams.Add(new MySqlParameter("@key", searches));
+            return await crud.GetDataSetAsync(sql, listparams);
+        }
+
         public async Task<DataSet> getdatasetActiveWithStock()
         {
             string sql = @"SELECT itemlist.item_id,item_name,(labitemstocks.`clinic_stocks` + pharmastocks.`pharma_stocks`) AS total , 
@@ -523,6 +575,9 @@ namespace RMC.Database.Controllers
             listparams.Add(new MySqlParameter("@key", searches));
             return await crud.GetDataSetAsync(sql, listparams);
         }
+
+
+
 
         public int getRecentItemID()
         {

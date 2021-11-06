@@ -2,6 +2,7 @@
 using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.Database.Models;
+using RMC.InventoryPharma.PayRec.Dialog;
 using RMC.Reports;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
 
         PayablesController payablesController = new PayablesController();
         List<PayableModel> payableModels = new List<PayableModel>();
-     
+        string id = "";
 
         public PayablesReportAdmin()
         {
@@ -158,6 +159,34 @@ namespace RMC.Admin.PanelReportsForms.PanelsPharmaRep
             dialog.ShowDialog();
             cos.PrintOptions.PrinterName = dialog.PrinterSettings.PrinterName;
             cos.PrintToPrinter(1, false, 0, 0);
+        }
+
+        private void dgItemList_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                int currentMouseOverRow = dgItemList.HitTest(e.X, e.Y).RowIndex;
+
+
+                if (currentMouseOverRow >= 0)
+                {
+
+                    id = dgItemList.Rows[currentMouseOverRow].Cells[1].Value.ToString();
+
+
+
+                    contextMenuStrip1.Show(dgItemList, new Point(e.X, e.Y));
+                }
+
+            }
+        }
+
+        private void viewDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DetailsPayable frm = new DetailsPayable(id);
+            frm.ShowDialog();
+            
         }
     }
 }

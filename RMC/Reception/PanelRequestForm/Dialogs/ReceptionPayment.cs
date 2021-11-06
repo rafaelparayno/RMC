@@ -306,9 +306,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
                 int id = int.Parse(dr.Cells[0].Value.ToString());
+                float dis = float.Parse(dr.Cells[4].Value.ToString());
                 string type = dr.Cells[2].Value.ToString();
                 float amt = float.Parse(dr.Cells[3].Value.ToString());
-                await salesClinicController.Save(type, id, customerid,amt);
+                await salesClinicController.Save(type, id, customerid,amt,dis);
             
             }
           
