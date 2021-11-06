@@ -124,6 +124,57 @@ namespace RMC.Database.Controllers
         }
 
 
+        public async Task<float> getTotalSales(string d)
+        {
+            string sql = @"SELECT SUM(p_sales_amt - p_dis_amt) as 'TotalSales' FROM `salespharma` WHERE
+                         salespharma.invoice_id IN (SELECT invoice.invoice_id FROM invoice 
+                                WHERE DATE(invoice.date_invoice) = DATE(@dt1))";
+
+            float totalSales = 0;
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@dt1", d));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            float _;
+
+            if(await reader.ReadAsync())
+            {
+                totalSales = float.TryParse(reader["TotalSales"].ToString(), out _) ?
+                    float.Parse(reader["TotalSales"].ToString()) : 0;
+            }
+
+            crud.CloseConnection();
+
+
+            return totalSales;
+        }
+
+        public async Task<float> getTotalDis(string d)
+        {
+            string sql = @"SELECT SUM(p_dis_amt) as 'TotalDis' FROM `salespharma` WHERE
+                         salespharma.invoice_id IN (SELECT invoice.invoice_id FROM invoice 
+                                WHERE DATE(invoice.date_invoice) = DATE(@dt1))";
+
+            float totalSales = 0;
+            List<MySqlParameter> listparams = new List<MySqlParameter>();
+            listparams.Add(new MySqlParameter("@dt1", d));
+            DbDataReader reader = await crud.RetrieveRecordsAsync(sql, listparams);
+
+            float _;
+
+            if (await reader.ReadAsync())
+            {
+                totalSales = float.TryParse(reader["TotalDis"].ToString(), out _) ?
+                    float.Parse(reader["TotalDis"].ToString()) : 0;
+            }
+
+            crud.CloseConnection();
+
+
+            return totalSales;
+        }
+
+
         public async Task<List<salesPharmacyModel>> getSearchDay(string d)
         {
             List<salesPharmacyModel> salesPharmas = new List<salesPharmacyModel>();

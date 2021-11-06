@@ -39,12 +39,14 @@ namespace RMC.Reception.Dialogs
 
             string newDate2 = $"{newdate.Split('/')[2]}-{newdate.Split('/')[1]}-{newdate.Split('/')[0]}";
 
-            List<salesPharmacyModel> listsales = await salesPharmaController.getSearchDay(newDate2);
+           
+            float totalSales = await salesPharmaController.getTotalSales(newDate2);
+            float totalDis = await salesPharmaController.getTotalDis(newDate2);
 
-            float totalSales = listsales.Sum(S => S.sales);
 
             cos.SetParameterValue("productSalesParam", totalSales);
-
+            cos.SetParameterValue("totalDis", totalDis);
+            
             await loadXmls();
 
             crystalReportViewer1.ReportSource = cos;

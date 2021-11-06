@@ -1,9 +1,4 @@
-﻿
-using RMC.Doctor.PanelDoctor.Diag;
-using RMC.InventoryPharma;
-using RMC.Lab.Panels.Diags;
-using RMC.Patients;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace RMC
@@ -18,7 +13,7 @@ namespace RMC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new POS());
+            Application.Run(new splashscreen());
         }
     }
 }

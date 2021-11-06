@@ -59,10 +59,11 @@ namespace RMC.Pharma
             }
         }
 
-        private void btnAddItem_Click(object sender, EventArgs e)
+        private async void btnAddItem_Click(object sender, EventArgs e)
         {
             AddEditDailyPharSalesRep form = new AddEditDailyPharSalesRep();
             form.ShowDialog();
+            await refreshData();
         }
 
         private async void DailySalesPharRepList_Load(object sender, EventArgs e)
@@ -70,7 +71,7 @@ namespace RMC.Pharma
             await refreshData();
         }
 
-        private void btnEditItem_Click(object sender, EventArgs e)
+        private async void btnEditItem_Click(object sender, EventArgs e)
         {
             if (lvSales.SelectedItems.Count == 0)
                 return;
@@ -79,6 +80,7 @@ namespace RMC.Pharma
 
             AddEditDailyPharSalesRep form = new AddEditDailyPharSalesRep(id);
             form.ShowDialog();
+            await refreshData();
         }
 
         private async void iconButton3_Click(object sender, EventArgs e)
