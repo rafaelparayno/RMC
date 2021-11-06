@@ -25,22 +25,27 @@ namespace RMC.InventoryPharma
         InvoiceController invoiceController = new InvoiceController();
         //ItemList items;
         itemModel itemModel = new itemModel();
-        DataTable dt = new DataTable();
         float totalAmount = 0;
         float change = 0;
-        string seniorId = "";
+       
         int invoice_no = 0;
-        private int indexInDg = 0;
+
 
         public POS()
         {
             InitializeComponent();
-            dt.Columns.Add("SKU", typeof(string));
-            dt.Columns.Add("Product Name", typeof(string));
-            dt.Columns.Add("Selling Price", typeof(int));
-            dt.Columns.Add("Qty", typeof(int));
-            dt.Columns.Add("Total Price", typeof(decimal));
-            dt.Columns.Add("Discount", typeof(decimal));
+           
+            initColsLv();
+        }
+
+        private void initColsLv()
+        {
+            lvlItemPos.View = View.Details;
+            lvlItemPos.Columns.Add("Qty", 50, HorizontalAlignment.Center);
+            lvlItemPos.Columns.Add("Product", 100, HorizontalAlignment.Center);
+            lvlItemPos.Columns.Add("Selling Price", 100, HorizontalAlignment.Center);
+            lvlItemPos.Columns.Add("Total Price", 80, HorizontalAlignment.Center);
+            lvlItemPos.Columns.Add("Discount", 80, HorizontalAlignment.Center);
         }
 
         private async void txtCode_TextChanged(object sender, EventArgs e)
@@ -55,10 +60,10 @@ namespace RMC.InventoryPharma
             }
             await searchPharmItem(txtCode.Text.Trim());
             txtName.Text = itemModel == null ? "" : itemModel.name;
-            txtStock.Text = itemModel == null ? "" : dataGridView1.Rows.Count > 0 ?
+            txtStock.Text = itemModel == null ? "" : lvlItemPos.Items.Count > 0 ?
                 checkstocks(itemModel.sku, itemModel.stocks) + "" : itemModel.stocks + "";
             txtrue.Text = String.Format("PHP {0:0.##}", itemModel == null ? 0 : itemModel.sellingPrice);
-            numericUpDown1.Maximum = itemModel == null ? 0 : dataGridView1.Rows.Count > 0 ?
+            numericUpDown1.Maximum = itemModel == null ? 0 : lvlItemPos.Items.Count > 0 ?
                 checkstocks(itemModel.sku, itemModel.stocks) : itemModel.stocks;
         }
 
@@ -80,8 +85,18 @@ namespace RMC.InventoryPharma
             if(itemModel.sku == txtCode.Text.Trim())
             {
                 float itemTotalPrice = float.Parse(numericUpDown1.Value.ToString()) * float.Parse(txtrue.Text.Trim().Split(' ')[1]);
-                dt.Rows.Add(txtCode.Text, txtName.Text, float.Parse(txtrue.Text.Trim().Split(' ')[1]), numericUpDown1.Value, itemTotalPrice,0);
-                dataGridView1.DataSource = dt;
+              
+
+                ListViewItem lv = new ListViewItem();
+                lv.Tag = txtCode.Text;
+                lv.Text = numericUpDown1.Value.ToString();
+                lv.SubItems.Add(txtName.Text);
+                lv.SubItems.Add(txtrue.Text.Trim().Split(' ')[1]);
+                lv.SubItems.Add(itemTotalPrice.ToString());
+                lv.SubItems.Add(0.ToString());
+
+                lvlItemPos.Items.Add(lv);
+               
                 clearItems();
                 CalculateTotal();
                 textBox2.Focus();
@@ -101,14 +116,15 @@ namespace RMC.InventoryPharma
         private int checkstocks(string sku,int stocks)
         {
             int currentStocks = stocks;
-            if (dataGridView1.Rows.Count == 0)
+            if (lvlItemPos.Items.Count == 0)
                 return 0;
 
-            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            foreach (ListViewItem listViewItem in lvlItemPos.Items)
             {
-                if (dr.Cells["SKU"].Value.ToString() == sku)
+               
+                if(listViewItem.Tag.ToString() == sku)
                 {
-                     currentStocks -= int.Parse(dr.Cells["Qty"].Value.ToString());
+                    currentStocks -= int.Parse(listViewItem.SubItems[0].Text);
                 }
             }
 
@@ -118,39 +134,26 @@ namespace RMC.InventoryPharma
         private void CalculateTotal()
         {
             totalAmount = 0;
-            //double removeVat = 0;
             float dis = 0;
-            foreach (DataGridViewRow dr in dataGridView1.Rows)
+      
+
+            foreach (ListViewItem listViewItem in lvlItemPos.Items)
             {
-                totalAmount += float.Parse(dr.Cells["Total Price"].Value.ToString());
+
+                totalAmount += float.Parse(listViewItem.SubItems[3].Text);
+                dis += float.Parse(listViewItem.SubItems[4].Text);
+
             }
 
-            /*if( seniorId != "")
-            {
-                removeVat = Math.Round(totalAmount / 1.12,2);
-                totalAmount = float.Parse(removeVat + "");
-                float discount = totalAmount * .20f;
-                totalAmount -= discount;
-            }*/
 
-            if (seniorId != "")
-            {
-                bool isValidDis = float.TryParse(txtDis.Text.Trim(), out _);
-
-                dis = isValidDis ? float.Parse(txtDis.Text.Trim()) : 0;
-
-                if (totalAmount >= dis)
-                {
-                    totalAmount -= dis;
-                }
-            }
-
+            totalAmount -= dis;
+            txtDis.Text = "PHP " + String.Format("{0:0.##}", dis);
             textBox3.Text = "PHP " + String.Format("{0:0.##}", totalAmount);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0)
+            if (lvlItemPos.Items.Count == 0)
                 return;
 
             DialogResult diag = MessageBox.Show("Remove Selected Item in The List",
@@ -158,15 +161,15 @@ namespace RMC.InventoryPharma
 
             if (diag == DialogResult.Yes)
             {
-                dt.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
-                dataGridView1.DataSource = dt;
-                CalculateTotal();
+             
+                lvlItemPos.Items.RemoveAt(lvlItemPos.SelectedIndices[0]);
+               
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0)
+            if (lvlItemPos.Items.Count == 0)
                 return;
 
             DialogResult diag = MessageBox.Show("Remove All Item in The List",
@@ -174,8 +177,8 @@ namespace RMC.InventoryPharma
 
             if (diag == DialogResult.Yes)
             {
-                dt.Rows.Clear();
-                dataGridView1.DataSource = dt;
+               
+                lvlItemPos.Items.Clear();
                 CalculateTotal();
             }
         }
@@ -186,7 +189,9 @@ namespace RMC.InventoryPharma
             float payment = 0;
             if (textBox2.Text == "")
                 return;
-            if (dataGridView1.Rows.Count == 0)
+           
+
+            if (lvlItemPos.Items.Count == 0)
                 return;
 
             if (!(int.TryParse(textBox2.Text.Trim(), out _)))
@@ -209,20 +214,22 @@ namespace RMC.InventoryPharma
 
         private async Task processTransaction()
         {
-            await invoiceController.Save(totalAmount, float.Parse(txtDis.Text.Trim()));
+            await invoiceController.Save(totalAmount, float.Parse(txtDis.Text.Trim().Split(' ')[1]));
             invoice_no = await invoiceController.getLatestNo();
             List<Task> listSave = new List<Task>();
            
-            foreach (DataGridViewRow dr in dataGridView1.Rows)
-            {
-                listSave.Add(pharmaStocksController.SaveSKU(dr.Cells["SKU"].Value.ToString(),
-                                                     int.Parse(dr.Cells["Qty"].Value.ToString())));
-                
-                listSave.Add(salesPharmaController.Save(dr.Cells["SKU"].Value.ToString(),
-                                    int.Parse(dr.Cells["Qty"].Value.ToString())));
-               
-            }
 
+            foreach (ListViewItem listViewItem in lvlItemPos.Items)
+            {
+                listSave.Add(pharmaStocksController.SaveSKU(listViewItem.Tag.ToString(),
+                                                                     int.Parse(listViewItem.SubItems[0].Text)));
+
+                listSave.Add(salesPharmaController.Save(listViewItem.Tag.ToString(),
+                                    int.Parse(listViewItem.SubItems[0].Text),
+                                    float.Parse(listViewItem.SubItems[3].Text),
+                                    float.Parse(listViewItem.SubItems[4].Text)));
+
+            }
             await Task.WhenAll(listSave);
 
         }
@@ -242,16 +249,17 @@ namespace RMC.InventoryPharma
             dt.Columns.Add("price", typeof(float));
 
 
-
-            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            foreach (ListViewItem listViewItem in lvlItemPos.Items)
             {
-                string name = dr.Cells["Product Name"].Value.ToString();
-                int qty = int.Parse(dr.Cells["Qty"].Value.ToString());
-                float Tprice = float.Parse(dr.Cells["Price"].Value.ToString());
-                float sPrice = Tprice / qty;
+
+
+                string name = listViewItem.SubItems[1].Text;
+                int qty = int.Parse(listViewItem.SubItems[0].Text);
+                float Tprice = float.Parse(listViewItem.SubItems[3].Text);
+                float sPrice = float.Parse(listViewItem.SubItems[2].Text);
                 subtotal += Tprice;
                 dt.Rows.Add(name, qty, sPrice);
-                
+
             }
 
             ds.Tables.Add(dt);
@@ -259,7 +267,7 @@ namespace RMC.InventoryPharma
             receipts rec = new receipts();
             rec.SetDataSource(ds);
             rec.SetParameterValue("subTotal", subtotal);
-            rec.SetParameterValue("discount", float.Parse(txtDis.Text.Trim()));
+            rec.SetParameterValue("discount", float.Parse(txtDis.Text.Trim().Split(' ')[1]));
             rec.SetParameterValue("total", float.Parse(textBox3.Text.Trim().Split(' ')[1]));
             rec.SetParameterValue("payment", float.Parse(textBox2.Text.Trim()));
             rec.SetParameterValue("change", float.Parse(textBox4.Text.Trim().Split(' ')[1]));
@@ -276,17 +284,14 @@ namespace RMC.InventoryPharma
         private void finishTransaction(float payment)
         {
             printReceipt(payment);
-            dt.Rows.Clear();
-            dataGridView1.DataSource = dt;
+            lvlItemPos.Items.Clear();
             clearItems();
             
             btnUpdate.Enabled = false;
             button3.Enabled = false;
             txtCode.Enabled = false;
-          
+                   
             
-            
-            seniorId = "";
             CalculateTotal();
         }
 
@@ -296,9 +301,9 @@ namespace RMC.InventoryPharma
             button3.Enabled = true;
             btnUpdate.Enabled = true;
             txtCode.Enabled = true;
-            seniorId = "";
-            dt.Rows.Clear();
-            dataGridView1.DataSource = dt;
+            
+          
+            lvlItemPos.Items.Clear();
             clearItems();
             CalculateTotal();
             textBox4.Text = "0.00";
@@ -307,22 +312,7 @@ namespace RMC.InventoryPharma
             txtCode.Focus();
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            //Senior Discount
-          /*  seniorDiag form = new seniorDiag();
-            form.ShowDialog();
-
-            seniorId = form.seniorId;
-
-            if (!string.IsNullOrEmpty(seniorId))
-            {
-                txtDis.Visible = true;
-                label11.Visible = true;
-            }*/
-
-        }
-
+  
         private void textBox2_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             string validKeys = "0123456789.";
@@ -381,11 +371,7 @@ namespace RMC.InventoryPharma
             {
                 button4.PerformClick();
             }
-            if (e.KeyCode == Keys.F4)
-            {
-                button5.PerformClick();
-            }
-
+           
             if (e.KeyCode == Keys.F5)
             {
                 button2.PerformClick();
@@ -400,26 +386,11 @@ namespace RMC.InventoryPharma
             }
         }
 
-        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-
-                int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
-
-
-                if (currentMouseOverRow >= 0)
-                {
-                    contextMenuStrip1.Show(dataGridView1, new Point(e.X, e.Y));
-                    indexInDg = currentMouseOverRow;
-                }
-
-            }
-        }
+      
 
         private void addDiscountToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            float sellingPrice = float.Parse(dataGridView1.Rows[indexInDg].Cells[4].Value.ToString());
+            float sellingPrice = float.Parse(lvlItemPos.SelectedItems[0].SubItems[3].Text);
 
             addDiscPay frmDisc = new addDiscPay(sellingPrice);
 
@@ -429,9 +400,25 @@ namespace RMC.InventoryPharma
             if (frmDisc.Percentage == 0)
                 return;
 
-            float setPerc = frmDisc.Percentage;
-            dataGridView1.Rows[indexInDg].Cells[5].Value = setPerc;
+             float setPerc = frmDisc.Percentage;
+            lvlItemPos.SelectedItems[0].SubItems[4].Text = setPerc.ToString();
             CalculateTotal();
+        }
+
+        private void lvlItemPos_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                var focusedItem = lvlItemPos.FocusedItem;
+                if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
+                {
+
+                    contextMenuStrip1.Show(Cursor.Position);
+                   
+                }
+
+            }
         }
     }
 }

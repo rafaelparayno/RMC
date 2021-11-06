@@ -346,19 +346,21 @@ namespace RMC.Database.Controllers
             await  crud.ExecuteAsync(sql, list);
         }
 
-        public async Task Save(string sku,int qty)
+        public async Task Save(string sku,int qty,float amt,float dis)
         {
             string sql;
             List<MySqlParameter> list = new List<MySqlParameter>();
 
-            sql = @"INSERT INTO salespharma(invoice_id, item_id,sales_qty) VALUES
+            sql = @"INSERT INTO salespharma(invoice_id, item_id,sales_qty,p_sales_amt,p_dis_amt) VALUES
                     ((SELECT invoice_id FROM invoice ORDER BY invoice_id DESC LIMIT 1),
-                    (SELECT item_id FROM itemlist WHERE sku = @sku), @qty)";
+                    (SELECT item_id FROM itemlist WHERE sku = @sku), @qty,@sales,@dis)";
             
           
             // list.Add(new MySqlParameter("@invoice", invoice_id));
             list.Add(new MySqlParameter("@sku", sku));
             list.Add(new MySqlParameter("@qty", qty));
+            list.Add(new MySqlParameter("@sales", amt));
+            list.Add(new MySqlParameter("@dis", dis));
             await crud.ExecuteAsync(sql, list);
         }
 

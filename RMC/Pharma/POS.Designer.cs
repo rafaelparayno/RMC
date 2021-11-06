@@ -51,7 +51,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -59,11 +58,10 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addDiscountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewItemDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lvlItemPos = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -200,7 +198,7 @@
             this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button3.Location = new System.Drawing.Point(105, 191);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(219, 30);
+            this.button3.Size = new System.Drawing.Size(211, 30);
             this.button3.TabIndex = 267;
             this.button3.Text = "&Add to Cart(Enter)";
             this.button3.UseVisualStyleBackColor = false;
@@ -361,21 +359,6 @@
             this.label8.Text = "Total Price";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button5.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button5.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button5.Location = new System.Drawing.Point(23, 350);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(293, 33);
-            this.button5.TabIndex = 272;
-            this.button5.Text = "Senior Discount (F4)";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -396,7 +379,7 @@
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button4.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button4.Location = new System.Drawing.Point(23, 310);
+            this.button4.Location = new System.Drawing.Point(23, 342);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(293, 33);
             this.button4.TabIndex = 274;
@@ -411,7 +394,7 @@
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button6.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button6.Location = new System.Drawing.Point(23, 271);
+            this.button6.Location = new System.Drawing.Point(23, 303);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(293, 33);
             this.button6.TabIndex = 275;
@@ -426,7 +409,7 @@
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button7.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button7.Location = new System.Drawing.Point(23, 232);
+            this.button7.Location = new System.Drawing.Point(23, 264);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(293, 33);
             this.button7.TabIndex = 276;
@@ -455,26 +438,21 @@
             this.viewItemDetailsToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.viewItemDetailsToolStripMenuItem.Text = "View Item Details";
             // 
-            // dataGridView1
+            // lvlItemPos
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lvlItemPos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(330, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(342, 246);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
+            this.lvlItemPos.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvlItemPos.FullRowSelect = true;
+            this.lvlItemPos.GridLines = true;
+            this.lvlItemPos.HideSelection = false;
+            this.lvlItemPos.Location = new System.Drawing.Point(330, 8);
+            this.lvlItemPos.Name = "lvlItemPos";
+            this.lvlItemPos.Size = new System.Drawing.Size(342, 250);
+            this.lvlItemPos.TabIndex = 277;
+            this.lvlItemPos.UseCompatibleStateImageBehavior = false;
+            this.lvlItemPos.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvlItemPos_MouseClick);
             // 
             // POS
             // 
@@ -483,11 +461,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(684, 526);
+            this.Controls.Add(this.lvlItemPos);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.label13);
@@ -502,18 +480,17 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "POS";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POS";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.POS_KeyUp);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -536,7 +513,6 @@
         private System.Windows.Forms.Panel panel1;
         internal System.Windows.Forms.TextBox textBox3;
         internal System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
@@ -550,6 +526,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addDiscountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewItemDetailsToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ListView lvlItemPos;
     }
 }
