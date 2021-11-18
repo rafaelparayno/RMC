@@ -56,6 +56,7 @@ namespace RMC.InventoryPharma.PanelRo
             lvItemLab.Columns.Add("Selling Price", 100, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Qty", 70, HorizontalAlignment.Right);
             lvItemLab.Columns.Add("Amount", 100, HorizontalAlignment.Right);
+            lvItemLab.Columns.Add("Expiry Date", 120, HorizontalAlignment.Right);
         }
 
         private async void PanelNewRec_Load(object sender, EventArgs e)
@@ -105,6 +106,7 @@ namespace RMC.InventoryPharma.PanelRo
                 lvs.SubItems.Add(p.sellingPrice.ToString());
                 lvs.SubItems.Add(p.quantity_order.ToString());
                 lvs.SubItems.Add(subTotal.ToString());
+                lvs.SubItems.Add("");
                 lvItemLab.Items.Add(lvs);
             }
 
@@ -250,6 +252,7 @@ namespace RMC.InventoryPharma.PanelRo
                 int qty = int.Parse(lvItemLab.SelectedItems[0].SubItems[5].Text);
              
                 float subTotal = float.Parse(lvItemLab.SelectedItems[0].SubItems[6].Text);
+                string date = lvItemLab.SelectedItems[0].SubItems[7].Text;
 
                 switch (columnindex)
                 {
@@ -290,17 +293,18 @@ namespace RMC.InventoryPharma.PanelRo
 
                         float newSubinFrm = frmSub.subTotal;
                         decimal newSub = decimal.Parse(newSubinFrm.ToString());
-
-                        lvItemLab.SelectedItems[0].SubItems[6].Text = newSub.ToString();
-                            
-                        decimal newUnitCost = decimal.Parse((newSub / qty).ToString());
-                       
+                        lvItemLab.SelectedItems[0].SubItems[6].Text = newSub.ToString();                           
+                        decimal newUnitCost = decimal.Parse((newSub / qty).ToString());                       
                         lvItemLab.SelectedItems[0].SubItems[2].Text = newUnitCost.ToString("N6");
 
-
                         break;
-                    default:
-            
+                    case 7:
+                        SetExpiryDate frmExp = new SetExpiryDate(date);
+                        frmExp.ShowDialog();
+                        string newDate = frmExp.DateString;
+                        lvItemLab.SelectedItems[0].SubItems[7].Text = newDate;
+                        break;
+                    default:            
                         break;
                 }
 
@@ -372,6 +376,7 @@ namespace RMC.InventoryPharma.PanelRo
                 float markUp = float.Parse(lvItems.SubItems[3].Text);
                 float sellingP = float.Parse(lvItems.SubItems[4].Text);
                 int qtyCurrent = int.Parse(lvItems.SubItems[5].Text);
+                string expDate = lvItems.SubItems[7].Text;
                 PoModel poFound = pomodels.Find(p => p.item_id == itemID);
 
                 int qtyUpdate = poFound.quantity_order - qtyCurrent;
@@ -392,6 +397,11 @@ namespace RMC.InventoryPharma.PanelRo
                 if (sellingP > poFound.sellingPrice)
                 {
                     tasks.Add(itemController.updateSellingAndMarkup(sellingP, markUp, itemID));
+                }
+
+                if(expDate != "" )
+                {
+                    tasks.Add(itemController.updateExpDate(expDate, itemID));
                 }
 
                 tasks.Add(poItemController.updateOrderQty(itemID,

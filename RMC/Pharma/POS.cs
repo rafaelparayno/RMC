@@ -3,6 +3,7 @@ using RMC.Database.Controllers;
 using RMC.Database.Models;
 using RMC.InventoryPharma.Dialogs;
 using RMC.Pharma;
+using RMC.Pharma.Dialogs;
 using RMC.Reception.PanelRequestForm.Dialogs;
 using RMC.Reports;
 using System;
@@ -419,6 +420,13 @@ namespace RMC.InventoryPharma
                 }
 
             }
+        }
+
+        private void viewItemDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string sku = lvlItemPos.SelectedItems[0].Tag.ToString();
+            ItemViewDetailsSku frmDiag = new ItemViewDetailsSku(sku);
+            frmDiag.ShowDialog();
         }
     }
 }

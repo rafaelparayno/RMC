@@ -72,6 +72,21 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, mySqlParameters);
         }
 
+        public async Task updateExpDate(string expDate,int id)
+        {
+
+            string sql = @"UPDATE itemlist SET ExpirationDate = @date  WHERE item_id = @id";
+
+            List<MySqlParameter> mySqlParameters = new List<MySqlParameter>()
+            {
+                (new MySqlParameter("@date", expDate)),
+                 (new MySqlParameter("@id", id)),
+            };
+
+
+            await crud.ExecuteAsync(sql, mySqlParameters);
+        }
+
         public async Task<DataSet> getdataSetActive()
         {
             string sql = @"SELECT item_id,item_name ,UnitPrice , MarkupPrice ,
@@ -640,6 +655,8 @@ namespace RMC.Database.Controllers
 
         }
 
+
+
         public async Task Edit(params string[] datas)
         {
             string sql = @"UPDATE itemlist SET item_name = @name, UnitPrice = @unitp, MarkupPrice = @markup,
@@ -753,39 +770,15 @@ namespace RMC.Database.Controllers
                     int.Parse(reader["pharma_stocks"].ToString());
                 item.sellingPrice = float.Parse(reader["SellingPrice"].ToString());
                 item.sku = reader["SKU"].ToString();
+                item.unitPrice = float.Parse(reader["UnitPrice"].ToString());
+                item.markupPrice = float.Parse(reader["MarkupPrice"].ToString());
 
             }
             crud.CloseConnection();
             return item;
         }
 
-        /*public List<ItemList> Details(string sku)
-        {
-            List<ItemList> items = new List<ItemList>();
-            string sql = @"SELECT itemlist.item_id,item_name,pharmastocks.pharma_stocks, SKU, Description,
-                            isBranded,UnitPrice,MarkupPrice,SellingPrice
-                            FROM itemlist 
-                            LEFT JOIN pharmastocks ON itemlist.item_id = pharmastocks.item_id
-                            WHERE itemlist.is_active = @isactive AND SKU = @sku ";
-            List<MySqlParameter> listparams = new List<MySqlParameter>();
-            listparams.Add(new MySqlParameter("@isactive", 1));
-            listparams.Add(new MySqlParameter("@sku", sku));
-
-            MySqlDataReader reader = null;
-            crud.RetrieveRecords(sql, ref reader, listparams);
-            if (reader.Read())
-            {
-                items.Add(new ItemList(reader["item_id"].ToString(), reader["item_name"].ToString(),
-                    reader["pharma_stocks"].ToString() == null ? "" : reader["pharma_stocks"].ToString()
-                    , reader["item_type"].ToString(),
-                    reader["category_name"].ToString(), reader["isBranded"].ToString(),
-                    reader["unit_name"].ToString(), reader["UnitPrice"].ToString(),
-                    reader["MarkupPrice"].ToString(), reader["SellingPrice"].ToString(),
-                    reader["SKU"].ToString(), reader["Description"].ToString()));
-            }
-            crud.CloseConnection();
-            return items;
-        }*/
+     
 
         public async Task<List<ComboBoxItem>> getComboDatas()
         {

@@ -211,7 +211,7 @@ namespace RMC.Database.Controllers
 
     
 
-        public async void save(params string[] data)
+        public async Task save(params string[] data)
         {
             string sql = @"INSERT INTO patientdetails 
                         (firstname,middlename,lastname,birthdate,age,gender,contactnumber,civil_status,address) 
@@ -255,7 +255,7 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
-        public async void update(params string[] data)
+        public async Task update(params string[] data)
         {
             string sql = @"UPDATE patientdetails 
                          SET firstname = @fn,middlename = @mn,lastname = @ln,birthdate = @bdate , 

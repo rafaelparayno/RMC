@@ -41,15 +41,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgItemList = new System.Windows.Forms.DataGridView();
+            this.iconButton5 = new FontAwesome.Sharp.IconButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelMenus.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenus
             // 
             this.panelMenus.Controls.Add(this.iconButton4);
+            this.panelMenus.Controls.Add(this.iconButton5);
             this.panelMenus.Controls.Add(this.iconButton3);
             this.panelMenus.Controls.Add(this.iconButton1);
             this.panelMenus.Controls.Add(this.btnAdjust);
@@ -73,7 +77,7 @@
             this.iconButton4.IconColor = System.Drawing.Color.White;
             this.iconButton4.IconSize = 28;
             this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton4.Location = new System.Drawing.Point(309, 0);
+            this.iconButton4.Location = new System.Drawing.Point(234, 0);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Rotation = 0D;
             this.iconButton4.Size = new System.Drawing.Size(75, 86);
@@ -248,6 +252,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.dgItemList);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -281,6 +286,43 @@
             this.dgItemList.StandardTab = true;
             this.dgItemList.TabIndex = 113;
             // 
+            // iconButton5
+            // 
+            this.iconButton5.BackColor = System.Drawing.Color.Maroon;
+            this.iconButton5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.iconButton5.FlatAppearance.BorderSize = 0;
+            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton5.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton5.ForeColor = System.Drawing.Color.White;
+            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
+            this.iconButton5.IconColor = System.Drawing.Color.White;
+            this.iconButton5.IconSize = 28;
+            this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconButton5.Location = new System.Drawing.Point(309, 0);
+            this.iconButton5.Name = "iconButton5";
+            this.iconButton5.Rotation = 0D;
+            this.iconButton5.Size = new System.Drawing.Size(75, 86);
+            this.iconButton5.TabIndex = 13;
+            this.iconButton5.Text = "Import Excel";
+            this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton5.UseVisualStyleBackColor = false;
+            this.iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::RMC.Properties.Resources.tenor;
+            this.pictureBox1.Location = new System.Drawing.Point(241, 113);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(202, 176);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 229;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
             // ViewStocks
             // 
             this.AcceptButton = this.iconButton2;
@@ -300,6 +342,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgItemList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -319,5 +362,7 @@
         public System.Windows.Forms.DataGridView dgItemList;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton iconButton5;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

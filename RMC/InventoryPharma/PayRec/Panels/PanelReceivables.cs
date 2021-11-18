@@ -47,6 +47,8 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
             dgItemList.DataSource = "";
             dgItemList.DataSource = FormatDg(receivableTransferModels).Tables[0];
+            DataGridViewColumn column = dgItemList.Columns[1];
+            column.Width = 300;
         }
 
 
@@ -143,6 +145,8 @@ namespace RMC.InventoryPharma.PayRec.Panels
 
             dgItemList.DataSource = "";
             dgItemList.DataSource = FormatDg(receivableTransferModels).Tables[0];
+            DataGridViewColumn column = dgItemList.Columns[1];
+            column.Width = 300;
         }
 
         private async void iconButton1_Click(object sender, EventArgs e)

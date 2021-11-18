@@ -42,7 +42,7 @@ namespace RMC.Database.Controllers
             await crud.ExecuteAsync(sql, listparams);
         }
 
-        public async void Save(int queu_no,string cc,int medCertType,string compname)
+        public async Task Save(int queu_no,string cc,int medCertType,string compname)
         {
             string sql = await isFound(queu_no) ? @"UPDATE doctor_queue SET cc_doctor = @cc ,
                                                    med_cert_type = @md , company_name = @cmpname 

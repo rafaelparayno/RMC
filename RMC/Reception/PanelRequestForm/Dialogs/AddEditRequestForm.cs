@@ -58,9 +58,10 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
         private void updateRequets()
         {
+             
             foreach (int type in currentS)
             {
-                customerRequestsController.updateReq(reqid,type);
+                Task.Run(()=>customerRequestsController.updateReq(reqid,type));
             }
         }
 
@@ -206,7 +207,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
 
 
                 await removeRequestCostumer();
-                patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
+                await patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
                                           txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                           txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
                                           cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim(), id.ToString());
@@ -214,14 +215,14 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 updateRequets();
 
                 if (currentS.Contains(consultS) || currentS.Contains(medCert))
-                    docQController.Save(reqid, textBox3.Text.Trim(), medCertType, txtCompanyName.Text.Trim());
+                   await docQController.Save(reqid, textBox3.Text.Trim(), medCertType, txtCompanyName.Text.Trim());
             }
             else
             {
 
                 if (id > 0)
                 {
-                    patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
+                   await patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
                                    txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                    txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
                                    cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim(), id.ToString());
@@ -232,7 +233,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 else
                 {
 
-                    patientDetailsController.save(txtfn.Text.Trim(), txtMn.Text.Trim(),
+                    await patientDetailsController.save(txtfn.Text.Trim(), txtMn.Text.Trim(),
                                               txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                               txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
                                               cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim());
@@ -244,7 +245,7 @@ namespace RMC.Reception.PanelRequestForm.Dialogs
                 }
 
                 if (currentS.Contains(consultS) || currentS.Contains(medCert))
-                    docQController.Save(customerID, textBox3.Text.Trim(), medCertType, txtCompanyName.Text.Trim());
+                   await docQController.Save(customerID, textBox3.Text.Trim(), medCertType, txtCompanyName.Text.Trim());
 
                 await saveRequests();
             }

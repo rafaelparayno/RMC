@@ -423,7 +423,7 @@
             this.addDiscountToolStripMenuItem,
             this.viewItemDetailsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(194, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(194, 70);
             // 
             // addDiscountToolStripMenuItem
             // 
@@ -437,6 +437,7 @@
             this.viewItemDetailsToolStripMenuItem.Name = "viewItemDetailsToolStripMenuItem";
             this.viewItemDetailsToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.viewItemDetailsToolStripMenuItem.Text = "View Item Details";
+            this.viewItemDetailsToolStripMenuItem.Click += new System.EventHandler(this.viewItemDetailsToolStripMenuItem_Click);
             // 
             // lvlItemPos
             // 

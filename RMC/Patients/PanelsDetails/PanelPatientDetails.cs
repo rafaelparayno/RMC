@@ -51,7 +51,7 @@ namespace RMC.Patients.PanelsDetails
             txtAge.Text = age.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             if (!isValid())
             {
@@ -64,7 +64,7 @@ namespace RMC.Patients.PanelsDetails
 
             if(id == 0)
             {
-                patientDetailsController.save(txtfn.Text.Trim(), txtMn.Text.Trim(),
+               await patientDetailsController.save(txtfn.Text.Trim(), txtMn.Text.Trim(),
                                               txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                               txtAge.Text.Trim(), cbGender.SelectedItem.ToString(),txtCn.Text.Trim(),
                                               cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim());
@@ -73,7 +73,7 @@ namespace RMC.Patients.PanelsDetails
             }
             else
             {
-                patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
+                await patientDetailsController.update(txtfn.Text.Trim(), txtMn.Text.Trim(),
                                             txtLn.Text.Trim(), dateTimePicker1.Value.ToString("yyyy/MM/dd"),
                                             txtAge.Text.Trim(), cbGender.SelectedItem.ToString(), txtCn.Text.Trim(),
                                             cbStatus.SelectedItem.ToString(), txtAddress.Text.Trim(),id.ToString());

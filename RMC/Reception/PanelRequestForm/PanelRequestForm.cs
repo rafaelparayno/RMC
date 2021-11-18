@@ -91,76 +91,73 @@ namespace RMC.Reception.PanelRequestForm
         private async Task RefreshGrid(List<customerDetailsMod> customers)
         {
             dt.Rows.Clear();
-
-            foreach (customerDetailsMod c in customers)
+            await Task.Run(async () =>
             {
-                List<int> requests = new List<int>();
-                requests = await customerRequestsController.getListTypeReq(c.id);
-                Image imgConsult;
-                Image imgX;
-                Image imgLab;
-                Image imgServices;
-                Image imgPaid = c.isPaid == 0 ? ImageList1.Images[1] : ImageList1.Images[0];
-                bool done = false;
-
-                imgConsult = requests.Contains(consultS) ? 
-                    await docQController.isDone(c.quueu_no) ? 
-                    ImageList1.Images[0] : ImageList1.Images[2] 
-                    :   ImageList1.Images[3];
-
-
-                imgX = requests.Contains(xRayS) ? await radioQueueController.isDone(c.id) ? 
-                    ImageList1.Images[0] : ImageList1.Images[2]
-                    : ImageList1.Images[3];
-
-                imgLab = requests.Contains(labS) ? await labQueueController.isDone(c.id) ?
-                      ImageList1.Images[0] : ImageList1.Images[2]
-                    : ImageList1.Images[3];
-
-
-           
-
-                if (requests.Contains(otherS) || requests.Contains(medCert))
+                foreach (customerDetailsMod c in customers)
                 {
+                    List<int> requests = new List<int>();
+                    requests = await customerRequestsController.getListTypeReq(c.id);
+                    Image imgConsult;
+                    Image imgX;
+                    Image imgLab;
+                    Image imgServices;
+                    Image imgPaid = c.isPaid == 0 ? ImageList1.Images[1] : ImageList1.Images[0];
+                    bool done = false;
 
-                    int medType = await docQController.getMedCertByCustomeId(c.id);
+                    imgConsult = requests.Contains(consultS) ? 
+                        await docQController.isDone(c.quueu_no) ? 
+                        ImageList1.Images[0] : ImageList1.Images[2] 
+                        :   ImageList1.Images[3];
+
+
+                    imgX = requests.Contains(xRayS) ? await radioQueueController.isDone(c.id) ? 
+                        ImageList1.Images[0] : ImageList1.Images[2]
+                        : ImageList1.Images[3];
+
+                    imgLab = requests.Contains(labS) ? await labQueueController.isDone(c.id) ?
+                          ImageList1.Images[0] : ImageList1.Images[2]
+                        : ImageList1.Images[3];
+
+                    if (requests.Contains(otherS) || requests.Contains(medCert))
+                    {
+
+                        int medType = await docQController.getMedCertByCustomeId(c.id);
                   
-                    if (medType == 0)
-                    {
-                        done = true;
+                        if (medType == 0)
+                        {
+                            done = true;
 
-                    }
-                    else
-                    {
-                        done = await patientMedcertController.isDoneMedCert(c.id);
-                    }
+                        }
+                        else
+                        {
+                            done = await patientMedcertController.isDoneMedCert(c.id);
+                        }
                         
 
-                    if(await othersQueueController.isDone(c.id) && done )
-                    {
-                        imgServices = ImageList1.Images[0];
+                        if(await othersQueueController.isDone(c.id) && done )
+                        {
+                            imgServices = ImageList1.Images[0];
+                        }
+                        else
+                        {
+                            imgServices = ImageList1.Images[2];
+                        }
+
+                  
                     }
                     else
                     {
-                        imgServices = ImageList1.Images[2];
+                        imgServices = ImageList1.Images[3];
                     }
 
-                  
+
+                    dt.Rows.Add(c.id,c.quueu_no ,c.name, c.age, imgConsult, imgX, imgLab, imgServices, imgPaid);
+
                 }
-                else
-                {
-                    imgServices = ImageList1.Images[3];
-                }
-
-
-                dt.Rows.Add(c.id,c.quueu_no ,c.name, c.age, imgConsult, imgX, imgLab, imgServices, imgPaid);
-
-            }
-
+            });
             dgCustomerList.DataSource = "";
             dgCustomerList.DataSource = dt;
             dgCustomerList.Columns[2].Width = 300;
-         
         }
 
 
@@ -249,40 +246,42 @@ namespace RMC.Reception.PanelRequestForm
             requestDetailsControl.listViewLab.View = View.Details;
             requestDetailsControl.listViewLab.Columns.Add("Laboratory Name", 250, HorizontalAlignment.Center);
             requestDetailsControl.listViewLab.Columns.Add("Is Done", 120, HorizontalAlignment.Center);
-            foreach (labModel l in labModels)
+
+            await Task.Run(() =>
             {
-                ListViewItem lvItems = new ListViewItem();
-                lvItems.Text = l.name;
-                lvItems.SubItems.Add(l.is_done == 0 ? "Not Done" : "Done");
-                requestDetailsControl.listViewLab.Items.Add(lvItems);
-            }
+                foreach (labModel l in labModels)
+                {
+                    ListViewItem lvItems = new ListViewItem();
+                    lvItems.Text = l.name;
+                    lvItems.SubItems.Add(l.is_done == 0 ? "Not Done" : "Done");
+                    requestDetailsControl.listViewLab.Items.Add(lvItems);
+                }
 
 
-            requestDetailsControl.listViewRad.View = View.Details;
-            requestDetailsControl.listViewRad.Columns.Add("Radio Name", 250, HorizontalAlignment.Center);
-            requestDetailsControl.listViewRad.Columns.Add("Is Done", 120, HorizontalAlignment.Center);
-            foreach (xraymodel l in xraymodels)
-            {
-                ListViewItem lvItems = new ListViewItem();
-                lvItems.Text = l.name;
-                lvItems.SubItems.Add(l.is_done == 0 ? "Not Done" : "Done");
-                requestDetailsControl.listViewRad.Items.Add(lvItems);
-            }
+                requestDetailsControl.listViewRad.View = View.Details;
+                requestDetailsControl.listViewRad.Columns.Add("Radio Name", 250, HorizontalAlignment.Center);
+                requestDetailsControl.listViewRad.Columns.Add("Is Done", 120, HorizontalAlignment.Center);
+                foreach (xraymodel l in xraymodels)
+                {
+                    ListViewItem lvItems = new ListViewItem();
+                    lvItems.Text = l.name;
+                    lvItems.SubItems.Add(l.is_done == 0 ? "Not Done" : "Done");
+                    requestDetailsControl.listViewRad.Items.Add(lvItems);
+                }
 
-            requestDetailsControl.listViewService.View = View.Details;
-            requestDetailsControl.listViewService.Columns.Add("Service Name", 250, HorizontalAlignment.Center);
-            requestDetailsControl.listViewService.Columns.Add("Is Done", 120, HorizontalAlignment.Center);
-            foreach (ServiceModel l in serviceModels)
-            {
-                ListViewItem lvItems = new ListViewItem();
-                lvItems.Text = l.serviceName;
-                lvItems.SubItems.Add(l.isDone == 0 ? "Not Done" : "Done");
-                requestDetailsControl.listViewService.Items.Add(lvItems);
-            }
+                requestDetailsControl.listViewService.View = View.Details;
+                requestDetailsControl.listViewService.Columns.Add("Service Name", 250, HorizontalAlignment.Center);
+                requestDetailsControl.listViewService.Columns.Add("Is Done", 120, HorizontalAlignment.Center);
+                foreach (ServiceModel l in serviceModels)
+                {
+                    ListViewItem lvItems = new ListViewItem();
+                    lvItems.Text = l.serviceName;
+                    lvItems.SubItems.Add(l.isDone == 0 ? "Not Done" : "Done");
+                    requestDetailsControl.listViewService.Items.Add(lvItems);
+                }
+            });
 
             panel1.Controls.Add(requestDetailsControl);
-
-
         }
 
         private async void loadOnlineDoctors()

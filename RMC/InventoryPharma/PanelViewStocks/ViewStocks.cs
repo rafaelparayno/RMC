@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using RMC.Components;
 using RMC.Database.Controllers;
 using RMC.InventoryPharma.PanelViewStocks.Dialog;
 using SwiftExcel;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace RMC.InventoryPharma.PanelViewStocks
 {
     public partial class ViewStocks : Form
     {
         bool isPharmaList = true;
+        PharmaStocksController pharmaStocksController = new PharmaStocksController();
 
         ItemController itemz = new ItemController();
 
@@ -84,7 +83,7 @@ namespace RMC.InventoryPharma.PanelViewStocks
         {
 
             DataSet newDataset = new DataSet();
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             dt.Columns.Add("ID");
             dt.Columns.Add("Item Name");
             dt.Columns.Add("Stocks");
@@ -257,6 +256,10 @@ namespace RMC.InventoryPharma.PanelViewStocks
             {
                 path = folderBrowserDialog.SelectedPath;
             }
+
+            if (path == "")
+                return;
+
             DateTime date = DateTime.Today;
             string label = isPharmaList ? "Pharmacy" : "Clinic";
             path += $"/{label}_{date.ToString("yyyy-MM-dd")}.xlsx";
@@ -319,6 +322,100 @@ namespace RMC.InventoryPharma.PanelViewStocks
                 _excelWriter.WriteFormula(FormulaType.Sum, 2, lastRowForFormula, 3, 2, lastRow);
                 _excelWriter.Write("Total Inventory", 1, ++lastRowForFormula);
                 _excelWriter.WriteFormula(FormulaType.Sum, 2, lastRowForFormula,5,2,lastRow);
+            }
+        }
+
+        private async Task loopExcelObject(string fileName)
+        {
+            await Task.Run(async() =>
+            {
+                string fname = fileName;
+                Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(fname);
+                Microsoft.Office.Interop.Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+                Microsoft.Office.Interop.Excel.Range xlRange = xlWorksheet.UsedRange;
+
+                int rowCount = xlRange.Rows.Count - 5;
+                int colCount = xlRange.Columns.Count;
+
+
+                for (int i = 1; i <= rowCount; i++)
+                {
+                    if (i == 1)
+                        continue;
+
+                    if(xlRange.Cells[i, 1].Value2.ToString() != "" || xlRange.Cells[i, 1].Value2.ToString() != null)
+                    {
+                        await saveDataInExcel(xlRange.Cells[i, 1].Value2.ToString(), 
+                                    xlRange.Cells[i, 3].Value2.ToString());
+                    }
+
+                 
+                   
+                } 
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+
+               
+                Marshal.ReleaseComObject(xlRange);
+                Marshal.ReleaseComObject(xlWorksheet);
+                
+                xlWorkbook.Close();
+                Marshal.ReleaseComObject(xlWorkbook);
+
+             
+                xlApp.Quit();
+                Marshal.ReleaseComObject(xlApp);
+            });
+        }
+
+        private async Task saveDataInExcel(params string[] data)
+        {
+            int _;
+
+            if (!(int.TryParse(data[0], out _)))
+                return;
+
+            if (!(int.TryParse(data[1], out _)))
+                return;
+
+
+            int id = int.Parse(data[0]);
+            int stocks = int.Parse(data[1]);
+            await pharmaStocksController.Save(id, stocks);
+        }
+
+        private async void iconButton5_Click(object sender, EventArgs e)
+        {
+            VoidForm voidForm = new VoidForm();
+            voidForm.ShowDialog();
+
+
+            if (voidForm.isFound)
+            {
+                DialogResult dialogResult = MessageBox.Show(@"Are you sure you want to import Data?",
+                                                    "Import", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (DialogResult.OK == dialogResult)
+                {
+                    
+                    OpenFileDialog fdlg = new OpenFileDialog();
+                    fdlg.Title = "Excel File Dialog";
+                    fdlg.InitialDirectory = @"c:\";
+                    fdlg.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
+                    fdlg.FilterIndex = 2;
+                    fdlg.RestoreDirectory = true;
+                    if (fdlg.ShowDialog() == DialogResult.OK)
+                    {
+                        panelMenus.Enabled = false;
+                        pictureBox1.Show();
+                        pictureBox1.Update();
+                        await loopExcelObject(fdlg.FileName);
+                        pictureBox1.Hide();
+                        panelMenus.Enabled = true;
+                    }
+
+                }
             }
         }
     }
